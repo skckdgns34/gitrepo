@@ -11,7 +11,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <link href="${pageContext.request.contextPath}/layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
+<<<<<<< HEAD
 <decorator:head></decorator:head>
+=======
+>>>>>>> branch 'master' of https://github.com/skckdgns34/gitrepo.git
 </head>
 <body id="top">
 <!-- ################################################################################################ -->
