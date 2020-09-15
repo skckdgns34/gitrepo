@@ -10,7 +10,8 @@
 <title>Kiraric</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<link href="../layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
+<link href="${pageContext.request.contextPath}/layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
+<decorator:head></decorator:head>
 </head>
 <body id="top">
 <!-- ################################################################################################ -->
@@ -51,6 +52,7 @@
 
 <div class="wrapper row4">
   <footer id="footer" class="hoc clear"> 
+  
     <!-- ################################################################################################ -->
     <div class="one_third first">
       <h6 class="heading">Vitae vehicula aliquam</h6>
