@@ -1,4 +1,5 @@
-.settings/*
+teamProject/.settings/*
+teamProject/.settings/
 .classpath
 .project
 teamProject/target/
