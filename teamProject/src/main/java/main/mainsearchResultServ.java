@@ -15,7 +15,6 @@ public class mainsearchResultServ implements Controller
 			HttpServletResponse response) throws ServletException, IOException
 	{
 		
-
 	}
 
 }
