@@ -14,6 +14,9 @@ public class mainServ implements Controller
 	public void execute(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException
 	{
+		
+		
+		request.setAttribute("bookList", bookList);
 		request.getRequestDispatcher("/main/main.jsp").forward(request, response);
 	}
 
