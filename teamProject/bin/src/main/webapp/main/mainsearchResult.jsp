@@ -8,9 +8,7 @@
 </head>
 <body>
 	<div>
-		<table border="1">
-			
-		</table>
+		
 	</div>
 </body>
 </html>
