@@ -31,7 +31,7 @@ public class mainDAO
 	      try {
 	         conn = ConnectionManager.getConnnect();
 	         String sql = "SELECT book_no, title, book_img "
-	               + " FROM books ORDER BY ID";         
+	               + " FROM books ";         
 	         pstmt = conn.prepareStatement(sql);
 	         rs = pstmt.executeQuery();
 	         while(rs.next()) {
