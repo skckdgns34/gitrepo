@@ -25,7 +25,7 @@
   <header id="header" class="hoc clear"> 
    
     <div id="logo" class="fl_left">
-      <h1><img class="img-fluid"style="width: 90px;" src="../images/로고.png"/></h1>
+      <h1><img class="img-fluid"style="width: 90px;" src="${pageContext.request.contextPath}/images/로고.png"/></h1>
     </div>
     <nav id="mainav" class="fl_right">
       <ul class="clear">
@@ -43,10 +43,6 @@
 <div class="wrapper bgded overlay" style="background-color: white;">
   <div id="pageintro" class="hoc clear"> 
    
-    <article>
-      <h2 class="heading">메인 내용부분</h2>
-      <p>메인메인메닝ㄴ메닌</p>
-    </article>
     <!-- ################################################################################################ -->
    <decorator:body/>
   </div>
