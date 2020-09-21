@@ -11,7 +11,6 @@ public class Books {
 	private String publication_date;
 	private String epub_path;
 	private String audio_path;
-	private String book_price;
 	private String company_code;
 	private String introduction;
 	private String summary;
@@ -19,4 +18,6 @@ public class Books {
 	private String score;
 	private String member_no;
 	private String best_book;
+	private String genre;
+	private String registration_date;
 }
