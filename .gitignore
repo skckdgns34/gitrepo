@@ -5,6 +5,7 @@ teamProject/.settings/
 teamProject/target/
 teamProject/target/*
 bin/*
+teamProject/bin/*
 Dev/*
 pom.xml
 
