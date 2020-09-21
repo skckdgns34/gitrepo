@@ -18,7 +18,7 @@ public class mainServ implements Controller
 	{
 		ArrayList<Books> bookList = new ArrayList<Books>();
 		
-		bookList = mainDAO.getInstance().selectAll();
+		
 		
 		request.setAttribute("bookList", bookList);
 		request.getRequestDispatcher("/main/main.jsp").forward(request, response);
