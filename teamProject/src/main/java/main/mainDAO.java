@@ -30,8 +30,7 @@ public class mainDAO
 	      Books resultVO = null;
 	      try {
 	         conn = ConnectionManager.getConnnect();
-	         String sql = "SELECT book_no, title, book_img "
-	               + " FROM books ";         
+	         String sql = "select book_no, title, book_img from books order by 1";         
 	         pstmt = conn.prepareStatement(sql);
 	         rs = pstmt.executeQuery();
 	         while(rs.next()) {

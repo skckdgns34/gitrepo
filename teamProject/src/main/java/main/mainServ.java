@@ -23,5 +23,4 @@ public class mainServ implements Controller
 		request.setAttribute("bookList", bookList);
 		request.getRequestDispatcher("/main/main.jsp").forward(request, response);
 	}
-
 }
