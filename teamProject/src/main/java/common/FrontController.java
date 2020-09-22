@@ -71,7 +71,7 @@ public class FrontController extends HttpServlet {
 		list.put("/moneyOutList.do", new moneyManage.moneyOutListServ());
 		list.put("/moneyInList.do", new moneyManage.moneyInListServ());
 		list.put("/bookRegister.do", new bookManage.bookRegisterServ());
-		list.put("/bookModify.do", new bookManage.bookModifyServ());
+		list.put("/bookModify.do", new bookManage.BookModifyServ());
 		list.put("/companyMain.do", new company.companyMainServ());
 		list.put("/companyPop.do", new company.companyPopServ());
 		
