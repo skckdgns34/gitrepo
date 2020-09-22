@@ -15,7 +15,7 @@ public class mainsearchResultServ implements Controller {
 
 		public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html; charset=UTF-8");
-		mainDAO dao = new mainDAO();
+		MainDAO dao = new MainDAO();
 		String aa = request.getParameter("data");
 		ArrayList<SearchBook> list = dao.searchBook(aa);
 		

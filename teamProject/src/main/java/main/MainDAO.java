@@ -10,16 +10,16 @@ import java.util.Map;
 import common.ConnectionManager;
 import vo.SearchBook;
 
-public class mainDAO
+public class MainDAO
 {	
 	Connection conn = null;
 	PreparedStatement pstmt;
 	ResultSet rs;
 	
-	static mainDAO instance;	
-	public static mainDAO getInstance() {
+	static MainDAO instance;	
+	public static MainDAO getInstance() {
 		if (instance == null)
-			instance = new mainDAO();
+			instance = new MainDAO();
 		return instance;
 	}
 	
@@ -34,11 +34,11 @@ public class mainDAO
 			 SearchBook aa =null;
 	         conn = ConnectionManager.getConnnect();
 
-	         String sql = "select 'book' as book, title from books where  title like '%' || ? || '%' " + 
+	         String sql = "select 'book' as book, title from books where title like '%' || ? || '%' " + 
 	         		" union all " + 
 	         		" select 'wirter', writer from books where  writer like '%' || ? || '%' " + 
 	         		" union all " + 
-	         		" select 'company',company_name from company where  company_name like '%' || ? || '%' ";         
+	         		" select 'company', company_name from company where  company_name like '%' || ? || '%' ";         
 	         pstmt = conn.prepareStatement(sql);
 	         pstmt.setString(1, a);
 	         pstmt.setString(2, a);
