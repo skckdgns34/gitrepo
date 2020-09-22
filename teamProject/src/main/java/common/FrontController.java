@@ -63,7 +63,7 @@ public class FrontController extends HttpServlet {
 		list.put("/empManageModify.do", new empManage.EmpManageModifyServ());
 		
 		
-		//김한범
+		//김한범&&내가 범인이다.
 		list.put("/clientQuestion.do", new client.ClientQuestionServ());
 		list.put("/clientQuestionWtrite.do", new client.ClientQuestionWtriteServ());
 		list.put("/clientHopeBook.do", new client.ClientHopeBookServ());
