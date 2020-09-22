@@ -15,6 +15,12 @@
          <param-value>UTF-8</param-value>
       </init-param>
    </servlet>
+   <servlet>
+   	<servlet-name>MainSearchResultAjax</servlet-name>
+   	<display-name>MainSearchResultAjax</display-name>
+   	<description></description>
+   	<servlet-class>main.MainSearchResultAjax</servlet-class>
+   </servlet>
    <servlet-mapping>
       <servlet-name>front</servlet-name>
       <url-pattern>*.do</url-pattern>
@@ -22,6 +28,10 @@
    <servlet-mapping>
       <servlet-name>front</servlet-name>
       <url-pattern>*.ac</url-pattern>
+   </servlet-mapping>
+   <servlet-mapping>
+   	<servlet-name>MainSearchResultAjax</servlet-name>
+   	<url-pattern>/MainSearchResultAjax</url-pattern>
    </servlet-mapping>
       <filter>
       <filter-name>sitemesh</filter-name>

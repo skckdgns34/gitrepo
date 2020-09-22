@@ -6,5 +6,6 @@ import lombok.Data;
 public class SearchBook {
 	private String writer;
 	private String title;
-	private String company_name;
+	private String result;
+	
 }

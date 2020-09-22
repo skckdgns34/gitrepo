@@ -7,4 +7,7 @@
 	<decorator name="user" page="layout.jsp">
 		<pattern>/*</pattern>
 	</decorator>
+	<excludes>
+		<pattern>/Ajax/*</pattern>
+	</excludes>
 </decorators>

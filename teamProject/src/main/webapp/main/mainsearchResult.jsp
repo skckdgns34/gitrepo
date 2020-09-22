@@ -15,16 +15,18 @@
 			$("#testInput").autocomplete({
 								source : function(request, response) {
 									$.ajax({
-										url : "${pageContext.request.contextPath}/mainsearchResult.do",
+										url : "${pageContext.request.contextPath}/Ajax/mainsearchResultAjax.do",
 										type : "GET",
 										dataType : "json",
-										data : {data : $("#testInput").val()},	 // 검색 키워드
+										data : {data : $("#testInput").val()
+										},	 // 검색 키워드
 										success : function(data) { // 성공
 											response($.map(data, function(item) {
 													return {
 														label : item.title, //목록에 표시되는 값
-														value : item.title, //선택 시 input창에 표시되는 값	
-														idx : item.testIdx};
+														value : item.title+"["+item.result+"]", //선택 시 input창에 표시되는 값	
+														idx : item.testIdx
+													};
 											})); //response
 										},//success
 										error : function() { //실패
@@ -45,17 +47,14 @@
 								close : function(evt) {
 								}
 			});
-			
-			
-			function (){
-				
-			}
 	});
+
 </script>
 </head>
 <body>
-	
-		<input type="text" id="testInput" placeholder="자동완성" name="search"/> <br>
-	
+	<form action="${pageContext.request.contextPath}/mainsearchResult.do" method="post">
+		<input type="text" id="testInput" placeholder="검색할 내용 입력" name="search"/> <button>검색</button>
+		<input type="text" id="hidden" placeholder="검색할 내용 입력" name="seasdfarch" />
+	</form>
 </body>
 </html>
