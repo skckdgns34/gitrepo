@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 import common.ConnectionManager;
+import vo.Books;
 import vo.SearchBook;
 
 public class MainDAO
@@ -57,5 +58,29 @@ public class MainDAO
 	      }
 	      return list;
 	 }
-	 
+	 public ArrayList<Books> selectAllBook() {
+		 Books resultVO = null;
+			ArrayList<Books> list = new ArrayList<Books>();
+			try {
+				conn = ConnectionManager.getConnnect();
+				String sql = "select book_no, title, book_img, writer from books ";
+				pstmt = conn.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+
+				while (rs.next()) {
+					resultVO = new Books();
+					resultVO.setBook_no(rs.getString(1));
+					resultVO.setTitle(rs.getString(2));
+					resultVO.setBook_img(rs.getString(3));
+					resultVO.setWriter(rs.getString(4));
+					list.add(resultVO);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				ConnectionManager.close(rs, pstmt, conn);
+			}
+			return list;
+		}
+
 }

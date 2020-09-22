@@ -17,8 +17,7 @@ public class MainServ implements Controller
 			HttpServletResponse response) throws ServletException, IOException
 	{
 		ArrayList<Books> bookList = new ArrayList<Books>();
-		
-		
+		bookList = MainDAO.getInstance().selectAllBook();
 		
 		request.setAttribute("bookList", bookList);
 		request.getRequestDispatcher("/main/main.jsp").forward(request, response);

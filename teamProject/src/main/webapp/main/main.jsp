@@ -93,6 +93,8 @@
 				<td>${book.book_no }</td>
 				<td>${book.title }</td>
 				<td>${book.book_img }</td>
+				<td>${book.writer }</td>
+				
 			</tr>
 		</c:forEach>
 	</tbody>
