@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import common.Controller;
 
-public class bookModifyServ implements Controller
+public class BookModifyServ implements Controller
 {
 
 	public void execute(HttpServletRequest request,
