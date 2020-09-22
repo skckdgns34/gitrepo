@@ -36,60 +36,60 @@ public class FrontController extends HttpServlet {
 		
 		
 		//조현주
-		list.put("/memberModify.do", new member.memberModifyServ());
-		list.put("/memberDelete.do", new member.memberDeleteServ());
-		list.put("/memberBookMark.do", new member.memberBookMarkServ());
-		list.put("/memberBookLuvList.do", new member.memberBookLuvListServ());
-		list.put("/memberCreateBookCk.do", new member.memberCreateBookCkServ());
-		list.put("/memberLogin.do", new member.memberLoginServ());
-		list.put("/memberFind.do", new member.memberFindServ());
-		list.put("/memberJoin.do", new member.memberJoinServ());
-		list.put("/memberPopup.do", new member.memberPopupServ());
-		list.put("/memberLicense.do", new member.memberLicenseServ());
-		list.put("/clientNotice.do", new client.clientNoticeServ());
-		list.put("/clientFAQ.do", new client.clientFAQServ());
+		list.put("/memberModify.do", new member.MemberModifyServ());
+		list.put("/memberDelete.do", new member.MemberDeleteServ());
+		list.put("/memberBookMark.do", new member.MemberBookMarkServ());
+		list.put("/memberBookLuvList.do", new member.MemberBookLuvListServ());
+		list.put("/memberCreateBookCk.do", new member.MemberCreateBookCkServ());
+		list.put("/memberLogin.do", new member.MemberLoginServ());
+		list.put("/memberFind.do", new member.MemberFindServ());
+		list.put("/memberJoin.do", new member.MemberJoinServ());
+		list.put("/memberPopup.do", new member.MemberPopupServ());
+		list.put("/memberLicense.do", new member.MemberLicenseServ());
+		list.put("/clientNotice.do", new client.ClientNoticeServ());
+		list.put("/clientFAQ.do", new client.ClientFAQServ());
 		
 		
 		//한채빈
-		list.put("/adminMain.do", new adminMain.adminMainServ());
-		list.put("/memberManageMain.do", new memberManage.memberManageMainServ());
-		list.put("/memberManageModify.do", new memberManage.memberManageModifyServ());
-		list.put("/memberManageBlackList.do", new memberManage.memberManageBlackListServ());
-		list.put("/memberManageBlackListPop.do", new memberManage.memberManageBlackListPopServ());
-		list.put("/memberManageQuestion.do", new memberManage.memberManageQuestionServ());
-		list.put("/memberManageQuestionPop.do", new memberManage.memberManageQuestionPopServ());
-		list.put("/empManageMain.do", new empManage.empManageMainServ());
-		list.put("/empManageList.do", new empManage.empManageListServ());
-		list.put("/empManageModify.do", new empManage.empManageModifyServ());
+		list.put("/adminMain.do", new adminMain.AdminMainServ());
+		list.put("/memberManageMain.do", new memberManage.MemberManageMainServ());
+		list.put("/memberManageModify.do", new memberManage.MemberManageModifyServ());
+		list.put("/memberManageBlackList.do", new memberManage.MemberManageBlackListServ());
+		list.put("/memberManageBlackListPop.do", new memberManage.MemberManageBlackListPopServ());
+		list.put("/memberManageQuestion.do", new memberManage.MemberManageQuestionServ());
+		list.put("/memberManageQuestionPop.do", new memberManage.MemberManageQuestionPopServ());
+		list.put("/empManageMain.do", new empManage.EmpManageMainServ());
+		list.put("/empManageList.do", new empManage.EmpManageListServ());
+		list.put("/empManageModify.do", new empManage.EmpManageModifyServ());
 		
 		
 		//김한범
-		list.put("/clientQuestion.do", new client.clientQuestionServ());
-		list.put("/clientQuestionWtrite.do", new client.clientQuestionWtriteServ());
-		list.put("/clientHopeBook.do", new client.clientHopeBookServ());
-		list.put("/clientHopeBookWrite.do", new client.clientHopeBookWriteServ());
-		list.put("/moneyOutList.do", new moneyManage.moneyOutListServ());
-		list.put("/moneyInList.do", new moneyManage.moneyInListServ());
+		list.put("/clientQuestion.do", new client.ClientQuestionServ());
+		list.put("/clientQuestionWtrite.do", new client.ClientQuestionWtriteServ());
+		list.put("/clientHopeBook.do", new client.ClientHopeBookServ());
+		list.put("/clientHopeBookWrite.do", new client.ClientHopeBookWriteServ());
+		list.put("/moneyOutList.do", new moneyManage.MoneyOutListServ());
+		list.put("/moneyInList.do", new moneyManage.MoneyInListServ());
 		list.put("/bookRegister.do", new bookManage.BookRegisterServ());
 		list.put("/bookModify.do", new bookManage.BookModifyServ());
-		list.put("/companyMain.do", new company.companyMainServ());
-		list.put("/companyPop.do", new company.companyPopServ());
+		list.put("/companyMain.do", new company.CompanyMainServ());
+		list.put("/companyPop.do", new company.CompanyPopServ());
 		
 		
 		//손용원&&최창훈
-		list.put("/main.do", new main.mainServ());
-		list.put("/mainsearchResult.do", new main.mainsearchResultServ());
-		list.put("/createBookMain.do", new createBook.createBookMainServ());
-		list.put("/createBook.do", new createBook.createBookServ());
-		list.put("/createBookWrite.do", new createBook.createBookWriteServ());
-		list.put("/eBookCategory.do", new ebook.eBookCategoryServ());
-		list.put("/eBookDetail.do", new ebook.eBookDetailServ());
-		list.put("/eBookReading.do", new ebook.eBookReadingServ());
-		list.put("/audioBookCategory.do", new ebook.audioBookCategoryServ());
-		list.put("/audioBookDetail.do", new ebook.audioBookDetailServ());
-		list.put("/audioBookReading.do", new ebook.audioBookReadingServ());
-		list.put("/licenceList.do", new licence.licenceListServ());
-		list.put("/licencePayment.do", new licence.licencePaymentServ());
+		list.put("/main.do", new main.MainServ());
+		list.put("/mainsearchResult.do", new main.MainsearchResultServ());
+		list.put("/createBookMain.do", new createBook.CreateBookMainServ());
+		list.put("/createBook.do", new createBook.CreateBookServ());
+		list.put("/createBookWrite.do", new createBook.CreateBookWriteServ());
+		list.put("/eBookCategory.do", new ebook.EBookCategoryServ());
+		list.put("/eBookDetail.do", new ebook.EBookDetailServ());
+		list.put("/eBookReading.do", new ebook.EBookReadingServ());
+		list.put("/audioBookCategory.do", new ebook.AudioBookCategoryServ());
+		list.put("/audioBookDetail.do", new ebook.AudioBookDetailServ());
+		list.put("/audioBookReading.do", new ebook.AudioBookReadingServ());
+		list.put("/licenceList.do", new licence.LicenceListServ());
+		list.put("/licencePayment.do", new licence.LicencePaymentServ());
 	}
 	
 	public FrontController() {
