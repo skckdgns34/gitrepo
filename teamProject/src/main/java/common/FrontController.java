@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 			})
 */
 
-@MultipartConfig(location = "c:/도서저장",maxRequestSize = 1024*1024*10)
+@MultipartConfig(location = "c:/전자도서관",maxRequestSize = 1024*1024*10)
 public class FrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
