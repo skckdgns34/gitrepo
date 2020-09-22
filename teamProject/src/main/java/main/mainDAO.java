@@ -33,15 +33,12 @@ public class mainDAO
 		 try {
 			 SearchBook aa =null;
 	         conn = ConnectionManager.getConnnect();
-<<<<<<< HEAD
-	         String sql = "select book_no, title, book_img from books order by 1";         
-=======
+
 	         String sql = "select 'book' as book, title from books where  title like '%' || ? || '%' " + 
 	         		" union all " + 
 	         		" select 'wirter', writer from books where  writer like '%' || ? || '%' " + 
 	         		" union all " + 
 	         		" select 'company',company_name from company where  company_name like '%' || ? || '%' ";         
->>>>>>> branch 'master' of https://github.com/skckdgns34/gitrepo.git
 	         pstmt = conn.prepareStatement(sql);
 	         pstmt.setString(1, a);
 	         pstmt.setString(2, a);
