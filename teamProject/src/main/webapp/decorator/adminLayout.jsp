@@ -20,6 +20,7 @@
 	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"
 	rel="stylesheet">
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script
 	src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 
@@ -64,7 +65,7 @@
 					class="fa fa-file-o fa-fw"></i>매출관리</a></li>
 			<li><a href="http://www.jquery2dotnet.com"><i
 					class="fa fa-bar-chart-o fa-fw"></i>도서관리</a></li>
-			<li><a href="http://www.jquery2dotnet.com"><i
+			<li><a href="${pageContext.request.contextPath}/memberManageMain.ad"><i
 					class="fa fa-table fa-fw"></i>회원관리</a></li>
 			<li><a href="${pageContext.request.contextPath}/empManageList.ad">
 			<i
