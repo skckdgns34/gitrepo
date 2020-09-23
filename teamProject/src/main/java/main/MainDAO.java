@@ -31,9 +31,9 @@ public class MainDAO {
 			SearchBook aa = null;
 			conn = ConnectionManager.getConnnect();
 
-			String sql = "select '책', title from books where title like '%' || ? || '%' " + " union all "
-					+ " select '저자', writer from books where  writer like '%' || ? || '%' " + " union all "
-					+ " select '출판사', company_name from company where  company_name like '%' || ? || '%' ";
+			String sql = "select 'book', title from books where title like '%' || ? || '%' " + " union all "
+					+ " select 'writer', writer from books where  writer like '%' || ? || '%' " + " union all "
+					+ " select 'company', company_name from company where  company_name like '%' || ? || '%' ";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, a);
 			pstmt.setString(2, a);
@@ -64,8 +64,12 @@ public class MainDAO {
 		try {
 			Books aa = null;
 			conn = ConnectionManager.getConnnect();
-			String sql ="select book_no, title, writer, publication_date, book_img, company_name, introduction, summary,views,score ,genre "
-					+ "from books where writer=?";
+			String sql ="select book_no, title, writer, publication_date, "
+						+ " book_img, company_name, introduction, summary, "
+						+ " views,score ,genre "
+						+ " from books b, company c "
+						+ " where b.company_code = c.company_code "
+						+ " and b.title= ? ";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, a);
 			rs = pstmt.executeQuery();
@@ -89,52 +93,86 @@ public class MainDAO {
 		} finally {
 			ConnectionManager.close(rs, pstmt, conn);
 		}
-
 		return list;
 	}
 	
-	public ArrayList<Books> asdfsaf() {
-		ArrayList<Books> list = new ArrayList<Books>();
+	public List<Map<String, Object>> searchBooksEqualCompany(String a) {
+		List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
 		try {
 			Books aa = null;
 			conn = ConnectionManager.getConnnect();
-			String sql ="select writer from company";
+			String sql ="select book_no, title, writer, publication_date, "
+						+ " book_img, company_name, introduction, summary, "
+						+ " views,score ,genre "
+						+ " from books b, company c "
+						+ " where b.company_code = c.company_code "
+						+ " and c.company_name= ? ";
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, a);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				aa = new Books();
-				aa.setTitle(rs.getString(1));
-				list.add(aa);
+				Map<String, Object> map = new HashMap<String, Object>();
+				map.put("book_no",rs.getString("book_no"));
+				map.put("title",rs.getString("title"));
+				map.put("writer",rs.getString("writer"));
+				map.put("publication_date",rs.getString("publication_date"));
+				map.put("book_img",rs.getString("book_img"));
+				map.put("company_name",rs.getString("company_name"));
+				map.put("introduction",rs.getString("introduction"));
+				map.put("summary",rs.getString("summary"));
+				map.put("views",rs.getString("views"));
+				map.put("score",rs.getString("score"));
+				map.put("genre",rs.getString("genre"));
+				list.add(map);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			ConnectionManager.close(rs, pstmt, conn);
 		}
-
 		return list;
 	}
-	public ArrayList<Books> asdfasdf() {
-		ArrayList<Books> list = new ArrayList<Books>();
+	
+	public List<Map<String, Object>> searchBooksEqualWriter(String a) {
+		List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
 		try {
 			Books aa = null;
 			conn = ConnectionManager.getConnnect();
-			String sql ="select writer from company";
+			String sql ="select book_no, title, writer, publication_date, "
+						+ " book_img, company_name, introduction, summary, "
+						+ " views,score ,genre "
+						+ " from books b, company c "
+						+ " where b.company_code = c.company_code "
+						+ " and b.writer= ? ";
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, a);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				aa = new Books();
-				aa.setTitle(rs.getString(1));
-				list.add(aa);
+				Map<String, Object> map = new HashMap<String, Object>();
+				map.put("book_no",rs.getString("book_no"));
+				map.put("title",rs.getString("title"));
+				map.put("writer",rs.getString("writer"));
+				map.put("publication_date",rs.getString("publication_date"));
+				map.put("book_img",rs.getString("book_img"));
+				map.put("company_name",rs.getString("company_name"));
+				map.put("introduction",rs.getString("introduction"));
+				map.put("summary",rs.getString("summary"));
+				map.put("views",rs.getString("views"));
+				map.put("score",rs.getString("score"));
+				map.put("genre",rs.getString("genre"));
+				list.add(map);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			ConnectionManager.close(rs, pstmt, conn);
 		}
-
 		return list;
 	}
+	
+	
+	
+	
 
 	   
 	 public ArrayList<Books> selectAllBook() {

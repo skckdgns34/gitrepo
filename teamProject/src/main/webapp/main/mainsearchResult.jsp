@@ -33,8 +33,8 @@
 										error : function() { //실패
 											alert("통신에 실패했습니다.");
 										}
-									});
-								},
+									});//ajax
+								},//source: function
 								minLength : 1,
 								autoFocus : false,
 								select : function(evt, ui) {
@@ -52,7 +52,9 @@
 								},
 								close : function(evt) {
 								}
-			})
+			})//autoComplete
+			
+		
 	});
 
 </script>
