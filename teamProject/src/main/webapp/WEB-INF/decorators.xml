@@ -2,9 +2,19 @@
 
 <decorators defaultdir="/decorator">
 	<decorator name="admin" page="adminLayout.jsp">
-		<pattern>/admin/*</pattern>
+		<pattern>/adminMain/login.jsp</pattern>
 	</decorator>
+	<decorator name="admin" page="adminLayout.jsp">
+		<pattern>/adminIndex.jsp</pattern>
+	</decorator>
+	<decorator name="admin" page="adminLayout.jsp">
+		<pattern>/empManage/*.jsp</pattern>
+	</decorator>
+	<decorator name="admin" page="adminLayout.jsp">
+		<pattern>/*.ad</pattern>
+	</decorator>
+	
 	<decorator name="user" page="layout.jsp">
-		<pattern>/*</pattern>
+		<pattern>/*.do</pattern>
 	</decorator>
 </decorators>

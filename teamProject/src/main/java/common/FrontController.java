@@ -10,6 +10,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import adminMain.LoginController;
+import adminMain.LoginFormController;
+import empManage.EmployeesInsertConrtoller;
+import empManage.EmployeesInsertFormController;
+
 /**
  * Servlet implementation class FrontController
  */
@@ -51,18 +56,24 @@ public class FrontController extends HttpServlet {
 		list.put("/clientFAQ.do", new client.ClientFAQServ());
 		
 		
-		//한채빈
-		list.put("/adminMain.do", new adminMain.AdminMainServ());
-		list.put("/memberManageMain.do", new memberManage.MemberManageMainServ());
-		list.put("/memberManageModify.do", new memberManage.MemberManageModifyServ());
-		list.put("/memberManageBlackList.do", new memberManage.MemberManageBlackListServ());
-		list.put("/memberManageBlackListPop.do", new memberManage.MemberManageBlackListPopServ());
-		list.put("/memberManageQuestion.do", new memberManage.MemberManageQuestionServ());
-		list.put("/memberManageQuestionPop.do", new memberManage.MemberManageQuestionPopServ());
-		list.put("/empManageMain.do", new empManage.EmpManageMainServ());
-		list.put("/empManageList.do", new empManage.EmpManageListServ());
-		list.put("/empManageModify.do", new empManage.EmpManageModifyServ());
-		
+		// 한채빈
+
+				list.put("/adminMain.ad", new adminMain.AdminMainServ()); // 메인
+				list.put("/login.ad", new LoginController());
+				list.put("/loginForm.ad", new LoginFormController());
+				list.put("/memberManageMain.ad", new memberManage.MemberManageMainServ());
+				list.put("/memberManageModify.ad", new memberManage.MemberManageModifyServ());
+				list.put("/memberManageBlackList.ad", new memberManage.MemberManageBlackListServ());
+				list.put("/memberManageBlackListPop.ad", new memberManage.MemberManageBlackListPopServ());
+				list.put("/memberManageQuestion.ad", new memberManage.MemberManageQuestionServ());
+				list.put("/memberManageQuestionPop.ad", new memberManage.MemberManageQuestionPopServ());
+
+				list.put("/empManageMain.ad", new empManage.EmpManageMainServ()); // 사원메인??
+				list.put("/empManageList.ad", new empManage.EmpManageListServ()); // 사원 목록
+				list.put("/employeesInsert.ad", new EmployeesInsertConrtoller());
+				list.put("/employeesInsertForm.ad", new EmployeesInsertFormController());
+				// list.put("/empManageModify.ad", new empManage.EmpManageModifyServ()); // 사원
+				// 수정
 		
 		//김한범&&내가 범인이다.
 		list.put("/clientQuestion.do", new client.ClientQuestionServ());
