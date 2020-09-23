@@ -31,8 +31,7 @@
 			<tbody>
 				<c:forEach begin="1" end="${books.size() }" var="j">
 					<tr>
-						<td>${books.get(j).book_no }</td>
-					
+						<td>${books.get(i-1)}</td>
 					</tr>
 				</c:forEach>
 			</tbody>
