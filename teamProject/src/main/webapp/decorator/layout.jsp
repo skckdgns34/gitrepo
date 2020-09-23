@@ -43,7 +43,7 @@
 					<li><a class="drop"
 						href="${pageContext.request.contextPath}/audioBookCategory.do">오디오북</a></li>
 					<li><a href="#">내정보</a></li>
-					<li><a href="${pageContext.request.contextPath}/clientNotice.do">공지</a></li>
+					<li><a href="${pageContext.request.contextPath}/clientNotice.jsp">공지</a></li>
 					<c:if test="${sessionScope.member_id == null }">
 						<li><a
 							href="<%=application.getContextPath()%>/member/memberLogin.jsp">로그인</a>
