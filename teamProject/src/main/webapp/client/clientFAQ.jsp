@@ -29,9 +29,9 @@
 	<h1>공지</h1>
 	<hr><br>
 	<ul>
-		<li><a href="<%=application.getContextPath() %>/member/clientNotice.jsp">공지사항</a>
-		<li><a href="<%=application.getContextPath() %>/member/clientFAQ.jsp">FAQ</a>
-		<li><a href="<%=application.getContextPath() %>/member/clientQuestion.jsp">문의</a>
+		<li><a href="<%=application.getContextPath() %>/clientNotice.do">공지사항</a>
+		<li><a href="<%=application.getContextPath() %>/clientFAQ.do">FAQ</a>
+		<li><a href="<%=application.getContextPath() %>/clientQuestion.do">문의</a>
 	</ul><br>
 	<br><hr>
 

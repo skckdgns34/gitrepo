@@ -47,7 +47,7 @@ overflow: hidden;
 		<input type="text" id='search_text' name='search_text' placeholder="회원번호 또는 회원아이디를 입력해주세요" value="${search_text }">
 		<input type='submit' value='검색'>
 	</form>
-	<div><a href="${pageContext.request.contextPath}/memberInsertForm.ad">추가</a></div>
+	<div><a href="${pageContext.request.contextPath}/memberManageModifyForm.ad">추가</a></div>
 	<button>삭제</button>
 	</div>
 	
@@ -72,7 +72,7 @@ overflow: hidden;
 				<tr>
 					<td>${member.getMember_no()}</td>
 					<td>${member.getMember_id()}</td>
-					<td>${member.getMember_pw}</td>
+					<td>${member.getMember_pw()}</td>
 					<td>${member.getNickname()}</td>
 					<td>${member.getMember_tel()}</td>
 					<td>${member.getMember_email()}</td>
@@ -82,7 +82,6 @@ overflow: hidden;
 					<td>${member.getGender()}</td>
 					<td>${member.getTicket_code()}</td>		
 			</c:forEach>
-		${message}
 		</tbody>
 	</table>
 </div>
