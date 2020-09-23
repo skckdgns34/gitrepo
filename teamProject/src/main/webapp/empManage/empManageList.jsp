@@ -33,7 +33,7 @@ overflow: hidden;
 			<option value='EMP_ID' <c:if test="${search_type == 'EMP_ID'}">selected</c:if>>사원 아이디</option>
 			<option value='EMP_NAME'<c:if test="${search_type == 'EMP_NAME'}">selected</c:if>>사원 이름</option>
 			<option value='EMP_BIRTH'<c:if test="${search_type == 'EMP_BIRTH'}">selected</c:if>>사원 생년월일</option>
-			<option value='ENTERED_DATE'<c:if test="${search_type == 'ENTERED_DATE'}">selected</c:if>>사원 입사일</option>
+			<option value='ENTEREDDATE'<c:if test="${search_type == 'ENTEREDDATE'}">selected</c:if>>사원 입사일</option>
 			<option value='EMP_ADDRESS'<c:if test="${search_type == 'EMP_ADDRESS'}">selected</c:if>>사원 주소</option>
 			<option value='DEPT_CODE'<c:if test="${search_type == 'DEPT_CODE'}">selected</c:if>>부서 코드</option>
 			<option value='RANK_CODE'<c:if test="${search_type == 'RANK_CODE'}">selected</c:if>>??(이건 뭐야?)</option>
@@ -53,7 +53,7 @@ overflow: hidden;
 			<th>EMP_ID</th>
 			<th>EMP_NAME</th>
 			<th>EMP_BIRTH</th>
-			<th>ENTERED_DATE</th>
+			<th>ENTEREDDATE</th>
 			<th>DEPT_CODE</th>
 			<th>EMP_ADDRESS</th>
 			<th>RANK_CODE</th>
@@ -66,7 +66,7 @@ overflow: hidden;
 					<td>${employees.getEmp_id()}</td>
 					<td>${employees.getEmp_name()}</td>
 					<td>${employees.getEmp_birth()}</td>
-					<td>${employees.getEntered_date()}</td>
+					<td>${employees.getEntereddate()}</td>
 					<td>${employees.getDept_code()}</td>
 					<td>${employees.getEmp_address()}</td>
 					<td>${employees.getRank_code()}</td>

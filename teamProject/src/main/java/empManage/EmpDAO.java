@@ -47,7 +47,7 @@ public class EmpDAO {
 				resultVO.setEmp_pw(rs.getString("emp_pw"));
 				resultVO.setEmp_name(rs.getString("emp_name"));
 				resultVO.setEmp_birth(rs.getString("emp_birth"));
-				resultVO.setEntered_date(rs.getString("entered_date"));
+				resultVO.setEntereddate(rs.getString("entereddate"));
 				resultVO.setDept_code(rs.getString("dept_code"));
 				resultVO.setEmp_address(rs.getString("emp_address"));
 				resultVO.setRank_code(rs.getString("rank_code"));
@@ -85,7 +85,7 @@ public class EmpDAO {
 				employees.setEmp_pw(rs.getString("emp_pw"));
 				employees.setEmp_name(rs.getString("emp_name"));
 				employees.setEmp_birth(rs.getString("emp_birth"));
-				employees.setEntered_date(rs.getString("entered_date"));
+				employees.setEntereddate(rs.getString("entereddate"));
 				employees.setDept_code(rs.getString("dept_code"));
 				employees.setEmp_address(rs.getString("emp_address"));
 				employees.setRank_code(rs.getString("rank_code"));
@@ -123,7 +123,7 @@ public class EmpDAO {
 			stmt = conn.createStatement();
 			stmt.executeUpdate(seqSql);
 			String sql = "INSERT INTO EMPLOYEES (EMP_NO, EMP_ID, EMP_PW, EMP_NAME, "
-					+ " EMP_BIRTH, ENTERED_DATE, DEPT_CODE, EMP_ADDRESS, RANK_CODE " + " values(?,?,?,?,?,?,?,?,?)";
+					+ " EMP_BIRTH, ENTEREDDATE, DEPT_CODE, EMP_ADDRESS, RANK_CODE " + " values(?,?,?,?,?,?,?,?,?)";
 
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, employees.getEmp_no());
@@ -131,7 +131,7 @@ public class EmpDAO {
 			pstmt.setString(3, employees.getEmp_pw());
 			pstmt.setString(4, employees.getEmp_name());
 			pstmt.setString(5, employees.getEmp_birth());
-			pstmt.setString(6, employees.getEntered_date());
+			pstmt.setString(6, employees.getEntereddate());
 			pstmt.setString(7, employees.getDept_code());
 			pstmt.setString(8, employees.getEmp_address());
 			pstmt.setString(9, employees.getRank_code());
@@ -201,7 +201,7 @@ public class EmpDAO {
 				resultVO.setEmp_pw(rs.getString("emp_pw"));
 				resultVO.setEmp_name(rs.getString("emp_name"));
 				resultVO.setEmp_birth(rs.getString("emp_birth"));
-				resultVO.setEntered_date(rs.getString("entered_date"));
+				resultVO.setEntereddate(rs.getString("entereddate"));
 				resultVO.setDept_code(rs.getString("dept_code"));
 				resultVO.setEmp_address(rs.getString("emp_address"));
 				resultVO.setRank_code(rs.getString("rank_code"));
