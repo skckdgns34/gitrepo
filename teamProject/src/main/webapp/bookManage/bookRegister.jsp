@@ -23,6 +23,20 @@
 					<label for="company_code">출판사</label> <input id="company_code" name="company_code" type="text">
 				</div>
 				<div>
+					<label for=genre>장르</label> <select name="genre" id="genre" size="4">
+						<option value="">선택</option>
+						<option value="d1">소설</option>
+						<option value="d2">시/에세이</option>
+						<option value="d3">무협/판타지</option>
+						<option value="d4">인문</option>
+						<option value="d5">로맨스</option>
+						<option value="d6">자기계발</option>
+						<option value="d7">경제/경영</option>
+						<option value="d8">아동</option>
+						<option value="d9">유아</option>
+					</select>
+				</div>
+				<div>
 					<label for="introduction">소개글</label>
 					<textarea id="introduction" name="introduction"></textarea>
 				</div>
@@ -50,11 +64,6 @@
 				<div>
 					<label for="audio_path">음성책 첨부</label> 
 					<input type="file" name="audio_path">
-				</div>
-				<div>
-					<label for="epub_audio">도서 종류</label>
-					<input type="checkbox" name="epub_audio" value="epub">전자책
-					<input type="checkbox" name="epub_audio" value="audio">음성책
 				</div>
 				<div>
 					<button type="reset">초기화</button>

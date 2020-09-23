@@ -14,7 +14,7 @@ import adminMain.LoginController;
 import adminMain.LoginFormController;
 import empManage.EmployeesInsertConrtoller;
 import empManage.EmployeesInsertFormController;
-import bookManage.BookDeleteServ;
+
 
 /**
  * Servlet implementation class FrontController
@@ -86,6 +86,7 @@ public class FrontController extends HttpServlet {
 		list.put("/bookRegister.do", new bookManage.BookRegisterServ());
 		list.put("/bookModify.do", new bookManage.BookModifyServ());
 		list.put("/bookDelete.do", new bookManage.BookDeleteServ());
+		list.put("/bookList.do", new bookManage.BookListServ());
 		list.put("/companyMain.do", new company.CompanyMainServ());
 		list.put("/companyPop.do", new company.CompanyPopServ());
 		

@@ -16,7 +16,7 @@ public class BookDeleteServ implements Controller {
 
 		if (id.isEmpty()) {
 			request.setAttribute("error", "id를 입력하세요.");
-			request.getRequestDispatcher("/member/memberSearch.jsp").forward(request, response);
+			request.getRequestDispatcher("/bookManage/bookModify.jsp").forward(request, response);
 			return;
 		}
 
@@ -25,7 +25,7 @@ public class BookDeleteServ implements Controller {
 
 		int r = BookManageDAO.getInstance().delete(book);
 		request.setAttribute("cnt", r);
-		request.getRequestDispatcher("/member/memberDeleteOutput.jsp").forward(request, response);
+		request.getRequestDispatcher("/bookManage/bookRegister.jsp").forward(request, response);
 
 	}
 
