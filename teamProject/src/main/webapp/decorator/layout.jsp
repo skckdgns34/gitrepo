@@ -34,9 +34,9 @@
       	<ul class="clear">
 					<li class="active"><a href="index.jsp">Home</a></li>
 					<li><a class="drop"
-						href="${pageContext.request.contextPath}/ebook/eBookCategory.jsp">전자책</a></li>
+						href="${pageContext.request.contextPath}/eBookCategory.do">전자책</a></li>
 					<li><a class="drop"
-						href="${pageContext.request.contextPath}/ebook/audioBookCategory.jsp">오디오북</a></li>
+						href="${pageContext.request.contextPath}/audioBookCategory.do">오디오북</a></li>
 					<li><a href="#">내정보</a></li>
 					<li><a href="#">공지</a></li>
 					<c:if test="${sessionScope.member_id == null }">
