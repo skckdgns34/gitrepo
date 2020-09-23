@@ -44,11 +44,12 @@ public class FrontController extends HttpServlet {
 		//조현주
 		list.put("/memberModify.do", new member.MemberModifyServ());
 		list.put("/memberDelete.do", new member.MemberDeleteServ());
+		list.put("/memberDeletePassword.do", new client.MemberDeletePasswordServ());
 		list.put("/memberBookMark.do", new member.MemberBookMarkServ());
 		list.put("/memberBookLuvList.do", new member.MemberBookLuvListServ());
 		list.put("/memberCreateBookCk.do", new member.MemberCreateBookCkServ());
 		list.put("/memberLogin.do", new member.MemberLoginServ());
-		list.put("/memberLogout.do", new member.memberLogoutServ());
+		list.put("/memberLogout.do", new member.MemberLogoutServ());
 		list.put("/memberFind.do", new member.MemberFindServ());
 		list.put("/memberJoin.do", new member.MemberJoinServ());
 		list.put("/memberPopup.do", new member.MemberPopupServ());
