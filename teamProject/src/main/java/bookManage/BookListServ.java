@@ -13,9 +13,12 @@ import vo.Books;
 public class BookListServ implements Controller {
 
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		List<Books> list = BookManageDAO.getInstance().selectAll();
+		//결과저장
 		request.setAttribute("list", list);
-		request.getRequestDispatcher("/bookManage/bookList.jsp").forward(request, response);
+		//페이지이동
+		request.getRequestDispatcher("/bookList.jsp").forward(request, response);
 	}
 
 }

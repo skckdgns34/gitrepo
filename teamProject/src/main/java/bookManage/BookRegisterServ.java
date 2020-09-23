@@ -71,8 +71,9 @@ public class BookRegisterServ implements Controller
 		
 		Books r = BookManageDAO.getInstance().insert(book);
 		request.setAttribute("cnt", r);
-		request.getRequestDispatcher("/bookManage/bookRegister.jsp").forward(request, response);
+		request.getRequestDispatcher("/bookManage/bookList.jsp").forward(request, response);
 	}
+	
 	private String getFilename(Part part) throws UnsupportedEncodingException {
 		for (String cd : part.getHeader("Content-Disposition").split(";")) {
 		if (cd.trim().startsWith("filename")) {

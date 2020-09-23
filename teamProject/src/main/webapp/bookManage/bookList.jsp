@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
@@ -27,7 +27,7 @@
 		<tbody>
 		<c:forEach items="${list}" var="books">
 			<tr>
-				<td><a href="bookSelect.do?id=${books.book_no}">${books.book_no}</a></td>
+				<td><a href="bookSelect.do?id=${books.books_no}">${books.book_no}</a></td>
 				<td>${books.title}</td>
 				<td>${books.writer}</td>
 				<td>${books.publication_date}</td>

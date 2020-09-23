@@ -9,7 +9,7 @@ public class Notice {
 	private String notice_content;
 	private String notice_img;
 	private String emp_no;
-	private String view;
+	private String views;
 	private int first;
 	private int last;
 }
