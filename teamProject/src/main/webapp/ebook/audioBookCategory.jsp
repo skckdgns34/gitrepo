@@ -9,33 +9,40 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h3>audiobook</h3>
-<table border="1">
-	<thead>
-		<tr>
-			<th>book_no</th>
-			<th>title</th>
-			<th>book_img</th>
-			<th>writer</th>
-			<th>audio_path</th>
-			<th>publication_date</th>
-			<th>summary</th>
-			<th>views</th>
-			<th>score</th>
-			<th>book_price</th>
-		</tr>
-	</thead>
-	<tbody>
-		 <c:forEach items="${bookList }" var="book">
-			<tr>
-				<td>${book.book_no }</td>
-				<td>${book.title }</td>
-				<td>${book.book_img }</td>
-				<td>${book.writer }</td>
-				<td>${book.audio_path }</td>
-			</tr>
-		</c:forEach> 
-	</tbody>
-</table>
+<h3>오디오책</h3>
+<c:forEach begin="1" end="${genreList.size() }" var="i">
+		<div>${genreList.get(i-1).code_value}</div>
+		<table border="1">
+			<thead>
+				<tr>
+					<th>book_no</th>
+					<th>title</th>
+					<th>book_img</th>
+					<th>writer</th>
+					<th>audio_path</th>
+					<th>genre</th>
+					<th>publication_date</th>
+					<th>summary</th>
+					<th>views</th>
+					<th>score</th>
+					<th>book_price</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach begin="1" end="${books.size() }" var="j">
+					<tr>
+						<td>${books[i-1][j-1].book_no}</td>
+						<td>${books[i-1][j-1].title}</td>
+						<td><img src="/filepath/개미.jpg"/>${books[i-1][j-1].book_img}</td>
+						<td>${books[i-1][j-1].writer}</td>
+						<td>${books[i-1][j-1].audio_path}</td>
+						<td>${books[i-1][j-1].genre}</td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+		<br>
+		<hr>
+	</c:forEach>
 </body>
 </html>

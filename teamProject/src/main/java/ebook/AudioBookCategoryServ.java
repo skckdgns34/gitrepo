@@ -25,12 +25,12 @@ public class AudioBookCategoryServ implements Controller
 		
 		ArrayList<ArrayList<Books>> books = new ArrayList<ArrayList<Books>>();
 		for(int i=0; i<list.size(); i++) {
-			bookList = EbookDAO.getInstance().selectAllEBook(list.get(i).getCode());
+			bookList = EbookDAO.getInstance().selectAllAudioBook(list.get(i).getCode());
 			books.add(bookList);
 			bookList = new ArrayList<Books>();
 		}
 		request.setAttribute("books", books);
-		request.getRequestDispatcher("/ebook/eBookCategory.jsp").forward(request, response);
+		request.getRequestDispatcher("/ebook/audioBookCategory.jsp").forward(request, response);
 
 	
 	}

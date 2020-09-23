@@ -33,7 +33,7 @@
 					<tr>
 						<td>${books[i-1][j-1].book_no}</td>
 						<td>${books[i-1][j-1].title}</td>
-						<td>${books[i-1][j-1].book_img}</td>
+						<td><a href="">${books[i-1][j-1].book_img}</a></td>
 						<td>${books[i-1][j-1].writer}</td>
 						<td>${books[i-1][j-1].epub_path}</td>
 						<td>${books[i-1][j-1].genre}</td>
