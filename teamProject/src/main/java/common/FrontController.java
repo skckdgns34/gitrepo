@@ -10,14 +10,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-<<<<<<< HEAD
 import adminMain.LoginController;
 import adminMain.LoginFormController;
 import empManage.EmployeesInsertConrtoller;
 import empManage.EmployeesInsertFormController;
-=======
 import bookManage.BookDeleteServ;
->>>>>>> branch 'master' of https://github.com/skckdgns34/gitrepo.git
 
 /**
  * Servlet implementation class FrontController

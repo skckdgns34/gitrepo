@@ -62,6 +62,7 @@ public class EbookDAO {
 				resultVO.setBook_img(rs.getString(3));
 				resultVO.setWriter(rs.getString(4));
 				resultVO.setEpub_path(rs.getString(5));
+				resultVO.setGenre(rs.getString(6));
 				list.add(resultVO);
 			}
 		} catch (Exception e) {
@@ -80,7 +81,7 @@ public class EbookDAO {
 		ArrayList<Books> list = new ArrayList<Books>();
 		try {
 			conn = ConnectionManager.getConnnect();
-			String sql = "select book_no, title, book_img, writer, audio_path from books where audio_path is not null order by 1 ";
+			String sql = "select book_no, title, book_img, writer, audio_path, genre from books where genre = ? order by 1 ";
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 

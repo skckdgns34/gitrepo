@@ -34,9 +34,6 @@ public class EBookCategoryServ implements Controller
 			books.add(bookList);
 			bookList = new ArrayList<Books>();
 		}
-		System.out.println(books.get(1));
-		System.out.println(books.get(0).get(0));
-		System.out.println(books.get(0).get(0).getBook_no());
 		request.setAttribute("books", books);
 		request.getRequestDispatcher("/ebook/eBookCategory.jsp").forward(request, response);
 	}

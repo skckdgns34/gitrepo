@@ -19,8 +19,8 @@
 					<th>title</th>
 					<th>book_img</th>
 					<th>writer</th>
-					<th>genre</th>
 					<th>ebook_path</th>
+					<th>genre</th>
 					<th>publication_date</th>
 					<th>summary</th>
 					<th>views</th>
@@ -31,7 +31,12 @@
 			<tbody>
 				<c:forEach begin="1" end="${books.size() }" var="j">
 					<tr>
-						<td>${books.get[i-1]}</td>
+						<td>${books[i-1][j-1].book_no}</td>
+						<td>${books[i-1][j-1].title}</td>
+						<td>${books[i-1][j-1].book_img}</td>
+						<td>${books[i-1][j-1].writer}</td>
+						<td>${books[i-1][j-1].epub_path}</td>
+						<td>${books[i-1][j-1].genre}</td>
 					</tr>
 				</c:forEach>
 			</tbody>
