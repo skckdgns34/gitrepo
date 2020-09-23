@@ -34,7 +34,11 @@ public class BookRegisterServ implements Controller
 		//파일명 중복체크
 		File renameFile = FileRenamePolicy.rename(new File(path, book_img));
 		part.write(path +"/" +renameFile.getName());
-		book.setBook_img("c:/전자도서관/책표지/"+renameFile.getName());
+		if(renameFile.getName().equals("책표지1")) {
+			book.setBook_img(null);
+		}else {
+			book.setBook_img("c:/전자도서관/책표지/"+renameFile.getName());
+		}
 		
 		Part part2 = request.getPart("epub_path");
 		String epub_path = getFilename(part2);
@@ -43,7 +47,11 @@ public class BookRegisterServ implements Controller
 		//파일명 중복체크
 		File renameFile2 = FileRenamePolicy.rename(new File(path2, epub_path));
 		part2.write(path2 +"/" +renameFile2.getName());
-		book.setEpub_path("c:/전자도서관/전자책/"+renameFile2.getName());
+		if(renameFile2.getName().equals("전자책1")) {
+			book.setEpub_path(null);
+		}else {
+			book.setEpub_path("c:/전자도서관/전자책/"+renameFile2.getName());
+		}
 		
 		Part part3 = request.getPart("audio_path");
 		String audio_path = getFilename(part3);
@@ -52,7 +60,11 @@ public class BookRegisterServ implements Controller
 		//파일명 중복체크
 		File renameFile3 = FileRenamePolicy.rename(new File(path3, audio_path));
 		part3.write(path3 +"/" +renameFile3.getName());
-		book.setAudio_path("c:/전자도서관/전자책/"+renameFile3.getName());
+		if(renameFile3.getName().equals("음성책1")) {
+			book.setAudio_path(null);
+		}else {
+			book.setAudio_path("c:/전자도서관/음성책/"+renameFile3.getName());
+		}
 
 		
 		
