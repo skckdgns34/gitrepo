@@ -16,25 +16,64 @@ public class NoticeDAO {
 		PreparedStatement pstmt;
 		
 		// 싱글톤(하나 만들어두면 불러와서 계속씀)
-		static MemberDAO instance;
+		static NoticeDAO instance;
 
-		public static MemberDAO getinstance() {
+		public static NoticeDAO getinstance() {
 			if (instance == null)
-				instance = new MemberDAO();
+				instance = new NoticeDAO();
 			return instance;
 		}
 		
-		// 전체조회
+		//전체 건수 
+		public int count(Notice notice) {
+			int cnt = 0;
+			try {
+				conn = ConnectionManager.getConnnect();
+				String where ="where 1=1";
+				if(notice.getNotice_title() !=null) {
+					where += " and notice_title like '%' || ? || '%'";
+				}
+				String sql = "select count(*) from notice" + where;
+				pstmt = conn.prepareStatement(sql);
+				int pos = 1;
+				if(notice.getNotice_title() !=null) {
+					pstmt.setString(pos++, notice.getNotice_title());
+				}
+				ResultSet rs = pstmt.executeQuery();
+				rs.next();
+				cnt = rs.getInt(1);
+			}catch(Exception e) {
+				e.printStackTrace();
+			}finally {
+				ConnectionManager.close(conn);
+			}
+			return cnt;
+		}
+		
+		// 전체조회(페이징)
 		public ArrayList<Notice> selectAll(Notice notice) {
 			Notice resultVO = null;
 			ResultSet rs = null;
 			ArrayList<Notice> list = new ArrayList<Notice>();
 			try {
 				conn = ConnectionManager.getConnnect();
-				String sql = " SELECT EMP_NO, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_DATE, NOTICE_IMG, VIEW"
+				String where ="where 1=1";
+				if(notice.getNotice_title() !=null) {
+					where += " and notice_titles like '%' || ? || '%'";
+				}
+				String sql = "select a.*from(select rownum rn, b.* from ( "
+						+ " SELECT EMP_NO, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_DATE, NOTICE_IMG, VIEW"
 						+ " FROM NOTICE"
-						+ " ORDER BY EMP_NO";
+						+ where
+						+ " ORDER BY EMP_NO"
+						+ ")b)a where rn betwen ? and? ";
 				pstmt = conn.prepareStatement(sql);
+				int pos = 0;
+				if(notice.getNotice_title() !=null) {
+					pstmt.setString(pos++, notice.getNotice_title());
+				}
+				pstmt.setInt(pos++, notice.getFirst());
+				pstmt.setInt(pos++, notice.getLast());
 				rs = pstmt.executeQuery();
 				while (rs.next()) {
 					resultVO = new Notice();
