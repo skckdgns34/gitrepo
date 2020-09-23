@@ -138,12 +138,12 @@ public class BookManageDAO {
 	        	 books = new Books();
 	             books.setBook_no(rs.getString(1));
 	        	 books.setTitle(rs.getString(2));
-	        	 books.setWriter(rs.getString(4));
-	             books.setPublication_date(rs.getString(5));
-	             books.setCompany_code(rs.getString(8));
-	             books.setBest_book(rs.getString(11));
-	             books.setGenre(rs.getString(12));
-	             books.setRegistration_date(rs.getString(13));
+	        	 books.setWriter(rs.getString(3));
+	             books.setPublication_date(rs.getString(4));
+	             books.setCompany_code(rs.getString(5));
+	             books.setBest_book(rs.getString(6));
+	             books.setGenre(rs.getString(7));
+	             books.setRegistration_date(rs.getString(8));
 
 	            list.add(books);
 	         }
