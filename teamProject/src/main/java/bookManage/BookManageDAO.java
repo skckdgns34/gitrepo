@@ -92,7 +92,7 @@ public class BookManageDAO {
 	      try {
 	         conn = ConnectionManager.getConnnect();
 	         String sql = "SELECT BOOK_NO, TITLE, BOOK_IMG, WRITER, PUBLICATION_DATE, EPUB_PATH,"
-	         		  + " AUDIO_PATH, COMPANY_CODE, INTRODUCTION, SUMMARY, BEST_BOOK, REGISTRATION_DATE"
+	         		  + " AUDIO_PATH, COMPANY_CODE, INTRODUCTION, SUMMARY, BEST_BOOK, genre, REGISTRATION_DATE"
 	                  + " FROM BOOKS"
 	                  + " WHERE BOOK_NO = ?";
 	         pstmt = conn.prepareStatement(sql);
@@ -111,7 +111,8 @@ public class BookManageDAO {
 	             books.setIntroduction(rs.getString(9));
 	             books.setSummary(rs.getString(10));
 	             books.setBest_book(rs.getString(11));
-	             books.setRegistration_date(rs.getString(12));
+	             books.setGenre(rs.getString(12));
+	             books.setRegistration_date(rs.getString(13));
 	         } else {
 	         }
 	      } catch (Exception e) {
@@ -129,7 +130,7 @@ public class BookManageDAO {
 	      try {
 	         conn = ConnectionManager.getConnnect();
 	         String sql = "SELECT BOOK_NO, TITLE, BOOK_IMG, WRITER, PUBLICATION_DATE, EPUB_PATH, AUDIO_PATH, "
-	         		+ "COMPANY_CODE, INTRODUCTION, SUMMARY, BEST_BOOK, REGISTRATION_DATE "
+	         		+ "COMPANY_CODE, INTRODUCTION, SUMMARY, BEST_BOOK, genre, REGISTRATION_DATE "
 	               + "FROM BOOKS ORDER BY 1";         
 	         pstmt = conn.prepareStatement(sql);
 	         rs = pstmt.executeQuery();
@@ -137,16 +138,12 @@ public class BookManageDAO {
 	        	 books = new Books();
 	             books.setBook_no(rs.getString(1));
 	        	 books.setTitle(rs.getString(2));
-	        	 books.setBook_img(rs.getString(3));
 	        	 books.setWriter(rs.getString(4));
 	             books.setPublication_date(rs.getString(5));
-	             books.setEpub_path(rs.getString(6));
-	             books.setAudio_path(rs.getString(7));
 	             books.setCompany_code(rs.getString(8));
-	             books.setIntroduction(rs.getString(9));
-	             books.setSummary(rs.getString(10));
 	             books.setBest_book(rs.getString(11));
-	             books.setRegistration_date(rs.getString(12));
+	             books.setGenre(rs.getString(12));
+	             books.setRegistration_date(rs.getString(13));
 
 	            list.add(books);
 	         }
