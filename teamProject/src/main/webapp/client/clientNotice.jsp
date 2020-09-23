@@ -45,7 +45,7 @@ li {
 					<td>${notice.emp_no }</td>
 					<td>${notice.notice_title }</td>
 					<td>${notice.notice_date }</td>
-					<td>${notice.view }</td>
+					<td>${notice.views }</td>
 				</tr>
 			</c:forEach>
 		</table>

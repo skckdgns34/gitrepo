@@ -57,35 +57,38 @@ public class NoticeDAO {
 			ArrayList<Notice> list = new ArrayList<Notice>();
 			try {
 				conn = ConnectionManager.getConnnect();
-				String where ="where 1=1";
+				String where =" where 1=1";
 				if(notice.getNotice_title() !=null) {
 					where += " and notice_title like '%' || ? || '%'";
 				}
-				String sql = "select a.*from(select rownum rn, b.* from ( "
-						+ " SELECT EMP_NO, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_DATE, NOTICE_IMG, VIEW"
+				String sql = "select a.* from(select rownum rn, b.* from ( "
+						+ " SELECT EMP_NO, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_DATE, NOTICE_IMG, VIEWS"
 						+ " FROM NOTICE"
 						+ where
 						+ " ORDER BY EMP_NO"
-						+ ")b)a where rn betwen ? and? ";
+						+ ")b)a where rn between ? and ? ";
 				pstmt = conn.prepareStatement(sql);
-				int pos = 0;
+				System.out.println(notice);
+				int pos = 1;
 				if(notice.getNotice_title() !=null) {
 					pstmt.setString(pos++, notice.getNotice_title());
 				}
+				
 				pstmt.setInt(pos++, notice.getFirst());
 				pstmt.setInt(pos++, notice.getLast());
 				rs = pstmt.executeQuery();
 				while (rs.next()) {
 					resultVO = new Notice();
-					resultVO.setEmp_no(rs.getString("EMP_NO"));
-					resultVO.setNotice_title(rs.getString("NOTICE_TITLE"));
-					resultVO.setNotice_content(rs.getString("NOTICE_CONTENT"));
-					resultVO.setNotice_date(rs.getString("NOTICE_DATE"));
-					resultVO.setNotice_img(rs.getString("NOTICE_IMG"));
-					resultVO.setView(rs.getString("VIEW"));
-					list.add(resultVO);
-					System.out.println(rs.getString("EMP_NO"));
-					System.out.println(rs.getString("NOTICE_TITLE"));
+					resultVO.setEmp_no(rs.getString("EMP_NO"));					
+					  resultVO.setNotice_title(rs.getString("NOTICE_TITLE"));
+					  resultVO.setNotice_content(rs.getString("NOTICE_CONTENT"));
+					  resultVO.setNotice_date(rs.getString("NOTICE_DATE"));
+					  resultVO.setNotice_img(rs.getString("NOTICE_IMG"));
+					  resultVO.setViews(rs.getString("VIEWS")); 
+					  list.add(resultVO);
+					  System.out.println(rs.getString("EMP_NO"));
+					  System.out.println(rs.getString("NOTICE_TITLE"));
+					 
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -114,7 +117,7 @@ public class NoticeDAO {
 					resultVO.setNotice_content(rs.getString("NOTICE_CONTENT"));
 					resultVO.setNotice_date(rs.getString("NOTICE_DATE"));
 					resultVO.setNotice_img(rs.getString("NOTICE_IMG"));
-					resultVO.setView(rs.getString("VIEW"));
+					resultVO.setViews(rs.getString("VIEW"));
 				} else {
 					System.out.println("no data");
 				}
