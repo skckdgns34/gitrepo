@@ -22,7 +22,7 @@ public class EmployeesInsertConrtoller implements Controller {
 		 String emp_pw = request.getParameter("emp_pw");
 		 String emp_name = request.getParameter("emp_name");
 		 String emp_birth = request.getParameter("emp_birth");
-		 String entered_date = request.getParameter("entered_date");
+		 String entereddate = request.getParameter("entereddate");
 		 String dept_code = request.getParameter("dept_code");
 		 String emp_address = request.getParameter("emp_address");
 		 String rank_code = request.getParameter("rank_code");
@@ -34,13 +34,13 @@ public class EmployeesInsertConrtoller implements Controller {
 		 employees.setEmp_pw(emp_pw);
 		 employees.setEmp_name(emp_name);
 		 employees.setEmp_birth(emp_birth);
-		 employees.setEntered_date(entered_date);
+		 employees.setEntereddate(entereddate);
 		 employees.setDept_code(dept_code);
 		 employees.setEmp_address(emp_address);
 		 employees.setRank_code(rank_code);
 		 Employees  r = EmpDAO.getInstance().Insert(employees);
 		 request.setAttribute("cnt", r);
-		 request.getRequestDispatcher("../adminindex.jsp").forward(request, response);
+		 request.getRequestDispatcher("/empManageList.ad").forward(request, response);
 
 	}
 

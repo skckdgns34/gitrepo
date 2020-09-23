@@ -123,7 +123,7 @@ public class EmpDAO {
 			stmt = conn.createStatement();
 			stmt.executeUpdate(seqSql);
 			String sql = "INSERT INTO EMPLOYEES (EMP_NO, EMP_ID, EMP_PW, EMP_NAME, "
-					+ " EMP_BIRTH, ENTEREDDATE, DEPT_CODE, EMP_ADDRESS, RANK_CODE " + " values(?,?,?,?,?,?,?,?,?)";
+					+ " EMP_BIRTH, ENTEREDDATE, DEPT_CODE, EMP_ADDRESS, RANK_CODE )" + " values(?,?,?,?,?,?,?,?,?)";
 
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, employees.getEmp_no());
