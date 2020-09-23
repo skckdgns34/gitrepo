@@ -16,7 +16,7 @@ public class MemberManageDAO {
 	// 전역변수. 모든 메서드에 공통으로 사용되는 변수
 	Connection conn;
 	PreparedStatement pstmt;
-
+	ResultSet rs = null;
 	// 싱글톤(하나 만들어두면 불러와서 계속씀)
 	static MemberManageDAO instance;
 
@@ -28,7 +28,7 @@ public class MemberManageDAO {
 
 	// 전체조회
 	public List<Member> selectAll(String search_text, String search_type) {
-	/*
+	
 		List<Member> list = new ArrayList<Member>();
 		try {
 			conn = ConnectionManager.getConnnect();
@@ -38,7 +38,7 @@ public class MemberManageDAO {
 				sql += " WHERE " + search_type + " Like '%" + search_text + "%'";
 			}
 			pstmt = conn.prepareStatement(sql);
-			//rs = pstmt.executeQuery();
+			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				Member member = new Member();
 				member.setMember_no(rs.getString("MEMBER_NO"));
@@ -53,16 +53,15 @@ public class MemberManageDAO {
 				member.setGender(rs.getString("GENDER"));
 				member.setTicket_code(rs.getString("TICKET_CODE"));
 				list.add(member);
-				System.out.println(rs.getString("MEMBER_NO"));
-				System.out.println(rs.getString("NICKNAME"));
+				
 		
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			ConnectionManager.close(rs, pstmt, conn);
-		}*/
-		return null;
+		}
+		return list;
 	}
 
 	// 단건조회
@@ -136,7 +135,8 @@ public class MemberManageDAO {
 		}
 	}
 
-	public void insert(Member memberVO) {
+	public Member insert(Member memberVO) {
+		Member resultVO = null;
 		try {
 
 			// 1.DB연결
@@ -176,6 +176,7 @@ public class MemberManageDAO {
 			// 4.연결해제
 			ConnectionManager.close(conn);
 		}
+		return resultVO;
 	}
 
 	//

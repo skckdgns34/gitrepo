@@ -23,8 +23,8 @@ public class MemberManageMainServ implements Controller
 		request.setAttribute("list", list);
 		request.setAttribute("search_type", search_type);
 		request.setAttribute("search_text", search_text);
-		if(list.size() <= 0)request.setAttribute("message", "<tr><th colspan=13>검색결과가 없습니다.</th></tr>");
-		request.getRequestDispatcher("/memberManage/memberManageList.jsp").forward(request, response);; //post로 보낼 때
+	//	if(list.size() <= 0)request.setAttribute("message", "<tr><th colspan=13>검색결과가 없습니다.</th></tr>");
+		request.getRequestDispatcher("/memberManage/memberManageMain.jsp").forward(request, response);; //post로 보낼 때
 	}
 
 	
