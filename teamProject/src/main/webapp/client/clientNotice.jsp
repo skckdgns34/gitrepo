@@ -43,7 +43,7 @@ li {
 			<c:forEach items="${list }" var="notice">
 				<tr>
 					<td>${notice.emp_no }</td>
-					<td>${notice.notice_title }</td>
+					<td><a href="clientNoticeSelect.do?notice_title${notice.notice_title }">${notice.notice_title }</a></td>
 					<td>${notice.notice_date }</td>
 					<td>${notice.views }</td>
 				</tr>

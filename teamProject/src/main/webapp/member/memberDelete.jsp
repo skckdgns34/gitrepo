@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8" isELIgnored="false"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,7 +29,7 @@
 			<label for="member_id" id="member_id" name="member_id"></label>
 		</div>
 		<input name="member_pw" type="checkbox" id="member_pw"
-			class="inputCheck" input 안에 내용 onclick="window.open('memberDeletePassword.jsp', '비밀번호 확인', 'width=#, height=#')" /> 위 내용을 확인하였으며, 탈퇴를 진행합니다. <br>
+			class="inputCheck" onclick="window.open('memberDeletePassword.jsp', '비밀번호 확인', 'width=#, height=#')" /> 위 내용을 확인하였으며, 탈퇴를 진행합니다. <br>
 		<button >탈퇴</button>
 
 	</form>

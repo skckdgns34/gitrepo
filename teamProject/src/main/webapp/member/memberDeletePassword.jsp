@@ -23,6 +23,13 @@
 	</script>
 </c:if>
 
+<script>
+function closeMe() {
+    var win=window.open("","_self");
+    win.close();
+}
+</script>
+
 </head>
 <body>
 	<h3>비밀번호 확인</h3>
@@ -39,7 +46,7 @@
 					class="pw" id="member_pw" name="member_pw">
 			</div>
 			<input type="submit" onclick="location.href='session'" value="확인">
-			<input type="reset" value="취소">
+			<input type="button" value="취소 " onclick="window.close();">
 		</div>
 	</form>
 </body>
