@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import bookManage.BookDeleteServ;
+
 /**
  * Servlet implementation class FrontController
  */
@@ -73,6 +75,7 @@ public class FrontController extends HttpServlet {
 		list.put("/moneyInList.do", new moneyManage.MoneyInListServ());
 		list.put("/bookRegister.do", new bookManage.BookRegisterServ());
 		list.put("/bookModify.do", new bookManage.BookModifyServ());
+		list.put("/bookDelete.do", new bookManage.BookDeleteServ());
 		list.put("/companyMain.do", new company.CompanyMainServ());
 		list.put("/companyPop.do", new company.CompanyPopServ());
 		
