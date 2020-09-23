@@ -22,19 +22,7 @@ overflow: hidden;
 }
 </style>
 <script>
-$(function(){
-	$("#emp_list tr").click(function(){
-	var str = ""
-	var tdArr = new Array();	// 배열 선언
-	
-	//현재 클릭된 row(<tr>)
-	var tr = $(this);
-	var td = tr.children();
-	
-	console.log("클릭한 Row의 모든 데이터 : "+tr.text());
-})
-	
-})
+
 
 </script>
 
