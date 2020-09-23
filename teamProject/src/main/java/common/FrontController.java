@@ -10,10 +10,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+<<<<<<< HEAD
 import adminMain.LoginController;
 import adminMain.LoginFormController;
 import empManage.EmployeesInsertConrtoller;
 import empManage.EmployeesInsertFormController;
+=======
+import bookManage.BookDeleteServ;
+>>>>>>> branch 'master' of https://github.com/skckdgns34/gitrepo.git
 
 /**
  * Servlet implementation class FrontController
@@ -84,6 +88,7 @@ public class FrontController extends HttpServlet {
 		list.put("/moneyInList.do", new moneyManage.MoneyInListServ());
 		list.put("/bookRegister.do", new bookManage.BookRegisterServ());
 		list.put("/bookModify.do", new bookManage.BookModifyServ());
+		list.put("/bookDelete.do", new bookManage.BookDeleteServ());
 		list.put("/companyMain.do", new company.CompanyMainServ());
 		list.put("/companyPop.do", new company.CompanyPopServ());
 		
