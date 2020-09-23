@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import common.Controller;
+import vo.Member;
 
 public class MemberModifyServ implements Controller
 {
@@ -14,7 +15,19 @@ public class MemberModifyServ implements Controller
 	public void execute(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException
 	{
-		// TODO Auto-generated method stub
+
+		Member memberVO = new Member();
+		memberVO.setMember_id(request.getParameter("member_id"));
+		memberVO.setMember_pw(request.getParameter("member_pw"));
+		memberVO.setNickname(request.getParameter("nickname"));
+		memberVO.setMember_tel(request.getParameter("member_tel"));
+		memberVO.setMember_email(request.getParameter("member_email"));
+
+		
+		MemberDAO dao = new MemberDAO();
+		dao.update(memberVO);
+		
+		request.getRequestDispatcher("/index.jsp").forward(request, response);
 
 	}
 
