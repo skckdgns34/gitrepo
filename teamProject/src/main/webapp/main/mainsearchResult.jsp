@@ -60,11 +60,10 @@
 </script>
 </head>
 <body>
-	<form action="${pageContext.request.contextPath}/mainsearchResult.do" method="post">
 		<input type="text" id="testInput" placeholder="검색할 내용 입력" name="search"/>
+	<form action="${pageContext.request.contextPath}/eBookSearchAfter.do" method="post">
 		<input type="hidden" id="hidden"  name="search" />
 		<button>검색</button>
-		
 	</form>
 </body>
 </html>
