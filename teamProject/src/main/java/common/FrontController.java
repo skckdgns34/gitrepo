@@ -42,6 +42,7 @@ public class FrontController extends HttpServlet {
 		list.put("/memberBookLuvList.do", new member.MemberBookLuvListServ());
 		list.put("/memberCreateBookCk.do", new member.MemberCreateBookCkServ());
 		list.put("/memberLogin.do", new member.MemberLoginServ());
+		list.put("/memberLogout.do", new member.memberLogoutServ());
 		list.put("/memberFind.do", new member.MemberFindServ());
 		list.put("/memberJoin.do", new member.MemberJoinServ());
 		list.put("/memberPopup.do", new member.MemberPopupServ());
