@@ -22,11 +22,11 @@ li {
 	<br>
 	<ul>
 		<li><a
-			href="<%=application.getContextPath()%>/client/clientNotice.jsp">공지사항</a>
+			href="<%=application.getContextPath()%>/clientNotice.do">공지사항</a>
 		<li><a
-			href="<%=application.getContextPath()%>/client/clientFAQ.jsp">FAQ</a>
+			href="<%=application.getContextPath()%>/clientFAQ.do">FAQ</a>
 		<li><a
-			href="<%=application.getContextPath()%>/client/clientQuestion.jsp">문의</a>
+			href="<%=application.getContextPath()%>/clientQuestion.do">문의</a>
 	</ul>
 	<br>
 	<br>
