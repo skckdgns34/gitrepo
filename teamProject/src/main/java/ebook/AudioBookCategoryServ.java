@@ -1,12 +1,15 @@
 package ebook;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import common.Controller;
+import vo.Books;
+import vo.Common;
 
 public class AudioBookCategoryServ implements Controller
 {
@@ -14,7 +17,22 @@ public class AudioBookCategoryServ implements Controller
 	public void execute(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException
 	{
+		ArrayList<Common> list = new ArrayList<Common>();
+		list = CommonDAO.getInstance().selectAllGenre();
+		request.setAttribute("genreList", list);
+
+		ArrayList<Books> bookList = new ArrayList<Books>();
 		
+		ArrayList<ArrayList<Books>> books = new ArrayList<ArrayList<Books>>();
+		for(int i=0; i<list.size(); i++) {
+			bookList = EbookDAO.getInstance().selectAllEBook(list.get(i).getCode());
+			books.add(bookList);
+			bookList = new ArrayList<Books>();
+		}
+		request.setAttribute("books", books);
+		request.getRequestDispatcher("/ebook/eBookCategory.jsp").forward(request, response);
+
+	
 	}
 
 }

@@ -19,13 +19,7 @@
 <body>
 <br>
 	
-	<ul class="nav justify-content-end">
-		</li>
-		<li class="nav-item"><a class="nav-link"
-			href="member/memberLogin.jsp">로그인</a></li>
-		<li class="nav-item"><a class="nav-link"
-			href="member/memberJoin.jsp">회원가입</a></li>
-	</ul>
+	
 	<!-- Tab panes -->
 
 	<div class="container">
@@ -93,6 +87,8 @@
 				<td>${book.book_no }</td>
 				<td>${book.title }</td>
 				<td>${book.book_img }</td>
+				<td>${book.writer }</td>
+				
 			</tr>
 		</c:forEach>
 	</tbody>

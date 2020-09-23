@@ -1,5 +1,8 @@
 package vo;
 
+import lombok.Data;
+
+@Data
 public class Employees {
 	
 	private String emp_no;

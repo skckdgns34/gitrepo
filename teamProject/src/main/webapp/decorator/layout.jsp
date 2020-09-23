@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib uri="http://www.opensymphony.com/sitemesh/decorator" prefix="decorator" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 	
 <!DOCTYPE html>
 <html>
@@ -14,6 +15,14 @@
 <script src="${pageContext.request.contextPath}/layout/scripts/jquery.backtotop.js"></script>
 <script src="${pageContext.request.contextPath}/layout/scripts/jquery.mobilemenu.js"></script>
 
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <decorator:head> </decorator:head>
 </head>
@@ -27,13 +36,31 @@
       <h1><img class="img-fluid"style="width: 90px;" src="${pageContext.request.contextPath}/images/로고.png"/></h1>
     </div>
     <nav id="mainav" class="fl_right">
-      <ul class="clear">
-        <li class="active"><a href="index.jsp">Home</a></li>
-        <li><a class="drop" href="${pageContext.request.contextPath}/ebook/eBookCategory.jsp">전자책</a></li>
-        <li><a class="drop" href="${pageContext.request.contextPath}/ebook/audioBookCategory.jsp">오디오북</a></li>
-        <li><a href="#">내정보</a></li>
-        <li><a href="#">공지</a></li>
-      </ul>
+      	<ul class="clear">
+					<li class="active"><a href="index.jsp">Home</a></li>
+					<li><a class="drop"
+						href="${pageContext.request.contextPath}/eBookCategory.do">전자책</a></li>
+					<li><a class="drop"
+						href="${pageContext.request.contextPath}/audioBookCategory.do">오디오북</a></li>
+					<li><a href="#">내정보</a></li>
+					<li><a href="#">공지</a></li>
+					<c:if test="${sessionScope.member_id == null }">
+						<li><a
+							href="<%=application.getContextPath()%>/member/memberLogin.jsp">로그인</a>
+					</c:if>
+					<c:if test="${sessionScope.member_id != null }">
+						<li><a href="${pageContext.request.contextPath }/memberLogout.do">로그아웃</a>
+					</c:if>
+					<c:if test="${sessionScope.member_id == null }">
+						<li><a
+							href="<%=application.getContextPath()%>/member/memberJoin.jsp">회원가입</a>
+					</c:if>
+					<c:if test="${sessionScope.member_id != null }">
+						<li><a
+							href="<%=application.getContextPath()%>/member/memberModify.jsp">내정보
+								수정</a>
+					</c:if>
+				</ul>
     </nav>
   </header>
 </div>

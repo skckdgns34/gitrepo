@@ -22,9 +22,10 @@
 										},	 // 검색 키워드
 										success : function(data) { // 성공
 											response($.map(data, function(item) {
+													$('#hidden').val(item.result);
 													return {
 														label : item.title, //목록에 표시되는 값
-														value : item.title+"["+item.result+"]", //선택 시 input창에 표시되는 값	
+														value : item.title, //선택 시 input창에 표시되는 값	
 														idx : item.testIdx
 													};
 											})); //response
@@ -37,6 +38,11 @@
 								minLength : 1,
 								autoFocus : false,
 								select : function(evt, ui) {
+									//$('#hidden').html(ui.item.value);
+									//var v = ui.item.label;
+									//var arr = v.split('/');
+									//$('#testInput').val(arr[0]);
+									//$('#hidden').val(arr[1]);
 									console.log("전체 data: " + JSON.stringify(ui));
 									console.log("db Index : " + ui.item.idx);
 									console.log("검색 데이터 : " + ui.item.value);
@@ -46,15 +52,17 @@
 								},
 								close : function(evt) {
 								}
-			});
+			})
 	});
 
 </script>
 </head>
 <body>
 	<form action="${pageContext.request.contextPath}/mainsearchResult.do" method="post">
-		<input type="text" id="testInput" placeholder="검색할 내용 입력" name="search"/> <button>검색</button>
-		<input type="text" id="hidden" placeholder="검색할 내용 입력" name="seasdfarch" />
+		<input type="text" id="testInput" placeholder="검색할 내용 입력" name="search"/>
+		<input type="hidden" id="hidden"  name="search" />
+		<button>검색</button>
+		
 	</form>
 </body>
 </html>

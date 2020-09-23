@@ -27,7 +27,7 @@
    </servlet-mapping>
    <servlet-mapping>
       <servlet-name>front</servlet-name>
-      <url-pattern>*.ac</url-pattern>
+      <url-pattern>*.ad</url-pattern>
    </servlet-mapping>
    <servlet-mapping>
    	<servlet-name>MainSearchResultAjax</servlet-name>

@@ -10,6 +10,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import adminMain.LoginController;
+import adminMain.LoginFormController;
+import empManage.EmployeesInsertConrtoller;
+import empManage.EmployeesInsertFormController;
+import bookManage.BookDeleteServ;
+
 /**
  * Servlet implementation class FrontController
  */
@@ -21,7 +27,7 @@ import javax.servlet.http.HttpServletResponse;
 			})
 */
 
-@MultipartConfig(location = "c:/도서저장",maxRequestSize = 1024*1024*10)
+@MultipartConfig(location = "c:/전자도서관",maxRequestSize = 1024*1024*10)
 public class FrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -42,6 +48,7 @@ public class FrontController extends HttpServlet {
 		list.put("/memberBookLuvList.do", new member.MemberBookLuvListServ());
 		list.put("/memberCreateBookCk.do", new member.MemberCreateBookCkServ());
 		list.put("/memberLogin.do", new member.MemberLoginServ());
+		list.put("/memberLogout.do", new member.memberLogoutServ());
 		list.put("/memberFind.do", new member.MemberFindServ());
 		list.put("/memberJoin.do", new member.MemberJoinServ());
 		list.put("/memberPopup.do", new member.MemberPopupServ());
@@ -50,20 +57,26 @@ public class FrontController extends HttpServlet {
 		list.put("/clientFAQ.do", new client.ClientFAQServ());
 		
 		
-		//한채빈
-		list.put("/adminMain.do", new adminMain.AdminMainServ());
-		list.put("/memberManageMain.do", new memberManage.MemberManageMainServ());
-		list.put("/memberManageModify.do", new memberManage.MemberManageModifyServ());
-		list.put("/memberManageBlackList.do", new memberManage.MemberManageBlackListServ());
-		list.put("/memberManageBlackListPop.do", new memberManage.MemberManageBlackListPopServ());
-		list.put("/memberManageQuestion.do", new memberManage.MemberManageQuestionServ());
-		list.put("/memberManageQuestionPop.do", new memberManage.MemberManageQuestionPopServ());
-		list.put("/empManageMain.do", new empManage.EmpManageMainServ());
-		list.put("/empManageList.do", new empManage.EmpManageListServ());
-		list.put("/empManageModify.do", new empManage.EmpManageModifyServ());
+		// 한채빈
+
+				list.put("/adminMain.ad", new adminMain.AdminMainServ()); // 메인
+				list.put("/login.ad", new LoginController());
+				list.put("/loginForm.ad", new LoginFormController());
+				list.put("/memberManageMain.ad", new memberManage.MemberManageMainServ());
+				list.put("/memberManageModify.ad", new memberManage.MemberManageModifyServ());
+				list.put("/memberManageBlackList.ad", new memberManage.MemberManageBlackListServ());
+				list.put("/memberManageBlackListPop.ad", new memberManage.MemberManageBlackListPopServ());
+				list.put("/memberManageQuestion.ad", new memberManage.MemberManageQuestionServ());
+				list.put("/memberManageQuestionPop.ad", new memberManage.MemberManageQuestionPopServ());
+
+				list.put("/empManageMain.ad", new empManage.EmpManageMainServ()); // 사원메인??
+				list.put("/empManageList.ad", new empManage.EmpManageListServ()); // 사원 목록
+				list.put("/employeesInsert.ad", new EmployeesInsertConrtoller());
+				list.put("/employeesInsertForm.ad", new EmployeesInsertFormController());
+				// list.put("/empManageModify.ad", new empManage.EmpManageModifyServ()); // 사원
+				// 수정
 		
-		
-		//김한범
+		//김한범&&내가 범인이다.
 		list.put("/clientQuestion.do", new client.ClientQuestionServ());
 		list.put("/clientQuestionWtrite.do", new client.ClientQuestionWtriteServ());
 		list.put("/clientHopeBook.do", new client.ClientHopeBookServ());
@@ -72,6 +85,7 @@ public class FrontController extends HttpServlet {
 		list.put("/moneyInList.do", new moneyManage.MoneyInListServ());
 		list.put("/bookRegister.do", new bookManage.BookRegisterServ());
 		list.put("/bookModify.do", new bookManage.BookModifyServ());
+		list.put("/bookDelete.do", new bookManage.BookDeleteServ());
 		list.put("/companyMain.do", new company.CompanyMainServ());
 		list.put("/companyPop.do", new company.CompanyPopServ());
 		
