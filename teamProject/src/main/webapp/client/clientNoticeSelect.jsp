@@ -15,15 +15,16 @@ function closeMe() {
 </head>
 <body>
 	<h3>공지사항</h3>
-	<label>제목</label>
-	<input type="hidden" name="notice_title" value="${notice.notice_title }" />
-	<label> | 등록일</label>
-	<input type="hidden" name="notice_date" value="${notice.notice_date }" />
+	<label for="title">제목 ${notice_title}
+	<input type="hidden" name="notice_title" value="${notice_title}" /></label>
+	<label> | 등록일
+	<input type="hidden" name="notice_date" id="notice_date" readonly value="${notice.notice_date }" />
+	</label>
 	<br>
 	<br>
 	<textarea
 		style="width: 50%; border: 1; overflow: visible; text-overflow: ellipsis; resize: none;"
-		rows=30>${notice.notice_content }</textarea><br>
+		rows=30 id="notice_content" name="notice_date" value="${notice.notice_content }">${notice.notice_content }</textarea><br>
 		<input type="button" value="닫기 " onclick="window.close();">
 
 </body>
