@@ -158,7 +158,7 @@ li {
 		<li><a
 			href="<%=application.getContextPath()%>/memberNodify.do">내정보 수정</a>
 		<li><a
-			href="<%=application.getContextPath()%>/memberstudy.do">내 서재</a>
+			href="<%=application.getContextPath()%>/memberLibrary.do">내 서재</a>
 		<li><a
 			href="<%=application.getContextPath()%>/memberCreateBookCk.do">나만의 도서 확인</a>
 		<li><a
