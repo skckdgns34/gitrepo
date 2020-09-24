@@ -80,18 +80,18 @@ public class FrontController extends HttpServlet {
 				// 수정
 		
 		//김한범&&내가 범인이다.
-		list.put("/clientQuestion.do", new client.ClientQuestionServ());
-		list.put("/clientQuestionWtrite.do", new client.ClientQuestionWtriteServ());
-		list.put("/clientHopeBook.do", new client.ClientHopeBookServ());
-		list.put("/clientHopeBookWrite.do", new client.ClientHopeBookWriteServ());
-		list.put("/moneyOutList.do", new moneyManage.MoneyOutListServ());
-		list.put("/moneyInList.do", new moneyManage.MoneyInListServ());
-		list.put("/bookRegister.do", new bookManage.BookRegisterServ());
-		list.put("/bookModify.do", new bookManage.BookModifyServ());
-		list.put("/bookDelete.do", new bookManage.BookDeleteServ());
-		list.put("/bookList.do", new bookManage.BookListServ());
-		list.put("/companyMain.do", new company.CompanyMainServ());
-		list.put("/companyPop.do", new company.CompanyPopServ());
+		list.put("/clientQuestion.ad", new client.ClientQuestionServ());
+		list.put("/clientQuestionWtrite.ad", new client.ClientQuestionWtriteServ());
+		list.put("/clientHopeBook.ad", new client.ClientHopeBookServ());
+		list.put("/clientHopeBookWrite.ad", new client.ClientHopeBookWriteServ());
+		list.put("/moneyOutList.ad", new moneyManage.MoneyOutListServ());
+		list.put("/moneyInList.ad", new moneyManage.MoneyInListServ());
+		list.put("/bookRegister.ad", new bookManage.BookRegisterServ());
+		list.put("/bookModify.ad", new bookManage.BookModifyServ());
+		list.put("/bookDelete.ad", new bookManage.BookDeleteServ());
+		list.put("/bookList.ad", new bookManage.BookListServ());
+		list.put("/companyMain.ad", new company.CompanyMainServ());
+		list.put("/companyPop.ad", new company.CompanyPopServ());
 		
 		
 		//손용원&&최창훈
