@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" isELIgnored="false"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,11 +15,20 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+	function imgClick(book_no) {
+		if(book_no != null){
+			if(confirm("해당 책 상세페이지로 이동하시겠습니까?")){			
+				location.href="${pageContext.request.contextPath}/eBookDetail.do?book_no="+book_no;
+			}
+		}
+	}
+</script>
 </head>
 <body>
-<br>
-	
-	
+	<br>
+
+
 	<!-- Tab panes -->
 
 	<div class="container">
@@ -66,33 +75,33 @@
 			</ul>
 			<!-- 인디케이터 끝 -->
 		</div>
-		
-<table border="1">
-	<thead>
-		<tr>
-			<th>book_no</th>
-			<th>title</th>
-			<th>book_img</th>
-			<th>writer</th>
-			<th>publication_date</th>
-			<th>summary</th>
-			<th>views</th>
-			<th>score</th>
-			<th>book_price</th>
-		</tr>
-	</thead>
-	<tbody>
-		<c:forEach items="${bookList }" var="book">
-			<tr>
-				<td>${book.book_no }</td>
-				<td>${book.title }</td>
-				<td>${book.book_img }</td>
-				<td>${book.writer }</td>
-				
-			</tr>
-		</c:forEach>
-	</tbody>
-</table>
 
+		<table border="1">
+			<thead>
+				<tr>
+					<th>book_no</th>
+					<th>title</th>
+					<th>book_img</th>
+					<th>writer</th>
+					<th>publication_date</th>
+					<th>summary</th>
+					<th>views</th>
+					<th>score</th>
+					<th>book_price</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach items="${bookList }" var="book">
+					<tr>
+						<td>${book.book_no }</td>
+						<td>${book.title }</td>
+						<td><img onclick="imgClick(${book.book_no})"
+							src="filenameDownload.do?filename=${book.book_img }"
+							style="width: 50px" /></td>
+						<td>${book.writer }</td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
 </body>
 </html>
