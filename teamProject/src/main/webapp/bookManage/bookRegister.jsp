@@ -20,8 +20,15 @@
 					<label for="writer">지은이</label> <input id="writer" name="writer" type="text">
 				</div>
 				<div>
-					<label for="company_code">출판사</label> <input id="company_code" name="company_code" type="text">
-				</div>
+					<label for=company_code>출판사</label> <select name="company_code" id="company_code" size="4">
+						<option value="">선택</option>
+						<option value="a0001">예담</option>
+						<option value="a0002">한양</option>
+						<option value="a0003">창비</option>
+						<option value="a0004">웅진</option>
+						<option value="a0005">한빛</option>
+						</select>
+						</div>
 				<div>
 					<label for=genre>장르</label> <select name="genre" id="genre" size="4">
 						<option value="">선택</option>

@@ -27,7 +27,7 @@
 		<tbody>
 		<c:forEach items="${list}" var="books">
 			<tr>
-				<td><a href="bookModify.ad?book_no=${books.book_no}">${books.book_no}</a></td>
+				<td><a href="bookSelect.ad?book_no=${books.book_no}">${books.book_no}</a></td>
 				<td>${books.title}</td>
 				<td>${books.writer}</td>
 				<td><fmt:parseDate value="${books.publication_date}" pattern="yyyy-MM-dd" var="parseRdate"></fmt:parseDate>
