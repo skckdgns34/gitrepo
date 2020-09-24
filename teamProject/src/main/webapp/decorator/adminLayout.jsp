@@ -27,7 +27,7 @@
 	
 	<!-- Bootstrap core JavaScript-->
   <script src="<%=request.getContextPath()%>/resourse/vendor/jquery/jquery.min.js"></script>
-  <script src="<%=request.getContextPath()%>/resoursevendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="<%=request.getContextPath()%>/resourse/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 <%-- Custom styles for this template css 적용 되는 곳 --%>
 <link href="<%=request.getContextPath()%>/resourse/css/sb-admin-2.min.css" rel="stylesheet">
