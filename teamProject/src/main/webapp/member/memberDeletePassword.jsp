@@ -33,7 +33,8 @@ function closeMe() {
 </head>
 <body>
 	<h3>비밀번호 확인</h3>
-	<form name="deleform" action="${pageContext.request.contextPath }/MemberDeletePassword.do" method="post"
+	<%=request.getAttribute("errormsg") %>
+	<form name="deleform"  method="post"
 		onSubmit="retrun check(this)">
 		<div class="col-sm-6 col-md-offset-3">
 			<div class="form-group">
@@ -42,9 +43,9 @@ function closeMe() {
 			<div>
 				<label for="member_pw">Password:</label> <input type="password"
 					class="pw" id="member_pw" name="member_pw">
+				<button>확인</button>
 			</div>
-			<input type="submit" onclick="location.href='session'" value="확인">
-			<input type="button" value="취소 " onclick="window.close();">
+			<input type="button" value="닫기 " onclick="window.close();">
 		</div>
 	</form>
 </body>

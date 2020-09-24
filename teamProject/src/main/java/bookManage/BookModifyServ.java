@@ -13,9 +13,8 @@ public class BookModifyServ implements Controller
 {
 
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-		System.out.println("회원정보수정");
-		String id = request.getParameter("book_id");
-
+		System.out.println("도서정보수정");
+		String id = request.getParameter("book_no");
 		if(id.isEmpty()) {
 			request.setAttribute("error", "책 번호를 입력하세요.");
 			request.getRequestDispatcher("/bookManage/bookModify.jsp").forward(request, response);
@@ -28,7 +27,7 @@ public class BookModifyServ implements Controller
 		resultVO = BookManageDAO.getInstance().selectOne(book);
 		
 		request.setAttribute("result", resultVO);
-		request.getRequestDispatcher("/bookManage/bookList.jsp").forward(request, response);
+		request.getRequestDispatcher("bookManage/bookModify.jsp").forward(request, response);
 
 	}
 

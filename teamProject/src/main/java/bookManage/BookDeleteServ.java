@@ -12,7 +12,7 @@ import vo.Books;
 public class BookDeleteServ implements Controller {
 
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String id = request.getParameter("book_id");
+		String id = request.getParameter("book_no");
 
 		if (id.isEmpty()) {
 			request.setAttribute("error", "id를 입력하세요.");
@@ -23,9 +23,8 @@ public class BookDeleteServ implements Controller {
 		Books book = new Books();
 		book.setBook_no(id);
 
-		int r = BookManageDAO.getInstance().delete(book);
-		request.setAttribute("cnt", r);
-		request.getRequestDispatcher("/bookManage/bookRegister.jsp").forward(request, response);
+		BookManageDAO.getInstance().delete(book);
+		request.getRequestDispatcher("bookList.ad").forward(request, response);
 
 	}
 

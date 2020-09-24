@@ -152,22 +152,29 @@ public class EmpDAO {
 
 
 	// 수정
-	public int Update(Employees emp) {
-		int r = 0;
-		/*
-		 * try { conn = ConnectionManager.getConnnect(); String sql =
-		 * "update employees set  email=?, phone_number=?, job_id=?, salary=?, " +
-		 * " hire_date=? where employee_id = ?"; pstmt = conn.prepareStatement(sql); //
-		 * 3. 실행 pstmt.setString(1, emp.getEmail()); pstmt.setString(2,
-		 * emp.getPhone_number()); pstmt.setString(3, emp.getJob_id());
-		 * pstmt.setString(4, emp.getSalary()); pstmt.setString(5, emp.getHire_date());
-		 * r = pstmt.executeUpdate(); // 4. 결과처리 } catch (Exception e) {
-		 * e.printStackTrace(); } finally { ConnectionManager.close(conn);
-		 * 
-		 * }
-		 */
-		return r;
+	public void Update(Employees emp) {
+		try {
+			conn = ConnectionManager.getConnnect();
+			String sql = "update member set emp_id= ?, emp_pw = ?, emp_name = ?,emp_birth=?,entereddate=?, dept_code=?,"
+					+ " emp_address=?, rank_code=? where member_id = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, emp.getEmp_id());
+			pstmt.setString(2, emp.getEmp_pw());
+			pstmt.setString(3, emp.getEmp_name());
+			pstmt.setString(4, emp.getEmp_birth());
+			pstmt.setString(5, emp.getEntereddate());
+			pstmt.setString(6, emp.getEmp_address());
+			pstmt.setString(7, emp.getRank_code());	
+			int r = pstmt.executeUpdate();
+			System.out.println(r + "건이 수정됨.");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionManager.close(null, pstmt, conn);
+		}
 	}
+		
+		
 
 	// 삭제
 	public int Delete(Employees emp) {
