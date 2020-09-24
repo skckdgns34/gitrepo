@@ -1,10 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" isELIgnored="false"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	<%@ taglib prefix="my" tagdir="/WEB-INF/tags"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+li {
+	list-style-type: none;
+	float: left;
+	margin-left: 20px;
+}
+</style>
 </head>
 <body>
 	<h1>이용권 내용</h1>
@@ -23,5 +32,38 @@
 	<br>
 	<br>
 	<hr>
+	<table border="1">
+			<tr>
+				<td>번호</td>
+				<td>상태</td>
+				<td>상품명</td>
+				<td>결제일</td>
+				<td>구매금액</td>
+				<td>만료일자</td>
+				<td>결제수단</td>
+			</tr>
+			<c:forEach items="${list }" var="member">
+				<tr>
+					<td>임시번호1</td>
+					<td>임시상태</td>
+					<td>임시상품명</td>
+					<td>임시결제일</td>
+					<td>임시구매금액</td>
+					<td>임시만료일</td>
+					<td>$임시결제수단</td>
+				</tr>
+			</c:forEach>
+		</table>
+		<my:paging paging="${paging }" jsfunc="gopage" />
+		
+	<script>
+		function gopage(p) {
+			searchFrm.p.value = p;
+			searchFrm.submit();
+
+			//location.href="deptSelectAll?p=" + p;
+		}
+	</script>
+
 </body>
 </html>

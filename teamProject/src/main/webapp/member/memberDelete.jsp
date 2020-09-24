@@ -23,7 +23,7 @@
 
 	<h4>===내용내용===</h4>
 
-	<form name=Join action="MemberDeleteServ"
+	<form name=Join action="${pageContext.request.contextPath }/MemberDeleteServ.do"
 		onSubmit="return CheckForm(this)">
 		<div>
 			<label for="member_id" id="member_id" name="member_id"></label>
