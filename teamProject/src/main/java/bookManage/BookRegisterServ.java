@@ -37,7 +37,7 @@ public class BookRegisterServ implements Controller
 		if(renameFile.getName().equals("책표지1")) {
 			book.setBook_img(null);
 		}else {
-			book.setBook_img("c:/전자도서관/책표지/"+renameFile.getName());
+			book.setBook_img(renameFile.getName());
 		}
 		
 		Part part2 = request.getPart("epub_path");
@@ -50,7 +50,7 @@ public class BookRegisterServ implements Controller
 		if(renameFile2.getName().equals("전자책1")) {
 			book.setEpub_path(null);
 		}else {
-			book.setEpub_path("c:/전자도서관/전자책/"+renameFile2.getName());
+			book.setEpub_path(renameFile2.getName());
 		}
 		
 		Part part3 = request.getPart("audio_path");
@@ -63,15 +63,14 @@ public class BookRegisterServ implements Controller
 		if(renameFile3.getName().equals("음성책1")) {
 			book.setAudio_path(null);
 		}else {
-			book.setAudio_path("c:/전자도서관/음성책/"+renameFile3.getName());
+			book.setAudio_path(renameFile3.getName());
 		}
 
 		
 		
 		
 		Books r = BookManageDAO.getInstance().insert(book);
-		request.setAttribute("cnt", r);
-		request.getRequestDispatcher("/bookManage/bookList.jsp").forward(request, response);
+		request.getRequestDispatcher("bookList.ad").forward(request, response);
 	}
 	
 	private String getFilename(Part part) throws UnsupportedEncodingException {

@@ -11,7 +11,7 @@
 		<div class="regist">
 			<form method="post" name="frm" id="frm" 
 				  enctype="multipart/form-data"
-				  action="${pageContext.request.contextPath }/bookRegister.do"
+				  action="${pageContext.request.contextPath }/bookRegister.ad"
 				  >
 				<div>
 					<label for="title">제목</label> <input id="title" name="title" type="text">

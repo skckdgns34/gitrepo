@@ -4,13 +4,16 @@
 	<decorator name="admin" page="adminLayout.jsp">
 		<pattern>/adminMain/login.jsp</pattern>
 	</decorator>
-	<decorator name="admin" page="adminLayout.jsp">
+	<decorator name="admin1" page="adminLayout.jsp">
 		<pattern>/adminIndex.jsp</pattern>
 	</decorator>
-	<decorator name="admin" page="adminLayout.jsp">
+	<decorator name="admin2" page="adminLayout.jsp">
 		<pattern>/empManage/*.jsp</pattern>
 	</decorator>
-	<decorator name="admin" page="adminLayout.jsp">
+	<decorator name="admin3" page="adminLayout.jsp">
+		<pattern>/Manage/*.jsp</pattern>
+	</decorator>
+	<decorator name="admin4" page="adminLayout.jsp">
 		<pattern>/*.ad</pattern>
 	</decorator>
 	

@@ -18,7 +18,7 @@ public class BookListServ implements Controller {
 		//결과저장
 		request.setAttribute("list", list);
 		//페이지이동
-		request.getRequestDispatcher("/bookList.jsp").forward(request, response);
+		request.getRequestDispatcher("/bookManage/bookList.jsp").forward(request, response);
 	}
 
 }

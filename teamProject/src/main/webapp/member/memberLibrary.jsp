@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>나만의 도서 확인</h1>
+	<h1>내서재</h1>
 	<hr>
 	<br>
 	<ul>
