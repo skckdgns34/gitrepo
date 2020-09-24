@@ -12,7 +12,11 @@
 	<c:if test="${not empty result}">
 		<h1 class="page_title">도서 수정 & 삭제</h1>
 		<form method="post" name="frm" id="frm"
-			action="${pageContext.request.contextPath}/bookModify.do">
+			action="${pageContext.request.contextPath}/bookModify.ad">
+			<div>
+				<label for="book_no">책번호</label> <input id="book_no" name="book_no"
+					type="hidden" value="${result.book_no }" >
+			</div>
 			<div>
 				<label for="title">제목</label> <input id="title" name="title"
 					type="text" value="${result.title }">
