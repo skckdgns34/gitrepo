@@ -22,6 +22,7 @@
 				<th>베스트셀러</th>
 				<th>장르</th>
 				<th>등록일</th>
+				<th>삭제</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -35,6 +36,7 @@
 				<td>${books.best_book}</td>
 				<td>${books.genre}</td>
 				<td>${books.registration_date}</td>
+				<td><button>삭제</button></td>
 			</tr>
 		</c:forEach>
 		</tbody>
