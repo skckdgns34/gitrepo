@@ -7,6 +7,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+<script>
+	function imgClick(book_no) {
+		location.href="${pageContext.request.contextPath}/eBookDetail.do?book_no="+book_no;
+	}
+</script>
 </head>
 <body>
 	<table border="1">
@@ -27,24 +33,26 @@
 		</thead>
 		
 		<tbody>
+			
 			<c:forEach items="${list}" var="book">
-				<tr>
-					<td>${book.book_no}</td>
-					<td>${book.title}</td>
-					<td>${book.writer}</td>
-					<td><fmt:parseDate value="${book.publication_date}" pattern="yyyy-MM-dd HH:mm:ss" var="publication_date"/>
-						<fmt:formatDate value="${publication_date}"  pattern="yyyy/MM/dd"/> </td>
 						
-					<c:if test="${not empty book.book_img}">
-						<td><img src="C:\전자도서관\책표지\"${book.book_img} style="width:20px"></td>
-					</c:if>
-					<td>${book.company_name}</td>
-					<td>${book.introduction}</td>
-					<td>${book.summary}</td>
-					<td>${book.views}</td>
-					<td>${book.score}</td>
-					<td>${book.genre}</td>
-				</tr>
+					<tr>
+						<td>${book.book_no}</td>
+						<td>${book.title}</td>
+						<td>${book.writer}</td>
+						<td><fmt:parseDate value="${book.publication_date}" pattern="yyyy-MM-dd HH:mm:ss" var="publication_date"/>
+							<fmt:formatDate value="${publication_date}"  pattern="yyyy/MM/dd"/> </td>
+						<c:if test="${not empty book.book_img}">
+						<td><img onclick="imgClick(${book.book_no})" src="filenameDownload.do?filename=${book.book_img}" style="width:500px"></td>
+						</c:if>
+						<td>${book.company_name}</td>
+						<td>${book.introduction}</td>
+						<td>${book.summary}</td>
+						<td>${book.views}</td>
+						<td>${book.score}</td>
+						<td>${book.genre}</td>
+					</tr>
+				
 			</c:forEach>
 		</tbody>
 	</table>

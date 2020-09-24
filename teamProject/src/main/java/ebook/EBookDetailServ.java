@@ -11,13 +11,14 @@ import common.Controller;
 public class EBookDetailServ implements Controller
 {
 
-	public void execute(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException
+	public void execute(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException
 	{
-		String no = request.getParameter("book_no");
-		System.out.println(no);
-//		System.out.println("asdasd");
-		response.sendRedirect("ebook/eBookDetail.jsp");
+		String a = request.getParameter("book_no");
+		
+		
+		
+		
+		request.getRequestDispatcher("ebook/ebookDetail.jsp").forward(request, response);
 	}
 
 }
