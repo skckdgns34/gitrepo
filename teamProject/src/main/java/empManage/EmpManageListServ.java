@@ -23,7 +23,7 @@ public class EmpManageListServ implements Controller
 		request.setAttribute("list", list);
 		request.setAttribute("search_type", search_type);
 		request.setAttribute("search_text", search_text);
-		if(list.size() <= 0)request.setAttribute("message", "<tr><th colspan=13>검색결과가 없습니다.</th></tr>");
+		//if(list.size() <= 0)request.setAttribute("message", "<tr><th colspan=13>검색결과가 없습니다.</th></tr>");
 		request.getRequestDispatcher("/empManage/empManageList.jsp").forward(request, response);; //post로 보낼 때
 	}
 
