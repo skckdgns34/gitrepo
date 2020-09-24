@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.opensymphony.com/sitemesh/decorator"
 	prefix="decorator"%>
+	<%@page isELIgnored="false" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,8 +26,8 @@
 	rel="stylesheet">
 	
 	<!-- Bootstrap core JavaScript-->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="<%=request.getContextPath()%>/resourse/vendor/jquery/jquery.min.js"></script>
+  <script src="<%=request.getContextPath()%>/resoursevendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 <%-- Custom styles for this template css 적용 되는 곳 --%>
 <link href="<%=request.getContextPath()%>/resourse/css/sb-admin-2.min.css" rel="stylesheet">
@@ -81,7 +83,9 @@
           <span>매입 관리</span>
         </a>
       </li>
-      
+     
+ 
+
       <!-- 구분선-->
       <hr class="sidebar-divider">
 
@@ -112,7 +116,7 @@
     	  
      <!--하위 카테고리3-1 -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="★회원조회 url 넣어주세요!" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+        <a class="nav-link collapsed"  href="${pageContext.request.contextPath}/memberManageMain.ad" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
           <i class="fas fa-fw fa-folder"></i>
           <span>회원조회</span>
         </a>
@@ -140,7 +144,7 @@
     	  
      <!--하위 카테고리4-1 -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="★직원조회 url 넣어주세요!" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+        <a class="nav-link collapsed" href="${pageContext.request.contextPath}/empManageList.ad" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
           <i class="fas fa-user-cog"></i>
           <span>직원관리</span>
         </a>
