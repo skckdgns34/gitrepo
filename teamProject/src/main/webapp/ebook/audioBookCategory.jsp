@@ -7,19 +7,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet"
-	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script>
-	function imgClick(book_no) {
-		if(book_no != null){
-			if(confirm("해당 책 상세페이지로 이동하시겠습니까?")){			
-				location.href="${pageContext.request.contextPath}/eBookDetail.do?book_no="+book_no;
-			}
-		}
-	}
-</script>
+
+
 <script>
 	$(function(){
 			$("#testInput").autocomplete({
@@ -67,7 +59,16 @@
 			
 		
 	});
-
+	
+	function imgClick(book_no) {
+		if(book_no != null){
+			if(confirm("해당 책 상세페이지로 이동하시겠습니까?")){			
+				location.href="${pageContext.request.contextPath}/eBookDetail.do?book_no="+book_no;
+			}
+		}
+	}
+	
+	
 </script>
 
 </head>
@@ -79,6 +80,7 @@
 		<input type="hidden" id="realHidden"  name="realHidden" />
 		<button>검색</button>
 	</form>
+		
 <c:forEach begin="1" end="${genreList.size() }" var="i">
 		<div>${genreList.get(i-1).code_value}</div>
 		<table border="1">
