@@ -22,21 +22,20 @@
 				<th>베스트셀러</th>
 				<th>장르</th>
 				<th>등록일</th>
-				<th>삭제</th>
 			</tr>
 		</thead>
 		<tbody>
 		<c:forEach items="${list}" var="books">
 			<tr>
-				<td>${books.book_no}</td>
+				<td><a href="bookModify.ad?book_no=${books.book_no}">${books.book_no}</a></td>
 				<td>${books.title}</td>
 				<td>${books.writer}</td>
-				<td>${books.publication_date}</td>
+				<td><fmt:parseDate value="${books.publication_date}" pattern="yyyy-MM-dd" var="parseRdate"></fmt:parseDate>
+					<fmt:formatDate value="${parseRdate}" pattern="yyyy-MM-dd"/></td>
 				<td>${books.company_code}</td>
 				<td>${books.best_book}</td>
 				<td>${books.genre}</td>
 				<td>${books.registration_date}</td>
-				<td><button>삭제</button></td>
 			</tr>
 		</c:forEach>
 		</tbody>

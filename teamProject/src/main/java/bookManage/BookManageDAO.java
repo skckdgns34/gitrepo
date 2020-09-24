@@ -74,7 +74,7 @@ public class BookManageDAO {
 		   int r = 0;
 	      try {
 	         conn = ConnectionManager.getConnnect();
-	         String sql = "DELETE MEMBER WHERE ID = ?";
+	         String sql = "DELETE BOOKS WHERE BOOK_NO = ?";
 	         pstmt = conn.prepareStatement(sql);
 	         pstmt.setString(1, book.getBook_no());
 	         r = pstmt.executeUpdate();
@@ -129,8 +129,8 @@ public class BookManageDAO {
 	      Books books = null;
 	      try {
 	         conn = ConnectionManager.getConnnect();
-	         String sql = "SELECT BOOK_NO, TITLE, BOOK_IMG, WRITER, PUBLICATION_DATE, EPUB_PATH, AUDIO_PATH, "
-	         		+ "COMPANY_CODE, INTRODUCTION, SUMMARY, BEST_BOOK, genre, REGISTRATION_DATE "
+	         String sql = "SELECT BOOK_NO, TITLE, WRITER, PUBLICATION_DATE, "
+	         		+ "COMPANY_CODE, BEST_BOOK, genre, REGISTRATION_DATE "
 	               + "FROM BOOKS ORDER BY 1";         
 	         pstmt = conn.prepareStatement(sql);
 	         rs = pstmt.executeQuery();
@@ -153,5 +153,33 @@ public class BookManageDAO {
 	         ConnectionManager.close(rs, pstmt, conn);
 	      }
 	      return list;
+	   }
+	
+	
+	 public void update(Books books) {
+	      try {
+	         conn = ConnectionManager.getConnnect();
+	         String sql = "UPDATE MEMBER SET (TITLE=?, BOOK_IMG=?, WRITER=?, PUBLICATION_DATE=?,"
+	         			+ "EPUB_PATH=?,AUDIO_PATH=?,COMPANY_CODE=?,INTRODUCTION=?,SUMMARY=?,BEST_BOOK=?,"
+	         			+ "GENRE=?) WHERE BOOK_NO = ?";
+	         pstmt = conn.prepareStatement(sql);
+	         pstmt.setString(1, books.getTitle());
+	         pstmt.setString(2, books.getBook_img());
+	         pstmt.setString(3, books.getWriter());
+	         pstmt.setString(4, books.getPublication_date());
+	         pstmt.setString(5, books.getEpub_path());
+	         pstmt.setString(6, books.getAudio_path());
+	         pstmt.setString(7, books.getCompany_code());
+	         pstmt.setString(8, books.getIntroduction());
+	         pstmt.setString(9, books.getSummary());
+	         pstmt.setString(10, books.getBest_book());
+	         pstmt.setString(11, books.getGenre());
+	         pstmt.setString(12, books.getBook_no());
+	         pstmt.executeUpdate();
+	      } catch (Exception e) {
+	         e.printStackTrace();
+	      } finally {
+	         ConnectionManager.close(null, pstmt, conn);
+	      }
 	   }
 }
