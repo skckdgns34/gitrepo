@@ -40,6 +40,7 @@ public class FrontController extends HttpServlet {
 		list = new HashMap<String, Controller>();
 		
 		
+		list.put("/filenameDownload.do", new FileDownloadServlet());
 		
 		//조현주
 		list.put("/memberModify.do", new member.MemberModifyServ());
