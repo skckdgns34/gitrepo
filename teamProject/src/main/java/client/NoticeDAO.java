@@ -68,7 +68,6 @@ public class NoticeDAO {
 						+ " ORDER BY EMP_NO"
 						+ ")b)a where rn between ? and ? ";
 				pstmt = conn.prepareStatement(sql);
-				System.out.println(notice);
 				int pos = 1;
 				if(notice.getNotice_title() !=null) {
 					pstmt.setString(pos++, notice.getNotice_title());

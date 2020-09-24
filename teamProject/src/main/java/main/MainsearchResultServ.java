@@ -20,34 +20,5 @@ public class MainsearchResultServ implements Controller {
 		public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 
-			
-			
-			response.setContentType("text/html; charset=UTF-8");
-			MainDAO dao = new MainDAO();
-			String AutoResult = request.getParameter("search");
-			
-					
-	 		String writer = "writer";
-			String book = "book";
-			String company = "company";
-			if(AutoResult.equals(book)){
-				System.out.println("책임");
-				List<Map<String, Object>> list =dao.searchBooksEqualTitle(AutoResult);
-				request.setAttribute("list", list);
-			}
-			else if(AutoResult.equals(writer)) {
-				System.out.println("저자임");
-				List<Map<String, Object>> list =dao.searchBooksEqualWriter(AutoResult);
-				request.setAttribute("list", list);
-			}
-			else if(AutoResult.equals(company)) {
-				System.out.println("회사이름임");
-				List<Map<String, Object>> list =dao.searchBooksEqualCompany(AutoResult);
-				request.setAttribute("list", list);
-			}
-			
-			request.getRequestDispatcher("/main/main.jsp").forward(request, response);
-			
-			System.out.println(AutoResult);
 	}
 }
