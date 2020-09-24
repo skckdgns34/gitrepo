@@ -21,7 +21,7 @@ public class AudioBookCategoryServ implements Controller
 		list = CommonDAO.getInstance().selectAllGenre();
 		request.setAttribute("genreList", list);
 
-		ArrayList<Books> bookList = new ArrayList<Books>();
+		ArrayList<Books> bookList = new ArrayList<Books>();   
 		
 		ArrayList<ArrayList<Books>> books = new ArrayList<ArrayList<Books>>();
 		for(int i=0; i<list.size(); i++) {
