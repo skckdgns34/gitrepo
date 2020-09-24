@@ -27,7 +27,7 @@
 		<tbody>
 		<c:forEach items="${list}" var="books">
 			<tr>
-				<td><a href="bookSelect.do?id=${books.books_no}">${books.book_no}</a></td>
+				<td>${books.book_no}</td>
 				<td>${books.title}</td>
 				<td>${books.writer}</td>
 				<td>${books.publication_date}</td>
