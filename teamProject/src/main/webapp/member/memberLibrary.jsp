@@ -5,6 +5,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+li {
+	list-style-type: none;
+	float: left;
+	margin-left: 20px;
+}
+</style>
 </head>
 <body>
 	<h1>내서재</h1>
@@ -23,5 +30,6 @@
 	<br>
 	<br>
 	<hr>
+	
 </body>
 </html>

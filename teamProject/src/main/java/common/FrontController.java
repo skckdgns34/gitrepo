@@ -78,7 +78,7 @@ public class FrontController extends HttpServlet {
 				list.put("/empManageList.ad", new empManage.EmpManageListServ()); // 사원 목록
 				list.put("/employeesInsert.ad", new EmployeesInsertConrtoller());
 				list.put("/employeesInsertForm.ad", new EmployeesInsertFormController());
-				// list.put("/empManageModify.ad", new empManage.EmpManageModifyServ()); // 사원
+				list.put("/empManageModify.ad", new empManage.EmpManageModifyServ()); // 사원
 				// 수정
 		
 		//김한범&&내가 범인이다.

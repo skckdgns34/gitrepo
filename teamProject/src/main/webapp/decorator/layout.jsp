@@ -60,6 +60,11 @@
 							href="<%=application.getContextPath()%>/member/memberModify.jsp">내정보
 								수정</a>
 					</c:if>
+					<c:if test="${sessionScope.member_id != null }">
+						<li><a
+							href="<%=application.getContextPath()%>/licenceList.do">이용권
+						</a>
+					</c:if>
 				</ul>
     </nav>
   </header>

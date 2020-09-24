@@ -14,8 +14,7 @@ public class MemberDeleteServ implements Controller
 	public void execute(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException
 	{
-		// TODO Auto-generated method stub
-
+		request.getRequestDispatcher("member/Bye.jsp").forward(request, response);
 	}
 
 }

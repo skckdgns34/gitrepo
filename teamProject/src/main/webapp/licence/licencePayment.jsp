@@ -7,6 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<h3>라이센스 결제정보</h3>
+<label>설명들</label><br>
+<button>결제</button>
 </body>
 </html>

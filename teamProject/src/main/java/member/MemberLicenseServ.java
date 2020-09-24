@@ -14,8 +14,10 @@ public class MemberLicenseServ implements Controller
 	public void execute(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException
 	{
-		// TODO Auto-generated method stub
-
+		MemberDAO dao = new MemberDAO();
+		
+		String p = request.getParameter("p");
+		String ticket_code = request.getParameter("ticket_code");
 	}
 
 }

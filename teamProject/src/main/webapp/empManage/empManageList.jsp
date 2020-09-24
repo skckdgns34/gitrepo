@@ -10,21 +10,6 @@
 <head>
 <meta charset="UTF-8">
 <title>사원 목록</title>
-<style type="text/css">
-*{margin:0px;padding:0px;}
-#emp_list{border: 1px solid black;}
-#emp_list td,#emp_list th{border:0px;border-right:1px solid gray;border-bottom:1px solid gray;padding:5px}
-#wrapper{
-position: absolute;
-top: 10px;
-right: 10px;
-overflow: hidden;
-}
-</style>
-<script>
-
-
-</script>
 
 </head>
 <body>
@@ -47,7 +32,10 @@ overflow: hidden;
 		<input type='submit' value='검색'>
 	</form>
 	<div><a href="${pageContext.request.contextPath}/employeesInsertForm.ad">추가</a></div>
-	<button>삭제</button>
+		<div><a href="${pageContext.request.contextPath}/empManage/empManageModify.jsp">수정</a></div>
+				<div><a href="${pageContext.request.contextPath}/employeesdelete.ad">삭제</a></div>
+		
+	
 	</div>
 	
 	<table id='emp_list' border=1 cellpadding=0 cellspacing=0>
