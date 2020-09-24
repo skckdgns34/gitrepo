@@ -36,12 +36,10 @@
 	<br><hr>
 
 <div id="accordion">
-  <h3>제목</h3>
+  <h3>${faq.title }</h3>
   <div>
-    <p>내용</p>
+    <p>${faq.contents }</p>
   </div>
-  <h3>제목</h3>
-  	<p>내용</p>
 </div>
 
 </body>
