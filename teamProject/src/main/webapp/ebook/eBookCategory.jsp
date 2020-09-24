@@ -29,11 +29,17 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach begin="1" end="${books.size() }" var="j">
+				<c:forEach begin="1" end="${books.get(i-1).size() }" var="j">
 					<tr>
 						<td>${books[i-1][j-1].book_no}</td>
 						<td>${books[i-1][j-1].title}</td>
-						<td><c:if test="${not empty books[i-1][j-1].book_img}"><img src="filenameDownload.do?filename=${books[i-1][j-1].book_img }" style="width:50px"/></c:if></td>
+						<td><c:if test="${not empty books[i-1][j-1].book_img}">
+								<a href="${pageContext.request.contextPath }/eBookDetail.do">
+									<img src="filenameDownload.do?filename=${books[i-1][j-1].book_img }"
+										 style="width:50px"/>
+									<input type="hidden" name="book_no" value="${book_no}">
+								</a>
+						</c:if></td>
 						<td>${books[i-1][j-1].writer}</td>
 						<td>${books[i-1][j-1].epub_path}</td>
 						<td>${books[i-1][j-1].genre}</td>

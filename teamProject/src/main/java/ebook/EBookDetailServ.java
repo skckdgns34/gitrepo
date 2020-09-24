@@ -14,8 +14,10 @@ public class EBookDetailServ implements Controller
 	public void execute(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException
 	{
-		// TODO Auto-generated method stub
-
+		String no = request.getParameter("book_no");
+		System.out.println(no);
+//		System.out.println("asdasd");
+		response.sendRedirect("ebook/eBookDetail.jsp");
 	}
 
 }
