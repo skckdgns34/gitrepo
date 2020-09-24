@@ -141,15 +141,38 @@
 			});
 </script>
 
+<style>
+li {
+	list-style-type: none;
+	float: left;
+	margin-left: 20px;
+}
+</style>
+
 </head>
 <body>
+	<h1>내정보</h1>
+	<hr>
+	<br>
+	<ul>
+		<li><a
+			href="<%=application.getContextPath()%>/memberNodify.do">내정보 수정</a>
+		<li><a
+			href="<%=application.getContextPath()%>/memberLibrary.do">내 서재</a>
+		<li><a
+			href="<%=application.getContextPath()%>/memberCreateBookCk.do">나만의 도서 확인</a>
+		<li><a
+			href="<%=application.getContextPath()%>/memberLicense.do">이용권 내용</a>
+	</ul>
+	<br>
+	<br>
+	<hr>
 
 	<form method="post" name="frm" id="frm" action="${pageContext.request.contextPath }/memberModify.do">
 
 		<article class="container">
 			<div class="page-header">
 				<div class="col-md-6 col-md-offset-3">
-					<h3>내정보 수정</h3>
 				</div>
 			</div>
 			<div class="col-sm-6 col-md-offset-3">
