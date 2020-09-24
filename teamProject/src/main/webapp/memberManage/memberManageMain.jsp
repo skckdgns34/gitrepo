@@ -152,6 +152,7 @@ $("#selectBtn").click(function(){
 		</div>
 		<div class="card-body">
 			<div class="table-responsive">
+				<button type="button" class="btn btn-outline btn-primary pull-right" id="selectBtn">선택</button>
 				<table class="table table-bordered" id="dataTable" width="100%"
 					cellspacing="0">
 

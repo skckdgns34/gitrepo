@@ -26,8 +26,8 @@
 	rel="stylesheet">
 	
 	<!-- Bootstrap core JavaScript-->
-  <script src="<%=request.getContextPath()%>/resourse/vendor/jquery/jquery.min.js"></script>
-  <script src="<%=request.getContextPath()%>/resourse/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 <%-- Custom styles for this template css 적용 되는 곳 --%>
 <link href="<%=request.getContextPath()%>/resourse/css/sb-admin-2.min.css" rel="stylesheet">
@@ -43,7 +43,7 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand 메인로고 부분 (클릭시 adminPage 메인으로 이동하게 만들어야 함.) -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.jsp">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="adminIndex.jsp">
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laugh-wink"></i>
         </div>
@@ -55,7 +55,7 @@
 
       <!-- Dashboard 이건뭐죠?? -->
       <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="adminIndex.jsp">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>이건 오ㅑ있는건지 모르겠고</span></a>
       </li>
@@ -101,6 +101,7 @@
           <span>도서등록</span>
         </a>
       </li>
+      
        <!--하위 카테고리2-2 -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="★도서수정 url 넣어주세요!" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
@@ -108,6 +109,7 @@
           <span>도서수정</span>
         </a>
       </li>
+      
 	<!-- 구분선-->
       	<hr class="sidebar-divider">
 
@@ -121,6 +123,7 @@
           <span>회원조회</span>
         </a>
       </li>
+      
         <!--하위 카테고리3-2 -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="★블랙리스트관리 url 넣어주세요!" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
@@ -128,6 +131,7 @@
           <span>블랙리스트관리</span>
         </a>
       </li>
+      
        <!--하위 카테고리3-3 -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="★문의관리 url 넣어주세요!" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
@@ -149,6 +153,7 @@
           <span>직원관리</span>
         </a>
       </li>
+      
         <!--하위 카테고리4-2 -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="★계정관리 url 넣어주세요!" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
@@ -180,6 +185,7 @@
      	  
     </ul>
     <!-- End of Sidebar -->
+    
 
     <!-- 메인 부분(?)-->
     <div id="content-wrapper" class="d-flex flex-column">
@@ -219,7 +225,7 @@
                 <!-- 로그인 시에 아래의 내용 출력 되게 바꾸기~ -->
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small"> ${emp_id}님</span>
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">로그아웃</span>
-                 <img class="img-profile rounded-circle" src="<%=request.getContextPath()%>/resourse/img/사람아이콘.jpg">
+                 <img class="img-profile rounded-circle" src="<%=request.getContextPath()%>/resourse/img/쟈.jpg">
                  <span class="mr-2 d-none d-lg-inline text-gray-600 small">다른계정으로 로그인</span>
              </a>
             </li>
@@ -253,8 +259,9 @@
 
   </div>
   <!-- End of Page Wrapper -->
+  
+  </div>
+  
 </body>
-
-
 
 </html>
