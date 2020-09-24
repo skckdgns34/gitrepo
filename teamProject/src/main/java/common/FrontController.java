@@ -39,7 +39,7 @@ public class FrontController extends HttpServlet {
 		charset = config.getInitParameter("charset");
 		list = new HashMap<String, Controller>();
 		
-		
+		//이미지 다운로드
 		list.put("/filenameDownload.do", new FileDownloadServlet());
 		
 		//조현주

@@ -11,11 +11,14 @@ import common.Controller;
 public class EBookDetailServ implements Controller
 {
 
-	public void execute(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException
+	public void execute(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException
 	{
-		// TODO Auto-generated method stub
-
+		String a = request.getParameter("book_no");
+		
+		
+		
+		
+		request.getRequestDispatcher("ebook/ebookDetail.jsp").forward(request, response);
 	}
 
 }
