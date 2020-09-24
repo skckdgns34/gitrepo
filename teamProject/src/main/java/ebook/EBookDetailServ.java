@@ -14,10 +14,6 @@ public class EBookDetailServ implements Controller
 	public void execute(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException
 	{
 		String a = request.getParameter("book_no");
-		
-		
-		
-		
 		request.getRequestDispatcher("ebook/ebookDetail.jsp").forward(request, response);
 	}
 
