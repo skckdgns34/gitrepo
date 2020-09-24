@@ -32,7 +32,10 @@
 		<input type='submit' value='검색'>
 	</form>
 	<div><a href="${pageContext.request.contextPath}/employeesInsertForm.ad">추가</a></div>
-	<button>삭제</button>
+		<div><a href="${pageContext.request.contextPath}/empManage/empManageModify.jsp">수정</a></div>
+				<div><a href="${pageContext.request.contextPath}/employeesdelete.ad">삭제</a></div>
+		
+	
 	</div>
 	
 	<table id='emp_list' border=1 cellpadding=0 cellspacing=0>
