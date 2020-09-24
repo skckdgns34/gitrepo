@@ -1,0 +1,46 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+ 
+<web-app>
+   <display-name>teamProject</display-name>
+   <welcome-file-list>
+      <welcome-file>index.jsp</welcome-file>
+   </welcome-file-list>
+   <servlet>
+      <servlet-name>front</servlet-name>
+      <servlet-class>common.FrontController</servlet-class>
+      <init-param>
+         <param-name>charset</param-name>
+         <param-value>UTF-8</param-value>
+      </init-param>
+   </servlet>
+   <servlet>
+   	<servlet-name>MainSearchResultAjax</servlet-name>
+   	<display-name>MainSearchResultAjax</display-name>
+   	<description></description>
+   	<servlet-class>main.MainSearchResultAjax</servlet-class>
+   </servlet>
+   <servlet-mapping>
+      <servlet-name>front</servlet-name>
+      <url-pattern>*.do</url-pattern>
+   </servlet-mapping>
+   <servlet-mapping>
+      <servlet-name>front</servlet-name>
+      <url-pattern>*.ad</url-pattern>
+   </servlet-mapping>
+   <servlet-mapping>
+   	<servlet-name>MainSearchResultAjax</servlet-name>
+   	<url-pattern>/MainSearchResultAjax</url-pattern>
+   </servlet-mapping>
+      <filter>
+      <filter-name>sitemesh</filter-name>
+      <filter-class>com.opensymphony.sitemesh.webapp.SiteMeshFilter</filter-class>
+   </filter>
+
+   <filter-mapping>
+      <filter-name>sitemesh</filter-name>
+      <url-pattern>/*</url-pattern>
+   </filter-mapping> 
+   
+</web-app>
