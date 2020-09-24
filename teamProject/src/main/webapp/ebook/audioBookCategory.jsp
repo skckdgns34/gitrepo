@@ -29,7 +29,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach begin="1" end="${books.size() }" var="j">
+				<c:forEach begin="1" end="${books.get(i-1).size() }" var="j">
 					<tr>
 						<td>${books[i-1][j-1].book_no}</td>
 						<td>${books[i-1][j-1].title}</td>

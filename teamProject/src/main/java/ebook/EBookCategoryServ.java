@@ -36,10 +36,10 @@ public class EBookCategoryServ implements Controller
 			bookList = EbookDAO.getInstance().selectAllEBook(list.get(i).getCode());
 			books.add(bookList);
 			bookList = new ArrayList<Books>();
+			
 		}
 		request.setAttribute("books", books);
 		request.getRequestDispatcher("/ebook/eBookCategory.jsp").forward(request, response);
 		
 	}
-
 }
