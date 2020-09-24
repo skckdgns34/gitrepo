@@ -156,12 +156,13 @@ public class BookManageDAO {
 	   }
 	
 	
-	 public void update(Books books) {
+	 public Books update(Books books) {
+		  Books resultVO = null;
 	      try {
 	         conn = ConnectionManager.getConnnect();
-	         String sql = "UPDATE MEMBER SET (TITLE=?, BOOK_IMG=?, WRITER=?, PUBLICATION_DATE=?,"
-	         			+ "EPUB_PATH=?,AUDIO_PATH=?,COMPANY_CODE=?,INTRODUCTION=?,SUMMARY=?,BEST_BOOK=?,"
-	         			+ "GENRE=?) WHERE BOOK_NO = ?";
+	         String sql = "UPDATE BOOKS SET TITLE=?, BOOK_IMG=?, WRITER=?, PUBLICATION_DATE=?, "
+	         			+ "EPUB_PATH=?, AUDIO_PATH=?, COMPANY_CODE=?, INTRODUCTION=?, SUMMARY=?, BEST_BOOK=?, "
+	         			+ "GENRE=? WHERE BOOK_NO = ?";
 	         pstmt = conn.prepareStatement(sql);
 	         pstmt.setString(1, books.getTitle());
 	         pstmt.setString(2, books.getBook_img());
@@ -181,5 +182,6 @@ public class BookManageDAO {
 	      } finally {
 	         ConnectionManager.close(null, pstmt, conn);
 	      }
+	      return resultVO;
 	   }
 }
