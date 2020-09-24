@@ -16,6 +16,8 @@ public class AudioBookDetailServ implements Controller
 	{
 		String no = request.getParameter("book_no");
 		System.out.println(no);
+		
+		request.getRequestDispatcher("/ebook/audioBookDetail.jsp").forward(request, response);
 	}
 
 }

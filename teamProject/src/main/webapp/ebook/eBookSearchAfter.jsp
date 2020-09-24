@@ -10,7 +10,11 @@
 
 <script>
 	function imgClick(book_no) {
-		location.href="${pageContext.request.contextPath}/eBookDetail.do?book_no="+book_no;
+		if(book_no != null){
+			if(confirm("해당 책 상세페이지로 이동하시겠습니까?")){			
+				location.href="${pageContext.request.contextPath}/eBookDetail.do?book_no="+book_no;
+			}
+		}
 	}
 </script>
 </head>
@@ -33,9 +37,7 @@
 		</thead>
 		
 		<tbody>
-			
 			<c:forEach items="${list}" var="book">
-						
 					<tr>
 						<td>${book.book_no}</td>
 						<td>${book.title}</td>
@@ -43,7 +45,9 @@
 						<td><fmt:parseDate value="${book.publication_date}" pattern="yyyy-MM-dd HH:mm:ss" var="publication_date"/>
 							<fmt:formatDate value="${publication_date}"  pattern="yyyy/MM/dd"/> </td>
 						<c:if test="${not empty book.book_img}">
-						<td><img onclick="imgClick(${book.book_no})" src="filenameDownload.do?filename=${book.book_img}" style="width:500px"></td>
+						<td>
+							<img onclick="imgClick(${book.book_no})" src="filenameDownload.do?filename=${book.book_img}" style="width:500px">
+						</td>
 						</c:if>
 						<td>${book.company_name}</td>
 						<td>${book.introduction}</td>
