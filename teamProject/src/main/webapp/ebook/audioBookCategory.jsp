@@ -33,7 +33,7 @@
 					<tr>
 						<td>${books[i-1][j-1].book_no}</td>
 						<td>${books[i-1][j-1].title}</td>
-						<td><img src="/filepath/개미.jpg"/>${books[i-1][j-1].book_img}</td>
+						<td><c:if test="${not empty books[i-1][j-1].book_img}"><img src="filenameDownload.do?filename=${books[i-1][j-1].book_img }" style="width:50px"/></c:if>${books[i-1][j-1].book_img}</td>
 						<td>${books[i-1][j-1].writer}</td>
 						<td>${books[i-1][j-1].audio_path}</td>
 						<td>${books[i-1][j-1].genre}</td>

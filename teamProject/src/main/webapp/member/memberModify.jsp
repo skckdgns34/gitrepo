@@ -154,8 +154,7 @@
 			</div>
 			<div class="col-sm-6 col-md-offset-3">
 				<div class="form-group">
-				<label for="id">아이디</label><input type="text" class="form-control" id="member_id" name="member_id"
-				readonly value="${member_id }"> 
+				<label for="id">아이디 ${member_id }</label>
 				</div>
 				<div class="form-group">
 					<label for="pw">비밀번호</label> <input type="password"

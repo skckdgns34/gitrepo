@@ -33,7 +33,7 @@
 					<tr>
 						<td>${books[i-1][j-1].book_no}</td>
 						<td>${books[i-1][j-1].title}</td>
-						<td><a href="">${books[i-1][j-1].book_img}</a></td>
+						<td><c:if test="${not empty books[i-1][j-1].book_img}"><img src="filenameDownload.do?filename=${books[i-1][j-1].book_img }" style="width:50px"/></c:if></td>
 						<td>${books[i-1][j-1].writer}</td>
 						<td>${books[i-1][j-1].epub_path}</td>
 						<td>${books[i-1][j-1].genre}</td>
