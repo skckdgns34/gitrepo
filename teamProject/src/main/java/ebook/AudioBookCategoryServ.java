@@ -30,6 +30,7 @@ public class AudioBookCategoryServ implements Controller
 			bookList = new ArrayList<Books>();
 		}
 		request.setAttribute("books", books);
+		System.out.println("히히");
 		request.getRequestDispatcher("/ebook/audioBookCategory.jsp").forward(request, response);
 
 	
