@@ -37,9 +37,7 @@ function closeMe() {
 		onSubmit="retrun check(this)">
 		<div class="col-sm-6 col-md-offset-3">
 			<div class="form-group">
-				<label for="id">아이디: ${member_id} <input type="hidden"
-					name="member_id" value="${member_id}" />
-				</label>
+				<label for="id">아이디: ${member_id}</label>
 			</div>
 			<div>
 				<label for="member_pw">Password:</label> <input type="password"
