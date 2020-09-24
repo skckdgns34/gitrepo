@@ -7,7 +7,6 @@ teamProject/target/*
 bin/*
 teamProject/bin/*
 Dev/*
-pom.xml
 
 # Compiled class file
 *.class
