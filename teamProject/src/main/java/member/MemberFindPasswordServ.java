@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import common.Controller;
 
-public class MemberFindServ implements Controller {
+public class MemberFindPasswordServ implements Controller {
 
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
