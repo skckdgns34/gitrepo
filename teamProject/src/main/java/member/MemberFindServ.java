@@ -17,6 +17,7 @@ public class MemberFindServ implements Controller {
 		memberVO.setMember_email(request.getParameter("member_email"));
 		
 		Member resultVO = MemberDAO.getinstance().findId(memberVO);
+
 		String page = "";
 		if(resultVO == null) {
 			page = "member/memberFind.jsp";
@@ -26,7 +27,6 @@ public class MemberFindServ implements Controller {
 			page = "member/memberFindId.jsp";
 			request.getSession().setAttribute("memberFind", resultVO);
 			request.getSession().setAttribute("member_pw", resultVO.getMember_email());
-			
 			
 		}
 		
