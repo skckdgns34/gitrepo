@@ -8,21 +8,10 @@
 </head>
 <body>
 	<h3>아이디/비밀번호 찾기</h3>
-	<form action="${pageContext.request.contextPath }/memberFind.do">
-	<div class="row">
-		<div class="col-md-10inputbb">
-			<div class="form-group has-danger">
-				<div class="input-gorup mb-2 mr-sm-2 mb-sm-0">
-					<input type="email" name="email" class="form-control" id="email" placeholder="이메일을 입력해주세요" required>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-10inputbb">
-			<button class="btn btn-outline-secondary findbtn">찾기</button>
-		</div>
-	</div>
+	<%=request.getAttribute("errormsg") %>
+	<form action="/app/member/memberFind.do">
+		<label>이메일 </label><input type="email" name="member_email" id="member_email" placeholder="이메일을 입력해주세요" required>
+		<button >찾기</button>
 	</form>
 </body>
 </html>

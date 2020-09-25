@@ -13,11 +13,11 @@ import vo.Member;
 public class MemberManageModifyServ implements Controller
 {
 
-	public void execute(HttpServletRequest request,
+	public void execute(HttpServletRequest request, 
 			HttpServletResponse response) throws ServletException, IOException
 	{
 		System.out.println("회원 등록 / 수정");
-		
+
 		String member_no = request.getParameter("member_no");
 		String member_id = request.getParameter("member_id");
 		String member_pw = request.getParameter("member_pw");
@@ -30,10 +30,12 @@ public class MemberManageModifyServ implements Controller
 		String gender =request.getParameter("gender");
 		String ticket_code = request.getParameter("ticket_code");
 		
-		Member member = new Member();
+		Member member = new Member(); 
 		member.setMember_no(member_no);
 		member.setMember_id(member_id);
 		member.setMember_pw(member_pw);
+		member.setMember_tel(member_tel);
+
 		member.setNickname(nickname);
 		member.setMember_email(member_email);
 		member.setSignup_date(signup_date);
@@ -41,9 +43,9 @@ public class MemberManageModifyServ implements Controller
 		member.setLast_access_date(last_access_date);
 		member.setGender(gender);
 		member.setTicket_code(ticket_code);
-		Member r = MemberManageDAO.getinstance().insert(member);
-		request.setAttribute("cnt", r);
-		request.getRequestDispatcher("/memberManageMain.ad").forward(request, response);
+	 MemberManageDAO.getinstance().update(member);
+		
+		request.getRequestDispatcher("/memberManage/memberManageMain.jsp").forward(request, response);
 		
 	}
 

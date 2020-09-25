@@ -21,14 +21,20 @@
 		}
 	};
 
-	function modifypage(page)
+	function modifypage() //수정 
 	{
-	window.document.location.href="${pageContext.request.contextPath}/memberManageModifyForm.ad";
+	window.document.location.href="${pageContext.request.contextPath}/memberManageModifyForm.ad?no="+ $('input[name="user_CheckBox"]:checked').val();
+	alert( $('input[name="user_CheckBox"]:checked').val())
 	return;
 	}
 	
-
-
+	function deletepage() //삭제
+	{
+	window.document.location.href="${pageContext.request.contextPath}/주소 적기...ㅠ.ad";
+	return;
+	}
+	
+	
 	</script>
 
 </head>
@@ -74,17 +80,19 @@
 								<c:if test="${search_type == 'TICKET_CODE'}">selected</c:if>>이용권코드</option>
 						</select>
 						</div>
+						
 						<div class="input-group-append">
 							<input type="text" id='search_text' name='search_text'
 								placeholder="회원번호 또는 회원아이디를 입력해주세요" value="${search_text }">
-							<button class="btn btn-primary" id="searchBtn" onclick="search()" type="button">
+							<button class="btn btn-primary" id="btnOk" type="submit">
 								<i class="fas fa-search fa-sm"></i>
-							</button> 	<input type='submit' value='검색'>
+							</button> 	
 						</div>
 				</form>
 
 
 					<div><input type='button' id='btn_n' value='수정' onclick="modifypage()"></div>
+					<div><input type='button' id='btn_d' value='삭제' onclick="deletepage()"></div>
 					
 			
 				
@@ -115,7 +123,7 @@
 					<tbody>
 						<c:forEach items="${list}" var="member">
 							<tr>
-								<td><input type="checkbox" name="user_CheckBox" onclick="check(this)"></td>
+								<td><input type="checkbox" name="user_CheckBox" onclick="check(this)" value="${member.getMember_no()}"></td>
 								<td>${member.getMember_no()}</td>
 								<td>${member.getMember_id()}</td>
 								<td>${member.getMember_pw()}</td>
