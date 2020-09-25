@@ -36,7 +36,7 @@
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laugh-wink"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">Admin Page  <sup>2</sup></div>
+        <div class="sidebar-brand-text mx-3">Admin Page<sup></sup></div>
       </a>
 
       <!-- 구분선 -->
@@ -44,7 +44,7 @@
 
        <!-- Dashboard 이건뭐죠?? -->
       <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="adminIndex.jsp">
           <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>이건 오ㅑ있는건지 모르겠고</span></a>
       </li>

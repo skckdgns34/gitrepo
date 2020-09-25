@@ -16,7 +16,7 @@ public class MemberManageModifyServ implements Controller
 	public void execute(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException
 	{
-		System.out.println("회원 등록/수정");
+		System.out.println("회원 등록 / 수정");
 		
 		String member_no = request.getParameter("member_no");
 		String member_id = request.getParameter("member_id");

@@ -21,51 +21,13 @@
 		}
 	};
 
-	//선택 버튼 클릭 시 체크 된 Row의 값을 가져온다.
-	$("#selectBtn").click(function(){
-		var rowData  = new Array();
-		var tdArr  = new Array();
-		var checkbox  = $("input[name=user_CheckBox]:checked");
-		
-		//체크 된 체크박스 값을 가져온다.
-		checkbox.each(function(i) {
-			// checkbox.parent() : checkbox의 부모는 <td>이다.
-			// checkbox.parent().parent() : <td>의 부모이므로 <tr>이다.
-			var tr = checkbox.parent().parent().eq(i);
-			var td = tr.children();
-			
-			//체크된 row의 모든 값을 배열에 담는다.
-			rowData.push(tr.text());
-			
-			//td.eq(0)은 체크박스 이므로 td.eq(1)의 값부터 가져온다.
-			var member_no = td.eq(1).text();
-			var member_id = td.eq(2).text();
-			var member_pw = td.eq(3).text();
-			var nickname = td.eq(4).text();
-			var member_tel = td.eq(5).text();
-			var member_email = td.eq(6).text();
-			var signup_date = td.eq(7).text();
-			var ticket_date = td.eq(8).text();
-			var last_access_date = td.eq(9).text();
-			var gender = td.eq(10).text();
-			var ticket_code = td.eq(11).text();
-			
-			tdArr.push(member_no);
-			tdArr.push(member_id);
-			tdArr.push(member_pw);
-			tdArr.push(nickname);
-			tdArr.push(member_tel);
-			tdArr.push(member_email);
-			tdArr.push(signup_date);
-			tdArr.push(ticket_date);
-			tdArr.push(last_access_date);
-			tdArr.push(gender);
-			tdArr.push(ticket_code);
-		});
-		
-		$("#ex3_Result1").html(rowData);
-		$("#ex3_Result2").html(tdArr);
-	});
+	function modifypage(page)
+	{
+	window.document.location.href="${pageContext.request.contextPath}/memberManageModifyForm.ad";
+	return;
+	}
+	
+
 
 	</script>
 
@@ -115,16 +77,16 @@
 						<div class="input-group-append">
 							<input type="text" id='search_text' name='search_text'
 								placeholder="회원번호 또는 회원아이디를 입력해주세요" value="${search_text }">
-							<button class="btn btn-primary" type="button">
+							<button class="btn btn-primary" id="searchBtn" onclick="search()" type="button">
 								<i class="fas fa-search fa-sm"></i>
 							</button> 	<input type='submit' value='검색'>
 						</div>
 				</form>
 
+
+					<div><input type='button' id='btn_n' value='수정' onclick="modifypage()"></div>
+					
 			
-				<div>
-					<a href="${pageContext.request.contextPath}/memberManageModifyForm.ad">추가</a>
-				</div>
 				
 			
 		</div>
@@ -168,8 +130,7 @@
 						</c:forEach>
 					</tbody>
 				</table>
-				<div class="col-lg-12" id="ex3_Result1" ></div> 
-		<div class="col-lg-12" id="ex3_Result2" ></div> 
+			
 			</div>
 		</div>
 	</div>

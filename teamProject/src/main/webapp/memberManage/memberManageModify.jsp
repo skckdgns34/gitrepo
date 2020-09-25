@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" isELIgnored="false"  %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,13 +16,14 @@
              
           </div>
           <div class="card-body">
-            <h5 class="card-title text-center">직원 추가</h5>
+            <h5 class="card-title text-center">회원 수정</h5>
             <form class="form-signin" method="post" name="frm" id="frm"
 			action="memberManageModify.ad" onsubmit="return inputCheck()">
-              <!--  <div class="form-label-group">
-               <label for="inputEmpNo">사원번호</label><br>
-                <input type="text" name="empno">
-              </div> -->
+			
+                <div class="form-label-group">
+               <label for="inputMemberNo">회원번호</label><br>
+                <input type="text" name="member_no" value="${member_no}" readonly="readonly">
+              </div> 
               
               <div class="form-label-group">
                <label for="inputMemberId">회원아이디</label><br>

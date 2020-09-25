@@ -19,6 +19,19 @@ function check(ck) {
 		}
 	}
 };
+
+function modifypage(page)
+{
+window.document.location.href='${pageContext.request.contextPath}/empManage/empManageModify.jsp';
+return;
+}
+function addpage(page)
+{
+window.document.location.href="${pageContext.request.contextPath}/employeesInsertForm.ad";
+return;
+}
+
+
 </script>
 </head>
 
@@ -46,14 +59,11 @@ function check(ck) {
 		</div>
 		<div class="input-group-append">
 							<input type="text" id='search_text' name='search_text'
-								placeholder="회원번호 또는 회원아이디를 입력해주세요" value="${search_text }">
-							<button class="btn btn-primary" type="button">
-								<i class="fas fa-search fa-sm"></i>
-							</button> 	<input type='submit' value='검색'>
+								placeholder="회원번호 또는 회원아이디를 입력해주세요" value="${search_text }"> <input type='submit' value='검색'>
 						</div>
 	</form>
-	<div><a href="${pageContext.request.contextPath}/employeesInsertForm.ad">추가</a></div>
-		<div><a href="${pageContext.request.contextPath}/empManage/empManageModify.jsp">수정</a></div>
+	<div><input type='button' value='추가' onclick="addpage()"></div>
+		<div><input type='button' id='btn_n' value='수정' onclick="modifypage()"></div>
 				<div><a href="${pageContext.request.contextPath}/employeesdelete.ad">삭제</a></div>
 		</div>
 	

@@ -38,7 +38,7 @@ public class EmpManageModifyServ implements Controller
 	employees.setRank_code(rank_code);
 	
 	EmpDAO.getInstance().Update(employees);
-	request.getRequestDispatcher("./adminIndex.jsp").forward(request, response);
+	request.getRequestDispatcher("empManage/empManageModify.jsp").forward(request, response);
 	}
 
 }
