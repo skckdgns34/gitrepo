@@ -176,6 +176,30 @@ public class MemberDAO {
 			ConnectionManager.close(conn);
 		}
 	}
+	
+	//아이디 찾기
+	public Member findId(Member memberVO) {
+		Member resultVO = null;
+		ResultSet rs = null;
+		try {
+			conn = ConnectionManager.getConnnect();
+			String sql = " select member_id from member where member_email = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, memberVO.getMember_email());
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				resultVO = new Member();
+				resultVO.setMember_id(rs.getString("MEMBER_ID"));
+			} else {
+				System.out.println("no data");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionManager.close(rs, pstmt, conn);
+		}
+		return resultVO;
+	}
 
 	//
 	// 메일수신회원수 : select count(id) from member where mailyn='y'
