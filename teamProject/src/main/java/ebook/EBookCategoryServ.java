@@ -33,7 +33,7 @@ public class EBookCategoryServ implements Controller
 //		}
 		ArrayList<ArrayList<Books>> books = new ArrayList<ArrayList<Books>>();
 		for(int i=0; i<list.size(); i++) {
-			bookList = EbookDAO.getInstance().selectAllEBook(list.get(i).getCode());
+			bookList = EBookDAO.getInstance().selectAllEBook(list.get(i).getCode());
 			books.add(bookList);
 			bookList = new ArrayList<Books>();
 			

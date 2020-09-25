@@ -17,7 +17,7 @@ public class AudioBookSearchAjaxServ implements Controller {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html; charset=UTF-8");
-		MainDAO dao = new MainDAO();
+		AudioBookDAO dao = new AudioBookDAO();
 		String aa = request.getParameter("data");
 		ArrayList<SearchBook> list = dao.searchBook(aa);
 		

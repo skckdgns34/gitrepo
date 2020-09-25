@@ -25,7 +25,7 @@ public class AudioBookCategoryServ implements Controller
 		
 		ArrayList<ArrayList<Books>> books = new ArrayList<ArrayList<Books>>();
 		for(int i=0; i<list.size(); i++) {
-			bookList = EbookDAO.getInstance().selectAllAudioBook(list.get(i).getCode());
+			bookList = EBookDAO.getInstance().selectAllAudioBook(list.get(i).getCode());
 			books.add(bookList);
 			bookList = new ArrayList<Books>();
 		}

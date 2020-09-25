@@ -17,7 +17,7 @@
 			$("#testInput").autocomplete({
 								source : function(request, response) {
 									$.ajax({
-										url : "${pageContext.request.contextPath}/Ajax/mainsearchResultAjax.do",
+										url : "${pageContext.request.contextPath}/Ajax/audioBookSearchAjax.do",
 										type : "GET",
 										dataType : "json",
 										data : {data : $("#testInput").val()
