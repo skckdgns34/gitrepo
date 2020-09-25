@@ -116,6 +116,9 @@ public class FrontController extends HttpServlet {
 		list.put("/mainsearchResult.do", new main.MainsearchResultServ());
 		list.put("/audioBookSearchAfter.do", new ebook.AudioBookSearchAfterServ());
 		list.put("/eBookSearchAfter.do", new ebook.EBookSearchAfterServ());
+		list.put("/eBookSearchAjax.do", new ebook.EBookSearchAjaxServ());
+		list.put("/audioBookSearchAjax.do", new ebook.AudioBookSearchAjaxServ());
+	
 	}
 	
 	public FrontController() {
