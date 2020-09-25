@@ -1,4 +1,4 @@
-package bookManage;
+package company;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,51 +9,47 @@ import java.util.ArrayList;
 
 import common.ConnectionManager;
 import vo.Books;
+import vo.Company;
 
-public class BookManageDAO {
+public class CompanyDAO {
 	Connection conn;
 	PreparedStatement pstmt;
 	ResultSet rs = null;
 	
-	static BookManageDAO instance;
-	public static BookManageDAO getInstance() {
+	static CompanyDAO instance;
+	public static CompanyDAO getInstance() {
 		if(instance==null)
-			instance=new BookManageDAO();
+			instance=new CompanyDAO();
 		return instance;
 	}
 	
-	public Books insert (Books books) {
-		Books resultVO = null;
+	public Company insert (Company company) {
+		Company resultVO = null;
 		try {
 			conn = ConnectionManager.getConnnect();
 			conn.setAutoCommit(false);
-			String seqSql = "select no from seq where tablename = 'books'";
+			String seqSql = "select no from seq where tablename = 'company'";
 			Statement stmt = conn.createStatement();
 			rs = stmt.executeQuery(seqSql);
 			rs.next();
 			int no = rs.getInt(1);
-			books.setBook_no(Integer.toString(no));
+			company.setCompany_code(Integer.toString(no));
 			
-			seqSql = "update seq set no = no + 1 where tablename = 'books'";
+			seqSql = "update seq set no = no + 1 where tablename = 'company'";
 			stmt = conn.createStatement();
 			stmt.executeUpdate(seqSql);
 			
-			String sql = "insert into books (book_no, title, book_img, writer, publication_date, "
-					+ "epub_path, audio_path, company_code, introduction, summary, genre, best_book, registration_date)"
-					+ " values(?,?,?,?,?,?,?,?,?,?,?,?,sysdate)";
+			String sql = "insert into company (company_code, company_name, company_addr, company_mgr, company_tel, "
+					+ "company_mgr_tel, company_account)"
+					+ " values(?,?,?,?,?,?,?)";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, books.getBook_no());
-			pstmt.setString(2, books.getTitle());
-			pstmt.setString(3, books.getBook_img());
-			pstmt.setString(4, books.getWriter());
-			pstmt.setString(5, books.getPublication_date());
-			pstmt.setString(6, books.getEpub_path());
-			pstmt.setString(7, books.getAudio_path());
-			pstmt.setString(8, books.getCompany_code());
-			pstmt.setString(9, books.getIntroduction());
-			pstmt.setString(10, books.getSummary());
-			pstmt.setString(11, books.getGenre());
-			pstmt.setString(12, books.getBest_book());
+			pstmt.setString(1, company.getCompany_code());
+			pstmt.setString(2, company.getCompany_name());
+			pstmt.setString(3, company.getCompany_addr());
+			pstmt.setString(4, company.getCompany_mgr());
+			pstmt.setString(5, company.getCompany_tel());
+			pstmt.setString(6, company.getCompany_mgr_tel());
+			pstmt.setString(7, company.getCompany_account());
 			pstmt.executeUpdate();
 			conn.commit();
 			
@@ -162,7 +158,7 @@ public class BookManageDAO {
 	         conn = ConnectionManager.getConnnect();
 	         String sql = "UPDATE BOOKS SET TITLE=?, BOOK_IMG=?, WRITER=?, PUBLICATION_DATE=?, "
 	         			+ "EPUB_PATH=?, AUDIO_PATH=?, COMPANY_CODE=?, INTRODUCTION=?, SUMMARY=?, BEST_BOOK=?, "
-	         			+ "GENRE=?, REGISTRATION_DATE=SYSDATE WHERE BOOK_NO = ?";
+	         			+ "GENRE=? WHERE BOOK_NO = ?";
 	         pstmt = conn.prepareStatement(sql);
 	         pstmt.setString(1, books.getTitle());
 	         pstmt.setString(2, books.getBook_img());

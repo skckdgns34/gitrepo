@@ -22,11 +22,11 @@
 				<div>
 					<label for=company_code>출판사</label> <select name="company_code" id="company_code" size="4">
 						<option value="">선택</option>
-						<option value="a0001">예담</option>
-						<option value="a0002">한양</option>
-						<option value="a0003">창비</option>
-						<option value="a0004">웅진</option>
-						<option value="a0005">한빛</option>
+						<option value=1>예담</option>
+						<option value=2>한양</option>
+						<option value=3>창비</option>
+						<option value=4>웅진</option>
+						<option value=5>한빛</option>
 						</select>
 						</div>
 				<div>
