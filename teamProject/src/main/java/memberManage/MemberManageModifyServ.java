@@ -13,7 +13,7 @@ import vo.Member;
 public class MemberManageModifyServ implements Controller
 {
 
-	public void execute(HttpServletRequest request,
+	public void execute(HttpServletRequest request, 
 			HttpServletResponse response) throws ServletException, IOException
 	{
 		System.out.println("회원 등록 / 수정");
@@ -30,7 +30,7 @@ public class MemberManageModifyServ implements Controller
 		String gender =request.getParameter("gender");
 		String ticket_code = request.getParameter("ticket_code");
 		
-		Member member = new Member();
+		Member member = new Member(); 
 		member.setMember_no(member_no);
 		member.setMember_id(member_id);
 		member.setMember_pw(member_pw);

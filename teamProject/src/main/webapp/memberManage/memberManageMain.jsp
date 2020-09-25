@@ -21,7 +21,7 @@
 		}
 	};
 
-	function modifypage() //수정
+	function modifypage() //수정 
 	{
 	window.document.location.href="${pageContext.request.contextPath}/memberManageModifyForm.ad?no="+ $('input[name="user_CheckBox"]:checked').val();
 	alert( $('input[name="user_CheckBox"]:checked').val())
