@@ -12,6 +12,15 @@
 <title>사원 목록</title>
 
 <script>
+	function check(ck) {
+		var obj = document.getElementsByName("user_CheckBox");
+		for(var i =0; i<obj.length; i++){
+			if(obj[i] != ck) {
+				obj[i].checked = false;
+			}
+		}
+	};
+
 	//선택 버튼 클릭 시 체크 된 Row의 값을 가져온다.
 	$("#selectBtn").click(function(){
 		var rowData  = new Array();
@@ -58,13 +67,11 @@
 		$("#ex3_Result2").html(tdArr);
 	});
 
-
 	</script>
 
 </head>
 <body id="page-top">
-		<div class="col-lg-12" id="ex3_Result1"></div>
-	<div class="col-lg-12" id="ex3_Result2"></div>
+	
 	<div class="container-fluid">
 		<div class="card shadow mb-4">
 			<div class="card-header py-3">
@@ -110,7 +117,7 @@
 								placeholder="회원번호 또는 회원아이디를 입력해주세요" value="${search_text }">
 							<button class="btn btn-primary" type="button">
 								<i class="fas fa-search fa-sm"></i>
-							</button>
+							</button> 	<input type='submit' value='검색'>
 						</div>
 				</form>
 
@@ -123,6 +130,7 @@
 		</div>
 		<div class="card-body">
 			<div class="table-responsive">
+			
 				<button type="button" class="btn btn-outline btn-primary pull-right" id="selectBtn">선택</button>
 				<table class="table table-bordered" id="dataTable" width="100%"
 					cellspacing="0">
@@ -145,7 +153,7 @@
 					<tbody>
 						<c:forEach items="${list}" var="member">
 							<tr>
-								<td><input type="checkbox" name="user_CheckBox"></td>
+								<td><input type="checkbox" name="user_CheckBox" onclick="check(this)"></td>
 								<td>${member.getMember_no()}</td>
 								<td>${member.getMember_id()}</td>
 								<td>${member.getMember_pw()}</td>
@@ -160,10 +168,10 @@
 						</c:forEach>
 					</tbody>
 				</table>
+				<div class="col-lg-12" id="ex3_Result1" ></div> 
+		<div class="col-lg-12" id="ex3_Result2" ></div> 
 			</div>
 		</div>
 	</div>
-
-	
 </body>
 </html>
