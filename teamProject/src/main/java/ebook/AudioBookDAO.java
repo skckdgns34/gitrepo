@@ -34,8 +34,8 @@ public class AudioBookDAO {
 			conn = ConnectionManager.getConnnect();
 			
 			String sql = "select 'book', title from books where title like '%' || ? || '%' and audio_path is not null " + " union all "
-					+ " select 'writer', writer from books where  writer like '%' || ? || '%' audio_path is not null " + " union all "
-					+ " select 'company', company_name from company c, books b where  company_name like '%' || ? || '%' and b.audio_path is not null ";
+					+ " select 'writer', writer from books where  writer like '%' || ? || '%' and audio_path is not null " + " union all "
+					+ " select 'company', company_name from company c, books b where  company_name like '%' || ? || '%' and b.audio_path is not null";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, a);
 			pstmt.setString(2, a);
@@ -64,7 +64,6 @@ public class AudioBookDAO {
 	public List<Map<String, Object>> searchBooksEqualTitle(String a) {
 		List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
 		try {
-			Books aa = null;
 			conn = ConnectionManager.getConnnect();
 			String sql ="select book_no, title, writer, publication_date, "
 						+ " book_img, company_name, introduction, summary, "
@@ -102,7 +101,6 @@ public class AudioBookDAO {
 	public List<Map<String, Object>> searchBooksEqualCompany(String a) {
 		List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
 		try {
-			Books aa = null;
 			conn = ConnectionManager.getConnnect();
 			String sql ="select book_no, title, writer, publication_date, "
 						+ " book_img, company_name, introduction, summary, "
@@ -140,7 +138,6 @@ public class AudioBookDAO {
 	public List<Map<String, Object>> searchBooksEqualWriter(String a) {
 		List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
 		try {
-			Books aa = null;
 			conn = ConnectionManager.getConnnect();
 			String sql ="select book_no, title, writer, publication_date, "
 						+ " book_img, company_name, introduction, summary, "

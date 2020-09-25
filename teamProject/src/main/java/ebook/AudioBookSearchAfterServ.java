@@ -9,37 +9,37 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import common.Controller;
-import main.MainDAO;
 
 public class AudioBookSearchAfterServ implements Controller {
 
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html; charset=UTF-8");
-		MainDAO dao = new MainDAO();
-		String AutoResult = request.getParameter("search");
+		AudioBookDAO dao = new AudioBookDAO();
+		String AutoResult = request.getParameter("hidden");
+		String AutoSearchResult = request.getParameter("realHidden");
 		
  		String writer = "writer";
 		String book = "book";
 		String company = "company";
 		if(AutoResult.equals(book)){
-			System.out.println("책임");
-			List<Map<String, Object>> list =dao.searchBooksEqualTitle(AutoResult);
+			System.out.println("오디오책임");
+			List<Map<String, Object>> list =dao.searchBooksEqualTitle(AutoSearchResult);
 			request.setAttribute("list", list);
 		}
 		else if(AutoResult.equals(writer)) {
-			System.out.println("저자임");
-			List<Map<String, Object>> list =dao.searchBooksEqualWriter(AutoResult);
+			System.out.println("오디오저자임");
+			List<Map<String, Object>> list =dao.searchBooksEqualWriter(AutoSearchResult);
 			request.setAttribute("list", list);
 		}
 		else if(AutoResult.equals(company)) {
-			System.out.println("회사이름임");
-			List<Map<String, Object>> list =dao.searchBooksEqualCompany(AutoResult);
+			System.out.println("오디오회사이름임");
+			List<Map<String, Object>> list =dao.searchBooksEqualCompany(AutoSearchResult);
 			request.setAttribute("list", list);
 		}
 		
-		request.getRequestDispatcher("/ebook/eBookSearchAfter.jsp").forward(request, response);
+		request.getRequestDispatcher("/ebook/audioBookSearchAfter.jsp").forward(request, response);
 		
-		System.out.println(AutoResult);
+		System.out.println(AutoResult  + " 오디오??");
 
 	}
 

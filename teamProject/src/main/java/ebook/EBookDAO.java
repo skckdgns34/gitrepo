@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.Map;
 
 import common.ConnectionManager;
-import main.MainDAO;
 import vo.Books;
 import vo.SearchBook;
 
@@ -154,7 +153,6 @@ public class EBookDAO {
 	public List<Map<String, Object>> searchBooksEqualTitle(String a) {
 		List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
 		try {
-			Books aa = null;
 			conn = ConnectionManager.getConnnect();
 			String sql ="select book_no, title, writer, publication_date, "
 						+ " book_img, company_name, introduction, summary, "
@@ -194,7 +192,6 @@ public class EBookDAO {
 	public List<Map<String, Object>> searchBooksEqualCompany(String a) {
 		List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
 		try {
-			Books aa = null;
 			conn = ConnectionManager.getConnnect();
 			String sql ="select book_no, title, writer, publication_date, "
 						+ " book_img, company_name, introduction, summary, "
@@ -234,7 +231,6 @@ public class EBookDAO {
 	public List<Map<String, Object>> searchBooksEqualWriter(String a) {
 		List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
 		try {
-			Books aa = null;
 			conn = ConnectionManager.getConnnect();
 			String sql ="select book_no, title, writer, publication_date, "
 						+ " book_img, company_name, introduction, summary, "

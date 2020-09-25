@@ -75,7 +75,7 @@
 <body>
 <h3>오디오책</h3>
 <input type="text" id="testInput" placeholder="검색할 내용 입력" name="search"/>
-	<form action="${pageContext.request.contextPath}/eBookSearchAfter.do" method="post">
+	<form action="${pageContext.request.contextPath}/audioBookSearchAfter.do" method="post">
 		<input type="hidden" id="hidden"  name="hidden" />
 		<input type="hidden" id="realHidden"  name="realHidden" />
 		<button>검색</button>

@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import common.Controller;
-import main.MainDAO;
 
 public class EBookSearchAfterServ implements Controller {
 
@@ -18,11 +17,12 @@ public class EBookSearchAfterServ implements Controller {
 		
 		
 		response.setContentType("text/html; charset=UTF-8");
-		MainDAO dao = new MainDAO();
+		EBookDAO dao = new EBookDAO();
 		String AutoResult = request.getParameter("hidden");
 		String AutoSearchResult = request.getParameter("realHidden");
 		System.out.println(AutoResult+"오토변수값");
 		System.out.println(AutoSearchResult+"검색값");
+		
  		String writer = "writer";
 		String book = "book";
 		String company = "company";
