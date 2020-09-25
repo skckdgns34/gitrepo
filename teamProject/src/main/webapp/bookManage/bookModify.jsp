@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -64,7 +65,8 @@
 			</div>
 			<div>
 				<label for="publication_date">발간일</label> <input
-					id="publication_date" name="publication_date" type="date">${result.publication_date }
+					id="publication_date" name="publication_date" 
+					type="date" value="${fn:substring(result.publication_date,0,10) }">
 			</div>
 			<div>
 				<label for="best_book">베스트셀러</label> <input type="radio"
@@ -77,10 +79,10 @@
 				<label for="book_img">책 사진첨부</label><input type="file"
 					name="book_img">${result.book_img }
 			</div>
-			<div>
+			<%-- <div>
 				<label for="epub_path">전자책 첨부</label><input type="file"
 					name="epub_path"> ${result.epub_path }
-			</div>
+			</div> --%>
 			<div>
 				<button type="reset">초기화</button>
 				<button>등록</button>
