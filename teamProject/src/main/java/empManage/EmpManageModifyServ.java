@@ -26,6 +26,8 @@ public class EmpManageModifyServ implements Controller
 	String emp_address = request.getParameter("emp_address");
 	String rank_code = request.getParameter("rank_code");
 	
+	
+	
 	Employees employees = new Employees();
 	employees.setEmp_no(emp_no);
 	employees.setEmp_id(emp_id);
@@ -38,6 +40,7 @@ public class EmpManageModifyServ implements Controller
 	employees.setRank_code(rank_code);
 	
 	EmpDAO.getInstance().Update(employees);
+	
 	request.getRequestDispatcher("empManage/empManageModify.jsp").forward(request, response);
 	}
 
