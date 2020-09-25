@@ -48,9 +48,7 @@ public class BookModifyServ implements Controller
 		}else {
 			book.setEpub_path(renameFile2.getName());
 		}
-		
-		
-		
+
 		book = BookManageDAO.getInstance().update(book);
 		request.getRequestDispatcher("bookList.ad").forward(request, response);
 
