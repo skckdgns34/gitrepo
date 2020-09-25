@@ -11,7 +11,7 @@
 		<div class="regist">
 			<form method="post" name="frm" id="frm" 
 				  enctype="multipart/form-data"
-				  action="${pageContext.request.contextPath }/bookRegister.ad"
+				  action="${pageContext.request.contextPath }/bookRegisterAudio.ad"
 				  >
 				<div>
 					<label for="title">제목</label> <input id="title" name="title" type="text">
@@ -65,8 +65,8 @@
 					<input type="file" name="book_img">
 				</div>
 				<div>
-					<label for="epub_path">전자책 첨부</label> 
-					<input type="file" name="epub_path">
+					<label for="audio_path">음성책 첨부</label> 
+					<input type="file" name="audio_path">
 				</div>
 				<div>
 					<button type="reset">초기화</button>

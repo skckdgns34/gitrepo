@@ -49,17 +49,6 @@ public class BookModifyServ implements Controller
 			book.setEpub_path(renameFile2.getName());
 		}
 		
-		Part part3 = request.getPart("audio_path");
-		String audio_path = getFilename(part3);
-		String path3 = "c:/전자도서관/음성책";
-		//파일명 중복체크
-		File renameFile3 = FileRenamePolicy.rename(new File(path3, audio_path));
-		part3.write(path3 +"/" +renameFile3.getName());
-		if(renameFile3.getName().equals("음성책1")) {
-			book.setAudio_path(null);
-		}else {
-			book.setAudio_path(renameFile3.getName());
-		}
 		
 		
 		book = BookManageDAO.getInstance().update(book);

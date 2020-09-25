@@ -18,9 +18,12 @@ public class CompanyMainServ implements Controller
 	public void execute(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException
 	{
-		List<Company> list = BookManageDAO.getInstance().selectAll();
-		request.setAttribute("list", list);
-		request.getRequestDispatcher("/bookManage/bookList.jsp").forward(request, response);
+		/*
+		 * List<Company> list = BookManageDAO.getInstance().selectAll();
+		 * request.setAttribute("list", list);
+		 * request.getRequestDispatcher("/bookManage/bookList.jsp").forward(request,
+		 * response);
+		 */
 	}
 
 }
