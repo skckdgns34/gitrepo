@@ -10,7 +10,7 @@
 </head>
 <body>
 	<h3>이용권 목록</h3>
-	<form action="${pageContext.request.contextPath }/licence/licencePayment.jsp">
+	<form action="${pageContext.request.contextPath }/licencePayment.do">
 		<table border="1">
 			<thead>
 				<tr>

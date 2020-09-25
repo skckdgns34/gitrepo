@@ -71,7 +71,7 @@ public class MemberDAO {
 		try {
 			conn = ConnectionManager.getConnnect();
 			String sql = " SELECT MEMBER_NO, MEMBER_ID, MEMBER_PW, NICKNAME, MEMBER_TEL,"
-					+ "  MEMBER_EMAIL, SIGNUP_DATE, TICKET_DATE, LAST_ACCESS_DATE, GENDER, TICKET_CODE"
+					+ "  MEMBER_EMAIL, SIGNUP_DATE, TICKET_DATE,TICKET_DATE-30 ,LAST_ACCESS_DATE, GENDER, TICKET_CODE"
 					+ " FROM MEMBER"
 					+ " WHERE MEMBER_ID=?";
 			pstmt = conn.prepareStatement(sql);

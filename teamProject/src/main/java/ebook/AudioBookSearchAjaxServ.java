@@ -24,5 +24,4 @@ public class AudioBookSearchAjaxServ implements Controller {
 		response.getWriter().print(result);
 
 	}
-
 }
