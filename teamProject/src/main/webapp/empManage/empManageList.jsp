@@ -59,7 +59,10 @@ return;
 		</div>
 		<div class="input-group-append">
 							<input type="text" id='search_text' name='search_text'
-								placeholder="회원번호 또는 회원아이디를 입력해주세요" value="${search_text }"> <input type='submit' value='검색'>
+								placeholder="회원번호 또는 회원아이디를 입력해주세요" value="${search_text }">
+								<button class="btn btn-primary" id="btnOk" type="submit">
+								<i class="fas fa-search fa-sm"></i>
+							</button> 
 						</div>
 	</form>
 	<div><input type='button' value='추가' onclick="addpage()"></div>

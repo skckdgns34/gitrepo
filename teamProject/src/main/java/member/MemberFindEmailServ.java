@@ -28,7 +28,7 @@ public class MemberFindEmailServ implements Controller
 		
 		
 		String member_id = request.getParameter("member_id");
-		String email = request.getParameter("email");
+		String member_email = request.getParameter("member_email");
 		
 		 //먼저 아이디로 회원정보를 받아오고 가져온 데이터에서 email값을 비교하여 존재하지 않으면 인증메일 보내지 못함
 		
@@ -45,7 +45,7 @@ public class MemberFindEmailServ implements Controller
 		
 		final String host = "smtp.name.com";
 		final String user = "glsk2545@naver.com";	//자신 네이버 아이디
-		final String password = "kss01179--";	//자신 네이버 비밀번호
+		final String password = "나중에넣을게요";	//자신 네이버 비밀번호
 			
 		//메일 받을 주소
 		String to_email = m.getMember_email();
