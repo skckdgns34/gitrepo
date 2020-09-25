@@ -16,6 +16,7 @@
 	<decorator name="admin4" page="adminLayout.jsp">
 		<pattern>/*.ad</pattern>
 	</decorator>
+	
 	<decorator name="admin5" page="adminLayout.jsp">
 		<pattern>/bookManage/*.jsp</pattern>
 	</decorator>
