@@ -16,6 +16,9 @@
 	<decorator name="admin4" page="adminLayout.jsp">
 		<pattern>/*.ad</pattern>
 	</decorator>
+	<decorator name="admin5" page="adminLayout.jsp">
+		<pattern>/bookManage/*.jsp</pattern>
+	</decorator>
 	
 	<decorator name="user" page="layout.jsp">
 		<pattern>/*.do</pattern>
@@ -24,3 +27,5 @@
 		<pattern>/Ajax/*</pattern>
 	</excludes>
 </decorators>
+
+
