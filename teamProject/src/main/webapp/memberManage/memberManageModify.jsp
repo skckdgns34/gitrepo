@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원 관리(?)</title>
+<title>회원 목록</title>
 </head>
 <body style="padding-top: 70px;">
 
@@ -22,45 +22,45 @@
 			
                 <div class="form-label-group">
                <label for="inputMemberNo">회원번호</label><br>
-                <input type="text" name="member_no" value="${member_no}" readonly="readonly">
+                <input type="text" name="member_no" value="${member.member_no}" readonly="readonly">
               </div> 
               
               <div class="form-label-group">
-               <label for="inputMemberId">회원아이디</label><br>
-                <input type="text" name="member_id">
+               <label for="inputMemberId" >회원아이디</label><br>
+                <input type="text" name="member_id" value="${member.member_id}">
               </div>
               <div class="form-label-group">
                <label for="inputMemberPw">회원비밀번호</label><br>
-                <input type="text" name="member_pw">
+                <input type="text" name="member_pw" value="${member.member_pw}">
               </div>
               <div class="form-label-group">
                <label for="inputMemberNicname">회원 닉네임</label><br>
-                <input type="text" name="nickname">
+                <input type="text" name="nickname" value="${member.nickname}">
               </div>
               <div class="form-label-group">
                <label for="inputMemberTel">회원 전화번호</label><br>
-                <input type="text" name="member_tel">
+                <input type="text" name="member_tel" value="${member.member_tel}">
               </div>
               
               <div class="form-label-group">
                <label for="inputMemberEmail">회원 이메일</label><br>
-                <input type="text" name="member_email">
+                <input type="text" name="member_email" value="${member.member_email}">
               </div>
               <div class="form-label-group">
                <label for="inputMemberSignup">회원 가입일</label><br>
-                <input type="text" name="signup_date">
+                <input type="text" name="signup_date" value="${member.signup_date}">
               </div>
               <div class="form-label-group">
                <label for="inputlastAccess">최종접속일</label><br>
-                <input type="text" name="last_access_date">
+                <input type="text" name="last_access_date" value="${member.last_access_date}">
               </div>  
               <div class="form-label-group">
                <label for="inputmemberGender">회원 성별</label><br>
-                <input type="text" name="gender">
+                <input type="text" name="gender" value="${member.gender}">
               </div> 
               <div class="form-label-group">
                <label for="inputTicketCode">ticket_code</label><br>
-                <input type="text" name="ticket_code">
+                <input type="text" name="ticket_code" value="${member.ticket_code}">
               </div> 
             
 

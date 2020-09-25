@@ -12,18 +12,12 @@ import vo.Member;
 public class MemberManageModifyFormServ implements Controller {
 
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Member id = new Member();
-		request.getSession().getAttribute("id");
-		Member member = MemberManageDAO.getinstance().selectOne(id);
+		Member memberVO = new Member();
+		String no =request.getParameter("no");
+		memberVO.setMember_no(no);
+		Member member = MemberManageDAO.getinstance().selectOne(memberVO);
 		
-		request.setAttribute("member_no", member.getMember_no());
-		request.setAttribute("member_pw", member.getMember_pw());
-		request.setAttribute("nickname", member.getNickname());
-		request.setAttribute("member_tel", member.getMember_tel());
-		request.setAttribute("member_email", member.getMember_email());
-		request.setAttribute("gender", member.getGender());	
-		request.setAttribute("ticket_code", member.getTicket_code());
-		request.setAttribute("ticket_date", member.getTicket_date());
+		request.setAttribute("member", member);
 		
 		request.getRequestDispatcher("/memberManage/memberManageModify.jsp").forward(request, response);	
 	}

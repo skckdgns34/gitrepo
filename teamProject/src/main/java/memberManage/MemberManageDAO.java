@@ -73,9 +73,9 @@ public class MemberManageDAO {
 			String sql = " SELECT MEMBER_NO, MEMBER_ID, MEMBER_PW, NICKNAME, MEMBER_TEL,"
 					+ "  MEMBER_EMAIL, SIGNUP_DATE, TICKET_DATE, LAST_ACCESS_DATE, GENDER, TICKET_CODE"
 					+ " FROM MEMBER"
-					+ " WHERE MEMBER_ID=?";
+					+ " WHERE MEMBER_NO=?";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, memberVO.getMember_id());
+			pstmt.setString(1, memberVO.getMember_no());
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				resultVO = new Member();
