@@ -73,8 +73,7 @@
 
 <div class="wrapper bgded overlay" style="background-color: white;">
   <div id="pageintro" class="hoc clear"> 
-   
-    <!-- ################################################################################################ -->
+   		<button></button>
    <decorator:body/>
   </div>
 </div>

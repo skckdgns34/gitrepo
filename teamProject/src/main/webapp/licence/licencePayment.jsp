@@ -15,8 +15,11 @@
 <form action="licenceClick.jsp">
 	<div><label>구독기간 |</label></div>
 	<div><label>다음 결제일 |</label> ${fn:substring(loginMember.ticket_date,0,10) }</div>
-	<button>결제</button>
+	<button><a href="licenceClick.jsp"
+		onclick="window.open(this.href, '_blank', 'width=750px,height=600px,toolbars=no,scrollbars=yes'); return false;">
+		결제</a></button>
 </form>
+	
 
 </body>
 </html>

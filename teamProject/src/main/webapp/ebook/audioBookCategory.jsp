@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
+<link rel="stylesheet" href="${pageContext.request.contextPath}/layout/styles/slider.css">
 
 <script>
 	$(function(){
@@ -71,7 +71,10 @@
 	
 </script>
 
+
 </head>
+
+
 <body>
 <h3>오디오책</h3>
 <input type="text" id="testInput" placeholder="검색할 내용 입력" name="search"/>
@@ -81,8 +84,31 @@
 		<button>검색</button>
 	</form>
 		
+        <!-- 테스트 -->
+<c:forEach begin="1" end="9" var="i">
+	${i }
+	<%-- <div>${genreList.get(i-1).code_value}</div> --%>
+	<div class="wrapper-slider">
+ 		<div class="arrow-left"></div>
+   		<div class="arrow-right"></div>
+    	<div class="items">
+	<c:forEach begin="1" end="9" var="j">
+		${j }<div class="item item1"><img class="item item1" src="${pageContext.request.contextPath}/resourse/img/쟈.jpg"></div>
+<%-- <c:if test="${not empty books[i-1][j-1].book_img}">
+	<img onclick="imgClick(${books[i-1][j-1].book_no})" 
+		 src="filenameDownload.do?filename=${books[i-1][j-1].book_img }" 
+		 style="width:50px"/>
+</c:if> --%>
+	</c:forEach>
+	 </div>
+	</div>
+</c:forEach>
+
+
+		<!-- 밑에가 원본 -->
+<!--
 <c:forEach begin="1" end="${genreList.size() }" var="i">
-		<div>${genreList.get(i-1).code_value}</div>
+	<div>${genreList.get(i-1).code_value}</div>
 		<table border="1">
 			<thead>
 				<tr>
@@ -114,6 +140,9 @@
 		</table>
 		<br>
 		<hr>
-	</c:forEach>
+</c:forEach>
+-->
+<script src = "${pageContext.request.contextPath}/layout/styles/slider.js"></script>
+
 </body>
 </html>

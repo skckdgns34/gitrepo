@@ -24,6 +24,10 @@
 		}
 	}
 </script>
+<style>
+
+</style>
+<link rel="stylesheet" href="layout/styles/slider.css">
 </head>
 <body>
 	<br>
@@ -75,8 +79,22 @@
 			</ul>
 			<!-- 인디케이터 끝 -->
 		</div>
+<div class="wrapper-slider">
+    <div class="arrow-left"></div>
+    <div class="arrow-right"></div>
+        <div class="items">
+            <div class="item item1"><a href="ebook/eBookDetail.jsp"><img class="item item1" src="resourse/img/쟈.jpg"></a></div>
+            <div class="item item1"><a href="ebook/eBookDetail.jsp"><img class="item item1" src="resourse/img/쟈.jpg"></a></div>
+            <div class="item item1"><a href="ebook/eBookDetail.jsp"><img class="item item1" src="resourse/img/쟈.jpg"></a></div>
+            <div class="item item1"><a href="ebook/eBookDetail.jsp"><img class="item item1" src="resourse/img/쟈.jpg"></a></div>
+            <div class="item item1"><a href="ebook/eBookDetail.jsp"><img class="item item1" src="resourse/img/쟈.jpg"></a></div>
+            <div class="item item1"><a href="ebook/eBookDetail.jsp"><img class="item item1" src="resourse/img/쟈.jpg"></a></div>
+           
+        </div>
+</div>
 
-		<table border="1">
+
+		<%-- <table border="1">
 			<thead>
 				<tr>
 					<th>book_no</th>
@@ -102,6 +120,7 @@
 					</tr>
 				</c:forEach>
 			</tbody>
-		</table>
+		</table> --%>
+	<script src = "layout/styles/slider.js"></script>
 </body>
 </html>
