@@ -31,8 +31,9 @@
 				<td><a href="bookSelect.ad?book_no=${books.book_no}">${books.book_no}</a></td>
 				<td>${books.title}</td>
 				<td>${books.writer}</td>
-				<td><fmt:parseDate value="${books.publication_date}" pattern="yyyy-MM-dd" var="parseRdate"></fmt:parseDate>
-					<fmt:formatDate value="${parseRdate}" pattern="yyyy-MM-dd"/></td>
+				<td>${books.publication_date }</td>
+				<%-- <td><fmt:parseDate value="${books.publication_date}" pattern="yyyy-MM-dd" var="parseRdate"></fmt:parseDate>
+					<fmt:formatDate value="${parseRdate}" pattern="yyyy-MM-dd"/></td> --%>
 				<td>${books.company_code}</td>
 				<td>${books.best_book}</td>
 				<td>${books.genre}</td>
