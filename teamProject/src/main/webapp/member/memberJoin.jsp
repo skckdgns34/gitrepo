@@ -177,7 +177,7 @@
 </script>
 </head>
 <body>
-<form method="post" name="frm" id="frm" action="${pageContext.request.contextPath}/member/Hello.jsp" >
+<form method="post" name="frm" id="frm" action="${pageContext.request.contextPath}/memberJoinServ.do" >
 
 	<article class="container">
 		<div class="page-header">
