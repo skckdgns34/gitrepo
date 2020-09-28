@@ -3,8 +3,8 @@
 		    arrows = document.querySelectorAll('.wrapper-slider .arrow-left, .wrapper-slider .arrow-right'),
 		    isDown = false,
 		    startX,
-		    scrollLeft;
-
+		    scrollLeft,
+			target;
 		for(var i=0; i<slider.length; i++){
 			slider[i].scrollLeft = 1970;
 			console.log(slider[i]);
@@ -37,21 +37,13 @@
 			    this.scrollLeft = scrollLeft - walk;
 			};
 			
-			function controlsSlider(num) {
-			    'use strict';
-			    var smooth = setInterval(function () {
-			    	this.scrollLeft += num;
-			    }, 10);
-			    setTimeout(function () {
-			        clearInterval(smooth);
-			    }, 210);
-			}
-			arrows[0].onclick = function () {
+			
+			arrows[i*2].onclick = function () {
 			    'use strict';
 			    controlsSlider(-10);
 			};
 
-			arrows[1].onclick = function () {
+			arrows[i*2+1].onclick = function () {
 			    'use strict';
 			    controlsSlider(10);
 			};
@@ -66,5 +58,15 @@
 			        controlsSlider(-10);
 			    }
 			};
+		}
+		function controlsSlider(num) {
+		    'use strict';
+		   target = $(window.event.target).parent().find(".items")
+		    var smooth = setInterval(function () {
+		    	target[0].scrollLeft += num;
+		    }, 10);
+		    setTimeout(function () {
+		        clearInterval(smooth);
+		    }, 210);
 		}
 		

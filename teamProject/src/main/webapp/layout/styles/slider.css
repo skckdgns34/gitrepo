@@ -25,13 +25,13 @@
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
     cursor: pointer;
     left: -25px;
-    background: url(localhost/app/images/a.jpg) no-repeat center center;
+    background: url(https://s11.posting.org/eqnz7iwkz/arrow_left.png) no-repeat center center;
     background-color: #FFF;
 }
 .wrapper-slider .arrow-right {
     right: -25px;
     left: auto;
-    background-image: url(localhost/app/images/a.jpg);
+    background-image: url(https://s11.posting.org/sydnw699v/arrow_right.png);
 }
 .wrapper-slider .arrow-left:hover,
 .wrapper-slider .arrow-right:hover {

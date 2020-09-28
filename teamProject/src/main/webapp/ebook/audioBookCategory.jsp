@@ -85,22 +85,23 @@
 	</form>
 		
         <!-- 테스트 -->
-<c:forEach begin="1" end="9" var="i">
+<c:forEach begin="1" end="${genreList.size() }" var="i">
 	${i }
-	<%-- <div>${genreList.get(i-1).code_value}</div> --%>
+	<div>${genreList.get(i-1).code_value}</div>
 	<div class="wrapper-slider">
  		<div class="arrow-left"></div>
    		<div class="arrow-right"></div>
     	<div class="items">
-	<c:forEach begin="1" end="9" var="j">
-		${j }<div class="item item1"><img class="item item1" src="${pageContext.request.contextPath}/resourse/img/쟈.jpg"></div>
-<%-- <c:if test="${not empty books[i-1][j-1].book_img}">
-	<img onclick="imgClick(${books[i-1][j-1].book_no})" 
-		 src="filenameDownload.do?filename=${books[i-1][j-1].book_img }" 
-		 style="width:50px"/>
-</c:if> --%>
-	</c:forEach>
-	 </div>
+			<c:forEach begin="1" end="${books.get(i-1).size() }" var="j">
+				<div class="item item1">
+					<c:if test="${not empty books[i-1][j-1].book_img}">
+						<img onclick="imgClick(${books[i-1][j-1].book_no})" 
+		 					src="filenameDownload.do?filename=${books[i-1][j-1].book_img }" 
+		 					style="width:50px"/>
+					</c:if>
+				</div>
+			</c:forEach>
+		</div>
 	</div>
 </c:forEach>
 
