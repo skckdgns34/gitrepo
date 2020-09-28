@@ -48,10 +48,8 @@ public class MemberManageDAO {
 				member.setMember_tel(rs.getString("MEMBER_TEL"));
 				member.setMember_email(rs.getString("MEMBER_EMAIL"));
 				member.setSignup_date(rs.getString("SIGNUP_DATE"));
-				member.setTicket_date(rs.getString("TICKET_DATE"));
 				member.setLast_access_date(rs.getString("LAST_ACCESS_DATE"));
 				member.setGender(rs.getString("GENDER"));
-				member.setTicket_code(rs.getString("TICKET_CODE"));
 				list.add(member);
 				
 		
@@ -71,7 +69,7 @@ public class MemberManageDAO {
 		try {
 			conn = ConnectionManager.getConnnect();
 			String sql = " SELECT MEMBER_NO, MEMBER_ID, MEMBER_PW, NICKNAME, MEMBER_TEL,"
-					+ "  MEMBER_EMAIL, SIGNUP_DATE, TICKET_DATE, LAST_ACCESS_DATE, GENDER, TICKET_CODE"
+					+ "  MEMBER_EMAIL, SIGNUP_DATE, LAST_ACCESS_DATE, GENDER "
 					+ " FROM MEMBER"
 					+ " WHERE MEMBER_NO=?";
 			pstmt = conn.prepareStatement(sql);
@@ -86,10 +84,8 @@ public class MemberManageDAO {
 				resultVO.setMember_tel(rs.getString("MEMBER_TEL"));
 				resultVO.setMember_email(rs.getString("MEMBER_EMAIL"));
 				resultVO.setSignup_date(rs.getString("SIGNUP_DATE"));
-				resultVO.setTicket_date(rs.getString("TICKET_DATE"));
 				resultVO.setLast_access_date(rs.getString("LAST_ACCESS_DATE"));
 				resultVO.setGender(rs.getString("GENDER"));
-				resultVO.setTicket_code(rs.getString("TICKET_CODE"));
 			} else {
 				System.out.println("no data");
 			}
