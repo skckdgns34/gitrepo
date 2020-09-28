@@ -17,84 +17,108 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script>
 	function imgClick(book_no) {
-		if(book_no != null){
-			if(confirm("해당 책 상세페이지로 이동하시겠습니까?")){			
-				location.href="${pageContext.request.contextPath}/eBookDetail.do?book_no="+book_no;
+		if (book_no != null) {
+			if (confirm("해당 책 상세페이지로 이동하시겠습니까?")) {
+				location.href = "${pageContext.request.contextPath}/eBookDetail.do?book_no="
+						+ book_no;
 			}
 		}
 	}
 </script>
 <style>
-
 </style>
 <link rel="stylesheet" href="layout/styles/slider.css">
 </head>
 <body>
 	<br>
+	<section>
+		<div id="slider-animation" class="carousel slide" data-ride="carousel">
 
-
-	<!-- Tab panes -->
-
-	<div class="container">
-		<h2>슬라이드</h2>
-	</div>
-	<div id="demo" class="carousel slide" data-ride="carousel">
-		<div class="carousel-inner">
-			<!-- 슬라이드 쇼 -->
-			<div class="carousel-item active">
-				<!--가로-->
-				<img class="d-block w-100"
-					src="https://images.pexels.com/photos/213399/pexels-photo-213399.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
-					alt="First slide">
-				<div class="carousel-caption d-none d-md-block">
-					<h5>TEST</h5>
-					<p>testtesttest</p>
-				</div>
-			</div>
-			<div class="carousel-item">
-				<img class="d-block w-100"
-					src="https://images.pexels.com/photos/2355519/pexels-photo-2355519.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
-					alt="Second slide">
-			</div>
-			<div class="carousel-item">
-				<img class="d-block w-100"
-					src="https://images.pexels.com/photos/2544554/pexels-photo-2544554.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
-					alt="Third slide">
-			</div>
-			<!-- 왼쪽 오른쪽 화살표 버튼 -->
-			<a class="carousel-control-prev" href="#demo" data-slide="prev">
-				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-				<!-- <span>Previous</span> -->
-			</a> <a class="carousel-control-next" href="#demo" data-slide="next">
-				<span class="carousel-control-next-icon" aria-hidden="true"></span>
-				<!-- <span>Next</span> -->
-			</a>
-			<!-- / 화살표 버튼 끝 -->
-			<!-- 인디케이터 -->
+			<!-- Indicators -->
 			<ul class="carousel-indicators">
-				<li data-target="#demo" data-slide-to="0" class="active"></li>
-				<!--0번부터시작-->
-				<li data-target="#demo" data-slide-to="1"></li>
-				<li data-target="#demo" data-slide-to="2"></li>
+				<li data-target="#slider-animation" data-slide-to="0" class="active"></li>
+				<li data-target="#slider-animation" data-slide-to="1"></li>
+				<li data-target="#slider-animation" data-slide-to="2"></li>
 			</ul>
-			<!-- 인디케이터 끝 -->
+
+			<!-- The slideshow -->
+			<div class="carousel-inner">
+				<div class="carousel-item active">
+					<a href="★해당 배너클릭시 이동시킬 페이지 적기~"> <img src="${pageContext.request.contextPath}/images/a.jpg"
+						alt="슬라이드1">
+						<div class="text-box">
+							<h2 class="wow slideInRight" data-wow-duration="1s"></h2>
+							<p class="wow slideInLeft" data-wow-duration="2s"></p>
+						</div>
+				</div>
+
+				<div class="carousel-item">
+					<a href="★해당 배너클릭시 이동시킬 페이지 적기~"> <img src="${pageContext.request.contextPath}/images/b.jpg"
+						alt="슬라이드2">
+						<div class="text-box">
+							<h2 class="wow slideInUp" data-wow-duration="1s"></h2>
+							<p class="wow fadeInDown" data-wow-duration="2s"></p>
+						</div>
+					</a>
+				</div>
+
+				<div class="carousel-item">
+					<a href="★해당 배너클릭시 이동시킬 페이지 적기~"> <img src="${pageContext.request.contextPath}/images/c.jpg">
+						<div class="text-box">
+
+							<h2 class="wow fadeInUp" data-wow-duration="1s"></h2>
+							<p class="wow fadeInUp" data-wow-duration="2s"></p>
+						</div>
+					</a>
+				</div>
+
+			</div>
+
+			<!-- Left and right controls -->
+			<a class="carousel-control-prev" href="#slider-animation"
+				data-slide="prev"> <span class="carousel-control-prev-icon"></span>
+			</a> <a class="carousel-control-next" href="#slider-animation"
+				data-slide="next"> <span class="carousel-control-next-icon"></span>
+			</a>
+
 		</div>
-<div class="wrapper-slider">
-    <div class="arrow-left"></div>
-    <div class="arrow-right"></div>
-        <div class="items">
-            <div class="item item1"><a href="ebook/eBookDetail.jsp"><img class="item item1" src="resourse/img/쟈.jpg"></a></div>
-            <div class="item item1"><a href="ebook/eBookDetail.jsp"><img class="item item1" src="resourse/img/쟈.jpg"></a></div>
-            <div class="item item1"><a href="ebook/eBookDetail.jsp"><img class="item item1" src="resourse/img/쟈.jpg"></a></div>
-            <div class="item item1"><a href="ebook/eBookDetail.jsp"><img class="item item1" src="resourse/img/쟈.jpg"></a></div>
-            <div class="item item1"><a href="ebook/eBookDetail.jsp"><img class="item item1" src="resourse/img/쟈.jpg"></a></div>
-            <div class="item item1"><a href="ebook/eBookDetail.jsp"><img class="item item1" src="resourse/img/쟈.jpg"></a></div>
-           
-        </div>
-</div>
+	</section>
 
 
-		<%-- <table border="1">
+	<div class="wrapper-slider">
+		<div class="arrow-left"></div>
+		<div class="arrow-right"></div>
+		<div class="items">
+			<div class="item item1">
+				<a href="${pageContext.request.contextPath}/ebook/eBookDetail.jsp"><img class="item item1"
+					src="${pageContext.request.contextPath}/resourse/img/쟈.jpg"></a>
+			</div>
+			<div class="item item1">
+				<a href="${pageContext.request.contextPath}/ebook/eBookDetail.jsp"><img class="item item1"
+					src="${pageContext.request.contextPath}/resourse/img/쟈.jpg"></a>
+			</div>
+			<div class="item item1">
+				<a href="${pageContext.request.contextPath}/ebook/eBookDetail.jsp"><img class="item item1"
+					src="${pageContext.request.contextPath}/resourse/img/쟈.jpg"></a>
+			</div>
+			<div class="item item1">
+				<a href="${pageContext.request.contextPath}/ebook/eBookDetail.jsp"><img class="item item1"
+					src="${pageContext.request.contextPath}/resourse/img/쟈.jpg"></a>
+			</div>
+			<div class="item item1">
+				<a href="${pageContext.request.contextPath}/ebook/eBookDetail.jsp"><img class="item item1"
+					src="${pageContext.request.contextPath}/resourse/img/쟈.jpg"></a>
+			</div>
+			<div class="item item1">
+				<a href="${pageContext.request.contextPath}/ebook/eBookDetail.jsp"><img class="item item1"
+					src="${pageContext.request.contextPath}/resourse/img/쟈.jpg"></a>
+			</div>
+
+		</div>
+	</div>
+
+
+	<%-- <table border="1">
 			<thead>
 				<tr>
 					<th>book_no</th>
@@ -121,6 +145,6 @@
 				</c:forEach>
 			</tbody>
 		</table> --%>
-	<script src = "layout/styles/slider.js"></script>
+	<script src="layout/styles/slider.js"></script>
 </body>
 </html>
