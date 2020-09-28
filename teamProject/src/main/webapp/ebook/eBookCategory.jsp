@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/layout/styles/slider.css">
 
 
 <script>
@@ -82,7 +83,31 @@
 		<button>검색</button>
 	</form>
 	
-	<c:forEach begin="1" end="${genreList.size() }" var="i">
+    <!-- 테스트 -->
+<c:forEach begin="1" end="${genreList.size() }" var="i">
+	${i }
+	<div>${genreList.get(i-1).code_value}</div>
+	<div class="wrapper-slider">
+ 		<div class="arrow-left"></div>
+   		<div class="arrow-right"></div>
+    	<div class="items">
+			<c:forEach begin="1" end="${books.get(i-1).size() }" var="j">
+				<div class="item item1">
+					<c:if test="${not empty books[i-1][j-1].book_img}">
+						<img onclick="imgClick(${books[i-1][j-1].book_no})" 
+		 					src="filenameDownload.do?filename=${books[i-1][j-1].book_img }" 
+		 					style="width:50px"/>
+					</c:if>
+				</div>
+			</c:forEach>
+		</div>
+	</div>
+</c:forEach>
+	
+	
+	
+	<!-- 원본 -->
+<%-- 	<c:forEach begin="1" end="${genreList.size() }" var="i">
 		<div>${genreList.get(i-1).code_value}</div>
 		<table border="1">
 			<thead>
@@ -121,7 +146,8 @@
 		</table>
 		<br>
 		<hr>
-	</c:forEach>
+	</c:forEach> --%>
+<script src = "${pageContext.request.contextPath}/layout/styles/slider.js"></script>
 
 </body>
 </html>
