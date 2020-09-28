@@ -7,7 +7,11 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.beanutils.BeanUtils;
+
+import bookManage.BookManageDAO;
 import common.Controller;
+import vo.Books;
 import vo.Company;
 
 public class CompanyPopServ implements Controller
@@ -15,10 +19,14 @@ public class CompanyPopServ implements Controller
 	public void execute(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException
 	{
-		List<Company> list = CompanyDAO.getInstance().selectAll();
-		//결과저장
-		request.setAttribute("list", list);
-		//페이지이동
-		request.getRequestDispatcher("/company/companyMain.jsp").forward(request, response);
+		Company company = new Company();
+		try {
+			BeanUtils.copyProperties(company, request.getParameterMap());
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		 company = CompanyDAO.getInstance().update(company);
+		 request.getRequestDispatcher("companyMain.ad").forward(request, response);
 	}
 }

@@ -87,7 +87,7 @@ public class CompanyDAO {
 	      Company companyvo = null;
 	      try {
 	         conn = ConnectionManager.getConnnect();
-	         String sql = "SELECT *"
+	         String sql = "SELECT * from company"
 	                  + " WHERE COMPANY_CODE = ?";
 	         pstmt = conn.prepareStatement(sql);
 	         pstmt.setString(1, company.getCompany_code());

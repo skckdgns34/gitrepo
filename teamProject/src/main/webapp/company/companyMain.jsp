@@ -25,7 +25,7 @@
 		<tbody>
 		<c:forEach items="${list}" var="company">
 			<tr>
-				<td><a href="companyMain.ad?company_code=${company.company_code}">${company.company_code}</a></td>
+				<td><a href="companySelect.ad?company_code=${company.company_code}">${company.company_code}</a></td>
 				<td>${company.company_name}</td>
 				<td>${company.company_addr}</td>
 				<td>${company.company_mgr}</td>
