@@ -109,11 +109,11 @@
 
       <!--하위 카테고리3-1 -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities1" aria-expanded="true" aria-controls="collapseUtilities">
         <i class="fas fa-fw fa-folder"></i>
           <span>회원관리</span>
         </a>
-        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+        <div id="collapseUtilities1" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header"></h6>
             <a class="collapse-item" href="<%=request.getContextPath()%>/memberManageMain.ad">회원조회</a>
@@ -134,11 +134,11 @@
 
       <!--하위 카테고리3-1 -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities2" aria-expanded="true" aria-controls="collapseUtilities">
          <i class="fas fa-user-cog"></i>
           <span>직원관리</span>
         </a>
-        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+        <div id="collapseUtilities2" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header"></h6>
             <a class="collapse-item" href="<%=request.getContextPath()%>/empManageList.ad">직원조회</a>
@@ -159,11 +159,11 @@
 
       <!--하위 카테고리3-1 -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="collapseUtilitiess" aria-expanded="true" aria-controls="collapsePages">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo2" aria-expanded="true" aria-controls="collapseTwo">
           <i class="far fa-building"></i>
           <span>출판사관리</span>
         </a>
-        <div id="collapsePages" class="collapse" aria-labelledby="headingUtilitiess" data-parent="#accordionSidebar">
+        <div id="collapseTwo2" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header"></h6>
             <a class="collapse-item" href="<%=request.getContextPath()%>/companyMain.ad">출판사 목록</a>

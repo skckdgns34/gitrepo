@@ -22,15 +22,15 @@ function sample4_execDaumPostcode() {
 
             // 법정동명이 있을 경우 추가한다. (법정리는 제외)
             // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
-            if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+            if (data.bname !== '' && /[동|로|가]$/g.test(data.bname)) {
                 extraRoadAddr += data.bname;
             }
             // 건물명이 있고, 공동주택일 경우 추가한다.
-            if(data.buildingName !== '' && data.apartment === 'Y'){
-               extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+            if (data.buildingName !== '' && data.apartment === 'Y') {
+                extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
             }
             // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-            if(extraRoadAddr !== ''){
+            if (extraRoadAddr !== '') {
                 extraRoadAddr = ' (' + extraRoadAddr + ')';
             }
 
@@ -38,9 +38,9 @@ function sample4_execDaumPostcode() {
             document.getElementById('sample4_postcode').value = data.zonecode;
             document.getElementById("sample4_roadAddress").value = roadAddr;
             document.getElementById("sample4_jibunAddress").value = data.jibunAddress;
-            
+
             // 참고항목 문자열이 있을 경우 해당 필드에 넣는다.
-            if(roadAddr !== ''){
+            if (roadAddr !== '') {
                 document.getElementById("sample4_extraAddress").value = extraRoadAddr;
             } else {
                 document.getElementById("sample4_extraAddress").value = '';
@@ -48,12 +48,12 @@ function sample4_execDaumPostcode() {
 
             var guideTextBox = document.getElementById("guide");
             // 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
-            if(data.autoRoadAddress) {
+            if (data.autoRoadAddress) {
                 var expRoadAddr = data.autoRoadAddress + extraRoadAddr;
                 guideTextBox.innerHTML = '(예상 도로명 주소 : ' + expRoadAddr + ')';
                 guideTextBox.style.display = 'block';
 
-            } else if(data.autoJibunAddress) {
+            } else if (data.autoJibunAddress) {
                 var expJibunAddr = data.autoJibunAddress;
                 guideTextBox.innerHTML = '(예상 지번 주소 : ' + expJibunAddr + ')';
                 guideTextBox.style.display = 'block';
@@ -112,10 +112,13 @@ function sample4_execDaumPostcode() {
               </div>
               <div class="form-label-group">
               <label for="inputEmpAddr">사원 주소</label><br>
-              <input type="text" id="sample4_postcode" placeholder="우편번호" name="address1">
-				<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
-				<input type="text" id="sample4_roadAddress" placeholder="도로명주소" name="address2">
-				<input type="text" id="sample4_jibunAddress" placeholder="지번주소" name="address3">
+              <input type="text" id="sample4_postcode" placeholder="우편번호">
+    <input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
+    <input type="text" id="sample4_roadAddress" placeholder="도로명주소">
+    <input type="text" id="sample4_jibunAddress" placeholder="지번주소">
+    <span id="guide" style="color:#999;display:none"></span>
+    <input type="text" id="sample4_detailAddress" placeholder="상세주소">
+    <input type="text" id="sample4_extraAddress" placeholder="참고항목">
               </div>
               <div class="form-label-group">
                <label for="inputRankCode">RANK_CODE</label><br>
