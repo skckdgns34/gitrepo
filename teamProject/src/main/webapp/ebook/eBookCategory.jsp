@@ -95,8 +95,8 @@
 				<div class="item item1">
 					<c:if test="${not empty books[i-1][j-1].book_img}">
 						<img onclick="imgClick(${books[i-1][j-1].book_no})" 
-		 					src="filenameDownload.do?filename=${books[i-1][j-1].book_img }" 
-		 					style="width:50px"/>
+		 					src="filenameDownload.do?filename=${books[i-1][j-1].book_img }"/>
+		 				
 					</c:if>
 				</div>
 			</c:forEach>

@@ -25,7 +25,7 @@ public class CompanyPopServ implements Controller
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-		
+			System.out.println(company.getCompany_code());
 		 company = CompanyDAO.getInstance().update(company);
 		 request.getRequestDispatcher("companyMain.ad").forward(request, response);
 	}
