@@ -35,9 +35,9 @@ public class MemberFindEmailServ implements Controller
 		Member m = MemberDAO.getinstance().selectOne(null);
 		
 		if(m == null || !m.getMember_email().equals("member_email")) {
-			request.setAttribute("msg","아이디나 이메일 저보가 맞지 않습니다.");
-			request.setAttribute("loc", "member/memberFind.jsp");
-			request.getRequestDispatcher("member/memberFind.jsp").forward(request, response);
+			request.setAttribute("errormsg","이메일 정보가가 맞지 않습니다.");
+			request.setAttribute("loc", "member/memberPassword.jsp");
+			request.getRequestDispatcher("member/memberFindPassword.jsp").forward(request, response);
 			return;
 		}
 		
@@ -45,7 +45,7 @@ public class MemberFindEmailServ implements Controller
 		
 		final String host = "smtp.name.com";
 		final String user = "glsk2545@naver.com";	//자신 네이버 아이디
-		final String password = "나중에넣을게요";	//자신 네이버 비밀번호
+		final String password = "kss01179--";	//자신 네이버 비밀번호
 			
 		//메일 받을 주소
 		String to_email = m.getMember_email();
@@ -107,7 +107,7 @@ public class MemberFindEmailServ implements Controller
         saveKey.setAttribute("AuthenticationKey", AuthenticationKey);
         
         request.setAttribute("id", member_id);
-        request.getRequestDispatcher("member/memberFind.jsp").forward(request, response);
+        request.getRequestDispatcher("member/memberFindPassword.jsp").forward(request, response);
 	}
 
 }
