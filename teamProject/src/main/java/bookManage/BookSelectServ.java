@@ -13,7 +13,6 @@ public class BookSelectServ implements Controller {
 
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String id = request.getParameter("book_no");
-		String path = request.getParameter("epub_path");
 		
 		Books books = new Books();
 		books.setBook_no(id);

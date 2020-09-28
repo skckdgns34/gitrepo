@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" isELIgnored="false"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,7 +25,7 @@
 		<tbody>
 		<c:forEach items="${list}" var="company">
 			<tr>
-				<td><a href="companySelect.ad?company_code=${company.company_code}">${company.company_code}</a></td>
+				<td><a href="companyMain.ad?company_code=${company.company_code}">${company.company_code}</a></td>
 				<td>${company.company_name}</td>
 				<td>${company.company_addr}</td>
 				<td>${company.company_mgr}</td>

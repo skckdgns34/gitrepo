@@ -154,20 +154,20 @@
 
       <!-- Heading -->
       <div class="sidebar-heading">
-        거래처관리 
+        출판사관리 
       </div>
 
       <!--하위 카테고리3-1 -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="collapseUtilitiess" aria-expanded="true" aria-controls="collapsePages">
           <i class="far fa-building"></i>
-          <span>거래처관리</span>
+          <span>출판사관리</span>
         </a>
         <div id="collapsePages" class="collapse" aria-labelledby="headingUtilitiess" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header"></h6>
-            <a class="collapse-item" href="★거래처관리 url 넣어주세요!">거래처관리</a>
-            <a class="collapse-item" href="★거래관리 url 넣어주세요!">거래관리</a>
+            <a class="collapse-item" href="<%=request.getContextPath()%>/companyMain.ad">출판사 목록</a>
+            <a class="collapse-item" href="<%=request.getContextPath()%>/companyManage.ad">출판사 등록</a>
             
           </div>
         </div>
