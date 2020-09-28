@@ -31,18 +31,19 @@ public class EmpDAO {
 	// 사원 한 건 조회
 	public Employees selectOne(Employees Employees) { // 어떤 컬럼으로 검색할지에 대한 조건
 		Employees resultVO = null;
+		ResultSet rs = null;
+
 		try {
 			conn = ConnectionManager.getConnnect();
-			String sql = "select * from employees where emp_id = ?";
+			String sql = "select * from employees where emp_no = ?";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, Employees.getEmp_id());
+			pstmt.setString(1, Employees.getEmp_no());
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
 				resultVO = new Employees();
 
 				Employees = new Employees();
-				resultVO.setEmp_no(rs.getString("emp_no"));
 				resultVO.setEmp_id(rs.getString("emp_id"));
 				resultVO.setEmp_pw(rs.getString("emp_pw"));
 				resultVO.setEmp_name(rs.getString("emp_name"));
@@ -191,19 +192,18 @@ public class EmpDAO {
 	}
 
 	// 로그인 체크 <- 검색 해보고 다시 해보기...
-	public Employees loginCk(Employees Employees) {
+	public Employees loginCk(Employees employees) {
 		Employees resultVO = null;
 		try {
 			conn = ConnectionManager.getConnnect();
 			String sql = "select * from employees where emp_id = ?";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, Employees.getEmp_id());
+			pstmt.setString(1, employees.getEmp_id());
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
 				resultVO = new Employees();
 
-				Employees = new Employees();
 				resultVO.setEmp_id(rs.getString("emp_id"));
 				resultVO.setEmp_pw(rs.getString("emp_pw"));
 				resultVO.setEmp_name(rs.getString("emp_name"));
@@ -224,4 +224,6 @@ public class EmpDAO {
 
 		return resultVO;
 	}
+	
+	
 }
