@@ -4,7 +4,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원 목록</title>
+<title>회원 정보 수정</title>
+
 </head>
 <body style="padding-top: 70px;">
 
@@ -66,7 +67,7 @@
 
               <hr>
 
-              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">사원 추가</button>
+              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">회원 수정</button>
              
               <hr class="my-4">
               
