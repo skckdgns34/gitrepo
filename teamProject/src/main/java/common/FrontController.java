@@ -72,9 +72,11 @@ public class FrontController extends HttpServlet {
 				list.put("/logout.ad", new LogoutController());
 				list.put("/memberManageMain.ad", new memberManage.MemberManageMainServ());
 				list.put("/memberManageModify.ad", new memberManage.MemberManageModifyServ());
-				list.put("/memberManageModifyForm.ad", new memberManage.MemberManageModifyFormServ());				
+				list.put("/memberManageModifyForm.ad", new memberManage.MemberManageModifyFormServ());	
+				
 				list.put("/memberManageBlackList.ad", new memberManage.MemberManageBlackListServ());
 				list.put("/memberManageBlackListPop.ad", new memberManage.MemberManageBlackListPopServ());
+				
 				list.put("/memberManageQuestion.ad", new memberManage.MemberManageQuestionServ());
 				list.put("/memberManageQuestionPop.ad", new memberManage.MemberManageQuestionPopServ());
 

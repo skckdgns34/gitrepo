@@ -108,6 +108,7 @@
 					cellspacing="0">
 
 					<thead>
+					<tr>
 						<th>선택</th>
 						<th>MEMBER_NO</th>
 						<th>MEMBER_ID</th>
@@ -120,6 +121,7 @@
 						<th>LAST_ACCESS_DATE</th>
 						<th>GENDER</th>
 						<th>TICKET_CODE</th>
+						</tr>
 					</thead>
 
 					<tbody>

@@ -44,6 +44,7 @@ public class EmpDAO {
 				resultVO = new Employees();
 
 				Employees = new Employees();
+				resultVO.setEmp_no(rs.getString("emp_no"));
 				resultVO.setEmp_id(rs.getString("emp_id"));
 				resultVO.setEmp_pw(rs.getString("emp_pw"));
 				resultVO.setEmp_name(rs.getString("emp_name"));
@@ -156,16 +157,17 @@ public class EmpDAO {
 	public void Update(Employees emp) {
 		try {
 			conn = ConnectionManager.getConnnect();
-			String sql = "update member set emp_id= ?, emp_pw = ?, emp_name = ?,emp_birth=?,entereddate=?, dept_code=?,"
-					+ " emp_address=?, rank_code=? where member_id = ?";
+			String sql = "update employees set  emp_pw = ?, emp_name = ?,emp_birth=?,entereddate=?, dept_code=?,"
+					+ " emp_address=?, rank_code=? where emp_id = ?";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, emp.getEmp_id());
-			pstmt.setString(2, emp.getEmp_pw());
-			pstmt.setString(3, emp.getEmp_name());
-			pstmt.setString(4, emp.getEmp_birth());
-			pstmt.setString(5, emp.getEntereddate());
+			pstmt.setString(1, emp.getEmp_pw());
+			pstmt.setString(2, emp.getEmp_name());
+			pstmt.setString(3, emp.getEmp_birth());
+			pstmt.setString(4, emp.getEntereddate());
+			pstmt.setString(5, emp.getDept_code());
 			pstmt.setString(6, emp.getEmp_address());
 			pstmt.setString(7, emp.getRank_code());	
+			pstmt.setString(8, emp.getEmp_id());
 			int r = pstmt.executeUpdate();
 			System.out.println(r + "건이 수정됨.");
 		} catch (Exception e) {

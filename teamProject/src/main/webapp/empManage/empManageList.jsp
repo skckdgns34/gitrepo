@@ -25,8 +25,8 @@ function check(ck) {
 
 function modifypage()
 {
-window.document.location.href='${pageContext.request.contextPath}/empManage/empManageModify.jsp?';
-return;
+	
+	window.document.location.href="${pageContext.request.contextPath}/empManageModifyForm.ad?no="+ $('input[name="user_CheckBox"]:checked').val();return;
 }
 function addpage()
 {
@@ -96,7 +96,7 @@ return;
 		<tbody>
 			<c:forEach items="${list}" var="employees">
 				<tr>
-				<td><input type="checkbox" name="user_CheckBox" onclick="check(this)"></td>
+				<td><input type="checkbox" name="user_CheckBox" onclick="check(this)" value="${employees.getEmp_no()}"></td>
 					<td>${employees.getEmp_no()}</td>
 					<td>${employees.getEmp_id()}</td>
 					<td>${employees.getEmp_name()}</td>
