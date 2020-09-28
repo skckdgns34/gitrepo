@@ -24,6 +24,9 @@
 	<decorator name="user" page="layout.jsp">
 		<pattern>/*.do</pattern>
 	</decorator>
+		<decorator name="user2" page="layout.jsp">
+		<pattern>/member/*.jsp</pattern>
+	</decorator>
 	<excludes>
 		<pattern>/Ajax/*</pattern>
 	</excludes>
