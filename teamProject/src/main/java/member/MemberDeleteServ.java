@@ -14,7 +14,7 @@ public class MemberDeleteServ implements Controller
 	public void execute(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException
 	{
-		request.getRequestDispatcher("member/Bye.jsp").forward(request, response);
+		request.getRequestDispatcher("member/memberDelete.jsp").forward(request, response);
 	}
 
 }

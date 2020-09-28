@@ -16,6 +16,6 @@
 	<%=nickname %>(<b><%=member_id %></b>)님!<br>
 	가입해주셔서 감사합니다.
 	<br><hr><br>
-	<a href="/app/member/memberLogin.jsp">로그인하러가기</a>
+	<a href="/app/memberLogin.do">로그인하러가기</a>
 </body>
 </html>

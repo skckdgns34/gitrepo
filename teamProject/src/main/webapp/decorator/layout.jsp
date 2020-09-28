@@ -42,23 +42,21 @@
 						href="${pageContext.request.contextPath}/eBookCategory.do">전자책</a></li>
 					<li><a class="drop"
 						href="${pageContext.request.contextPath}/audioBookCategory.do">오디오북</a></li>
-					<li><a href="#">내정보</a></li>
 					<li><a href="${pageContext.request.contextPath}/clientNotice.do">공지</a></li>
 					<c:if test="${sessionScope.member_id == null }">
 						<li><a
-							href="<%=application.getContextPath()%>/member/memberLogin.jsp">로그인</a>
+							href="<%=application.getContextPath()%>/memberLogin.do">로그인</a>
 					</c:if>
 					<c:if test="${sessionScope.member_id != null }">
 						<li><a href="${pageContext.request.contextPath }/memberLogout.do">로그아웃</a>
 					</c:if>
 					<c:if test="${sessionScope.member_id == null }">
 						<li><a
-							href="<%=application.getContextPath()%>/member/memberJoin.jsp">회원가입</a>
+							href="<%=application.getContextPath()%>/memberJoin.do">회원가입</a>
 					</c:if>
 					<c:if test="${sessionScope.member_id != null }">
 						<li><a
-							href="<%=application.getContextPath()%>/member/memberModify.jsp">내정보
-								수정</a>
+							href="<%=application.getContextPath()%>/memberModify.do">내정보</a>
 					</c:if>
 					<c:if test="${sessionScope.member_id != null }">
 						<li><a
