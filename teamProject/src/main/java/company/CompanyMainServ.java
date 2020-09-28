@@ -19,7 +19,7 @@ public class CompanyMainServ implements Controller
 		
 		 List<Company> list = CompanyDAO.getInstance().selectAll();
 		 request.setAttribute("list", list);
-		 request.getRequestDispatcher("/bookManage/bookList.jsp").forward(request,
+		 request.getRequestDispatcher("companyPop.ad").forward(request,
 		 response);
 		 
 	}
