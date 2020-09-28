@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import common.Controller;
+import vo.Member;
 
 public class MemberFindPasswordServ implements Controller {
 
@@ -20,7 +21,15 @@ public class MemberFindPasswordServ implements Controller {
 			request.setAttribute("loc", "member/memberPassword.jsp");
 			request.getRequestDispatcher("member/memberPassword.jsp").forward(request, response);
 			return;
+			
 		}
+		Member memberVO = new Member();
+		memberVO.setMember_pw(request.getParameter("member_pw"));
+		
+		MemberDAO dao = new MemberDAO();
+		dao.update(memberVO);
+		
+		request.getRequestDispatcher("member/memberLogin.jsp").forward(request, response);
 
 	}
 }
