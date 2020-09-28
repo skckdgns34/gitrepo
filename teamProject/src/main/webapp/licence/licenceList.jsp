@@ -10,32 +10,36 @@
 </head>
 <body>
 	<h3>이용권 목록</h3>
-	<form action="${pageContext.request.contextPath }/licencePayment.do">
-		<table border="1">
-			<thead>
+	<table border="1">
+		<thead>
+			<tr>
+				<th>code_value</th>
+				<th>금액</th>
+				<th>결제</th>
+			</tr>
+		</thead>
+		<tbody>
+			<c:forEach begin="1" end="${commonList.size() }" var="i">
 				<tr>
-					<th>common_name</th>
-					<th>code</th>
-					<th>code_value</th>
-					<th>결제</th>
+					<td>${commonList[i-1].code_value }</td>
+					<td>5000원</td><!-- db에 이용권 가격 넣으면 거기에 맞춰서 출력. -->
+					
+					<td align="center">
+						<c:if test="${member_ticket_list[i-1] !=null }">
+							<label>보유중(${member_ticket_list[i-1].ticket_date})</label>
+						</c:if>
+						<c:if test="${member_ticket_list[i-1] ==null }">
+							<button>
+								<a href="${pageContext.request.contextPath }/licence/licenceClick.jsp"
+									onclick="window.open(this.href, '_blank', 'width=750px,height=600px,toolbars=no,scrollbars=yes'); return false;">
+									결제
+								</a>
+							</button>
+						</c:if>
+					</td>
 				</tr>
-			</thead>
-			<tbody>
-				<c:forEach begin="1" end="${commonList.size() }" var="i">
-					<tr>
-						<td>${commonList[i].common_name }</td>
-						<td>${commonList[i].code }</td>
-						<td>${commonList[i].code_value }</td>
-						<td align="center">
-							<c:if test="${member_ticket_list[i] !=null }">
-								<label>보유중</label>
-							</c:if>
-						</td>
-					</tr>
-				</c:forEach>
-			</tbody>
-		</table>
-
-	</form>
+			</c:forEach>
+		</tbody>
+	</table>
 </body>
 </html>
