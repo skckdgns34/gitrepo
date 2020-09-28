@@ -60,12 +60,11 @@ $(function(){
 		location.href = "${pageContext.request.contextPath }/memberFindemail.do?member_email=" + $("#email").val()
 	})
 });
-
 $(function(){
 	$("#btnOk").on("click", function(){
-		
+	
 	})
-})
+});
 </script>
 </head>
 <body>
@@ -75,8 +74,8 @@ $(function(){
 <button type="button" id="btnsend">인증번호 보내기</button>
 ${ errormsg}
 <br>
-<input type="text" placeholder="인증번호 입력">
-<button id="btnOk">인증번호 확인</button>
+<input type="text" placeholder="인증번호 입력" name="OK" id="OK">
+<button>인증번호 확인</button>
 ${ msg}
 <br>
 <div class="form-group">
