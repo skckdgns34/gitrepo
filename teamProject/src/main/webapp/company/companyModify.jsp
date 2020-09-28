@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" isELIgnored="false"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,6 +14,9 @@
 				  enctype="multipart/form-data"
 				  action="${pageContext.request.contextPath }/companyPop.ad"
 				  >
+				  <div>
+					<label for="company_code">출판사코드</label> <input id="company_code" name="company_code" type="hidden" value="${result.company_code }">
+				</div>
 				<div>
 					<label for="company_name">출판사이름</label> <input id="company_name" name="company_name" type="text" value="${result.company_name }">
 				</div>
@@ -36,6 +40,12 @@
 					<button>등록</button>
 				</div>
 			</form>
+			<c:if test="${not empty result}">
+				<form action="${pageContext.request.contextPath}/companyDelete.ad">
+					<input type="hidden" name="company_code" value="${result.company_code}">
+					<button>삭제</button>
+				</form>
+			</c:if>
 		</div>
 </body>
 </html>
