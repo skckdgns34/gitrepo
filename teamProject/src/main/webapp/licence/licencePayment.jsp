@@ -15,9 +15,9 @@
 <h5>연 정기구독</h5>
 <form action="licenceClick.jsp">
 	<div><label>구독기간 |</label></div>
-		<c:forEach items="${loginMember}" var="ticketList">
-			<div><label> | </label> ${fn:substring(ticketList.ticket_date,0,10) }</div> 
-		</c:forEach>
+		<c:forEach begin="1" end="${loginMember.size()}" var="i">
+			<div><label>${value_list[i-1].code_value } | </label> ${fn:substring(loginMember[i-1].ticket_date,0,10) }</div> 
+		</c:forEach> 
 	
 	<button>
 		<a href="licenceClick.jsp"

@@ -42,4 +42,28 @@ public class CommonDAO {
 		}
 		return list;
 	}
+	
+	public Common selectCodeValue(String code) {
+		Common com= null;
+		
+		try {
+			conn = ConnectionManager.getConnnect();
+			String sql = "select code_value from common where code=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, code);
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				com = new Common();
+				com.setCode_value(rs.getString("code_value"));
+			}else {
+				System.out.println("없");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionManager.close(rs, pstmt, conn);
+		}
+		return com;
+	}
 }

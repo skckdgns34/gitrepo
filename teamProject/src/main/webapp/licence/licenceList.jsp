@@ -21,12 +21,16 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach items="${commonList }" var="list">
+				<c:forEach begin="1" end="${commonList.size() }" var="i">
 					<tr>
-						<td>${list.common_name }</td>
-						<td>${list.code }</td>
-						<td>${list.code_value }</td>
-						<td align="center"><button>결제하기</button></td>
+						<td>${commonList[i].common_name }</td>
+						<td>${commonList[i].code }</td>
+						<td>${commonList[i].code_value }</td>
+						<td align="center">
+							<c:if test="${member_ticket_list[i] !=null }">
+								<label>보유중</label>
+							</c:if>
+						</td>
 					</tr>
 				</c:forEach>
 			</tbody>
