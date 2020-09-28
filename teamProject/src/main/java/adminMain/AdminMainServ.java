@@ -14,8 +14,7 @@ public class AdminMainServ implements Controller
 	public void execute(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException
 	{
-		// TODO Auto-generated method stub
-
+		request.getRequestDispatcher("/adminMain/adminMain.jsp").forward(request, response);
 	}
 
 }

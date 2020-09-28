@@ -5,6 +5,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@page isELIgnored="false"%>
+<!-- 로그인이 안 되면 접근을 못ㅎ하게 만들어 놓음! -->
+<%@include file="/decorator/moveLoginForm.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>

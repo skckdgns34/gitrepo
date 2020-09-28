@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import adminMain.LoginController;
 import adminMain.LoginFormController;
+import adminMain.LogoutController;
 import empManage.EmployeesInsertConrtoller;
 import empManage.EmployeesInsertFormController;
 
@@ -68,6 +69,7 @@ public class FrontController extends HttpServlet {
 				list.put("/adminMain.ad", new adminMain.AdminMainServ()); // 메인
 				list.put("/login.ad", new LoginController());
 				list.put("/loginForm.ad", new LoginFormController());
+				list.put("/logout.ad", new LogoutController());
 				list.put("/memberManageMain.ad", new memberManage.MemberManageMainServ());
 				list.put("/memberManageModify.ad", new memberManage.MemberManageModifyServ());
 				list.put("/memberManageModifyForm.ad", new memberManage.MemberManageModifyFormServ());				

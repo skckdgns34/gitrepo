@@ -2,6 +2,9 @@
 	pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib uri="http://www.opensymphony.com/sitemesh/decorator"
 	prefix="decorator"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+	
+ 
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,7 +24,11 @@
 
   <!-- Custom styles for this template-->
   <link href="<%=request.getContextPath()%>/resourse/css/sb-admin-2.min.css" rel="stylesheet">
-<decorator:head />
+  <!-- Bootstrap core JavaScript-->
+  <script src="<%=request.getContextPath()%>/resourse/vendor/jquery/jquery.min.js"></script>
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+  <decorator:head />	
+
 </head>
 
 <body id="page-top">
@@ -42,13 +49,13 @@
       <!-- 구분선 -->
       <hr class="sidebar-divider my-0">
 
-       <!-- Dashboard 이건뭐죠?? -->
+       <!-- Dashboard 이건뭐죠??
       <li class="nav-item active">
         <a class="nav-link" href="adminIndex.jsp">
           <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>이건 오ㅑ있는건지 모르겠고</span></a>
       </li>
-
+ -->
       
       <!-- 구분선 -->
       <hr class="sidebar-divider">
@@ -334,32 +341,27 @@
             <div class="topbar-divider d-none d-sm-block"></div>
 
             <!-- Nav Item - User Information -->
-            <li class="nav-item dropdown no-arrow">
-              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
-                <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
-              </a>
-              <!-- Dropdown - User Information -->
-              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Profile
-                </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Settings
-                </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Activity Log
-                </a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Logout
-                </a>
-              </div>
-            </li>
+            <ul class="navbar-nav ml-auto">
+                      <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="">홈페이지 이동</a>
+                        </li>
+                       
+                   <c:if test="${empty emp_id}">
+                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="loginForm.ad">로그인</a>
+                           </li>
+                     
+                     </c:if>
+                
+                      
+                   <c:if test="${not empty emp_id}">
+                      <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="">${emp_id}님</a>
+                        </li>
+                      <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="logout.ad">로그아웃</a>
+                           </li>
+                           <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="">다른아이디로 로그인</a>
+                           </li>
+                          
+                      </c:if> 
+                           
 
           </ul>
 
@@ -417,8 +419,7 @@
     </div>
   </div>
 
-  <!-- Bootstrap core JavaScript-->
-  <script src="<%=request.getContextPath()%>/resourse/vendor/jquery/jquery.min.js"></script>
+ 
   <script src="<%=request.getContextPath()%>/resourse/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Core plugin JavaScript-->
