@@ -24,9 +24,9 @@ public class MemberFindServ implements Controller {
 			request.setAttribute("errormsg", "해당 이메일이 없습니다.");
 		} else {
 			memberVO.getMember_email().equals(resultVO.getMember_email());
-			page = "member/memberFindId.jsp";
+			page = "/app/memberFindId.do";
 			request.getSession().setAttribute("memberFind", resultVO);
-			request.getSession().setAttribute("member_pw", resultVO.getMember_email());
+			request.getSession().setAttribute("member_email", resultVO.getMember_email());
 			
 		}
 		

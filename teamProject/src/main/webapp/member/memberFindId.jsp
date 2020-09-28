@@ -20,8 +20,8 @@
 	</div>
 	<div class="row">
 		<div class="col-md-10inputbb">
-			<a href="/app/member/memberLogin.jsp">로그인하러가기</a>
-			<a href="/app/member/memberFindPassword.jsp">비밀번호 찾기</a>
+			<a href="/app/memberLogin.do">로그인하러가기</a>
+			<a href="/app/memberFindPassword.do">비밀번호 찾기</a>
 		</div>
 	</div>
 	</form>
