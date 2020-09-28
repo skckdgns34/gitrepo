@@ -1,5 +1,6 @@
 package ebook;
 
+import java.awt.print.Book;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -265,6 +266,63 @@ public class EBookDAO {
 		return list;
 	}
 	
+	//E-Book detail 페이지에서 사용자가 이용권이 있는지 없는지 체크
+	public String checkTicket(Object a) {
+		String list = "";
+		try {
+			conn = ConnectionManager.getConnnect();
+			String sql = "select ticket_code "
+					+ " from member m, ticket t "
+					+ " where m.member_no = t.member_no "
+					+ " and rownum=1"
+					+ " and m.member_no= " + a;
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				
+				list = rs.getString("ticket_code");
+				
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionManager.close(rs, pstmt, conn);
+		}
+		return list;
+	}
+	
+	//E-Book detail 페이지에서 해당책 상세내용 뿌려주기용
+	public ArrayList<Books> detailBook(String b) {
+		ArrayList<Books> books = new ArrayList<Books>();
+		try {
+			conn = ConnectionManager.getConnnect();
+			String sql= "select book_no, title, writer, publication_date,"
+					+ " company_code, introduction, summary, views, best_book,genre,registration_date"
+					+ " from books where book_no="+b;
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				Books result = new Books();
+				result.setBook_no(rs.getString(1));
+				result.setTitle(rs.getString(2));
+				result.setWriter(rs.getString(3));
+				result.setPublication_date(rs.getString(4));
+				result.setEpub_path(rs.getString(5));
+				result.setIntroduction(rs.getString(6));
+				result.setSummary(rs.getString(7));
+				result.setViews(rs.getString(8));
+				result.setBest_book(rs.getString(9));
+				result.setGenre(rs.getString(10));
+				result.setRegistration_date(rs.getString(11));
+				books.add(result);
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally {
+			ConnectionManager.close(rs, pstmt, conn);
+		}
+		return books;
+	}
 	
 	
 	
