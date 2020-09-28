@@ -22,7 +22,7 @@
 	<div class="row">
 		<div class="col-md-10inputbb">
 			<a href="/app/memberLogin.do">로그인하러가기</a>
-			<a href="/app/memberFindemail.do">비밀번호 찾기</a>
+			<a href="member/memberFindPassword.jsp">비밀번호 찾기</a>
 		</div>
 	</div>
 	</form>

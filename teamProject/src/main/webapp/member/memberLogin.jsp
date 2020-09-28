@@ -8,7 +8,7 @@
 </head>
 <body>
 <h3>로그인</h3>
-<%=request.getAttribute("errormsg") %>
+${ errormsg}
 	<form action="${pageContext.request.contextPath }/memberLogin.do" method="post">
 		<div>
 			<label for="member_id">ID:</label>

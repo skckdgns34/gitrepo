@@ -52,7 +52,7 @@
 					</c:if>
 					<c:if test="${sessionScope.member_id == null }">
 						<li><a
-							href="<%=application.getContextPath()%>/memberJoin.do">회원가입</a>
+							href="<%=application.getContextPath()%>/member/memberJoin.jsp">회원가입</a>
 					</c:if>
 					<c:if test="${sessionScope.member_id != null }">
 						<li><a
