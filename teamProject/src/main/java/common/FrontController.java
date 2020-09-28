@@ -82,8 +82,9 @@ public class FrontController extends HttpServlet {
 				list.put("/empManageList.ad", new empManage.EmpManageListServ()); // 사원 목록
 				list.put("/employeesInsert.ad", new EmployeesInsertConrtoller());
 				list.put("/employeesInsertForm.ad", new EmployeesInsertFormController());
-				list.put("/empManageModify.ad", new empManage.EmpManageModifyServ()); // 사원
-				// 수정
+				list.put("/empManageModify.ad", new empManage.EmpManageModifyServ()); // 사원 수정
+				list.put("/empManageModifyForm.ad", new empManage.EmpManageModifyFormServ()); // 사원 수정
+				
 		
 		//김한범&&내가 범인이다.
 		list.put("/clientQuestion.ad", new client.ClientQuestionServ());
@@ -92,18 +93,23 @@ public class FrontController extends HttpServlet {
 		list.put("/clientHopeBookWrite.ad", new client.ClientHopeBookWriteServ());
 		list.put("/moneyOutList.ad", new moneyManage.MoneyOutListServ());
 		list.put("/moneyInList.ad", new moneyManage.MoneyInListServ());
+		
 		list.put("/bookRegister.ad", new bookManage.BookRegisterServ()); //ebook 등록
 		list.put("/bookRegisterAudio.ad", new bookManage.BookRegisterAudioServ()); //오디오북 등록
 		list.put("/bookModify.ad", new bookManage.BookModifyServ()); //ebook 수정
 		//list.put("/bookModifyAudio.ad", new bookManage.BookModifyAudioServ()); //오디오북 수정
-		list.put("/bookDelete.ad", new bookManage.BookDeleteServ());
-		list.put("/bookList.ad", new bookManage.BookListServ());
-		list.put("/bookSelect.ad", new bookManage.BookSelectServ());
+		list.put("/bookDelete.ad", new bookManage.BookDeleteServ()); //도서 삭제
+		list.put("/bookList.ad", new bookManage.BookListServ());	 //도서 목록
+		list.put("/bookSelect.ad", new bookManage.BookSelectServ()); //도서 선택
 		list.put("/bookManage.ad", new bookManage.BookManageServ());//ebook 등록버튼
 		list.put("/bookManageAudio.ad", new bookManage.BookManageAudioServ());//오디오북 등록버튼
-		list.put("/companyMain.ad", new company.CompanyMainServ());
-		list.put("/companyPop.ad", new company.CompanyPopServ());
 		
+		list.put("/companyMain.ad", new company.CompanyMainServ()); //출판사 목록
+		list.put("/companyPop.ad", new company.CompanyPopServ()); //출판사 수정
+		list.put("/companyRegister.ad", new company.CompanyRegisterServ()); //출판사 등록
+		list.put("/companySelect.ad", new company.CompanySelectServ()); //출판사 선택
+		list.put("/companyDelete.ad", new company.CompanyDeleteServ()); //출판사 삭제
+		list.put("/companyManage.ad", new company.CompanyManageServ());//출판사 등록버튼
 		
 		//손용원&&최창훈
 		list.put("/main.do", new main.MainServ());

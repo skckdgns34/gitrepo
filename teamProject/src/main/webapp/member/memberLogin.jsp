@@ -21,5 +21,7 @@
 		<button>로그인</button>
 		<input type="reset" value="초기화">
 	</form>
+	<br><hr><br>
+	<a href="/app/memberFind.do">아이디/비밀번호찾기</a>
 </body>
 </html>

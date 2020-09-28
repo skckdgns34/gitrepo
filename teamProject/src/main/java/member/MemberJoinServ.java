@@ -29,7 +29,7 @@ System.out.println("등록실행");
 		dao.insert(memberVO);
 
 		
-		request.getRequestDispatcher("member/Hello.jsp").forward(request, response);
+		request.getRequestDispatcher("member/memberJoin.jsp").forward(request, response);
 
 
 	}
