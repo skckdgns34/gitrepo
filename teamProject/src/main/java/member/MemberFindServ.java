@@ -20,13 +20,13 @@ public class MemberFindServ implements Controller {
 
 		String page = "";
 		if(resultVO == null) {
-			page = "member/memberFind.jsp";
+			page = "/member/memberFind.jsp";
 			request.setAttribute("errormsg", "해당 이메일이 없습니다.");
 		} else {
 			memberVO.getMember_email().equals(resultVO.getMember_email());
-			page = "member/memberFindId.jsp";
-			request.getSession().setAttribute("memberFind", resultVO);
-			request.getSession().setAttribute("member_pw", resultVO.getMember_email());
+			page = "/member/memberFindId.jsp";
+			request.setAttribute("memberFind", resultVO);
+			request.setAttribute("member_email", resultVO.getMember_email());
 			
 		}
 		

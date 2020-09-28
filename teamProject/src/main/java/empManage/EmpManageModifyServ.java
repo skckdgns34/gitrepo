@@ -15,7 +15,6 @@ public class EmpManageModifyServ implements Controller
 	public void execute(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException
 	{
-		//String id = request.getParameter("id");
 	String emp_no = request.getParameter("emp_no");
 	String emp_id = request.getParameter("emp_id");
 	String emp_pw =request.getParameter("emp_pw");
@@ -23,9 +22,16 @@ public class EmpManageModifyServ implements Controller
 	String emp_birth = request.getParameter("emp_birth");
 	String entereddate = request.getParameter("entereddate");
 	String dept_code = request.getParameter("dept_code");
-	String emp_address = request.getParameter("emp_address");
+	 String address1 = request.getParameter("address1");
+	 String address2 = request.getParameter("address2");
+	 String address3 = request.getParameter("address3");
+	 String address4 = request.getParameter("address4");
+	 String address5 = request.getParameter("address5");
 	String rank_code = request.getParameter("rank_code");
 	
+	 String emp_address = address1 +"," +address2 +","+address3 +","+address4
+			 +","+address5;
+	 
 	
 	
 	Employees employees = new Employees();
@@ -41,7 +47,7 @@ public class EmpManageModifyServ implements Controller
 	
 	EmpDAO.getInstance().Update(employees);
 	
-	request.getRequestDispatcher("empManage/empManageModify.jsp").forward(request, response);
+	request.getRequestDispatcher("/empManageList.ad").forward(request, response);
 	}
 
 }

@@ -14,7 +14,7 @@ public class FileDownloadServlet implements Controller {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//파라미터를 VO에 담기
 				String filename = request.getParameter("filename");
-				String realPath = ""+filename;
+				String realPath = "C://전자도서관/책표지/"+filename;
 				File file = new File(realPath);
 				String downName = new String(filename.getBytes("utf-8"), "iso-8859-1");
 				

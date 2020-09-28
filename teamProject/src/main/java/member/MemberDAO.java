@@ -34,7 +34,7 @@ public class MemberDAO {
 		try {
 			conn = ConnectionManager.getConnnect();
 			String sql = " SELECT MEMBER_NO, MEMBER_ID, MEMBER_PW, NICKNAME, MEMBER_TEL"
-					+ " MEMBER_EMAIL, SIGNUP_DATE, TICKET_DATE, LAST_ACCESS_DATE, GENDER, TICKET_CODE"
+					+ " MEMBER_EMAIL, SIGNUP_DATE, LAST_ACCESS_DATE, GENDER"
 					+ " FROM MEMBER"
 					+ " ORDER BY MEMBER_NO";
 			pstmt = conn.prepareStatement(sql);
@@ -48,10 +48,8 @@ public class MemberDAO {
 				resultVo.setMember_tel(rs.getString("MEMBER_TEL"));
 				resultVo.setMember_email(rs.getString("MEMBER_EMAIL"));
 				resultVo.setSignup_date(rs.getString("SIGNUP_DATE"));
-				resultVo.setTicket_date(rs.getString("TICKET_DATE"));
 				resultVo.setLast_access_date(rs.getString("LAST_ACCESS_DATE"));
 				resultVo.setGender(rs.getString("GENDER"));
-				resultVo.setTicket_code(rs.getString("TICKET_CODE"));
 				list.add(resultVo);
 				System.out.println(rs.getString("MEMBER_NO"));
 				System.out.println(rs.getString("NICKNAME"));
@@ -71,7 +69,7 @@ public class MemberDAO {
 		try {
 			conn = ConnectionManager.getConnnect();
 			String sql = " SELECT MEMBER_NO, MEMBER_ID, MEMBER_PW, NICKNAME, MEMBER_TEL,"
-					+ "  MEMBER_EMAIL, SIGNUP_DATE, TICKET_DATE,TICKET_DATE-30 ,LAST_ACCESS_DATE, GENDER, TICKET_CODE"
+					+ "  MEMBER_EMAIL, SIGNUP_DATE, LAST_ACCESS_DATE, GENDER"
 					+ " FROM MEMBER"
 					+ " WHERE MEMBER_ID=?";
 			pstmt = conn.prepareStatement(sql);
@@ -86,10 +84,8 @@ public class MemberDAO {
 				resultVO.setMember_tel(rs.getString("MEMBER_TEL"));
 				resultVO.setMember_email(rs.getString("MEMBER_EMAIL"));
 				resultVO.setSignup_date(rs.getString("SIGNUP_DATE"));
-				resultVO.setTicket_date(rs.getString("TICKET_DATE"));
 				resultVO.setLast_access_date(rs.getString("LAST_ACCESS_DATE"));
 				resultVO.setGender(rs.getString("GENDER"));
-				resultVO.setTicket_code(rs.getString("TICKET_CODE"));
 			} else {
 				System.out.println("no data");
 			}

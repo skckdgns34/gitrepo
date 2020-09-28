@@ -14,7 +14,7 @@ public class EBookReadingServ implements Controller
 	public void execute(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException
 	{
-		// TODO Auto-generated method stub
+		request.getRequestDispatcher("ebook/ebookReading.jsp").forward(request, response);
 
 	}
 

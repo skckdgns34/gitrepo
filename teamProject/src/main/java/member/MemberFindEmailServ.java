@@ -26,29 +26,27 @@ public class MemberFindEmailServ implements Controller
 			HttpServletResponse response) throws ServletException, IOException
 	{
 		
-		
+		Member memberVO = new Member();
 		String member_id = request.getParameter("member_id");
 		String member_email = request.getParameter("member_email");
-		
+		memberVO.setMember_email(member_email);
 		 //먼저 아이디로 회원정보를 받아오고 가져온 데이터에서 email값을 비교하여 존재하지 않으면 인증메일 보내지 못함
 		
-		Member m = MemberDAO.getinstance().selectOne(null);
+		Member m = MemberDAO.getinstance().findId(memberVO);
 		
-		if(m == null || !m.getMember_email().equals("member_email")) {
-			request.setAttribute("msg","아이디나 이메일 저보가 맞지 않습니다.");
-			request.setAttribute("loc", "member/memberFind.jsp");
-			request.getRequestDispatcher("member/memberFind.jsp").forward(request, response);
+		if(m == null) {
+			request.setAttribute("errormsg","이메일 정보가 맞지 않습니다.");
+			request.setAttribute("loc", "member/memberPassword.jsp");
+			request.getRequestDispatcher("member/memberFindPassword.jsp").forward(request, response);
 			return;
 		}
 		
 		//mail server 설정
 		
-		final String host = "smtp.name.com";
+		final String host = "smtp.naver.com";
 		final String user = "glsk2545@naver.com";	//자신 네이버 아이디
-		final String password = "나중에넣을게요";	//자신 네이버 비밀번호
+		final String password = "kss01179--";	//자신 네이버 비밀번호
 			
-		//메일 받을 주소
-		String to_email = m.getMember_email();
 		
 		//smtp server 정보 설정
 		Properties props = new Properties();
@@ -90,7 +88,7 @@ public class MemberFindEmailServ implements Controller
         try {
         	MimeMessage msg = new MimeMessage(session);
         	 msg.setFrom(new InternetAddress(user, "DumBook DamBook"));
-        	 msg.addRecipient(Message.RecipientType.TO, new InternetAddress(to_email));
+        	 msg.addRecipient(Message.RecipientType.TO, new InternetAddress(member_email));
         	 
         	 //메일 제목
         	 msg.setSubject("DumBook DamBook 인증 메일입니다.");
@@ -107,7 +105,7 @@ public class MemberFindEmailServ implements Controller
         saveKey.setAttribute("AuthenticationKey", AuthenticationKey);
         
         request.setAttribute("id", member_id);
-        request.getRequestDispatcher("member/memberFind.jsp").forward(request, response);
+        request.getRequestDispatcher("/member/memberFindPassword.jsp").forward(request, response);
 	}
 
 }

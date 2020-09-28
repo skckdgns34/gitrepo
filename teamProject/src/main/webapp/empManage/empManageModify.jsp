@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" isELIgnored="false"%>
+	<%@ taglib prefix="fn" uri = "http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -67,6 +68,7 @@
 					}
 				}).open();
 	}
+	
 </script>
 </head>
 <body>
@@ -82,66 +84,65 @@
 					<div class="card-body">
 						<h5 class="card-title text-center">사원 정보 수정</h5>
 						<form class="form-signin" method="post" name="frm" id="frm"
-							action="${pageContext.request.contextPath}/empManageModify.ad"
+							action="empManageModify.ad"
 							onsubmit="return inputCheck()">
 							<div class="form-label-group">
 								<label for="inputUserame">사원 번호</label><br> <input
-									type="text" name="emp_no" value="${emp_no}" readonly="readonly">
+									type="text" name="emp_no" value="${employees.emp_no}" readonly="readonly">
 							</div>
 							<div class="form-label-group">
 								<label for="inputUserame">사원 아이디</label><br> <input
-									type="text" name="emp_id" value="${emp_id}">
+									type="text" name="emp_id" value="${employees.emp_id}">
 							</div>
 
 							<div class="form-label-group">
 								<label for="inputPassword">사원 비밀번호</label><br> <input
 									type="password" id="emp_pw" class="form-control" name="emp_pw"
-									value="${emp_pw}" placeholder="Password" required>
+									 placeholder="Password" required>
 							</div>
 
 							<div class="form-label-group">
 								<label for="inputPhone_number">사원 이름</label><br> <input
-									type="text" id="emp_name" name="emp_name" value="${emp_name}">
+									type="text" id="emp_name" name="emp_name" value="${employees.emp_name}">
 							</div>
 
 							<div class="form-label-group">
 								<label for="inputPhone_number">사원 생년월일</label><br> <input
 									type="text" id="emp_birth" name="emp_birth"
-									value="${emp_birth}">
+									value="${fn:substring(employees.emp_birth,0,10)}">
 							</div>
 
 							<div class="form-label-group">
 								<label for="inputAge">입사일</label><br> <input type="text"
-									id="entereddate" name="entereddate" value="${entereddate}">
+									id="entereddate" name="entereddate" value="${fn:substring(employees.entereddate,0,10)}">
 							</div>
 							<div class="form-label-group">
 								<label for="inputAge">부서 코드</label><br> <input type="text"
-									id="dept_code" name="dept_code" value="${dept_code}">
+									id="dept_code" name="dept_code" value="${employees.dept_code}">
 							</div>
 							<div class="form-label-group">
 								<label for="inputEmpAddr">사원 주소</label><br> <input
-									type="text" id="sample4_postcode" placeholder="우편번호"> <input
+									type="text" id="sample4_postcode" placeholder="우편번호" name="address1" value="${adr[0]}"> <input
 									type="button" onclick="sample4_execDaumPostcode()"
 									value="우편번호 찾기"><br> <input type="text"
-									id="sample4_roadAddress" placeholder="도로명주소"> <input
-									type="text" id="sample4_jibunAddress" placeholder="지번주소">
+									id="sample4_roadAddress" placeholder="도로명주소" name="address2" value="${adr[1]}"> <input
+									type="text" id="sample4_jibunAddress" placeholder="지번주소" name="address3" value="${adr[2]}">
 								<span id="guide" style="color: #999; display: none"></span> <input
-									type="text" id="sample4_detailAddress" placeholder="상세주소">
-								<input type="text" id="sample4_extraAddress" placeholder="참고항목">
+									type="text" id="sample4_detailAddress" placeholder="상세주소" name="address4" value="${adr[3]}">
+								<input type="text" id="sample4_extraAddress" placeholder="참고항목" name="address5" value="${adr[4]}">
 							</div>
 
 							<div class="form-label-group">
 								<label for="inputAge">rank_code</label><br> <input
 									type="text" id="rank_code" name="rank_code"
-									value="${rank_code}">
+									value="${employees.rank_code}">
 							</div>
 
 
 							<hr>
 							<div>
 								<a type="button"
-									href="${pageContext.request.contextPath}/empManageList.ad"
-									onclick="return alert()">되돌아가기</a>
+									href="${pageContext.request.contextPath}/empManageList.ad" onclick="return alert()">되돌아가기</a>
 							</div>
 							<button class="btn btn-lg btn-primary btn-block text-uppercase"
 								type="submit">수정</button>

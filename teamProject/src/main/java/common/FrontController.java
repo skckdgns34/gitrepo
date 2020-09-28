@@ -72,9 +72,13 @@ public class FrontController extends HttpServlet {
 				list.put("/logout.ad", new LogoutController());
 				list.put("/memberManageMain.ad", new memberManage.MemberManageMainServ());
 				list.put("/memberManageModify.ad", new memberManage.MemberManageModifyServ());
-				list.put("/memberManageModifyForm.ad", new memberManage.MemberManageModifyFormServ());				
+				list.put("/memberManageModifyForm.ad", new memberManage.MemberManageModifyFormServ());	
+				
 				list.put("/memberManageBlackList.ad", new memberManage.MemberManageBlackListServ());
 				list.put("/memberManageBlackListPop.ad", new memberManage.MemberManageBlackListPopServ());
+				list.put("/memberManageBlackListPopForm.ad", new memberManage.MemberManageBlackListPopFormServ());
+				
+				
 				list.put("/memberManageQuestion.ad", new memberManage.MemberManageQuestionServ());
 				list.put("/memberManageQuestionPop.ad", new memberManage.MemberManageQuestionPopServ());
 
@@ -124,7 +128,6 @@ public class FrontController extends HttpServlet {
 		list.put("/audioBookDetail.do", new ebook.AudioBookDetailServ());
 		list.put("/audioBookReading.do", new ebook.AudioBookReadingServ());
 		list.put("/licenceList.do", new licence.LicenceListServ());
-		list.put("/licencePayment.do", new licence.LicencePaymentServ());
 		list.put("/Ajax/mainsearchResultAjax.do", new main.MainSearchResultAjax());
 		list.put("/mainsearchResult.do", new main.MainsearchResultServ());
 		list.put("/audioBookSearchAfter.do", new ebook.AudioBookSearchAfterServ());

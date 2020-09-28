@@ -33,7 +33,9 @@
   <header id="header" class="hoc clear"> 
    
     <div id="logo" class="fl_left">
-      <h1><img class="img-fluid"style="width: 90px;" src="${pageContext.request.contextPath}/images/로고.png"/></h1>
+      <a href="${pageContext.request.contextPath}/index.jsp">
+      	<img class="img-fluid"style="width: 90px;" src="${pageContext.request.contextPath}/images/로고.png"/>
+      </a>
     </div>
     <nav id="mainav" class="fl_right">
       	<ul class="clear">
@@ -52,7 +54,7 @@
 					</c:if>
 					<c:if test="${sessionScope.member_id == null }">
 						<li><a
-							href="<%=application.getContextPath()%>/memberJoin.do">회원가입</a>
+							href="<%=application.getContextPath()%>/member/memberJoin.jsp">회원가입</a>
 					</c:if>
 					<c:if test="${sessionScope.member_id != null }">
 						<li><a

@@ -115,14 +115,14 @@
 							</div>
 							<div class="form-label-group">
 								<label for="inputEmpAddr">사원 주소</label><br> <input
-									type="text" id="sample4_postcode" placeholder="우편번호"> <input
+									type="text" id="sample4_postcode" placeholder="우편번호" name="address1"> <input
 									type="button" onclick="sample4_execDaumPostcode()"
 									value="우편번호 찾기"><br> <input type="text"
-									id="sample4_roadAddress" placeholder="도로명주소"> <input
-									type="text" id="sample4_jibunAddress" placeholder="지번주소">
+									id="sample4_roadAddress" placeholder="도로명주소" name="address2"> <input
+									type="text" id="sample4_jibunAddress" placeholder="지번주소" name="address3">
 								<span id="guide" style="color: #999; display: none"></span> <input
-									type="text" id="sample4_detailAddress" placeholder="상세주소">
-								<input type="text" id="sample4_extraAddress" placeholder="참고항목">
+									type="text" id="sample4_detailAddress" placeholder="상세주소" name="address4">
+								<input type="text" id="sample4_extraAddress" placeholder="참고항목" name="address5">
 							</div>
 							<div class="form-label-group">
 								<label for="inputRankCode">RANK_CODE</label><br> <input
