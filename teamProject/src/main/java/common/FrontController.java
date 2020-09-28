@@ -95,7 +95,7 @@ public class FrontController extends HttpServlet {
 		list.put("/bookRegister.ad", new bookManage.BookRegisterServ()); //ebook 등록
 		list.put("/bookRegisterAudio.ad", new bookManage.BookRegisterAudioServ()); //오디오북 등록
 		list.put("/bookModify.ad", new bookManage.BookModifyServ()); //ebook 수정
-		list.put("/bookModifyAudio.ad", new bookManage.BookModifyAudioServ()); //오디오북 수정
+		//list.put("/bookModifyAudio.ad", new bookManage.BookModifyAudioServ()); //오디오북 수정
 		list.put("/bookDelete.ad", new bookManage.BookDeleteServ());
 		list.put("/bookList.ad", new bookManage.BookListServ());
 		list.put("/bookSelect.ad", new bookManage.BookSelectServ());

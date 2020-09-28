@@ -37,20 +37,17 @@ public class BookModifyServ implements Controller
 			book.setBook_img(renameFile.getName());
 		}
 		
-		Part part2 = request.getPart("epub_path");
-		String epub_path = getFilename(part2);
-		String path2 = "c:/전자도서관/전자책";
-		//파일명 중복체크
-		File renameFile2 = FileRenamePolicy.rename(new File(path2, epub_path));
-		part2.write(path2 +"/" +renameFile2.getName());
-		if(renameFile2.getName().equals("전자책1")) {
-			book.setEpub_path(null);
-		}else {
-			book.setEpub_path(renameFile2.getName());
-		}
-
-		book = BookManageDAO.getInstance().update(book);
-		request.getRequestDispatcher("bookList.ad").forward(request, response);
+		/*
+		 * Part part2 = request.getPart("epub_path"); String epub_path =
+		 * getFilename(part2); String path2 = "c:/전자도서관/전자책"; //파일명 중복체크 File
+		 * renameFile2 = FileRenamePolicy.rename(new File(path2, epub_path));
+		 * part2.write(path2 +"/" +renameFile2.getName());
+		 * if(renameFile2.getName().equals("전자책1")) { book.setEpub_path(null); }else {
+		 * book.setEpub_path(renameFile2.getName()); }
+		 */
+		 book = BookManageDAO.getInstance().update(book);
+		 request.getRequestDispatcher("bookList.ad").forward(request, response);
+		 
 
 	}
 		
