@@ -23,7 +23,7 @@ public class TicketDAO {
 			instance = new TicketDAO();
 		return instance;
 	}
-	
+
 	// 단건조회
 		public List<TicketVO> selectAll(Member memberVO) {
 			List<TicketVO> list = new ArrayList<TicketVO>();

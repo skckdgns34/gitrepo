@@ -35,9 +35,11 @@ public class LicencePaymentServ implements Controller
 		List<TicketVO> list = new ArrayList<TicketVO>();
 		list = TicketDAO.getInstance().selectAll(resultVO);
 		
-		for(int i =0 ; i<list.size(); i++) {
-			list.get(i).
-		}
+		
+		
+		/*
+		 * for(int i =0 ; i<list.size(); i++) { list.get(i).getTicket_code(); }
+		 */
 		request.setAttribute("loginMember", list);
 		request.getRequestDispatcher("licence/licencePayment.jsp").forward(request, response);
 		
