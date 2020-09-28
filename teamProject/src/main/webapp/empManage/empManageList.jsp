@@ -25,8 +25,8 @@ function check(ck) {
 
 function modifypage()
 {
-window.document.location.href='${pageContext.request.contextPath}/empManage/empManageModify.jsp?';
-return;
+	
+	window.document.location.href="${pageContext.request.contextPath}/empManageModifyForm.ad?no="+ $('input[name="user_CheckBox"]:checked').val();return;
 }
 function addpage()
 {
@@ -34,6 +34,11 @@ window.document.location.href="${pageContext.request.contextPath}/employeesInser
 return;
 }
 
+function deletepage()
+{
+window.document.location.href="${pageContext.request.contextPath}/삭제 경로";
+return;
+}
 
 </script>
 </head>
@@ -68,16 +73,16 @@ return;
 							</button> 
 						</div>
 	</form>
-	<div><input type='button' value='추가' onclick="addpage()"></div>
-		<div><input type='button' id='btn_n' value='수정' onclick="modifypage()"></div>
-				<div><a href="${pageContext.request.contextPath}/employeesdelete.ad">삭제</a></div>
+	
 		</div>
 	
 	
 	</div>
 	<div class="card-body">
 			<div class="table-responsive">
-				<button type="button" class="btn btn-outline btn-primary pull-right" id="selectBtn">선택</button>
+				<div><button type='button' id='btn_i' class="btn btn-outline btn-primary pull-left" onclick="addpage()">추가</button>
+				<button type='button' id='btn_n' class="btn btn-outline btn-primary pull-left" onclick="modifypage()">수정</button>
+					<button type="button" id='btn_d' class="btn btn-outline btn-primary pull-right" onclick="deletepage()">삭제</button></div>
 	<table class="table table-bordered" id="dataTable" width="100%"
 					cellspacing="0">
 
@@ -96,7 +101,7 @@ return;
 		<tbody>
 			<c:forEach items="${list}" var="employees">
 				<tr>
-				<td><input type="checkbox" name="user_CheckBox" onclick="check(this)"></td>
+				<td><input type="checkbox" name="user_CheckBox" onclick="check(this)" value="${employees.getEmp_no()}"></td>
 					<td>${employees.getEmp_no()}</td>
 					<td>${employees.getEmp_id()}</td>
 					<td>${employees.getEmp_name()}</td>

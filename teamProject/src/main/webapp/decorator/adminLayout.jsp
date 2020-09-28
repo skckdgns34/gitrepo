@@ -117,7 +117,7 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header"></h6>
             <a class="collapse-item" href="<%=request.getContextPath()%>/memberManageMain.ad">회원조회</a>
-            <a class="collapse-item" href="★블랙리스트관리 url 넣어주세요!">블랙리스트관리</a>
+            <a class="collapse-item" href="<%=request.getContextPath()%>/memberManageBlackList.ad">블랙리스트관리</a>
             <a class="collapse-item" href="★문의관리 url 넣어주세요!">문의관리</a>
             
           </div>
@@ -342,17 +342,17 @@
 
             <!-- Nav Item - User Information -->
             <ul class="navbar-nav ml-auto">
-                      <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="">홈페이지 이동</a>
+                      <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="index.jsp">홈페이지 이동</a>
                         </li>
                        
-                   <c:if test="${empty emp_id}">
+                   <c:if test="${empty sessionScope.login}">
                          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="loginForm.ad">로그인</a>
                            </li>
                      
                      </c:if>
                 
                       
-                   <c:if test="${not empty emp_id}">
+                   <c:if test="${not empty sessionScope.login}">
                       <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="">${emp_id}님</a>
                         </li>
                       <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="logout.ad">로그아웃</a>

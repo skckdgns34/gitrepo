@@ -24,11 +24,18 @@ public class EmployeesInsertConrtoller implements Controller {
 		 String emp_birth = request.getParameter("emp_birth");
 		 String entereddate = request.getParameter("entereddate");
 		 String dept_code = request.getParameter("dept_code");
-		 String emp_address = request.getParameter("emp_address");
+		 String address1 = request.getParameter("address1");
+		 String address2 = request.getParameter("address2");
+		 String address3 = request.getParameter("address3");
+		 String address4 = request.getParameter("address4");
+		 String address5 = request.getParameter("address5");
 		 String rank_code = request.getParameter("rank_code");
 		
+		 String emp_address = address1 +"," +address2 +","+address3 +","+address4
+				 +","+address5;
 		 
 		 Employees employees = new Employees();
+		 
 		 employees.setEmp_no(emp_no);
 		 employees.setEmp_id(emp_id);
 		 employees.setEmp_pw(emp_pw);

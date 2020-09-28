@@ -20,6 +20,8 @@ public class EmpManageListServ implements Controller
 		String search_type = request.getParameter("search_type");
 		List<Employees> list = EmpDAO.getInstance().selectAll(search_text,search_type);
 		
+		
+		
 		request.setAttribute("list", list);
 		request.setAttribute("search_type", search_type);
 		request.setAttribute("search_text", search_text);

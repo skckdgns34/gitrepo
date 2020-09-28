@@ -33,7 +33,7 @@ function closeMe() {
 </head>
 <body>
 	<h3>비밀번호 확인</h3>
-	<%=request.getAttribute("errormsg") %>
+	${ errormsg}
 	<form name="deleform"  method="post"
 		onSubmit="retrun check(this)">
 		<div class="col-sm-6 col-md-offset-3">
