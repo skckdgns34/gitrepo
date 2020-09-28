@@ -93,8 +93,6 @@
 				</form>
 
 
-					<div><input type='button' id='btn_n' value='수정' onclick="modifypage()"></div>
-					<div><input type='button' id='btn_d' value='삭제' onclick="deletepage()"></div>
 					
 			
 				
@@ -102,8 +100,8 @@
 		</div>
 		<div class="card-body">
 			<div class="table-responsive">
-			
-				<button type="button" class="btn btn-outline btn-primary pull-right" id="selectBtn">선택</button>
+			<div><button type="button" id='btn_n' class="btn btn-outline btn-primary pull-" onclick="modifypage()">수정</button>
+					<button type="button" id='btn_d' class="btn btn-outline btn-primary pull-right" onclick="deletepage()">삭제</button></div>
 				<table class="table table-bordered" id="dataTable" width="100%"
 					cellspacing="0">
 
