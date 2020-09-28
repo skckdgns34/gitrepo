@@ -27,7 +27,7 @@ public class MemberModifyServ implements Controller
 		MemberDAO dao = new MemberDAO();
 		dao.update(memberVO);
 		
-		request.getRequestDispatcher("/index.jsp").forward(request, response);
+		request.getRequestDispatcher("member/memberModify.jsp").forward(request, response);
 
 	}
 
