@@ -32,6 +32,7 @@ public class MemberLoginServ implements Controller
 				page = "/index.jsp";
 				request.getSession().setAttribute("memberLogin", resultVO);
 				request.getSession().setAttribute("member_id", resultVO.getMember_id());
+				request.getSession().setAttribute("member_no", resultVO.getMember_no());
 			} else {	//패스워드 불일치
 				request.setAttribute("errormsg", "패스워드 불일치");
 				page = "member/memberLogin.jsp";
