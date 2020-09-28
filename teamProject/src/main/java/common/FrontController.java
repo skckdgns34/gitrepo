@@ -92,6 +92,7 @@ public class FrontController extends HttpServlet {
 		list.put("/clientHopeBookWrite.ad", new client.ClientHopeBookWriteServ());
 		list.put("/moneyOutList.ad", new moneyManage.MoneyOutListServ());
 		list.put("/moneyInList.ad", new moneyManage.MoneyInListServ());
+		
 		list.put("/bookRegister.ad", new bookManage.BookRegisterServ()); //ebook 등록
 		list.put("/bookRegisterAudio.ad", new bookManage.BookRegisterAudioServ()); //오디오북 등록
 		list.put("/bookModify.ad", new bookManage.BookModifyServ()); //ebook 수정
@@ -101,8 +102,11 @@ public class FrontController extends HttpServlet {
 		list.put("/bookSelect.ad", new bookManage.BookSelectServ());
 		list.put("/bookManage.ad", new bookManage.BookManageServ());//ebook 등록버튼
 		list.put("/bookManageAudio.ad", new bookManage.BookManageAudioServ());//오디오북 등록버튼
-		list.put("/companyMain.ad", new company.CompanyMainServ());
-		list.put("/companyPop.ad", new company.CompanyPopServ());
+		
+		list.put("/companyMain.ad", new company.CompanyMainServ()); //출판사 목록
+		list.put("/companyPop.ad", new company.CompanyPopServ()); //출판사 수정
+		list.put("/companyRegister.ad", new company.CompanyRegisterServ()); //출판사 등록
+		
 		
 		
 		//손용원&&최창훈
