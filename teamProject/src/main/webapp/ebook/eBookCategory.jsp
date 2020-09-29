@@ -84,7 +84,7 @@
 	</form>
 	
     <!-- 테스트 -->
-<c:forEach begin="1" end="${genreList.size() }" var="i">
+ <c:forEach begin="1" end="${genreList.size() }" var="i">
 	${i }
 	<div>${genreList.get(i-1).code_value}</div>
 	<div class="wrapper-slider">
@@ -95,8 +95,7 @@
 				<div class="item item1">
 					<c:if test="${not empty books[i-1][j-1].book_img}">
 						<img onclick="imgClick(${books[i-1][j-1].book_no})" 
-		 					src="filenameDownload.do?filename=${books[i-1][j-1].book_img }" 
-		 					style="width:50px"/>
+		 					src="filenameDownload.do?filename=${books[i-1][j-1].book_img }"/>
 					</c:if>
 				</div>
 			</c:forEach>
@@ -104,49 +103,9 @@
 	</div>
 </c:forEach>
 	
+<!-- test2 -->
 	
 	
-	<!-- 원본 -->
-<%-- 	<c:forEach begin="1" end="${genreList.size() }" var="i">
-		<div>${genreList.get(i-1).code_value}</div>
-		<table border="1">
-			<thead>
-				<tr>
-					<th>book_no</th>
-					<th>title</th>
-					<th>book_img</th>
-					<th>writer</th>
-					<th>ebook_path</th>
-					<th>genre</th>
-					<th>publication_date</th>
-					<th>summary</th>
-					<th>views</th>
-					<th>score</th>
-					<th>book_price</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach begin="1" end="${books.get(i-1).size() }" var="j">
-					<tr>
-						<td>${books[i-1][j-1].book_no}</td>
-						<td>${books[i-1][j-1].title}</td>
-						<c:if test="${not empty books[i-1][j-1].book_img}">
-						<ul>
-						<td >
-							<img onclick="imgClick(${books[i-1][j-1].book_no})" src="filenameDownload.do?filename=${books[i-1][j-1].book_img }" style="width:50px"/>
-						</td>
-						</ul>
-						</c:if>
-						<td>${books[i-1][j-1].writer}</td>
-						<td>${books[i-1][j-1].epub_path}</td>
-						<td>${books[i-1][j-1].genre}</td>
-					</tr>
-				</c:forEach>
-			</tbody>
-		</table>
-		<br>
-		<hr>
-	</c:forEach> --%>
 <script src = "${pageContext.request.contextPath}/layout/styles/slider.js"></script>
 
 </body>

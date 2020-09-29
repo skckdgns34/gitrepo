@@ -124,14 +124,18 @@ public class BookManageDAO {
 	   }
 	
 	
-	public ArrayList<Books> selectAll() {
+	public ArrayList<Books> selectAll(String search_text, String search_type) {
 	      ArrayList<Books> list = new ArrayList<Books>();
 	      Books books = null;
 	      try {
 	         conn = ConnectionManager.getConnnect();
 	         String sql = "SELECT BOOK_NO, TITLE, WRITER, PUBLICATION_DATE, "
 	         		+ "COMPANY_CODE, BEST_BOOK, genre, REGISTRATION_DATE "
-	               + "FROM BOOKS ORDER BY 1";         
+	               + "FROM BOOKS ";    
+	         System.out.println("search_type: " + search_type + "search_text" + search_text);
+	         if (search_text != null && !search_text.equals("")) {
+					sql += " WHERE " + search_type + " Like '%" + search_text + "%'";
+				}
 	         pstmt = conn.prepareStatement(sql);
 	         rs = pstmt.executeQuery();
 	         while(rs.next()) {

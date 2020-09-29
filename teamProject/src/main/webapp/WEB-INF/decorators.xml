@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="euc-kr" ?>
-
 <decorators defaultdir="/decorator">
 	<decorator name="admin" page="adminLayout.jsp">
 		<pattern>/adminMain/login.jsp</pattern>
@@ -16,7 +15,6 @@
 	<decorator name="admin4" page="adminLayout.jsp">
 		<pattern>/*.ad</pattern>
 	</decorator>
-	
 	<decorator name="admin5" page="adminLayout.jsp">
 		<pattern>/bookManage/*.jsp</pattern>
 	</decorator>
@@ -31,5 +29,3 @@
 		<pattern>/Ajax/*</pattern>
 	</excludes>
 </decorators>
-
-

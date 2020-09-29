@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" isELIgnored="false"%>	
+    <%@ taglib prefix="fn" uri = "http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,24 +19,24 @@
           <div class="card-body">
             <h5 class="card-title text-center">블랙리스트 관리</h5>
             <form class="form-signin" method="post" name="frm" id="frm"
-			action="memberManageModify.ad" onsubmit="return inputCheck()">
+			action="memberManageBlackListPop.ad" onsubmit="return inputCheck()">
 			
                 <div class="form-label-group">
-               <label for="inputMemberNo">번호</label><br>
-                <input type="text" name="member_no" value="${black.blacklist_no}" readonly="readonly">
+               <label for="inputblacklist_no">번호</label><br>
+                <input type="text" name="blacklist_no" value="${black.blacklist_no}" readonly="readonly">
               </div> 
               
               <div class="form-label-group">
-               <label for="inputMemberId" >사유</label><br>
-                <input type="text" name="member_id" value="${black.blacklist_reason}">
+               <label for="inputblacklist_reason" >사유</label><br>
+                <input type="text" name="blacklist_reason" value="${black.blacklist_reason}">
               </div>
               <div class="form-label-group">
-               <label for="inputMemberPw">회원번호</label><br>
-                <input type="text" name="member_pw" value="${black.member_no}">
+               <label for="inputmember_no">회원번호</label><br>
+                <input type="text" name="member_no" value="${black.member_no}">
               </div>
               <div class="form-label-group">
-               <label for="inputMemberNicname">등록 일자</label><br>
-                <input type="text" name="nickname" value="${black.limit_date}">
+               <label for="inputlimit_date">등록 일자</label><br>
+                <input type="text" name="limit_date" value="${fn:substring(black.limit_date,0,10)}">
               </div>
   
               <hr>
