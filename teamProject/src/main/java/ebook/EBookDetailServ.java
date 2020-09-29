@@ -26,6 +26,7 @@ public class EBookDetailServ implements Controller
 		System.out.println(member_no+"멤버넘버 세션");
 		System.out.println(member_login);
 		
+		request.setAttribute("member_id", member_id);
 		request.setAttribute("member_no", member_no);
 		//책 상세내용불러온거
 		ArrayList<Books> book = EBookDAO.getInstance().detailBook(no);
