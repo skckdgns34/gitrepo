@@ -76,6 +76,8 @@ public class FrontController extends HttpServlet {
 				
 				list.put("/memberManageBlackList.ad", new memberManage.MemberManageBlackListServ());
 				list.put("/memberManageBlackListPop.ad", new memberManage.MemberManageBlackListPopServ());
+				list.put("/memberManageBlackListPopForm.ad", new memberManage.MemberManageBlackListPopFormServ());
+				
 				
 				list.put("/memberManageQuestion.ad", new memberManage.MemberManageQuestionServ());
 				list.put("/memberManageQuestionPop.ad", new memberManage.MemberManageQuestionPopServ());

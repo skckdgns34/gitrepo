@@ -8,6 +8,31 @@
 <head>
 <meta charset="UTF-8">
 <title>블랙리스트 조회</title>
+<script>
+	function check(ck) {
+		var obj = document.getElementsByName("user_CheckBox");
+		for(var i =0; i<obj.length; i++){
+			if(obj[i] != ck) {
+				obj[i].checked = false;
+			}
+		}
+	};
+
+	function modifypage() //수정 
+	{
+	window.document.location.href="${pageContext.request.contextPath}/memberManageBlackListPopForm.ad?no="+ $('input[name="user_CheckBox"]:checked').val();
+	alert( $('input[name="user_CheckBox"]:checked').val())
+	return;
+	}
+	
+	function deletepage() //삭제
+	{
+	window.document.location.href="${pageContext.request.contextPath}/주소 적기...ㅠ.ad";
+	return;
+	}
+	
+	
+	</script>
 </head>
 <body id="page-top">
 	
@@ -40,8 +65,6 @@
 				</form>
 
 
-					<div><input type='button' id='btn_n' value='수정' onclick="modifypage()"></div>
-					<div><input type='button' id='btn_d' value='삭제' onclick="deletepage()"></div>
 					
 			
 				
@@ -50,7 +73,8 @@
 		<div class="card-body">
 			<div class="table-responsive">
 			
-				<button type="button" class="btn btn-outline btn-primary pull-right" id="selectBtn">선택</button>
+					<div><button type="button" id='btn_n' class="btn btn-outline btn-primary pull-" onclick="modifypage()">수정</button>
+					<button type="button" id='btn_d' class="btn btn-outline btn-primary pull-right" onclick="deletepage()">삭제</button></div>
 				<table class="table table-bordered" id="dataTable" width="100%"
 					cellspacing="0">
 

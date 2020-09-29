@@ -11,4 +11,5 @@ public class Company {
 	private String company_tel;
 	private String company_mgr_tel;
 	private String company_account;
+	private String company_bank;
 }
