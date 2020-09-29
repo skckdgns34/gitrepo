@@ -33,7 +33,9 @@ public class BlacklistDAO {
 		List<Blacklist> list = new ArrayList<Blacklist>();
 		try {
 			conn = ConnectionManager.getConnnect();
-			String sql = " SELECT * FROM BLACKLIST";
+			String sql = " SELECT B.BLACKLIST_NO, B.MEMBER_NO, M.NICKNAME,  B.BLACKLIST_REASON,  B.LIMIT_DATE " + 
+					" FROM BLACKLIST B, MEMBER M " + 
+					" WHERE B.MEMBER_NO = M.MEMBER_NO ";
 			System.out.println("search_text = " + search_text + ", search_type =" + search_type);
 			if (search_text != null && !search_text.equals("")) {
 				sql += " WHERE " + search_type + " Like '%" + search_text + "%'";
@@ -43,8 +45,9 @@ public class BlacklistDAO {
 			while (rs.next()) {
 				Blacklist black = new Blacklist();
 				black.setBlacklist_no(rs.getString("blacklist_no"));
-				black.setBlacklist_reason(rs.getString("blacklist_reason"));
 				black.setMember_no(rs.getString("member_no"));
+				black.setNickname(rs.getString("nickname"));
+				black.setBlacklist_reason(rs.getString("blacklist_reason"));
 				black.setLimit_date(rs.getString("limit_date"));
 				list.add(black);
 				
