@@ -42,16 +42,16 @@ public class MoneyDAO {
 					+ "purchase_content, total_price, company_code, emp_no, count)"
 					+ " values(?,?,?,?,?,?,?,?,?,?)";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, purchase.getPurchase_no());		//거래번호
-			pstmt.setString(2, purchase.getPurchase_price());	//단가
-			pstmt.setString(3, purchase.getPurchase_subject());	//매입상품명
-			pstmt.setString(4, purchase.getPurchase_date());	//매입일자
-			pstmt.setString(5, purchase.getPurchase_status());	//매입상태
-			pstmt.setString(6, purchase.getPurchase_content());	//비고
-			pstmt.setString(7, purchase.getTotal_price());		//총 금액
-			pstmt.setString(8, purchase.getCompany_code());		//출판사코드
-			pstmt.setString(9, purchase.getEmp_no());			//사원번호
-			pstmt.setString(10, purchase.getCount());			//매입수량
+			pstmt.setString(1, purchase.getPurchase_no());			//거래번호
+			pstmt.setString(2, purchase.getPurchase_price());		//단가
+			pstmt.setString(3, purchase.getPurchase_subject());		//매입상품명
+			pstmt.setString(4, purchase.getPurchase_date());		//매입일자
+			pstmt.setString(5, purchase.getPurchase_status());		//매입상태
+			pstmt.setString(6, purchase.getPurchase_content());		//비고
+			pstmt.setString(7, purchase.getTotal_price());			//총 금액
+			pstmt.setString(8, purchase.getCompany_code());			//출판사코드
+			pstmt.setString(9, purchase.getEmp_no());				//사원번호
+			pstmt.setString(10, purchase.getCount());				//매입수량
 			pstmt.executeUpdate();
 			conn.commit();
 			
