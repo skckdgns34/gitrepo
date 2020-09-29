@@ -14,8 +14,7 @@ public class AudioBookReadingServ implements Controller
 	public void execute(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException
 	{
-		// TODO Auto-generated method stub
-
+//		EBookDAO.getInstance().selectAllAudioBook(genre)
 	}
 
 }
