@@ -44,24 +44,24 @@ public class FrontController extends HttpServlet {
 		list.put("/filenameDownload.do", new FileDownloadServlet());
 		
 		//조현주
-		list.put("/memberModify.do", new member.MemberModifyServ());
-		list.put("/memberDelete.do", new member.MemberDeleteServ());
-		list.put("/memberDeletePassword.do", new member.MemberDeletePasswordServ());
-		list.put("/memberBookMark.do", new member.MemberBookMarkServ());
-		list.put("/memberBookLuvList.do", new member.MemberBookLuvListServ());
-		list.put("/memberCreateBookCk.do", new member.MemberCreateBookCkServ());
-		list.put("/memberLogin.do", new member.MemberLoginServ());
-		list.put("/memberLogout.do", new member.MemberLogoutServ());
-		list.put("/memberFind.do", new member.MemberFindServ());
-		list.put("/memberFindemail.do", new member.MemberFindEmailServ());
-		list.put("/memberFindPassword.do", new member.MemberFindPasswordServ());
-		list.put("/memberJoin.do", new member.MemberJoinServ());
-		list.put("/memberPopup.do", new member.MemberPopupServ());
-		list.put("/memberLicense.do", new member.MemberLicenseServ());
-		list.put("/memberLibrary.do", new member.MemberLibraryServ());
-		list.put("/clientNotice.do", new client.ClientNoticeServ());
-		list.put("/clientNoticeSelect.do", new client.ClientNoticeSelectServ());
-		list.put("/clientFAQ.do", new client.ClientFAQServ());
+		list.put("/memberModify.do", new member.MemberModifyServ());				//회원 정보수정
+		list.put("/memberDelete.do", new member.MemberDeleteServ());				//회원 탈퇴
+		list.put("/memberDeletePassword.do", new member.MemberDeletePasswordServ());//회원 탈퇴시 비밀번호 확인
+		list.put("/memberBookMark.do", new member.MemberBookMarkServ());			//내서재 - 읽던책
+		list.put("/memberBookLuvList.do", new member.MemberBookLuvListServ());		//내서재 - 찜목록
+		list.put("/memberCreateBookCk.do", new member.MemberCreateBookCkServ());	//내서재 - 나만의 도서
+		list.put("/memberLogin.do", new member.MemberLoginServ());					//로그인
+		list.put("/memberLogout.do", new member.MemberLogoutServ());				//로그아웃
+		list.put("/memberFind.do", new member.MemberFindServ());					//아이디/비밀번호 찾기
+		list.put("/memberFindemail.do", new member.MemberFindEmailServ());			//비밀번호 찾기 이메일 보내기
+		list.put("/memberFindPassword.do", new member.MemberFindPasswordServ());	//인증번호 확인
+		list.put("/memberJoin.do", new member.MemberJoinServ());					//회원가입
+		list.put("/memberPopup.do", new member.MemberPopupServ());					//알람팝업
+		list.put("/memberLicense.do", new member.MemberLicenseServ());				//내서재 - 이용권
+		list.put("/memberLibrary.do", new member.MemberLibraryServ());				//내서재
+		list.put("/clientNotice.do", new client.ClientNoticeServ());				//공지사항
+		list.put("/clientNoticeSelect.do", new client.ClientNoticeSelectServ());	//공지사항 자세히보기
+		list.put("/clientFAQ.do", new client.ClientFAQServ());						//FAQ
 		
 		
 		// 한채빈
