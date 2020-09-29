@@ -23,12 +23,9 @@ public class AudioBookReadingServ implements Controller
 		ArrayList<Books> book_detail = EBookDAO.getInstance().detailBook("15");
 		
 		ArrayList<Mylibrary> mylib = MemberDAO.getinstance().mylibList("2");
-		System.out.println(book_detail);
 		request.setAttribute("mylib", mylib);
 		request.setAttribute("book", book_detail);
 		request.getRequestDispatcher("/ebook/audioBookReading.jsp").forward(request, response);
-		
-		
 		
 	}
 
