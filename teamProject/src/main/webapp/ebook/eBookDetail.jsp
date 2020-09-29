@@ -28,6 +28,8 @@
 		location.href="${pageContext.request.contextPath}/eBookReading.do";
 	}
 	
+	var check = "${check}"
+	
 	function btnScore(){ // 추천버튼 클릭시(추천 추가 또는 추천 제거)
 		$("#rec_update").click(function(){
 			$.ajax({
@@ -37,10 +39,11 @@
                 data: {
                     book_no:  "${book[0].book_no}",
                     member_no:  "${member_no}",
-                    check: "${check}"
+                    check: check
                 },
                 success: function (result) {
-			        if(result.check.equals("0")){
+                	check = result.check;
+			        if(result.check == 0){
 			        	$(".fa fa-heart").css("color", 'white')
 			        }else{
 			        	$(".fa fa-heart").css("backgroundcolor", 'red')
