@@ -291,7 +291,7 @@ public class MemberDAO {
 			conn = ConnectionManager.getConnnect();
 			String sql = "select mylibrary_no, book_no, wish, last_read_index from mylibrary where member_no = ?";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, Integer.parseInt(member_no));
+			pstmt.setString(1, member_no);
 			rs = pstmt.executeQuery();
 			
 			while (rs.next()) {
