@@ -297,7 +297,7 @@ public class EBookDAO {
 		try {
 			conn = ConnectionManager.getConnnect();
 			String sql= "select book_no, title, writer, publication_date,"
-					+ " company_code, introduction, summary, views, best_book,genre,registration_date"
+					+ " company_code, introduction, summary, views, best_book,genre,registration_date, book_img"
 					+ " from books where book_no="+b;
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -314,6 +314,7 @@ public class EBookDAO {
 				result.setBest_book(rs.getString(9));
 				result.setGenre(rs.getString(10));
 				result.setRegistration_date(rs.getString(11));
+				result.setBook_img(rs.getString(12));
 				books.add(result);
 			}
 		}catch(Exception e){
