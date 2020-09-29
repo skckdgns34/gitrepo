@@ -216,6 +216,30 @@ public class MemberDAO {
 		}
 		return resultVO;
 	}
+	
+	//회원탈퇴시 비밀번호 확인
+		public Member password(Member memberVO) {
+			Member resultVO = null;
+			ResultSet rs = null;
+			try {
+				conn = ConnectionManager.getConnnect();
+				String sql = " select member_id from member where member_pw = ?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, memberVO.getMember_pw());
+				rs = pstmt.executeQuery();
+				if (rs.next()) {
+					resultVO = new Member();
+					resultVO.setMember_id(rs.getString("MEMBER_ID"));
+				} else {
+					System.out.println("no data");
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				ConnectionManager.close(rs, pstmt, conn);
+			}
+			return resultVO;
+		}
 
 	//
 	// 메일수신회원수 : select count(id) from member where mailyn='y'

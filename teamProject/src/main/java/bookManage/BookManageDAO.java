@@ -9,6 +9,8 @@ import java.util.ArrayList;
 
 import common.ConnectionManager;
 import vo.Books;
+import vo.Common;
+import vo.Company;
 
 public class BookManageDAO {
 	Connection conn;
@@ -21,6 +23,44 @@ public class BookManageDAO {
 			instance=new BookManageDAO();
 		return instance;
 	}
+	
+	
+	public Books insertpur (Books books) {
+		try {
+			conn = ConnectionManager.getConnnect();
+			conn.setAutoCommit(false);
+			String seqSql = "select no from seq where tablename='purchase'";
+			Statement stmt = conn.createStatement();
+			rs = stmt.executeQuery(seqSql);
+			rs.next();
+			int no = rs.getInt(1);
+			books.setPurchase_no(Integer.toString(no));
+			
+			seqSql = "update seq set no = no + 1 where tablename='purchase'";
+			stmt = conn.createStatement();
+			stmt.execute(seqSql);
+			
+			String sql = "insert into purchase "
+					+ "values(?,?,?,?,?,?)";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, books.getPurchase_no());
+			pstmt.setString(2, books.getPurchase_price());
+			pstmt.setString(3, books.getPurchase_date());
+			pstmt.setString(4, books.getPurchase_content());
+			pstmt.setString(5, books.getEmp_no());
+			pstmt.setString(6, books.getBook_no());
+			pstmt.executeUpdate();
+			conn.commit();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionManager.close(rs, pstmt, conn);
+		}
+		
+		return books;
+	}
+	
+	
 	
 	public Books insert (Books books) {
 		Books resultVO = null;
@@ -129,27 +169,27 @@ public class BookManageDAO {
 	      Books books = null;
 	      try {
 	         conn = ConnectionManager.getConnnect();
-	         String sql = "SELECT BOOK_NO, TITLE, WRITER, PUBLICATION_DATE, "
-	         		+ "COMPANY_CODE, BEST_BOOK, genre, REGISTRATION_DATE "
-	               + "FROM BOOKS ";    
+	         String sql = "SELECT B.BOOK_NO, B.TITLE, B.WRITER, B.PUBLICATION_DATE, "
+	         		+ "B.BEST_BOOK, B.REGISTRATION_DATE, C.CODE_VALUE, P.COMPANY_NAME "
+	               + "FROM BOOKS B, COMMON C, COMPANY P "
+	               + "WHERE B.GENRE = C.CODE AND B.COMPANY_CODE = P.COMPANY_CODE";    
 	         System.out.println("search_type: " + search_type + "search_text" + search_text);
 	         if (search_text != null && !search_text.equals("")) {
-					sql += " WHERE " + search_type + " Like '%" + search_text + "%'";
+					sql += " AND " + "B." + search_type + " Like '%" + search_text + "%' ORDER BY " + search_type;  //욥션 선택 후 검색 시 선택별로 정렬
 				}
 	         pstmt = conn.prepareStatement(sql);
 	         rs = pstmt.executeQuery();
 	         while(rs.next()) {
 	        	 books = new Books();
-	             books.setBook_no(rs.getString(1));
-	        	 books.setTitle(rs.getString(2));
-	        	 books.setWriter(rs.getString(3));
-	             books.setPublication_date(rs.getString(4));
-	             books.setCompany_code(rs.getString(5));
-	             books.setBest_book(rs.getString(6));
-	             books.setGenre(rs.getString(7));
-	             books.setRegistration_date(rs.getString(8));
-
-	            list.add(books);
+	             books.setBook_no(rs.getString(1));				//도서번호
+	        	 books.setTitle(rs.getString(2));				//제목
+	        	 books.setWriter(rs.getString(3));				//작가
+	             books.setPublication_date(rs.getString(4));	//발간일
+	             books.setBest_book(rs.getString(5));			//베스트셀러
+	             books.setRegistration_date(rs.getString(6));	//등록일
+	             books.setCode_value(rs.getString(7));			//장르
+	             books.setCompany_name(rs.getString(8));		//출판사이름
+	             list.add(books);
 	         }
 	      } catch (Exception e) {
 	         e.printStackTrace();

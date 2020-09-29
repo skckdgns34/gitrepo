@@ -57,7 +57,16 @@ public class BookRegisterServ implements Controller
 		
 		
 		
-		Books r = BookManageDAO.getInstance().insert(book);
+		book = BookManageDAO.getInstance().insert(book);
+		
+		Books book1 = new Books();
+		try {
+			BeanUtils.copyProperties(book1, request.getParameterMap());
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		book1 = BookManageDAO.getInstance().insertpur(book1);
 		request.getRequestDispatcher("bookList.ad").forward(request, response);
 	}
 	
