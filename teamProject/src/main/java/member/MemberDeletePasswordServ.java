@@ -17,7 +17,7 @@ public class MemberDeletePasswordServ implements Controller {
 		memberVO.setMember_id(request.getParameter("member_id"));
 		memberVO.setMember_pw(request.getParameter("member_pw"));
 		
-		Member resultVO = MemberDAO.getinstance().selectOne(memberVO);
+		Member resultVO = MemberDAO.getinstance().password(memberVO);
 
 		String page = "";
 		if(resultVO == null) {
@@ -26,6 +26,7 @@ public class MemberDeletePasswordServ implements Controller {
 		} else {
 			memberVO.getMember_pw().equals(resultVO.getMember_pw());
 			page = "/member/memberDeletePassword.jsp";
+			request.setAttribute("msg", "비밀번호 확인 완료");
 			request.setAttribute("memberDeletePassword.jsp", resultVO);
 			request.setAttribute("member_pw", resultVO.getMember_pw());
 			
