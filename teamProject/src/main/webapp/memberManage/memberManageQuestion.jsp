@@ -35,41 +35,8 @@
 <body id="page-top">
 
 	<div class="container-fluid">
-		<div class="card shadow mb-4">
-			<div class="card-header py-3">
-				<h6 class="m-0 font-weight-bold text-primary">검색</h6>
-			</div>
-			<form
-				class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search"
-				method="post" action="memberManageBlackList.ad">
-				<div class="input-group">
-					<select name='search_type'>
-						<option value='MEMBER_NO'
-							<c:if test="${search_type == 'MEMBER_NO'}">selected</c:if>>회원번호
-						</option>
-						<option value='QUESTION_KIND'
-							<c:if test="${search_type == 'QUESTION_KIND'}">selected</c:if>>문의
-							코드</option>
-						<option value='BLACKLIST_REASON'
-							<c:if test="${search_type == 'BLACKLIST_REASON'}">selected</c:if>>이유</option>
-					</select>
-				</div>
-
-				<div class="input-group-append">
-					<input type="text" id='search_text' name='search_text'
-						placeholder="회원번호 또는 기간을 입력해주세요" value="${search_text }">
-					<button class="btn btn-primary" id="btnOk" type="submit">
-						<i class="fas fa-search fa-sm"></i>
-					</button>
-				</div>
-			</form>
-
-
-
-
-
-
-		</div>
+			<h3 class="page_title">문의 조회</h3>
+	<hr>
 		<div class="card-body">
 			<div class="table-responsive">
 

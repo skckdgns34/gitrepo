@@ -46,38 +46,11 @@ return;
 <body id="page-top">
 
 	<div class="container-fluid">
-		<div class="card shadow mb-4">
-			<div class="card-header py-3">
-				<h6 class="m-0 font-weight-bold text-primary">검색</h6>
-				 </div>
-<form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search"
-					method="post" action="empManageList.ad">
-<div class="input-group">
-		<select name='search_type'>
-			<option value='EMP_NO'<c:if test="${search_type == 'EMP_NO'}">selected</c:if>>사원 번호</option>
-			<option value='EMP_ID' <c:if test="${search_type == 'EMP_ID'}">selected</c:if>>사원 아이디</option>
-			<option value='EMP_NAME'<c:if test="${search_type == 'EMP_NAME'}">selected</c:if>>사원 이름</option>
-			<option value='EMP_BIRTH'<c:if test="${search_type == 'EMP_BIRTH'}">selected</c:if>>사원 생년월일</option>
-			<option value='ENTEREDDATE'<c:if test="${search_type == 'ENTEREDDATE'}">selected</c:if>>사원 입사일</option>
-			<option value='EMP_ADDRESS'<c:if test="${search_type == 'EMP_ADDRESS'}">selected</c:if>>사원 주소</option>
-			<option value='DEPT_CODE'<c:if test="${search_type == 'DEPT_CODE'}">selected</c:if>>부서 코드</option>
-			<option value='RANK_CODE'<c:if test="${search_type == 'RANK_CODE'}">selected</c:if>>??(이건 뭐야?)</option>
-	
-		</select>
-		</div>
-		<div class="input-group-append">
-							<input type="text" id='search_text' name='search_text'
-								placeholder="회원번호 또는 회원아이디를 입력해주세요" value="${search_text }">
-								<button class="btn btn-primary" id="btnOk" type="submit">
-								<i class="fas fa-search fa-sm"></i>
-							</button> 
-						</div>
-	</form>
-	
-		</div>
+		
+			<h3 class="page_title">사원 조회</h3>
 	
 	
-	</div>
+	
 	<div class="card-body">
 			<div class="table-responsive">
 				<div><button type='button' id='btn_i' class="btn btn-outline btn-primary pull-left" onclick="addpage()">추가</button>
@@ -116,6 +89,6 @@ return;
 	</table>
 </div>
 </div>
-
+</div>
 </body>
 </html>

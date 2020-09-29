@@ -27,16 +27,13 @@ public class MemberManageDAO {
 	}
 
 	// 전체조회
-	public List<Member> selectAll(String search_text, String search_type) {
+	public List<Member> selectAll(Member memberVO) {
 	
 		List<Member> list = new ArrayList<Member>();
 		try {
 			conn = ConnectionManager.getConnnect();
 			String sql = " SELECT * FROM MEMBER";
-			System.out.println("search_text = " + search_text + ", search_type =" + search_type);
-			if (search_text != null && !search_text.equals("")) {
-				sql += " WHERE " + search_type + " Like '%" + search_text + "%'";
-			}
+			
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
