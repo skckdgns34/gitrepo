@@ -118,7 +118,7 @@
             <h6 class="collapse-header"></h6>
             <a class="collapse-item" href="<%=request.getContextPath()%>/memberManageMain.ad">회원조회</a>
             <a class="collapse-item" href="<%=request.getContextPath()%>/memberManageBlackList.ad">블랙리스트관리</a>
-            <a class="collapse-item" href="★문의관리 url 넣어주세요!">문의관리</a>
+            <a class="collapse-item" href="<%=request.getContextPath()%>/memberManageQuestion.ad">문의관리</a>
             
           </div>
         </div>

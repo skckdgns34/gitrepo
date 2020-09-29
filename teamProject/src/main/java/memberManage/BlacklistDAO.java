@@ -13,17 +13,17 @@ import common.ConnectionManager;
 import vo.Blacklist;
 import vo.Member;
 
-public class BlackListDAO {
+public class BlacklistDAO {
 	// 전역변수. 모든 메서드에 공통으로 사용되는 변수
 	Connection conn;
 	PreparedStatement pstmt;
 	ResultSet rs = null;
 	// 싱글톤(하나 만들어두면 불러와서 계속씀)
-	static BlackListDAO instance;
+	static BlacklistDAO instance;
 
-	public static BlackListDAO getinstance() {
+	public static BlacklistDAO getinstance() {
 		if (instance == null)
-			instance = new BlackListDAO();
+			instance = new BlacklistDAO();
 		return instance;
 	}
 
