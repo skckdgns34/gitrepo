@@ -20,4 +20,11 @@ public class Books {
 	private String best_book;
 	private String genre;
 	private String registration_date;
+	private String code_value;
+	private String company_name;
+	private String purchase_no;
+	private String purchase_price;
+	private String purchase_date;
+	private String purchase_content;
+	private String emp_no;
 }

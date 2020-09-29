@@ -83,7 +83,10 @@ public class EBookDAO {
 		ArrayList<Books> list = new ArrayList<Books>();
 		try {
 			conn = ConnectionManager.getConnnect();
-			String sql = "select book_no, title, book_img, writer, audio_path, genre from books where audio_path is not null and genre = ? order by 1 ";
+			String sql = "select book_no, title, book_img, writer, audio_path, genre from books where audio_path is not null ";
+			if(genre!=null) {
+				sql += "and genre = ? order by 1";
+			}
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, genre);
 

@@ -1,3 +1,4 @@
+
 package memberManage;
 
 import java.sql.Connection;
@@ -30,7 +31,7 @@ public class BlacklistDAO {
 	// 전체조회
 	public List<Blacklist> selectAll(String search_text, String search_type) {
 	
-		List<Blacklist> list = new ArrayList<Blacklist>();
+		List<Blacklist> list = new ArrayList<Blacklist>(); 
 		try {
 			conn = ConnectionManager.getConnnect();
 			String sql = " SELECT B.BLACKLIST_NO, B.MEMBER_NO, M.NICKNAME,  B.BLACKLIST_REASON,  B.LIMIT_DATE " + 
@@ -49,8 +50,10 @@ public class BlacklistDAO {
 				black.setNickname(rs.getString("nickname"));
 				black.setBlacklist_reason(rs.getString("blacklist_reason"));
 				black.setLimit_date(rs.getString("limit_date"));
-				list.add(black);
 				
+				
+				list.add(black);
+				     
 		
 			}
 		} catch (Exception e) {
