@@ -13,22 +13,22 @@
 <label>title: ${book.title}</label><br>
 <label>writer: ${book.writer}</label><br> --%>
 	<audio controls="controls">
-		<source src="filenameDownload.do?filename=${books.audio_path }" type="audio/ogg" />
+		<source src="filenameDownload.do?filename=a.mp3<%-- ${book.audio_path } --%>" type="audio/ogg" />
 		이 브라우저는 실행 불가
 	</audio> 
 <table border="1">
 	<thead>
 		<tr>
-				<th>no</th>
-				<th>poster</th>
-				<th>subject</th>
-				<th>contents</th>
+				<th>mylib_no</th>
+				<th>book_no</th>
+				<th>wish</th>
+				<th>last_read_index</th>
 		</tr>
 	</thead>
 	<tbody>		
 <c:forEach items="${mylib }" var="list">
 	<tr>
-		<td>${list.mylibrary_no }</td>
+		<td><a href="audioBookReading.do?book_no=${list.book_no}">${list.mylibrary_no }</td>
 		<td>${list.book_no }</td>
 		<td>${list.wish}</td>
 		<td>${list.last_read_index}</td>

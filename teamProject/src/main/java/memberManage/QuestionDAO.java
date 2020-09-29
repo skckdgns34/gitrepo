@@ -29,7 +29,7 @@ public class QuestionDAO {
 	}
 
 	// 전체조회
-	public List<Questions> selectAll(String search_text, String search_type) {
+	public List<Questions> selectAll(Questions questions) {
 	
 		List<Questions> list = new ArrayList<Questions>();
 		try {
@@ -38,10 +38,7 @@ public class QuestionDAO {
 					+ " Q.QUESTION_TITLE, Q.QUESTION_FILE, Q.QUESTION_KIND "
 					+ " FROM QUESTIONS Q,   MEMBER M "
 					+ " WHERE M.MEMBER_NO = Q.MEMBER_NO";
-			/*System.out.println("search_text = " + search_text + ", search_type =" + search_type);
-			if (search_text != null && !search_text.equals("")) {
-				sql += " WHERE " + search_type + " Like '%" + search_text + "%'";
-			}*/
+			
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {

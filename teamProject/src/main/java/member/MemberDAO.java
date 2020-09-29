@@ -105,10 +105,8 @@ public class MemberDAO {
 		try {
 			conn = ConnectionManager.getConnnect();
 			String sql = " update member set member_id = null, member_pw = null, nickname = null, member_tel = null,"
-					+ " member_email = null, signup_date = null, last_access_date = null, gender = null" 
-					+ " where member_no = ?";
+					+ " member_email = null, signup_date = null, last_access_date = null, gender = null" ;
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, memberVO.getMember_no());
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				resultVO = new Member();
@@ -216,6 +214,30 @@ public class MemberDAO {
 		}
 		return resultVO;
 	}
+	
+	//회원탈퇴시 비밀번호 확인
+		public Member password(Member memberVO) {
+			Member resultVO = null;
+			ResultSet rs = null;
+			try {
+				conn = ConnectionManager.getConnnect();
+				String sql = " select member_id from member where member_pw = ?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, memberVO.getMember_pw());
+				rs = pstmt.executeQuery();
+				if (rs.next()) {
+					resultVO = new Member();
+					resultVO.setMember_id(rs.getString("MEMBER_ID"));
+				} else {
+					System.out.println("no data");
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				ConnectionManager.close(rs, pstmt, conn);
+			}
+			return resultVO;
+		}
 
 	//
 	// 메일수신회원수 : select count(id) from member where mailyn='y'
@@ -267,7 +289,7 @@ public class MemberDAO {
 			conn = ConnectionManager.getConnnect();
 			String sql = "select mylibrary_no, book_no, wish, last_read_index from mylibrary where member_no = ?";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, Integer.parseInt(member_no));
+			pstmt.setString(1, member_no);
 			rs = pstmt.executeQuery();
 			
 			while (rs.next()) {
