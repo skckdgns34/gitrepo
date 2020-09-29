@@ -11,6 +11,7 @@ import java.util.List;
 
 import common.ConnectionManager;
 import vo.Member;
+import vo.Mylibrary;
 
 public class MemberDAO {
 	// 전역변수. 모든 메서드에 공통으로 사용되는 변수
@@ -238,5 +239,31 @@ public class MemberDAO {
 		}
 		return list;
 	}
-
+	
+	//my library꺼 긁어오기
+	public ArrayList<Mylibrary> mylibList(String member_no) {
+		ArrayList<Mylibrary> list = new ArrayList<Mylibrary>();
+		ResultSet rs = null;
+		try {
+			conn = ConnectionManager.getConnnect();
+			String sql = "select mylibrary_no, book_no, wish, last_read_index from mylibrary where member_no = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, Integer.parseInt(member_no));
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				Mylibrary lib = new Mylibrary();
+				lib.setMylibrary_no(rs.getString(1));
+				lib.setBook_no(rs.getString(2));
+				lib.setWish(rs.getString(3));
+				lib.setLast_read_index(rs.getString(4));
+				list.add(lib);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionManager.close(rs, pstmt, conn);
+		}
+		return list;
+	}
 }
