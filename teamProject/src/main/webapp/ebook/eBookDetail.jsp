@@ -10,7 +10,6 @@
 <script>
 	$(function(){
 		btnHideNShow();
-		recCount();
 		btnScore();
 	});
 	
@@ -32,32 +31,39 @@
 	function btnScore(){ // 추천버튼 클릭시(추천 추가 또는 추천 제거)
 		$("#rec_update").click(function(){
 			$.ajax({
-				url: "/expro/RecUpdate.do",
+				url: "${pageContext.request.contextPath}/Ajax/eBookRecommendation.do",
                 type: "POST",
+                dataType: "JSON",
                 data: {
-                    no: ${member_no},
-                    id: "${member_id}"
+                    book_no:  "${book[0].book_no}",
+                    member_no:  "${member_no}",
+                    check: "${check}"
                 },
-                success: function () {
-			        recCount();
-                },
+                success: function (result) {
+			        if(result.check.equals("0")){
+			        	$(".fa fa-heart").css("color", 'white')
+			        }else{
+			        	$(".fa fa-heart").css("backgroundcolor", 'red')
+			        }
+                	$(".rec_count").html(result.count); 
+                }
 			})
-		}
+		})
 	}
 		
-	// 게시글 추천수
+	/* // 게시글 추천수
 	function recCount() {
 		$.ajax({
-			url: "/eBookRecommendation.do",
+			url: "${pageContext.request.contextPath}/Ajax/eBookRecommendation.do",
                type: "POST",
                data: {
-                   no: ${content.board_no}
+                   no: ${book[0].book_no}
                },
                success: function (count) {
                	$(".rec_count").html(count);
                },
 		})
-	};
+	}; */
 	
 </script>
 
@@ -120,12 +126,20 @@ IMP.request_pay({
 				<i class="fa fa-heart" style="font-size:16px;color:red"></i>
 				<span class="rec_count"></span>					
 			</c:if>
-			
+			${check}=============
 			<c:if test="${ member_no != null }">
-				<button class="w3-button w3-black w3-round" id="rec_update">
-					<i class="fa fa-heart" style="font-size:16px;color:red"></i>
-					&nbsp;<span class="rec_count">좋아요 수</span>
-				</button> 
+				<c:if test="${check > 0}">
+					<button class="w3-button w3-black w3-round" id="rec_update">
+						<i class="fa fa-heart" style="font-size:16px;color:red"></i>
+						&nbsp;<span class="rec_count">좋아요 수</span>
+					</button> 
+				</c:if>
+				<c:if test="${check == 0}">
+					<button class="w3-button w3-black w3-round" id="rec_update">
+						<i class="fa fa-heart" style="font-size:16px;color:white"></i>
+						&nbsp;<span class="rec_count"></span><!-- 좋아요수 -->
+					</button> 
+				</c:if>
 			</c:if>
 		</div>
 	</div>

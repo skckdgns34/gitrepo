@@ -1,6 +1,5 @@
 package ebook;
 
-import java.awt.print.Book;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,6 +10,7 @@ import java.util.Map;
 
 import common.ConnectionManager;
 import vo.Books;
+import vo.Good;
 import vo.SearchBook;
 
 public class EBookDAO {
@@ -324,6 +324,88 @@ public class EBookDAO {
 		}
 		return books;
 	}
+	
+	
+	// 게시글 추천여부 검사
+		public int recCheck(String a, String b ){
+			int result = 0;
+			rs = null;
+			try {
+				conn = ConnectionManager.getConnnect();
+				String sql = "select count(*) from good where book_no=? and member_no = ?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, a);
+				pstmt.setString(2, b);
+				rs = pstmt.executeQuery();
+				if(rs.next()) {
+					result = rs.getInt(1);
+				}
+			} catch (Exception e) {
+				System.out.println("recCheck : " + e);
+				e.printStackTrace();
+			}finally {
+				ConnectionManager.close(rs, pstmt, conn);
+			}
+			return result;
+		}
+		
+	// 게시글 추천
+		public void recInsert(Good good){
+			try {
+				conn = ConnectionManager.getConnnect();
+				String sql = "insert into good(book_no, member_no, like_count) values(?,?, 1)";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, good.getBook_no());
+				pstmt.setString(2, good.getMember_no());
+				System.out.println(good.getMember_no()+"멤버 nonono");
+				pstmt.executeUpdate();
+			} catch (Exception e) {
+				System.out.println("recUpdate : " + e);
+				e.printStackTrace();
+			}finally {
+				ConnectionManager.close(rs, pstmt, conn);
+			}
+		}
+		
+		// 게시글 추천 제거
+		public void recDelete(Good good){
+			try {
+				conn = ConnectionManager.getConnnect();
+				String sql ="delete from good where book_no =? and member_no = ?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, good.getBook_no());
+				pstmt.setString(2, good.getMember_no());
+				pstmt.executeUpdate();
+			} catch (Exception e) {
+				System.out.println("recDelete : " + e);
+				e.printStackTrace();
+			}finally {
+				ConnectionManager.close(rs, pstmt, conn);
+			}
+		}
+		
+		// 게시글 추천수
+		public int recCount(String no){
+			int count = 0;
+			rs = null;
+			try {
+				conn = ConnectionManager.getConnnect();
+				String sql = "select count(*) from good where book_no = "+no;
+				pstmt = conn.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+				if(rs.next()) {
+					count = rs.getInt(1);
+				}
+			} catch (Exception e) {
+				System.out.println("recCount : " + e);
+				e.printStackTrace();
+			}finally {
+				ConnectionManager.close(rs, pstmt, conn);
+			}
+			return count;
+		}
+		
+	
 	
 	
 	
