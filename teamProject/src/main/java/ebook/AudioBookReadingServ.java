@@ -26,7 +26,6 @@ public class AudioBookReadingServ implements Controller
 		request.setAttribute("mylib", mylib);
 		request.setAttribute("book", book_detail);
 		request.getRequestDispatcher("/ebook/audioBookReading.jsp").forward(request, response);
-		
 	}
 
 }
