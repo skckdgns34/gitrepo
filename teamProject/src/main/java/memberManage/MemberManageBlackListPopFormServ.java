@@ -15,7 +15,7 @@ public class MemberManageBlackListPopFormServ implements Controller {
 		Blacklist blackVO = new Blacklist();
 		String no = request.getParameter("no");
 		blackVO.setBlacklist_no(no);
-		Blacklist black = BlackListDAO.getinstance().selectOne(blackVO);
+		Blacklist black = BlacklistDAO.getinstance().selectOne(blackVO);
 		request.setAttribute("black", black);
 		
 		request.getRequestDispatcher("/memberManage/memberManageBlackListPop.jsp").forward(request, response);
