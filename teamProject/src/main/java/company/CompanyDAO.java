@@ -40,7 +40,7 @@ public class CompanyDAO {
 			stmt.executeUpdate(seqSql);
 			
 			String sql = "insert into company (company_code, company_name, company_addr, company_mgr, company_tel, "
-					+ "company_mgr_tel, company_account)"
+					+ "company_mgr_tel, company_account, company_bank)"
 					+ " values(?,?,?,?,?,?,?)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, company.getCompany_code());
@@ -50,6 +50,7 @@ public class CompanyDAO {
 			pstmt.setString(5, company.getCompany_tel());
 			pstmt.setString(6, company.getCompany_mgr_tel());
 			pstmt.setString(7, company.getCompany_account());
+			pstmt.setString(8, company.getCompany_bank());
 			pstmt.executeUpdate();
 			conn.commit();
 			
@@ -101,6 +102,7 @@ public class CompanyDAO {
 	        	 companyvo.setCompany_tel(rs.getString(5));
 	        	 companyvo.setCompany_mgr_tel(rs.getString(6));
 	        	 companyvo.setCompany_account(rs.getString(7));
+	        	 companyvo.setCompany_bank(rs.getString(8));
 	         } else {
 	         }
 	      } catch (Exception e) {
@@ -112,25 +114,30 @@ public class CompanyDAO {
 	   }
 	
 	
-	public ArrayList<Company> selectAll() {
+	public ArrayList<Company> selectAll(String search_text, String search_type) {
 	      ArrayList<Company> list = new ArrayList<Company>();
 	      Company company = null;
 	      try {
 	         conn = ConnectionManager.getConnnect();
 	         String sql = "SELECT * "
-	               + "FROM COMPANY ORDER BY 1";         
+	               + "FROM COMPANY";   
+	         System.out.println("search_text = " + search_text + ", search_type =" + search_type);
+	         if (search_text != null && !search_text.equals("")) {
+					sql += " WHERE " + search_type + " Like '%" + search_text + "%'";
+				}
+	         
 	         pstmt = conn.prepareStatement(sql);
 	         rs = pstmt.executeQuery();
 	         while(rs.next()) {
 	        	 company = new Company();
 	        	 company.setCompany_code(rs.getString(1));
-	        	 company.setCompany_name(rs.getString(2));
-	        	 company.setCompany_addr(rs.getString(3));
-	        	 company.setCompany_mgr(rs.getString(4));
-	        	 company.setCompany_tel(rs.getString(5));
-	        	 company.setCompany_mgr_tel(rs.getString(6));
-	        	 company.setCompany_account(rs.getString(7));
-
+	        	 company.setCompany_name(rs.getString("company_name"));
+	        	 company.setCompany_addr(rs.getString("company_addr"));
+	        	 company.setCompany_mgr(rs.getString("company_mgr"));
+	        	 company.setCompany_tel(rs.getString("company_tel"));
+	        	 company.setCompany_mgr_tel(rs.getString("company_mgr_tel"));
+	        	 company.setCompany_account(rs.getString("company_account"));
+	        	 company.setCompany_bank(rs.getString(8));
 	            list.add(company);
 	         }
 	      } catch (Exception e) {
@@ -143,25 +150,27 @@ public class CompanyDAO {
 	
 	
 	 public Company update(Company company) {
-		 Company companyvo = null;
+		 Company resultVO = null;
 	      try {
 	         conn = ConnectionManager.getConnnect();
 	         String sql = "UPDATE COMPANY SET COMPANY_NAME=?, COMPANY_ADDR=?, COMPANY_MGR=?, COMPANY_TEL=?, "
-	         			+ "COMPANY_TEL=?, COMPANY_MGR_TEL=?, COMPANY_ACCOUNT=?"
+	         			+ "COMPANY_MGR_TEL=?, COMPANY_ACCOUNT=?, COMPANY_BANK=?"
 	         			+ " WHERE COMPANY_CODE = ?";
 	         pstmt = conn.prepareStatement(sql);
-	         pstmt.setString(1, companyvo.getCompany_name());
-	         pstmt.setString(2, companyvo.getCompany_addr());
-	         pstmt.setString(3, companyvo.getCompany_mgr());
-	         pstmt.setString(4, companyvo.getCompany_tel());
-	         pstmt.setString(5, companyvo.getCompany_mgr_tel());
-	         pstmt.setString(6, companyvo.getCompany_account());
+	         pstmt.setString(1, company.getCompany_name());
+	         pstmt.setString(2, company.getCompany_addr());
+	         pstmt.setString(3, company.getCompany_mgr());
+	         pstmt.setString(4, company.getCompany_tel());
+	         pstmt.setString(5, company.getCompany_mgr_tel());
+	         pstmt.setString(6, company.getCompany_account());
+	         pstmt.setString(7, company.getCompany_bank());
+	         pstmt.setString(8, company.getCompany_code());
 	         pstmt.executeUpdate();
 	      } catch (Exception e) {
 	         e.printStackTrace();
 	      } finally {
 	         ConnectionManager.close(null, pstmt, conn);
 	      }
-	      return companyvo;
+	      return resultVO;
 	   }
 }

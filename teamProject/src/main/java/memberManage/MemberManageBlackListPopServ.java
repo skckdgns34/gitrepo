@@ -1,6 +1,7 @@
 package memberManage;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -29,7 +30,8 @@ public class MemberManageBlackListPopServ implements Controller
 		black.setMember_no(member_no);
 		black.setLimit_date(limit_date);
 		BlackListDAO.getinstance().update(black);
-		
+		List<Blacklist> list = BlackListDAO.getinstance().selectAll(null,null);
+		request.setAttribute("list", list);
 		request.getRequestDispatcher("/memberManage/memberManageBlackList.jsp").forward(request, response);
 
 	}

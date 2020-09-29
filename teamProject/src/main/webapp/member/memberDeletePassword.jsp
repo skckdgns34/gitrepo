@@ -28,6 +28,12 @@ function closeMe() {
     var win=window.open("","_self");
     win.close();
 }
+
+$(function(){
+	$("btn").on("click", function(){
+		location.href = "${pageContext.request.contextPath }/memberDeletePasswordServ.do?member_pw=" + $("#member_pw").val()
+	})
+});
 </script>
 
 </head>
@@ -43,7 +49,7 @@ function closeMe() {
 			<div>
 				<label for="member_pw">Password:</label> <input type="password"
 					class="pw" id="member_pw" name="member_pw">
-				<button>확인</button>
+				<button id="btn">확인</button>
 			</div>
 			<input type="button" value="닫기 " onclick="window.close();">
 		</div>
