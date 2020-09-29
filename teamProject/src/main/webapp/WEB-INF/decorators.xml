@@ -27,5 +27,6 @@
 	</decorator>
 	<excludes>
 		<pattern>/Ajax/*</pattern>
+		<pattern>/audioBookReading*</pattern>
 	</excludes>
 </decorators>

@@ -68,16 +68,12 @@ public class EmpDAO {
 	}
 
 	// 전체 조회
-	public List<Employees> selectAll(String search_text, String search_type) {
+	public List<Employees> selectAll(Employees employeesVO) {
 		List<Employees> list = new ArrayList<Employees>();
 		try {
 			conn = ConnectionManager.getConnnect();
 			String sql = "SELECT * FROM EMPLOYEES";
-			System.out.println("search_text = " + search_text + ", search_type =" + search_type);
-
-			if (search_text != null && !search_text.equals("")) {
-				sql += " WHERE " + search_type + " Like '%" + search_text + "%'";
-			}
+			
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
