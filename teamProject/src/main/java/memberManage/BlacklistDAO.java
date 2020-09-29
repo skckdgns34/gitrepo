@@ -28,8 +28,10 @@ public class BlacklistDAO {
 		return instance;
 	}
 
+	
+	
 	// 전체조회
-	public List<Blacklist> selectAll(String search_text, String search_type) {
+	public List<Blacklist> selectAllList(Blacklist blacklist) {
 	
 		List<Blacklist> list = new ArrayList<Blacklist>(); 
 		try {
@@ -37,10 +39,7 @@ public class BlacklistDAO {
 			String sql = " SELECT B.BLACKLIST_NO, B.MEMBER_NO, M.NICKNAME,  B.BLACKLIST_REASON,  B.LIMIT_DATE " + 
 					" FROM BLACKLIST B, MEMBER M " + 
 					" WHERE B.MEMBER_NO = M.MEMBER_NO ";
-			System.out.println("search_text = " + search_text + ", search_type =" + search_type);
-			if (search_text != null && !search_text.equals("")) {
-				sql += " WHERE " + search_type + " Like '%" + search_text + "%'";
-			}
+			
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
