@@ -92,7 +92,7 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">도서관리</h6>
             <a class="collapse-item" href="bookList.ad">도서조회</a>
-            <a class="collapse-item" href="bookManage.ad">E-Book 등록</a>
+            <a class="collapse-item" href="bookManage2.ad">E-Book 등록</a>
             <a class="collapse-item" href="bookManageAudio.ad">A-Book 등록</a>
 
           </div>
