@@ -8,6 +8,9 @@
 <head>
 <meta charset="UTF-8">
 <title>블랙리스트 조회</title>
+
+ 
+
 <script>
 	function check(ck) {
 		var obj = document.getElementsByName("user_CheckBox");
@@ -75,15 +78,15 @@
 			
 					<div><button type="button" id='btn_n' class="btn btn-outline btn-primary pull-" onclick="modifypage()">수정</button>
 					<button type="button" id='btn_d' class="btn btn-outline btn-primary pull-right" onclick="deletepage()">삭제</button></div>
-				<table class="table table-bordered" id="dataTable" width="100%"
-					cellspacing="0">
+				<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 
 					<thead>
 					<tr>
 						<th>선택</th>
 						<th>BLACKLIST_NO</th>
-						<th>BLACKLIST_REASON</th>
 						<th>MEMBER_NO</th>
+						<th>NICKNAME</th>						
+						<th>BLACKLIST_REASON</th>
 						<th>LIMIT_DATE</th>
 						</tr>
 					</thead>
@@ -93,8 +96,9 @@
 							<tr>
 								<td><input type="checkbox" name="user_CheckBox" onclick="check(this)" value="${black.getBlacklist_no()}"></td>
 								<td>${black.getBlacklist_no()}</td>
-								<td>${black.blacklist_reason}</td>
 								<td>${black.getMember_no()}</td>
+								<td>${black.getNickname()}</td>
+								<td>${black.blacklist_reason}</td>
 								<td>${black.getLimit_date()}</td>
 								
 						</c:forEach>
@@ -104,5 +108,8 @@
 			</div>
 		</div>
 	</div>
+
+
+
 </body>
 </html>

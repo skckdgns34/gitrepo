@@ -11,6 +11,7 @@ import java.util.List;
 
 import common.ConnectionManager;
 import vo.Member;
+import vo.Mylibrary;
 
 public class MemberDAO {
 	// 전역변수. 모든 메서드에 공통으로 사용되는 변수
@@ -97,18 +98,37 @@ public class MemberDAO {
 		return resultVO;
 	}
 
+	//회원탈퇴 PK 제외 null값 처리
 	public void delete(Member memberVO) {
+		Member resultVO = null;
+		ResultSet rs = null;
 		try {
 			conn = ConnectionManager.getConnnect();
-			String sql = "delete member where member_id= ?";
+			String sql = " update member set member_id = null, member_pw = null, nickname = null, member_tel = null,"
+					+ " member_email = null, signup_date = null, last_access_date = null, gender = null" 
+					+ " where member_no = ?";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, memberVO.getMember_id());
+			pstmt.setString(1, memberVO.getMember_no());
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				resultVO = new Member();
+				resultVO.setMember_id(rs.getString("MEMBER_ID"));
+				resultVO.setMember_pw(rs.getString("MEMBER_PW"));
+				resultVO.setNickname(rs.getString("NICKNAME"));
+				resultVO.setMember_tel(rs.getString("MEMBER_TEL"));
+				resultVO.setMember_email(rs.getString("MEMBER_EMAIL"));
+				resultVO.setSignup_date(rs.getString("SIGNUP_DATE"));
+				resultVO.setLast_access_date(rs.getString("LAST_ACCESS_DATE"));
+				resultVO.setGender(rs.getString("GENDER"));
+			} else {
+				System.out.println("no data");
+			}
 			int r = pstmt.executeUpdate();
 			System.out.println(r + "건이 삭제됨.");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			ConnectionManager.close(null, pstmt, conn);
+			ConnectionManager.close(rs, pstmt, conn);
 		}
 	}
 
@@ -196,6 +216,30 @@ public class MemberDAO {
 		}
 		return resultVO;
 	}
+	
+	//회원탈퇴시 비밀번호 확인
+		public Member password(Member memberVO) {
+			Member resultVO = null;
+			ResultSet rs = null;
+			try {
+				conn = ConnectionManager.getConnnect();
+				String sql = " select member_id from member where member_pw = ?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, memberVO.getMember_pw());
+				rs = pstmt.executeQuery();
+				if (rs.next()) {
+					resultVO = new Member();
+					resultVO.setMember_id(rs.getString("MEMBER_ID"));
+				} else {
+					System.out.println("no data");
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				ConnectionManager.close(rs, pstmt, conn);
+			}
+			return resultVO;
+		}
 
 	//
 	// 메일수신회원수 : select count(id) from member where mailyn='y'
@@ -238,5 +282,31 @@ public class MemberDAO {
 		}
 		return list;
 	}
-
+	
+	//my library꺼 긁어오기
+	public ArrayList<Mylibrary> mylibList(String member_no) {
+		ArrayList<Mylibrary> list = new ArrayList<Mylibrary>();
+		ResultSet rs = null;
+		try {
+			conn = ConnectionManager.getConnnect();
+			String sql = "select mylibrary_no, book_no, wish, last_read_index from mylibrary where member_no = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, Integer.parseInt(member_no));
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				Mylibrary lib = new Mylibrary();
+				lib.setMylibrary_no(rs.getString(1));
+				lib.setBook_no(rs.getString(2));
+				lib.setWish(rs.getString(3));
+				lib.setLast_read_index(rs.getString(4));
+				list.add(lib);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionManager.close(rs, pstmt, conn);
+		}
+		return list;
+	}
 }

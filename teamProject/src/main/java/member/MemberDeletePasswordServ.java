@@ -16,30 +16,22 @@ public class MemberDeletePasswordServ implements Controller {
 		Member memberVO = new Member();
 		memberVO.setMember_id(request.getParameter("member_id"));
 		memberVO.setMember_pw(request.getParameter("member_pw"));
-		System.out.println(memberVO);
 		
-		Member resultVO = MemberDAO.getinstance().selectOne(memberVO);
+		Member resultVO = MemberDAO.getinstance().password(memberVO);
 
 		String page = "";
-		if(memberVO.getMember_pw().equals(resultVO.getMember_pw())) {
-			page = "member/memberDeletePassword.jsp";
-			request.setAttribute("errormsg", "확인성공.");
-			request.getSession().setAttribute("memberDelete", resultVO);
-			request.getSession().setAttribute("member_pw", resultVO.getMember_pw());
+		if(resultVO == null) {
+			page = "/member/memberDeletePassword.jsp";
+			request.setAttribute("errormsg", "비밀번호를 다시 입력해주세요");
 		} else {
-			request.setAttribute("errormsg", "비밀번호가 일치하지 않습니다.");
-			page = "member/memberDeletePassword.jsp";
+			memberVO.getMember_pw().equals(resultVO.getMember_pw());
+			page = "/member/memberDeletePassword.jsp";
+			request.setAttribute("msg", "비밀번호 확인 완료");
+			request.setAttribute("memberDeletePassword.jsp", resultVO);
+			request.setAttribute("member_pw", resultVO.getMember_pw());
+			
 		}
 			
-		
-		
-		//		if(memberVO.getMember_pw().equals(resultVO.getMember_pw())) {
-//			request.getSession().setAttribute("member_pw", resultVO.getMember_pw());
-//			page = "/member/MemberDeletePassword.jsp";
-//		} else {
-//			request.setAttribute("errormsg", "비밀번호를 제대로 입력해주세요.");
-//			page = "/member/MemberDeletePassword.jsp";
-//		}
 		request.getRequestDispatcher(page).forward(request, response);
 	}
 	
