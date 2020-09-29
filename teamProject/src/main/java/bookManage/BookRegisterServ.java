@@ -57,7 +57,8 @@ public class BookRegisterServ implements Controller
 		
 		
 		
-		book = BookManageDAO.getInstance().insert(book);
+		
+		int no  = BookManageDAO.getInstance().insert(book);
 		
 		Books book1 = new Books();
 		try {
@@ -65,7 +66,7 @@ public class BookRegisterServ implements Controller
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-		
+		book1.setBook_no(Integer.toString(no));
 		book1 = BookManageDAO.getInstance().insertpur(book1);
 		request.getRequestDispatcher("bookList.ad").forward(request, response);
 	}

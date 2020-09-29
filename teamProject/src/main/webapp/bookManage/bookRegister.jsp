@@ -15,6 +15,9 @@
 				  enctype="multipart/form-data"
 				  action="${pageContext.request.contextPath }/bookRegister.ad"
 				  >
+				  <div>
+					<label for="book_no">도서코드</label> <input id="book_no" name="book_no" type="hidden">
+				</div>
 				<div>
 					<label for="title">제목</label> <input id="title" name="title" type="text">
 				</div>

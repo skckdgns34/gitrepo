@@ -29,6 +29,8 @@ public class BookManageDAO {
 		try {
 			conn = ConnectionManager.getConnnect();
 			conn.setAutoCommit(false);
+			
+			
 			String seqSql = "select no from seq where tablename='purchase'";
 			Statement stmt = conn.createStatement();
 			rs = stmt.executeQuery(seqSql);
@@ -39,6 +41,15 @@ public class BookManageDAO {
 			seqSql = "update seq set no = no + 1 where tablename='purchase'";
 			stmt = conn.createStatement();
 			stmt.execute(seqSql);
+			
+			
+			/*
+			 * String seqSql2 = "select no from seq where tablename = 'books'"; rs =
+			 * stmt.executeQuery(seqSql2); rs.next(); int no2 = rs.getInt(1);
+			 * books.setBook_no(Integer.toString(no2)); stmt =conn.createStatement();
+			 * stmt.execute(seqSql2);
+			 */
+			 
 			
 			String sql = "insert into purchase "
 					+ "values(?,?,?,?,?,?)";
@@ -62,8 +73,9 @@ public class BookManageDAO {
 	
 	
 	
-	public Books insert (Books books) {
+	public int insert (Books books) {
 		Books resultVO = null;
+		int no = 0;
 		try {
 			conn = ConnectionManager.getConnnect();
 			conn.setAutoCommit(false);
@@ -71,7 +83,7 @@ public class BookManageDAO {
 			Statement stmt = conn.createStatement();
 			rs = stmt.executeQuery(seqSql);
 			rs.next();
-			int no = rs.getInt(1);
+			no = rs.getInt(1);
 			books.setBook_no(Integer.toString(no));
 			
 			seqSql = "update seq set no = no + 1 where tablename = 'books'";
@@ -107,7 +119,7 @@ public class BookManageDAO {
 		}finally {
 			ConnectionManager.close(conn);
 		}
-		return resultVO;
+		return no;
 	}
 	
 	public int delete(Books book) {
