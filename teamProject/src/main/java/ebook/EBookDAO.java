@@ -83,7 +83,10 @@ public class EBookDAO {
 		ArrayList<Books> list = new ArrayList<Books>();
 		try {
 			conn = ConnectionManager.getConnnect();
-			String sql = "select book_no, title, book_img, writer, audio_path, genre from books where audio_path is not null and genre = ? order by 1 ";
+			String sql = "select book_no, title, book_img, writer, audio_path, genre from books where audio_path is not null ";
+			if(genre!=null) {
+				sql += "and genre = ? order by 1";
+			}
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, genre);
 
@@ -297,7 +300,7 @@ public class EBookDAO {
 		try {
 			conn = ConnectionManager.getConnnect();
 			String sql= "select book_no, title, writer, publication_date,"
-					+ " company_code, introduction, summary, views, best_book,genre,registration_date"
+					+ " company_code, introduction, summary, views, best_book,genre,registration_date, book_img"
 					+ " from books where book_no="+b;
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -314,6 +317,7 @@ public class EBookDAO {
 				result.setBest_book(rs.getString(9));
 				result.setGenre(rs.getString(10));
 				result.setRegistration_date(rs.getString(11));
+				result.setBook_img(rs.getString(12));
 				books.add(result);
 			}
 		}catch(Exception e){

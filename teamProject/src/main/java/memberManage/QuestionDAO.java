@@ -12,41 +12,52 @@ import java.util.List;
 import common.ConnectionManager;
 import vo.Blacklist;
 import vo.Member;
+import vo.Questions;
 
-public class BlackListDAO {
+public class QuestionDAO {
 	// 전역변수. 모든 메서드에 공통으로 사용되는 변수
 	Connection conn;
 	PreparedStatement pstmt;
 	ResultSet rs = null;
 	// 싱글톤(하나 만들어두면 불러와서 계속씀)
-	static BlackListDAO instance;
+	static QuestionDAO instance;
 
-	public static BlackListDAO getinstance() {
+	public static QuestionDAO getinstance() {
 		if (instance == null)
-			instance = new BlackListDAO();
+			instance = new QuestionDAO();
 		return instance;
 	}
 
 	// 전체조회
-	public List<Blacklist> selectAll(String search_text, String search_type) {
+	public List<Questions> selectAll(String search_text, String search_type) {
 	
-		List<Blacklist> list = new ArrayList<Blacklist>();
+		List<Questions> list = new ArrayList<Questions>();
 		try {
 			conn = ConnectionManager.getConnnect();
-			String sql = " SELECT * FROM BLACKLIST";
-			System.out.println("search_text = " + search_text + ", search_type =" + search_type);
+			String sql = "SELECT M.MEMBER_ID, Q.MEMBER_NO, M.NICKNAME, Q.QUESTION_NO,  Q.QUESTION_DATE,  Q.QUESTION_CONTENTS, "
+					+ " Q.QUESTION_TITLE, Q.QUESTION_FILE, Q.QUESTION_KIND "
+					+ " FROM QUESTIONS Q,   MEMBER M "
+					+ " WHERE M.MEMBER_NO = Q.MEMBER_NO";
+			/*System.out.println("search_text = " + search_text + ", search_type =" + search_type);
 			if (search_text != null && !search_text.equals("")) {
 				sql += " WHERE " + search_type + " Like '%" + search_text + "%'";
-			}
+			}*/
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				Blacklist black = new Blacklist();
-				black.setBlacklist_no(rs.getString("blacklist_no"));
-				black.setBlacklist_reason(rs.getString("blacklist_reason"));
-				black.setMember_no(rs.getString("member_no"));
-				black.setLimit_date(rs.getString("limit_date"));
-				list.add(black);
+				Questions q = new Questions();
+				Member m = new Member();
+				q.setMember_id(rs.getString("member_id"));
+				q.setMember_no(rs.getString("member_no"));
+				q.setNickname(rs.getString("nickname"));
+				q.setQuestion_no(rs.getString("question_no"));
+				q.setQuestion_date(rs.getString("question_date"));
+				q.setQuestion_contents(rs.getString("question_contents"));
+				q.setQuestion_title(rs.getString("question_title"));
+				q.setQuestion_file(rs.getString("question_file"));
+				q.setQuestion_kind(rs.getString("question_kind"));
+
+				list.add(q);
 				
 		
 			}
@@ -57,7 +68,7 @@ public class BlackListDAO {
 		}
 		return list;
 	}
-
+/* 
 	// 단건조회
 	public Blacklist selectOne(Blacklist black) {
 		Blacklist resultVO = null;
@@ -151,7 +162,7 @@ public class BlackListDAO {
 			pstmt.setString(5, memberVO.getMember_tel());
 			pstmt.setString(6, memberVO.getMember_email());
 			pstmt.setString(7, memberVO.getGender());
-			int r = pstmt.executeUpdate();*/
+			int r = pstmt.executeUpdate();
 
 			// 3.결과처리
 			//System.out.println(r + " 건이 처리됨.");
@@ -164,7 +175,7 @@ public class BlackListDAO {
 		}
 		return null;
 	}
-
+	*/
 	
 }
 

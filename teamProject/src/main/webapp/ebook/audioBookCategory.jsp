@@ -107,6 +107,12 @@
 </c:forEach>
 
 
+
+
+
+
+
+
 		<!-- 밑에가 원본 -->
 <!--
 <c:forEach begin="1" end="${genreList.size() }" var="i">
@@ -144,7 +150,5 @@
 		<hr>
 </c:forEach>
 -->
-<script src = "${pageContext.request.contextPath}/layout/styles/slider.js"></script>
-
 </body>
 </html>

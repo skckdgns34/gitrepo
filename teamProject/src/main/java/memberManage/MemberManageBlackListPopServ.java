@@ -29,8 +29,8 @@ public class MemberManageBlackListPopServ implements Controller
 		black.setBlacklist_reason(blacklist_reason);
 		black.setMember_no(member_no);
 		black.setLimit_date(limit_date);
-		BlackListDAO.getinstance().update(black);
-		List<Blacklist> list = BlackListDAO.getinstance().selectAll(null,null);
+		BlacklistDAO.getinstance().update(black);
+		List<Blacklist> list = BlacklistDAO.getinstance().selectAll(null,null);
 		request.setAttribute("list", list);
 		request.getRequestDispatcher("/memberManage/memberManageBlackList.jsp").forward(request, response);
 

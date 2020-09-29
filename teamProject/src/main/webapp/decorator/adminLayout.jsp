@@ -16,7 +16,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>SB Admin 2 - Dashboard</title>
+  <title>SB Admin </title>
 
   <!-- Custom fonts for this template-->
   <link href="<%=request.getContextPath()%>/resourse/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -24,9 +24,9 @@
 
   <!-- Custom styles for this template-->
   <link href="<%=request.getContextPath()%>/resourse/css/sb-admin-2.min.css" rel="stylesheet">
-  <!-- Bootstrap core JavaScript-->
-  <script src="<%=request.getContextPath()%>/resourse/vendor/jquery/jquery.min.js"></script>
-  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+  
+<!-- Custom styles for this page -->
+  <link href="<%=request.getContextPath()%>/resourse/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
   <decorator:head />	
 
 </head>
@@ -118,7 +118,7 @@
             <h6 class="collapse-header"></h6>
             <a class="collapse-item" href="<%=request.getContextPath()%>/memberManageMain.ad">회원조회</a>
             <a class="collapse-item" href="<%=request.getContextPath()%>/memberManageBlackList.ad">블랙리스트관리</a>
-            <a class="collapse-item" href="★문의관리 url 넣어주세요!">문의관리</a>
+            <a class="collapse-item" href="<%=request.getContextPath()%>/memberManageQuestion.ad">문의관리</a>
             
           </div>
         </div>
@@ -418,7 +418,9 @@
       </div>
     </div>
   </div>
-
+ <!-- Bootstrap core JavaScript-->
+  <script src="<%=request.getContextPath()%>/resourse/vendor/jquery/jquery.min.js"></script>
+ <!-- <script src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script> -->
  
   <script src="<%=request.getContextPath()%>/resourse/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
@@ -427,9 +429,12 @@
 
   <!-- Custom scripts for all pages-->
   <script src="<%=request.getContextPath()%>/resourse/js/sb-admin-2.min.js"></script>
-
-
-
+ <!-- Page level plugins -->
+  <script src="<%=request.getContextPath()%>/resourse/vendor/datatables/jquery.dataTables.min.js"></script>
+  <script src="<%=request.getContextPath()%>/resourse/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+  
+    <!-- Page level custom scripts -->
+  <script src="<%=request.getContextPath()%>/resourse/js/demo/datatables-demo.js"></script>
 </body>
 
 </html>

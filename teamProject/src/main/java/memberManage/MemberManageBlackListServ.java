@@ -19,7 +19,7 @@ public class MemberManageBlackListServ implements Controller
 	{
 		String search_text = request.getParameter("search_text");
 		String search_type = request.getParameter("search_type");
-		List<Blacklist> list = BlackListDAO.getinstance().selectAll(search_text, search_type);
+		List<Blacklist> list = BlacklistDAO.getinstance().selectAll(search_text, search_type);
 		
 		request.setAttribute("list", list);
 		request.setAttribute("search_type", search_type);
