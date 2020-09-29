@@ -41,7 +41,10 @@
 	</div>
 <h3 class="page_title">출판사 전체 조회</h3>
 	<hr>
-	<table id="company" border="1">
+	<div class="card-body">
+			<div class="table-responsive">
+	<table class="table table-bordered" id="dataTable" width="100%"
+					cellspacing="0">
 		<thead>
 			<tr>
 				<th>출판사번호</th>
@@ -69,5 +72,9 @@
 		</c:forEach>
 		</tbody>
 	</table>
+		
+			</div>
+		</div>
+	</div>
 </body>
 </html>

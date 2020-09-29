@@ -16,8 +16,8 @@
 <script>
 	function check(ck) {
 		var obj = document.getElementsByName("user_CheckBox");
-		for(var i =0; i<obj.length; i++){
-			if(obj[i] != ck) {
+		for (var i = 0; i < obj.length; i++) {
+			if (obj[i] != ck) {
 				obj[i].checked = false;
 			}
 		}
@@ -25,107 +25,110 @@
 
 	function modifypage() //수정 
 	{
-	window.document.location.href="${pageContext.request.contextPath}/memberManageModifyForm.ad?no="+ $('input[name="user_CheckBox"]:checked').val();
-	alert( $('input[name="user_CheckBox"]:checked').val())
-	return;
+		window.document.location.href = "${pageContext.request.contextPath}/memberManageModifyForm.ad?no="
+				+ $('input[name="user_CheckBox"]:checked').val();
+		alert($('input[name="user_CheckBox"]:checked').val())
+		return;
 	}
-	
+
 	function deletepage() //삭제
 	{
-	window.document.location.href="${pageContext.request.contextPath}/주소 적기...ㅠ.ad";
-	return;
+		window.document.location.href = "${pageContext.request.contextPath}/주소 적기...ㅠ.ad";
+		return;
 	}
-	
-	
-	</script>
+</script>
 
 </head>
 <body id="page-top">
-	
+
 	<div class="container-fluid">
 		<div class="card shadow mb-4">
 			<div class="card-header py-3">
 				<h6 class="m-0 font-weight-bold text-primary">검색</h6>
-				 </div>
-				<form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search"
-					method="post" action="memberManageMain.ad">
-					<div class="input-group">
-						<select name='search_type'>
-							<option value='MEMBER_NO'
-								<c:if test="${search_type == 'MEMBER_NO'}">selected</c:if>>회원
-								번호</option>
-							<option value='MEMBER_ID'
-								<c:if test="${search_type == 'MEMBER_ID'}">selected</c:if>>회원
-								아이디</option>
-							<option value='NICKNAME'
-								<c:if test="${search_type == 'NICKNAME'}">selected</c:if>>회원
-								닉네임</option>
-							<option value='MEMBER_TEL'
-								<c:if test="${search_type == 'MEMBER_TEL'}">selected</c:if>>회원
-								전화번호</option>
-							<option value='MEMBER_EMAIL'
-								<c:if test="${search_type == 'MEMBER_EMAIL'}">selected</c:if>>회원
-								이메일</option>
-							<option value='SIGNUP_DATE'
-								<c:if test="${search_type == 'SIGNUP_DATE'}">selected</c:if>>회원
-								가입일</option>
-							<option value=TICKET_DATE
-								<c:if test="${search_type == 'TICKET_DATE'}">selected</c:if>>이게
-								뭐야?</option>
-							<option value='LAST_ACCESS_DATE'
-								<c:if test="${search_type == 'LAST_ACCESS_DATE'}">selected</c:if>>최종
-								접속일</option>
-							<option value='GENDER'
-								<c:if test="${search_type == 'GENDER'}">selected</c:if>>회원
-								성별</option>
-							<option value='TICKET_CODE'
-								<c:if test="${search_type == 'TICKET_CODE'}">selected</c:if>>이용권코드</option>
-						</select>
-						</div>
-						
-						<div class="input-group-append">
-							<input type="text" id='search_text' name='search_text'
-								placeholder="회원번호 또는 회원아이디를 입력해주세요" value="${search_text }">
-							<button class="btn btn-primary" id="btnOk" type="submit">
-								<i class="fas fa-search fa-sm"></i>
-							</button> 	
-						</div>
-				</form>
+			</div>
+			<form
+				class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search"
+				method="post" action="memberManageMain.ad">
+				<div class="input-group">
+					<select name='search_type'>
+						<option value='MEMBER_NO'
+							<c:if test="${search_type == 'MEMBER_NO'}">selected</c:if>>회원
+							번호</option>
+						<option value='MEMBER_ID'
+							<c:if test="${search_type == 'MEMBER_ID'}">selected</c:if>>회원
+							아이디</option>
+						<option value='NICKNAME'
+							<c:if test="${search_type == 'NICKNAME'}">selected</c:if>>회원
+							닉네임</option>
+						<option value='MEMBER_TEL'
+							<c:if test="${search_type == 'MEMBER_TEL'}">selected</c:if>>회원
+							전화번호</option>
+						<option value='MEMBER_EMAIL'
+							<c:if test="${search_type == 'MEMBER_EMAIL'}">selected</c:if>>회원
+							이메일</option>
+						<option value='SIGNUP_DATE'
+							<c:if test="${search_type == 'SIGNUP_DATE'}">selected</c:if>>회원
+							가입일</option>
+						<option value=TICKET_DATE
+							<c:if test="${search_type == 'TICKET_DATE'}">selected</c:if>>이게
+							뭐야?</option>
+						<option value='LAST_ACCESS_DATE'
+							<c:if test="${search_type == 'LAST_ACCESS_DATE'}">selected</c:if>>최종
+							접속일</option>
+						<option value='GENDER'
+							<c:if test="${search_type == 'GENDER'}">selected</c:if>>회원
+							성별</option>
+						<option value='TICKET_CODE'
+							<c:if test="${search_type == 'TICKET_CODE'}">selected</c:if>>이용권코드</option>
+					</select>
+				</div>
 
+				<div class="input-group-append">
+					<input type="text" id='search_text' name='search_text'
+						placeholder="회원번호 또는 회원아이디를 입력해주세요" value="${search_text }">
+					<button class="btn btn-primary" id="btnOk" type="submit">
+						<i class="fas fa-search fa-sm"></i>
+					</button>
+				</div>
+			</form>
 
-					
-			
-				
-			
 		</div>
+		<h3 class="page_title">회원 전체 조회</h3>
+		<hr>
 		<div class="card-body">
 			<div class="table-responsive">
-			<div><button type="button" id='btn_n' class="btn btn-outline btn-primary pull-" onclick="modifypage()">수정</button>
-					<button type="button" id='btn_d' class="btn btn-outline btn-primary pull-right" onclick="deletepage()">삭제</button></div>
+				<div>
+					<button type="button" id='btn_n'
+						class="btn btn-outline btn-primary pull-" onclick="modifypage()">수정</button>
+					<button type="button" id='btn_d'
+						class="btn btn-outline btn-primary pull-right"
+						onclick="deletepage()">삭제</button>
+				</div>
 				<table class="table table-bordered" id="dataTable" width="100%"
 					cellspacing="0">
 
 					<thead>
-					<tr>
-						<th>선택</th>
-						<th>MEMBER_NO</th>
-						<th>MEMBER_ID</th>
-						<th>MEMBER_PW</th>
-						<th>NICKNAME</th>
-						<th>MEMBER_TEL</th>
-						<th>MEMBER_EMAIL</th>
-						<th>SIGNUP_DATE</th>
-						<th>TICKET_DATE</th>
-						<th>LAST_ACCESS_DATE</th>
-						<th>GENDER</th>
-						<th>TICKET_CODE</th>
+						<tr>
+							<th>선택</th>
+							<th>MEMBER_NO</th>
+							<th>MEMBER_ID</th>
+							<th>MEMBER_PW</th>
+							<th>NICKNAME</th>
+							<th>MEMBER_TEL</th>
+							<th>MEMBER_EMAIL</th>
+							<th>SIGNUP_DATE</th>
+							<th>TICKET_DATE</th>
+							<th>LAST_ACCESS_DATE</th>
+							<th>GENDER</th>
+							<th>TICKET_CODE</th>
 						</tr>
 					</thead>
 
 					<tbody>
 						<c:forEach items="${list}" var="member">
 							<tr>
-								<td><input type="checkbox" name="user_CheckBox" onclick="check(this)" value="${member.getMember_no()}"></td>
+								<td><input type="checkbox" name="user_CheckBox"
+									onclick="check(this)" value="${member.getMember_no()}"></td>
 								<td>${member.getMember_no()}</td>
 								<td>${member.getMember_id()}</td>
 								<td>${member.getMember_pw()}</td>
@@ -140,7 +143,7 @@
 						</c:forEach>
 					</tbody>
 				</table>
-			
+
 			</div>
 		</div>
 	</div>
