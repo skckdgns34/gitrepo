@@ -43,12 +43,13 @@
                 },
                 success: function (result) {
                 	check = result.check;
-			        if(result.check == 0){
-			        	$(".fa fa-heart").css("color", 'white')
+			        if(check == 0){
+			        	$(".fa-heart").css("color", "white")
 			        }else{
-			        	$(".fa fa-heart").css("backgroundcolor", 'red')
+			        	$(".fa-heart").css("color", "red")
 			        }
                 	$(".rec_count").html(result.count); 
+                	console.log(check);
                 }
 			})
 		})
@@ -129,18 +130,18 @@ IMP.request_pay({
 				<i class="fa fa-heart" style="font-size:16px;color:red"></i>
 				<span class="rec_count"></span>					
 			</c:if>
-			${check}=============
+			${check}================================================
 			<c:if test="${ member_no != null }">
-				<c:if test="${check > 0}">
+				<c:if test="${check == 1}">
 					<button class="w3-button w3-black w3-round" id="rec_update">
 						<i class="fa fa-heart" style="font-size:16px;color:red"></i>
-						&nbsp;<span class="rec_count">좋아요 수</span>
+						&nbsp;<span class="rec_count">${count}</span>
 					</button> 
 				</c:if>
-				<c:if test="${check == 0}">
+				<c:if test="${ check == 0}">
 					<button class="w3-button w3-black w3-round" id="rec_update">
 						<i class="fa fa-heart" style="font-size:16px;color:white"></i>
-						&nbsp;<span class="rec_count"></span><!-- 좋아요수 -->
+						&nbsp;<span class="rec_count">${count}</span><!-- 좋아요수 -->
 					</button> 
 				</c:if>
 			</c:if>

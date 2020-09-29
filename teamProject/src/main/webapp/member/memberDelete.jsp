@@ -17,6 +17,10 @@
 		}
 	}
 
+	var butdel = document.getElementById('button');
+	butdel.disabled = true;
+
+	
 </script>
 </head>
 <body>
@@ -44,7 +48,9 @@
 		</div>
 		<input name="member_pw" type="checkbox" id="member_pw"
 			class="inputCheck" onclick="window.open('/app/memberDeletePassword.do', '비밀번호 확인', 'width=#, height=#')" /> 위 내용을 확인하였으며, 탈퇴를 진행합니다. <br>
-		<button >탈퇴</button>
+		
+		<input type="submit" id="butdel" value="탈퇴" disabled="">
+
 
 	</form>
 	<div>
