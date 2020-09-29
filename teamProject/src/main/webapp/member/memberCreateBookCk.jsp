@@ -14,7 +14,7 @@ li {
 </style>
 </head>
 <body>
-	<h1>나만의 도서 확인</h1>
+	<h1>내 정보</h1>
 	<hr>
 	<br>
 	<ul>
@@ -30,5 +30,24 @@ li {
 	<br>
 	<br>
 	<hr>
+	<h5>나만의 도서 확인</h5>
+	<table border=1>
+		<tr>
+			<td>번호</td>
+			<td>장르</td>
+			<td>제목</td>
+			<td>조회수</td>
+			<td>작성일자</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+	</table>
 </body>
 </html>

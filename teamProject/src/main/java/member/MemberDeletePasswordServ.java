@@ -23,9 +23,9 @@ public class MemberDeletePasswordServ implements Controller {
 		String page = "";
 		if(memberVO.getMember_pw().equals(resultVO.getMember_pw())) {
 			page = "member/memberDeletePassword.jsp";
+			request.setAttribute("errormsg", "확인성공.");
 			request.getSession().setAttribute("memberDelete", resultVO);
 			request.getSession().setAttribute("member_pw", resultVO.getMember_pw());
-			request.setAttribute("errormsg", "확인성공.");
 		} else {
 			request.setAttribute("errormsg", "비밀번호가 일치하지 않습니다.");
 			page = "member/memberDeletePassword.jsp";
