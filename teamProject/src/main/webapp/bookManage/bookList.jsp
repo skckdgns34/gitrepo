@@ -74,9 +74,9 @@
 							<td>${books.title}</td>
 							<td>${books.writer}</td>
 							<td>${fn:substring(books.publication_date,0,10) }</td>
-							<td>${books.company_code}</td>
+							<td>${books.company_name}</td>
 							<td>${books.best_book}</td>
-							<td>${books.genre}</td>
+							<td>${books.code_value}</td>
 							<td>${fn:substring(books.registration_date,0,10)}</td>
 						</tr>
 					</c:forEach>

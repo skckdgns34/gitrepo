@@ -71,6 +71,19 @@
 					<input type="file" name="epub_path">
 				</div>
 				<div>
+					<label for="purchase_price">도서 구매 비용</label>
+					<input type="text" name="purchase_price">
+				</div>
+				<div>
+					<label for="purchase_date">도서 구매 날짜</label>
+					<input type="date" name="purchase_date">
+				</div>
+				<div>
+					<label for="purchase_content">비고</label>
+					<textarea name="purchase_content"></textarea>
+				</div>
+				
+				<div>
 					<button type="reset">초기화</button>
 					<button>등록</button>
 				</div>
