@@ -9,7 +9,7 @@
 <meta charset="UTF-8">
 <title>Audio-book Register</title>
 
-<script src="js/f.js" type="text/javascript"></script>
+
 <script
 	src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js"
 	referrerpolicy="origin"></script>
@@ -187,7 +187,7 @@
 						<hr />
 						<div class="row">
 							<div class="col-md-10 text-center">
-								<button class="btn btn-info btn-md" type="submit">도서 등록</button>
+								<button class="btn btn-outline btn-primary pull-left" type="submit">도서 등록</button>
 								<button class="btn btn-danger btn-md" type="reset">초기화</button>
 							</div>
 						</div>
