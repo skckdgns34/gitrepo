@@ -8,19 +8,21 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <!-- 원본 -->
-<%-- <link rel="stylesheet"
+<link rel="stylesheet"
 	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/layout/styles/slider.css"> --%>
+	href="${pageContext.request.contextPath}/layout/styles/slider.css">
 
 <!-- 추가 -->
 <link rel="stylesheet" href="test/css/bootstrap.css" />
 <link rel="stylesheet" href="test/css/flaticon.css" />
 <link rel="stylesheet" href="test/css/themify-icons.css" />
-<link rel="stylesheet" href="test/vendors/owl-carousel/owl.carousel.min.css" />
-<link rel="stylesheet" href="test/vendors/nice-select/css/nice-select.css" />
+<link rel="stylesheet"
+	href="test/vendors/owl-carousel/owl.carousel.min.css" />
+<link rel="stylesheet"
+	href="test/vendors/nice-select/css/nice-select.css" />
 <!-- main css -->
 <link rel="stylesheet" href="test/css/style.css" />
 <script>
@@ -102,47 +104,41 @@
 		<button>검색</button>
 	</form>
 
-
-
 	<!-- test  -->
 	<div class="popular_courses section_gap_top">
-		<div class="container">
-			<div class="row">
-				<!-- single course -->
-				<div class="col-lg-12">
-					<div class="owl-carousel active_course">
-						
-						
-						<div class="single_course">
-							<div class="course_head"><img class="img-fluid" src="test/img/courses/c1.jpg" alt="" />
-							</div>
-							<div class="course_content">
-								<h4 class="mb-3"><a href="책상세 주소?">제목칸?</a></h4>
-								<p>설명</p>
-								<div
-									class="course_meta d-flex justify-content-lg-between align-items-lg-center flex-lg-row flex-column mt-4">
-								</div>
+		<c:forEach begin="1" end="${genreList.size() }" var="i">
+			<c:if test="${not empty books.get(i-1)}">
+				<div class="container">
+					${i }번 장르
+					<div>${genreList.get(i-1).code_value}</div>
+					<div class="row">
+						<!-- single course -->
+						<div class="col-lg-12">
+							<div class="owl-carousel active_course">
+								<c:forEach begin="1" end="${books.get(i-1).size() }" var="j">
+									<div class="single_course">
+										<div class="course_head">
+											<c:if test="${not empty books[i-1][j-1].book_img}">
+												<img onclick="imgClick(${books[i-1][j-1].book_no})"
+													src="filenameDownload.do?filename=${books[i-1][j-1].book_img }" />
+											</c:if>
+										</div>
+										<div class="course_content">
+											<h4 class="mb-3">제목칸?</h4>
+											<p>설명?저자?</p>
+											<div
+												class="course_meta d-flex justify-content-lg-between align-items-lg-center flex-lg-row flex-column mt-4">
+											</div>
+										</div>
+									</div>
+								</c:forEach>
 							</div>
 						</div>
-						<div class="single_course">
-							<div class="course_head"><img class="img-fluid" src="test/img/courses/c2.jpg" alt="" />
-							</div>
-							<div class="course_content">
-								<h4 class="mb-3"><a href="책상세 주소">제목</a></h4>
-								<p>설명?</p>
-								<div
-									class="course_meta d-flex justify-content-lg-between align-items-lg-center flex-lg-row flex-column mt-4">
-								</div>
-							</div>
-						</div>
-
 					</div>
 				</div>
-			</div>
-		</div>
+			</c:if>
+		</c:forEach>
 	</div>
-
-
 
 
 
@@ -158,9 +154,7 @@
 				<div class="item item1">
 					<c:if test="${not empty books[i-1][j-1].book_img}">
 						<img onclick="imgClick(${books[i-1][j-1].book_no})" 
-		 					src="filenameDownload.do?filename=${books[i-1][j-1].book_img }" 
-		 					/><br>
-		 				
+		 					src="filenameDownload.do?filename=${books[i-1][j-1].book_img }"/>
 					</c:if>
 				</div>
 			</c:forEach>
@@ -168,9 +162,9 @@
 	</div>
 </c:forEach>
  --%>
- 	<!-- Optional JavaScript -->
+
+	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-	<script src="test/js/jquery-3.2.1.min.js"></script>
 	<script src="test/js/bootstrap.min.js"></script>
 	<script src="test/vendors/nice-select/js/jquery.nice-select.min.js"></script>
 	<script src="test/vendors/owl-carousel/owl.carousel.min.js"></script>
