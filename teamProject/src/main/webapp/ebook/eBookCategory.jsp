@@ -12,70 +12,54 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/layout/styles/slider.css">
-
-
 <script>
-	$(function(){
-			$("#testInput").autocomplete({
-								source : function(request, response) {
-									$.ajax({
-										url : "${pageContext.request.contextPath}/Ajax/eBookSearchAjax.do",
-										type : "GET",
-										dataType : "json",
-										data : {data : $("#testInput").val()
-										},	 // 검색 키워드
-										success : function(data) { // 성공
-											response($.map(data, function(item) {
-													$('#hidden').val(item.result);
-													$('#realHidden').val(item.title);
-													return {
-														label : item.title, //목록에 표시되는 값
-														value : item.title, //선택 시 input창에 표시되는 값	
-														idx : item.testIdx
-													};
-											})); //response
-										},//success
-										error : function() { //실패
-											alert("통신에 실패했습니다.");
-										}
-									});//ajax
-								},//source: function
-								minLength : 1,
-								autoFocus : false,
-								select : function(evt, ui) {
-									//$('#hidden').html(ui.item.value);
-									//var v = ui.item.label;
-									//var arr = v.split('/');
-									//$('#testInput').val(arr[0]);
-									//$('#hidden').val(arr[1]);
-									console.log("전체 data: " + JSON.stringify(ui));
-									console.log("db Index : " + ui.item.idx);
-									console.log("검색 데이터 : " + ui.item.value);
-								},
-								focus : function(evt, ui) {
-								return false;
-								},
-								close : function(evt) {
+$(function(){
+	$("#testInput").autocomplete({
+						source : function(request, response) {
+							$.ajax({
+								url : "${pageContext.request.contextPath}/Ajax/eBookSearchAjax.do",
+								type : "GET",
+								dataType : "json",
+								data : {data : $("#testInput").val()
+								},	 // 검색 키워드
+								success : function(data) { // 성공
+									response($.map(data, function(item) {
+											$('#hidden').val(item.result);
+											$('#realHidden').val(item.title);
+											return {
+												label : item.title, //목록에 표시되는 값
+												value : item.title, //선택 시 input창에 표시되는 값	
+												idx : item.testIdx
+											};
+									})); //response
+								},//success
+								error : function() { //실패
+									alert("통신에 실패했습니다.");
 								}
-			})//autoComplete
-			
-		
-	});
-	
-	function imgClick(book_no) {
-		if(book_no != null){
-			if(confirm("해당 책 상세페이지로 이동하시겠습니까?")){			
-				location.href="${pageContext.request.contextPath}/eBookDetail.do?book_no="+book_no;
-			}
-		}
-	}
-	
-	
+							});//ajax
+						},//source: function
+						minLength : 1,
+						autoFocus : false,
+						select : function(evt, ui) {
+							//$('#hidden').html(ui.item.value);
+							//var v = ui.item.label;
+							//var arr = v.split('/');
+							//$('#testInput').val(arr[0]);
+							//$('#hidden').val(arr[1]);
+							console.log("전체 data: " + JSON.stringify(ui));
+							console.log("db Index : " + ui.item.idx);
+							console.log("검색 데이터 : " + ui.item.value);
+						},
+						focus : function(evt, ui) {
+						return false;
+						},
+						close : function(evt) {
+						}
+	})//autoComplete
+});
 </script>
-
 </head>
 <body>
-
 	<!-- ================ category section start ================= -->		  
   <section class="section-margin--small mb-5">
     <div class="container">
@@ -134,10 +118,15 @@
             </div>
             <div>
               <div class="input-group filter-bar-search">
-                <input type="text" placeholder="Search">
+                <input type="text" placeholder="Search" id="testInput">
+                
+                <form action="${pageContext.request.contextPath}/eBookSearchAfter.do">
+                <input type="text" id="hidden" name="hidden">
+                <input type="text" id="realHidden" name="realHidden">
                 <div class="input-group-append">
-                  <button type="button"><i class="ti-search"></i></button>
+                  <button><i class="ti-search"></i></button>
                 </div>
+                </form>
               </div>
             </div>
           </div>
@@ -345,6 +334,6 @@
 		</div>
 	</section>
 	<!-- ================ top product area end ================= -->		
-
+<script src="${pageContext.request.contextPath}/ebook/eBookCategory.js"></script>
 </body>
 </html>
