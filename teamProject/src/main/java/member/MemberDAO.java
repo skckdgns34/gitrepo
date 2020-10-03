@@ -105,8 +105,10 @@ public class MemberDAO {
 		try {
 			conn = ConnectionManager.getConnnect();
 			String sql = " update member set member_id = null, member_pw = null, nickname = null, member_tel = null,"
-					+ " member_email = null, signup_date = null, last_access_date = null, gender = null" ;
+					+ " member_email = null, signup_date = null, last_access_date = null, gender = null"
+					+ " where member_id = ?" ;
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, memberVO.getMember_id());
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				resultVO = new Member();

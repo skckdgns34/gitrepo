@@ -23,7 +23,7 @@
 		}
 	};
 
-	function modifypage() //수정 
+	function modifypage() //수정 ㅡ
 	{
 		window.document.location.href = "${pageContext.request.contextPath}/memberManageModifyForm.ad?no="
 				+ $('input[name="user_CheckBox"]:checked').val();
@@ -33,7 +33,8 @@
 
 	function deletepage() //삭제
 	{
-		window.document.location.href = "${pageContext.request.contextPath}/주소 적기...ㅠ.ad";
+		window.document.location.href = "${pageContext.request.contextPath}/memberManageDelete.ad?no= "
+				+ $('input[name="user_CheckBox"]:checked').val();
 		return;
 	}
 </script>
@@ -67,10 +68,11 @@
 							<th>MEMBER_TEL</th>
 							<th>MEMBER_EMAIL</th>
 							<th>SIGNUP_DATE</th>
-							<th>TICKET_DATE</th>
 							<th>LAST_ACCESS_DATE</th>
 							<th>GENDER</th>
 							<th>TICKET_CODE</th>
+							<th>TICKET_DATE</th>
+							
 						</tr>
 					</thead>
 
@@ -86,10 +88,10 @@
 								<td>${member.getMember_tel()}</td>
 								<td>${member.getMember_email()}</td>
 								<td>${member.getSignup_date()}</td>
-								<td>${member.getTicket_date()}</td>
 								<td>${member.getLast_access_date()}</td>
 								<td>${member.getGender()}</td>
 								<td>${member.getTicket_code()}</td>
+								<td>${member.getTicket_date()}</td>
 						</c:forEach>
 					</tbody>
 				</table>

@@ -32,7 +32,11 @@ public class MemberManageDAO {
 		List<Member> list = new ArrayList<Member>();
 		try {
 			conn = ConnectionManager.getConnnect();
-			String sql = " SELECT * FROM MEMBER";
+			String sql ="SELECT M.MEMBER_NO, M.MEMBER_ID, M.MEMBER_PW, M.NICKNAME,M.MEMBER_TEL, M.MEMBER_EMAIL,M.SIGNUP_DATE, "
+					+ " M.LAST_ACCESS_DATE, M.GENDER,T.TICKET_CODE, T.TICKET_DATE "
+					+ " FROM MEMBER M "
+					+ " FULL OUTER JOIN TICKET T ON M.MEMBER_NO = T.MEMBER_NO "
+					+ " WHERE M.MEMBER_ID IS NOT NULL"; 
 			
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -47,6 +51,9 @@ public class MemberManageDAO {
 				member.setSignup_date(rs.getString("SIGNUP_DATE"));
 				member.setLast_access_date(rs.getString("LAST_ACCESS_DATE"));
 				member.setGender(rs.getString("GENDER"));
+				member.setTicket_code(rs.getString("TICKET_CODE"));
+				member.setTicket_date(rs.getString("TICKET_DATE"));
+
 				list.add(member);
 				
 		
@@ -95,17 +102,35 @@ public class MemberManageDAO {
 	}
 
 	public void delete(Member memberVO) {
+		Member resultVO = null;
+		ResultSet rs = null;
 		try {
 			conn = ConnectionManager.getConnnect();
-			String sql = "delete member where member_id= ?";
+			String sql = " update member set member_id = null, member_pw = null, nickname = null, member_tel = null,"
+					+ " member_email = null, signup_date = null, last_access_date = null, gender = null"
+					+ " where member_no = ?" ;
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, memberVO.getMember_id());
+			pstmt.setString(1, memberVO.getMember_no());
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				resultVO = new Member();
+				resultVO.setMember_id(rs.getString("MEMBER_ID"));
+				resultVO.setMember_pw(rs.getString("MEMBER_PW"));
+				resultVO.setNickname(rs.getString("NICKNAME"));
+				resultVO.setMember_tel(rs.getString("MEMBER_TEL"));
+				resultVO.setMember_email(rs.getString("MEMBER_EMAIL"));
+				resultVO.setSignup_date(rs.getString("SIGNUP_DATE"));
+				resultVO.setLast_access_date(rs.getString("LAST_ACCESS_DATE"));
+				resultVO.setGender(rs.getString("GENDER"));
+			} else {
+				System.out.println("no data");
+			}
 			int r = pstmt.executeUpdate();
 			System.out.println(r + "건이 삭제됨.");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			ConnectionManager.close(null, pstmt, conn);
+			ConnectionManager.close(rs, pstmt, conn);
 		}
 	}
 
@@ -170,48 +195,6 @@ public class MemberManageDAO {
 			ConnectionManager.close(conn);
 		}
 		return resultVO;
-	}
-
-	//
-	// 메일수신회원수 : select count(id) from member where mailyn='y'
-	public int getMailynCnt() {
-		int cnt = 0;
-		try {
-			conn = ConnectionManager.getConnnect();
-			String sql = "select count(member_id) from member where member_email='y'";
-			Statement stmt = conn.createStatement();
-			ResultSet rs = stmt.executeQuery(sql);
-			rs.next();
-			cnt = rs.getInt(1);
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			ConnectionManager.close(conn);
-		}
-		return cnt;
-	}
-
-	// 성별인원수 : select gender, count(id) cnt from member group by gender
-	public List<HashMap<String, Object>> getGenderCnt() {
-		int cnt = 0;
-		List<HashMap<String, Object>> list = new ArrayList<HashMap<String, Object>>();
-		try {
-			conn = ConnectionManager.getConnnect();
-			String sql = "select gender, count(member_id) cnt from member group by gender";
-			PreparedStatement pstmt = conn.prepareStatement(sql);
-			ResultSet rs = pstmt.executeQuery(sql);
-			while (rs.next()) {
-				HashMap<String, Object> map = new HashMap<String, Object>();
-				map.put("gender", rs.getString("gender"));
-				map.put("cnt", rs.getInt("cnt"));
-			}
-			cnt = rs.getInt(1);
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			ConnectionManager.close(conn);
-		}
-		return list;
 	}
 
 }
