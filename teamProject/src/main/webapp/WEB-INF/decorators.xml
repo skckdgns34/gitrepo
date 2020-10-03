@@ -18,10 +18,10 @@
 	<decorator name="admin5" page="adminLayout.jsp">
 		<pattern>/bookManage/*.jsp</pattern>
 	</decorator>
-	
-	<decorator name="user" page="layout.jsp">
+
+<!-- 	<decorator name="user" page="layout.jsp">
 		<pattern>/*.do</pattern>
-	</decorator>
+	</decorator> --> 
 	<decorator name="user1" page="layout2.jsp">
 		<pattern>/*.do</pattern>
 	</decorator>

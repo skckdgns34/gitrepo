@@ -92,9 +92,10 @@
           <h2>Best <span class="section-intro__style">Sellers</span></h2>
         </div>
         <div class="owl-carousel owl-theme" id="bestSellerCarousel">
+          
           <div class="card text-center card-product">
             <div class="card-product__img">
-              <img class="img-fluid" src="책이미지주소" alt="">
+              <img class="img-fluid" src="images/a.jpg" alt="">
               <ul class="card-product__imgOverlay">
                 <li><button><i class="ti-search"></i></button></li>
                 <li><button><i class="ti-shopping-cart"></i></button></li>
