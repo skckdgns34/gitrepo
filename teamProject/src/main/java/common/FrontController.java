@@ -65,14 +65,17 @@ public class FrontController extends HttpServlet {
 		
 		
 		// 한채빈
+				list.put("/adminMain.ad", new adminMain.AdminMainServ()); // 메인				
 
-				list.put("/adminMain.ad", new adminMain.AdminMainServ()); // 메인
+				list.put("/viewChart.ad", new adminMain.ViewChartServ()); // 메인				
+
 				list.put("/login.ad", new LoginController());
 				list.put("/loginForm.ad", new LoginFormController());
 				list.put("/logout.ad", new LogoutController());
 				list.put("/memberManageMain.ad", new memberManage.MemberManageMainServ());
 				list.put("/memberManageModify.ad", new memberManage.MemberManageModifyServ());
 				list.put("/memberManageModifyForm.ad", new memberManage.MemberManageModifyFormServ());	
+				list.put("/memberManageDelete.ad", new memberManage.MemberManageDeleteServ());
 				
 				list.put("/memberManageBlackList.ad", new memberManage.MemberManageBlackListServ());
 				list.put("/memberManageBlackListPop.ad", new memberManage.MemberManageBlackListPopServ());

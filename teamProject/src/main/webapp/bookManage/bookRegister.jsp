@@ -9,8 +9,6 @@
 <meta charset="UTF-8">
 <title>e-book Register</title>
 
-
-<script src="js/f.js" type="text/javascript"></script>
 <script
 	src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js"
 	referrerpolicy="origin"></script>
@@ -21,23 +19,23 @@
 </script>
 </head>
 <body>
-	<div class="container col-md-12">
+	<div class="container col-xs-12">
 
-		<div id="signupbox" style="margin-top: 50px">
+		<hr>
+		<div class="panel-title text-center">
+			<h3>e-book 등록</h3>
+		</div>
+		
+		<div id="signupbox" style="margin-top: 30px">
 			<div class="panel panel-default">
-				<div class="panel-heading">
-					<div class="panel-title text-center">
-						<h3>e-book 등록</h3>
-					</div>
-				</div>
 
 				<div class="panel-body">
 					<form method="post" name="frm" id="frm"
 						enctype="multipart/form-data"
 						action="${pageContext.request.contextPath }/bookRegister.ad">
 
-						<div class="col-md-6">
-							<div id="div_p_name" class="form-group required">
+						<div class="row">
+							<div class="col-sm-6 col-md-6 col-xs-6">
 								<label for="title" class="control-label col-md-4  requiredField">제목<span
 									class="asteriskField">*</span>
 								</label>
@@ -47,9 +45,7 @@
 										style="margin-bottom: 10px" type="text" />
 								</div>
 							</div>
-						</div>
-						<div class="col-md-6">
-							<div id="div_p_id" class="form-group required">
+							<div class="col-sm-6 col-md-6 col-xs-6">
 								<label for="writer"
 									class="control-label col-md-4  requiredField">지은이<span
 									class="asteriskField">*</span>
@@ -61,9 +57,8 @@
 								</div>
 							</div>
 						</div>
-
-						<div class="col-md-6">
-							<div id="div_id_downloads" class="form-group required">
+						<div class="row">
+							<div class="col-sm-6 col-md-6 col-xs-6">
 								<label for="company_code"
 									class="control-label col-md-4  requiredField">출판사<span
 									class="asteriskField">*</span>
@@ -81,10 +76,8 @@
 									</select>
 								</div>
 							</div>
-						</div>
-						
-						<div class="col-md-6">
-							<div id="div_id_downloads" class="form-group required">
+
+							<div class="col-sm-6 col-md-6 col-xs-6">
 								<label for="genre" class="control-label col-md-4  requiredField">장르<span
 									class="asteriskField">*</span>
 								</label>
@@ -107,7 +100,7 @@
 							</div>
 						</div>
 
-						<div class="col-md-6">
+						<div class="col-md-12">
 							<div id="div_id_downloads" class="form-group required">
 								<label for="introduction"
 									class="control-label col-md-4  requiredField">소개글<span
@@ -134,8 +127,9 @@
 							</div>
 						</div>
 
-						<div class="col-md-6">
-							<div id="div_id_downloads" class="form-group required">
+						<hr>
+						<div class="row">
+							<div class="col-sm-6 col-md-6 col-xs-6">
 								<label for="publication_date"
 									class="control-label col-md-4  requiredField">발간일<span
 									class="asteriskField">*</span>
@@ -146,10 +140,8 @@
 										style="margin-bottom: 10px" type="date" />
 								</div>
 							</div>
-						</div>
 
-						<div class="col-md-6">
-							<div id="div_id_category" class="form-group required">
+							<div class="col-sm-6 col-md-6 col-xs-6">
 								<label for="best_book"
 									class="control-label col-md-4  requiredField">베스트셀러<span
 									class="asteriskField">*</span>
@@ -166,9 +158,8 @@
 								</div>
 							</div>
 						</div>
-
-						<div class="col-md-6">
-							<div id="div_id_image" class="form-group required">
+						<div class="row">
+							<div class="col-sm-6 col-md-6 col-xs-6">
 								<label for="book_img"
 									class="control-label col-md-4  requiredField">책 사진 첨부<span
 									class="asteriskField"></span>
@@ -180,10 +171,8 @@
 										style="margin-bottom: 10px" type="file" />
 								</div>
 							</div>
-						</div>
 
-						<div class="col-md-6">
-							<div id="div_id_image" class="form-group required">
+							<div class="col-sm-6 col-md-6 col-xs-6">
 								<label for="epub_path"
 									class="control-label col-md-4  requiredField">전자책 첨부<span
 									class="asteriskField"></span>
@@ -197,8 +186,8 @@
 							</div>
 						</div>
 
-						<div class="col-md-6">
-							<div id="div_id_downloads" class="form-group required">
+						<div class="row">
+							<div class="col-sm-6 col-md-6 col-xs-6">
 								<label for="purchase_price"
 									class="control-label col-md-4  requiredField">도서 구매 비용<span
 									class="asteriskField"></span>
@@ -209,10 +198,8 @@
 										style="margin-bottom: 10px" type="text" />
 								</div>
 							</div>
-						</div>
 
-						<div class="col-md-6">
-							<div id="div_id_downloads" class="form-group required">
+							<div class="col-sm-6 col-md-6 col-xs-6">
 								<label for="purchase_date"
 									class="control-label col-md-4  requiredField">도서 구매 날짜<span
 									class="asteriskField">*</span>
@@ -225,28 +212,27 @@
 							</div>
 						</div>
 
-						<div class="col-md-6">
+						<div class="col-md-12">
 							<div id="div_id_downloads" class="form-group required">
 								<label for="purchase_content"
 									class="control-label col-md-4  requiredField">비고<span
 									class="asteriskField"></span>
 								</label>
-								<div class="controls col-md-8 ">
+								<div class="col-md-10">
 									<input class="input-md emailinput form-control"
 										id="purchase_content" name="purchase_content"
 										style="margin-bottom: 10px" type="text" />
 								</div>
 							</div>
 						</div>
+						<hr />
 
-						<div class="form-group">
-							<div class="col-md-12 text-center">
-								<br />
-								<button class="btn btn-info btn-md" type="submit">도서 등록</button>
+						<div class="row">
+							<div class="col-md-10 text-center">
+							<button type='submit' class="btn btn-outline btn-primary pull-left" >도서 등록</button>
 								<button class="btn btn-danger btn-md" type="reset">초기화</button>
 							</div>
 						</div>
-
 					</form>
 
 				</div>

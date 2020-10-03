@@ -30,9 +30,8 @@
 <link rel="stylesheet" href="layout/styles/slider.css">
 </head>
 <body>
-	<br>
-	<section>
-		<div id="slider-animation" class="carousel slide" data-ride="carousel">
+	<section >
+		<div id="slider-animation" class="carousel slide" data-ride="carousel" style="padding-left: 140px; margin-top: 30px">
 
 			<!-- Indicators -->
 			<ul class="carousel-indicators">
@@ -44,7 +43,7 @@
 			<!-- The slideshow -->
 			<div class="carousel-inner">
 				<div class="carousel-item active">
-					<a href="★해당 배너클릭시 이동시킬 페이지 적기~"> <img src="${pageContext.request.contextPath}/images/a.jpg"
+					<a href="${pageContext.request.contextPath}/eBookDetail.do"> <img src="${pageContext.request.contextPath}/images/a.jpg"
 						alt="슬라이드1">
 						<div class="text-box">
 							<h2 class="wow slideInRight" data-wow-duration="1s"></h2>
@@ -83,68 +82,288 @@
 
 		</div>
 	</section>
+	
+	
+<!-- ================ Best Selling item  carousel ================= --> 
+    <section class="section-margin calc-60px">
+      <div class="container">
+        <div class="section-intro pb-60px">
+          <p>베스트셀러</p>
+          <h2>Best <span class="section-intro__style">Sellers</span></h2>
+        </div>
+        <div class="owl-carousel owl-theme" id="bestSellerCarousel">
+          <div class="card text-center card-product">
+            <div class="card-product__img">
+              <img class="img-fluid" src="책이미지주소" alt="">
+              <ul class="card-product__imgOverlay">
+                <li><button><i class="ti-search"></i></button></li>
+                <li><button><i class="ti-shopping-cart"></i></button></li>
+                <li><button><i class="ti-heart"></i></button></li>
+              </ul>
+            </div>
+            <div class="card-body">
+              <p>Accessories</p>
+              <h4 class="card-product__title"><a href="single-product.html">Quartz Belt Watch</a></h4>
+              <p class="card-product__price">$150.00</p>
+            </div>
+          </div>
 
+          <div class="card text-center card-product">
+            <div class="card-product__img">
+              <img class="img-fluid" src="책이미지주소" alt="">
+              <ul class="card-product__imgOverlay">
+                <li><button><i class="ti-search"></i></button></li>
+                <li><button><i class="ti-shopping-cart"></i></button></li>
+                <li><button><i class="ti-heart"></i></button></li>
+              </ul>
+            </div>
+            <div class="card-body">
+              <p>Beauty</p>
+              <h4 class="card-product__title"><a href="single-product.html">Women Freshwash</a></h4>
+              <p class="card-product__price">$150.00</p>
+            </div>
+          </div>
 
-	<div class="wrapper-slider">
-		<div class="arrow-left"></div>
-		<div class="arrow-right"></div>
-		<div class="items">
-			<div class="item item1">
-				<a href="${pageContext.request.contextPath}/ebook/eBookDetail.jsp"><img class="item item1"
-					src="${pageContext.request.contextPath}/resourse/img/쟈.jpg"></a>
-			</div>
-			<div class="item item1">
-				<a href="${pageContext.request.contextPath}/ebook/eBookDetail.jsp"><img class="item item1"
-					src="${pageContext.request.contextPath}/resourse/img/쟈.jpg"></a>
-			</div>
-			<div class="item item1">
-				<a href="${pageContext.request.contextPath}/ebook/eBookDetail.jsp"><img class="item item1"
-					src="${pageContext.request.contextPath}/resourse/img/쟈.jpg"></a>
-			</div>
-			<div class="item item1">
-				<a href="${pageContext.request.contextPath}/ebook/eBookDetail.jsp"><img class="item item1"
-					src="${pageContext.request.contextPath}/resourse/img/쟈.jpg"></a>
-			</div>
-			<div class="item item1">
-				<a href="${pageContext.request.contextPath}/ebook/eBookDetail.jsp"><img class="item item1"
-					src="${pageContext.request.contextPath}/resourse/img/쟈.jpg"></a>
-			</div>
-			<div class="item item1">
-				<a href="${pageContext.request.contextPath}/ebook/eBookDetail.jsp"><img class="item item1"
-					src="${pageContext.request.contextPath}/resourse/img/쟈.jpg"></a>
-			</div>
+          <div class="card text-center card-product">
+            <div class="card-product__img">
+              <img class="img-fluid" src="책이미지주소" alt="">
+              <ul class="card-product__imgOverlay">
+                <li><button><i class="ti-search"></i></button></li>
+                <li><button><i class="ti-shopping-cart"></i></button></li>
+                <li><button><i class="ti-heart"></i></button></li>
+              </ul>
+            </div>
+            <div class="card-body">
+              <p>Decor</p>
+              <h4 class="card-product__title"><a href="single-product.html">Room Flash Light</a></h4>
+              <p class="card-product__price">$150.00</p>
+            </div>
+          </div>
 
-		</div>
-	</div>
+          <div class="card text-center card-product">
+            <div class="card-product__img">
+              <img class="img-fluid" src="책이미지주소" alt="">
+              <ul class="card-product__imgOverlay">
+                <li><button><i class="ti-search"></i></button></li>
+                <li><button><i class="ti-shopping-cart"></i></button></li>
+                <li><button><i class="ti-heart"></i></button></li>
+              </ul>
+            </div>
+            <div class="card-body">
+              <p>Decor</p>
+              <h4 class="card-product__title"><a href="single-product.html">Room Flash Light</a></h4>
+              <p class="card-product__price">$150.00</p>
+            </div>
+          </div>
 
+          <div class="card text-center card-product">
+            <div class="card-product__img">
+              <img class="img-fluid" src="책이미지주소" alt="">
+              <ul class="card-product__imgOverlay">
+                <li><button><i class="ti-search"></i></button></li>
+                <li><button><i class="ti-shopping-cart"></i></button></li>
+                <li><button><i class="ti-heart"></i></button></li>
+              </ul>
+            </div>
+            <div class="card-body">
+              <p>Accessories</p>
+              <h4 class="card-product__title"><a href="single-product.html">Quartz Belt Watch</a></h4>
+              <p class="card-product__price">$150.00</p>
+            </div>
+          </div>
 
-	<%-- <table border="1">
-			<thead>
-				<tr>
-					<th>book_no</th>
-					<th>title</th>
-					<th>book_img</th>
-					<th>writer</th>
-					<th>publication_date</th>
-					<th>summary</th>
-					<th>views</th>
-					<th>score</th>
-					<th>book_price</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach items="${bookList }" var="book">
-					<tr>
-						<td>${book.book_no }</td>
-						<td>${book.title }</td>
-						<td><img onclick="imgClick(${book.book_no})"
-							src="filenameDownload.do?filename=${book.book_img }"
-							style="width: 50px" /></td>
-						<td>${book.writer }</td>
-					</tr>
-				</c:forEach>
-			</tbody>
-		</table> --%>
+          <div class="card text-center card-product">
+            <div class="card-product__img">
+              <img class="img-fluid" src="책이미지주소" alt="">
+              <ul class="card-product__imgOverlay">
+                <li><button><i class="ti-search"></i></button></li>
+                <li><button><i class="ti-shopping-cart"></i></button></li>
+                <li><button><i class="ti-heart"></i></button></li>
+              </ul>
+            </div>
+            <div class="card-body">
+              <p>Beauty</p>
+              <h4 class="card-product__title"><a href="single-product.html">Women Freshwash</a></h4>
+              <p class="card-product__price">$150.00</p>
+            </div>
+          </div>
+
+          <div class="card text-center card-product">
+            <div class="card-product__img">
+              <img class="img-fluid" src="책이미지주소" alt="">
+              <ul class="card-product__imgOverlay">
+                <li><button><i class="ti-search"></i></button></li>
+                <li><button><i class="ti-shopping-cart"></i></button></li>
+                <li><button><i class="ti-heart"></i></button></li>
+              </ul>
+            </div>
+            <div class="card-body">
+              <p>Decor</p>
+              <h4 class="card-product__title"><a href="single-product.html">Room Flash Light</a></h4>
+              <p class="card-product__price">$150.00</p>
+            </div>
+          </div>
+
+          <div class="card text-center card-product">
+            <div class="card-product__img">
+              <img class="img-fluid" src="책이미지주소" alt="">
+              <ul class="card-product__imgOverlay">
+                <li><button><i class="ti-search"></i></button></li>
+                <li><button><i class="ti-shopping-cart"></i></button></li>
+                <li><button><i class="ti-heart"></i></button></li>
+              </ul>
+            </div>
+            <div class="card-body">
+              <p>Decor</p>
+              <h4 class="card-product__title"><a href="single-product.html">Room Flash Light</a></h4>
+              <p class="card-product__price">$150.00</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ================ Best Selling item  carousel end ==========
+    																		 for문 돌면서 DB에 값 받아서 넣을 수는 없는지? --> 
+<div>
+<!-- ================ Best Selling item  carousel ================= --> 
+    <section class="section-margin calc-60px">
+      <div class="container">
+        <div class="section-intro pb-60px">
+          <p>장르별</p>
+          <h2>Best <span class="section-intro__style">Sellers</span></h2>
+        </div>
+        <div class="owl-carousel owl-theme" id="bestSellerCarousel">
+          <div class="card text-center card-product1">
+            <div class="card-product__img">
+              <img class="img-fluid" src="책이미지주소" alt="">
+              <ul class="card-product__imgOverlay">
+                <li><button><i class="ti-search"></i></button></li>
+                <li><button><i class="ti-shopping-cart"></i></button></li>
+                <li><button><i class="ti-heart"></i></button></li>
+              </ul>
+            </div>
+            <div class="card-body">
+              <p>Accessories</p>
+              <h4 class="card-product__title"><a href="single-product.html">Quartz Belt Watch</a></h4>
+              <p class="card-product__price">$150.00</p>
+            </div>
+          </div>
+
+          <div class="card text-center card-product">
+            <div class="card-product__img">
+              <img class="img-fluid" src="책이미지주소" alt="">
+              <ul class="card-product__imgOverlay">
+                <li><button><i class="ti-search"></i></button></li>
+                <li><button><i class="ti-shopping-cart"></i></button></li>
+                <li><button><i class="ti-heart"></i></button></li>
+              </ul>
+            </div>
+            <div class="card-body">
+              <p>Beauty</p>
+              <h4 class="card-product__title"><a href="single-product.html">Women Freshwash</a></h4>
+              <p class="card-product__price">$150.00</p>
+            </div>
+          </div>
+
+          <div class="card text-center card-product">
+            <div class="card-product__img">
+              <img class="img-fluid" src="책이미지주소" alt="">
+              <ul class="card-product__imgOverlay">
+                <li><button><i class="ti-search"></i></button></li>
+                <li><button><i class="ti-shopping-cart"></i></button></li>
+                <li><button><i class="ti-heart"></i></button></li>
+              </ul>
+            </div>
+            <div class="card-body">
+              <p>12</p>
+              <h4 class="card-product__title"><a href="single-product.html">Room Flash 12</a></h4>
+              <p class="card-product__price">$12</p>
+            </div>
+          </div>
+
+          <div class="card text-center card-product">
+            <div class="card-product__img">
+              <img class="img-fluid" src="책이미지주소" alt="">
+              <ul class="card-product__imgOverlay">
+                <li><button><i class="ti-search"></i></button></li>
+                <li><button><i class="ti-shopping-cart"></i></button></li>
+                <li><button><i class="ti-heart"></i></button></li>
+              </ul>
+            </div>
+            <div class="card-body">
+              <p>12</p>
+              <h4 class="card-product__title"><a href="single-product.html">Room Flash Light</a></h4>
+              <p class="card-product__price">$150.00</p>
+            </div>
+          </div>
+
+          <div class="card text-center card-product">
+            <div class="card-product__img">
+              <img class="img-fluid" src="책이미지주소" alt="">
+              <ul class="card-product__imgOverlay">
+                <li><button><i class="ti-search"></i></button></li>
+                <li><button><i class="ti-shopping-cart"></i></button></li>
+                <li><button><i class="ti-heart"></i></button></li>
+              </ul>
+            </div>
+            <div class="card-body">
+              <p>1</p>
+              <h4 class="card-product__title"><a href="single-product.html">Quartz Belt Watch</a></h4>
+              <p class="card-product__price">$150.00</p>
+            </div>
+          </div>
+
+          <div class="card text-center card-product">
+            <div class="card-product__img">
+              <img class="img-fluid" src="책이미지주소" alt="">
+              <ul class="card-product__imgOverlay">
+                <li><button><i class="ti-search"></i></button></li>
+                <li><button><i class="ti-shopping-cart"></i></button></li>
+                <li><button><i class="ti-heart"></i></button></li>
+              </ul>
+            </div>
+            <div class="card-body">
+              <p>1</p>
+              <h4 class="card-product__title"><a href="single-product.html">Women Freshwash</a></h4>
+              <p class="card-product__price">$150.00</p>
+            </div>
+          </div>
+
+          <div class="card text-center card-product">
+            <div class="card-product__img">
+              <img class="img-fluid" src="책이미지주소" alt="">
+              <ul class="card-product__imgOverlay">
+                <li><button><i class="ti-search"></i></button></li>
+                <li><button><i class="ti-shopping-cart"></i></button></li>
+                <li><button><i class="ti-heart"></i></button></li>
+              </ul>
+            </div>
+            <div class="card-body">
+              <p>1</p>
+              <h4 class="card-product__title"><a href="single-product.html">Room Flash Light</a></h4>
+              <p class="card-product__price">$150.00</p>
+            </div>
+          </div>
+
+          <div class="card text-center card-product">
+            <div class="card-product__img">
+              <img class="img-fluid" src="책이미지주소" alt="">
+              <ul class="card-product__imgOverlay">
+                <li><button><i class="ti-search"></i></button></li>
+                <li><button><i class="ti-shopping-cart"></i></button></li>
+                <li><button><i class="ti-heart"></i></button></li>
+              </ul>
+            </div>
+            <div class="card-body">
+              <p>1</p>
+              <h4 class="card-product__title"><a href="single-product.html">Room Flash Light</a></h4>
+              <p class="card-product__price">$150.00</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+</div>
 	<script src="layout/styles/slider.js"></script>
 </body>
 </html>

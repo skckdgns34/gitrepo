@@ -7,24 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<!-- 원본 -->
-<link rel="stylesheet"
-	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/layout/styles/slider.css">
 
-<!-- 추가 -->
-<link rel="stylesheet" href="test/css/bootstrap.css" />
-<link rel="stylesheet" href="test/css/flaticon.css" />
-<link rel="stylesheet" href="test/css/themify-icons.css" />
-<link rel="stylesheet"
-	href="test/vendors/owl-carousel/owl.carousel.min.css" />
-<link rel="stylesheet"
-	href="test/vendors/nice-select/css/nice-select.css" />
-<!-- main css -->
-<link rel="stylesheet" href="test/css/style.css" />
 <script>
 	$(function() {
 		$("#testInput")
@@ -103,44 +86,276 @@
 			type="hidden" id="realHidden" name="realHidden" />
 		<button>검색</button>
 	</form>
+	
+	<!-- ================ category section start ================= -->		  
+  <section class="section-margin--small mb-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-3 col-lg-4 col-md-5">
+          <div class="sidebar-categories">
+            <div class="head">Categories</div>
+            <ul class="main-categories">
+              <li class="common-filter">
+                <form action="#">
+                  <ul>
+                    <li class="filter-list"><input class="pixel-radio" type="radio" id="men" name="brand"><label for="men">장르별<span> (3600)</span></label></li>
+                    <li class="filter-list"><input class="pixel-radio" type="radio" id="women" name="brand"><label for="women">신간<span> (3600)</span></label></li>
+                    <li class="filter-list"><input class="pixel-radio" type="radio" id="accessories" name="brand"><label for="accessories">최다 조회<span> (3600)</span></label></li>
+                    <li class="filter-list"><input class="pixel-radio" type="radio" id="footwear" name="brand"><label for="footwear">뭐 적을까<span> (3600)</span></label></li>
+                    <li class="filter-list"><input class="pixel-radio" type="radio" id="bayItem" name="brand"><label for="bayItem">이건?<span> (3600)</span></label></li>
+                    <li class="filter-list"><input class="pixel-radio" type="radio" id="electronics" name="brand"><label for="electronics">이것도<span> (3600)</span></label></li>
+                    <li class="filter-list"><input class="pixel-radio" type="radio" id="food" name="brand"><label for="food">이거!<span> (3600)</span></label></li>
+                  </ul>
+                </form>
+              </li>
+            </ul>
+          </div>
+          <div class="sidebar-filter">
+            <div class="top-filter-head">Company Filters</div>
+            <div class="common-filter">
+              <div class="head">출판사</div>
+              <form action="#">
+                <ul>
+                  <li class="filter-list"><input class="pixel-radio" type="radio" id="apple" name="brand"><label for="apple">한빛<span>(29)</span></label></li>
+                  <li class="filter-list"><input class="pixel-radio" type="radio" id="asus" name="brand"><label for="asus">예담<span>(29)</span></label></li>
+                  <li class="filter-list"><input class="pixel-radio" type="radio" id="gionee" name="brand"><label for="gionee">민음사<span>(19)</span></label></li>
+                  <li class="filter-list"><input class="pixel-radio" type="radio" id="micromax" name="brand"><label for="micromax">한솔<span>(19)</span></label></li>
+                  <li class="filter-list"><input class="pixel-radio" type="radio" id="samsung" name="brand"><label for="samsung">솔솔<span>(19)</span></label></li>
+                </ul>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-9 col-lg-8 col-md-7">
+          <!-- Start Filter Bar -->
+          <div class="filter-bar d-flex flex-wrap align-items-center">
+            <div class="sorting">
+              <select>
+                <option value="1">Default sorting</option>
+                <option value="1">Default sorting</option>
+                <option value="1">Default sorting</option>
+              </select>
+            </div>
+            <div class="sorting mr-auto">
+              <select>
+                <option value="1">Show 12</option>
+                <option value="1">Show 12</option>
+                <option value="1">Show 12</option>
+              </select>
+            </div>
+            <div>
+              <div class="input-group filter-bar-search">
+                <input type="text" placeholder="Search">
+                <div class="input-group-append">
+                  <button type="button"><i class="ti-search"></i></button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End Filter Bar -->
+          <!-- Start Best Seller -->
+          <section class="lattest-product-area pb-40 category-list">
+            <div class="row">
+              <div class="col-md-6 col-lg-4">
+                <div class="card text-center card-product">
+                  <div class="card-product__img">
+                    <img class="card-img" src="img/product/product1.png" alt="">
+                    <ul class="card-product__imgOverlay">
+                      <li><button><i class="ti-search"></i></button></li>
+                      <li><button><i class="ti-shopping-cart"></i></button></li>
+                      <li><button><i class="ti-heart"></i></button></li>
+                    </ul>
+                  </div>
+                  <div class="card-body">
+                    <p>Accessories</p>
+                    <h4 class="card-product__title"><a href="#">Quartz Belt Watch</a></h4>
+                    <p class="card-product__price">$150.00</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 col-lg-4">
+                <div class="card text-center card-product">
+                  <div class="card-product__img">
+                    <img class="card-img" src="img/product/product2.png" alt="">
+                    <ul class="card-product__imgOverlay">
+                      <li><button><i class="ti-search"></i></button></li>
+                      <li><button><i class="ti-shopping-cart"></i></button></li>
+                      <li><button><i class="ti-heart"></i></button></li>
+                    </ul>
+                  </div>
+                  <div class="card-body">
+                    <p>Beauty</p>
+                    <h4 class="card-product__title"><a href="#">Women Freshwash</a></h4>
+                    <p class="card-product__price">$150.00</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 col-lg-4">
+                <div class="card text-center card-product">
+                  <div class="card-product__img">
+                    <img class="card-img" src="img/product/product3.png" alt="">
+                    <ul class="card-product__imgOverlay">
+                      <li><button><i class="ti-search"></i></button></li>
+                      <li><button><i class="ti-shopping-cart"></i></button></li>
+                      <li><button><i class="ti-heart"></i></button></li>
+                    </ul>
+                  </div>
+                  <div class="card-body">
+                    <p>Decor</p>
+                    <h4 class="card-product__title"><a href="#">Room Flash Light</a></h4>
+                    <p class="card-product__price">$150.00</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 col-lg-4">
+                <div class="card text-center card-product">
+                  <div class="card-product__img">
+                    <img class="card-img" src="img/product/product4.png" alt="">
+                    <ul class="card-product__imgOverlay">
+                      <li><button><i class="ti-search"></i></button></li>
+                      <li><button><i class="ti-shopping-cart"></i></button></li>
+                      <li><button><i class="ti-heart"></i></button></li>
+                    </ul>
+                  </div>
+                  <div class="card-body">
+                    <p>Decor</p>
+                    <h4 class="card-product__title"><a href="#">Room Flash Light</a></h4>
+                    <p class="card-product__price">$150.00</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 col-lg-4">
+                <div class="card text-center card-product">
+                  <div class="card-product__img">
+                    <img class="card-img" src="img/product/product5.png" alt="">
+                    <ul class="card-product__imgOverlay">
+                      <li><button><i class="ti-search"></i></button></li>
+                      <li><button><i class="ti-shopping-cart"></i></button></li>
+                      <li><button><i class="ti-heart"></i></button></li>
+                    </ul>
+                  </div>
+                  <div class="card-body">
+                    <p>Accessories</p>
+                    <h4 class="card-product__title"><a href="#">Man Office Bag</a></h4>
+                    <p class="card-product__price">$150.00</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 col-lg-4">
+                <div class="card text-center card-product">
+                  <div class="card-product__img">
+                    <img class="card-img" src="img/product/product6.png" alt="">
+                    <ul class="card-product__imgOverlay">
+                      <li><button><i class="ti-search"></i></button></li>
+                      <li><button><i class="ti-shopping-cart"></i></button></li>
+                      <li><button><i class="ti-heart"></i></button></li>
+                    </ul>
+                  </div>
+                  <div class="card-body">
+                    <p>Kids Toy</p>
+                    <h4 class="card-product__title"><a href="#">Charging Car</a></h4>
+                    <p class="card-product__price">$150.00</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 col-lg-4">
+                <div class="card text-center card-product">
+                  <div class="card-product__img">
+                    <img class="card-img" src="img/product/product7.png" alt="">
+                    <ul class="card-product__imgOverlay">
+                      <li><button><i class="ti-search"></i></button></li>
+                      <li><button><i class="ti-shopping-cart"></i></button></li>
+                      <li><button><i class="ti-heart"></i></button></li>
+                    </ul>
+                  </div>
+                  <div class="card-body">
+                    <p>Accessories</p>
+                    <h4 class="card-product__title"><a href="#">Blutooth Speaker</a></h4>
+                    <p class="card-product__price">$150.00</p>
+                  </div> 
+                </div>
+              </div>
+              <div class="col-md-6 col-lg-4">
+                <div class="card text-center card-product">
+                  <div class="card-product__img">
+                    <img class="card-img" src="img/product/product8.png" alt="">
+                    <ul class="card-product__imgOverlay">
+                      <li><button><i class="ti-search"></i></button></li>
+                      <li><button><i class="ti-shopping-cart"></i></button></li>
+                      <li><button><i class="ti-heart"></i></button></li>
+                    </ul>
+                  </div>
+                  <div class="card-body">
+                    <p>Kids Toy</p>
+                    <h4 class="card-product__title"><a href="#">Charging Car</a></h4>
+                    <p class="card-product__price">$150.00</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 col-lg-4">
+                <div class="card text-center card-product">
+                  <div class="card-product__img">
+                    <img class="card-img" src="img/product/product1.png" alt="">
+                    <ul class="card-product__imgOverlay">
+                      <li><button><i class="ti-search"></i></button></li>
+                      <li><button><i class="ti-shopping-cart"></i></button></li>
+                      <li><button><i class="ti-heart"></i></button></li>
+                    </ul>
+                  </div>
+                  <div class="card-body">
+                    <p>Accessories</p>
+                    <h4 class="card-product__title"><a href="#">Quartz Belt Watch</a></h4>
+                    <p class="card-product__price">$150.00</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- End Best Seller -->
+        </div>
+      </div>
+    </div>
+  </section>
+	<!-- ================ category section end ================= -->		  
 
-	<!-- test  -->
-	<div class="popular_courses section_gap_top">
-		<c:forEach begin="1" end="${genreList.size() }" var="i">
-			<c:if test="${not empty books.get(i-1)}">
-				<div class="container">
-					${i }번 장르
-					<div>${genreList.get(i-1).code_value}</div>
-					<div class="row">
-						<!-- single course -->
-						<div class="col-lg-12">
-							<div class="owl-carousel active_course">
-								<c:forEach begin="1" end="${books.get(i-1).size() }" var="j">
-									<div class="single_course">
-										<div class="course_head">
-											<c:if test="${not empty books[i-1][j-1].book_img}">
-												<img onclick="imgClick(${books[i-1][j-1].book_no})"
-													src="filenameDownload.do?filename=${books[i-1][j-1].book_img }" />
-											</c:if>
-										</div>
-										<div class="course_content">
-											<h4 class="mb-3">제목칸?</h4>
-											<p>설명?저자?</p>
-											<div
-												class="course_meta d-flex justify-content-lg-between align-items-lg-center flex-lg-row flex-column mt-4">
-											</div>
-										</div>
-									</div>
-								</c:forEach>
-							</div>
-						</div>
-					</div>
-				</div>
-			</c:if>
-		</c:forEach>
-	</div>
+	<!-- ================베스트 셀러! ================= -->	
+	<section class="related-product-area">
+		<div class="container">
+			<div class="section-intro pb-60px">
+        <p>베스트 셀러</p>
+        <h2>Top <span class="section-intro__style">Product</span></h2>
+      </div>
+			<div class="row mt-30">
+        <div class="col-sm-6 col-xl-3 mb-4 mb-xl-0">
+          <div class="single-search-product-wrapper">
+            <div class="single-search-product d-flex">
+              <a href="#"><img src="img/product/product-sm-1.png" alt=""></a>
+              <div class="desc">
+                  <a href="#" class="title">Gray Coffee Cup</a>
+                  <div class="price">$170.00</div>
+              </div>
+            </div>
+            <div class="single-search-product d-flex">
+              <a href="#"><img src="img/product/product-sm-2.png" alt=""></a>
+              <div class="desc">
+                <a href="#" class="title">Gray Coffee Cup</a>
+                <div class="price">$170.00</div>
+              </div>
+            </div>
+            <div class="single-search-product d-flex">
+              <a href="#"><img src="img/product/product-sm-3.png" alt=""></a>
+              <div class="desc">
+                <a href="#" class="title">Gray Coffee Cup</a>
+                <div class="price">$170.00</div>
+              </div>
+            </div>
+          </div>
+        </div>
 
-
+      </div>
+		</div>
+	</section>
+	<!-- ================ top product area end ================= -->		
 
 	<!-- 테스트 -->
 	<%-- <c:forEach begin="1" end="${genreList.size() }" var="i">
@@ -154,7 +369,9 @@
 				<div class="item item1">
 					<c:if test="${not empty books[i-1][j-1].book_img}">
 						<img onclick="imgClick(${books[i-1][j-1].book_no})" 
-		 					src="filenameDownload.do?filename=${books[i-1][j-1].book_img }"/>
+		 					src="filenameDownload.do?filename=${books[i-1][j-1].book_img }" 
+		 					/><br>
+		 				
 					</c:if>
 				</div>
 			</c:forEach>
@@ -162,18 +379,8 @@
 	</div>
 </c:forEach>
  --%>
-
-	<!-- Optional JavaScript -->
+ 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-	<script src="test/js/bootstrap.min.js"></script>
-	<script src="test/vendors/nice-select/js/jquery.nice-select.min.js"></script>
-	<script src="test/vendors/owl-carousel/owl.carousel.min.js"></script>
-	<script src="test/js/owl-carousel-thumb.min.js"></script>
-	<script src="test/js/jquery.ajaxchimp.min.js"></script>
-	<!--gmaps Js-->
-	<script
-		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
-	<script src="test/js/gmaps.min.js"></script>
-	<script src="test/js/theme.js"></script>
+	
 </body>
 </html>
