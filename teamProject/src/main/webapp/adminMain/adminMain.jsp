@@ -20,14 +20,13 @@
               <!-- Area Chart -->
               <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Area Chart</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">매출그래프?????</h6>
                 </div>
                 <div class="card-body">
                   <div class="chart-area">
                     <canvas id="myAreaChart"></canvas>
                   </div>
-                  <hr>
-                  Styling for the area chart can be found in the <code>/js/demo/chart-area-demo.js</code> file.
+                 
                 </div>
               </div>
 
@@ -62,28 +61,7 @@
             </div>
           </div>
 	
-	<div class="row">
-		<div class="col-xl-8 col-lg-7">
-			<div class="card shadow mb-4">
-				<!-- bestSellerChart -->
-				<div class="col-xl-12 col-lg-5">
-					<div class="card shadow mb-4">
-						<!-- Card Header - Dropdown -->
-						<div
-							class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-							<h6 class="m-0 font-weight-bold text-primary">d</h6>
-						</div>
-						<!-- Card Body -->
-						<div class="card-body">
-							<div class="chart-pie pt-4 pb-2">
-								<canvas id="myBarChart1"></canvas>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+
 	<!-- Content Row -->
 	<div class="row">
 
@@ -93,7 +71,7 @@
 			<!-- Project Card Example -->
 			<div class="card shadow mb-4">
 				<div class="card-header py-3">
-					<h6 class="m-0 font-weight-bold text-primary">인기 도서 목록</h6>
+					<h6 class="m-0 font-weight-bold text-primary">사원...</h6>
 				</div>
 				<div class="card-body">
 					<h4 class="small font-weight-bold">
@@ -138,6 +116,19 @@
 				</div>
 			</div>
 		</div>
+		<!-- Content Column -->
+		   <div class="col-xl-4 col-lg-5">
+              <div class="card shadow mb-4">
+			 <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">이용원 구매 추이</h6>
+				</div>
+				<div class="card-body">
+					<div class="chart-rader pt-4"">
+								<canvas id="myChart"></canvas>
+							</div>
+				</div>
+			</div>
+		</div>
 	</div>
 	<!-- Page level plugins -->
 	<script
@@ -146,6 +137,7 @@
 		src="<%=request.getContextPath()%>/resourse/vendor/chart.js/bestChart.js"></script>
 		
 <script src="<%=request.getContextPath()%>/resourse/vendor/chart.js/genderChart.js"></script>
+<script src="<%=request.getContextPath()%>/resourse/vendor/chart.js/ticketChart.js"></script>
 
 </body>
 

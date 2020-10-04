@@ -27,6 +27,9 @@
 	}
 </script>
 <style>
+.carousel-item{
+margin-left: 45px;
+}
 </style>
 <link rel="stylesheet" href="layout/styles/slider.css">
 </head>
@@ -39,12 +42,13 @@
 				<li data-target="#slider-animation" data-slide-to="0" class="active"></li>
 				<li data-target="#slider-animation" data-slide-to="1"></li>
 				<li data-target="#slider-animation" data-slide-to="2"></li>
+				<li data-target="#slider-animation" data-slide-to="3"></li>
 			</ul>
 
 			<!-- The slideshow -->
 			<div class="carousel-inner">
 				<div class="carousel-item active">
-					<a href="${pageContext.request.contextPath}/eBookDetail.do"> <img src="${pageContext.request.contextPath}/images/a.jpg"
+					<a href="<%=application.getContextPath()%>/licenceList.do"> <img src="${pageContext.request.contextPath}/images/4.jpg"
 						alt="슬라이드1">
 						<div class="text-box">
 							<h2 class="wow slideInRight" data-wow-duration="1s"></h2>
@@ -53,7 +57,7 @@
 				</div>
 
 				<div class="carousel-item">
-					<a href="★해당 배너클릭시 이동시킬 페이지 적기~"> <img src="${pageContext.request.contextPath}/images/b.jpg"
+					<a href="${pageContext.request.contextPath}/eBookDetail.do"> <img src="${pageContext.request.contextPath}/images/3.jpg"
 						alt="슬라이드2">
 						<div class="text-box">
 							<h2 class="wow slideInUp" data-wow-duration="1s"></h2>
@@ -63,7 +67,7 @@
 				</div>
 
 				<div class="carousel-item">
-					<a href="★해당 배너클릭시 이동시킬 페이지 적기~"> <img src="${pageContext.request.contextPath}/images/c.jpg">
+					<a href="${pageContext.request.contextPath}/eBookDetail.do"> <img src="${pageContext.request.contextPath}/images/1.jpg">
 						<div class="text-box">
 
 							<h2 class="wow fadeInUp" data-wow-duration="1s"></h2>
@@ -71,7 +75,16 @@
 						</div>
 					</a>
 				</div>
-
+				<div class="carousel-item">
+					<a href="★해당 배너클릭시 이동시킬 페이지 적기~"> <img src="${pageContext.request.contextPath}/images/2.jpg"
+						alt="슬라이드2">
+						<div class="text-box">
+							<h2 class="wow slideInUp" data-wow-duration="1s"></h2>
+							<p class="wow fadeInDown" data-wow-duration="2s"></p>
+						</div>
+					</a>
+				
+				</div>
 			</div>
 
 			<!-- Left and right controls -->

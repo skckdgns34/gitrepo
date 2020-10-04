@@ -56,8 +56,7 @@ return;
 				<div><button type='button' id='btn_i' class="btn btn-outline btn-primary pull-left" onclick="addpage()">추가</button>
 				<button type='button' id='btn_n' class="btn btn-outline btn-primary pull-left" onclick="modifypage()">수정</button>
 					<button type="button" id='btn_d' class="btn btn-outline btn-primary pull-right" onclick="deletepage()">삭제</button></div>
-	<table class="table table-bordered" id="dataTable" width="100%"
-					cellspacing="0">
+	 <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
 
 		<thead>
 			<th>선택</th>

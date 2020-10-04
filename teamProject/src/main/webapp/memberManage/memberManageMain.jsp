@@ -55,8 +55,7 @@
 						class="btn btn-outline btn-primary pull-right"
 						onclick="deletepage()">삭제</button>
 				</div>
-				<table class="table table-bordered" id="dataTable" width="100%"
-					cellspacing="0">
+				 <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
 
 					<thead>
 						<tr>

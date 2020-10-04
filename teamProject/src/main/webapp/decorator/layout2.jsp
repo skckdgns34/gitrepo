@@ -97,14 +97,9 @@
 					</ul>
 
 					<ul class="nav-shop">
-						<c:if test="${sessionScope.member_id != null }">
-							<li class="nav-item"><button>
-									<i class="fa fa-heart" style="color:crimson;"></i><span class="nav-shop__circle">3</span>
-								</button></li>
-						</c:if>
 						<li class="nav-item"><a class="button button-header"
 							href="<%=application.getContextPath()%>/licenceList.do">이용권
-								Now</a></li>
+								Go!</a></li>
 					</ul>
 				</div>
 			</div>
@@ -113,25 +108,27 @@
 	<decorator:head />
 </header>
 <!--================ End Header Menu Area =================-->
-<body>
 
+<body>
+<!--================ Main Area =================-->
 	<main class="site-main">
 		<decorator:body />
 
 	</main>
-
-
+	
+	
+	<!--================ footer Area  =================-->
+<footer>
 		<div class="footer-bottom">
 			<div class="container">
 				<div class="row d-flex">
 					<p class="col-lg-12 footer-text text-center">
-						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 						Copyright &copy;
 						<script>
 							document.write(new Date().getFullYear());
 						</script>
-						듬북담북 <i class="fa fa-heart" aria-hidden="true" style="color:crimson;"></i> by <a
-							href="https://github.com/skckdgns34/gitrepo" target="_blank">최창훈 김한범 손용원 조현주 한채빈</a>
+						듬북담북 <i class="far fa-thumbs-up" aria-hidden="true" ></i> by <a
+							href="https://github.com/skckdgns34/gitrepo" target="_blank">최창훈/ 김한범/ 손용원/ 조현주/ 한채빈</a>
 				</div>
 			</div>
 		</div>

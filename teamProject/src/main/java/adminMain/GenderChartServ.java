@@ -18,23 +18,13 @@ public class GenderChartServ implements Controller {
 
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html; charset=UTF-8");
-System.out.println("dddd");
 		List<HashMap<String, Object>> list = MemberManageDAO.getinstance().getGenderCnt();
 		
 		String result = JSONArray.fromObject(list).toString();
 		System.out.println(result);
 		response.getWriter().print(result);
 
-	 /* 	JSONObject json = new JSONObject();
-	    json.putAll(json);
-	    System.out.printf( "data : %s", json.toString(2) );
-	    response.getWriter().print(json);
-
-	   JSONObject json = new JSONObject();
-    json.putAll( map);
-    System.out.printf( "data : %s", json.toString(2) );
-
-	     * */
+	
 	}
 
 }
