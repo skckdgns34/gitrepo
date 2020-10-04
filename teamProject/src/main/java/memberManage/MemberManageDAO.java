@@ -201,7 +201,6 @@ public class MemberManageDAO {
 	//챕 최다 조회수
 	public List<Books> selectViews(){
 		Books resultVO = null;
-		ResultSet rs = null;
 		List<Books> list = new ArrayList<Books>(); 
 		try {
 			conn = ConnectionManager.getConnnect();
@@ -226,4 +225,27 @@ public class MemberManageDAO {
 		}
 		return list;
 	}
+	
+	// 성별인원수 : select gender, count(id) cnt from member group by gender
+		public List<HashMap<String, Object>> getGenderCnt() {
+			List<HashMap<String, Object>> list = new ArrayList<HashMap<String, Object>>();
+			try {
+				conn = ConnectionManager.getConnnect();
+				String sql = "SELECT GENDER, COUNT(MEMBER_ID) CNT FROM MEMBER WHERE MEMBER_ID IS NOT NULL GROUP BY GENDER";
+				PreparedStatement pstmt = conn.prepareStatement(sql);
+				ResultSet rs = pstmt.executeQuery(sql);
+				while (rs.next()) {
+					System.out.println("ddd");
+					HashMap<String, Object> map = new HashMap<String, Object>();
+					map.put("gender", rs.getString("gender"));
+					map.put("cnt", rs.getInt("cnt"));
+				list.add(map);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				ConnectionManager.close(conn);
+			}
+			return list;
+		}
 }

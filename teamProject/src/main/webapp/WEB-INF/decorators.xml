@@ -19,18 +19,19 @@
 		<pattern>/bookManage/*.jsp</pattern>
 	</decorator>
 
- 	<decorator name="user" page="layout.jsp">
+	<decorator name="user" page="layout.jsp">
 		<pattern>/*.do</pattern>
-	</decorator> 
+	</decorator>
 	<decorator name="user1" page="layout2.jsp">
 		<pattern>/*.do</pattern>
 	</decorator>
-		<decorator name="user2" page="layout2.jsp">
+	<decorator name="user2" page="layout2.jsp">
 		<pattern>/member/*.jsp</pattern>
 	</decorator>
 	<excludes>
 		<pattern>/Ajax/*</pattern>
 		<pattern>/viewChart.ad</pattern>
+		<pattern>/genderChart.ad</pattern>
 		<pattern>/audioBookReading*</pattern>
 		<pattern>/licenceClick*</pattern>
 		<pattern>/licenceAmount*</pattern>
