@@ -25,19 +25,11 @@ public class EBookCategoryServ implements Controller
 		list = CommonDAO.getInstance().selectAllGenre();
 		request.setAttribute("genreList", list);
 
-		ArrayList<Books> bookList = new ArrayList<Books>();
-		//default
-//		for(Common genre : list) {
-//			bookList = EbookDAO.getInstance().selectAllEBook(genre.getCode());
-//			request.setAttribute("bookList"+i, bookList);
-//		}
-		ArrayList<ArrayList<Books>> books = new ArrayList<ArrayList<Books>>();
-		for(int i=0; i<list.size(); i++) {
-			bookList = EBookDAO.getInstance().selectAllEBook(list.get(i).getCode());
-			books.add(bookList);
-			bookList = new ArrayList<Books>();
-			
-		}
+		ArrayList<Books> books = new ArrayList<Books>();
+		books = EBookDAO.getInstance().raidoAllBooks();
+		List<Map<String,Object>> count = EBookDAO.getInstance().genreCount();
+		
+		request.setAttribute("count", count);
 		request.setAttribute("books", books);
 		request.getRequestDispatcher("/ebook/eBookCategory.jsp").forward(request, response);
 		
