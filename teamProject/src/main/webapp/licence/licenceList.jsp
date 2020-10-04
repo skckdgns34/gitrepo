@@ -29,8 +29,7 @@
 			}
 			else{
 				alert("로그인됌");
-				$(location).attr('href','${pageContext.request.contextPath }/licenceAmount.do?account='+boxVal);
-				alert($(location));
+				window.open('${pageContext.request.contextPath }/licenceAmount.do?account='+boxVal, '결제', 'width=700px,height=800px,scrollbars=yes');
 			}
 		})
 	})
@@ -66,7 +65,7 @@
 							<c:forEach begin="1" end="${commonList.size() }" var="i">
 								<tr>
 									<td><input type="checkbox" name="user_CheckBox"
-										onclick="check(this)" value="5000"></td>
+										onclick="check(this)" value="9000"></td>
 									<td>${commonList[i-1].code_value }</td>
 									<td>${commonList[i-1].code }</td>
 									<td>${member_ticket_list[0].member_no}</td>
