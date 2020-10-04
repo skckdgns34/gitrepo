@@ -92,19 +92,12 @@
           <p>장르별</p>
           <h2>best <span class="section-intro__style">소설</span></h2>
         </div>
-<<<<<<< HEAD
         <div class="owl-carousel owl-theme" id="d1Carousel">
-=======
-        <div class="owl-carousel owl-theme" id="bestSellerCarousel">
-          
->>>>>>> branch 'master' of https://github.com/skckdgns34/gitrepo.git
+
           <div class="card text-center card-product">
             <div class="card-product__img">
-<<<<<<< HEAD
+
               <img class="img-fluid" src="<%=request.getContextPath()%>/mainresource/img/r11.jpg"  alt="">
-=======
-              <img class="img-fluid" src="images/a.jpg" alt="">
->>>>>>> branch 'master' of https://github.com/skckdgns34/gitrepo.git
               <ul class="card-product__imgOverlay">
                 <li><button><i class="ti-search"></i></button></li>
                 <li><button><i class="ti-shopping-cart"></i></button></li>
