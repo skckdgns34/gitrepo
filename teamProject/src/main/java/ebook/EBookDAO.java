@@ -33,7 +33,7 @@ public class EBookDAO {
 			conn = ConnectionManager.getConnnect();
 			String sql = "select genre from books";
 			pstmt = conn.prepareStatement(sql);
-			rs = pstmt.executeQuery();
+			 rs = pstmt.executeQuery();
 			
 			while (rs.next()) {
 				String result;

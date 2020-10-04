@@ -14,7 +14,7 @@ IMP.request_pay({
     pg : 'inicis', // version 1.1.0부터 지원.
     pay_method : 'card',
     merchant_uid : 'merchant_' + new Date().getTime(),
-    name : '뀨',//오른쪽에 상품명
+    name : '${p_name}',//오른쪽에 상품명
     amount :'${pay}', //판매 가격
     buyer_email : 'iamport@siot.do',
     buyer_name : '구매자이름',
