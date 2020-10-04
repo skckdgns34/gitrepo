@@ -42,6 +42,10 @@
 								<input type="text" class="form-control" id="member_pw2" name="member_pw2" placeholder="비밀번호 확인" onfocus="this.placeholder = ''" onblur="this.placeholder = 'PasswordCk'">
               					<div class="eheck_font" id="pw2_check"></div>
               </div>
+              <div class="col-md-12 form-group">
+								<input type="text" class="form-control" id="member_tel" name="member_tel" placeholder="전화번호 입력" onfocus="this.placeholder = ''" onblur="this.placeholder = 'member_tel'">
+              					<div class="eheck_font" id="member_tel_check"></div>
+              </div>
 							<div class="col-md-12 form-group">
 								<input type="text" class="form-control" id="nickname" name="nickname" placeholder="닉네임 입력" onfocus="this.placeholder = ''" onblur="this.placeholder = 'nickname'">
               					<div class="eheck_font" id="nickname_check"></div>
