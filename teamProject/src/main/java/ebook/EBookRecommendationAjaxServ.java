@@ -21,7 +21,8 @@ public class EBookRecommendationAjaxServ implements Controller {
 		String no = request.getParameter("book_no");
 		String id = request.getParameter("member_no");
 		String check = request.getParameter("check"); 
-		
+		System.out.println(no+"ebookrecommen에서 북넘버");
+		System.out.println(id+"ebookrecommen에서 아이디");
 		Good good = new Good();
 		good.setBook_no(no);
 		good.setMember_no(id);

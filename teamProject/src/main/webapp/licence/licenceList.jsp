@@ -15,6 +15,25 @@
 			}
 		}
 	};
+	
+	$(function(){
+		$(".button").on("click",function(){
+			
+			var login_no = '${sessionScope.member_no}';
+			var boxVal = $("input[name='user_CheckBox']:checked").val();
+			alert(boxVal);
+			if(login_no == ''){
+				alert("로그인필요")
+				//$(location).attr('href', '${pageContext.request.contextPath }/member/memberLogin.jsp')
+
+			}
+			else{
+				alert("로그인됌");
+				$(location).attr('href','${pageContext.request.contextPath }/licenceAmount.do?account='+boxVal);
+				alert($(location));
+			}
+		})
+	})
 </script>
 </head>
 
@@ -40,29 +59,42 @@
 								<th>선택</th>
 								<th scope="col">이름</th>
 								<th scope="col">금액</th>
+								<th scope="col">내꺼</th>
 							</tr>
 						</thead>
 						<tbody>
 							<c:forEach begin="1" end="${commonList.size() }" var="i">
 								<tr>
 									<td><input type="checkbox" name="user_CheckBox"
-										onclick="check(this)" value="${member.getMember_no()}"></td>
+										onclick="check(this)" value="5000"></td>
 									<td>${commonList[i-1].code_value }</td>
-									<td>5000원</td>
-
+									<td>${commonList[i-1].code }</td>
+									<td>${member_ticket_list[0].member_no}</td>
+									
+									<td>
+									<c:forEach items="${member_ticket_list}" var="list">
+										<c:if test="${commonList[i-1].code==list.ticket_code }">보유중</c:if>
+									</c:forEach>
+									</td>
 								</tr>
 							</c:forEach>
-			</tbody>
+						</tbody>
 					</table>
 					<hr>
 
 					<div class="cupon_text d-flex align-items-center"
 						style="margin-left: 40%;">
+					<c:if test="${empty sessionScope.member_no }">
 						<a class="button"
-							href="${pageContext.request.contextPath }/licence/licenceClick.jsp">결제하기</a>
+							href="${pageContext.request.contextPath }/member/memberLogin.jsp">결제하기
+						</a>
+					</c:if>
+					
+					<c:if test="${not empty sessionScope.member_no }">
+						<button class="button">결제하기</button>
+					</c:if>
 					</div>
 				</div>
-
 				<!--===============유의사항 =================-->
 				<section class="product_description_area">
 					<div class="container">

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" isELIgnored="false"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +15,7 @@ IMP.request_pay({
     pay_method : 'card',
     merchant_uid : 'merchant_' + new Date().getTime(),
     name : '뀨',//오른쪽에 상품명
-    amount : 5000, //판매 가격
+    amount :'${pay}', //판매 가격
     buyer_email : 'iamport@siot.do',
     buyer_name : '구매자이름',
     buyer_tel : '010-1234-5678',

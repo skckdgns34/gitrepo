@@ -59,7 +59,7 @@ public class EBookDAO {
 			
 			rs = pstmt.executeQuery();
 
-			while (rs.next()) {
+			if (rs.next()) {
 				resultVO = new Books();
 				resultVO.setBook_no(rs.getString(1));
 				resultVO.setTitle(rs.getString(2));
@@ -168,7 +168,7 @@ public class EBookDAO {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, a);
 			rs = pstmt.executeQuery();
-			while (rs.next()) {
+			if(rs.next()) {
 				Map<String, Object> map = new HashMap<String, Object>();
 				map.put("book_no",rs.getString("book_no"));
 				map.put("title",rs.getString("title"));
