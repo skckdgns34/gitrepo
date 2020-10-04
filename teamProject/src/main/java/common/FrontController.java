@@ -68,7 +68,7 @@ public class FrontController extends HttpServlet {
 				list.put("/adminMain.ad", new adminMain.AdminMainServ()); // 메인				
 
 				list.put("/viewChart.ad", new adminMain.ViewChartServ()); // 메인				
-
+				list.put("/genderChart.ad", new adminMain.GenderChartServ()); // 메인	
 				list.put("/login.ad", new LoginController());
 				list.put("/loginForm.ad", new LoginFormController());
 				list.put("/logout.ad", new LogoutController());
