@@ -67,21 +67,33 @@ function btnScore(){ // 추천버튼 클릭시(추천 추가 또는 추천 제�
 				<div class="col-lg-6">
 					<div class="owl-carousel owl-theme s_Product_carousel">
 						<div class="single-prd-item">
-							<img class="img-fluid" src="<%=request.getContextPath()%>/resourse/img/쟈.jpg" alt="도서이미지">
+							<c:if test="${not empty book[0].book_img}">
+								<td>
+									<img  src="filenameDownload.do?filename=${book[0].book_img}" style="width:500px">
+								</td>
+							</c:if>
 						</div>
 						
 					</div>
 				</div>
 				<div class="col-lg-5 offset-lg-1">
 					<div class="s_product_text">
-						<h3>책제목: ${book[0].title}</h3>>
-						<h2>책 저자 :${book[0].writer}</h2>
+						<h1>책제목  : ${book[0].title}</h1>
+						<h2>책 저자 : ${book[0].writer}</h2>
 						<ul class="list">
-							<li><a class="active" href="#"><span>카테고리</span> : 소설</a></li>
-							<li><a href="#"><span>조회수</span> 12345</a></li>
+							<li><a class="active"><span>카테고리</span> : ${book[0].genre}</a></li>
+							<li>출간일 : 
+								<fmt:parseDate value="${book[0].publication_date}" pattern="yyyy-MM-dd HH:mm:ss" var="publication_date"/>
+						    	<fmt:formatDate value="${publication_date}"  pattern="yyyy/MM/dd"/>
+						    </li> 
+							<li><a ><span>조회수</span> ${book[0].views}</a></li>
+							<li><a ><span>줄거리</span> ${book[0].summary}</a></li>
+							<li><a ><span>베스트셀러</span> ${book[0].best_book}</a></li>
 						</ul>
 						<div class="product_count">
-         					<a class="button primary-btn" href="#">읽기</a> 
+         					<a class="button primary-btn" href="#" id="read" onclick="goRead()">읽기</a>
+         					<a class="button primary-btn" href="#" id="check" onclick="licence()">결재</a> 
+
          					
          					
          					              
@@ -91,36 +103,27 @@ function btnScore(){ // 추천버튼 클릭시(추천 추가 또는 추천 제�
 						
 						
 						<div class="w3-border w3-center w3-padding">
-			<c:if test="${ member_no == null }">
-				추천 기능은 <button type="button" id="newLogin"><b class="w3-text-blue">로그인</b></button> 후 사용 가능합니다.<br />
-				<i class="fa fa-heart" style="font-size:16px;color:red"></i>
-				<span class="rec_count"></span>					
-			</c:if>
-			${check}================================================
-			<c:if test="${ member_no != null }">
-				<c:if test="${check == 1}">
-					<button class="w3-button w3-black w3-round" id="rec_update">
-						<i class="fa fa-heart" style="font-size:16px;color:red"></i>
-						&nbsp;<span class="rec_count">${count}</span>
-					</button> 
-				</c:if>
-				<c:if test="${ check == 0}">
-					<button class="w3-button w3-black w3-round" id="rec_update">
-						<i class="fa fa-heart" style="font-size:16px;color:white"></i>
-						&nbsp;<span class="rec_count">${count}</span><!-- 좋아요수 -->
-					</button> 
-				</c:if>
-			</c:if>
-		</div>
-						
-						
-						
-						
-						
-						
-						
+							<c:if test="${ member_no == null }">
+								추천 기능은 <button type="button" id="newLogin"><b class="w3-text-blue">로그인</b></button> 후 사용 가능합니다.<br />
+								<i class="fa fa-heart" style="font-size:16px;color:red"></i>
+								<span class="rec_count"></span>					
+							</c:if>
+							<c:if test="${ member_no != null }">
+								<c:if test="${check == 1}">
+									<button class="w3-button w3-black w3-round" id="rec_update">
+										<i class="fa fa-heart" style="font-size:16px;color:red"></i>
+										&nbsp;<span class="rec_count">${count}</span>
+									</button> 
+								</c:if>
+								<c:if test="${ check == 0}">
+									<button class="w3-button w3-black w3-round" id="rec_update">
+										<i class="fa fa-heart" style="font-size:16px;color:white"></i>
+										&nbsp;<span class="rec_count">${count}</span><!-- 좋아요수 -->
+									</button> 
+								</c:if>
+							</c:if>			
 						</div>
-						
+						</div>
 					</div>
 				</div>
 			</div>
@@ -147,12 +150,7 @@ function btnScore(){ // 추천버튼 클릭시(추천 추가 또는 추천 제�
 			</ul>
 			<div class="tab-content" id="myTabContent">
 				<div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
-					
-					<p>It is often frustrating to attempt to plan meals that are designed for one. Despite this fact, we are seeing
-						more and more recipe books and Internet websites that are dedicated to the act of cooking for one. Divorce and
-						the death of spouses or grown children leaving for college are all reasons that someone accustomed to cooking for
-						more than one would suddenly need to learn how to adjust all the cooking practices utilized before into a
-						streamlined plan of cooking that is more efficient for one person creating less</p>
+					<p>${book[0].introduction }</p>
 				</div>
 				<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
 					<div class="table-responsive">
@@ -432,36 +430,5 @@ function btnScore(){ // 추천버튼 클릭시(추천 추가 또는 추천 제�
 		</div>
 	</section>
 	<!--================End Product Description Area =================-->	
-	
-	
-<h3>ebook 상세</h3>
-
-
-책제목: ${book[0].title}<br>
-책 저자 :${book[0].writer}<br>
-
-<fmt:parseDate value="${book[0].publication_date}" pattern="yyyy-MM-dd HH:mm:ss" var="publication_date"/>
-							<fmt:formatDate value="${publication_date}"  pattern="yyyy/MM/dd"/> 
-<br>
-줄거리 : ${book[0].summary}<br>
-조회수 : ${book[0].views}<br>
-장르 : ${book[0].genre}<br>
-베스트셀러인지? : ${book[0].best_book}<br>
-
-
-	<div>
-		
-	</div>
-
-	<button id="read" onclick="goRead()">읽기</button>
-	<button id="check" onclick="licence()">결제</button>
-	
-<c:if test="${not empty book[0].book_img}">
-	<td>
-		<img  src="filenameDownload.do?filename=${book[0].book_img}" style="width:500px">
-	</td>
-</c:if>
-
-
 </body>
 </html>

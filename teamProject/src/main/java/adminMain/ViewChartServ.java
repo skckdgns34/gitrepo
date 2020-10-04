@@ -18,7 +18,7 @@ public class ViewChartServ implements Controller {
 
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html; charset=UTF-8");
-
+System.out.println("ddddddddddddddddd");
 		List<Books> list = MemberManageDAO.getinstance().selectViews();
 		
 		String result = JSONArray.fromObject(list).toString();
