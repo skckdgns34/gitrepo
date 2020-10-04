@@ -14,6 +14,7 @@ $(document).ready(function(){
 		      alert("에러");
 		    }
 		  });
+
 });
 function drawBarchart(data){
 	label = new Array();
@@ -70,3 +71,4 @@ function drawBarchart(data){
 	});
 
 }
+

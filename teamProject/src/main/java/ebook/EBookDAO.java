@@ -38,9 +38,8 @@ public class EBookDAO
 			String sql = "select genre from books";
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
-
-			while (rs.next())
-			{
+		
+			while (rs.next()) {
 				String result;
 				result = rs.getString("genre");
 				list.add(result);

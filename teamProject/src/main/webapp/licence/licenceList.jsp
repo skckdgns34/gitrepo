@@ -21,7 +21,9 @@
 			
 			var login_no = '${sessionScope.member_no}';
 			var boxVal = $("input[name='user_CheckBox']:checked").val();
+			var p_name = $("input[name='user_CheckBox']:checked").parent().parent().children().eq(1).html();
 			alert(boxVal);
+			alert(p_name);
 			if(login_no == ''){
 				alert("로그인필요")
 				//$(location).attr('href', '${pageContext.request.contextPath }/member/memberLogin.jsp')
@@ -29,7 +31,7 @@
 			}
 			else{
 				alert("로그인됌");
-				window.open('${pageContext.request.contextPath }/licenceAmount.do?account='+boxVal, '결제', 'width=700px,height=800px,scrollbars=yes');
+				window.open('${pageContext.request.contextPath }/licenceAmount.do?account='+boxVal+'&p_name='+p_name, '결제', 'width=750px,height=700px,scrollbars=yes');
 			}
 		})
 	})
@@ -68,8 +70,6 @@
 										onclick="check(this)" value="9000"></td>
 									<td>${commonList[i-1].code_value }</td>
 									<td>${commonList[i-1].code }</td>
-									<td>${member_ticket_list[0].member_no}</td>
-									
 									<td>
 									<c:forEach items="${member_ticket_list}" var="list">
 										<c:if test="${commonList[i-1].code==list.ticket_code }">보유중</c:if>
@@ -82,13 +82,12 @@
 					<hr>
 
 					<div class="cupon_text d-flex align-items-center"
-						style="margin-left: 40%;">
+						style="margin-left: 43%;">
 					<c:if test="${empty sessionScope.member_no }">
 						<a class="button"
 							href="${pageContext.request.contextPath }/member/memberLogin.jsp">결제하기
 						</a>
 					</c:if>
-					
 					<c:if test="${not empty sessionScope.member_no }">
 						<button class="button">결제하기</button>
 					</c:if>
