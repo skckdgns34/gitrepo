@@ -1,101 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <!-- 로그인이 안 되면 접근을 못ㅎ하게 만들어 놓음! -->
+<%@include file="/decorator/moveLoginForm.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script>
-$(document).ready(function(){
-	 $.ajax({
-		    url: "./viewChart.ad",
-		    type: "POST",
-		    cache: false,
-		    dataType: "json",
-		    data: {},
-		    contentType : "application/json; charset=UTF-8",
-		    success: function(data){
-		    	drawBarchart(data);
-		    },
-		    
-		    error: function (request, status, error){        
-		      alert("에러");
-		    }
-		  });
-});
-function drawBarchart(data){
-	label = new Array();
-	datas = new Array();
-	for(var i=0;i<data.length;i++){
-		label[i] = data[i].title;
-		datas[i] = data[i].views;
-	}
-	// Bar Chart Example
-	var ctx = document.getElementById("myBarChart");
-	var myBarChart = new Chart(ctx, {
-	  type: 'bar',
-	  data: {
-	    labels: label,
-	    datasets: [{
-	      label: "조회수",
-	      //backgroundColor: "#4e73df",
-	      //hoverBackgroundColor: "#2e59d9",
-	      borderColor: "#4e73df",
-	      backgroundColor: [ 'rgb(255, 99, 132)','rgb(255, 159, 64)', 'rgb(255, 205, 86)', 'rgb(75, 192, 192)', 'rgb(54, 162, 235)', 'rgb(153, 102, 255)', 'rgb(255, 127, 80)','rgb(0, 0, 139)','rgb(72, 61, 139)','rgb(85, 107, 47)'],
-	      data: datas,
-	    }],
-	  },
-	  options: {
-	    maintainAspectRatio: false,
-	    layout: {
-	      padding: {
-	        left: 0,
-	        right: 0,
-	        top: 0,
-	        bottom: 0
-	      }
-	    },		
-	    scales: {
-	      xAxes: [{
-	        time: {
-	          unit: 'month'
-	        },
-	        gridLines: {
-	          display: false,
-	          drawBorder: false
-	        },
-	        ticks: {
-	          maxTicksLimit: 6
-	        },
-	        maxBarThickness: 25,
-	      }],
-	    },
-	    legend: {
-	      display: false
-	    },
-	   /* tooltips: {
-	      titleMarginBottom: 10,
-	      titleFontColor: '#6e707e',
-	      titleFontSize: 14,
-	      backgroundColor: "rgb(255,255,255)",
-	      bodyFontColor: "#858796",
-	      borderColor: '#dddfeb',
-	      borderWidth: 1,
-	      xPadding: 15,
-	      yPadding: 15,
-	      displayColors: false,
-	      caretPadding: 10,
-	      callbacks: {
-	        label: function(tooltipItem, chart) {
-	          var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
-	          return datasetLabel + ': $' + number_format(tooltipItem.yLabel);
-	        }
-	      }
-	    },*/
-	  }
-	});
 
-}
 </script>
 </head>
 <body>
@@ -133,7 +46,7 @@ function drawBarchart(data){
             </div>
 
             <!-- Pie Chart -->
-            <div class="col-xl-12 col-lg-5">
+            <div class="col-xl-8 col-lg-5">
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -144,12 +57,9 @@ function drawBarchart(data){
                     </a>
                   </div>
                 </div>
+                
                 <!-- Card Body -->
-                <div class="card-body">
-                  <div class="chart-pie pt-4 pb-2">
-                    <canvas id="myBarChart"></canvas>
-                  </div>
-                </div>
+                
               </div>
             </div>
           </div>
@@ -191,7 +101,7 @@ function drawBarchart(data){
               </div>
                 <!-- Page level plugins -->
   <script src="<%=request.getContextPath()%>/resourse/vendor/chart.js/Chart.min.js"></script>
-
+<script src="<%=request.getContextPath()%>/resourse/vendor/chart.js/bestChart.js"></script>
 
 </body>
 

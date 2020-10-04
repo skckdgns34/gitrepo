@@ -948,31 +948,31 @@ a {
 	color: #555555
 }
 
-#bestSellerCarousel .owl-prev, #bestSellerCarousel .owl-next {
+#d1Carousel .owl-prev, #d1Carousel .owl-next {
 	width: 40px;
 	height: 40px;
 	background: #f1f6f7
 }
 
-#bestSellerCarousel .owl-prev i, #bestSellerCarousel .owl-prev span,
-	#bestSellerCarousel .owl-next i, #bestSellerCarousel .owl-next span {
+#d1Carousel .owl-prev i, #d1Carousel .owl-prev span,
+	#d1Carousel .owl-next i, #d1Carousel .owl-next span {
 	font-size: 15px;
 	color: #5F4B8B;
 	line-height: 40px
 }
 
-#bestSellerCarousel .owl-prev:hover, #bestSellerCarousel .owl-next:hover
+#d1Carousel .owl-prev:hover, #d1Carousel .owl-next:hover
 	{
 	background: #5F4B8B
 }
 
-#bestSellerCarousel .owl-prev:hover i, #bestSellerCarousel .owl-prev:hover span,
-	#bestSellerCarousel .owl-next:hover i, #bestSellerCarousel .owl-next:hover span
+#d1Carousel .owl-prev:hover i, #d1Carousel .owl-prev:hover span,
+	#d1Carousel .owl-next:hover i, #d1Carousel .owl-next:hover span
 	{
 	color: #fff
 }
 
-#bestSellerCarousel .owl-prev {
+#d1Carousel .owl-prev {
 	position: absolute;
 	top: 30%;
 	transform: translateY(-30%);
@@ -980,12 +980,12 @@ a {
 }
 
 @media ( min-width : 1340px) {
-	#bestSellerCarousel .owl-prev {
+	#d1Carousel .owl-prev {
 		left: -105px
 	}
 }
 
-#bestSellerCarousel .owl-next {
+#d1Carousel .owl-next {
 	position: absolute;
 	top: 30%;
 	transform: translateY(-30%);
@@ -993,10 +993,388 @@ a {
 }
 
 @media ( min-width : 1340px) {
-	#bestSellerCarousel .owl-next {
+	#d1Carousel .owl-next {
 		right: -105px
 	}
 }
+---------------------------------------------------------------------------------
+
+#d2Carousel .owl-prev, #d2Carousel .owl-next {
+	width: 40px;
+	height: 40px;
+	background: #f1f6f7
+}
+
+#d2Carousel .owl-prev i, #d2Carousel .owl-prev span,
+	#d2Carousel .owl-next i, #d2Carousel .owl-next span {
+	font-size: 15px;
+	color: #5F4B8B;
+	line-height: 40px
+}
+
+#d2Carousel .owl-prev:hover, #d2Carousel .owl-next:hover
+	{
+	background: #5F4B8B
+}
+
+#d2Carousel .owl-prev:hover i, #d2Carousel .owl-prev:hover span,
+	#d2Carousel .owl-next:hover i, #d2Carousel .owl-next:hover span
+	{
+	color: #fff
+}
+
+#d2Carousel .owl-prev {
+	position: absolute;
+	top: 30%;
+	transform: translateY(-30%);
+	left: -20px
+}
+
+@media ( min-width : 1340px) {
+	#d2Carousel .owl-prev {
+		left: -105px
+	}
+}
+
+#d2Carousel .owl-next {
+	position: absolute;
+	top: 30%;
+	transform: translateY(-30%);
+	right: -20px
+}
+
+@media ( min-width : 1340px) {
+	#d2Carousel .owl-next {
+		right: -105px
+	}
+}
+
+---
+---------------------------------------------------------------------------------
+
+#d3Carousel .owl-prev, #d3Carousel .owl-next {
+	width: 40px;
+	height: 40px;
+	background: #f1f6f7
+}
+
+#d3Carousel .owl-prev i, #d3Carousel .owl-prev span,
+	#d3Carousel .owl-next i, #d3Carousel .owl-next span {
+	font-size: 15px;
+	color: #5F4B8B;
+	line-height: 40px
+}
+
+#d3Carousel .owl-prev:hover, #d3Carousel .owl-next:hover
+	{
+	background: #5F4B8B
+}
+
+#d3Carousel .owl-prev:hover i, #d3Carousel .owl-prev:hover span,
+	#d3Carousel .owl-next:hover i, #d3Carousel .owl-next:hover span
+	{
+	color: #fff
+}
+
+#d3Carousel .owl-prev {
+	position: absolute;
+	top: 30%;
+	transform: translateY(-30%);
+	left: -20px
+}
+
+@media ( min-width : 1340px) {
+	#d3Carousel .owl-prev {
+		left: -105px
+	}
+}
+
+#d3Carousel .owl-next {
+	position: absolute;
+	top: 30%;
+	transform: translateY(-30%);
+	right: -20px
+}
+
+@media ( min-width : 1340px) {
+	#d3Carousel .owl-next {
+		right: -105px
+	}
+}
+
+---------------------------------------------------------------------------------
+
+#d4Carousel .owl-prev, #d4Carousel .owl-next {
+	width: 40px;
+	height: 40px;
+	background: #f1f6f7
+}
+
+#d4Carousel .owl-prev i, #d4Carousel .owl-prev span,
+	#d4Carousel .owl-next i, #d4Carousel .owl-next span {
+	font-size: 15px;
+	color: #5F4B8B;
+	line-height: 40px
+}
+
+#d4Carousel .owl-prev:hover, #d4Carousel .owl-next:hover
+	{
+	background: #5F4B8B
+}
+
+#d4Carousel .owl-prev:hover i, #d4Carousel .owl-prev:hover span,
+	#d4Carousel .owl-next:hover i, #d4Carousel .owl-next:hover span
+	{
+	color: #fff
+}
+
+#d4Carousel .owl-prev {
+	position: absolute;
+	top: 30%;
+	transform: translateY(-30%);
+	left: -20px
+}
+
+@media ( min-width : 1340px) {
+	#d4Carousel .owl-prev {
+		left: -105px
+	}
+}
+
+#d4Carousel .owl-next {
+	position: absolute;
+	top: 30%;
+	transform: translateY(-30%);
+	right: -20px
+}
+
+@media ( min-width : 1340px) {
+	#d4Carousel .owl-next {
+		right: -105px
+	}
+}
+---------------------------------------------------------------------------------
+
+#d5Carousel .owl-prev, #d5Carousel .owl-next {
+	width: 40px;
+	height: 40px;
+	background: #f1f6f7
+}
+
+#d5Carousel .owl-prev i, #d5Carousel .owl-prev span,
+	#d5Carousel .owl-next i, #d5Carousel .owl-next span {
+	font-size: 15px;
+	color: #5F4B8B;
+	line-height: 40px
+}
+
+#d5Carousel .owl-prev:hover, #d5Carousel .owl-next:hover
+	{
+	background: #5F4B8B
+}
+
+#d5Carousel .owl-prev:hover i, #d5Carousel .owl-prev:hover span,
+	#d5Carousel .owl-next:hover i, #d5Carousel .owl-next:hover span
+	{
+	color: #fff
+}
+
+#d5Carousel .owl-prev {
+	position: absolute;
+	top: 30%;
+	transform: translateY(-30%);
+	left: -20px
+}
+
+@media ( min-width : 1340px) {
+	#d5Carousel .owl-prev {
+		left: -105px
+	}
+}
+
+#d5Carousel .owl-next {
+	position: absolute;
+	top: 30%;
+	transform: translateY(-30%);
+	right: -20px
+}
+
+@media ( min-width : 1340px) {
+	#d5Carousel .owl-next {
+		right: -105px
+	}
+}
+
+---------------------------------------------------------------------------------
+
+#d6Carousel .owl-prev, #d6Carousel .owl-next {
+	width: 40px;
+	height: 40px;
+	background: #f1f6f7
+}
+
+#d6Carousel .owl-prev i, #d6Carousel .owl-prev span,
+	#d6Carousel .owl-next i, #d6Carousel .owl-next span {
+	font-size: 15px;
+	color: #5F4B8B;
+	line-height: 40px
+}
+
+#d6Carousel .owl-prev:hover, #d6Carousel .owl-next:hover
+	{
+	background: #5F4B8B
+}
+
+#d6Carousel .owl-prev:hover i, #d6Carousel .owl-prev:hover span,
+	#d6Carousel .owl-next:hover i, #d6Carousel .owl-next:hover span
+	{
+	color: #fff
+}
+
+#d6Carousel .owl-prev {
+	position: absolute;
+	top: 30%;
+	transform: translateY(-30%);
+	left: -20px
+}
+
+@media ( min-width : 1340px) {
+	#d6Carousel .owl-prev {
+		left: -105px
+	}
+}
+
+#d6Carousel .owl-next {
+	position: absolute;
+	top: 30%;
+	transform: translateY(-30%);
+	right: -20px
+}
+
+@media ( min-width : 1340px) {
+	#d6Carousel .owl-next {
+		right: -105px
+	}
+}
+
+
+---------------------------------------------------------------------------------
+
+#d7Carousel .owl-prev, #d7Carousel .owl-next {
+	width: 40px;
+	height: 40px;
+	background: #f1f6f7
+}
+
+#d7Carousel .owl-prev i, #d7Carousel .owl-prev span,
+	#d7Carousel .owl-next i, #d7Carousel .owl-next span {
+	font-size: 15px;
+	color: #5F4B8B;
+	line-height: 40px
+}
+
+#d7Carousel .owl-prev:hover, #d7Carousel .owl-next:hover
+	{
+	background: #5F4B8B
+}
+
+#d7Carousel .owl-prev:hover i, #d7Carousel .owl-prev:hover span,
+	#d7Carousel .owl-next:hover i, #d7Carousel .owl-next:hover span
+	{
+	color: #fff
+}
+
+#d7Carousel .owl-prev {
+	position: absolute;
+	top: 30%;
+	transform: translateY(-30%);
+	left: -20px
+}
+
+@media ( min-width : 1340px) {
+	#d7Carousel .owl-prev {
+		left: -105px
+	}
+}
+
+#d7Carousel .owl-next {
+	position: absolute;
+	top: 30%;
+	transform: translateY(-30%);
+	right: -20px
+}
+
+@media ( min-width : 1340px) {
+	#d7Carousel .owl-next {
+		right: -105px
+	}
+}
+
+
+
+---------------------------------------------------------------------------------
+
+#d8Carousel .owl-prev, #d8Carousel .owl-next {
+	width: 40px;
+	height: 40px;
+	background: #f1f6f7
+}
+
+#d8Carousel .owl-prev i, #d8Carousel .owl-prev span,
+	#d8Carousel .owl-next i, #d8Carousel .owl-next span {
+	font-size: 15px;
+	color: #5F4B8B;
+	line-height: 40px
+}
+
+#d8Carousel .owl-prev:hover, #d8Carousel .owl-next:hover
+	{
+	background: #5F4B8B
+}
+
+#d8Carousel .owl-prev:hover i, #d8Carousel .owl-prev:hover span,
+	#d8Carousel .owl-next:hover i, #d8Carousel .owl-next:hover span
+	{
+	color: #fff
+}
+
+#d8Carousel .owl-prev {
+	position: absolute;
+	top: 30%;
+	transform: translateY(-30%);
+	left: -20px
+}
+
+@media ( min-width : 1340px) {
+	#d8Carousel .owl-prev {
+		left: -105px
+	}
+}
+
+#d8Carousel .owl-next {
+	position: absolute;
+	top: 30%;
+	transform: translateY(-30%);
+	right: -20px
+}
+
+@media ( min-width : 1340px) {
+	#d8Carousel .owl-next {
+		right: -105px
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 .card-blog {
 	border: 0
