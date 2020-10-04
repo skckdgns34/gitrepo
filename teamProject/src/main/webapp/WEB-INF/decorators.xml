@@ -32,5 +32,7 @@
 		<pattern>/Ajax/*</pattern>
 		<pattern>/viewChart.ad</pattern>
 		<pattern>/audioBookReading*</pattern>
+		<pattern>/licenceClick*</pattern>
+		<pattern>/licenceAmount*</pattern>
 	</excludes>
 </decorators>

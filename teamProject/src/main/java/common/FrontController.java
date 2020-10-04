@@ -68,7 +68,7 @@ public class FrontController extends HttpServlet {
 				list.put("/adminMain.ad", new adminMain.AdminMainServ()); // 메인				
 
 				list.put("/viewChart.ad", new adminMain.ViewChartServ()); // 메인				
-
+				list.put("/genderChart.ad", new adminMain.GenderChartServ()); // 메인	
 				list.put("/login.ad", new LoginController());
 				list.put("/loginForm.ad", new LoginFormController());
 				list.put("/logout.ad", new LogoutController());
@@ -131,7 +131,7 @@ public class FrontController extends HttpServlet {
 		list.put("/audioBookDetail.do", new ebook.AudioBookDetailServ());
 		list.put("/audioBookReading.do", new ebook.AudioBookReadingServ());
 		list.put("/licenceList.do", new licence.LicenceListServ());
-		list.put("/licenceAmount.do", new licence.LicenceListServ());
+		list.put("/licenceAmount.do", new licence.LicenceAmount());
 		list.put("/Ajax/mainsearchResultAjax.do", new main.MainSearchResultAjax());
 		list.put("/mainsearchResult.do", new main.MainsearchResultServ());
 		list.put("/audioBookSearchAfter.do", new ebook.AudioBookSearchAfterServ());
