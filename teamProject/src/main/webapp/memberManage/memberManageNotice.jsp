@@ -83,7 +83,7 @@
 						<c:forEach items="${list}" var="notice">
 							<tr>
 								<td><input type="checkbox" name="user_CheckBox"
-									onclick="check(this)" value="${notice.getMember_no()}"></td>
+									onclick="check(this)" value="${notice.getEmp_no()}"></td>
 								<td>${notice.getNotice_title()}</td>
 								<td>${notice.getNotice_date()}</td>
 								<td>${notice.getNotice_content()}</td>
