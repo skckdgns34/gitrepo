@@ -14,7 +14,7 @@ public class ClientNoticeSelectServ implements Controller {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Notice notice = new Notice();
 		notice.setNotice_title(request.getParameter("notice_title"));
-		notice.setNotice_date(request.getParameter("notice_date"));
+//		notice.setNotice_date(request.getParameter("notice_date"));
 		notice.setNotice_content(request.getParameter("notice_content"));
 		
 		NoticeDAO dao = new NoticeDAO();

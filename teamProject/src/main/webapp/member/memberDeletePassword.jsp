@@ -13,6 +13,12 @@ function closeMe() {
     opener.document.Join = documen.deleform;
     win.close();
 
+    }
+    
+    /* 앞 부모창 뒤 자식창 */
+    function setPar(){
+    	opener.document.getElementById("member_pw").value = document.getElementById("member_pw").value
+    }
 </script>
 
 </head>
@@ -24,11 +30,12 @@ function closeMe() {
 				<label for="id">아이디: ${member_id}</label>
 			</div>
 			<div>
-				<label for="member_pw">Password:</label> <input type="password"
-					class="pw" id="member_pw" name="member_pw">
+				<label for="member_pw">비밀번호:</label> <input type="password"
+					class="pw" id="member_pw" name="member_pw"><br>
 					${ errormsg}
 					${ msg}
-				<button id="btn" onclick="window.close();">확인</button>
+				<br><button >확인</button>
+				<button id="btn" onclick="window.close();">닫기</button>
 			</div>
 		</div>
 	</form>
