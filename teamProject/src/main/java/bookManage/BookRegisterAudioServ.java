@@ -13,6 +13,7 @@ import org.apache.commons.beanutils.BeanUtils;
 
 import common.Controller;
 import vo.Books;
+import vo.Employees;
 
 public class BookRegisterAudioServ implements Controller {
 
@@ -51,8 +52,19 @@ public class BookRegisterAudioServ implements Controller {
 		} else {
 			book.setAudio_path(renameFile3.getName());
 		}
-
-		BookManageDAO.getInstance().insert(book);
+		
+		int no = BookManageDAO.getInstance().insert(book);
+		
+		Books book1 = new Books();
+		try {
+			BeanUtils.copyProperties(book1, request.getParameterMap());
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		Employees emp = (Employees) request.getSession().getAttribute("login");
+		book1.setBook_no(Integer.toString(no));
+		book1.setEmp_no(emp.getEmp_no());
+		BookManageDAO.getInstance().insert(book1);
 		request.getRequestDispatcher("bookList.ad").forward(request, response);
 	}
 

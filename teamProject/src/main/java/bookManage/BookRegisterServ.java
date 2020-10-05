@@ -71,11 +71,6 @@ public class BookRegisterServ implements Controller
 		book1.setBook_no(Integer.toString(no));
 		book1.setEmp_no(emp.getEmp_no());
 		
-		System.out.println(emp.getEmp_no());
-		
-		
-		
-		
 		book1 = BookManageDAO.getInstance().insertpur(book1);
 		request.getRequestDispatcher("bookList.ad").forward(request, response);
 	}
