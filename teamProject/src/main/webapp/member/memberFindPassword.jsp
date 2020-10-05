@@ -58,7 +58,7 @@
 $(function(){
 
 	$("#btnsend").on("click", function(){
-		location.href = "${pageContext.request.contextPath }/memberFindemail.do?member_email=" + $("#email").val()
+		location.href = "${pageContext.request.contextPath }/memberFindemail.do?member_email=" + $("#member_email").val()
 	});
 	var send = "${AuthenticationKey}";
 	
@@ -73,7 +73,7 @@ $(function(){
 	});
 	
 	$("#btnupdate").on("click", function(){
-		location.href = "${pageContext.request.contextPath }/memberFindPassword.do"
+		location.href = "${pageContext.request.contextPath }/memberFindPassword.do?member_pw=" + $("#member_pw").val()
 	});
 });
 </script>
@@ -81,7 +81,7 @@ $(function(){
 <body>
 <h3>비밀번호 변경</h3>
 <form name="frm" id="frm">
-<input type="email" name="email" id="email" placeholder="이메일을 입력해주세요" value="${param.member_email }" required>
+<input type="email" name="member_email" id="member_email" placeholder="이메일을 입력해주세요" value="${param.member_email }" required>
 <button type="button" id="btnsend">인증번호 보내기</button>
 ${ errormsg}
 <br>

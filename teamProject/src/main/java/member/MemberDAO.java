@@ -218,16 +218,13 @@ public class MemberDAO {
 	}
 	
 	//비밀번호 변경
-	public void updatepw(Member memberVO) {
+	public void pwupdate(Member memberVO) {
 		try {
 			conn = ConnectionManager.getConnnect();
-			String sql = "update member set member_pw = ?where member_id = ?";
+			String sql = "update member set member_pw = ? where member_email = ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, memberVO.getMember_pw());
-			pstmt.setString(2, memberVO.getNickname());
-			pstmt.setString(3, memberVO.getMember_email());
-			pstmt.setString(4, memberVO.getMember_tel());
-			pstmt.setString(5, memberVO.getMember_id());
+			pstmt.setString(2, memberVO.getMember_email());
 			int r = pstmt.executeUpdate();
 			System.out.println(r + "건이 수정됨.");
 		} catch (Exception e) {
@@ -309,7 +306,8 @@ public class MemberDAO {
 		ResultSet rs = null;
 		try {
 			conn = ConnectionManager.getConnnect();
-			String sql = "select mylibrary_no, book_no, wish, last_read_index from mylibrary where member_no = ?";
+			
+			String sql = "select a.mylibrary_no, b.title, a.wish, a.last_read_index,a.book_no from mylibrary a, books b where a.book_no = b.book_no and a.member_no = ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, member_no);
 			rs = pstmt.executeQuery();
@@ -317,9 +315,10 @@ public class MemberDAO {
 			while (rs.next()) {
 				Mylibrary lib = new Mylibrary();
 				lib.setMylibrary_no(rs.getString(1));
-				lib.setBook_no(rs.getString(2));
+				lib.setTitle(rs.getString(2));
 				lib.setWish(rs.getString(3));
 				lib.setLast_read_index(rs.getString(4));
+				lib.setBook_no(rs.getString(5));
 				list.add(lib);
 			}
 		} catch (Exception e) {
