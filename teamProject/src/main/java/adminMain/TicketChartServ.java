@@ -16,10 +16,11 @@ public class TicketChartServ implements Controller {
 
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html; charset=UTF-8");
-		List<HashMap<String, Object>> list =  MemberManageDAO.getinstance().getTicketCnt();
+		MemberManageDAO dao = new MemberManageDAO();
+		List<HashMap<String, Object>> list =  dao.getTicketCnt();
 		
 		String result = JSONArray.fromObject(list).toString();
-		System.out.println(result);
+		System.out.println(list);
 		response.getWriter().print(result);
 
 	}
