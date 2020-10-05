@@ -43,8 +43,8 @@ var myChart = new Chart(ctx, {
     }, {
       label: '여자',
       data: datasf,
-      backgroundColor: "rgba(255,153,0,0.4)",
-      borderColor: "rgba(255,153,0,1)",
+      backgroundColor: "rgba(255, 99, 132, 0.2",
+      borderColor: "rgba(255, 99, 132, 1)",
     }]
   }
 });

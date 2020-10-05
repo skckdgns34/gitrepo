@@ -32,9 +32,8 @@ public class MemberManageDAO {
 		List<Member> list = new ArrayList<Member>();
 		try {
 			conn = ConnectionManager.getConnnect();
-			String sql = "SELECT M.MEMBER_NO, M.MEMBER_ID, M.MEMBER_PW, M.NICKNAME,M.MEMBER_TEL, M.MEMBER_EMAIL,M.SIGNUP_DATE, "
-					+ " M.LAST_ACCESS_DATE, M.GENDER,T.TICKET_CODE, T.TICKET_DATE " + " FROM MEMBER M "
-					+ " FULL OUTER JOIN TICKET T ON M.MEMBER_NO = T.MEMBER_NO " + " WHERE M.MEMBER_ID IS NOT NULL";
+			String sql = " SELECT MEMBER_NO, MEMBER_ID, MEMBER_PW, NICKNAME, MEMBER_TEL, MEMBER_EMAIL, SIGNUP_DATE, LAST_ACCESS_DATE, GENDER FROM MEMBER "
+					+ " WHERE MEMBER_ID IS NOT NULL";
 
 			pstmt = conn.prepareStatement(sql);
 			ResultSet rs = pstmt.executeQuery();
@@ -49,8 +48,7 @@ public class MemberManageDAO {
 				member.setSignup_date(rs.getString("SIGNUP_DATE"));
 				member.setLast_access_date(rs.getString("LAST_ACCESS_DATE"));
 				member.setGender(rs.getString("GENDER"));
-				member.setTicket_code(rs.getString("TICKET_CODE"));
-				member.setTicket_date(rs.getString("TICKET_DATE"));
+			
 
 				list.add(member);
 
