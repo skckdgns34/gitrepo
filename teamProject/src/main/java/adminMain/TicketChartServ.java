@@ -20,7 +20,6 @@ public class TicketChartServ implements Controller {
 		List<HashMap<String, Object>> list =  dao.getTicketCnt();
 		
 		String result = JSONArray.fromObject(list).toString();
-		System.out.println(list);
 		response.getWriter().print(result);
 
 	}

@@ -254,7 +254,6 @@ public class MemberManageDAO {
 					+ " WHERE T.MEMBER_NO=M.MEMBER_NO )  T, "
 					+ " COMMON C WHERE T.TICKET_CODE(+) = C.CODE "
 					+ " AND COMMON_CODE='0G' GROUP BY C.CODE_VALUE";
-			System.out.println("ssssssssssssssssssssssss======================");
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {

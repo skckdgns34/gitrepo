@@ -116,6 +116,7 @@
 				</div>
 			</div>
 		</div>
+		
 		<!-- Content Column -->
 		   <div class="col-xl-4 col-lg-5">
               <div class="card shadow mb-4">

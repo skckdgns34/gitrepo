@@ -23,8 +23,9 @@ function drawRadarchart(data2){
 	datasf = new Array();
 	datasm = new Array();
 	
+	
 	for(var i=0;i<data2.length;i++){
-		datasf[i] = data2[i].f;
+		datasf[i] = data2[i].f; 
 		datasm[i] = data2[i].m;
 		label[i] = data2[i].code_value;
 	
