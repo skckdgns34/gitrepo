@@ -49,9 +49,10 @@ public class FrontController extends HttpServlet {
 		list.put("/memberCreateBookCk.do", new member.MemberCreateBookCkServ()); // 내서재 - 나만의 도서
 		list.put("/memberLogin.do", new member.MemberLoginServ()); // 로그인
 		list.put("/memberLogout.do", new member.MemberLogoutServ()); // 로그아웃
-		list.put("/memberFind.do", new member.MemberFindServ()); // 아이디/비밀번호 찾기
-		list.put("/memberFindemail.do", new member.MemberFindEmailServ()); // 비밀번호 찾기 이메일 보내기
-		list.put("/memberFindPassword.do", new member.MemberFindPasswordServ()); // 인증번호 확인
+		list.put("/memberFind.do", new member.MemberFindServ()); // 아이디/비밀번호 찾기 - 아이디 찾기
+		list.put("/memberFindemail.do", new member.MemberFindEmailServ()); // 아이디/비밀번호 찾기 - 이메일 보내기
+		list.put("/memberFindCheck.do", new member.MemberFindCheckServ()); // 아이디/비밀번호 찾기 - 인증번호 확인
+		list.put("/memberFindPassword.do", new member.MemberFindPasswordServ()); // 아이디/비밀번호 찾기 - 비밀번호 번경
 		list.put("/memberJoin.do", new member.MemberJoinServ()); // 회원가입
 		list.put("/memberPopup.do", new member.MemberPopupServ()); // 알람팝업
 		list.put("/memberLicense.do", new member.MemberLicenseServ()); // 내서재 - 이용권
@@ -59,6 +60,8 @@ public class FrontController extends HttpServlet {
 		list.put("/clientNotice.do", new client.ClientNoticeServ()); // 공지사항
 		list.put("/clientNoticeSelect.do", new client.ClientNoticeSelectServ()); // 공지사항 자세히보기
 		list.put("/clientFAQ.do", new client.ClientFAQServ()); // FAQ
+		
+		
 
 		// 한채빈
 		list.put("/adminMain.ad", new adminMain.AdminMainServ()); // admin 메인
@@ -77,10 +80,13 @@ public class FrontController extends HttpServlet {
 		list.put("/memberManageDelete.ad", new memberManage.MemberManageDeleteServ()); // 회원 관리 삭제
 		list.put("/memberManageBlackList.ad", new memberManage.MemberManageBlackListServ()); // 회원관리 블랙리스트
 		list.put("/memberManageBlackListPop.ad", new memberManage.MemberManageBlackListPopServ()); // 회원 관리 블랙리스트 관리
-		list.put("/memberManageBlackListPopForm.ad", new memberManage.MemberManageBlackListPopFormServ()); // 블랙리스트 관리
-																											// 수정폼
+		list.put("/memberManageBlackListPopForm.ad", new memberManage.MemberManageBlackListPopFormServ()); // 블랙리스트 관리수정폼
 		list.put("/memberManageQuestion.ad", new memberManage.MemberManageQuestionServ()); // 회원관리 QnA 리스트
 		list.put("/memberManageQuestionPop.ad", new memberManage.MemberManageQuestionPopServ()); // 회원관리 QnA 관리
+		
+		list.put("/memberManageNotice.ad", new memberManage.MemberManageNoticeServ()); // 회원관리 공지관리
+		list.put("/memberManageNoticeForm.ad", new memberManage.MemberManageNoticeFormServ()); // 회원관리 공지관리 수정/입력
+
 
 		list.put("/empManageMain.ad", new empManage.EmpManageMainServ()); // 사원 관리 리스트
 		list.put("/empManageList.ad", new empManage.EmpManageListServ()); // 안 씀?!?!
@@ -88,7 +94,9 @@ public class FrontController extends HttpServlet {
 		list.put("/employeesInsertForm.ad", new EmployeesInsertFormController()); // 사원관리 등록 폼
 		list.put("/empManageModify.ad", new empManage.EmpManageModifyServ()); // 사원관리 수정
 		list.put("/empManageModifyForm.ad", new empManage.EmpManageModifyFormServ()); // 사원관리 수정 폼
+		
 
+		
 		// 김한범&&내가 범인이다.
 		list.put("/clientQuestion.ad", new client.ClientQuestionServ());
 		list.put("/clientQuestionWtrite.ad", new client.ClientQuestionWtriteServ());
@@ -115,6 +123,8 @@ public class FrontController extends HttpServlet {
 		list.put("/companyDelete.ad", new company.CompanyDeleteServ()); // 출판사 삭제
 		list.put("/companyManage.ad", new company.CompanyManageServ());// 출판사 등록버튼
 
+		
+		
 		// 손용원&&최창훈
 		list.put("/main.do", new main.MainServ());
 		list.put("/mainsearchResult.do", new main.MainsearchResultServ());

@@ -70,12 +70,12 @@ $(function(){
 <body>
 <h3>비밀번호 변경</h3>
 <form name="frm" id="frm" action="${pageContext.request.contextPath }/memberFindEmailServ.do">
-<input type="email" name="email" id="email" placeholder="이메일을 입력해주세요" required>
+<input type="email" name="email" id="email" placeholder="이메일을 입력해주세요" value="${param.member_email }" required>
 <button type="button" id="btnsend">인증번호 보내기</button>
 ${ errormsg}
 <br>
 <input type="text" placeholder="인증번호 입력" name="OK" id="OK">
-<button>인증번호 확인</button>
+<button type="button">인증번호 확인</button>
 ${ msg}
 <br>
 <div class="form-group">

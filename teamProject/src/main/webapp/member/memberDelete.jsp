@@ -16,9 +16,10 @@
 			return true;
 		}
 	}
+	
 
-	var butdel = document.getElementById('button');
-	butdel.disabled = true;
+	/* var butdel = document.getElementById('button');
+	butdel.disabled = true; */
 
 	
 </script>
@@ -41,22 +42,20 @@
 	</textarea><br><br>
 <h6>탈퇴 후에는 해당 아이디로 다시 가입할 수 없으며, 아이디와 데이터는 복구할 수 없습니다.</h6>
 
-	<form name=Join action="${pageContext.request.contextPath }/MemberDelete.do"
-		onSubmit="return CheckForm(this)">
+	<form name=Join action="/app/memberDelete.do" onSubmit="return CheckForm(this)">
 		<div>
 			<label for="member_id" id="member_id" name="member_id"></label>
 		</div>
 		<input name="member_pw" type="checkbox" id="member_pw"
 			class="inputCheck" onclick="window.open('/app/memberDeletePassword.do', '비밀번호 확인', 'width=#, height=#')" /> 위 내용을 확인하였으며, 탈퇴를 진행합니다. <br>
 		
-		<input type="submit" id="butdel" value="탈퇴" disabled="">
+		<input type="hidden" id="member_pw">
+		
+		<button>탈퇴</button>
 
-
+		<!-- <input type="submit" id="butdel" value="탈퇴" disabled=""> -->
 	</form>
-	<div>
 		<button onclick="location='memberModify.jsp'">취소</button>
-	</div>
-
 
 </body>
 </html>

@@ -20,12 +20,13 @@ $(document).ready(function(){
 
 function drawRadarchart(data2){
 	label = new Array();
-	datas = new Array();
-	gender = new Array();
+	datasf = new Array();
+	datasm = new Array();
+	
 	
 	for(var i=0;i<data2.length;i++){
-		datas[i] = data2[i].cnt;
-		gender[i] = data2[i].gender;
+		datasf[i] = data2[i].f; 
+		datasm[i] = data2[i].m;
 		label[i] = data2[i].code_value;
 	
 	}
@@ -35,13 +36,13 @@ var myChart = new Chart(ctx, {
   data: {
     labels: label,
     datasets: [{
-      label: gender[0],
-      data: datas[0],
-      backgroundColor: "rgba(255,0,0,0.4)",
-      borderColor: "rgba(255,0,0,1)",
+      label: '남자',
+      data: datasm,
+      backgroundColor: "rgba(54, 162, 235, 0.2)",
+      borderColor: "rgba(54, 162, 235, 1)",
     }, {
-      label: gender[1],
-      data: datas[1],
+      label: '여자',
+      data: datasf,
       backgroundColor: "rgba(255,153,0,0.4)",
       borderColor: "rgba(255,153,0,1)",
     }]
