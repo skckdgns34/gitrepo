@@ -258,7 +258,6 @@ public class MemberManageDAO {
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
 				HashMap<String, Object> map = new HashMap<String, Object>();
-				System.out.println(rs.getBigDecimal("female"));
 				map.put("f", rs.getBigDecimal("female"));
 				map.put("m", rs.getBigDecimal("male"));
 				map.put("code_value", rs.getString("code_value"));

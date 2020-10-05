@@ -32,7 +32,7 @@ public class NoticeDAO {
 		try {
 			conn = ConnectionManager.getConnnect();
 			String sql = " SELECT N.NOTICE_TITLE, N.NOTICE_DATE, N.NOTICE_CONTENT, N.NOTICE_IMG, N.EMP_NO, N.VIEWS, E.EMP_NAME "
-					+ " FROM NOTICE N, EMPLOYEES "
+					+ " FROM NOTICE N, EMPLOYEES E "
 					+ " WHERE N.EMP_NO = E.EMP_NO ";
 			pstmt = conn.prepareStatement(sql);
 			ResultSet rs = pstmt.executeQuery();

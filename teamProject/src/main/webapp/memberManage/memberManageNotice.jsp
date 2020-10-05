@@ -22,10 +22,15 @@
 			}
 		}
 	};
+	function addpage() //등록
+	{
+		window.document.location.href = "${pageContext.request.contextPath}/memberManageNoticeInsertForm.ad";
+		return;
+	}
 
 	function modifypage() //수정 ㅡ
 	{
-		window.document.location.href = "${pageContext.request.contextPath}/memberManageModifyForm.ad?no="
+		window.document.location.href = "${pageContext.request.contextPath}/memberManageNoticeModifyForm.ad?no="
 				+ $('input[name="user_CheckBox"]:checked').val();
 		alert($('input[name="user_CheckBox"]:checked').val())
 		return;
@@ -43,54 +48,49 @@
 <body id="page-top">
 
 	<div class="container-fluid">
-		
-		<h3 class="page_title">회원 전체 조회</h3>
+
+		<h3 class="page_title">공지사항 전체 조회</h3>
 		<hr>
 		<div class="card-body">
 			<div class="table-responsive">
 				<div>
+					<button type='button' id='btn_i'
+						class="btn btn-outline btn-primary pull-left" onclick="addpage()">등록</button>
 					<button type="button" id='btn_n'
 						class="btn btn-outline btn-primary pull-" onclick="modifypage()">수정</button>
 					<button type="button" id='btn_d'
 						class="btn btn-outline btn-primary pull-right"
 						onclick="deletepage()">삭제</button>
 				</div>
-				 <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+				<table class="table table-bordered table-hover" id="dataTable"
+					width="100%" cellspacing="0">
 
 					<thead>
 						<tr>
 							<th>선택</th>
-							<th>MEMBER_NO</th>
-							<th>MEMBER_ID</th>
-							<th>MEMBER_PW</th>
-							<th>NICKNAME</th>
-							<th>MEMBER_TEL</th>
-							<th>MEMBER_EMAIL</th>
-							<th>SIGNUP_DATE</th>
-							<th>LAST_ACCESS_DATE</th>
-							<th>GENDER</th>
-							<th>TICKET_CODE</th>
-							<th>TICKET_DATE</th>
-							
+							<th>notice_title</th>
+							<th>notice_date</th>
+							<th>notice_content</th>
+							<th>notice_img</th>
+							<th>emp_no</th>
+							<th>views</th>
+							<th>emp_name</th>
+
 						</tr>
 					</thead>
 
 					<tbody>
-						<c:forEach items="${list}" var="member">
+						<c:forEach items="${list}" var="notice">
 							<tr>
 								<td><input type="checkbox" name="user_CheckBox"
-									onclick="check(this)" value="${member.getMember_no()}"></td>
-								<td>${member.getMember_no()}</td>
-								<td>${member.getMember_id()}</td>
-								<td>${member.getMember_pw()}</td>
-								<td>${member.getNickname()}</td>
-								<td>${member.getMember_tel()}</td>
-								<td>${member.getMember_email()}</td>
-								<td>${member.getSignup_date()}</td>
-								<td>${member.getLast_access_date()}</td>
-								<td>${member.getGender()}</td>
-								<td>${member.getTicket_code()}</td>
-								<td>${member.getTicket_date()}</td>
+									onclick="check(this)" value="${notice.getMember_no()}"></td>
+								<td>${notice.getNotice_title()}</td>
+								<td>${notice.getNotice_date()}</td>
+								<td>${notice.getNotice_content()}</td>
+								<td>${notice.getNotice_img()}</td>
+								<td>${notice.getEmp_no()}</td>
+								<td>${notice.getViews()}</td>
+								<td>${notice.getEmp_name()}</td>
 						</c:forEach>
 					</tbody>
 				</table>
