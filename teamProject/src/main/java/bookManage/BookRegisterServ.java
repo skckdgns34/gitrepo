@@ -13,6 +13,7 @@ import org.apache.commons.beanutils.BeanUtils;
 
 import common.Controller;
 import vo.Books;
+import vo.Employees;
 
 public class BookRegisterServ implements Controller
 {
@@ -66,7 +67,15 @@ public class BookRegisterServ implements Controller
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
+		Employees emp = (Employees) request.getSession().getAttribute("login");
 		book1.setBook_no(Integer.toString(no));
+		book1.setEmp_no(emp.getEmp_no());
+		
+		System.out.println(emp.getEmp_no());
+		
+		
+		
+		
 		book1 = BookManageDAO.getInstance().insertpur(book1);
 		request.getRequestDispatcher("bookList.ad").forward(request, response);
 	}

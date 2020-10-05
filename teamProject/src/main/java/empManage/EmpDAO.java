@@ -201,7 +201,7 @@ public class EmpDAO {
 
 			if (rs.next()) {
 				resultVO = new Employees();
-
+				resultVO.setEmp_no(rs.getString("emp_no"));
 				resultVO.setEmp_id(rs.getString("emp_id"));
 				resultVO.setEmp_pw(rs.getString("emp_pw"));
 				resultVO.setEmp_name(rs.getString("emp_name"));
