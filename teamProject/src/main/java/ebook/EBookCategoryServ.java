@@ -25,9 +25,25 @@ public class EBookCategoryServ implements Controller
 		list = CommonDAO.getInstance().selectAllGenre();
 		request.setAttribute("genreList", list);
 
-		ArrayList<Books> books = new ArrayList<Books>();
-		books = EBookDAO.getInstance().raidoAllBooks();
+		ArrayList<Books> books=null;
+
 		List<Map<String,Object>> count = EBookDAO.getInstance().genreCount();
+		
+		
+		String gen = request.getParameter("gen");
+		
+		System.out.println(gen);
+//		books = EBookDAO.getInstance().raidoAllBooks();
+		
+		if(gen == "undefined") {
+			books = EBookDAO.getInstance().raidoAllBooks();
+		}
+		else if(gen != null) {
+			books = EBookDAO.getInstance().radioCheckGenre(gen);
+		}
+		
+		
+		
 		
 		request.setAttribute("count", count);
 		request.setAttribute("books", books);

@@ -31,6 +31,7 @@ function btnHideNShow(){
 function goRead(){ //읽기버튼이 생성되면 읽는페이지로 이동
 	location.href="${pageContext.request.contextPath}/eBookReading.do";
 }
+
 var check = "${check}"
 function btnScore(){ // 추천버튼 클릭시(추천 추가 또는 추천 제거)
 	$("#rec_update").click(function(){
@@ -46,7 +47,7 @@ function btnScore(){ // 추천버튼 클릭시(추천 추가 또는 추천 제�
             success: function (result) {
             	check = result.check;
 		        if(check == 0){
-		        	$(".fa-heart").css("color", "white")
+		        	$(".fa-heart").css("color", "gray")
 		        }else{
 		        	$(".fa-heart").css("color", "red")
 		        }
@@ -56,6 +57,23 @@ function btnScore(){ // 추천버튼 클릭시(추천 추가 또는 추천 제�
 		})
 	})
 }
+
+$("#btnreview").on("click", function(){
+	var review = $("#reviewArea").val()
+	$.ajax({
+		url : "${pageContext.request.contextPath}/Ajax/eBookReview.do",
+		type: "POST",
+		dataType: "JSON",
+		data: {
+			member_id : "${member_id}",
+			member_nickname : "${member_nickname}",
+			review : review 
+		},
+		success: function(result){
+			
+		}
+	})
+})
 
 </script>
 </head>
@@ -102,10 +120,10 @@ function btnScore(){ // 추천버튼 클릭시(추천 추가 또는 추천 제�
 						</div>-->
 						
 						
-						<div class="w3-border w3-center w3-padding">
+						<div class="card_area d-flex align-items-center">
 							<c:if test="${ member_no == null }">
 								추천 기능은 <button type="button" id="newLogin"><b class="w3-text-blue">로그인</b></button> 후 사용 가능합니다.<br />
-								<i class="fa fa-heart" style="font-size:16px;color:red"></i>
+								<i class="fa fa-heart" style="font-size:16px;color:red " ></i>
 								<span class="rec_count"></span>					
 							</c:if>
 							<c:if test="${ member_no != null }">
@@ -117,7 +135,7 @@ function btnScore(){ // 추천버튼 클릭시(추천 추가 또는 추천 제�
 								</c:if>
 								<c:if test="${ check == 0}">
 									<button class="w3-button w3-black w3-round" id="rec_update">
-										<i class="fa fa-heart" style="font-size:16px;color:white"></i>
+										<i class="fa fa-heart" style="font-size:16px;color:gray"></i>
 										&nbsp;<span class="rec_count">${count}</span><!-- 좋아요수 -->
 									</button> 
 								</c:if>
@@ -147,6 +165,7 @@ function btnScore(){ // 추천버튼 클릭시(추천 추가 또는 추천 제�
 					<a class="nav-link active" id="review-tab" data-toggle="tab" href="#review" role="tab" aria-controls="review"
 					 aria-selected="false">Reviews</a>
 				</li>
+				
 			</ul>
 			<div class="tab-content" id="myTabContent">
 				<div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
@@ -405,21 +424,20 @@ function btnScore(){ // 추천버튼 클릭시(추천 추가 또는 추천 제�
 									<li><a href="#"><i class="fa fa-star"></i></a></li>
 								</ul>
 								<p>Outstanding</p>
+								
+								<!-- 리뷰쓰고 액션 -->
                 <form action="#/" class="form-contact form-review mt-3">
                   <div class="form-group">
-                    <input class="form-control" name="name" type="text" placeholder="Enter your name" required>
+                    <input class="form-control" name="name" type="hidden" readonly="readonly" placeholder="${member_id}" required>
+                  </div>
+                   <div class="form-group">
+                    <input class="form-control" name="name" type="text" readonly="readonly" placeholder="${member_nickname}" required>
                   </div>
                   <div class="form-group">
-                    <input class="form-control" name="email" type="email" placeholder="Enter email address" required>
-                  </div>
-                  <div class="form-group">
-                    <input class="form-control" name="subject" type="text" placeholder="Enter Subject">
-                  </div>
-                  <div class="form-group">
-                    <textarea class="form-control different-control w-100" name="textarea" id="textarea" cols="30" rows="5" placeholder="Enter Message"></textarea>
+                    <textarea class="form-control different-control w-100" name="textarea" id="textarea" cols="30" rows="5" placeholder="리뷰 내용 입력" id="reviewArea"></textarea>
                   </div>
                   <div class="form-group text-center text-md-right mt-3">
-                    <button type="submit" class="button button--active button-review">Submit Now</button>
+                    <button type="submit" class="button button--active button-review" id="btnreview">Submit Now</button>
                   </div>
                 </form>
 							</div>

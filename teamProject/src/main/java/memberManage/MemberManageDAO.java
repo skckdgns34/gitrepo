@@ -11,7 +11,6 @@ import java.util.List;
 import common.ConnectionManager;
 import vo.Books;
 import vo.Member;
-import vo.TicketVO;
 
 public class MemberManageDAO {
 	// 전역변수. 모든 메서드에 공통으로 사용되는 변수
@@ -38,7 +37,7 @@ public class MemberManageDAO {
 					+ " FULL OUTER JOIN TICKET T ON M.MEMBER_NO = T.MEMBER_NO " + " WHERE M.MEMBER_ID IS NOT NULL";
 
 			pstmt = conn.prepareStatement(sql);
-			rs = pstmt.executeQuery();
+			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
 				Member member = new Member();
 				member.setMember_no(rs.getString("MEMBER_NO"));
@@ -241,22 +240,26 @@ public class MemberManageDAO {
 	}
 
 	// 성별 인기 이용권
-	/* 이거 어떻게 적어 줘야 하는지 전혀 모르겠음ㅠㅠㅠㅠ0ㅠㅠ */
-
+ 
+	
 	public List<HashMap<String, Object>> getTicketCnt() {
 		List<HashMap<String, Object>> list = new ArrayList<HashMap<String, Object>>();
 		try {
 			conn = ConnectionManager.getConnnect();
-			String sql = "SELECT COUNT(T.TICKET_CODE) cnt, M.GENDER, C.CODE_VALUE "
-					+ " FROM TICKET T, MEMBER M, COMMON C " + " WHERE T.MEMBER_NO=M.MEMBER_NO "
-					+ " AND T.TICKET_CODE = C.CODE " + " GROUP BY GENDER, TICKET_CODE, CODE_VALUE ";
-			System.out.println("ssssssssssssssssssssssss");
+			String sql = "SELECT C.CODE_VALUE,  "
+					+ " SUM(CASE WHEN GENDER = 'male'  THEN 1 ELSE 0 END)   AS FEMALE, "
+					+ " SUM(CASE WHEN GENDER = 'female'  THEN 1 ELSE 0 END)  AS MALE "
+					+ " FROM ( SELECT  T.*, M.GENDER "
+					+ " FROM TICKET T, MEMBER M "
+					+ " WHERE T.MEMBER_NO=M.MEMBER_NO )  T, "
+					+ " COMMON C WHERE T.TICKET_CODE(+) = C.CODE "
+					+ " AND COMMON_CODE='0G' GROUP BY C.CODE_VALUE";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
-			ResultSet rs = pstmt.executeQuery(sql);
+			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
 				HashMap<String, Object> map = new HashMap<String, Object>();
-				map.put("cnt", rs.getInt("cnt"));
-				map.put("gender", rs.getString("gender"));
+				map.put("f", rs.getBigDecimal("female"));
+				map.put("m", rs.getBigDecimal("male"));
 				map.put("code_value", rs.getString("code_value"));
 
 				list.add(map);

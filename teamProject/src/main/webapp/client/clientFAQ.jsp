@@ -36,9 +36,9 @@
 	<br><hr>
 
 <div id="accordion">
-  <h3>${faq.title }</h3>
+  <h3>${title }</h3>
   <div>
-    <p>${faq.contents }</p>
+    <p>${contents }</p>
   </div>
 </div>
 

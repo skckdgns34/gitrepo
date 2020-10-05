@@ -21,7 +21,6 @@ public class GenderChartServ implements Controller {
 		List<HashMap<String, Object>> list = MemberManageDAO.getinstance().getGenderCnt();
 		
 		String result = JSONArray.fromObject(list).toString();
-		System.out.println(result);
 		response.getWriter().print(result);
 
 	

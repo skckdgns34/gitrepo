@@ -460,7 +460,6 @@ public class EBookDAO
 
 		try
 		{
-
 			conn = ConnectionManager.getConnnect();
 			String sql = "select title, book_no, book_img from books where genre =? order by book_no desc" ;
 			pstmt = conn.prepareStatement(sql);
@@ -528,7 +527,7 @@ public class EBookDAO
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {
-			
+			ConnectionManager.close(rs, pstmt, conn);
 		}
 		return list;
 	}

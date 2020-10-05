@@ -45,7 +45,7 @@ public class MemberFindEmailServ implements Controller
 		
 		final String host = "smtp.naver.com";
 		final String user = "glsk2545@naver.com";	//자신 네이버 아이디
-		final String password = "kss01179--";	//자신 네이버 비밀번호
+		final String password = "kss01179---";	//자신 네이버 비밀번호
 			
 		
 		//smtp server 정보 설정

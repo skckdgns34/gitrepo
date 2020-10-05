@@ -20,7 +20,7 @@
 
 	function modifypage() //수정 
 	{
-		window.document.location.href = "${pageContext.request.contextPath}/memberManageQuestion.ad?no="
+		window.document.location.href = "${pageContext.request.contextPath}/memberManageQuestionPop.ad?no="
 				+ $('input[name="user_CheckBox"]:checked').val();
 		return;
 	}

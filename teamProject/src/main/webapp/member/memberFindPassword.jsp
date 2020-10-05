@@ -56,40 +56,49 @@
 </script>
 <script>
 $(function(){
+
 	$("#btnsend").on("click", function(){
 		location.href = "${pageContext.request.contextPath }/memberFindemail.do?member_email=" + $("#email").val()
-	})
-});
-$(function(){
-	$("#btnOk").on("click", function(){
+	});
+	var send = "${AuthenticationKey}";
 	
-	})
+	
+	$("#btncheck").on("click", function(){
+	var check = $("#check").val();
+		if(check==send){
+			location.href = "${pageContext.request.contextPath }/memberFindCheck.do?AuthenticationUser=" +send;
+		}else{
+			alert("인증번호가 틀렸습니다.");
+		}
+	});
+	
+	$("#btnupdate").on("click", function(){
+		location.href = "${pageContext.request.contextPath }/memberFindPassword.do"
+	});
 });
 </script>
 </head>
 <body>
 <h3>비밀번호 변경</h3>
-<form name="frm" id="frm" action="${pageContext.request.contextPath }/memberFindEmailServ.do">
-<input type="email" name="email" id="email" placeholder="이메일을 입력해주세요" required>
+<form name="frm" id="frm">
+<input type="email" name="email" id="email" placeholder="이메일을 입력해주세요" value="${param.member_email }" required>
 <button type="button" id="btnsend">인증번호 보내기</button>
 ${ errormsg}
 <br>
-<input type="text" placeholder="인증번호 입력" name="OK" id="OK">
-<button>인증번호 확인</button>
+<input type="text" placeholder="인증번호 입력" id="check">
+<button type="button" id="btncheck">인증번호 확인</button>
 ${ msg}
 <br>
-<div class="form-group">
-					<label for="pw">비밀번호</label> <input type="password"
-						 id="member_pw" name="member_pw">
-					<div class="eheck_font" id="pw_check"></div>
-				</div>
-				<div class="form-group">
-					<label for="pw2">비밀번호 확인</label> <input type="password"
-						 id="member_pw2" name="member_pw2"
-						placeholder="비밀번호 확인">
-					<div class="eheck_font" id="pw2_check"></div>
-				</div>
-<button>변경</button>
+		<label for="pw">비밀번호</label> <input type="password"
+			 id="member_pw" name="member_pw">
+		<div class="eheck_font" id="pw_check"></div>
+	</div>
+	<div class="form-group">
+		<label for="pw2">비밀번호 확인</label> <input type="password"
+			 id="member_pw2" name="member_pw2"
+			placeholder="비밀번호 확인">
+		<div class="eheck_font" id="pw2_check"></div>
+<button id="btnupdate">변경</button>
 </form>
 </body>
 </html>

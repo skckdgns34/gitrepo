@@ -121,7 +121,7 @@
             <a class="collapse-item" href="<%=request.getContextPath()%>/memberManageMain.ad">회원조회</a>
             <a class="collapse-item" href="<%=request.getContextPath()%>/memberManageBlackList.ad">블랙리스트관리</a>
             <a class="collapse-item" href="<%=request.getContextPath()%>/memberManageQuestion.ad">문의관리</a>
-            
+			<a class="collapse-item" href="<%=request.getContextPath()%>/memberManageNotice.ad">공지사항관리</a>            
           </div>
         </div>
       </li>

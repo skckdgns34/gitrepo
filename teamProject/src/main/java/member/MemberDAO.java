@@ -217,6 +217,26 @@ public class MemberDAO {
 		return resultVO;
 	}
 	
+	//비밀번호 변경
+	public void updatepw(Member memberVO) {
+		try {
+			conn = ConnectionManager.getConnnect();
+			String sql = "update member set member_pw = ?where member_id = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, memberVO.getMember_pw());
+			pstmt.setString(2, memberVO.getNickname());
+			pstmt.setString(3, memberVO.getMember_email());
+			pstmt.setString(4, memberVO.getMember_tel());
+			pstmt.setString(5, memberVO.getMember_id());
+			int r = pstmt.executeUpdate();
+			System.out.println(r + "건이 수정됨.");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionManager.close(null, pstmt, conn);
+		}
+	}
+	
 	//회원탈퇴시 비밀번호 확인
 		public Member password(Member memberVO) {
 			Member resultVO = null;
