@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" isELIgnored="false"%>
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    <%
+	String member_id = request.getParameter("member_id");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +17,7 @@
 		<div class="col-md-10inputbb">
 			<div class="form-group has-danger">
 				<div class="input-gorup mb-2 mr-sm-2 mb-sm-0">
-					<label for="id">아이디는 ${member.member_id } 입니다.</label>
+					<label for="id">아이디는 ${member_id } 입니다.</label>
 				</div>
 			</div>
 		</div>

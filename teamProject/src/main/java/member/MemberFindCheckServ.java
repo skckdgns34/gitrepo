@@ -16,14 +16,10 @@ public class MemberFindCheckServ implements Controller {
 		String AuthenticationUser = request.getParameter("AuthenticationUser");
 		if (!AuthenticationKey.equals(AuthenticationUser)) {
 			System.out.println("인증번호 일치하지 않음");
-			request.setAttribute("msg", "인증번호가 일치하지 않습니다");
-			request.setAttribute("loc", "member/memberFindPassword.jsp");
-			request.getRequestDispatcher("member/memberFindPassword.jsp").forward(request, response);
-			
+			response.getWriter().print(false);
 		} else {
 			System.out.println("인증번호 확인");
-			request.setAttribute("msg", "인증번호 확인");
-			request.getRequestDispatcher("member/memberFindPassword.jsp").forward(request, response);
+			response.getWriter().print(true);
 		}
 			
 	}

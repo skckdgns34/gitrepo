@@ -60,21 +60,40 @@ $(function(){
 	$("#btnsend").on("click", function(){
 		location.href = "${pageContext.request.contextPath }/memberFindemail.do?member_email=" + $("#member_email").val()
 	});
-	var send = "${AuthenticationKey}";
 	
 	
 	$("#btncheck").on("click", function(){
 	var check = $("#check").val();
-		if(check==send){
-			location.href = "${pageContext.request.contextPath }/memberFindCheck.do?AuthenticationUser=" +send;
-		}else{
-			alert("인증번호가 틀렸습니다.");
+	var url = "${pageContext.request.contextPath }/memberFindCheck.do?AuthenticationUser=" +check;
+	$.ajax(
+		url,{
+		
+		success: function(result){
+			console.log(result)
+			if(result == "true"){
+				alert("인증번호 확인완료.");
+			} else {
+				alert("인증번호가 틀렸습니다.");
+			}
 		}
+	})
 	});
 	
 	$("#btnupdate").on("click", function(){
 		location.href = "${pageContext.request.contextPath }/memberFindPassword.do?member_pw=" + $("#member_pw").val()
 	});
+	
+	
+	$("#btnupdate").prop('disabled', true);
+
+	$("#member_pw, member_pw2").keyup(function(){
+		if ($("#member_pw2").val() != "" && $("#member_pw").val() != ""){
+			$("#btnupdate").prop("disabled", false);
+		} else {
+			$("#btnupdate").prop("disabled", true);
+		}
+	});
+	
 });
 </script>
 </head>
@@ -98,7 +117,7 @@ ${ msg}
 			 id="member_pw2" name="member_pw2"
 			placeholder="비밀번호 확인">
 		<div class="eheck_font" id="pw2_check"></div>
-<button id="btnupdate">변경</button>
+<button id="btnupdate" disabled="disabled">변경</button>
 </form>
 </body>
 </html>
