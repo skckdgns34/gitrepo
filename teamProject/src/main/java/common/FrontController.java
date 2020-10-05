@@ -97,7 +97,7 @@ public class FrontController extends HttpServlet {
 		
 
 		
-		// 김한범
+		// 김한범&&내가 범인이다.
 		list.put("/clientQuestion.ad", new client.ClientQuestionServ());
 		list.put("/clientQuestionWtrite.ad", new client.ClientQuestionWtriteServ());
 		list.put("/clientHopeBook.ad", new client.ClientHopeBookServ());
@@ -112,6 +112,8 @@ public class FrontController extends HttpServlet {
 		list.put("/bookDelete.ad", new bookManage.BookDeleteServ()); // 도서 삭제
 		list.put("/bookList.ad", new bookManage.BookListServ()); // 도서 목록
 		list.put("/bookSelect.ad", new bookManage.BookSelectServ()); // 도서 선택
+		list.put("/bookManage.ad", new bookManage.BookManageServ());// ebook 등록버튼
+		list.put("/bookManageAudio.ad", new bookManage.BookManageAudioServ());// 오디오북 등록버튼
 
 		list.put("/companyMain.ad", new company.CompanyMainServ()); // 출판사 목록
 		list.put("/companyPop.ad", new company.CompanyPopServ()); // 출판사 수정
