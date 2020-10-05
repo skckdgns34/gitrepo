@@ -74,7 +74,6 @@ public class BookManageDAO {
 	
 	
 	public int insert (Books books) {
-		Books resultVO = null;
 		int no = 0;
 		try {
 			conn = ConnectionManager.getConnnect();
