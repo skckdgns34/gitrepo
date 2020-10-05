@@ -3,6 +3,7 @@ package ebook;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -11,6 +12,7 @@ import java.util.Map;
 import common.ConnectionManager;
 import vo.Books;
 import vo.Good;
+import vo.Review;
 import vo.SearchBook;
 
 public class EBookDAO
@@ -531,5 +533,63 @@ public class EBookDAO
 		}
 		return list;
 	}
+	
+	public Integer insertReview(Review review) {
+		int no = 0;
+		try {
+			conn = ConnectionManager.getConnnect();
+			conn.setAutoCommit(false);
+			String seqSql = "select no from seq where tablename = 'review'";
+			Statement stmt = conn.createStatement();
+			rs = stmt.executeQuery(seqSql);
+			rs.next();
+			no = rs.getInt(1);
+			review.setReview_no(Integer.toString(no));
+			
+			seqSql = "update seq set no = no + 1 where tablename = 'review'";
+			stmt = conn.createStatement();
+			stmt.executeUpdate(seqSql);
+			
+
+			String sql ="insert into review values(?,?,sysdate,?,?)";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, review.getReview_no());
+			pstmt.setString(2, review.getContents());
+			pstmt.setString(3, review.getMember_no());
+			pstmt.setString(4, review.getBook_no());
+			pstmt.executeUpdate();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionManager.close(rs, pstmt, conn);
+		} 
+		return no;
+	}
+	
+	//insert 하자마자 단건조회해와서 ajax로 뿌려주기
+	public Review selectReview(int seqno) {
+		Review review = new Review();
+		rs = null;
+		try {
+			conn = ConnectionManager.getConnnect();
+			String sql ="select review_no, contents, review_date, member_no, book_no from review where review_no =? ";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, seqno);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				review.setReview_no(rs.getString(1));
+				review.setContents(rs.getString(2));
+				review.setMember_no(rs.getString(3));
+				review.setBook_no(rs.getString(4));
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionManager.close(rs, pstmt, conn);
+		}
+		return review;
+	}
+	
+	
 
 }

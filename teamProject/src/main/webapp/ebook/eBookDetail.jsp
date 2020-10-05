@@ -65,9 +65,10 @@ $("#btnreview").on("click", function(){
 		type: "POST",
 		dataType: "JSON",
 		data: {
-			member_id : "${member_id}",
+			member_no : "${member_no}",
 			member_nickname : "${member_nickname}",
-			review : review 
+			review : review,
+			book_no : "${books[0].book_no}"
 		},
 		success: function(result){
 			
@@ -427,9 +428,6 @@ $("#btnreview").on("click", function(){
 								
 								<!-- 리뷰쓰고 액션 -->
                 <form action="#/" class="form-contact form-review mt-3">
-                  <div class="form-group">
-                    <input class="form-control" name="name" type="hidden" readonly="readonly" placeholder="${member_id}" required>
-                  </div>
                    <div class="form-group">
                     <input class="form-control" name="name" type="text" readonly="readonly" placeholder="${member_nickname}" required>
                   </div>
