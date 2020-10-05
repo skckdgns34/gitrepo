@@ -13,7 +13,10 @@ public class Member {
 	private String signup_date;
 	private String ticket_date;
 	private String last_access_date;
-	private String gender;
+	private String code_value;
 	private String ticket_code;
+	private String gender;
+	private String female;
+	private String male;
 	
 }
