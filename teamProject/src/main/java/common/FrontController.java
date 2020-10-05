@@ -77,10 +77,13 @@ public class FrontController extends HttpServlet {
 		list.put("/memberManageDelete.ad", new memberManage.MemberManageDeleteServ()); // 회원 관리 삭제
 		list.put("/memberManageBlackList.ad", new memberManage.MemberManageBlackListServ()); // 회원관리 블랙리스트
 		list.put("/memberManageBlackListPop.ad", new memberManage.MemberManageBlackListPopServ()); // 회원 관리 블랙리스트 관리
-		list.put("/memberManageBlackListPopForm.ad", new memberManage.MemberManageBlackListPopFormServ()); // 블랙리스트 관리
-																											// 수정폼
+		list.put("/memberManageBlackListPopForm.ad", new memberManage.MemberManageBlackListPopFormServ()); // 블랙리스트 관리수정폼
 		list.put("/memberManageQuestion.ad", new memberManage.MemberManageQuestionServ()); // 회원관리 QnA 리스트
 		list.put("/memberManageQuestionPop.ad", new memberManage.MemberManageQuestionPopServ()); // 회원관리 QnA 관리
+		
+		list.put("/memberManageNotice.ad", new memberManage.MemberManageNoticeServ()); // 회원관리 공지관리
+		list.put("/memberManageNoticeForm.ad", new memberManage.MemberManageNoticeFormServ()); // 회원관리 공지관리 수정/입력
+
 
 		list.put("/empManageMain.ad", new empManage.EmpManageMainServ()); // 사원 관리 리스트
 		list.put("/empManageList.ad", new empManage.EmpManageListServ()); // 안 씀?!?!
