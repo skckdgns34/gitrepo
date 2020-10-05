@@ -20,6 +20,9 @@ public class EBookDetailServ implements Controller
 		Member member_login = (Member)request.getSession().getAttribute("memberLogin");
 		String member_id = (String)request.getSession().getAttribute("member_id");
 		String member_no = (String)request.getSession().getAttribute("member_no");
+		System.out.println("멤버로긴정보====================="+member_login);
+		
+		
 		
 		String checkCode = EBookDAO.getInstance().checkTicket(member_no);
 		int check = EBookDAO.getInstance().recCheck( book_no,member_no);
