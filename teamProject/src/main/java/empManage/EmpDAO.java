@@ -100,11 +100,7 @@ public class EmpDAO {
 
 	// 등록
 	public Employees Insert(Employees employees) {
-		/*
-		 * SELECT SEQUENCE_NAME, MIN_VALUE, MAX_VALUE, INCREMENT_BY, CYCLE_FLAG FROM
-		 * USER_SEQUENCES; insert into employees values ((시퀀스명).nextval ,EMP_ID EMP_NAME
-		 * EMP_BIRTH ENTERED_DATE DEPT_CODE EMP_ADDRESS RANK_CODE
-		 */
+		
 		Employees resultVO = null;
 		try {
 			conn = ConnectionManager.getConnnect();
@@ -189,7 +185,7 @@ public class EmpDAO {
 
 	}
 
-	// 로그인 체크 <- 검색 해보고 다시 해보기...
+	// 로그인 체크
 	public Employees loginCk(Employees employees) {
 		Employees resultVO = null;
 		try {
