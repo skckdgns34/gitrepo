@@ -20,6 +20,10 @@ public class EBookDetailServ implements Controller
 		Member member_login = (Member)request.getSession().getAttribute("memberLogin");
 		String member_id = (String)request.getSession().getAttribute("member_id");
 		String member_no = (String)request.getSession().getAttribute("member_no");
+		String member_nickname = (String)request.getSession().getAttribute("nickname");
+		System.out.println("멤버로긴정보====================="+member_login);
+		System.out.println("멤버닉넴====================="+member_nickname);
+		
 		
 		String checkCode = EBookDAO.getInstance().checkTicket(member_no);
 		int check = EBookDAO.getInstance().recCheck( book_no,member_no);
@@ -38,7 +42,7 @@ public class EBookDetailServ implements Controller
 		
 		
 		
-		
+		request.setAttribute("member_nickname", member_nickname);
 		request.setAttribute("count", count);
 		request.setAttribute("book", book);
 		request.setAttribute("checkCode", checkCode);

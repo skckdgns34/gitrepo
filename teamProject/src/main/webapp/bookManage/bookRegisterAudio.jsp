@@ -184,10 +184,50 @@
 								</div>
 							</div>
 						</div>
+						<div class="row">
+							<div class="col-sm-6 col-md-6 col-xs-6">
+								<label for="purchase_price"
+									class="control-label col-md-4  requiredField">도서 구매 비용<span
+									class="asteriskField"></span>
+								</label>
+								<div class="controls col-md-8 ">
+									<input class="input-md emailinput form-control"
+										id="purchase_price" name="purchase_price"
+										style="margin-bottom: 10px" type="text" />
+								</div>
+							</div>
+
+							<div class="col-sm-6 col-md-6 col-xs-6">
+								<label for="purchase_date"
+									class="control-label col-md-4  requiredField">도서 구매 날짜<span
+									class="asteriskField">*</span>
+								</label>
+								<div class="controls col-md-8 ">
+									<input class="input-md emailinput form-control"
+										id="purchase_date" name="purchase_date"
+										style="margin-bottom: 10px" type="date" />
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-12">
+							<div id="div_id_downloads" class="form-group required">
+								<label for="purchase_content"
+									class="control-label col-md-4  requiredField">비고<span
+									class="asteriskField"></span>
+								</label>
+								<div class="col-md-10">
+									<input class="input-md emailinput form-control"
+										id="purchase_content" name="purchase_content"
+										style="margin-bottom: 10px" type="text" />
+								</div>
+							</div>
+						</div>
 						<hr />
 						<div class="row">
 							<div class="col-md-10 text-center">
-								<button class="btn btn-outline btn-primary pull-left" type="submit">도서 등록</button>
+								<button class="btn btn-outline btn-primary pull-left"
+									type="submit">도서 등록</button>
 								<button class="btn btn-danger btn-md" type="reset">초기화</button>
 							</div>
 						</div>

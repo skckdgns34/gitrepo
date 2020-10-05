@@ -147,6 +147,7 @@ function btnScore(){ // 추천버튼 클릭시(추천 추가 또는 추천 제�
 					<a class="nav-link active" id="review-tab" data-toggle="tab" href="#review" role="tab" aria-controls="review"
 					 aria-selected="false">Reviews</a>
 				</li>
+				
 			</ul>
 			<div class="tab-content" id="myTabContent">
 				<div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
@@ -405,15 +406,14 @@ function btnScore(){ // 추천버튼 클릭시(추천 추가 또는 추천 제�
 									<li><a href="#"><i class="fa fa-star"></i></a></li>
 								</ul>
 								<p>Outstanding</p>
+								
+								<!-- 리뷰쓰고 액션 -->
                 <form action="#/" class="form-contact form-review mt-3">
                   <div class="form-group">
-                    <input class="form-control" name="name" type="text" placeholder="Enter your name" required>
+                    <input class="form-control" name="name" type="hidden" readonly="readonly" placeholder="${member_id}" required>
                   </div>
-                  <div class="form-group">
-                    <input class="form-control" name="email" type="email" placeholder="Enter email address" required>
-                  </div>
-                  <div class="form-group">
-                    <input class="form-control" name="subject" type="text" placeholder="Enter Subject">
+                   <div class="form-group">
+                    <input class="form-control" name="name" type="text" readonly="readonly" placeholder="${member_nickname}" required>
                   </div>
                   <div class="form-group">
                     <textarea class="form-control different-control w-100" name="textarea" id="textarea" cols="30" rows="5" placeholder="Enter Message"></textarea>

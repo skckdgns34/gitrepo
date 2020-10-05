@@ -14,7 +14,7 @@
 		<div class="col-md-10inputbb">
 			<div class="form-group has-danger">
 				<div class="input-gorup mb-2 mr-sm-2 mb-sm-0">
-					<label for="id">아이디는 ${member_id } 입니다.</label>
+					<label for="id">아이디는 ${member.member_id } 입니다.</label>
 				</div>
 			</div>
 		</div>
