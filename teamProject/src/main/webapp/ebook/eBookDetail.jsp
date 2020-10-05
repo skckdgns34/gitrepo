@@ -31,6 +31,7 @@ function btnHideNShow(){
 function goRead(){ //읽기버튼이 생성되면 읽는페이지로 이동
 	location.href="${pageContext.request.contextPath}/eBookReading.do";
 }
+
 var check = "${check}"
 function btnScore(){ // 추천버튼 클릭시(추천 추가 또는 추천 제거)
 	$("#rec_update").click(function(){
@@ -56,6 +57,23 @@ function btnScore(){ // 추천버튼 클릭시(추천 추가 또는 추천 제�
 		})
 	})
 }
+
+$("#btnreview").on("click", function(){
+	var review = $("#reviewArea").val()
+	$.ajax({
+		url : "${pageContext.request.contextPath}/Ajax/eBookReview.do",
+		type: "POST",
+		dataType: "JSON",
+		data: {
+			member_id : "${member_id}",
+			member_nickname : "${member_nickname}",
+			review : review 
+		},
+		success: function(result){
+			
+		}
+	})
+})
 
 </script>
 </head>
@@ -416,10 +434,10 @@ function btnScore(){ // 추천버튼 클릭시(추천 추가 또는 추천 제�
                     <input class="form-control" name="name" type="text" readonly="readonly" placeholder="${member_nickname}" required>
                   </div>
                   <div class="form-group">
-                    <textarea class="form-control different-control w-100" name="textarea" id="textarea" cols="30" rows="5" placeholder="리뷰 내용 입력"></textarea>
+                    <textarea class="form-control different-control w-100" name="textarea" id="textarea" cols="30" rows="5" placeholder="리뷰 내용 입력" id="reviewArea"></textarea>
                   </div>
                   <div class="form-group text-center text-md-right mt-3">
-                    <button type="submit" class="button button--active button-review">Submit Now</button>
+                    <button type="submit" class="button button--active button-review" id="btnreview">Submit Now</button>
                   </div>
                 </form>
 							</div>
