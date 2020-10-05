@@ -12,13 +12,7 @@
 <meta charset="UTF-8">
 <title>로그인</title>
 
-<script>
-	$(function() {
-		if ("${errorcode}" == "1") {
-			alert("${errormsg}");
-		}
-	})
-</script>
+
 </head>
 <body>
 
@@ -47,7 +41,7 @@
 			<div class="control-group">
 				<!-- Button -->
 				<div class="controls">
-					<button class="btn btn-success">Login</button>
+					<button class="btn-primary">로그인</button>
 				</div>
 			</div>
 		</fieldset>

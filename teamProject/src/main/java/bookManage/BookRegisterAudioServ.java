@@ -52,7 +52,7 @@ public class BookRegisterAudioServ implements Controller {
 			book.setAudio_path(renameFile3.getName());
 		}
 
-		Books r = BookManageDAO.getInstance().insert(book);
+		BookManageDAO.getInstance().insert(book);
 		request.getRequestDispatcher("bookList.ad").forward(request, response);
 	}
 

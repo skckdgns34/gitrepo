@@ -16,8 +16,7 @@ public class EmpManageMainServ implements Controller
 	public void execute(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException
 	{
-		String search_text = request.getParameter("search_text");
-		String search_type = request.getParameter("search_type");
+		
 		List<Employees> list = EmpDAO.getInstance().selectAll(null);
 		
 		request.setAttribute("list", list);

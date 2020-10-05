@@ -8,9 +8,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-
 import common.ConnectionManager;
+import vo.Books;
 import vo.Member;
+import vo.TicketVO;
 
 public class MemberManageDAO {
 	// 전역변수. 모든 메서드에 공통으로 사용되는 변수
@@ -28,12 +29,14 @@ public class MemberManageDAO {
 
 	// 전체조회
 	public List<Member> selectAll(Member memberVO) {
-	
+
 		List<Member> list = new ArrayList<Member>();
 		try {
 			conn = ConnectionManager.getConnnect();
-			String sql = " SELECT * FROM MEMBER";
-			
+			String sql = "SELECT M.MEMBER_NO, M.MEMBER_ID, M.MEMBER_PW, M.NICKNAME,M.MEMBER_TEL, M.MEMBER_EMAIL,M.SIGNUP_DATE, "
+					+ " M.LAST_ACCESS_DATE, M.GENDER,T.TICKET_CODE, T.TICKET_DATE " + " FROM MEMBER M "
+					+ " FULL OUTER JOIN TICKET T ON M.MEMBER_NO = T.MEMBER_NO " + " WHERE M.MEMBER_ID IS NOT NULL";
+
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
@@ -47,9 +50,11 @@ public class MemberManageDAO {
 				member.setSignup_date(rs.getString("SIGNUP_DATE"));
 				member.setLast_access_date(rs.getString("LAST_ACCESS_DATE"));
 				member.setGender(rs.getString("GENDER"));
+				member.setTicket_code(rs.getString("TICKET_CODE"));
+				member.setTicket_date(rs.getString("TICKET_DATE"));
+
 				list.add(member);
-				
-		
+
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -66,9 +71,7 @@ public class MemberManageDAO {
 		try {
 			conn = ConnectionManager.getConnnect();
 			String sql = " SELECT MEMBER_NO, MEMBER_ID, MEMBER_PW, NICKNAME, MEMBER_TEL,"
-					+ "  MEMBER_EMAIL, SIGNUP_DATE, LAST_ACCESS_DATE, GENDER "
-					+ " FROM MEMBER"
-					+ " WHERE MEMBER_NO=?";
+					+ "  MEMBER_EMAIL, SIGNUP_DATE, LAST_ACCESS_DATE, GENDER " + " FROM MEMBER" + " WHERE MEMBER_NO=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, memberVO.getMember_no());
 			rs = pstmt.executeQuery();
@@ -95,17 +98,35 @@ public class MemberManageDAO {
 	}
 
 	public void delete(Member memberVO) {
+		Member resultVO = null;
+		ResultSet rs = null;
 		try {
 			conn = ConnectionManager.getConnnect();
-			String sql = "delete member where member_id= ?";
+			String sql = " update member set member_id = null, member_pw = null, nickname = null, member_tel = null,"
+					+ " member_email = null, signup_date = null, last_access_date = null, gender = null"
+					+ " where member_no = ?";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, memberVO.getMember_id());
+			pstmt.setString(1, memberVO.getMember_no());
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				resultVO = new Member();
+				resultVO.setMember_id(rs.getString("MEMBER_ID"));
+				resultVO.setMember_pw(rs.getString("MEMBER_PW"));
+				resultVO.setNickname(rs.getString("NICKNAME"));
+				resultVO.setMember_tel(rs.getString("MEMBER_TEL"));
+				resultVO.setMember_email(rs.getString("MEMBER_EMAIL"));
+				resultVO.setSignup_date(rs.getString("SIGNUP_DATE"));
+				resultVO.setLast_access_date(rs.getString("LAST_ACCESS_DATE"));
+				resultVO.setGender(rs.getString("GENDER"));
+			} else {
+				System.out.println("no data");
+			}
 			int r = pstmt.executeUpdate();
 			System.out.println(r + "건이 삭제됨.");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			ConnectionManager.close(null, pstmt, conn);
+			ConnectionManager.close(rs, pstmt, conn);
 		}
 	}
 
@@ -134,18 +155,18 @@ public class MemberManageDAO {
 
 			// 1.DB연결
 			conn = ConnectionManager.getConnnect();
-			  //보드 번호 조회
-	         String seqSql = "select no from seq where tablename= 'member'";
-	         Statement stmt = conn.createStatement();
-	         ResultSet rs = stmt.executeQuery(seqSql);
-	         rs.next();
-	         int no = rs.getInt(1);
-	         memberVO.setMember_no(Integer.toString(no));
-	         
-	         //보드 번호 업데이트
-	         seqSql = "update seq set no = no + 1 where tablename = 'member'";
-	         stmt = conn.createStatement();
-	         stmt.executeUpdate(seqSql);
+			// 보드 번호 조회
+			String seqSql = "select no from seq where tablename= 'member'";
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(seqSql);
+			rs.next();
+			int no = rs.getInt(1);
+			memberVO.setMember_no(Integer.toString(no));
+
+			// 보드 번호 업데이트
+			seqSql = "update seq set no = no + 1 where tablename = 'member'";
+			stmt = conn.createStatement();
+			stmt.executeUpdate(seqSql);
 
 			// 2.sql 구문실행
 			String sql = "insert into member (member_no, member_id, member_pw, nickname, member_tel, member_email, gender, signup_date)"
@@ -172,40 +193,45 @@ public class MemberManageDAO {
 		return resultVO;
 	}
 
-	//
-	// 메일수신회원수 : select count(id) from member where mailyn='y'
-	public int getMailynCnt() {
-		int cnt = 0;
+	// 최다 조회수
+	public List<Books> selectViews() {
+		Books resultVO = null;
+		List<Books> list = new ArrayList<Books>();
 		try {
 			conn = ConnectionManager.getConnnect();
-			String sql = "select count(member_id) from member where member_email='y'";
-			Statement stmt = conn.createStatement();
-			ResultSet rs = stmt.executeQuery(sql);
-			rs.next();
-			cnt = rs.getInt(1);
+			String sql = " SELECT TITLE, VIEWS " + " FROM (SELECT TITLE, VIEWS FROM BOOKS ORDER BY VIEWS DESC ) "
+					+ " WHERE ROWNUM <= 7 " + " ORDER BY VIEWS DESC ";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				resultVO = new Books();
+				resultVO.setTitle(rs.getString("title"));
+				resultVO.setViews(rs.getString("views"));
+				list.add(resultVO);
+			}
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			ConnectionManager.close(conn);
+			ConnectionManager.close(rs, pstmt, conn);
 		}
-		return cnt;
+		return list;
 	}
 
 	// 성별인원수 : select gender, count(id) cnt from member group by gender
 	public List<HashMap<String, Object>> getGenderCnt() {
-		int cnt = 0;
 		List<HashMap<String, Object>> list = new ArrayList<HashMap<String, Object>>();
 		try {
 			conn = ConnectionManager.getConnnect();
-			String sql = "select gender, count(member_id) cnt from member group by gender";
+			String sql = "SELECT GENDER, COUNT(MEMBER_ID) CNT FROM MEMBER WHERE MEMBER_ID IS NOT NULL GROUP BY GENDER";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			ResultSet rs = pstmt.executeQuery(sql);
 			while (rs.next()) {
 				HashMap<String, Object> map = new HashMap<String, Object>();
 				map.put("gender", rs.getString("gender"));
 				map.put("cnt", rs.getInt("cnt"));
+				list.add(map);
 			}
-			cnt = rs.getInt(1);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -214,4 +240,32 @@ public class MemberManageDAO {
 		return list;
 	}
 
+	// 성별 인기 이용권
+	/* 이거 어떻게 적어 줘야 하는지 전혀 모르겠음ㅠㅠㅠㅠ0ㅠㅠ */
+
+	public List<HashMap<String, Object>> getTicketCnt() {
+		List<HashMap<String, Object>> list = new ArrayList<HashMap<String, Object>>();
+		try {
+			conn = ConnectionManager.getConnnect();
+			String sql = "SELECT COUNT(T.TICKET_CODE) cnt, M.GENDER, C.CODE_VALUE "
+					+ " FROM TICKET T, MEMBER M, COMMON C " + " WHERE T.MEMBER_NO=M.MEMBER_NO "
+					+ " AND T.TICKET_CODE = C.CODE " + " GROUP BY GENDER, TICKET_CODE, CODE_VALUE ";
+			System.out.println("ssssssssssssssssssssssss");
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			ResultSet rs = pstmt.executeQuery(sql);
+			while (rs.next()) {
+				HashMap<String, Object> map = new HashMap<String, Object>();
+				map.put("cnt", rs.getInt("cnt"));
+				map.put("gender", rs.getString("gender"));
+				map.put("code_value", rs.getString("code_value"));
+
+				list.add(map);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionManager.close(conn);
+		}
+		return list;
+	}
 }

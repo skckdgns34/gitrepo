@@ -15,11 +15,20 @@ li {
 </style>
 <meta charset="UTF-8">
 <title>공지사항</title>
+
 </head>
 <body>
-	<h1>공지</h1>
-	<hr>
-	<br>
+<!-- ================ start banner area ================= -->
+	<section class="blog-banner-area" id="category">
+		<div class="container h-100">
+			<div class="blog-banner">
+				<div class="text-center">
+					<h1>공지 사항</h1>
+				</div>
+			</div>
+		</div>
+	</section>
+	
 	<ul>
 		<li><a
 			href="<%=application.getContextPath()%>/clientNotice.do">공지사항</a>
@@ -31,9 +40,11 @@ li {
 	<br>
 	<br>
 	<hr>
+	<div class="table-responsive">
 	<form action="${pageContext.request.contextPath }/clientNotice.do"
 		method="get" nane="searchFrm">
-		<table border="1">
+		
+		<table class="table">
 			<tr>
 				<td>게시물 번호</td>
 				<td>제목</td>
@@ -50,6 +61,7 @@ li {
 			</c:forEach>
 		</table>
 	</form>
+	</div>
 	<my:paging paging="${paging }" jsfunc="gopage" />
 	<script>
 		function gopage(p) {
