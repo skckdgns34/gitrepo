@@ -53,6 +53,12 @@ public class BookRegisterAudioServ implements Controller {
 			book.setAudio_path(renameFile3.getName());
 		}
 		
+		
+		
+		
+		
+		
+		
 		int no = BookManageDAO.getInstance().insert(book);
 		
 		Books book1 = new Books();
@@ -64,7 +70,7 @@ public class BookRegisterAudioServ implements Controller {
 		Employees emp = (Employees) request.getSession().getAttribute("login");
 		book1.setBook_no(Integer.toString(no));
 		book1.setEmp_no(emp.getEmp_no());
-		BookManageDAO.getInstance().insert(book1);
+		book1 = BookManageDAO.getInstance().insertpur(book1);
 		request.getRequestDispatcher("bookList.ad").forward(request, response);
 	}
 
