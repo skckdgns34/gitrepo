@@ -33,7 +33,6 @@
 		<pattern>/viewChart.ad</pattern>
 		<pattern>/genderChart.ad</pattern>
 		<pattern>/ticketChart.ad</pattern>
-		<pattern>/audioBookReading*</pattern>
 		<pattern>/licenceAmount*</pattern>
 	</excludes>
 </decorators>
