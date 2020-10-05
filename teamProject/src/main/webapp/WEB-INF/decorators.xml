@@ -34,5 +34,6 @@
 		<pattern>/genderChart.ad</pattern>
 		<pattern>/ticketChart.ad</pattern>
 		<pattern>/licenceAmount*</pattern>
+		<pattern>/audioBookReading*</pattern>
 	</excludes>
 </decorators>

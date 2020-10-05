@@ -534,7 +534,7 @@ public class EBookDAO
 		return list;
 	}
 	
-	public Integer insertReview(Review review) {
+	public int insertReview(Review review) {
 		int no = 0;
 		try {
 			conn = ConnectionManager.getConnnect();
@@ -558,6 +558,7 @@ public class EBookDAO
 			pstmt.setString(3, review.getMember_no());
 			pstmt.setString(4, review.getBook_no());
 			pstmt.executeUpdate();
+			conn.commit();
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {
@@ -579,8 +580,9 @@ public class EBookDAO
 			if(rs.next()) {
 				review.setReview_no(rs.getString(1));
 				review.setContents(rs.getString(2));
-				review.setMember_no(rs.getString(3));
-				review.setBook_no(rs.getString(4));
+				review.setReview_date(rs.getString(3));
+				review.setMember_no(rs.getString(4));
+				review.setBook_no(rs.getString(5));
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -588,6 +590,32 @@ public class EBookDAO
 			ConnectionManager.close(rs, pstmt, conn);
 		}
 		return review;
+	}
+	
+	//review 전체 뿌려주기용
+	public ArrayList<Review> selectAllReview(){
+		ArrayList<Review> list = new ArrayList<Review>();
+		rs = null;
+		try {
+			conn = ConnectionManager.getConnnect();
+			String sql = "select review_no, contents, review_date, member_no, book_no from review ";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				Review review = new Review();
+				review.setReview_no(rs.getString(1));
+				review.setContents(rs.getString(2));
+				review.setReview_date(rs.getString(3));
+				review.setMember_no(rs.getString(4));
+				review.setBook_no(rs.getString(5));
+				list.add(review);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionManager.close(rs, pstmt, conn);
+		}
+		return list;
 	}
 	
 	

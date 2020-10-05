@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import common.Controller;
 import vo.Books;
 import vo.Member;
+import vo.Review;
 
 public class EBookDetailServ implements Controller
 {
@@ -29,7 +30,7 @@ public class EBookDetailServ implements Controller
 		int check = EBookDAO.getInstance().recCheck( book_no,member_no);
 		ArrayList<Books> book = EBookDAO.getInstance().detailBook(book_no);
 		int count = EBookDAO.getInstance().recCount(book_no);
-		
+		ArrayList<Review> review = EBookDAO.getInstance().selectAllReview();
 		
 		
 		System.out.println(book_no+"책책책책책넘버");
@@ -41,7 +42,7 @@ public class EBookDetailServ implements Controller
 		System.out.println(check + "상세페이지넘어가기전 체크");
 		
 		
-		
+		request.setAttribute("review", review);
 		request.setAttribute("member_nickname", member_nickname);
 		request.setAttribute("count", count);
 		request.setAttribute("book", book);

@@ -9,4 +9,5 @@ public class Mylibrary {
 	private String book_no;
 	private String wish;
 	private String last_read_index;
+	private String title;
 }
