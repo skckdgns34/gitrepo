@@ -240,7 +240,6 @@ public class MemberManageDAO {
 	}
 
 	// 성별 인기 이용권
-	/* 이거 어떻게 적어 줘야 하는지 전혀 모르겠음ㅠㅠㅠㅠ0ㅠㅠ */
  
 	
 	public List<HashMap<String, Object>> getTicketCnt() {
@@ -259,7 +258,6 @@ public class MemberManageDAO {
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
 				HashMap<String, Object> map = new HashMap<String, Object>();
-				System.out.println(rs.getBigDecimal("female"));
 				map.put("f", rs.getBigDecimal("female"));
 				map.put("m", rs.getBigDecimal("male"));
 				map.put("code_value", rs.getString("code_value"));
