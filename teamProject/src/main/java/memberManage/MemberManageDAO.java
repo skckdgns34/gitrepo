@@ -246,14 +246,14 @@ public class MemberManageDAO {
 		List<HashMap<String, Object>> list = new ArrayList<HashMap<String, Object>>();
 		try {
 			conn = ConnectionManager.getConnnect();
-			String sql = "SELECT C.CODE_VALUE,  "
-					+ " SUM(CASE WHEN GENDER = 'male'  THEN 1 ELSE 0 END)   AS FEMALE, "
-					+ " SUM(CASE WHEN GENDER = 'female'  THEN 1 ELSE 0 END)  AS MALE "
-					+ " FROM ( SELECT  T.*, M.GENDER "
-					+ " FROM TICKET T, MEMBER M "
-					+ " WHERE T.MEMBER_NO=M.MEMBER_NO )  T, "
-					+ " COMMON C WHERE T.TICKET_CODE(+) = C.CODE "
-					+ " AND COMMON_CODE='0G' GROUP BY C.CODE_VALUE";
+			String sql ="select c.code_value, sum(case when gender = 'male'  then 1 else 0 end) as male, "
+					+ " sum(case when gender = 'female'  then 1 else 0 end)  as female "
+					+ " from( select  t.*, m.gender from ticket t, pay p,  member m "
+					+ " where p.member_no=m.member_no "
+					+ " and p.ticket_code= p.ticket_code )  t,  common c "
+					+ " where t.ticket_code(+) = c.code "
+					+ " and common_code='0G' "
+					+ " group by c.code_value";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
