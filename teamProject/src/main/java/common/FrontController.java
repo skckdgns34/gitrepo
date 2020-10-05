@@ -85,6 +85,7 @@ public class FrontController extends HttpServlet {
 		list.put("/memberManageQuestionPop.ad", new memberManage.MemberManageQuestionPopServ()); // 회원관리 QnA 관리
 		
 		list.put("/memberManageNotice.ad", new memberManage.MemberManageNoticeServ()); // 회원관리 공지관리
+		list.put("/memberManageModify.ad", new memberManage.MemberManageNoticeModifyServ()); // 회원 관리 수정
 		list.put("/memberManageNoticeForm.ad", new memberManage.MemberManageNoticeFormServ()); // 회원관리 공지관리 수정/입력
 
 
@@ -148,6 +149,7 @@ public class FrontController extends HttpServlet {
 		list.put("/eBookRecommendation.do", new ebook.EBookRecommendationServ());
 		list.put("/Ajax/eBookRecommendationUpdate.do", new ebook.EBookRecommendationUpdateAjaxServ());
 		list.put("/Ajax/eBookCategoryAjax.do", new ebook.EBookCategoryAjaxServ());
+		list.put("/Ajax/eBookReview.do", new ebook.EBookReviewAjaxServ());
 	}
 
 	public FrontController() {

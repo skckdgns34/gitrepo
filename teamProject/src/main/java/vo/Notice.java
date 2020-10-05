@@ -12,4 +12,5 @@ public class Notice {
 	private String views;
 	private int first;
 	private int last;
+	private String emp_name;
 }
