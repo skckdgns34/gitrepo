@@ -413,10 +413,7 @@ function btnScore(){ // 추천버튼 클릭시(추천 추가 또는 추천 제�
                     <input class="form-control" name="name" type="hidden" readonly="readonly" placeholder="${member_id}" required>
                   </div>
                    <div class="form-group">
-                    <input class="form-control" name="name" type="text" readonly="readonly" placeholder="${member_id}" required>
-                  </div>
-                  <div class="form-group">
-                    <input class="form-control" name="subject" type="text" placeholder="Enter Subject">
+                    <input class="form-control" name="name" type="text" readonly="readonly" placeholder="${member_nickname}" required>
                   </div>
                   <div class="form-group">
                     <textarea class="form-control different-control w-100" name="textarea" id="textarea" cols="30" rows="5" placeholder="Enter Message"></textarea>
