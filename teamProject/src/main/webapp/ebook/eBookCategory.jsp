@@ -56,27 +56,24 @@ $(function(){
 						}
 	})//autoComplete
 	
-	//$('input[name=all]').eq(0).attr("checked", true);
+//	$('input[name=gen]').eq(0).attr("checked", true);
 	
 	
 	$(".pixel-radio").on("click",function(){
-		var com = $("input[name='com']:checked").val();
 		var gen = $("input[name='gen']:checked").val();
-		var all = $("input[name='all']:checked").val();
-		$.ajax({
+		//location.href="${pageContext.request.contextPath}/eBookCategory.do?gen="+gen;
+		 $.ajax({
 			url: "${pageContext.request.contextPath}/Ajax/eBookCategoryAjax.do",
 			type: "GET",
-			dataType: "JSON",
-			data : {radio_gen : gen, radio_all : all},
+			data : {gen : gen},
 			success : function(data){ //연결성공
-				for(var i=0; i<data.length; i++){
-					$(".card-img").attr("src","filenameDownload.do?filename=data.book_img" );
-					$(".card-product__title").html(data.title);
-				}
-				
+				$("#row").html(data);
 			}//end of success
 		})
 	});//end of on & function
+	
+	imgClick();
+	$(".pixel-radio").click();
 });
 
 
@@ -103,7 +100,7 @@ function imgClick(book_no) {
               <li class="common-filter">
                 <form action="#">
                   <ul>
-                    <li class="filter-list"><input class="pixel-radio" type="radio" id="r1" name="all"><label for="r1">전체<span></span></label></li>
+                    <li class="filter-list"><input class="pixel-radio" type="radio" id="r1" name="gen" value="" checked="checked"><label for="r1">전체<span></span></label></li>
                     <li class="filter-list"><input class="pixel-radio" type="radio" id="r2" name="gen" value="d1"><label for="r2">소설<span> (${count[0].count})</span></label></li>
                     <li class="filter-list"><input class="pixel-radio" type="radio" id="r3" name="gen" value="d2"><label for="r3">시/에세이<span> (${count[1].count})</span></label></li>
                     <li class="filter-list"><input class="pixel-radio" type="radio" id="r4" name="gen" value="d3"><label for="r4">무협/판타지<span> (${count[2].count})</span></label></li>
@@ -120,7 +117,7 @@ function imgClick(book_no) {
           </div>
           <div class="sidebar-filter">
             <div class="top-filter-head"></div>
-			
+		
           </div>
         </div>
         <div class="col-xl-9 col-lg-8 col-md-7">
@@ -157,31 +154,10 @@ function imgClick(book_no) {
           <!-- End Filter Bar -->
           <!-- Start Best Seller -->
           <section class="lattest-product-area pb-40 category-list">
-            <div class="row">
-          <c:forEach items="${books}" var="books">
-              <div class="col-md-6 col-lg-4">
-                <div class="card text-center card-product">
-                  <div class="card-product__img">
-                    <img class="card-img" src="" alt="">
-                    <ul class="card-product__imgOverlay">
-                      <li><button><i class="ti-search"></i></button></li>
-                      <li><button><i class="ti-shopping-cart"></i></button></li>
-                      <li><button><i class="ti-heart"></i></button></li>
-                    </ul>
-                  </div>
-                  <div class="card-body">
-                 	 <c:if test="${not empty books.book_img}">
-						<td>
-					 		<img src="filenameDownload.do?filename=${books.book_img}" style="width:500px">
-						</td>
-					</c:if>
-					<h5>${books.title}</h5>
-                  </div>
-                </div>
-              </div>
+            <div class="row" id="row">
+         
               
-              
-              <!--  <div class="col-md-6 col-lg-4">
+              <%-- --  <div class="col-md-6 col-lg-4">
                 <div class="card text-center card-product">
                   <div class="card-product__img">
                     <img class="card-img" src="" alt="">
@@ -340,7 +316,7 @@ function imgClick(book_no) {
 					<h5>${books.title}</h5>
                   </div>
                 </div>
-              </div> -->     </c:forEach>
+              </div> -->    --%>
             </div>
           
           </section>
