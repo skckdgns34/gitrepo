@@ -218,16 +218,13 @@ public class MemberDAO {
 	}
 	
 	//비밀번호 변경
-	public void updatepw(Member memberVO) {
+	public void pwupdate(Member memberVO) {
 		try {
 			conn = ConnectionManager.getConnnect();
-			String sql = "update member set member_pw = ?where member_id = ?";
+			String sql = "update member set member_pw = ? where member_email = ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, memberVO.getMember_pw());
-			pstmt.setString(2, memberVO.getNickname());
-			pstmt.setString(3, memberVO.getMember_email());
-			pstmt.setString(4, memberVO.getMember_tel());
-			pstmt.setString(5, memberVO.getMember_id());
+			pstmt.setString(2, memberVO.getMember_email());
 			int r = pstmt.executeUpdate();
 			System.out.println(r + "건이 수정됨.");
 		} catch (Exception e) {
