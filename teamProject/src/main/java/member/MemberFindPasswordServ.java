@@ -14,13 +14,12 @@ public class MemberFindPasswordServ implements Controller {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		Member memberVO = new Member();
-		memberVO.setMember_id(request.getParameter("member_id"));
 		memberVO.setMember_pw(request.getParameter("member_pw"));
 		memberVO.setMember_email(request.getParameter("member_email"));
 
 		
 		MemberDAO dao = new MemberDAO();
-		dao.update(memberVO);
+		dao.pwupdate(memberVO);
 		
 		request.getRequestDispatcher("/app/memberLogin.do").forward(request, response);
 
