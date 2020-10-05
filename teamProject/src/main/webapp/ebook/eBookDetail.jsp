@@ -46,7 +46,7 @@ function btnScore(){ // 추천버튼 클릭시(추천 추가 또는 추천 제�
             success: function (result) {
             	check = result.check;
 		        if(check == 0){
-		        	$(".fa-heart").css("color", "white")
+		        	$(".fa-heart").css("color", "gray")
 		        }else{
 		        	$(".fa-heart").css("color", "red")
 		        }
@@ -102,10 +102,10 @@ function btnScore(){ // 추천버튼 클릭시(추천 추가 또는 추천 제�
 						</div>-->
 						
 						
-						<div class="w3-border w3-center w3-padding">
+						<div class="card_area d-flex align-items-center">
 							<c:if test="${ member_no == null }">
 								추천 기능은 <button type="button" id="newLogin"><b class="w3-text-blue">로그인</b></button> 후 사용 가능합니다.<br />
-								<i class="fa fa-heart" style="font-size:16px;color:red"></i>
+								<i class="fa fa-heart" style="font-size:16px;color:red " ></i>
 								<span class="rec_count"></span>					
 							</c:if>
 							<c:if test="${ member_no != null }">
@@ -117,7 +117,7 @@ function btnScore(){ // 추천버튼 클릭시(추천 추가 또는 추천 제�
 								</c:if>
 								<c:if test="${ check == 0}">
 									<button class="w3-button w3-black w3-round" id="rec_update">
-										<i class="fa fa-heart" style="font-size:16px;color:white"></i>
+										<i class="fa fa-heart" style="font-size:16px;color:gray"></i>
 										&nbsp;<span class="rec_count">${count}</span><!-- 좋아요수 -->
 									</button> 
 								</c:if>

@@ -123,7 +123,7 @@ function imgClick(book_no) {
         <div class="col-xl-9 col-lg-8 col-md-7">
           <!-- Start Filter Bar -->
           <div class="filter-bar d-flex flex-wrap align-items-center">
-            <div class="sorting">
+           <%--  <div class="sorting">
               <select>
                 <option value="1">Default sorting</option>
                 <option value="1">Default sorting</option>
@@ -135,15 +135,15 @@ function imgClick(book_no) {
                 <option value="1">Show 12</option>
                 <option value="1">Show 12</option>
                 <option value="1">Show 12</option>
-              </select>
+              </select>--%>
             </div>
             <div>
               <div class="input-group filter-bar-search">
                 <input type="text" placeholder="Search" id="testInput">
                 
                 <form action="${pageContext.request.contextPath}/eBookSearchAfter.do">
-                <input type="text" id="hidden" name="hidden">
-                <input type="text" id="realHidden" name="realHidden">
+                <input type="hidden" id="hidden" name="hidden">
+                <input type="hidden" id="realHidden" name="realHidden">
                 <div class="input-group-append">
                   <button><i class="ti-search"></i></button>
                 </div>
