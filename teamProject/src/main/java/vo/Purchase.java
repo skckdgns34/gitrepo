@@ -10,4 +10,6 @@ public class Purchase {
 	private String purchase_content;
 	private String emp_no;
 	private String book_no;
+	private String title;
+	private String emp_name;
 }

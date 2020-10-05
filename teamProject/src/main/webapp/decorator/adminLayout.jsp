@@ -77,7 +77,7 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">매·출입 관리</h6>
             <a class="collapse-item" href="★매출관리 url 넣어주세요!">매출관리</a>
-            <a class="collapse-item" href="★매입관리 url 넣어주세요!">매입관리</a>
+            <a class="collapse-item" href="moneyInList.ad">매입관리</a>
           </div>
         </div>
       </li>
