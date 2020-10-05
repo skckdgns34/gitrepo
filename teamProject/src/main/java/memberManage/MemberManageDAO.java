@@ -241,7 +241,8 @@ public class MemberManageDAO {
 
 	// 성별 인기 이용권
 	/* 이거 어떻게 적어 줘야 하는지 전혀 모르겠음ㅠㅠㅠㅠ0ㅠㅠ */
-
+ 
+	
 	public List<HashMap<String, Object>> getTicketCnt() {
 		List<HashMap<String, Object>> list = new ArrayList<HashMap<String, Object>>();
 		try {
