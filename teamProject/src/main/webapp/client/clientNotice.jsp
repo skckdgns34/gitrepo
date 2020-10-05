@@ -41,8 +41,6 @@ li {
 	<br>
 	<hr>
 	<div class="table-responsive">
-	<form action="${pageContext.request.contextPath }/clientNotice.do"
-		method="get" nane="searchFrm">
 		
 		<table class="table">
 			<tr>
@@ -60,7 +58,6 @@ li {
 				</tr>
 			</c:forEach>
 		</table>
-	</form>
 	</div>
 	<my:paging paging="${paging }" jsfunc="gopage" />
 	<script>
