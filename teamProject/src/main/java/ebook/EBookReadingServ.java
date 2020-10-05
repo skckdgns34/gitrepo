@@ -11,8 +11,7 @@ import common.Controller;
 public class EBookReadingServ implements Controller
 {
 
-	public void execute(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException
+	public void execute(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException
 	{
 		request.getRequestDispatcher("ebook/ebookReading.jsp").forward(request, response);
 
