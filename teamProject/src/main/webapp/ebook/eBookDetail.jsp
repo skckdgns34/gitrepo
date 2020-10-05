@@ -15,6 +15,27 @@
 $(function(){
 	btnHideNShow();
 	btnScore();
+	
+	$("#btnreview").on("click", function(){
+		var review = $("#reviewArea").val();
+		
+		$.ajax({
+			url : "${pageContext.request.contextPath}/Ajax/eBookReview.do",
+			type: "POST",
+			data: {
+				member_no : "${member_no}",
+				member_nickname : "${member_nickname}",
+				review : review ,
+				book_no : "${book[0].book_no}"
+			},
+			success: function(result){
+				alert("성공스~");
+				console.log(result);
+				console.log(result.contents);
+				$("#reviewField").prepend(result);
+			}
+		})
+	})
 });
 
 
@@ -58,23 +79,8 @@ function btnScore(){ // 추천버튼 클릭시(추천 추가 또는 추천 제�
 	})
 }
 
-$("#btnreview").on("click", function(){
-	var review = $("#reviewArea").val()
-	$.ajax({
-		url : "${pageContext.request.contextPath}/Ajax/eBookReview.do",
-		type: "POST",
-		dataType: "JSON",
-		data: {
-			member_no : "${member_no}",
-			member_nickname : "${member_nickname}",
-			review : review,
-			book_no : "${books[0].book_no}"
-		},
-		success: function(result){
-			
-		}
-	})
-})
+
+
 
 </script>
 </head>
@@ -251,7 +257,7 @@ $("#btnreview").on("click", function(){
 								<div class="review_item">
 									<div class="media">
 										<div class="d-flex">
-											<img src="img/product/review-1.png" alt="">
+											<%-- <img src="img/product/review-1.png" alt=""> --%>
 										</div>
 										<div class="media-body">
 											<h4>Blake Ruiz</h4>
@@ -266,7 +272,7 @@ $("#btnreview").on("click", function(){
 								<div class="review_item reply">
 									<div class="media">
 										<div class="d-flex">
-											<img src="img/product/review-2.png" alt="">
+										<%--	<img src="img/product/review-2.png" alt="">--%>
 										</div>
 										<div class="media-body">
 											<h4>Blake Ruiz</h4>
@@ -281,7 +287,7 @@ $("#btnreview").on("click", function(){
 								<div class="review_item">
 									<div class="media">
 										<div class="d-flex">
-											<img src="img/product/review-3.png" alt="">
+										<%--	<img src="img/product/review-3.png" alt="">--%>
 										</div>
 										<div class="media-body">
 											<h4>Blake Ruiz</h4>
@@ -356,61 +362,21 @@ $("#btnreview").on("click", function(){
 									</div>
 								</div>
 							</div>
-							<div class="review_list">
+							<div class="review_list" id="reviewField">
+								<c:forEach items="${review}" var="reviews">
 								<div class="review_item">
 									<div class="media">
 										<div class="d-flex">
-											<img src="img/product/review-1.png" alt="">
+										<%--	<img src="img/product/review-1.png" alt="">--%>
 										</div>
 										<div class="media-body">
-											<h4>Blake Ruiz</h4>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
+											<h4>${reviews.member_no}</h4>
 										</div>
+											<p>${reviews.review_date}</p>
 									</div>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-										dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-										commodo</p>
+									<p>${reviews.contents}</p>
 								</div>
-								<div class="review_item">
-									<div class="media">
-										<div class="d-flex">
-											<img src="img/product/review-2.png" alt="">
-										</div>
-										<div class="media-body">
-											<h4>Blake Ruiz</h4>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-										</div>
-									</div>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-										dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-										commodo</p>
-								</div>
-								<div class="review_item">
-									<div class="media">
-										<div class="d-flex">
-											<img src="img/product/review-3.png" alt="">
-										</div>
-										<div class="media-body">
-											<h4>Blake Ruiz</h4>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-										</div>
-									</div>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-										dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-										commodo</p>
-								</div>
+								</c:forEach>
 							</div>
 						</div>
 						<div class="col-lg-6">
@@ -427,17 +393,17 @@ $("#btnreview").on("click", function(){
 								<p>Outstanding</p>
 								
 								<!-- 리뷰쓰고 액션 -->
-                <form action="#/" class="form-contact form-review mt-3">
+               		
                    <div class="form-group">
                     <input class="form-control" name="name" type="text" readonly="readonly" placeholder="${member_nickname}" required>
                   </div>
                   <div class="form-group">
-                    <textarea class="form-control different-control w-100" name="textarea" id="textarea" cols="30" rows="5" placeholder="리뷰 내용 입력" id="reviewArea"></textarea>
+                    <textarea class="form-control different-control w-100" name="textarea"  cols="30" rows="5" placeholder="리뷰 내용 입력" id="reviewArea"></textarea>
                   </div>
                   <div class="form-group text-center text-md-right mt-3">
                     <button type="submit" class="button button--active button-review" id="btnreview">Submit Now</button>
                   </div>
-                </form>
+               
 							</div>
 						</div>
 					</div>
