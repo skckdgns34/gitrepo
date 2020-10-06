@@ -101,20 +101,6 @@ $(function(){
 		}
 	}
 	
-	/* 
-	$(document).ready(function(){
-		
-		$("#btnupdate").prop('disabled', true);
-
-		$("#member_pw, member_pw2").keyup(function(){
-			if ($("#member_pw2").val() != "" && $("#member_pw").val() != ""){
-				$("#btnupdate").prop("disabled", false);
-			} else {
-				$("#btnupdate").prop("disabled", true);
-			}
-		});
-	}); */
-	
 });
 </script>
 </head>

@@ -215,6 +215,5 @@ li {
 	</form>
 	<br><hr><br>
 	<a href="/app/member/memberDelete.jsp">탈퇴하기</a>
-	<a href="/app/memberFind.do">아이디/비밀번호 찾기</a>
 </body>
 </html>

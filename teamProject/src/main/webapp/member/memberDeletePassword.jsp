@@ -15,10 +15,8 @@ function closeMe() {
 
     }
     
-    /* 앞 부모창 뒤 자식창 */
-    function setPar(){
-    	opener.document.getElementById("member_pw").value = document.getElementById("member_pw").value
-    }
+window.opener.document.getElementById("pwcheck").value = "${msg}";
+    
 </script>
 
 </head>
@@ -33,8 +31,8 @@ function closeMe() {
 				<label for="member_pw">비밀번호:</label> <input type="password"
 					class="pw" id="member_pw" name="member_pw"><br>
 					${ errormsg}
-					${ msg}
-				<br><button >확인</button>
+					${ msg} <!-- 혹시 건드셔도 이건 지우지 마세요ㅠㅠ -->
+				<br><button>확인</button>
 				<button id="btn" onclick="window.close();">닫기</button>
 			</div>
 		</div>
