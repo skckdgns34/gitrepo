@@ -49,7 +49,8 @@ public class FrontController extends HttpServlet {
 		list.put("/memberCreateBookCk.do", new member.MemberCreateBookCkServ()); // 내서재 - 나만의 도서
 		list.put("/memberLogin.do", new member.MemberLoginServ()); // 로그인
 		list.put("/memberLogout.do", new member.MemberLogoutServ()); // 로그아웃
-		list.put("/memberFind.do", new member.MemberFindServ()); // 아이디/비밀번호 찾기 - 아이디 찾기
+		list.put("/memberFind.do", new member.MemberFindServ()); // 아이디/비밀번호 찾기 - 아이디 찾기 이메일 확인
+		list.put("/memberFindId.do", new member.MemberFindIdServ()); // 아이디/비밀번호 찾기 - 아이디 찾기 확인
 		list.put("/memberFindemail.do", new member.MemberFindEmailServ()); // 아이디/비밀번호 찾기 - 이메일 보내기
 		list.put("/memberFindCheck.do", new member.MemberFindCheckServ()); // 아이디/비밀번호 찾기 - 인증번호 확인
 		list.put("/memberFindPassword.do", new member.MemberFindPasswordServ()); // 아이디/비밀번호 찾기 - 비밀번호 번경
@@ -133,27 +134,49 @@ public class FrontController extends HttpServlet {
 		// 손용원&&최창훈
 		list.put("/main.do", new main.MainServ());
 		list.put("/mainsearchResult.do", new main.MainsearchResultServ());
+		
 		list.put("/createBookMain.do", new createBook.CreateBookMainServ());
+		
 		list.put("/createBook.do", new createBook.CreateBookServ());
+		
 		list.put("/createBookWrite.do", new createBook.CreateBookWriteServ());
+		
 		list.put("/eBookCategory.do", new ebook.EBookCategoryServ());
+		
 		list.put("/eBookDetail.do", new ebook.EBookDetailServ());
+		
 		list.put("/eBookReading.do", new ebook.EBookReadingServ());
+		
 		list.put("/audioBookCategory.do", new ebook.AudioBookCategoryServ());
+		
 		list.put("/audioBookDetail.do", new ebook.AudioBookDetailServ());
+		
 		list.put("/audioBookReading.do", new ebook.AudioBookReadingServ());
+		
 		list.put("/licenceList.do", new licence.LicenceListServ());
+		
 		list.put("/licenceAmount.do", new licence.LicenceAmount());
+		
 		list.put("/Ajax/mainsearchResultAjax.do", new main.MainSearchResultAjax());
+		
 		list.put("/mainsearchResult.do", new main.MainsearchResultServ());
+		
 		list.put("/audioBookSearchAfter.do", new ebook.AudioBookSearchAfterServ());
+		
 		list.put("/eBookSearchAfter.do", new ebook.EBookSearchAfterServ());
+		
 		list.put("/Ajax/eBookSearchAjax.do", new ebook.EBookSearchAjaxServ());
+		
 		list.put("/Ajax/audioBookSearchAjax.do", new ebook.AudioBookSearchAjaxServ());
+		
 		list.put("/Ajax/eBookRecommendation.do", new ebook.EBookRecommendationAjaxServ());
+		
 		list.put("/eBookRecommendation.do", new ebook.EBookRecommendationServ());
+		
 		list.put("/Ajax/eBookRecommendationUpdate.do", new ebook.EBookRecommendationUpdateAjaxServ());
+		
 		list.put("/Ajax/eBookCategoryAjax.do", new ebook.EBookCategoryAjaxServ());
+		
 		list.put("/Ajax/eBookReview.do", new ebook.EBookReviewAjaxServ());
 	}
 

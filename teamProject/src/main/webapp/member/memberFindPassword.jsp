@@ -79,27 +79,48 @@ $(function(){
 	})
 	});
 	
-	$("#btnupdate").on("click", function(){
-		location.href = "${pageContext.request.contextPath }/memberFindPassword.do?member_pw=" + $("#member_pw").val()
+	
+	$(document).ready(function(){
+		$("#btnupdate").prop("disabled", true);
+		
+		$("#member_pw").keyup(function(){
+			ToggleButton();
+		})
+		$("#member_pw2").keyup(function(){
+			ToggleButton();
+		});
 	});
 	
-	
-	$("#btnupdate").prop('disabled', true);
-
-	$("#member_pw, member_pw2").keyup(function(){
-		if ($("#member_pw2").val() != "" && $("#member_pw").val() != ""){
+	function ToggleButton(){
+		if(($("#member_pw").val() != "") && ($("#member_pw2").val() != "")){
 			$("#btnupdate").prop("disabled", false);
+			return true;
 		} else {
 			$("#btnupdate").prop("disabled", true);
+			return false;
 		}
-	});
+	}
+	
+	/* 
+	$(document).ready(function(){
+		
+		$("#btnupdate").prop('disabled', true);
+
+		$("#member_pw, member_pw2").keyup(function(){
+			if ($("#member_pw2").val() != "" && $("#member_pw").val() != ""){
+				$("#btnupdate").prop("disabled", false);
+			} else {
+				$("#btnupdate").prop("disabled", true);
+			}
+		});
+	}); */
 	
 });
 </script>
 </head>
 <body>
 <h3>비밀번호 변경</h3>
-<form name="frm" id="frm">
+<form name="frm" id="frm" action="${pageContext.request.contextPath }/memberFindPassword.do"  method="post">
 <input type="email" name="member_email" id="member_email" placeholder="이메일을 입력해주세요" value="${param.member_email }" required>
 <button type="button" id="btnsend">인증번호 보내기</button>
 ${ errormsg}
@@ -111,13 +132,13 @@ ${ msg}
 		<label for="pw">비밀번호</label> <input type="password"
 			 id="member_pw" name="member_pw">
 		<div class="eheck_font" id="pw_check"></div>
-	</div>
 	<div class="form-group">
 		<label for="pw2">비밀번호 확인</label> <input type="password"
 			 id="member_pw2" name="member_pw2"
 			placeholder="비밀번호 확인">
+	</div>
 		<div class="eheck_font" id="pw2_check"></div>
-<button id="btnupdate" disabled="disabled">변경</button>
+<button id="btnupdate">변경</button>
 </form>
 </body>
 </html>

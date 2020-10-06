@@ -13,7 +13,7 @@ public class EBookReadingServ implements Controller
 
 	public void execute(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException
 	{
-		request.getRequestDispatcher("ebook/ebookReading.jsp").forward(request, response);
+		request.getRequestDispatcher("/ebook/ebookReading.jsp").forward(request, response);
 
 	}
 
