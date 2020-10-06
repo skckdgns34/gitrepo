@@ -17,12 +17,15 @@ public class MemberDeleteServ implements Controller
 			HttpServletResponse response) throws ServletException, IOException
 	{
 		
+		HttpSession session = request.getSession();
 		
 		Member memberVO = new Member();
 		memberVO.setMember_id(request.getParameter("member_id"));
 		
 		MemberDAO dao = new MemberDAO();
 		dao.delete(memberVO);
+		
+		session.invalidate();
 		
 		request.getRequestDispatcher("member/Bye.jsp").forward(request, response);
 	}
