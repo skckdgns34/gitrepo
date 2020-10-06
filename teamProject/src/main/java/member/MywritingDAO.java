@@ -29,8 +29,8 @@ public class MywritingDAO {
 		ArrayList<Mywriting> list = new ArrayList<Mywriting>();
 		try {
 			conn = ConnectionManager.getConnnect();
-			String sql = " SELECT MEMBER_NO, MY_TITLE, MY_WRITE_DATE, GENDER, MY_INTRODUCTION"
-					+ "  MY_SUMMARY, IMAGE_URI, SCORE, VIEWS, TEMPORARY_SYORAGE, MY_CONTENTS"
+			String sql = " SELECT MEMBER_NO, MY_TITLE, MY_WRITE_DATE, GENRE, MY_INTRODUCTION,"
+					+ "  MY_SUMMARY, IMAGE_URI, SCORE, VIEWS, TEMPORARY_STORAGE, MY_CONTENTS"
 					+ " FROM MYWRITING"
 					+ " ORDER BY MEMBER_NO";
 			pstmt = conn.prepareStatement(sql);
@@ -40,13 +40,13 @@ public class MywritingDAO {
 				resultVo.setMember_no(rs.getString("MEMBER_NO"));
 				resultVo.setMy_title(rs.getString("MY_TITLE"));
 				resultVo.setMy_write_date(rs.getString("MY_WRITE_DATE"));
-				resultVo.setGenre(rs.getString("GENDER"));
+				resultVo.setGenre(rs.getString("GENRE"));
 				resultVo.setMy_introduction(rs.getString("MY_INTRODUCTION"));
 				resultVo.setMy_summary(rs.getString("MY_SUMMARY"));
 				resultVo.setImage_uri(rs.getString("IMAGE_URI"));
 				resultVo.setScore(rs.getString("SCORE"));
 				resultVo.setViews(rs.getString("VIEWS"));
-				resultVo.setTemporary_storage(rs.getString("TEMPORARY_SYORAGE"));
+				resultVo.setTemporary_storage(rs.getString("TEMPORARY_STORAGE"));
 				resultVo.setMy_contents(rs.getString("MY_CONTENTS"));
 				list.add(resultVo);
 				System.out.println(rs.getString("MEMBER_NO"));
