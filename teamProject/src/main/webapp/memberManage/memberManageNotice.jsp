@@ -11,7 +11,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>사원 목록</title>
+<title>공지사항 목록</title>
 
 <script>
 	function check(ck) {
@@ -68,13 +68,14 @@
 					<thead>
 						<tr>
 							<th>선택</th>
-							<th>notice_title</th>
-							<th>notice_date</th>
-							<th>notice_content</th>
-							<th>notice_img</th>
-							<th>emp_no</th>
-							<th>views</th>
-							<th>emp_name</th>
+							<th>번호</th>
+							<th>제목</th>
+							<th>내용</th>
+							<th>작성일</th>
+							<th>첨부파일</th>
+							<th>조회수</th>
+							<th>등록 사원번호</th>
+							<th>등록 사원이름</th>
 
 						</tr>
 					</thead>
@@ -83,13 +84,14 @@
 						<c:forEach items="${list}" var="notice">
 							<tr>
 								<td><input type="checkbox" name="user_CheckBox"
-									onclick="check(this)" value="${notice.getEmp_no()}"></td>
+									onclick="check(this)" value="${notice.getNotice_no()}"></td>
+								<td>${notice.getNotice_no()}</td>
 								<td>${notice.getNotice_title()}</td>
-								<td>${notice.getNotice_date()}</td>
 								<td>${notice.getNotice_content()}</td>
+								<td>${notice.getNotice_date()}</td>
 								<td>${notice.getNotice_img()}</td>
-								<td>${notice.getEmp_no()}</td>
 								<td>${notice.getViews()}</td>
+								<td>${notice.getEmp_no()}</td>
 								<td>${notice.getEmp_name()}</td>
 						</c:forEach>
 					</tbody>
