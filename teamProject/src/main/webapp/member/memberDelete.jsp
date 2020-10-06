@@ -7,6 +7,9 @@
 <title>내정보 수정-탈퇴</title>
 
 <script type="text/javascript">
+$(function(){
+		
+	
 	function CheckForm(Join) {
 		var chk1 = document.Join.member_pw.checked;
 		if (chk1 == "") {
@@ -18,10 +21,26 @@
 	}
 	
 
-	/* var butdel = document.getElementById('button');
-	butdel.disabled = true; */
+	$(document).ready(function(){
+		$("#btndel").prop("disabled", true);
+		
+		$("#pwcheck").change(function(){
+			ToggleButton();
+		});
+	});
+	
+});
 
 	
+	function ToggleButton(){
+		if($("#pwcheck").val() != "") {
+			$("#btndel").prop("disabled", false);
+			return true;
+		} else {
+			$("#btndel").prop("disabled", true);
+			return false;
+		}
+	}
 </script>
 </head>
 <body>
@@ -47,13 +66,13 @@
 			<label for="member_id" id="member_id" name="member_id"></label>
 		</div>
 		<input name="member_pw" type="checkbox" id="member_pw"
-			class="inputCheck" onclick="window.open('/app/memberDeletePassword.do', '비밀번호 확인', 'width=#, height=#')" /> 위 내용을 확인하였으며, 탈퇴를 진행합니다. <br>
+			class="inputCheck" onclick="window.open('/app/memberDeletePassword.do', '비밀번호 확인', 'width=300, height=200')" /> 위 내용을 확인하였으며, 탈퇴를 진행합니다. <br>
 		
-		<input type="hidden" id="member_pw">
+		<input type="hidden" name="pwcheck" id="pwcheck">
+		<input type="hidden" name="member_id" id="member_id" value="${member_id }">
 		
-		<button>탈퇴</button>
+		<button id="btndel">탈퇴</button>
 
-		<!-- <input type="submit" id="butdel" value="탈퇴" disabled=""> -->
 	</form>
 		<button onclick="location='memberModify.jsp'">취소</button>
 

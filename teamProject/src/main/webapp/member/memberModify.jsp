@@ -156,7 +156,7 @@ li {
 	<br>
 	<ul>
 		<li><a
-			href="<%=application.getContextPath()%>/memberNodify.do">내정보 수정</a>
+			href="<%=application.getContextPath()%>/memberModify.do">내정보 수정</a>
 		<li><a
 			href="<%=application.getContextPath()%>/memberLibrary.do">내 서재</a>
 		<li><a
@@ -178,6 +178,7 @@ li {
 			<div class="col-sm-6 col-md-offset-3">
 				<div class="form-group">
 				<label for="id">아이디 ${member_id }</label>
+				<input type="hidden" name="member_id" id="member_id" value="${member_id }">
 				</div>
 				<div class="form-group">
 					<label for="pw">비밀번호</label> <input type="password"
@@ -215,6 +216,5 @@ li {
 	</form>
 	<br><hr><br>
 	<a href="/app/member/memberDelete.jsp">탈퇴하기</a>
-	<a href="/app/memberFind.do">아이디/비밀번호 찾기</a>
 </body>
 </html>
