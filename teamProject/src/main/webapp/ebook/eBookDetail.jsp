@@ -54,6 +54,7 @@ function goRead(){ //읽기버튼이 생성되면 읽는페이지로 이동
 }
 
 var check = "${check}"
+
 function btnScore(){ // 추천버튼 클릭시(추천 추가 또는 추천 제거)
 	$("#rec_update").click(function(){
 		$.ajax({
