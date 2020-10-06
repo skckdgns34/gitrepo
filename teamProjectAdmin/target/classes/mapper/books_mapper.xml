@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mapper namespace="com.books.mapper.BooksDAO">
+	<select id="selectAll" parameterType="books" resultType="books">
+		SELECT
+			b.book_no,
+			b.title,
+			b.writer,
+			b.publication_date,
+			b.best_book
+			b.registration_date,
+			c.code_value,
+			p.company_name
+		FROM
+			books b, common c, company p
+		WHERE
+			b.genre = c.code
+		AND
+			b.company_code = p.company_code
+	</select>
+
+	<select id="selectOne" parameterType="books" resultType="books">
+		SELECT
+			book_no,
+			title,
+			book_img,
+			writer,
+			publication_date,
+			company_code,
+			introduction,
+			summary,
+			best_book,
+			genre,
+			registration_date,
+		FROM
+			books
+		WHERE
+			book_id = #{bookId}
+	</select>
+
+	<delete id="delete" parameterType="books">
+		DELETE
+			books
+		WHERE
+			book_no = #{bookNo}
+	</delete>
+
+	<update id="update" parameterType="books">
+		UPDATE
+			books
+		SET
+			title = #{title},
+			book_img = #{bookImg},
+			writer = #{writer},
+			publication_date = #{publicationDate},
+			company_code = #{companyCode},
+			introduction = #{introduction},
+			summary = #{summary},
+			best_book = #{bestBook},
+			genre = #{genre},
+			registration_date = #{sysdate}
+		WHERE
+			book_no = #{bookNo}
+	</update>
+
+	<update id="updateNo">
+		UPDATE
+			seq set no = no + 1
+		WHERE
+			tablename = 'books'
+	</update>
+
+	<insert id="insert" parameterType="books">
+		<selectKey keyProperty="no" resultType="int" order="BEFORE">
+			SELECT NO
+			FROM SEQ
+			WHERE TABLE_NAME='books'
+		</selectKey>
+		INSERT INTO BOOKS(book_no,
+							title,
+							book_img,
+							writer,
+							publication_date,
+							epub_path,
+							audio_path,
+							company_code,
+							introduction,
+							summary,
+							genre,
+							best_book,
+							registration_date)
+		VALUES(#{bookNo},
+				#{title},
+				#{bookImg},
+				#{writer},
+				#{publicationDate},
+				#{epubPath},
+				#{audioPath},
+				#{companyCode},
+				#{introduction},
+				#{summary},
+				#{genre},
+				#{bestBook},
+				#{SYSDATE})
+	</insert>
+
+	<update id="updateNo">
+		UPDATE
+		seq set no = no + 1
+		WHERE
+		tablename = 'purchase'
+	</update>
+	<insert id="insertpur" parameterType="books">
+		<selectKey keyProperty="no" resultType="int" order="BEFORE">
+			SELECT NO
+			FROM SEQ
+			WHERE TABLE_NAME='purchase'
+		</selectKey>
+		INSERT INTO PURCHASE
+		VALUES (#{purchaseNo},
+				#{purchasePrice},
+				#{purchaseDate},
+				#{purchaseContent},
+				#{empNo},
+				#{bookNo})
+	</insert>
+
+</mapper>
