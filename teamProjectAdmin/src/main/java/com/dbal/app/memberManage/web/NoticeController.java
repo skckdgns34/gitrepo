@@ -20,14 +20,14 @@ public class NoticeController {
 	public String noticeList(Model model, Notice noticeVO) {
 		model.addAttribute("list",noticeService.selectAll(noticeVO));
 	
-		return "/memberManage/memberManageNotice";
+		return "memberManage/memberManageNotice";
 
 	}
 
 	// 등록 페이지
-	@RequestMapping(value = "/memberManageNoticeInsert.ad", method = RequestMethod.GET)
+	@RequestMapping(value = "/memberManageNoticeInsertForm.ad", method = RequestMethod.GET)
 	public String noticeInsertForm() {
-		return "memberManage/noticeInsert";
+		return "memberManage/memberManageNoticeInsert";
 	}
 	//등록처리
 	@RequestMapping(value = "/memberManageNoticeInsert.ad", method = RequestMethod.POST)

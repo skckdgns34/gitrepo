@@ -47,5 +47,6 @@
 		#{jobId})
 	</insert>
 
-
+	
+	
 </mapper>

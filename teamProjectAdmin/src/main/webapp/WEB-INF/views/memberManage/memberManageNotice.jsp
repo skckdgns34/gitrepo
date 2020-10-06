@@ -23,13 +23,13 @@
 	};
 	function addpage() //등록
 	{
-		window.document.location.href = "${pageContext.request.contextPath}/memberManageNoticeInsertForm.ad";
+		window.document.location.href = "memberManageNoticeInsertForm.ad";
 		return;
 	}
 
 	function modifypage() //수정 ㅡ
 	{
-		window.document.location.href = "${pageContext.request.contextPath}/memberManageNoticeModifyForm.ad?no="
+		window.document.location.href = "memberManageNoticeModifyForm.ad?no="
 				+ $('input[name="user_CheckBox"]:checked').val();
 		alert($('input[name="user_CheckBox"]:checked').val())
 		return;
@@ -37,7 +37,7 @@
 
 	function deletepage() //삭제
 	{
-		window.document.location.href = "${pageContext.request.contextPath}/memberManageDelete.ad?no= "
+		window.document.location.href = "memberManageDelete.ad?no= "
 				+ $('input[name="user_CheckBox"]:checked').val();
 		return;
 	}
