@@ -85,10 +85,15 @@
 	    } else if (this.dataset.playing === 'true') {
 	        audioElement.pause();
 	        this.dataset.playing = 'false';
+	        console.log(audioElement.currentTime);
+	        $.post("audioBookReading.do", {index: audioElement.currentTime
+              },function(data){
+            	  console.log(성공);
+              }); 
 	    }
 
 	}, false);
-	audioElement.addEventListener('ended', () => {
+	audioElement.addEventListener('ended', function() {
 	    playButton.dataset.playing = 'false';
 	}, false);
 	const gainNode = audioContext.createGain();
