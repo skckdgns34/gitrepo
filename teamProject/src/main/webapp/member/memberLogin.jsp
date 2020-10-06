@@ -30,7 +30,7 @@
 								<input type="text" class="form-control" id="member_id" name="member_id" placeholder="id" onfocus="this.placeholder = ''" onblur="this.placeholder = 'member_id'">
 							</div>
 							<div class="col-md-12 form-group">
-								<input type="text" class="form-control" id="member_pw" name="member_pw" placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'">
+								<input type="password" class="form-control" id="member_pw" name="member_pw" placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'">
 							</div>
 							<div class="col-md-12 form-group">
 								<div class="creat_account">
