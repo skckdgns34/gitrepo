@@ -37,6 +37,7 @@
 				+ $('input[name="user_CheckBox"]:checked').val();
 		return;
 	}
+	
 </script>
 
 </head>
@@ -60,17 +61,16 @@
 					<thead>
 						<tr>
 							<th>선택</th>
-							<th>MEMBER_NO</th>
-							<th>MEMBER_ID</th>
-							<th>MEMBER_PW</th>
-							<th>NICKNAME</th>
-							<th>MEMBER_TEL</th>
-							<th>MEMBER_EMAIL</th>
-							<th>SIGNUP_DATE</th>
-							<th>LAST_ACCESS_DATE</th>
-							<th>GENDER</th>
-							<th>TICKET_CODE</th>
-							<th>TICKET_DATE</th>
+							<th>회원 번호</th>
+							<th>회원 아이디</th>
+							<th>회원 패스워드</th>
+							<th>닉네임</th>
+							<th>회원 전화번호</th>
+							<th>회원 이메일</th>
+							<th>회원 가입일</th>
+							<th>마지막 접속일</th>
+							<th>성별</th>
+							
 							
 						</tr>
 					</thead>
@@ -89,8 +89,7 @@
 								<td>${member.getSignup_date()}</td>
 								<td>${member.getLast_access_date()}</td>
 								<td>${member.getGender()}</td>
-								<td>${member.getTicket_code()}</td>
-								<td>${member.getTicket_date()}</td>
+								
 						</c:forEach>
 					</tbody>
 				</table>

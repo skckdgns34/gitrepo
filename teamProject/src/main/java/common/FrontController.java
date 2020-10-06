@@ -84,9 +84,14 @@ public class FrontController extends HttpServlet {
 		list.put("/memberManageQuestion.ad", new memberManage.MemberManageQuestionServ()); // 회원관리 QnA 리스트
 		list.put("/memberManageQuestionPop.ad", new memberManage.MemberManageQuestionPopServ()); // 회원관리 QnA 관리
 		
-		list.put("/memberManageNotice.ad", new memberManage.MemberManageNoticeServ()); // 회원관리 공지관리
-		list.put("/memberManageModify.ad", new memberManage.MemberManageNoticeModifyServ()); // 회원 관리 수정
-		list.put("/memberManageNoticeForm.ad", new memberManage.MemberManageNoticeFormServ()); // 회원관리 공지관리 수정/입력
+		list.put("/memberManageNotice.ad", new memberManage.MemberManageNoticeServ()); // 회원관리 공지리스트
+		list.put("/memberManageNoticeInsert.ad", new memberManage.MemberManageNoticeInsertServ()); // 회원관리 공지관리 입력
+		list.put("/memberManageNoticeInsertForm.ad", new memberManage.MemberManageNoticeInsertFormServ()); // 회원관리 공지관리 입력
+
+		list.put("/memberManageModify.ad", new memberManage.MemberManageNoticeModifyServ()); // 회원 관리 수정(이름 고쳐야함 ㅠ)
+		list.put("/memberManageNoticeForm.ad", new memberManage.MemberManageNoticeFormServ()); // 회원관리 공지관리 수정(이름 고쳐야함 ㅠ)
+		
+		
 
 
 		list.put("/empManageMain.ad", new empManage.EmpManageMainServ()); // 사원 관리 리스트

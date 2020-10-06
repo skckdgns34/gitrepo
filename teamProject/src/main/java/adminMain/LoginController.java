@@ -18,6 +18,8 @@ public class LoginController implements Controller {
 		Employees employees = new Employees();
 		employees.setEmp_id(request.getParameter("emp_id"));
 		employees.setEmp_pw(request.getParameter("emp_pw"));
+		employees.setEmp_no(request.getParameter("emp_no"));
+		employees.setEmp_name(request.getParameter("emp_name"));
 		
 		// 2. 서비스 처리(DB)
 		Employees resultVo = EmpDAO.getInstance().loginCk(employees);
@@ -34,6 +36,7 @@ public class LoginController implements Controller {
 			if(employees.getEmp_pw().equals(resultVo.getEmp_pw())) { //로그인 성공 시 세션에 어트리뷰트 속성저장?
 				request.getSession().setAttribute("login", resultVo);
 				request.getSession().setAttribute("emp_id", resultVo.getEmp_id());
+				
 				page = "/adminIndex.jsp";
 				System.out.println("로그인 성공");
 			}else { //패스워드 불일치
