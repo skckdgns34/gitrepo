@@ -117,7 +117,7 @@ ${ msg}
 			 id="member_pw2" name="member_pw2"
 			placeholder="비밀번호 확인">
 		<div class="eheck_font" id="pw2_check"></div>
-<button id="btnupdate" disabled="disabled">변경</button>
+<button id="btnupdate">변경</button>
 </form>
 </body>
 </html>
