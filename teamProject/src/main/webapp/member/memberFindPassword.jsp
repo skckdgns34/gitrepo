@@ -79,10 +79,6 @@ $(function(){
 	})
 	});
 	
-	$("#btnupdate").on("click", function(){
-		location.href = "${pageContext.request.contextPath }/memberFindPassword.do?member_pw=" + $("#member_pw").val()
-	});
-	
 	
 	$(document).ready(function(){
 		$("#btnupdate").prop("disabled", true);
@@ -124,7 +120,7 @@ $(function(){
 </head>
 <body>
 <h3>비밀번호 변경</h3>
-<form name="frm" id="frm">
+<form name="frm" id="frm" action="${pageContext.request.contextPath }/memberFindPassword.do"  method="post">
 <input type="email" name="member_email" id="member_email" placeholder="이메일을 입력해주세요" value="${param.member_email }" required>
 <button type="button" id="btnsend">인증번호 보내기</button>
 ${ errormsg}
