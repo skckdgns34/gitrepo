@@ -35,5 +35,6 @@
 		<pattern>/ticketChart.ad</pattern>
 		<pattern>/licenceAmount*</pattern>
 		<pattern>/audioBookReading*</pattern>
+		<pattern>/memberDeletePassword.do</pattern>
 	</excludes>
 </decorators>

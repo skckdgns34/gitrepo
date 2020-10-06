@@ -1,11 +1,11 @@
 package member;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 
 import common.Controller;
 import vo.Member;
@@ -13,26 +13,36 @@ import vo.Member;
 public class MemberDeletePasswordServ implements Controller {
 
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Member memberVO = new Member();
-		memberVO.setMember_id(request.getParameter("member_id"));
-		memberVO.setMember_pw(request.getParameter("member_pw"));
+		response.setContentType("text/html;charset=utf-8");
+		String member_pw = request.getParameter("member_pw");
+		String page = "/member/memberDeletePassword.jsp";
 		
-		Member resultVO = MemberDAO.getinstance().password(memberVO);
-
-		String page = "";
-		if(resultVO == null) {
-			page = "/member/memberDeletePassword.jsp";
-			request.setAttribute("errormsg", "비밀번호를 다시 입력해주세요");
-		} else {
-			memberVO.getMember_pw().equals(resultVO.getMember_pw());
-			page = "/member/memberDeletePassword.jsp";
-			request.setAttribute("msg", "비밀번호 확인 완료");
-			request.setAttribute("memberDeletePassword.jsp", resultVO);
-			request.setAttribute("member_pw", resultVO.getMember_pw());
+		if(member_pw == null) {
+			request.getRequestDispatcher(page).forward(request, response);
+		}else {
 			
+			Member memberVO = new Member();
+			memberVO.setMember_id((String)request.getSession().getAttribute("member_id"));
+			memberVO.setMember_pw(member_pw);
+			
+			Member resultVO = MemberDAO.getinstance().password(memberVO);
+			
+			if(resultVO == null) {
+				request.setAttribute("errormsg", "비밀번호를 다시 입력해주세요");
+				request.getRequestDispatcher(page).forward(request, response);
+			} else {
+				PrintWriter out=response.getWriter();
+				response.resetBuffer();
+				out.print("<script>");
+				out.println("window.opener.document.getElementById('pwcheck').value = '확인';");
+				out.print("opener.ToggleButton();");
+				out.print("window.close();");
+				out.print("</script>");
+			}
+			
+	
 		}
-			
-		request.getRequestDispatcher(page).forward(request, response);
+		
 	}
 	
 }

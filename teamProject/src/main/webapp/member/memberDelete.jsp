@@ -24,10 +24,13 @@ $(function(){
 	$(document).ready(function(){
 		$("#btndel").prop("disabled", true);
 		
-		$("#pwcheck").keyup(function(){
+		$("#pwcheck").change(function(){
 			ToggleButton();
 		});
 	});
+	
+});
+
 	
 	function ToggleButton(){
 		if($("#pwcheck").val() != "") {
@@ -38,9 +41,6 @@ $(function(){
 			return false;
 		}
 	}
-	
-});
-
 </script>
 </head>
 <body>
@@ -66,9 +66,10 @@ $(function(){
 			<label for="member_id" id="member_id" name="member_id"></label>
 		</div>
 		<input name="member_pw" type="checkbox" id="member_pw"
-			class="inputCheck" onclick="window.open('/app/memberDeletePassword.do', '비밀번호 확인', 'width=#, height=#')" /> 위 내용을 확인하였으며, 탈퇴를 진행합니다. <br>
+			class="inputCheck" onclick="window.open('/app/memberDeletePassword.do', '비밀번호 확인', 'width=300, height=200')" /> 위 내용을 확인하였으며, 탈퇴를 진행합니다. <br>
 		
-		<input type="text" name="pwcheck" id="pwcheck">
+		<input type="hidden" name="pwcheck" id="pwcheck">
+		<input type="hidden" name="member_id" id="member_id" value="${member_id }">
 		
 		<button id="btndel">탈퇴</button>
 
