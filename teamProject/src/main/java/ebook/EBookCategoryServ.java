@@ -42,9 +42,6 @@ public class EBookCategoryServ implements Controller
 			books = EBookDAO.getInstance().radioCheckGenre(gen);
 		}
 		
-		
-		
-		
 		request.setAttribute("count", count);
 		request.setAttribute("books", books);
 		request.getRequestDispatcher("/ebook/eBookCategory.jsp").forward(request, response);

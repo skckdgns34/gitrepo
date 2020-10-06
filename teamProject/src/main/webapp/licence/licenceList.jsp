@@ -18,12 +18,15 @@
 	
 	$(function(){
 		$(".button").on("click",function(){
-			
+			//$(".member_ticket").closest('tr').find('checkbox').attr("disabled",true);
+
 			var login_no = '${sessionScope.member_no}';
-			var boxVal = $("input[name='user_CheckBox']:checked").val();
-			var p_name = $("input[name='user_CheckBox']:checked").parent().parent().children().eq(1).html();
-			alert(boxVal);
-			alert(p_name);
+			var checked = $("input[name='user_CheckBox']:checked");
+			var boxVal = checked.val();
+			var p_name = checked.parent().parent().children().eq(1).html();
+			var ticket_code = checked.closest('tr').find('input[type=hidden]').val();
+			alert(ticket_code);
+			 
 			if(login_no == ''){
 				alert("로그인필요")
 				//$(location).attr('href', '${pageContext.request.contextPath }/member/memberLogin.jsp')
@@ -31,7 +34,9 @@
 			}
 			else{
 				alert("로그인됌");
-				window.open('${pageContext.request.contextPath }/licenceAmount.do?account='+boxVal+'&p_name='+p_name, '결제', 'width=750px,height=700px,scrollbars=yes');
+				window.open('${pageContext.request.contextPath }/licenceAmount.do?account='
+							+boxVal+'&p_name='+p_name
+							+'&ticket_code='+ticket_code, '결제', 'width=850px,height=700px,scrollbars=yes');
 			}
 		})
 	})
@@ -59,21 +64,22 @@
 							<tr>
 								<th>선택</th>
 								<th scope="col">이름</th>
+								<th scope="col">코드</th>
 								<th scope="col">금액</th>
 								<th scope="col">내꺼</th>
 							</tr>
 						</thead>
+						
 						<tbody>
-							<c:forEach begin="1" end="${commonList.size() }" var="i">
+							<c:forEach items="${commonList}" var="list">
 								<tr>
-									<td><input type="checkbox" name="user_CheckBox"
-										onclick="check(this)" value="9000"></td>
-									<td>${commonList[i-1].code_value }</td>
-									<td>${commonList[i-1].code }</td>
-									<td>
-									<c:forEach items="${member_ticket_list}" var="list">
-										<c:if test="${commonList[i-1].code==list.ticket_code }">보유중</c:if>
-									</c:forEach>
+									<td><input type="checkbox" name="user_CheckBox" <c:if test="${list.ticketyn==1}">disabled</c:if>
+										onclick="check(this)" value="100"></td>
+									<td>${list.ticket_name }</td><input type="hidden" value="${list.ticket_code}"></input>
+									<td>${list.ticket_code }</td>
+									<td>${list.price}</td>
+									<td class="member_ticket">
+									<c:if test="${list.ticketyn==1 }">보유중</c:if>								
 									</td>
 								</tr>
 							</c:forEach>
@@ -85,7 +91,7 @@
 						style="margin-left: 43%;">
 					<c:if test="${empty sessionScope.member_no }">
 						<a class="button"
-							href="${pageContext.request.contextPath }/member/memberLogin.jsp">결제하기
+							href="${pageContext.request.contextPath }/member/memberLogin.jsp">로그인
 						</a>
 					</c:if>
 					<c:if test="${not empty sessionScope.member_no }">

@@ -26,6 +26,10 @@ public class AudioBookReadingServ implements Controller
 		String no = (String) request.getSession().getAttribute("member_no");
 		ArrayList<Mylibrary> mylib = MemberDAO.getinstance().mylibList(no);
 		
+		//현재 책의 현재 접속자의 last_read_index
+		int index = MemberDAO.getinstance().myBookIndex(book_no, no);
+		request.setAttribute("book_index", index);
+		
 		request.setAttribute("mylib", mylib);
 		request.setAttribute("book", book_detail);
 		request.getRequestDispatcher("/ebook/audioBookReading.jsp").forward(request, response);
