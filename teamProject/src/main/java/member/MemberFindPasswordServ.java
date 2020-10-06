@@ -21,7 +21,7 @@ public class MemberFindPasswordServ implements Controller {
 		MemberDAO dao = new MemberDAO();
 		dao.pwupdate(memberVO);
 		
-		request.getRequestDispatcher("/app/memberLogin.do").forward(request, response);
+		request.getRequestDispatcher("/memberLogin.do").forward(request, response);
 
 	}
 }
