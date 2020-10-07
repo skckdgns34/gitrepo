@@ -16,10 +16,12 @@ public class MainServ implements Controller
 	public void execute(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException
 	{
-	//	ArrayList<Books> bookList = new ArrayList<Books>();
-	//	bookList = MainDAO.getInstance().selectAllBook();
 		
-	//	request.setAttribute("bookList", bookList);
+		
+		ArrayList<Books> bookList = new ArrayList<Books>();
+		bookList = MainDAO.getInstance().selectAllBook();
+		
+		request.setAttribute("bookList", bookList);
 		request.getRequestDispatcher("/main/main.jsp").forward(request, response);
 	}
 }

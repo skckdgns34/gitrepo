@@ -3,6 +3,7 @@ package com.dbal.app.memberManage.service;
 import java.util.HashMap;
 import java.util.List;
 
+import com.dbal.app.books.Books;
 import com.dbal.app.memberManage.Member;
 
 public interface MemberManageService {
@@ -21,8 +22,8 @@ public interface MemberManageService {
 		// 입력
 		public void insert(Member memberVO);
 
-		// 최다 조회수
-		//public List<Books> selectViews();
+		//최다 조회수
+		public List<Books> selectViews();
 
 		// 성별인원수 : select gender, count(id) cnt from member group by gender
 		public List<HashMap<String, Object>> getGenderCnt();

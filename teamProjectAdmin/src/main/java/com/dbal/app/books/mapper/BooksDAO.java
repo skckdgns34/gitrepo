@@ -18,7 +18,7 @@ public interface BooksDAO {
 	//도서전체조회
 	public ArrayList<Books> selectAll(Books books);
 	//도서정보업데이트
-	public Books update(Books books);
+	public void update(Books books);
 	
 	public void updateBookNo();
 	

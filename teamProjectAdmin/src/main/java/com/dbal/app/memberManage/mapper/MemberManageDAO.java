@@ -3,6 +3,7 @@ package com.dbal.app.memberManage.mapper;
 import java.util.HashMap;
 import java.util.List;
 
+import com.dbal.app.books.Books;
 import com.dbal.app.memberManage.Member;
 
 
@@ -23,7 +24,7 @@ public interface MemberManageDAO {
 	public void insert(Member memberVO);
 
 	// 최다 조회수
-	//public List<Books> selectViews();
+	public List<Books> selectViews();
 
 	// 성별인원수 : select gender, count(id) cnt from member group by gender
 	public List<HashMap<String, Object>> getGenderCnt();

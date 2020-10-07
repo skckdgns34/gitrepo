@@ -12,10 +12,12 @@ public interface EmpDAO {
 	public List<Employees> selectAll(Employees employeesVO);
 
 	// 등록
-	public Employees Insert(Employees employees);
+	public void Insert(Employees employees);
 
 	// 수정
 	public void Update(Employees emp);
+	//번호 업데이트
+	public void updateNo();
 
 	// 삭제
 	public int Delete(Employees emp);

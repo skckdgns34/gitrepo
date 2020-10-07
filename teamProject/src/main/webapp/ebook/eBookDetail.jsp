@@ -16,8 +16,8 @@ $(function(){
 	btnHideNShow();
 	btnScore();
 	
-	//리뷰작성하면 보여주는거
-	$("#btnreview").on("click", function(){
+	//리뷰작성하면 바로 리뷰리스트에 맨위에다가 붙이기
+	/*$("#btnreview").on("click", function(){
 		var review = $("#reviewArea").val();
 		$.ajax({
 			url : "${pageContext.request.contextPath}/Ajax/eBookReview.do",
@@ -29,13 +29,10 @@ $(function(){
 				book_no : "${book[0].book_no}"
 			},
 			success: function(result){
-				alert("성공스~");
-				console.log(result);
-				console.log(result.contents);
 				$("#reviewField").prepend(result);
 			}
 		})
-	})
+	})*/
 	
 	
 	
@@ -54,9 +51,7 @@ function btnHideNShow(){
 	}
 }
 
-/* function reviewAreaHideNShow(){
-	if("${reviews.mem}")
-} */
+
 
 function goRead(){ //읽기버튼이 생성되면 읽는페이지로 이동
 	location.href="${pageContext.request.contextPath}/eBookReading.do";
@@ -379,9 +374,6 @@ function btnScore(){ // 추천버튼 클릭시(추천 추가 또는 추천 제�
 								</div>--%>
 							</div>
 							<div class="review_list" id="reviewField">
-							
-							
-							
 								<c:forEach items="${review}" var="reviews">
 								<div class="review_item">
 									<div class="media">
@@ -396,10 +388,6 @@ function btnScore(){ // 추천버튼 클릭시(추천 추가 또는 추천 제�
 									<p>${reviews.contents}</p>
 								</div>
 								</c:forEach>
-								
-								
-								
-								
 							</div>
 						</div>
 						<div class="col-lg-6">

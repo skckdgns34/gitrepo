@@ -1,5 +1,7 @@
 package com.dbal.app.memberManage.web;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,7 +33,7 @@ public class NoticeController {
 	}
 	//등록처리
 	@RequestMapping(value = "/memberManageNoticeInsert.ad", method = RequestMethod.POST)
-	public String noticeInsert(Notice notice) {
+	public String noticeInsert(Notice notice, HttpServletRequest request) {
 		noticeService.insert(notice);
 		return "redirect:/memberManageNotice.ad";
 		

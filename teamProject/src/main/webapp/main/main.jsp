@@ -34,8 +34,8 @@ margin-left: 45px;
 <link rel="stylesheet" href="layout/styles/slider.css">
 </head>
 <body>
-	<section >
-		<div id="slider-animation" class="carousel slide" data-ride="carousel" style="padding-left: 140px; margin-top: 30px">
+	<section id="hhh">
+		<div id="slider-animation" class="carousel slide" data-ride="carousel" style="margin-top: 50px">
 
 			<!-- Indicators -->
 			<ul class="carousel-indicators">
@@ -98,6 +98,8 @@ margin-left: 45px;
 	</section>
 	
 	
+	
+	
 <!-- ================ Best Selling item  carousel ================= --> 
     <section class="section-margin calc-60px">
       <div class="container">
@@ -107,10 +109,14 @@ margin-left: 45px;
         </div>
         <div class="owl-carousel owl-theme" id="d1Carousel">
 
-          <div class="card text-center card-product">
+		<c:forEach items="${bookList }" var="book">
+    		<c:if test="${book.best_book=='y' }">
+    		
+
+         <div class="card text-center card-product">
             <div class="card-product__img">
 
-              <img class="img-fluid" src="<%=request.getContextPath()%>/mainresource/img/r11.jpg"  alt="">
+              <img class="img-fluid" src="filenameDownload.do?filename=${book.book_img}"  alt="">
               <ul class="card-product__imgOverlay">
                 <li><button><i class="ti-search"></i></button></li>
                 <li><button><i class="ti-shopping-cart"></i></button></li>
@@ -118,12 +124,20 @@ margin-left: 45px;
               </ul>
             </div>
             <div class="card-body">
-              <p>Accessories</p>
-              <h4 class="card-product__title"><a href="single-product.html">Quartz Belt Watch</a></h4>
-              <p class="card-product__price">$150.00</p>
+              <p>
+              	<c:if test="${not empty book.epub_path }">전자 책</c:if>
+              	<c:if test="${empty book.epub_path }">오디오 북</c:if>
+              </p>
+              <h4 class="card-product__title"><a href="single-product.html">${book.title }</a></h4>
+              <p class="card-product__price">${book.writer }</p>
             </div>
           </div>
- </div>
+      		
+    	</c:if>
+    </c:forEach>      
+          
+          
+ 		</div>
       </div>
     </section>
     <!-- ================ Best Selling item  carousel end ==========
