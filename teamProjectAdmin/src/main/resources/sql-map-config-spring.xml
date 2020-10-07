@@ -4,6 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
+	<typeAlias type="com.dbal.app.books.Books" alias="books"/>  
 	<typeAlias type="com.dbal.app.empManage.Employees" alias="employees"/>
 	<typeAlias type="com.dbal.app.memberManage.Notice" alias="notice"/> 
 	<typeAlias type="com.dbal.app.memberManage.Questions" alias="questions"/> 
