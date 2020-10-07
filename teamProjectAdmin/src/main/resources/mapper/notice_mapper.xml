@@ -8,14 +8,14 @@
 	<select id="selectAll" parameterType="notice"
 		resultType="notice">
 		SELECT
-				N.NOTICE_NO,
-				N.NOTICE_TITLE,
-				N.NOTICE_CONTENT,
-				N.NOTICE_DATE,
-				N.NOTICE_IMG,
-				N.VIEWS,
-				N.EMP_NO,
-				E.EMP_NAME
+		N.NOTICE_NO,
+		N.NOTICE_TITLE,
+		N.NOTICE_CONTENT,
+		N.NOTICE_DATE,
+		N.NOTICE_IMG,
+		N.VIEWS,
+		N.EMP_NO,
+		E.EMP_NAME
 		FROM NOTICE N, EMPLOYEES E
 		WHERE N.EMP_NO = E.EMP_NO
 	</select>
@@ -26,27 +26,31 @@
 	</update>
 
 	<insert id="insert" parameterType="notice">
-		<selectKey keyProperty="no" resultType="int" order="BEFORE">
+		<selectKey keyProperty="notice_no" resultType="string"
+			order="BEFORE">
 			SELECT NO
 			FROM SEQ
-			WHERE TABLE_NAME='NOTICE'
+			WHERE TABLENAME='notice'
 		</selectKey>
-
-		INSERT INTO EMPLOYEES (notice_no,
-		notice_title,
-		notice_content,
-		notice_date,
-		notice_img,
-		emp_no)
-		VALUES(
-		#{no},
-		#{noticeTitle},
-		#{noticeContent},
+		INSERT INTO NOTICE (NOTICE_NO,
+		NOTICE_TITLE,
+		NOTICE_CONTENT,
+		NOTICE_DATE,
+		<if test="notice_img!=null and notice_img!=''">
+			NOTICE_IMG,
+		</if>
+		EMP_NO)
+		VALUES (
+		#{notice_no},
+		#{notice_title},
+		#{notice_content},
 		SYSDATE,
-		#{hireDate},
-		#{jobId})
+		<if test="notice_img!=null and notice_img!=''">
+			#{notice_img}
+		</if>
+		#{emp_no})
 	</insert>
 
-	
-	
+
+
 </mapper>

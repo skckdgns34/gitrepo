@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dbal.app.memberManage.mapper.BlackListDAO">
+	  
+	<!-- 전체조회 -->    
+<select id="selectAllList" parameterType="blacklist" resultType="blacklist">
+SELECT 
+			B.BLACKLIST_NO, 
+			B.MEMBER_NO, 
+			M.NICKNAME, 
+			B.BLACKLIST_REASON, 
+			B.LIMIT_DATE 
+FROM BLACKLIST B, MEMBER M 
+WHERE B.MEMBER_NO = M.MEMBER_NO
+	</select>
+
+
+</mapper>
