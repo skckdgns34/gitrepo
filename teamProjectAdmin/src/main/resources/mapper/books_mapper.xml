@@ -159,7 +159,7 @@
 				#{purchase_price},
 				#{purchase_date},
 				#{purchase_content},
-				1,
+				#{emp_no},
 				#{book_no})
 	</insert>
 

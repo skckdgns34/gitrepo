@@ -25,7 +25,7 @@
 		<selectKey keyProperty="company_code" resultType="string" order="BEFORE">
 			SELECT NO
 			FROM SEQ
-			WHERE TABLENAME='purchase'
+			WHERE TABLENAME='company'
 		</selectKey>
 		INSERT INTO company(company_code,
 							company_name,

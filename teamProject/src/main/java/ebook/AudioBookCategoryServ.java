@@ -19,24 +19,13 @@ public class AudioBookCategoryServ implements Controller
 	public void execute(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException
 	{
-		ArrayList<Common> list = new ArrayList<Common>();
-		list = CommonDAO.getInstance().selectAllGenre();
-		request.setAttribute("genreList", list);
 
-		ArrayList<Books> books=null;
+		List<Map<String,Object>> count = AudioBookDAO.getInstance().genreCount();
+		ArrayList<Books> bestBooks = AudioBookDAO.getInstance().selectBestBooks(); //베스트북
+		request.setAttribute("bestBooks", bestBooks);
 		
-		List<Map<String,Object>> count = EBookDAO.getInstance().genreCount();
-
 		String gen = request.getParameter("gen");
-
-		if(gen == "undefined") {
-			books = EBookDAO.getInstance().raidoAllBooks();
-		}
-		else if(gen != null) {
-			books = EBookDAO.getInstance().radioCheckGenre(gen);
-		}
 		request.setAttribute("count", count);
-		request.setAttribute("books", books);
 		request.getRequestDispatcher("/ebook/audioBookCategory.jsp").forward(request, response);
 	
 	}
