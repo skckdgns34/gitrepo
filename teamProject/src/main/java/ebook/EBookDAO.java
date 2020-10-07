@@ -20,7 +20,7 @@ public class EBookDAO
 
 	Connection conn;
 	PreparedStatement pstmt;
-	ResultSet rs = null;
+	//ResultSet rs = null;
 
 	static EBookDAO instance;
 
@@ -33,6 +33,7 @@ public class EBookDAO
 
 	public ArrayList<String> selectBookGenre()
 	{
+		ResultSet rs = null;
 		ArrayList<String> list = new ArrayList<String>();
 		try
 		{
@@ -58,6 +59,7 @@ public class EBookDAO
 	// 전자책
 	public ArrayList<Books> selectAllEBook()
 	{
+		ResultSet rs = null;
 		Books resultVO = null;
 		ArrayList<Books> list = new ArrayList<Books>();
 		try
@@ -92,6 +94,7 @@ public class EBookDAO
 	// 오디오 북
 	public ArrayList<Books> selectAllAudioBook(String genre)
 	{
+		ResultSet rs = null;
 		Books resultVO = null;
 		ArrayList<Books> list = new ArrayList<Books>();
 		try
@@ -131,6 +134,7 @@ public class EBookDAO
 	// E-Book 검색
 	public ArrayList<SearchBook> searchBook(String a)
 	{
+		ResultSet rs = null;
 		ArrayList<SearchBook> list = new ArrayList<SearchBook>();
 		try
 		{
@@ -169,6 +173,7 @@ public class EBookDAO
 	// E-book검색해온 값이 뭔지 체크
 	public List<Map<String, Object>> searchBooksEqualTitle(String a)
 	{
+		ResultSet rs = null;
 		List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
 		try
 		{
@@ -210,6 +215,7 @@ public class EBookDAO
 	// E-Book 검색해온값이 출판사인지 체크
 	public List<Map<String, Object>> searchBooksEqualCompany(String a)
 	{
+		ResultSet rs = null;
 		List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
 		try
 		{
@@ -252,6 +258,7 @@ public class EBookDAO
 	// E-Book 검색해온값이 저자인지 체크
 	public List<Map<String, Object>> searchBooksEqualWriter(String a)
 	{
+		ResultSet rs = null;
 		List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
 		try
 		{
@@ -290,15 +297,16 @@ public class EBookDAO
 		return list;
 	}
 
-	// E-Book detail 페이지에서 사용자가 이용권이 있는지 없는지 체크
+	// E-Book detail 페이지에서 사용자가 ebook 이용권이 있는지 없는지 체크
 	public String checkTicket(Object a)
 	{
+		ResultSet rs = null;
 		String list = "";
 		try
 		{
 			conn = ConnectionManager.getConnnect();
-			String sql = "select ticket_code " + " from member m, ticket t "
-					+ " where m.member_no = t.member_no " + " and rownum=1"
+			String sql = "select ticket_code from member m, pay p "
+					+ " where m.member_no = p.member_no and rownum=1 and p.ticket_code in('g1','g2','g3','g4') "
 					+ " and m.member_no= " + a;
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -321,6 +329,7 @@ public class EBookDAO
 	// E-Book detail 페이지에서 해당책 상세내용 뿌려주기용
 	public ArrayList<Books> detailBook(String b)
 	{
+		ResultSet rs = null;
 		ArrayList<Books> books = new ArrayList<Books>();
 		try
 		{
@@ -360,8 +369,8 @@ public class EBookDAO
 	// 게시글 추천여부 검사
 	public int recCheck(String a, String b)
 	{
+		ResultSet rs = null;
 		int result = 0;
-		rs = null;
 		try
 		{
 			conn = ConnectionManager.getConnnect();
@@ -388,6 +397,7 @@ public class EBookDAO
 	// 게시글 추천
 	public void recInsert(Good good)
 	{
+		ResultSet rs = null;
 		try
 		{
 			conn = ConnectionManager.getConnnect();
@@ -410,6 +420,7 @@ public class EBookDAO
 	// 게시글 추천 제거
 	public void recDelete(Good good)
 	{
+		ResultSet rs = null;
 		try
 		{
 			conn = ConnectionManager.getConnnect();
@@ -432,7 +443,7 @@ public class EBookDAO
 	public int recCount(String no)
 	{
 		int count = 0;
-		rs = null;
+		ResultSet rs = null;
 		try
 		{
 			conn = ConnectionManager.getConnnect();
@@ -455,24 +466,28 @@ public class EBookDAO
 	}
 
 	// eBook Category Ajax 장르라디오 체크시
-	public ArrayList<Books> radioCheckGenre(String gen)
+	public ArrayList<Books> radioCheckGenre(String gen, int first, int last)
 	{
 		ArrayList<Books> list = new ArrayList<Books>();
-		rs = null;
+		ResultSet rs = null;
 
 		try
 		{
 			conn = ConnectionManager.getConnnect();
-			String sql = "select title, book_no, book_img from books where genre =? order by book_no desc" ;
+			String sql = "select a.* from ( select rownum rn, b.* from (  " + 
+					"select title, book_no, book_img from books where genre =? order by book_no desc "
+					+ ") b ) a where rn  between ? and ? "; 
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, gen);
+			pstmt.setInt(2, first);
+			pstmt.setInt(3, last);
 			rs = pstmt.executeQuery();
 			while (rs.next())
 			{
 				Books books = new Books();
-				books.setTitle(rs.getString(1));
-				books.setBook_no(rs.getString(2));
-				books.setBook_img(rs.getString(3));
+				books.setTitle(rs.getString("title"));
+				books.setBook_no(rs.getString("book_no"));
+				books.setBook_img(rs.getString("book_img"));
 				list.add(books);
 			}
 		} catch (Exception e)
@@ -486,23 +501,29 @@ public class EBookDAO
 	}
 
 	// ebook category 체크박스 전체 뿌려주기용
-	public ArrayList<Books> raidoAllBooks()
+	public ArrayList<Books> raidoAllBooks(int first, int last)
 	{
+		ResultSet rs = null;
 		ArrayList<Books> list = new ArrayList<Books>();
 		try
 		{
 			conn = ConnectionManager.getConnnect();
-			String sql = "select title, book_no, book_img from books order by book_no desc";
+			String sql = "select a.* from ( select rownum rn, b.* from (  " +
+						  "select title, book_no, book_img from books order by book_no desc "
+						  +  ") b ) a where rn  between ? and ? ";
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, first);
+			pstmt.setInt(2, last);
 			rs = pstmt.executeQuery();
 			while (rs.next())
 			{
 				Books books = new Books();
-				books.setTitle(rs.getString(1));
-				books.setBook_no(rs.getString(2));
-				books.setBook_img(rs.getString(3));
+				books.setTitle(rs.getString("title"));
+				books.setBook_no(rs.getString("book_no"));
+				books.setBook_img(rs.getString("book_img"));
 				list.add(books);
-			}
+				
+			}System.out.println("전체리스트"+list);
 		} catch (Exception e)
 		{
 			e.printStackTrace();
@@ -515,6 +536,7 @@ public class EBookDAO
 	
 	public ArrayList<Map<String, Object>> genreCount(){
 		ArrayList<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+		ResultSet rs = null;
 		try {
 			conn = ConnectionManager.getConnnect();
 			String sql = "select genre, count(book_no) from books group by genre order by genre";
@@ -536,6 +558,7 @@ public class EBookDAO
 	
 	public int insertReview(Review review) {
 		int no = 0;
+		ResultSet rs = null;
 		try {
 			conn = ConnectionManager.getConnnect();
 			conn.setAutoCommit(false);
@@ -570,7 +593,7 @@ public class EBookDAO
 	//insert 하자마자 단건조회해와서 ajax로 뿌려주기
 	public Review selectReview(int seqno) {
 		Review review = new Review();
-		rs = null;
+		ResultSet rs = null;
 		try {
 			conn = ConnectionManager.getConnnect();
 			String sql ="select review_no, contents, review_date, member_no, book_no from review where review_no =? ";
@@ -593,13 +616,14 @@ public class EBookDAO
 	}
 	
 	//review 전체 뿌려주기용
-	public ArrayList<Review> selectAllReview(){
+	public ArrayList<Review> selectAllReview(String a){
 		ArrayList<Review> list = new ArrayList<Review>();
-		rs = null;
+		ResultSet rs = null;
 		try {
 			conn = ConnectionManager.getConnnect();
-			String sql = "select review_no, contents, review_date, member_no, book_no from review ";
+			String sql = "select review_no, contents, review_date, member_no, book_no from review where book_no=? order by review_no desc";
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, a);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				Review review = new Review();
@@ -617,6 +641,76 @@ public class EBookDAO
 		}
 		return list;
 	}
+	
+	//베스트셀러인거만 가져오기
+	public ArrayList<Books> selectBestBooks(){
+		ArrayList<Books> list = new ArrayList<Books>();
+		ResultSet rs = null;
+		try {
+			conn = ConnectionManager.getConnnect();
+			String sql = "select book_no, title, book_img from books where best_book='y' and rownum<6 order by book_no desc";
+			pstmt = conn.prepareStatement(sql);
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				Books books = new Books();
+				books.setBook_no(rs.getString(1));
+				books.setTitle(rs.getString(2));
+				books.setBook_img(rs.getString(3));
+				list.add(books);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionManager.close(rs, pstmt, conn);
+		}
+		return list;
+	}
+	
+	public int count(String a) {
+		int result = 0;
+		ResultSet rs = null;
+		
+		try{
+			conn = ConnectionManager.getConnnect();	
+			String sql = "select count(*) from books where genre = nvl(?,genre)";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, a);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				result = rs.getInt(1);				
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionManager.close(rs, pstmt, conn);
+		}
+		return result;
+	}
+	
+	
+	public int countReview() {
+		int result = 0;
+		ResultSet rs = null;
+		
+		try{
+			conn = ConnectionManager.getConnnect();	
+			String sql = "select count(*) from review";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				result = rs.getInt(1);				
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionManager.close(rs, pstmt, conn);
+		}
+		return result;
+	}
+	
+	
+	
+	
 	
 	
 

@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -59,23 +60,29 @@ $(function(){
 //	$('input[name=gen]').eq(0).attr("checked", true);
 	
 	
-	$(".pixel-radio").on("click",function(){
-		var gen = $("input[name='gen']:checked").val();
-		//location.href="${pageContext.request.contextPath}/eBookCategory.do?gen="+gen;
-		 $.ajax({
-			url: "${pageContext.request.contextPath}/Ajax/eBookCategoryAjax.do",
-			type: "GET",
-			data : {gen : gen},
-			success : function(data){ //연결성공
-				$("#row").html(data);
-			}//end of success
-		})
-	});//end of on & function
+
+	gopage(1); //시작하자마자 전체불러오기용
 	
+	$(".pixel-radio").on("click",function(){
+		gopage(1);
+	});//end of on & function
 	imgClick();
-	$(".pixel-radio").click();
+	
 });
 
+function gopage(p){
+	var gen = $("input[name='gen']:checked").val();
+	//location.href="${pageContext.request.contextPath}/eBookCategory.do?gen="+gen;
+	 $.ajax({
+		url: "${pageContext.request.contextPath}/Ajax/eBookCategoryAjax.do",
+		type: "GET",
+		data : {gen : gen, page : p},
+		success : function(data){ //연결성공
+			$("#row").html(data);
+		}
+
+	 })
+}
 
 
 function imgClick(book_no) {
@@ -85,6 +92,8 @@ function imgClick(book_no) {
 		}
 	}
 }
+
+
 
 </script>
 </head>
@@ -119,7 +128,42 @@ function imgClick(book_no) {
             <div class="top-filter-head"></div>
 		
           </div>
+          
+          	<section class="related-product-area">
+		<div class="container">
+			<div class="section-intro pb-60px">
+        <p>Best Seller</p>
+        <h3>Top <span class="section-intro__style">5</span></h3>
+      </div>
+			
+		</div>
+	</section>
+          <div class="row mt-30">
+        <div class="col-sm-6 col-xl-3 mb-4 mb-xl-0">
+          <div class="single-search-product-wrapper">
+          <c:forEach items="${bestBooks}" var="bestBook">
+            <div class="single-search-product d-flex">
+              <a href="#"></a>
+              <div class="desc">
+                  <a href="#" class="title">
+                  	<c:if test="${not empty bestBook.book_img}">
+						<td>
+							<img src="filenameDownload.do?filename=${bestBook.book_img}" style="width: 200px" onclick="imgClick(${bestBook.book_no})">
+						</td>
+					</c:if>
+				  </a>
+                  <div class="price">${bestBook.title}</div>
+              </div>
+            </div>
+          </c:forEach>
+          </div>
         </div>
+
+      </div>
+        </div>
+        
+        
+
         <div class="col-xl-9 col-lg-8 col-md-7">
           <!-- Start Filter Bar -->
           <div class="filter-bar d-flex flex-wrap align-items-center">
@@ -150,13 +194,13 @@ function imgClick(book_no) {
                 </form>
               </div>
             </div>
-          </div>
+            
+            
           <!-- End Filter Bar -->
           <!-- Start Best Seller -->
-          <section class="lattest-product-area pb-40 category-list">
-            <div class="row" id="row">
-         
-              
+          <section class="lattest-product-area pb-40 category-list" id="row">
+
+
               <%-- --  <div class="col-md-6 col-lg-4">
                 <div class="card text-center card-product">
                   <div class="card-product__img">
@@ -317,53 +361,18 @@ function imgClick(book_no) {
                   </div>
                 </div>
               </div> -->    --%>
-            </div>
-          
+       
+
           </section>
-         
+                    </div>
           <!-- End Best Seller -->
         </div>
       </div>
-    </div>
   </section>
+  
 	<!-- ================ category section end ================= -->		  
 
 	<!-- ================베스트 셀러! ================= -->	
-	<section class="related-product-area">
-		<div class="container">
-			<div class="section-intro pb-60px">
-        <p>베스트 셀러</p>
-        <h2>Top <span class="section-intro__style">Product</span></h2>
-      </div>
-			<div class="row mt-30">
-        <div class="col-sm-6 col-xl-3 mb-4 mb-xl-0">
-          <div class="single-search-product-wrapper">
-            <div class="single-search-product d-flex">
-              <a href="#"><img src="" alt=""></a>
-              <div class="desc">
-                  <a href="#" class="title">Gray Coffee Cup</a>
-                  <div class="price">$170.00</div>
-              </div>
-            </div>
-            <div class="single-search-product d-flex">
-              <a href="#"><img src="" alt=""></a>
-              <div class="desc">
-                <a href="#" class="title">Gray Coffee Cup</a>
-                <div class="price">$170.00</div>
-              </div>
-            </div>
-            <div class="single-search-product d-flex">
-              <a href="#"><img src="" alt=""></a>
-              <div class="desc">
-                <a href="#" class="title">Gray Coffee Cup</a>
-                <div class="price">$170.00</div>
-              </div>
-            </div>
-          </div>
-        </div>
 
-      </div>
-		</div>
-	</section>
 </body>
 </html>
