@@ -21,7 +21,7 @@
 		WHERE MEMBER_ID IS NOT NULL
 	</select>
 
-<!-- 전체조회 -->
+<!-- 한 건 조회 -->
 	<select id="selectOne" parameterType="membermanage"
 		resultType="membermanage">
 		SELECT
@@ -37,6 +37,7 @@
 		FROM MEMBER
 		WHERE MEMBER_NO = #{member_no}
 	</select>
+	<!-- 수정 -->
 	<update id="update" parameterType="membermanage">
 		UPDATE
 		MEMBER SET
@@ -46,6 +47,18 @@
 		MEMBER_TEL = #{member_tel}
 		WHERE MEMBER_ID = #{member_id}
 	</update>
+<!-- 삭제 -->
+<delete id="delete">
 
+update member set member_id = null, 
+					member_pw = null, 
+					nickname = null, 
+					member_tel = null,
+					member_email = null, 
+					signup_date = null, 
+					last_access_date = null, 
+					gender = null
+where member_no = #{member_no}
+</delete>
 
 </mapper>

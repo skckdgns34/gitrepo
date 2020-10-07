@@ -26,8 +26,8 @@ public class MemberManageController {
 	//수정 페이지
 	@RequestMapping(value="/memberManageModifyForm.ad",method = RequestMethod.GET)
 	public String memberManageInsertForm(Member memberVO, Model model, HttpServletRequest request) {
-		String no = request.getParameter("member_no");
-		memberVO.setMember_no(no);
+		String member_no = request.getParameter("member_no");
+		memberVO.setMember_no(member_no);
 		model.addAttribute("member", memberManageService.selectOne(memberVO));
 		return "memberManage/memberManageModify";
 	}
@@ -36,6 +36,14 @@ public class MemberManageController {
 	public String memberManageInsert(Member memberVO, Model model) {
 		memberManageService.update(memberVO);
 		return "redirect:/memberManageMain.ad";
+	}
+	
+	@RequestMapping(value="/memberManageDelete.ad", method = RequestMethod.POST)
+	public String memberManageDelete(Member memberVO, HttpServletRequest request ) {
+		String member_no = request.getParameter("member_no");
+	//	memberVO.
+		memberManageService.delete(memberVO);
+		return "redirect:/memberManageMain.ad"; 
 	}
 	
 	

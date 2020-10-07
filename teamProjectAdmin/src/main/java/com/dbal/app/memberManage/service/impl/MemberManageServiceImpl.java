@@ -27,7 +27,7 @@ public class MemberManageServiceImpl implements MemberManageService{
 
 	@Override
 	public void delete(Member memberVO) {
-		
+	  memberManageDAO.delete(memberVO);
 	}
 
 	@Override

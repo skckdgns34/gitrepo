@@ -31,7 +31,7 @@
 
 	function deletepage() //삭제
 	{
-		window.document.location.href = "memberManageDelete.ad?no= "
+		window.document.location.href = "memberManageDelete.ad?member_no= "
 				+ $('input[name="user_CheckBox"]:checked').val();
 		return;
 	}
