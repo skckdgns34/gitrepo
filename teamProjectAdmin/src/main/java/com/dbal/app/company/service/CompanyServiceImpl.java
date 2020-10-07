@@ -7,11 +7,13 @@ import org.springframework.stereotype.Service;
 
 import com.dbal.app.company.Company;
 import com.dbal.app.company.mapper.CompanyDAO;
+import com.dbal.app.purchase.Purchase;
 
 @Service
 public class CompanyServiceImpl implements CompanyService {
 	@Autowired
 	CompanyDAO companyDAO;
+
 	@Override
 	public void insert(Company company) {
 		companyDAO.insert(company);
@@ -37,4 +39,5 @@ public class CompanyServiceImpl implements CompanyService {
 	public void update(Company company) {
 		companyDAO.update(company);
 	}
+
 }

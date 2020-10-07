@@ -25,7 +25,7 @@ public class CompanyController  {
     }
     
     //출판사 등록페이지 이동
-    @RequestMapping(value = "/companyRegister.ad", method = RequestMethod.GET)
+    @RequestMapping(value = "/companyManage.ad", method = RequestMethod.GET)
     public String companyRegisterForm() {
     	return "company/companyRegister";
     }
@@ -46,9 +46,17 @@ public class CompanyController  {
     	return "company/companyModify";
     }
     
+    //출판사 수정
     @RequestMapping(value = "/companyPop.ad", method = RequestMethod.POST)
     public String companyPop(Company company) {
     	companyService.update(company);
+    	return "redirect:/companyMain.ad";
+    }
+    
+    //출판사 삭제
+    @RequestMapping("/companyDelete.ad")
+    public String delete(Company company) {
+    	companyService.delete(company);
     	return "redirect:/companyMain.ad";
     }
 }

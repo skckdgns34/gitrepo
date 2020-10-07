@@ -25,8 +25,9 @@ public class EmpServiceImpl implements EmpService {
 	}
 
 	@Override
-	public Employees Insert(Employees employees) {
-		return empDAO.Insert(employees);
+	public void Insert(Employees employees) {
+		empDAO.updateNo();
+		empDAO.Insert(employees);
 	}
 
 	@Override
@@ -35,8 +36,8 @@ public class EmpServiceImpl implements EmpService {
 	}
 
 	@Override
-	public int Delete(Employees emp) {
-		return 0;
+	public void Delete(Employees emp) {
+		
 	}
 
 	@Override
