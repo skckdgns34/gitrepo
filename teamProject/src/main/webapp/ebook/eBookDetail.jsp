@@ -16,9 +16,9 @@ $(function(){
 	btnHideNShow();
 	btnScore();
 	
-	$("#btnreview").on("click", function(){
+	//리뷰작성하면 바로 리뷰리스트에 맨위에다가 붙이기
+	/*$("#btnreview").on("click", function(){
 		var review = $("#reviewArea").val();
-		
 		$.ajax({
 			url : "${pageContext.request.contextPath}/Ajax/eBookReview.do",
 			type: "POST",
@@ -29,13 +29,15 @@ $(function(){
 				book_no : "${book[0].book_no}"
 			},
 			success: function(result){
-				alert("성공스~");
-				console.log(result);
-				console.log(result.contents);
 				$("#reviewField").prepend(result);
 			}
 		})
-	})
+	})*/
+	
+	
+	
+	
+	
 });
 
 
@@ -49,8 +51,14 @@ function btnHideNShow(){
 	}
 }
 
+
+
 function goRead(){ //읽기버튼이 생성되면 읽는페이지로 이동
 	location.href="${pageContext.request.contextPath}/eBookReading.do";
+}
+
+function reviewLogin(){ //하트 추천기능  로그인안하고 누를려고 하면 로그인 표시 보여주는거
+	location.href="${pageContext.request.contextPath}/memberLogin.do";
 }
 
 var check = "${check}"
@@ -119,7 +127,7 @@ function btnScore(){ // 추천버튼 클릭시(추천 추가 또는 추천 제�
 						<div class="product_count">
          					<a class="button primary-btn" href="#" id="read" onclick="goRead()">읽기</a>
          					<a class="button primary-btn" href="#" id="check" onclick="licence()">결재</a> 
-
+						</div>
          					
          					
          					              
@@ -130,8 +138,10 @@ function btnScore(){ // 추천버튼 클릭시(추천 추가 또는 추천 제�
 						
 						<div class="card_area d-flex align-items-center">
 							<c:if test="${ member_no == null }">
-								추천 기능은 <button type="button" id="newLogin"><b class="w3-text-blue">로그인</b></button> 후 사용 가능합니다.<br />
-								<i class="fa fa-heart" style="font-size:16px;color:red " ></i>
+								추천 기능은 <button type="button" id="newLogin" >
+								<b class="w3-text-blue" onclick="reviewLogin()">로그인</b></button> 후 사용 가능합니다.
+
+								<i class="fa fa-heart" style="font-size:16px;color:red"></i>
 								<span class="rec_count"></span>					
 							</c:if>
 							<c:if test="${ member_no != null }">
@@ -149,7 +159,7 @@ function btnScore(){ // 추천버튼 클릭시(추천 추가 또는 추천 제�
 								</c:if>
 							</c:if>			
 						</div>
-						</div>
+						
 					</div>
 				</div>
 			</div>
@@ -338,14 +348,14 @@ function btnScore(){ // 추천버튼 클릭시(추천 추가 또는 추천 제�
 					<div class="row">
 						<div class="col-lg-6">
 							<div class="row total_rate">
-								<div class="col-6">
+								<%-- <div class="col-6">
 									<div class="box_total">
 										<h5>Overall</h5>
 										<h4>4.0</h4>
 										<h6>(03 Reviews)</h6>
 									</div>
-								</div>
-								<div class="col-6">
+								</div>--%>
+								<%-- <div class="col-6">
 									<div class="rating_list">
 										<h3>Based on 3 Reviews</h3>
 										<ul class="list">
@@ -361,7 +371,7 @@ function btnScore(){ // 추천버튼 클릭시(추천 추가 또는 추천 제�
 													 class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
 										</ul>
 									</div>
-								</div>
+								</div>--%>
 							</div>
 							<div class="review_list" id="reviewField">
 								<c:forEach items="${review}" var="reviews">
@@ -371,7 +381,7 @@ function btnScore(){ // 추천버튼 클릭시(추천 추가 또는 추천 제�
 										<%--	<img src="img/product/review-1.png" alt="">--%>
 										</div>
 										<div class="media-body">
-											<h4>${reviews.member_no}</h4>
+											<h4>${member_nickname}</h4>
 										</div>
 											<p>${reviews.review_date}</p>
 									</div>
@@ -382,7 +392,7 @@ function btnScore(){ // 추천버튼 클릭시(추천 추가 또는 추천 제�
 						</div>
 						<div class="col-lg-6">
 							<div class="review_box">
-								<h4>Add a Review</h4>
+								<%-- <h4>Add a Review</h4>
 								<p>Your Rating:</p>
 								<ul class="list">
 									<li><a href="#"><i class="fa fa-star"></i></a></li>
@@ -391,20 +401,30 @@ function btnScore(){ // 추천버튼 클릭시(추천 추가 또는 추천 제�
 									<li><a href="#"><i class="fa fa-star"></i></a></li>
 									<li><a href="#"><i class="fa fa-star"></i></a></li>
 								</ul>
-								<p>Outstanding</p>
+								<p>Outstanding</p>--%>
 								
 								<!-- 리뷰쓰고 액션 -->
                		
                    <div class="form-group">
                     <input class="form-control" name="name" type="text" readonly="readonly" placeholder="${member_nickname}" required>
                   </div>
-                  <div class="form-group">
-                    <textarea class="form-control different-control w-100" name="textarea"  cols="30" rows="5" placeholder="리뷰 내용 입력" id="reviewArea"></textarea>
-                  </div>
-                  <div class="form-group text-center text-md-right mt-3">
+                  
+                  
+                  
+                  <c:if test ="${member_no == null }">
+                  	<div class="form-group">
+                    	<textarea class="form-control different-control w-100" name="textarea" readonly="readonly"  cols="30" rows="5" placeholder="리뷰는 로그인 후 사용 가능 합니다." id=""></textarea>
+                  	</div>
+                  </c:if>
+                  <c:if test="${member_no != null}">
+                  	<div class="form-group">
+	                    <textarea class="form-control different-control w-100" name="textarea"  cols="30" rows="5" placeholder="리뷰 내용 입력" id="reviewArea"></textarea>
+    	              </div>
+    	              <div class="form-group text-center text-md-right mt-3">
                     <button type="submit" class="button button--active button-review" id="btnreview">Submit Now</button>
                   </div>
-               
+                  </c:if>
+
 							</div>
 						</div>
 					</div>

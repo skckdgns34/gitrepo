@@ -187,6 +187,8 @@ public class FrontController extends HttpServlet {
 		list.put("/Ajax/audioBookReview.do", new ebook.AudioBookReviewAjaxServ());
 
 		list.put("/audioBookDetail.do", new ebook.AudioBookDetail());
+		
+		list.put("/eBookReview.do", new ebook.EBookReviewServ());
 
 	}
 

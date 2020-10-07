@@ -31,6 +31,7 @@ public class EBookReviewAjaxServ implements Controller {
 		review = new Review();
 		review = EBookDAO.getInstance().selectReview(seqno);
 		
+		
 		request.setAttribute("nickname", nickname);
 		request.setAttribute("review", review);
 		request.getRequestDispatcher("/ebook/eBookReview.jsp").forward(request, response);
