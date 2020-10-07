@@ -7,7 +7,9 @@ import java.util.ArrayList;
 
 import common.ConnectionManager;
 import vo.Books;
+import vo.License;
 import vo.Mywriting;
+import vo.TicketVO;
 
 public class MemberBookDAO {	//내서재 등 관련
 	// 전역변수. 모든 메서드에 공통으로 사용되는 변수
@@ -61,7 +63,7 @@ public class MemberBookDAO {	//내서재 등 관련
 		return list;
 	}
 	
-	// 찜목록
+	// 나만의 도서 목록
 	public ArrayList<Mywriting> Myselect(Mywriting mywritingVO) {
 		Mywriting resultVo = null;
 		ResultSet rs = null;
@@ -93,7 +95,7 @@ public class MemberBookDAO {	//내서재 등 관련
 		return list;
 	}
 	
-	//찜 내역
+	//찜 목록
 	public ArrayList<Books> ticketList(Books booksVO) {
 		Books resultVo = null;
 		ResultSet rs = null;
@@ -118,6 +120,43 @@ public class MemberBookDAO {	//내서재 등 관련
 				list.add(resultVo);
 				System.out.println(rs.getString("rownum"));
 				System.out.println(rs.getString("title"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionManager.close(rs, pstmt, conn);
+		}
+		return list;
+	}
+	
+	//이용권 내역
+	public ArrayList<License> LicenseList(License license) {
+		License resultVo = null;
+		ResultSet rs = null;
+		ArrayList<License> list = new ArrayList<License>();
+		try {
+			conn = ConnectionManager.getConnnect();
+			String sql = " SELECT rownum, m.member_no, t.ticket_code, t.ticket_name, t.price, p.pay_date, p.pay_date +  t.ticket_date,"
+					+ " case when sysdate <  p.pay_date +  t.ticket_date then '이용중' else '기간만료' end US"
+					+ " FROM member m, ticket t, pay p"
+					+ " WHERE t.ticket_code = p.ticket_code"
+					+ " AND m.member_no = p.member_no"
+					+ " AND m.member_no = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, license.getMember_no());
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				resultVo = new License();
+				resultVo.setMember_no(rs.getString("member_no"));
+				resultVo.setTicket_code(rs.getString("ticket_code"));
+				resultVo.setTicket_name(rs.getString("ticket_name"));
+				resultVo.setPrice(rs.getString("price"));
+				resultVo.setPay_date(rs.getString("pay_date"));
+				resultVo.setTicket_date(rs.getString("ticket_date"));
+				list.add(resultVo);
+				System.out.println(rs.getString("rownum"));
+				System.out.println(rs.getString("ticket_name"));
+				System.out.println(rs.getString("US"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
