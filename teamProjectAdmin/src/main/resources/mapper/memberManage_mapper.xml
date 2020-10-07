@@ -48,7 +48,7 @@
 		WHERE MEMBER_ID = #{member_id}
 	</update>
 <!-- 삭제 -->
-<delete id="delete">
+<update id="delete">
 
 update member set member_id = null, 
 					member_pw = null, 
@@ -59,7 +59,7 @@ update member set member_id = null,
 					last_access_date = null, 
 					gender = null
 where member_no = #{member_no}
-</delete>
+</update>
 
 <!--최다 조회수  -->
 <select id="selectViews"  resultType="books">

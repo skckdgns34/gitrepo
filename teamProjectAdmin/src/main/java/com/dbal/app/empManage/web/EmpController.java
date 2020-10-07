@@ -1,5 +1,7 @@
 package com.dbal.app.empManage.web;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
+
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
@@ -96,7 +98,33 @@ public class EmpController  {
     }
     
     
+    //수정 페이지
+    @RequestMapping(value="/empManageModifyForm.ad",method = RequestMethod.GET)
+    	public String empManageUpdateForm(Model model, Employees employees, HttpServletRequest request) {
+    	Employees employee = empService.selectOne(employees);
+    	String[] adr = employee.getEmp_address().split(",");
+    	
+    	model.addAttribute("employees",employee);
+		model.addAttribute("adr", adr);		
+		
+    	return"empManage/empManageModify";
+    }
     
+    //수정 처리
+    @RequestMapping(value="/employeesModify.ad", method = RequestMethod.POST)
+    public String empManageUpdate(Employees employees) {
+    	empService.Update(employees);
+    	return "redirect:/empManageMain.ad";
+    }
+    
+ //삭제
+    @RequestMapping(value="/employeesDelete.ad", method = RequestMethod.GET)
+    public String EmpManageDelete(Employees employees, HttpServletRequest request) {
+    	String emp_no = request.getParameter("emp_no");
+    	employees.setEmp_no(emp_no);
+    	empService.Delete(employees);
+    	return "redirect:/empManageList.ad";
+    }
 }
 
 

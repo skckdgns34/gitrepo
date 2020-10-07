@@ -24,7 +24,7 @@ function check(ck) {
 function modifypage()
 {
 	
-	window.document.location.href="empManageModifyForm.ad?no="+ $('input[name="user_CheckBox"]:checked').val();return;
+	window.document.location.href="empManageModifyForm.ad?emp_no="+ $('input[name="user_CheckBox"]:checked').val();return;
 }
 function addpage()
 {
@@ -34,8 +34,7 @@ return;
 
 function deletepage()
 {
-window.document.location.href="/삭제 경로";
-return;
+window.document.location.href="employeesDelete.ad?emp_no="+ $('input[name="user_CheckBox"]:checked').val();return;
 }
 
 </script>
