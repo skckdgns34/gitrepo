@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 import common.ConnectionManager;
+import vo.Books;
 import vo.Mywriting;
 
 public class MemberBookDAO {	//내서재 등 관련
@@ -22,7 +23,7 @@ public class MemberBookDAO {	//내서재 등 관련
 		return instance;
 	}
 
-	// 전체조회
+	// 전체조회 (필요한 부분만 뽑아쓰기)
 	public ArrayList<Mywriting> selectAll(Mywriting mywritingVO) {
 		Mywriting resultVo = null;
 		ResultSet rs = null;
@@ -83,6 +84,40 @@ public class MemberBookDAO {	//내서재 등 관련
 				list.add(resultVo);
 				System.out.println(rs.getString("MEMBER_NO"));
 				System.out.println(rs.getString("MY_TITLE"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionManager.close(rs, pstmt, conn);
+		}
+		return list;
+	}
+	
+	//찜 내역
+	public ArrayList<Books> ticketList(Books booksVO) {
+		Books resultVo = null;
+		ResultSet rs = null;
+		ArrayList<Books> list = new ArrayList<Books>();
+		try {
+			conn = ConnectionManager.getConnnect();
+			String sql = " SELECT rownum, m.member_no, b.title, b.writer, b.genre, b.views, l.wish"
+					+ " FROM member m, books b, mylibrary l"
+					+ " WHERE b.book_no = l.book_no"
+					+ " AND m.member_no = l.member_no"
+					+ " AND wish = '찜'"
+					+ " AND m.member_no = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, booksVO.getMember_no());
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				resultVo = new Books();
+				resultVo.setTitle(rs.getString("title"));
+				resultVo.setWriter(rs.getString("writer"));
+				resultVo.setGenre(rs.getString("genre"));
+				resultVo.setViews(rs.getString("views"));
+				list.add(resultVo);
+				System.out.println(rs.getString("rownum"));
+				System.out.println(rs.getString("title"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

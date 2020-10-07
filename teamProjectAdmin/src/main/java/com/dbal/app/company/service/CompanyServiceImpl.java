@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.dbal.app.company.Company;
 import com.dbal.app.company.mapper.CompanyDAO;
-import com.dbal.app.purchase.Purchase;
+import com.dbal.app.moneyManage.Purchase;
 
 @Service
 public class CompanyServiceImpl implements CompanyService {

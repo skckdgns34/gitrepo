@@ -1,12 +1,12 @@
-package com.dbal.app.purchase.web;
+package com.dbal.app.moneyManage.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.dbal.app.purchase.Purchase;
-import com.dbal.app.purchase.service.PurchaseService;
+import com.dbal.app.moneyManage.Purchase;
+import com.dbal.app.moneyManage.service.PurchaseService;
 
 @Controller
 public class PurchaseController  {
