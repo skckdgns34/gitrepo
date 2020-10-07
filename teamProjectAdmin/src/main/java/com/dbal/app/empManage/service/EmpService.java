@@ -9,9 +9,9 @@ public interface EmpService {
 
 	public Employees selectOne(Employees Employees);
 	public List<Employees> selectAll(Employees employeesVO);
-	public Employees Insert(Employees employees);
+	public void Insert(Employees employees);
 	public void Update(Employees emp);
-	public int Delete(Employees emp);
+	public void Delete(Employees emp);
 	public Employees loginCk(Employees employees);
 
 }
