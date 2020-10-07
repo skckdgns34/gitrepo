@@ -5,7 +5,8 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="com.dbal.app.emp.EmpVO" alias="emp"/> 
-				<typeAlias type="com.dbal.app.memberManage.Notice" alias="notice"/> 
+				<typeAlias type="com.dbal.app.memberManage.Notice" alias="notice"/>
+				<typeAlias type="com.dbal.app.books.Books" alias="books"/>  
 	</typeAliases>
 
 </configuration>

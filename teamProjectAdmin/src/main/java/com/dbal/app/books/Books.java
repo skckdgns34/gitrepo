@@ -1,4 +1,4 @@
-package com.books;
+package com.dbal.app.books;
 
 import lombok.Data;
 

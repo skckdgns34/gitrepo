@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.books.mapper.BooksDAO">
+<mapper namespace="com.dbal.app.books.mapper.BooksDAO">
 	<select id="selectAll" parameterType="books" resultType="books">
 		SELECT
 			b.book_no,
 			b.title,
 			b.writer,
 			b.publication_date,
-			b.best_book
+			b.best_book,
 			b.registration_date,
 			c.code_value,
 			p.company_name
@@ -31,18 +33,18 @@
 			summary,
 			best_book,
 			genre,
-			registration_date,
+			registration_date
 		FROM
 			books
 		WHERE
-			book_id = #{bookId}
+			book_no = #{book_no}
 	</select>
 
 	<delete id="delete" parameterType="books">
 		DELETE
 			books
 		WHERE
-			book_no = #{bookNo}
+			book_no = #{book_no}
 	</delete>
 
 	<update id="update" parameterType="books">
@@ -50,31 +52,34 @@
 			books
 		SET
 			title = #{title},
-			book_img = #{bookImg},
+			book_img = #{book_img},
 			writer = #{writer},
-			publication_date = #{publicationDate},
-			company_code = #{companyCode},
+			publication_date = #{publication_date},
+			company_code = #{company_code},
 			introduction = #{introduction},
 			summary = #{summary},
-			best_book = #{bestBook},
+			best_book = #{best_book},
 			genre = #{genre},
-			registration_date = #{sysdate}
+			registration_date = sysdate
 		WHERE
-			book_no = #{bookNo}
+			book_no = #{book_no}
 	</update>
 
-	<update id="updateNo">
+
+
+
+	<update id="updateBookNo">
 		UPDATE
 			seq set no = no + 1
 		WHERE
 			tablename = 'books'
 	</update>
-
+	
 	<insert id="insert" parameterType="books">
-		<selectKey keyProperty="no" resultType="int" order="BEFORE">
+		<selectKey keyProperty="book_no" resultType="string" order="BEFORE">
 			SELECT NO
 			FROM SEQ
-			WHERE TABLE_NAME='books'
+			WHERE TABLENAME='books'
 		</selectKey>
 		INSERT INTO BOOKS(book_no,
 							title,
@@ -82,6 +87,37 @@
 							writer,
 							publication_date,
 							epub_path,
+							company_code,
+							introduction,
+							summary,
+							genre,
+							best_book,
+							registration_date)
+		VALUES(#{book_no},
+				#{title},
+				#{book_img},
+				#{writer},
+				#{publication_date},
+				#{epub_path},
+				#{company_code},
+				#{introduction},
+				#{summary},
+				#{genre},
+				#{best_book},
+				SYSDATE)
+	</insert>
+	
+	<insert id="insertAudio" parameterType="books">
+		<selectKey keyProperty="book_no" resultType="string" order="BEFORE">
+			SELECT NO
+			FROM SEQ
+			WHERE TABLENAME='books'
+		</selectKey>
+		INSERT INTO BOOKS(book_no,
+							title,
+							book_img,
+							writer,
+							publication_date,
 							audio_path,
 							company_code,
 							introduction,
@@ -89,40 +125,42 @@
 							genre,
 							best_book,
 							registration_date)
-		VALUES(#{bookNo},
+		VALUES(#{book_no},
 				#{title},
-				#{bookImg},
+				#{book_img},
 				#{writer},
-				#{publicationDate},
-				#{epubPath},
-				#{audioPath},
-				#{companyCode},
+				#{publication_date},
+				#{audio_path},
+				#{company_code},
 				#{introduction},
 				#{summary},
 				#{genre},
-				#{bestBook},
-				#{SYSDATE})
+				#{best_book},
+				SYSDATE)
 	</insert>
+	
+	
+	
 
-	<update id="updateNo">
+	<update id="updatePurNo">
 		UPDATE
 		seq set no = no + 1
 		WHERE
 		tablename = 'purchase'
 	</update>
 	<insert id="insertpur" parameterType="books">
-		<selectKey keyProperty="no" resultType="int" order="BEFORE">
+		<selectKey keyProperty="purchase_no" resultType="string" order="BEFORE">
 			SELECT NO
 			FROM SEQ
-			WHERE TABLE_NAME='purchase'
+			WHERE TABLENAME='purchase'
 		</selectKey>
 		INSERT INTO PURCHASE
-		VALUES (#{purchaseNo},
-				#{purchasePrice},
-				#{purchaseDate},
-				#{purchaseContent},
-				#{empNo},
-				#{bookNo})
+		VALUES (#{purchase_no},
+				#{purchase_price},
+				#{purchase_date},
+				#{purchase_content},
+				1,
+				#{book_no})
 	</insert>
 
 </mapper>
