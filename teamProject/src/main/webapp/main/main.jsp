@@ -116,7 +116,9 @@ margin-left: 45px;
          <div class="card text-center card-product">
             <div class="card-product__img">
 
-              <img class="img-fluid" src="filenameDownload.do?filename=${book.book_img}"  alt="">
+			<c:if test="${not empty book.book_img }">
+				 <img class="img-fluid" src="filenameDownload.do?filename=${book.book_img}" alt="">
+			</c:if>              
               <ul class="card-product__imgOverlay">
                 <li><button><i class="ti-search"></i></button></li>
                 <li><button><i class="ti-shopping-cart"></i></button></li>
@@ -152,10 +154,17 @@ margin-left: 45px;
           <h2><span class="section-intro__style">시/에세이</span></h2>
         </div>
         <div class="owl-carousel owl-theme" id="d2Carousel">
-          <div class="card text-center card-product">
-            
+          
+		<c:forEach items="${bookList }" var="book">
+    		<c:if test="${book.genre=='d2' }">
+    		
+
+         <div class="card text-center card-product">
             <div class="card-product__img">
-              <img class="img-fluid" src="<%=request.getContextPath()%>/mainresource/img/r11.jpg"  alt="">
+
+			<c:if test="${not empty book.book_img }">
+				 <img class="img-fluid" src="filenameDownload.do?filename=${book.book_img}" alt="">
+			</c:if>              
               <ul class="card-product__imgOverlay">
                 <li><button><i class="ti-search"></i></button></li>
                 <li><button><i class="ti-shopping-cart"></i></button></li>
@@ -163,11 +172,16 @@ margin-left: 45px;
               </ul>
             </div>
             <div class="card-body">
-              <p>Accessories</p>
-              <h4 class="card-product__title"><a href="single-product.html">Quartz Belt Watch</a></h4>
-              <p class="card-product__price">$150.00</p>
+              <p>
+              	<c:if test="${not empty book.epub_path }">전자 책</c:if>
+              	<c:if test="${empty book.epub_path }">오디오 북</c:if>
+              </p>
+              <h4 class="card-product__title"><a href="single-product.html">${book.title }</a></h4>
+              <p class="card-product__price">${book.writer }</p>
             </div>
           </div>
+    	</c:if>
+    </c:forEach>      
         </div>
       </div>
     </section>
@@ -180,10 +194,16 @@ margin-left: 45px;
           <h2><span class="section-intro__style">무협/판타지</span></h2>
         </div>
         <div class="owl-carousel owl-theme" id="d3Carousel">
-          <div class="card text-center card-product">
-            
+       <c:forEach items="${bookList }" var="book">
+    		<c:if test="${book.genre=='d3' }">
+    		
+
+         <div class="card text-center card-product">
             <div class="card-product__img">
-              <img class="img-fluid" src="<%=request.getContextPath()%>/mainresource/img/r3.jpg"  alt="">
+
+			<c:if test="${not empty book.book_img }">
+				 <img class="img-fluid" src="filenameDownload.do?filename=${book.book_img}" alt="">
+			</c:if>              
               <ul class="card-product__imgOverlay">
                 <li><button><i class="ti-search"></i></button></li>
                 <li><button><i class="ti-shopping-cart"></i></button></li>
@@ -191,11 +211,16 @@ margin-left: 45px;
               </ul>
             </div>
             <div class="card-body">
-              <p>Accessories</p>
-              <h4 class="card-product__title"><a href="single-product.html">Quartz Belt Watch</a></h4>
-              <p class="card-product__price">$150.00</p>
+              <p>
+              	<c:if test="${not empty book.epub_path }">전자 책</c:if>
+              	<c:if test="${empty book.epub_path }">오디오 북</c:if>
+              </p>
+              <h4 class="card-product__title"><a href="single-product.html">${book.title }</a></h4>
+              <p class="card-product__price">${book.writer }</p>
             </div>
           </div>
+    	</c:if>
+    </c:forEach>      
         </div>
       </div>
     </section>
@@ -208,10 +233,16 @@ margin-left: 45px;
           <h2><span class="section-intro__style">인문</span></h2>
         </div>
         <div class="owl-carousel owl-theme" id="d4Carousel">
-          <div class="card text-center card-product">
-            
+         <c:forEach items="${bookList }" var="book">
+    		<c:if test="${book.genre=='d4' }">
+    		
+
+         <div class="card text-center card-product">
             <div class="card-product__img">
-              <img class="img-fluid" src="<%=request.getContextPath()%>/mainresource/img/r2.jpg"  alt="">
+
+			<c:if test="${not empty book.book_img }">
+				 <img class="img-fluid" src="filenameDownload.do?filename=${book.book_img}" alt="">
+			</c:if>              
               <ul class="card-product__imgOverlay">
                 <li><button><i class="ti-search"></i></button></li>
                 <li><button><i class="ti-shopping-cart"></i></button></li>
@@ -219,11 +250,16 @@ margin-left: 45px;
               </ul>
             </div>
             <div class="card-body">
-              <p>Accessories</p>
-              <h4 class="card-product__title"><a href="single-product.html">Quartz Belt Watch</a></h4>
-              <p class="card-product__price">$150.00</p>
+              <p>
+              	<c:if test="${not empty book.epub_path }">전자 책</c:if>
+              	<c:if test="${empty book.epub_path }">오디오 북</c:if>
+              </p>
+              <h4 class="card-product__title"><a href="single-product.html">${book.title }</a></h4>
+              <p class="card-product__price">${book.writer }</p>
             </div>
           </div>
+    	</c:if>
+    </c:forEach>      
         </div>
       </div>
     </section>
@@ -236,10 +272,16 @@ margin-left: 45px;
           <h2><span class="section-intro__style">로맨스</span></h2>
         </div>
         <div class="owl-carousel owl-theme" id="d5Carousel">
-          <div class="card text-center card-product">
-            
+          <c:forEach items="${bookList }" var="book">
+    		<c:if test="${book.genre=='d5' }">
+    		
+
+         <div class="card text-center card-product">
             <div class="card-product__img">
-              <img class="img-fluid" src="<%=request.getContextPath()%>/mainresource/img/r5.jpg"  alt="">
+
+			<c:if test="${not empty book.book_img }">
+				 <img class="img-fluid" src="filenameDownload.do?filename=${book.book_img}" alt="">
+			</c:if>              
               <ul class="card-product__imgOverlay">
                 <li><button><i class="ti-search"></i></button></li>
                 <li><button><i class="ti-shopping-cart"></i></button></li>
@@ -247,11 +289,16 @@ margin-left: 45px;
               </ul>
             </div>
             <div class="card-body">
-              <p>Accessories</p>
-              <h4 class="card-product__title"><a href="single-product.html">Quartz Belt Watch</a></h4>
-              <p class="card-product__price">$150.00</p>
+              <p>
+              	<c:if test="${not empty book.epub_path }">전자 책</c:if>
+              	<c:if test="${empty book.epub_path }">오디오 북</c:if>
+              </p>
+              <h4 class="card-product__title"><a href="single-product.html">${book.title }</a></h4>
+              <p class="card-product__price">${book.writer }</p>
             </div>
           </div>
+    	</c:if>
+    </c:forEach>      
         </div>
       </div>
     </section>
@@ -264,26 +311,36 @@ margin-left: 45px;
           <h2><span class="section-intro__style">자기계발</span></h2>
         </div>
         <div class="owl-carousel owl-theme" id="d6Carousel">
-          <div class="card text-center card-product">
-            
+         <c:forEach items="${bookList }" var="book">
+    		<c:if test="${book.genre=='d6' }">
+    		
+
+         <div class="card text-center card-product">
             <div class="card-product__img">
-              <img class="img-fluid" src="<%=request.getContextPath()%>/mainresource/img/r6.jpg"  alt="">
-              <ul class="card-product__imgOverlay">
+
+			<c:if test="${not empty book.book_img }">
+				 <img class="img-fluid" src="filenameDownload.do?filename=${book.book_img}" alt="">
+			</c:if>              
+			<ul class="card-product__imgOverlay">
                 <li><button><i class="ti-search"></i></button></li>
                 <li><button><i class="ti-shopping-cart"></i></button></li>
                 <li><button><i class="ti-heart"></i></button></li>
               </ul>
             </div>
             <div class="card-body">
-              <p>Accessories</p>
-              <h4 class="card-product__title"><a href="single-product.html">Quartz Belt Watch</a></h4>
-              <p class="card-product__price">$150.00</p>
+              <p>
+              	<c:if test="${not empty book.epub_path }">전자 책</c:if>
+              	<c:if test="${empty book.epub_path }">오디오 북</c:if>
+              </p>
+              <h4 class="card-product__title"><a href="single-product.html">${book.title }</a></h4>
+              <p class="card-product__price">${book.writer }</p>
             </div>
           </div>
+    	</c:if>
+    </c:forEach>      
         </div>
       </div>
     </section>
-    
     
         <!-- ================ 경제/경영  item  carousel ================= --> 
      <section class="section-margin calc-60px">
@@ -293,10 +350,16 @@ margin-left: 45px;
           <h2><span class="section-intro__style">경제/경영</span></h2>
         </div>
         <div class="owl-carousel owl-theme" id="d7Carousel">
-          <div class="card text-center card-product">
-            
+         <c:forEach items="${bookList }" var="book">
+    		<c:if test="${book.genre=='d7' }">
+    		
+
+         <div class="card text-center card-product">
             <div class="card-product__img">
-              <img class="img-fluid" src="<%=request.getContextPath()%>/mainresource/img/r7.jpg"  alt="">
+			<c:if test="${not empty book.book_img }">
+				 <img class="img-fluid" src="filenameDownload.do?filename=${book.book_img}" alt="">
+			</c:if>
+             
               <ul class="card-product__imgOverlay">
                 <li><button><i class="ti-search"></i></button></li>
                 <li><button><i class="ti-shopping-cart"></i></button></li>
@@ -304,11 +367,16 @@ margin-left: 45px;
               </ul>
             </div>
             <div class="card-body">
-              <p>Accessories</p>
-              <h4 class="card-product__title"><a href="single-product.html">Quartz Belt Watch</a></h4>
-              <p class="card-product__price">$150.00</p>
+              <p>
+              	<c:if test="${not empty book.epub_path }">전자 책</c:if>
+              	<c:if test="${empty book.epub_path }">오디오 북</c:if>
+              </p>
+              <h4 class="card-product__title"><a href="single-product.html">${book.title }</a></h4>
+              <p class="card-product__price">${book.writer }</p>
             </div>
           </div>
+    	</c:if>
+    </c:forEach>      
         </div>
       </div>
     </section>
@@ -321,22 +389,31 @@ margin-left: 45px;
           <h2><span class="section-intro__style">아동/유아</span></h2>
         </div>
         <div class="owl-carousel owl-theme" id="d8Carousel">
-          <div class="card text-center card-product">
-            
+          <c:forEach items="${bookList }" var="book">
+    		<c:if test="${book.genre=='d8'||boo.genre=='d9' }">
+    		
+
+         <div class="card text-center card-product">
             <div class="card-product__img">
-              <img class="img-fluid" src="<%=request.getContextPath()%>/mainresource/img/r8.jpg"  alt="">
-              <ul class="card-product__imgOverlay">
+	<c:if test="${not empty book.book_img }">
+				 <img class="img-fluid" src="filenameDownload.do?filename=${book.book_img}" alt="">
+			</c:if>              <ul class="card-product__imgOverlay">
                 <li><button><i class="ti-search"></i></button></li>
                 <li><button><i class="ti-shopping-cart"></i></button></li>
                 <li><button><i class="ti-heart"></i></button></li>
               </ul>
             </div>
             <div class="card-body">
-              <p>Accessories</p>
-              <h4 class="card-product__title"><a href="single-product.html">Quartz Belt Watch</a></h4>
-              <p class="card-product__price">$150.00</p>
+              <p>
+              	<c:if test="${not empty book.epub_path }">전자 책</c:if>
+              	<c:if test="${empty book.epub_path }">오디오 북</c:if>
+              </p>
+              <h4 class="card-product__title"><a href="single-product.html">${book.title }</a></h4>
+              <p class="card-product__price">${book.writer }</p>
             </div>
           </div>
+    	</c:if>
+    </c:forEach>      
         </div>
       </div>
     </section>
