@@ -15,6 +15,8 @@ public interface BlackListService {
 			public void update(Blacklist black);
 			//입력
 			public void insert(Blacklist black);
+			//번호 업데이트
+			public void updateNo();
 	}
 
 

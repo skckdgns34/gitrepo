@@ -12,4 +12,6 @@ public interface NoticeService  {
 	public List<Notice> selectAll(Notice noticeVO);
 	//등록 
 	public void insert(Notice NoticeVO);
+	//삭제
+	public void delete(Notice noticeVO);
 }

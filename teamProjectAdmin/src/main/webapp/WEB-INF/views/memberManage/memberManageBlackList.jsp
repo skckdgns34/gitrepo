@@ -29,7 +29,8 @@
 	
 	function deletepage() //삭제
 	{
-	window.document.location.href="주소 적기...ㅠ.ad";
+	window.document.location.href="memberManageBlackListDelete.ad?blacklist_no="+ $('input[name="user_CheckBox"]:checked').val();
+	alert( $('input[name="user_CheckBox"]:checked').val())
 	return;
 	}
 	

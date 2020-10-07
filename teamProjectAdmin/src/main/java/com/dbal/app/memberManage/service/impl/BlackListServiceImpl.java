@@ -35,8 +35,14 @@ public class BlackListServiceImpl implements BlackListService {
 
 	@Override
 	public void insert(Blacklist black) {
+		blackListDAO.updateNo();
 		blackListDAO.insert(black);
-		//updateNO 추가해주기.
+		
+	}
+
+	@Override
+	public void updateNo() {
+		
 	}
 
 }

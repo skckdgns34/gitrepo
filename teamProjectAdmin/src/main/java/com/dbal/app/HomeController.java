@@ -23,13 +23,17 @@ public class HomeController {
 
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
-
+//로그인 체크
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 
 
-		return "adminMain/adminMain";
+		return "adminMain/login";
 	}
+	
+  
+  
+    
 
 
 
