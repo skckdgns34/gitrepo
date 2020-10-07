@@ -33,7 +33,7 @@ li {
 	<br>
 	<hr>
 	<h5>나만의 도서 확인</h5>
-	<div class="table-responsive">
+		<input type="hidden" name="member_no" id="member_no" value="${member_no }">
 		<table border=1>
 			<tr>
 				<td>번호</td>
@@ -45,7 +45,7 @@ li {
 			</tr>
 			<c:forEach items="${list }" var="mywriting">
 				<tr>
-					<td>${mywriting.member_no }</td>
+					<td></td>
 					<td>${mywriting.genre }</td>
 					<td>${mywriting.my_title }</td>
 					<td>${mywriting.views }</td>
@@ -54,6 +54,5 @@ li {
 				</tr>
 			</c:forEach>
 		</table>
-	</div>
 </body>
 </html>
