@@ -569,12 +569,12 @@ public class EBookDAO
 			no = rs.getInt(1);
 			review.setReview_no(Integer.toString(no));
 			
+			
 			seqSql = "update seq set no = no + 1 where tablename = 'review'";
 			stmt = conn.createStatement();
 			stmt.executeUpdate(seqSql);
-			
 
-			String sql ="insert into review values(?,?,sysdate,?,?)";
+			String sql ="insert into review (review_no, contents, review_date, member_no, book_no  )values(?,?,sysdate,?,?)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, review.getReview_no());
 			pstmt.setString(2, review.getContents());
@@ -616,14 +616,18 @@ public class EBookDAO
 	}
 	
 	//review 전체 뿌려주기용
-	public ArrayList<Review> selectAllReview(String a){
+	public ArrayList<Review> selectAllReview(String book_no, int first, int last){
 		ArrayList<Review> list = new ArrayList<Review>();
 		ResultSet rs = null;
 		try {
 			conn = ConnectionManager.getConnnect();
-			String sql = "select review_no, contents, review_date, member_no, book_no from review where book_no=? order by review_no desc";
+			String sql = "select a.* from ( select  b.*,rownum rn from (  " + 
+					"select review_no, contents, review_date, member_no, book_no from review where book_no=? order by review_no desc"
+					 +  ") b ) a where rn  between ? and ? ";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, a);
+			pstmt.setString(1, book_no);
+			pstmt.setInt(2, first);
+			pstmt.setInt(3, last);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				Review review = new Review();
@@ -688,14 +692,15 @@ public class EBookDAO
 	}
 	
 	
-	public int countReview() {
+	public int countReview(String book_no) {
 		int result = 0;
 		ResultSet rs = null;
 		
 		try{
 			conn = ConnectionManager.getConnnect();	
-			String sql = "select count(*) from review";
+			String sql = "select count(*) from review where book_no = ?";
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, book_no);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				result = rs.getInt(1);				
@@ -709,6 +714,22 @@ public class EBookDAO
 	}
 	
 	
+	public int reviewDelete(String review_no) {
+		int result = 0;
+		try {
+			System.out.println(review_no+"이게바로 리뷰 넘버임");
+			conn = ConnectionManager.getConnnect();
+			String sql = "delete from review where review_no = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, review_no);
+			result = pstmt.executeUpdate();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionManager.close(null, pstmt, conn);
+		}
+		return result;
+	}
 	
 	
 	
