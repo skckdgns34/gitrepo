@@ -216,7 +216,8 @@ public class BookManageDAO {
 	      try {
 	         conn = ConnectionManager.getConnnect();
 	         String sql = "UPDATE BOOKS SET TITLE=?, BOOK_IMG=?, WRITER=?, PUBLICATION_DATE=?, "
-	         			+ "EPUB_PATH=?, AUDIO_PATH=?, COMPANY_CODE=?, INTRODUCTION=?, SUMMARY=?, BEST_BOOK=?, "
+	         			+ "EPUB_PATH=?, AUDIO_PATH=?, COMPANY_CODE=?, INTRODUCTION=?, "
+	         			+ "SUMMARY=?, BEST_BOOK=?, "
 	         			+ "GENRE=?, REGISTRATION_DATE=SYSDATE WHERE BOOK_NO = ?";
 	         pstmt = conn.prepareStatement(sql);
 	         pstmt.setString(1, books.getTitle());
