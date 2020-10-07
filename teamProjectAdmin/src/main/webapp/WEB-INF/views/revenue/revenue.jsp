@@ -31,7 +31,7 @@
 		//ajax
 		$.ajax({
 			async : false,
-			url : "${pageContext.request.contextPath}/moneyOutList.ad",
+			url : "${pageContext.request.contextPath}/revenueChart.do",
 			dataType : "json",
 			data :  $("form").serialize(),
 			success : function(datas) {

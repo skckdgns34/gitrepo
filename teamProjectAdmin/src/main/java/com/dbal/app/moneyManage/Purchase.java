@@ -1,4 +1,4 @@
-package com.dbal.app.purchase;
+package com.dbal.app.moneyManage;
 
 import lombok.Data;
 
