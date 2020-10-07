@@ -57,14 +57,13 @@ public class BooksController  {
 		
 		//Ebook 업로드
 		MultipartFile epubFile = multipartRequest.getFile("epub_path1");
-		String epub_path = epubFile.getOriginalFilename();
 		String path2 = "c:/전자도서관/전자책";
 		System.out.println(path2);
 		if(epubFile !=null && !epubFile.isEmpty() && epubFile.getSize()>0) {
 			fileName = epubFile.getOriginalFilename();
 			//파일명 중복체크
-			File renameFile = FileRenamePolicy.rename(new File(path, fileName));
-			epubFile.transferTo(new File(path,renameFile.getName()));
+			File renameFile = FileRenamePolicy.rename(new File(path2, fileName));
+			epubFile.transferTo(new File(path2,renameFile.getName()));
 			books.setEpub_path(renameFile.getName());
 		}
 		
