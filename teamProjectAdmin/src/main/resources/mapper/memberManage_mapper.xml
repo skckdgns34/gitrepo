@@ -21,7 +21,7 @@
 		WHERE MEMBER_ID IS NOT NULL
 	</select>
 
-<!-- 전체조회 -->
+<!-- 한 건 조회 -->
 	<select id="selectOne" parameterType="membermanage"
 		resultType="membermanage">
 		SELECT
@@ -37,6 +37,7 @@
 		FROM MEMBER
 		WHERE MEMBER_NO = #{member_no}
 	</select>
+	<!-- 수정 -->
 	<update id="update" parameterType="membermanage">
 		UPDATE
 		MEMBER SET
@@ -46,6 +47,52 @@
 		MEMBER_TEL = #{member_tel}
 		WHERE MEMBER_ID = #{member_id}
 	</update>
+<!-- 삭제 -->
+<update id="delete">
 
+update member set member_id = null, 
+					member_pw = null, 
+					nickname = null, 
+					member_tel = null,
+					member_email = null, 
+					signup_date = null, 
+					last_access_date = null, 
+					gender = null
+where member_no = #{member_no}
+</update>
+
+<!--최다 조회수  -->
+<select id="selectViews"  resultType="books">
+SELECT TITLE, VIEWS 
+FROM (SELECT TITLE, VIEWS FROM BOOKS ORDER BY VIEWS DESC )
+<where> 
+  <![CDATA[
+ROWNUM <=7 
+ ]]>
+</where>
+ORDER BY VIEWS DESC
+</select>
+
+<!-- 성별 인원 수 -->
+<select id="getGenderCnt" resultType="hashmap">
+SELECT GENDER "gender", 
+COUNT(MEMBER_ID) "cnt" 
+FROM MEMBER 
+WHERE MEMBER_ID IS NOT NULL GROUP BY GENDER
+</select>
+
+
+<!-- 성별 인기 이용권 -->
+<select id="getTicketCnt" resultType="hashmap">
+select c.code_value,  
+sum(case when gender = 'male'  then 1 else 0 end) as "male", 
+sum(case when gender = 'female'  then 1 else 0 end)  as "female"
+from( select  t.*, m.gender from ticket t, pay p,  member m 
+where p.member_no=m.member_no
+and p.ticket_code= p.ticket_code)  t,  common c
+where t.ticket_code(+) = c.code 
+and common_code='0G'
+group by c.code_value
+</select>
 
 </mapper>

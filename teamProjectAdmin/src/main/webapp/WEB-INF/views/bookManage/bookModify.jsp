@@ -77,7 +77,7 @@
 			</div>
 			<div>
 				<label for="book_img">책 사진첨부</label><input type="file"
-					name="book_img">${result.book_img }
+					name="book_img1">${result.book_img }
 			</div>
 			<%-- <div>
 				<label for="epub_path">전자책 첨부</label><input type="file"

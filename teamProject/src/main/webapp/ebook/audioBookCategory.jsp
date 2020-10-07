@@ -10,78 +10,84 @@
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/layout/styles/slider.css">
 
 <script>
-	$(function() {
-		$("#testInput").autocomplete({
-							source : function(request, response) {
-								$.ajax({
-										url : "${pageContext.request.contextPath}/Ajax/audioBookSearchAjax.do",
-										type : "GET",
-										dataType : "json",
-										data : {data : $("#testInput").val()}, // 검색 키워드
-										success : function(data) { // 성공
-											response($.map(data, function(item) {
-													$('#hidden').val(item.result);
-													$('#realHidden').val(item.title);
-													return {
-														label : item.title, //목록에 표시되는 값
-														value : item.title, //선택 시 input창에 표시되는 값	
-														idx : item.testIdx
-													};
-											})); //response
-										},//success
-										error : function() { //실패
-											alert("통신에 실패했습니다.");
-											}
-										});//ajax
-							},//source: function
-							minLength : 1,
-							autoFocus : false,
-							select : function(evt, ui) {
-								//$('#hidden').html(ui.item.value);
-								//var v = ui.item.label;
-								//var arr = v.split('/');
-								//$('#testInput').val(arr[0]);
-								//$('#hidden').val(arr[1]);
-								console.log("전체 data: " + JSON.stringify(ui));
-								console.log("db Index : " + ui.item.idx);
-								console.log("검색 데이터 : " + ui.item.value);
-							},
-							focus : function(evt, ui) {
-								return false;
-							},
-							close : function(evt) {
-							}
-						})//autoComplete
-						
-		$(".pixel-radio").on("click",function(){
-			var gen = $("input[name='gen']:checked").val();
-			 $.ajax({
-				 url: "${pageContext.request.contextPath}/Ajax/audioBookCategoryAjax.do",
-				type: "GET",
-				data : {gen : gen},
-				success : function(data){ //연결성공
-				$("#row").html(data);
-				}//success
-			});//ajax
-		});//function
-	});
+$(function() {
+	$("#testInput").autocomplete({
+						source : function(request, response) {
+							$.ajax({
+									url : "${pageContext.request.contextPath}/Ajax/audioBookSearchAjax.do",
+									type : "GET",
+									dataType : "json",
+									data : {data : $("#testInput").val()}, // 검색 키워드
+									success : function(data) { // 성공
+										response($.map(data, function(item) {
+												$('#hidden').val(item.result);
+												$('#realHidden').val(item.title);
+												return {
+													label : item.title, //목록에 표시되는 값
+													value : item.title, //선택 시 input창에 표시되는 값	
+													idx : item.testIdx
+												};
+										})); //response
+									},//success
+									error : function() { //실패
+										alert("통신에 실패했습니다.");
+										}
+									});//ajax
+						},//source: function
+						minLength : 1,
+						autoFocus : false,
+						select : function(evt, ui) {
+							//$('#hidden').html(ui.item.value);
+							//var v = ui.item.label;
+							//var arr = v.split('/');
+							//$('#testInput').val(arr[0]);
+							//$('#hidden').val(arr[1]);
+							console.log("전체 data: " + JSON.stringify(ui));
+							console.log("db Index : " + ui.item.idx);
+							console.log("검색 데이터 : " + ui.item.value);
+						},
+						focus : function(evt, ui) {
+							return false;
+						},
+						close : function(evt) {
+						}
+					})//autoComplete
+	gopage(1); //시작하자마자 전체불러오기용
 	
-	function imgClick(book_no) {
-		if (book_no != null) {
-			if (confirm("해당 책 상세페이지로 이동하시겠습니까?")) {
-				location.href = "${pageContext.request.contextPath}/audioBookDetail.do?book_no="+book_no;
-			}
+	
+	$(".pixel-radio").on("click",function(){
+		gopage(1);
+	});//end of on & function
+	imgClick();
+
+	
+});
+	
+function gopage(p){
+	var gen = $("input[name='gen']:checked").val();
+	$.ajax({
+		url: "${pageContext.request.contextPath}/Ajax/audioBookCategoryAjax.do",
+		type: "GET",
+		data : {gen : gen},
+		success : function(data){ //연결성공
+		$("#row").html(data);
+		}//success
+	});//ajax
+} //function
+	
+	
+	
+function imgClick(book_no) {
+	if (book_no != null) {
+		if (confirm("해당 책 상세페이지로 이동하시겠습니까?")) {
+			location.href = "${pageContext.request.contextPath}/audioBookDetail.do?book_no="+book_no;
 		}
 	}
+}
 </script>
-
-
 </head>
-
-
 <body>
 	<!-- ================ category section start ================= -->		  
   <section class="section-margin--small mb-5">
@@ -112,7 +118,37 @@
           <div class="sidebar-filter">
             <div class="top-filter-head"></div>
           </div>
-        </div>
+          <section class="related-product-area">
+			<div class="container">
+				<div class="section-intro pb-60px">
+        			<p>Best Seller</p>
+        			<h3>Top <span class="section-intro__style">5</span></h3>
+      			</div>
+			</div>
+		   </section>
+		   
+		   <div class="row mt-30">
+		   	<div class="col-sm-6 col-xl-3 mb-4 mb-xl-0">
+          		<div class="single-search-product-wrapper">
+          			<c:forEach items="${bestBooks}" var="bestBook">
+           				 <div class="single-search-product d-flex">
+             				 <a href="#"></a>
+              				 <div class="desc">
+                  			 	<a href="#" class="title">
+                  				<c:if test="${not empty bestBook.book_img}">
+									<td>
+										<img src="filenameDownload.do?filename=${bestBook.book_img}" style="width: 200px" onclick="imgClick(${bestBook.book_no})">
+									</td>
+								</c:if>
+				  				</a>
+                  			 <div class="price">${bestBook.title}</div>
+              				 </div>
+            			</div>
+         			 </c:forEach>
+         		 </div>
+       	 	</div>
+      </div>
+      </div>
         <div class="col-xl-9 col-lg-8 col-md-7">
           <!-- Start Filter Bar -->
           <div class="filter-bar d-flex flex-wrap align-items-center">
@@ -142,12 +178,9 @@
                 </form>
               </div>
             </div>
-          </div>
           <!-- End Filter Bar -->
           <!-- Start Best Seller -->
-          <section class="lattest-product-area pb-40 category-list">
-            <div class="row" id="row">
-            </div>
+          <section class="lattest-product-area pb-40 category-list" id="row">
           </section>
           <!-- End Best Seller -->
         </div>
@@ -155,42 +188,6 @@
     </div>
   </section>
 	<!-- ================ category section end ================= -->		  
-
 	<!-- ================베스트 셀러! ================= -->	
-	<section class="related-product-area">
-		<div class="container">
-			<div class="section-intro pb-60px">
-        <p>베스트 셀러</p>
-        <h2>Top <span class="section-intro__style">Product</span></h2>
-      </div>
-		<div class="row mt-30">
-        <div class="col-sm-6 col-xl-3 mb-4 mb-xl-0">
-          <div class="single-search-product-wrapper">
-            <div class="single-search-product d-flex">
-              <a href="#"><img src="" alt=""></a>
-              <div class="desc">
-                  <a href="#" class="title">Gray Coffee Cup</a>
-                  <div class="price">$170.00</div>
-              </div>
-            </div>
-            <div class="single-search-product d-flex">
-              <a href="#"><img src="" alt=""></a>
-              <div class="desc">
-                <a href="#" class="title">Gray Coffee Cup</a>
-                <div class="price">$170.00</div>
-              </div>
-            </div>
-            <div class="single-search-product d-flex">
-              <a href="#"><img src="" alt=""></a>
-              <div class="desc">
-                <a href="#" class="title">Gray Coffee Cup</a>
-                <div class="price">$170.00</div>
-              </div>
-            </div>
-          </div>
-         </div>
-		</div>
-		</div>
-	</section>
 </body>
 </html>

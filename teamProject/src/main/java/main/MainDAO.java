@@ -12,7 +12,6 @@ import vo.Books;
 public class MainDAO {
 	Connection conn = null;
 	PreparedStatement pstmt;
-	ResultSet rs;
 
 	static MainDAO instance;
 
@@ -23,11 +22,15 @@ public class MainDAO {
 	}
 	
 	 public ArrayList<Books> selectAllBook() {
-		 Books resultVO = null;
+		ResultSet rs = null;
+		Books resultVO = null;
 			ArrayList<Books> list = new ArrayList<Books>();
 			try {
 				conn = ConnectionManager.getConnnect();
-				String sql = "select book_no, title, book_img, writer from books ";
+				String sql = "select  a.book_no, a.title, a.book_img, a.writer, a.epub_path,"
+						+ " lower(a.best_book), a.genre, b.code_value " + 
+						" from books a, common b" + 
+						" where a.genre = b.code";
 				pstmt = conn.prepareStatement(sql);
 				rs = pstmt.executeQuery();
 
@@ -37,6 +40,10 @@ public class MainDAO {
 					resultVO.setTitle(rs.getString(2));
 					resultVO.setBook_img(rs.getString(3));
 					resultVO.setWriter(rs.getString(4));
+					resultVO.setEpub_path(rs.getString(5));
+					resultVO.setBest_book(rs.getString(6));
+					resultVO.setGenre(rs.getString(7));
+					resultVO.setCode_value(rs.getString(8));
 					list.add(resultVO);
 				}
 			} catch (Exception e) {

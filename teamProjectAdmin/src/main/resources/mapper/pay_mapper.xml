@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dbal.app.memberManage.mapper.payDAO">
+	  
+<!-- 선택날짜조회 -->    
+<select id="selectOne" parameterType="pay" resultType="pay">
+	SELECT sum(t.price), 
+		   to_char(p.pay_date, 'yyyy-MM-dd'), 
+		   t.ticket_name
+	FROM pay p, ticket t
+	WHERE	p.ticket_code = t.ticket_code
+	AND		trunc(p.pay_date) between #{startdate} and #{enddate}
+	GROUP BY rollup(to_char(p.pay_date, 'yyyy-MM-dd'), t.ticket_name)
+	ORDER BY 2, 3
+			
+	</select>
+<!-- 전체매출조회 -->
+<select id = "selectAll" parameterType="pay" resultType="pay">
+	SELECT sum(t.price),
+		   to_char(p.pay_date, 'yyyy-MM-dd')
+		   t.ticket_name
+	FROM	pay p, ticket t
+	GROUP BY rollup(to_char(p.pay_date, 'yyyy-MM-dd'), t.ticket_name)
+	ORDER BY 2, 3
+</select>
+<!-- 1분기 매출 조회 -->
+<select id="selectfQuarterPay" parameterType="pay" resultType="pay">
+	SELECT sum(t.price), 
+		   to_char(p.pay_date, 'yyyy-MM-dd'), 
+		   t.ticket_name
+	FROM pay p, ticket t
+	WHERE	p.ticket_code = t.ticket_code
+	AND		trunc(p.pay_date) between (#{quarterYear} + '-01-01') and (#{quarterYear} + '-03-31')
+	GROUP BY rollup(to_char(p.pay_date, 'yyyy-MM-dd'), t.ticket_name)
+	ORDER BY 2, 3
+</select>
+<!-- 2분기 매출 조회 -->
+<select id="selectsQuarterPay" parameterType="pay" resultType="pay">
+	SELECT sum(t.price), 
+		   to_char(p.pay_date, 'yyyy-MM-dd'), 
+		   t.ticket_name
+	FROM pay p, ticket t
+	WHERE	p.ticket_code = t.ticket_code
+	AND		trunc(p.pay_date) between (#{quarterYear} + '-04-01') and (#{quarterYear} + '-06-30')
+	GROUP BY rollup(to_char(p.pay_date, 'yyyy-MM-dd'), t.ticket_name)
+	ORDER BY 2, 3
+</select>
+<!-- 3분기 매출 조회 -->
+<select id="selecttQuarterPay" parameterType="pay" resultType="pay">
+	SELECT sum(t.price), 
+		   to_char(p.pay_date, 'yyyy-MM-dd'), 
+		   t.ticket_name
+	FROM pay p, ticket t
+	WHERE	p.ticket_code = t.ticket_code
+	AND		trunc(p.pay_date) between (#{quarterYear} + '-07-01') and (#{quarterYear} + '-09-30')
+	GROUP BY rollup(to_char(p.pay_date, 'yyyy-MM-dd'), t.ticket_name)
+	ORDER BY 2, 3
+</select>
+<!-- 4분기 매출 조회 -->
+<select id="selectqQuaterPay" parameterType="pay" resultType="pay">
+	SELECT sum(t.price), 
+		   to_char(p.pay_date, 'yyyy-MM-dd'), 
+		   t.ticket_name
+	FROM pay p, ticket t
+	WHERE	p.ticket_code = t.ticket_code
+	AND		trunc(p.pay_date) between (#{quarterYear} + '-10-01') and (#{quarterYear} + '-12-31')
+	GROUP BY rollup(to_char(p.pay_date, 'yyyy-MM-dd'), t.ticket_name)
+	ORDER BY 2, 3
+</select>
+
+</mapper>
