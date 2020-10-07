@@ -475,7 +475,7 @@ public class EBookDAO
 		{
 			conn = ConnectionManager.getConnnect();
 			String sql = "select a.* from ( select rownum rn, b.* from (  " + 
-					"select title, book_no, book_img from books where genre =? order by book_no desc "
+					"select title, book_no, book_img from books where genre =? and epub_path is not null order by book_no desc "
 					+ ") b ) a where rn  between ? and ? "; 
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, gen);
@@ -509,7 +509,7 @@ public class EBookDAO
 		{
 			conn = ConnectionManager.getConnnect();
 			String sql = "select a.* from ( select rownum rn, b.* from (  " +
-						  "select title, book_no, book_img from books order by book_no desc "
+						  "select title, book_no, book_img from books where epub_path is not null order by book_no desc "
 						  +  ") b ) a where rn  between ? and ? ";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, first);
@@ -539,7 +539,7 @@ public class EBookDAO
 		ResultSet rs = null;
 		try {
 			conn = ConnectionManager.getConnnect();
-			String sql = "select genre, count(book_no) from books group by genre order by genre";
+			String sql = "select genre, count(book_no) from books where epub_path is not null group by genre order by genre";
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
@@ -648,7 +648,7 @@ public class EBookDAO
 		ResultSet rs = null;
 		try {
 			conn = ConnectionManager.getConnnect();
-			String sql = "select book_no, title, book_img from books where best_book='y' and rownum<6 order by book_no desc";
+			String sql = "select book_no, title, book_img from books where best_book='y' and rownum<6 and epub_path is not null order by book_no desc";
 			pstmt = conn.prepareStatement(sql);
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
