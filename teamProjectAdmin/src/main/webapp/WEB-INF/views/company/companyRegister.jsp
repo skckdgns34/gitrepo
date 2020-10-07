@@ -76,7 +76,7 @@
 							</div>
 							
 							
-							<div class="col-sm-6 col-md-6 col-xs-6" style="margin-bottom: 300px">
+							<div class="col-sm-6 col-md-6 col-xs-6">
 								<label for="company_bank" class="control-label col-md-4  requiredField">출판사은행정보</label> 
 								<div class="col-sm-6 col-md-6 col-xs-6">
 								<input
