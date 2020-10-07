@@ -2,43 +2,40 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.dbal.app.emp.mapper.EmpMapper">
-	<select id="getEmp" parameterType="emp" resultType="emp">
+<mapper namespace="com.dbal.app.memberManage.mapper.EmpDAO">
+	
+	<!-- 전체조회 -->
+	<select id="selectAll" parameterType="employees" resultType="employees">
 		SELECT  
-		        first_name,
-				last_name,
-				email,
-				hire_date,
-				job_id
+				emp_no,
+		        emp_id,
+				emp_pw,
+				emp_name,
+				emp_birth,
+				entereddate,
+				dept_code,
+				emp_address,
+				rank_code
 		FROM employees
 		WHERE employee_id = #{employeeId}
 	</select>
-	<select id="getEmpList" resultType="emp">
-		SELECT rownum id, e.* 
-		  FROM employees e
-		<where>  
-		  <if test="departmentId != null">
-		       department_id = #{departmentId}
-		  </if>  
-	      <if test="employeeId != null">
-            and employee_id = #{employeeId}
-          </if>  
-          <if test="salary != null">
-            <![CDATA[ and salary < #{salary} ]]>
-          </if>    
-          <if test="firstName != null">
-            and upper(first_name) like '%' || upper(#{firstName}) || '%'
-          </if> 
-          <if test="employeeIds != null">
-            and employee_id in  
-                <foreach collection="employeeIds" item="id" 
-                         open="(" close=")" separator=",">
-                    #{id}
-                </foreach>
-          </if>      
-        </where>	
-		 ORDER BY first_name 
+	
+	<!-- 로그인 체크-->
+	<select id="loginCK" parameterType="employees" resultType="employees">
+		SELECT  
+				emp_no,
+		        emp_id,
+				emp_pw,
+				emp_name,
+				emp_birth,
+				entereddate,
+				dept_code,
+				emp_address,
+				rank_code
+		FROM employees
+		WHERE emp_id = #{emp_id}
 	</select>
+	
 
 	<insert id="insertEmp" parameterType="emp">
 		INSERT INTO EMPLOYEES (	employee_id, 

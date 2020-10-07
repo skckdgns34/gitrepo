@@ -20,7 +20,9 @@ public class ClientFAQServ implements Controller
 		faq.setTitle(request.getParameter("title"));
 		faq.setContents(request.getParameter("contents"));
 		
-		ArrayList<FAQ> dao = FAQDAO.getinstance().selectAll(null);
+		FAQDAO dao = new FAQDAO();
+		
+		ArrayList<FAQ> list = dao.selectAll(faq);
 		
 		request.getRequestDispatcher("client/clientFAQ.jsp").forward(request, response);
 	}

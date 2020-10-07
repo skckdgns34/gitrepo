@@ -25,6 +25,7 @@ public class MemberDeleteServ implements Controller
 		MemberDAO dao = new MemberDAO();
 		dao.delete(memberVO);
 		
+		session.invalidate();
 		
 		request.getRequestDispatcher("member/Bye.jsp").forward(request, response);
 	}
