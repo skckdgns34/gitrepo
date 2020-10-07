@@ -35,13 +35,13 @@ public class AudioBookCategoryAjaxServ implements Controller {
 		System.out.println(gen);
 		
 		if(gen == null || gen.equals("")) {
-			books = EBookDAO.getInstance().raidoAllBooks(first, last);
+			books = AudioBookDAO.getInstance().raidoAllBooks(first, last);
 		}
 		else if(gen != null) {
-			books = EBookDAO.getInstance().radioCheckGenre(gen,first,last);
+			books = AudioBookDAO.getInstance().radioCheckGenre(gen,first,last);
 		}
 		
-		int total = EBookDAO.getInstance().count(gen);		
+		int total = AudioBookDAO.getInstance().count(gen);		
 		paging.setTotalRecord(total);
 		
 		

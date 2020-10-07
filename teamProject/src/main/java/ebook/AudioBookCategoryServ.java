@@ -20,11 +20,8 @@ public class AudioBookCategoryServ implements Controller
 			HttpServletResponse response) throws ServletException, IOException
 	{
 
-		ArrayList<Books> books=null;
-		
-		List<Map<String,Object>> count = EBookDAO.getInstance().genreCount();
+		List<Map<String,Object>> count = AudioBookDAO.getInstance().genreCount();
 		ArrayList<Books> bestBooks = AudioBookDAO.getInstance().selectBestBooks(); //베스트북
-
 		request.setAttribute("bestBooks", bestBooks);
 		
 		String gen = request.getParameter("gen");

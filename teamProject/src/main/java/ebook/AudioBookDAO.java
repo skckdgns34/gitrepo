@@ -16,7 +16,6 @@ import vo.SearchBook;
 public class AudioBookDAO {
 	Connection conn = null;
 	PreparedStatement pstmt;
-	ResultSet rs;
 
 	static AudioBookDAO instance;
 
@@ -26,7 +25,111 @@ public class AudioBookDAO {
 		return instance;
 	}
 
-	// ebook category 체크박스 전체 뿌려주기용
+	// audio-Book detail 페이지에서 해당책 상세내용 뿌려주기용
+	public ArrayList<Books> detailBook(String b) {
+		ResultSet rs = null;
+		ArrayList<Books> books = new ArrayList<Books>();
+		try {
+			conn = ConnectionManager.getConnnect();
+			String sql = "select book_no, title, writer, publication_date,"
+					+ " company_code, introduction, summary, views, best_book,genre,registration_date, book_img"
+					+ " from books where book_no=" + b;
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				Books result = new Books();
+				result.setBook_no(rs.getString(1));
+				result.setTitle(rs.getString(2));
+				result.setWriter(rs.getString(3));
+				result.setPublication_date(rs.getString(4));
+				result.setEpub_path(rs.getString(5));
+				result.setIntroduction(rs.getString(6));
+				result.setSummary(rs.getString(7));
+				result.setViews(rs.getString(8));
+				result.setBest_book(rs.getString(9));
+				result.setGenre(rs.getString(10));
+				result.setRegistration_date(rs.getString(11));
+				result.setBook_img(rs.getString(12));
+				books.add(result);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionManager.close(rs, pstmt, conn);
+		}
+		return books;
+	}
+
+	// audioBook detail 페이지에서 사용자가 audiobook 이용권이 있는지 없는지 체크
+	public String checkTicket(Object a) {
+		ResultSet rs = null;
+		String list = "";
+		try {
+			conn = ConnectionManager.getConnnect();
+			String sql = "select ticket_code from member m, pay p "
+					+ " where m.member_no = p.member_no and rownum=1 and p.ticket_code in('g5','g6','g3','g4') "
+					+ " and m.member_no= " + a;
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+
+				list = rs.getString("ticket_code");
+
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionManager.close(rs, pstmt, conn);
+		}
+		return list;
+	}
+
+	// 게시글 추천여부 검사
+	public int recCheck(String a, String b) {
+		ResultSet rs = null;
+		int result = 0;
+		try {
+			conn = ConnectionManager.getConnnect();
+			String sql = "select count(*) from good where book_no=? and member_no = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, a);
+			pstmt.setString(2, b);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				result = rs.getInt(1);
+			}
+		} catch (Exception e) {
+			System.out.println("recCheck : " + e);
+			e.printStackTrace();
+		} finally {
+			ConnectionManager.close(rs, pstmt, conn);
+		}
+		return result;
+	}
+
+	public ArrayList<Map<String, Object>> genreCount() {
+		ArrayList<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+		ResultSet rs = null;
+		try {
+			conn = ConnectionManager.getConnnect();
+			String sql = "select genre, count(book_no) from books where audio_path is not null group by genre order by genre";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				Map<String, Object> map = new HashMap<String, Object>();
+				map.put("genre", rs.getString(1));
+				map.put("count", rs.getString(2));
+				list.add(map);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionManager.close(rs, pstmt, conn);
+		}
+		return list;
+	}
+
+	// audiobook category 체크박스 전체 뿌려주기용
 	public ArrayList<Books> raidoAllBooks(int first, int last) {
 		ResultSet rs = null;
 		ArrayList<Books> list = new ArrayList<Books>();
@@ -45,7 +148,37 @@ public class AudioBookDAO {
 				books.setBook_no(rs.getString("book_no"));
 				books.setBook_img(rs.getString("book_img"));
 				list.add(books);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionManager.close(rs, pstmt, conn);
+		}
+		return list;
+	}
 
+	// audioBook Category Ajax 장르라디오 체크시
+	public ArrayList<Books> radioCheckGenre(String gen, int first, int last) {
+		ArrayList<Books> list = new ArrayList<Books>();
+		ResultSet rs = null;
+
+		try {
+			conn = ConnectionManager.getConnnect();
+			String sql = "select a.* from ( select rownum rn, b.* from (  "
+					+ "select title, book_no, book_img from books where genre =? and audio_path is not null order by book_no desc "
+					+ ") b ) a where rn  between ? and ? ";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, gen);
+			pstmt.setInt(2, first);
+			pstmt.setInt(3, last);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				Books books = new Books();
+				books.setTitle(rs.getString("title"));
+				books.setBook_no(rs.getString("book_no"));
+				books.setBook_img(rs.getString("book_img"));
+				list.add(books);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -55,41 +188,6 @@ public class AudioBookDAO {
 		return list;
 	}
 
-	// eBook Category Ajax 장르라디오 체크시
-		public ArrayList<Books> radioCheckGenre(String gen, int first, int last)
-		{
-			ArrayList<Books> list = new ArrayList<Books>();
-			ResultSet rs = null;
-
-			try
-			{
-				conn = ConnectionManager.getConnnect();
-				String sql = "select a.* from ( select rownum rn, b.* from (  " + 
-						"select title, book_no, book_img from books where genre =? and audio_path is not null order by book_no desc "
-						+ ") b ) a where rn  between ? and ? "; 
-				pstmt = conn.prepareStatement(sql);
-				pstmt.setString(1, gen);
-				pstmt.setInt(2, first);
-				pstmt.setInt(3, last);
-				rs = pstmt.executeQuery();
-				while (rs.next())
-				{
-					Books books = new Books();
-					books.setTitle(rs.getString("title"));
-					books.setBook_no(rs.getString("book_no"));
-					books.setBook_img(rs.getString("book_img"));
-					list.add(books);
-				}
-			} catch (Exception e)
-			{
-				e.printStackTrace();
-			} finally
-			{
-				ConnectionManager.close(rs, pstmt, conn);
-			}
-			return list;
-		}
-	
 	// 베스트셀러인거만 가져오기
 	public ArrayList<Books> selectBestBooks() {
 		ArrayList<Books> list = new ArrayList<Books>();
@@ -117,6 +215,7 @@ public class AudioBookDAO {
 	// 오디오북 검색
 	public ArrayList<SearchBook> searchBook(String a) {
 		ArrayList<SearchBook> list = new ArrayList<SearchBook>();
+		ResultSet rs = null;
 		try {
 			SearchBook aa = null;
 			conn = ConnectionManager.getConnnect();
@@ -149,6 +248,7 @@ public class AudioBookDAO {
 
 	public List<Map<String, Object>> searchBooksEqualTitle(String a) {
 		List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+		ResultSet rs = null;
 		try {
 			conn = ConnectionManager.getConnnect();
 			String sql = "select book_no, title, writer, publication_date, "
@@ -183,6 +283,7 @@ public class AudioBookDAO {
 
 	public List<Map<String, Object>> searchBooksEqualCompany(String a) {
 		List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+		ResultSet rs = null;
 		try {
 			conn = ConnectionManager.getConnnect();
 			String sql = "select book_no, title, writer, publication_date, "
@@ -217,6 +318,7 @@ public class AudioBookDAO {
 
 	public List<Map<String, Object>> searchBooksEqualWriter(String a) {
 		List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+		ResultSet rs = null;
 		try {
 			conn = ConnectionManager.getConnnect();
 			String sql = "select book_no, title, writer, publication_date, "
@@ -247,5 +349,25 @@ public class AudioBookDAO {
 			ConnectionManager.close(rs, pstmt, conn);
 		}
 		return list;
+	}
+
+	public int count(String a) {
+		int result = 0;
+		ResultSet rs = null;
+		try {
+			conn = ConnectionManager.getConnnect();
+			String sql = "select count(*) from books where genre = nvl(?,genre) and audio_path is not null";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, a);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				result = rs.getInt(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionManager.close(rs, pstmt, conn);
+		}
+		return result;
 	}
 }
