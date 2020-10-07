@@ -32,12 +32,12 @@ public class EmpServiceImpl implements EmpService {
 
 	@Override
 	public void Update(Employees emp) {
-		
+		empDAO.Update(emp);
 	}
 
 	@Override
 	public void Delete(Employees emp) {
-		
+		empDAO.Delete(emp);
 	}
 
 	@Override

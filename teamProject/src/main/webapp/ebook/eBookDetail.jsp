@@ -15,30 +15,92 @@
 $(function(){
 	btnHideNShow();
 	btnScore();
-	
-	//리뷰작성하면 바로 리뷰리스트에 맨위에다가 붙이기
-	/*$("#btnreview").on("click", function(){
-		var review = $("#reviewArea").val();
+	reviewAllList();
+});
+
+
+
+
+//리뷰작성하면 바로 리뷰리스트에 맨위에다가 붙이기
+ function reviewInsert(){
+	var review = $("#reviewArea").val();
+	$.ajax({
+		url : "${pageContext.request.contextPath}/Ajax/eBookReview.do",
+		type: "POST",
+		data: {
+			member_no : "${member_no}",
+			member_nickname : "${member_nickname}",
+			review : review ,
+			book_no : "${book[0].book_no}"
+		},
+		success: function(result){
+			reviewAllList(1);
+			 $("#reviewArea").val('');
+		}
+	})
+}
+
+
+ function reviewAllList(page){ //리뷰전체조회
 		$.ajax({
-			url : "${pageContext.request.contextPath}/Ajax/eBookReview.do",
+			url : "${pageContext.request.contextPath}/Ajax/eBookReviewAllList.do",
+			type: "POST",
+			data: {
+				member_no : "${member_no}",
+				book_no : "${book[0].book_no}",
+				page : page
+			},
+			success: function(result){
+				$("#reviewField").html(result);
+			}
+		})
+	}
+ 
+ 
+ 
+ function reviewInNListPut(){ //리뷰수정
+	 	$("tihs").val();
+		$.ajax({
+			url : "${pageContext.request.contextPath}/Ajax/eBookReviewUpdate.do",
 			type: "POST",
 			data: {
 				member_no : "${member_no}",
 				member_nickname : "${member_nickname}",
-				review : review ,
+				
 				book_no : "${book[0].book_no}"
 			},
 			success: function(result){
 				$("#reviewField").prepend(result);
 			}
 		})
-	})*/
-	
-	
-	
-	
-	
-});
+	}
+ 
+ 
+ 
+ function reviewDelete(){ //리뷰삭제
+		var  review_no =$(event.target).closest("#review_no").data("review_no");
+ 		var delpage = $(event.target).closest(".review_item");
+ 		var page = $(event.target).closest(".pagination").children().html();
+ 		console.log(page + "뭐지이거....");
+ 		var paging = $.trim(page);
+ 		console.log(review_no);
+		$.ajax({
+			url : "${pageContext.request.contextPath}/Ajax/eBookReviewDelete.do",
+			type: "POST",
+			data: {
+				review_no : review_no,
+			},
+			success: function(result){
+				//reviewAllList();
+				delpage.remove();
+			}
+		})
+	}
+
+
+
+
+
 
 
 function btnHideNShow(){
@@ -346,7 +408,7 @@ function btnScore(){ // 추천버튼 클릭시(추천 추가 또는 추천 제�
 				</div>
 				<div class="tab-pane fade show active" id="review" role="tabpanel" aria-labelledby="review-tab">
 					<div class="row">
-						<div class="col-lg-6">
+						<div class="col-lg-12">
 							<div class="row total_rate">
 								<%-- <div class="col-6">
 									<div class="box_total">
@@ -374,21 +436,8 @@ function btnScore(){ // 추천버튼 클릭시(추천 추가 또는 추천 제�
 								</div>--%>
 							</div>
 							<div class="review_list" id="reviewField">
-								<c:forEach items="${review}" var="reviews">
-								<div class="review_item">
-									<div class="media">
-										<div class="d-flex">
-										<%--	<img src="img/product/review-1.png" alt="">--%>
-										</div>
-										<div class="media-body">
-											<h4>${member_nickname}</h4>
-										</div>
-											<p>${reviews.review_date}</p>
-									</div>
-									<p>${reviews.contents}</p>
-								</div>
-								</c:forEach>
 							</div>
+							<%--여기가 iframe자리임 ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ --%>
 						</div>
 						<div class="col-lg-6">
 							<div class="review_box">
@@ -404,6 +453,7 @@ function btnScore(){ // 추천버튼 클릭시(추천 추가 또는 추천 제�
 								<p>Outstanding</p>--%>
 								
 								<!-- 리뷰쓰고 액션 -->
+               		
                		
                    <div class="form-group">
                     <input class="form-control" name="name" type="text" readonly="readonly" placeholder="${member_nickname}" required>
@@ -421,9 +471,9 @@ function btnScore(){ // 추천버튼 클릭시(추천 추가 또는 추천 제�
 	                    <textarea class="form-control different-control w-100" name="textarea"  cols="30" rows="5" placeholder="리뷰 내용 입력" id="reviewArea"></textarea>
     	              </div>
     	              <div class="form-group text-center text-md-right mt-3">
-                    <button type="submit" class="button button--active button-review" id="btnreview">Submit Now</button>
+                    <button type="submit" class="button button--active button-review" id="btnreview" onclick="reviewInsert()">Submit Now</button>
                   </div>
-                  </c:if>
+                  </c:if>   
 
 							</div>
 						</div>
