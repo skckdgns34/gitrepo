@@ -63,7 +63,7 @@ $(function(){
 
 	gopage(1); //시작하자마자 전체불러오기용
 	
-	$(".pixel-radio").on("click",function(){
+	$(".pixel-radio").on("click",function(){ 
 		gopage(1);
 	});//end of on & function
 	imgClick();
