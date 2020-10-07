@@ -19,6 +19,7 @@ public class MemberCreateBookCkServ implements Controller
 		MemberBookDAO dao = new MemberBookDAO();
 		Mywriting mywriting = new Mywriting();
 		
+		mywriting.setMember_no((String)request.getSession().getAttribute("member_no"));
 		
 		ArrayList<Mywriting> list = dao.Myselect(mywriting);
 		request.setAttribute("list", list);

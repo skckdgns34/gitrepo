@@ -20,9 +20,9 @@ li {
 	<br>
 	<ul>
 		<li><a
-			href="<%=application.getContextPath()%>/memberNodify.do">내정보 수정</a>
+			href="<%=application.getContextPath()%>/memberModify.do">내정보 수정</a>
 		<li><a
-			href="<%=application.getContextPath()%>/memberLibrary.do">내 서재</a>
+			href="<%=application.getContextPath()%>/memberBookLuvList.do">내 서재</a>
 		<li><a
 			href="<%=application.getContextPath()%>/memberCreateBookCk.do">나만의 도서 확인</a>
 		<li><a
@@ -31,16 +31,25 @@ li {
 	<br>
 	<br>
 	<hr>
-	<h6>찜목록</h6>
+	<h5>찜목록</h5>
 	<table border=1>
 		<tr>
 			<td>번호</td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
+			<td>제목</td>
+			<td>작가</td>
+			<td>장르</td>
+			<td>조회수</td>
 		</tr>
+		<c:forEach items="${list }" var="books">
+				<tr>
+					<td>${rownum }</td>
+					<td>${books.title }</td>
+					<td>${books.writer }</td>
+					<td>${books.genre }</td>
+					<td>${books.views }</td>
+					<td><button>바로가기</button> <button>편집하기</button></td>
+				</tr>
+			</c:forEach>
 	</table>
-
 </body>
 </html>
