@@ -28,6 +28,9 @@ public class EBookCategoryServ implements Controller
 		
 		//결과저장
 		request.setAttribute("bestBooks", bestBooks);
+
+
+		String gen = request.getParameter("gen");
 		request.setAttribute("count", count);
 		request.getRequestDispatcher("/ebook/eBookCategory.jsp").forward(request, response);
 	}

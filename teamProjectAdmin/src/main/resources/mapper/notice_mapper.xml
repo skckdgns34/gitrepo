@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dbal.app.memberManage.mapper.NoticeDAO">
+
+	<!-- 전체조회 -->
+	<select id="selectAll" parameterType="notice"
+		resultType="notice">
+		SELECT
+		N.NOTICE_NO,
+		N.NOTICE_TITLE,
+		N.NOTICE_CONTENT,
+		N.NOTICE_DATE,
+		N.NOTICE_IMG,
+		N.VIEWS,
+		N.EMP_NO,
+		E.EMP_NAME
+		FROM NOTICE N, EMPLOYEES E
+		WHERE N.EMP_NO = E.EMP_NO
+	</select>
+
+	<!-- 공지사항 등록 -->
+	<update id="updateNo">
+		update seq set no = no + 1 where tablename = 'notice'
+	</update>
+
+	<insert id="insert" parameterType="notice">
+		<selectKey keyProperty="notice_no" resultType="string"
+			order="BEFORE">
+			SELECT NO
+			FROM SEQ
+			WHERE TABLENAME='notice'
+		</selectKey>
+		INSERT INTO NOTICE (NOTICE_NO,
+		NOTICE_TITLE,
+		NOTICE_CONTENT,
+		NOTICE_DATE,
+		<if test="notice_img!=null and notice_img!=''">
+			NOTICE_IMG,
+		</if>
+		EMP_NO)
+		VALUES (
+		#{notice_no},
+		#{notice_title},
+		#{notice_content},
+		SYSDATE,
+		<if test="notice_img!=null and notice_img!=''">
+			#{notice_img}
+		</if>
+		#{emp_no})
+	</insert>
+
+
+
+</mapper>
