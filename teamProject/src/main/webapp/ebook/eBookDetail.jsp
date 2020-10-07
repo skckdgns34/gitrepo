@@ -132,7 +132,7 @@ function btnScore(){ // 추천버튼 클릭시(추천 추가 또는 추천 제�
 						<div class="product_count">
          					<a class="button primary-btn" href="#" id="read" onclick="goRead()">읽기</a>
          					<a class="button primary-btn" href="#" id="check" onclick="licence()">결재</a> 
-
+						</div>
          					
          					
          					              
@@ -164,7 +164,7 @@ function btnScore(){ // 추천버튼 클릭시(추천 추가 또는 추천 제�
 								</c:if>
 							</c:if>			
 						</div>
-						</div>
+						
 					</div>
 				</div>
 			</div>
@@ -353,14 +353,14 @@ function btnScore(){ // 추천버튼 클릭시(추천 추가 또는 추천 제�
 					<div class="row">
 						<div class="col-lg-6">
 							<div class="row total_rate">
-								<div class="col-6">
+								<%-- <div class="col-6">
 									<div class="box_total">
 										<h5>Overall</h5>
 										<h4>4.0</h4>
 										<h6>(03 Reviews)</h6>
 									</div>
-								</div>
-								<div class="col-6">
+								</div>--%>
+								<%-- <div class="col-6">
 									<div class="rating_list">
 										<h3>Based on 3 Reviews</h3>
 										<ul class="list">
@@ -376,7 +376,7 @@ function btnScore(){ // 추천버튼 클릭시(추천 추가 또는 추천 제�
 													 class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
 										</ul>
 									</div>
-								</div>
+								</div>--%>
 							</div>
 							<div class="review_list" id="reviewField">
 							
@@ -404,7 +404,7 @@ function btnScore(){ // 추천버튼 클릭시(추천 추가 또는 추천 제�
 						</div>
 						<div class="col-lg-6">
 							<div class="review_box">
-								<h4>Add a Review</h4>
+								<%-- <h4>Add a Review</h4>
 								<p>Your Rating:</p>
 								<ul class="list">
 									<li><a href="#"><i class="fa fa-star"></i></a></li>
@@ -413,7 +413,7 @@ function btnScore(){ // 추천버튼 클릭시(추천 추가 또는 추천 제�
 									<li><a href="#"><i class="fa fa-star"></i></a></li>
 									<li><a href="#"><i class="fa fa-star"></i></a></li>
 								</ul>
-								<p>Outstanding</p>
+								<p>Outstanding</p>--%>
 								
 								<!-- 리뷰쓰고 액션 -->
                		
@@ -436,13 +436,7 @@ function btnScore(){ // 추천버튼 클릭시(추천 추가 또는 추천 제�
                     <button type="submit" class="button button--active button-review" id="btnreview">Submit Now</button>
                   </div>
                   </c:if>
-                  
-                  
-               
 
-
-               
-               
 							</div>
 						</div>
 					</div>
