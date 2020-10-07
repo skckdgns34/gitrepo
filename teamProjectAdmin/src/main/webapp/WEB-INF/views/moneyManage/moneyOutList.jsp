@@ -66,9 +66,9 @@
 	
 	function makeTr(item){
 		return $('<tr>')
-		.append($('<td>').html(item.sal_date))
-		.append($('<td>').html(item.revenue))
-		.append($('<td>').html(item.ticketCode));
+		.append($('<td>').html(item.pay_date))
+		.append($('<td>').html(item.price))
+		.append($('<td>').html(item.ticket_code));
 		
 
 	}
@@ -82,8 +82,8 @@
 	
 	<form>
 		<div>
-			<input name="startdate" type="date" /> - <input name="enddate"
-				type="date" /> <br> <label for="quarterYear">연도선택</label> <select
+			<input name="startdate" type="date" /> - <input name="enddate"type="date" /> <br> 
+			<label for="quarterYear">연도선택</label> <select
 				id="quarterYear" name="quarterYear">
 				<option value="">선택</option>
 				<option value="2015">2015년</option>
