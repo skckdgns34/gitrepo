@@ -39,6 +39,7 @@ li {
 			<td>작가</td>
 			<td>장르</td>
 			<td>조회수</td>
+			<td></td>
 		</tr>
 		<c:forEach items="${list }" var="books">
 				<tr>
