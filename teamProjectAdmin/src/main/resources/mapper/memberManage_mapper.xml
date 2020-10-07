@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dbal.app.memberManage.mapper.MemberManageDAO">
+
+	<!-- 전체조회 -->
+	<select id="selectAll" parameterType="membermanage"
+		resultType="membermanage">
+		SELECT
+		MEMBER_NO,
+		MEMBER_ID,
+		MEMBER_PW,
+		NICKNAME,
+		MEMBER_TEL,
+		MEMBER_EMAIL,
+		SIGNUP_DATE,
+		LAST_ACCESS_DATE,
+		GENDER
+		FROM MEMBER
+		WHERE MEMBER_ID IS NOT NULL
+	</select>
+
+<!-- 전체조회 -->
+	<select id="selectOne" parameterType="membermanage"
+		resultType="membermanage">
+		SELECT
+		MEMBER_NO,
+		MEMBER_ID,
+		MEMBER_PW,
+		NICKNAME,
+		MEMBER_TEL,
+		MEMBER_EMAIL,
+		SIGNUP_DATE,
+		LAST_ACCESS_DATE,
+		GENDER
+		FROM MEMBER
+		WHERE MEMBER_NO = #{member_no}
+	</select>
+	<update id="update" parameterType="membermanage">
+		UPDATE
+		MEMBER SET
+		MEMBER_PW = #{member_pw},
+		NICKNAME = #{nickname},
+		MEMBER_EMAIL = #{member_email},
+		MEMBER_TEL = #{member_tel}
+		WHERE MEMBER_ID = #{member_id}
+	</update>
+
+
+</mapper>

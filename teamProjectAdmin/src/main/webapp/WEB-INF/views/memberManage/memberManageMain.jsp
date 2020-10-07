@@ -5,7 +5,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@page isELIgnored="false"%>
-<!-- 로그인이 안 되면 접근을 못ㅎ하게 만들어 놓음! -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,7 +23,7 @@
 
 	function modifypage() //수정 ㅡ
 	{
-		window.document.location.href = "${pageContext.request.contextPath}/memberManageModifyForm.ad?no="
+		window.document.location.href = "memberManageModifyForm.ad?member_no="
 				+ $('input[name="user_CheckBox"]:checked').val();
 		alert($('input[name="user_CheckBox"]:checked').val())
 		return;
@@ -32,7 +31,7 @@
 
 	function deletepage() //삭제
 	{
-		window.document.location.href = "${pageContext.request.contextPath}/memberManageDelete.ad?no= "
+		window.document.location.href = "memberManageDelete.ad?no= "
 				+ $('input[name="user_CheckBox"]:checked').val();
 		return;
 	}

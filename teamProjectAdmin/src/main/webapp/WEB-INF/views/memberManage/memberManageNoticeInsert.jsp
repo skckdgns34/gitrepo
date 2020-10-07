@@ -68,7 +68,7 @@
 								<div class="controls col-md-8 " style="margin-bottom: 10px">
 
 									<input class="input-md emailinput form-control" id="notice_img"
-										name="notice_img" placeholder="Enter Project Id"
+										name="notice_img1" placeholder="Enter Project Id"
 										style="margin-bottom: 10px; width: 600px" type="file" />
 								</div>
 							</div>

@@ -11,5 +11,5 @@ public interface NoticeService  {
 	//전체 조회
 	public List<Notice> selectAll(Notice noticeVO);
 	//등록 
-	public Notice insert(Notice NoticeVO);
+	public void insert(Notice NoticeVO);
 }

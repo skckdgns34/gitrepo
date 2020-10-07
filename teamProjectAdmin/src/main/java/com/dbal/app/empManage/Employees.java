@@ -1,6 +1,5 @@
 package com.dbal.app.empManage;
 
-import com.dbal.app.memberManage.Notice;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

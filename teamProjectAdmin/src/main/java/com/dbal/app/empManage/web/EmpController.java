@@ -26,7 +26,7 @@ public class EmpController  {
 		return "adminMain/login";
 	}
     //로그인처리
-    @RequestMapping(value="/login.ad", method=RequestMethod.GET)
+    @RequestMapping(value="/login.ad", method=RequestMethod.POST)
     public String loginCK(Model model, Employees employees, HttpServletRequest request) {
 		Employees resultVo = empService.loginCk(employees);
 

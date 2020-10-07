@@ -19,14 +19,14 @@
 
 	function modifypage() //수정 
 	{
-		window.document.location.href = "${pageContext.request.contextPath}/memberManageQuestionPop.ad?no="
+		window.document.location.href = "memberManageQuestionPop.ad?no="
 				+ $('input[name="user_CheckBox"]:checked').val();
 		return;
 	}
 
 	function deletepage() //삭제
 	{
-		window.document.location.href = "${pageContext.request.contextPath}/주소 적기...ㅠ.ad";
+		window.document.location.href = "주소 적기...ㅠ.ad";
 		return;
 	}
 </script>
