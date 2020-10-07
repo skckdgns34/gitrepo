@@ -44,6 +44,7 @@ public class MemberManageController {
 		return "redirect:/memberManageMain.ad";
 	}
 	
+	//삭제
 	@RequestMapping(value="/memberManageDelete.ad", method = RequestMethod.GET)
 	public String memberManageDelete(Member memberVO, HttpServletRequest request ) {
 		String member_no = request.getParameter("member_no");

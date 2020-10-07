@@ -18,7 +18,7 @@
 		emp_address,
 		rank_code
 		FROM employees
-
+		WHERE EMP_ID IS NOT NULL
 	</select>
 
 	<!-- 로그인 체크 -->
@@ -54,11 +54,10 @@
 		WHERE emp_no = #{emp_no}
 
 	</select>
-	
+
 	<!-- 사원 등록 -->
 	<update id="updateNo">
-		update seq set no = no + 1 where tablename =
-		'employees'
+		update seq set no = no + 1 where tablename = 'employees'
 	</update>
 
 	<insert id="Insert" parameterType="employees">
@@ -69,29 +68,54 @@
 			WHERE TABLENAME='employees'
 		</selectKey>
 		INSERT INTO EMPLOYEES
-				(EMP_NO,
-				EMP_ID,
-				EMP_PW,
-				EMP_NAME,
-				EMP_BIRTH,
-				ENTEREDDATE,
-				DEPT_CODE,
-				EMP_ADDRESS,
-				RANK_CODE )
+		(EMP_NO,
+		EMP_ID,
+		EMP_PW,
+		EMP_NAME,
+		EMP_BIRTH,
+		ENTEREDDATE,
+		DEPT_CODE,
+		EMP_ADDRESS,
+		RANK_CODE )
 
 		VALUES (
-				#{emp_no},
-				#{emp_id},
-				#{emp_pw},
-				#{emp_name},
-				#{emp_birth},
-				#{entereddate},
-				#{dept_code},
-				#{emp_address},
-				#{rank_code})
+		#{emp_no},
+		#{emp_id},
+		#{emp_pw},
+		#{emp_name},
+		#{emp_birth},
+		#{entereddate},
+		#{dept_code},
+		#{emp_address},
+		#{rank_code})
 
 	</insert>
 
+	<update id="Update" parameterType="employees">
+		update employees set
+		emp_pw = #{emp_pw},
+		emp_name = #{emp_name},
+		emp_birth= #{emp_birth},
+		entereddate = #{entereddate},
+		dept_code = #{dept_code},"
+		emp_address = #{emp_address},
+		rank_code = #{rank_code}
+		where emp_no = #{emp_no}
+	</update>
+
+<!-- 삭제 -->
+<update id="Delete">
+
+update employees set emp_id = null, 
+					emp_pw = null, 
+					emp_name = null, 
+					emp_birth = null,
+					entereddate = null, 
+					dept_code = null, 
+					emp_address = null, 
+					rank_code = null
+where emp_no = #{emp_no}
+</update>
 
 
 </mapper>
