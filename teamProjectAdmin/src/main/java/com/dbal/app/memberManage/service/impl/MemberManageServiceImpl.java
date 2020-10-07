@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.dbal.app.books.Books;
 import com.dbal.app.memberManage.Member;
 import com.dbal.app.memberManage.mapper.MemberManageDAO;
 import com.dbal.app.memberManage.service.MemberManageService;
@@ -27,7 +28,7 @@ public class MemberManageServiceImpl implements MemberManageService{
 
 	@Override
 	public void delete(Member memberVO) {
-		
+	  memberManageDAO.delete(memberVO);
 	}
 
 	@Override
@@ -49,6 +50,11 @@ public class MemberManageServiceImpl implements MemberManageService{
 	@Override
 	public List<HashMap<String, Object>> getTicketCnt() {
 		return memberManageDAO.getTicketCnt();
+	}
+
+	@Override
+	public List<Books> selectViews() {
+		return memberManageDAO.selectViews();
 	}
 	
 
