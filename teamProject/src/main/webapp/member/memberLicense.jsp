@@ -21,7 +21,7 @@ li {
 	<br>
 	<ul>
 		<li><a
-			href="<%=application.getContextPath()%>/memberNodify.do">내정보 수정</a>
+			href="<%=application.getContextPath()%>/memberModify.do">내정보 수정</a>
 		<li><a
 			href="<%=application.getContextPath()%>/memberLibrary.do">내 서재</a>
 		<li><a

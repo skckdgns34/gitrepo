@@ -7,37 +7,33 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/layout/styles/slider.css">
 
 <script>
 	$(function() {
-		$("#testInput")
-				.autocomplete(
-						{
+		$("#testInput").autocomplete({
 							source : function(request, response) {
-								$
-										.ajax({
-											url : "${pageContext.request.contextPath}/Ajax/audioBookSearchAjax.do",
-											type : "GET",
-											dataType : "json",
-											data : {
-												data : $("#testInput").val()
-											}, // 검색 키워드
-											success : function(data) { // 성공
-												response($.map(data, function(
-														item) {
-													$('#hidden').val(
-															item.result);
-													$('#realHidden').val(
-															item.title);
+								$.ajax({
+										url : "${pageContext.request.contextPath}/Ajax/audioBookSearchAjax.do",
+										type : "GET",
+										dataType : "json",
+										data : {data : $("#testInput").val()}, // 검색 키워드
+										success : function(data) { // 성공
+											response($.map(data, function(item) {
+													$('#hidden').val(item.result);
+													$('#realHidden').val(item.title);
 													return {
 														label : item.title, //목록에 표시되는 값
 														value : item.title, //선택 시 input창에 표시되는 값	
 														idx : item.testIdx
 													};
-												})); //response
-											},//success
-											error : function() { //실패
-												alert("통신에 실패했습니다.");
+											})); //response
+										},//success
+										error : function() { //실패
+											alert("통신에 실패했습니다.");
 											}
 										});//ajax
 							},//source: function
@@ -59,14 +55,24 @@
 							close : function(evt) {
 							}
 						})//autoComplete
-
+						
+		$(".pixel-radio").on("click",function(){
+			var gen = $("input[name='gen']:checked").val();
+			 $.ajax({
+				 url: "${pageContext.request.contextPath}/Ajax/audioBookCategoryAjax.do",
+				type: "GET",
+				data : {gen : gen},
+				success : function(data){ //연결성공
+				$("#row").html(data);
+				}//success
+			});//ajax
+		});//function
 	});
-
+	
 	function imgClick(book_no) {
 		if (book_no != null) {
 			if (confirm("해당 책 상세페이지로 이동하시겠습니까?")) {
-				location.href = "${pageContext.request.contextPath}/audioBookDetail.do?book_no="
-						+ book_no;
+				location.href = "${pageContext.request.contextPath}/audioBookDetail.do?book_no="+book_no;
 			}
 		}
 	}
@@ -77,16 +83,6 @@
 
 
 <body>
-	<h3>오디오책</h3>
-	<input type="text" id="testInput" placeholder="검색할 내용 입력" name="search" />
-	<form
-		action="${pageContext.request.contextPath}/audioBookSearchAfter.do"
-		method="post">
-		<input type="hidden" id="hidden" name="hidden" /> <input
-			type="hidden" id="realHidden" name="realHidden" />
-		<button>검색</button>
-	</form>
-	
 	<!-- ================ category section start ================= -->		  
   <section class="section-margin--small mb-5">
     <div class="container">
@@ -97,39 +93,30 @@
             <ul class="main-categories">
               <li class="common-filter">
                 <form action="#">
-                  <ul>
-                    <li class="filter-list"><input class="pixel-radio" type="radio" id="men" name="brand"><label for="men">장르별<span> (3600)</span></label></li>
-                    <li class="filter-list"><input class="pixel-radio" type="radio" id="women" name="brand"><label for="women">신간<span> (3600)</span></label></li>
-                    <li class="filter-list"><input class="pixel-radio" type="radio" id="accessories" name="brand"><label for="accessories">최다 조회<span> (3600)</span></label></li>
-                    <li class="filter-list"><input class="pixel-radio" type="radio" id="footwear" name="brand"><label for="footwear">뭐 적을까<span> (3600)</span></label></li>
-                    <li class="filter-list"><input class="pixel-radio" type="radio" id="bayItem" name="brand"><label for="bayItem">이건?<span> (3600)</span></label></li>
-                    <li class="filter-list"><input class="pixel-radio" type="radio" id="electronics" name="brand"><label for="electronics">이것도<span> (3600)</span></label></li>
-                    <li class="filter-list"><input class="pixel-radio" type="radio" id="food" name="brand"><label for="food">이거!<span> (3600)</span></label></li>
+       			 <ul>
+                    <li class="filter-list"><input class="pixel-radio" type="radio" id="r1" name="gen" value="" checked="checked"><label for="r1">전체<span></span></label></li>
+                    <li class="filter-list"><input class="pixel-radio" type="radio" id="r2" name="gen" value="d1"><label for="r2">소설<span> (${count[0].count})</span></label></li>
+                    <li class="filter-list"><input class="pixel-radio" type="radio" id="r3" name="gen" value="d2"><label for="r3">시/에세이<span> (${count[1].count})</span></label></li>
+                    <li class="filter-list"><input class="pixel-radio" type="radio" id="r4" name="gen" value="d3"><label for="r4">무협/판타지<span> (${count[2].count})</span></label></li>
+                    <li class="filter-list"><input class="pixel-radio" type="radio" id="r5" name="gen" value="d4"><label for="r5">인문<span> (${count[3].count})</span></label></li>
+                    <li class="filter-list"><input class="pixel-radio" type="radio" id="r6" name="gen" value="d5"><label for="r6">로맨스<span> (${count[4].count})</span></label></li>
+                    <li class="filter-list"><input class="pixel-radio" type="radio" id="r7" name="gen" value="d6"><label for="r7">자기계발<span> (${count[5].count})</span></label></li>
+                    <li class="filter-list"><input class="pixel-radio" type="radio" id="r8" name="gen" value="d7"><label for="r8">경제경영<span> (${count[6].count})</span></label></li>
+                    <li class="filter-list"><input class="pixel-radio" type="radio" id="r9" name="gen" value="d8"><label for="r9">아동<span> (${count[7].count})</span></label></li>
+                    <li class="filter-list"><input class="pixel-radio" type="radio" id="r10" name="gen" value="d9"><label for="r10">유아<span> (${count[8].count})</span></label></li>
                   </ul>
                 </form>
               </li>
             </ul>
           </div>
           <div class="sidebar-filter">
-            <div class="top-filter-head">Company Filters</div>
-            <div class="common-filter">
-              <div class="head">출판사</div>
-              <form action="#">
-                <ul>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="apple" name="brand"><label for="apple">한빛<span>(29)</span></label></li>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="asus" name="brand"><label for="asus">예담<span>(29)</span></label></li>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="gionee" name="brand"><label for="gionee">민음사<span>(19)</span></label></li>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="micromax" name="brand"><label for="micromax">한솔<span>(19)</span></label></li>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="samsung" name="brand"><label for="samsung">솔솔<span>(19)</span></label></li>
-                </ul>
-              </form>
-            </div>
+            <div class="top-filter-head"></div>
           </div>
         </div>
         <div class="col-xl-9 col-lg-8 col-md-7">
           <!-- Start Filter Bar -->
           <div class="filter-bar d-flex flex-wrap align-items-center">
-            <div class="sorting">
+    <!--         <div class="sorting">
               <select>
                 <option value="1">Default sorting</option>
                 <option value="1">Default sorting</option>
@@ -141,174 +128,25 @@
                 <option value="1">Show 12</option>
                 <option value="1">Show 12</option>
                 <option value="1">Show 12</option>
-              </select>
+              </select> -->
             </div>
             <div>
               <div class="input-group filter-bar-search">
-                <input type="text" placeholder="Search">
-                <div class="input-group-append">
-                  <button type="button"><i class="ti-search"></i></button>
-                </div>
+                <input type="text" placeholder="Search" id="testInput">
+                <form action="${pageContext.request.contextPath}/audioBookSearchAfter.do">
+                	<input type="hidden" id="hidden" name="hidden">
+                	<input type="hidden" id="realHidden" name="realHidden">
+                	<div class="input-group-append">
+	                	<button><i class="ti-search"></i></button>
+                	</div>
+                </form>
               </div>
             </div>
           </div>
           <!-- End Filter Bar -->
           <!-- Start Best Seller -->
           <section class="lattest-product-area pb-40 category-list">
-            <div class="row">
-              <div class="col-md-6 col-lg-4">
-                <div class="card text-center card-product">
-                  <div class="card-product__img">
-                    <img class="card-img" src="img/product/product1.png" alt="">
-                    <ul class="card-product__imgOverlay">
-                      <li><button><i class="ti-search"></i></button></li>
-                      <li><button><i class="ti-shopping-cart"></i></button></li>
-                      <li><button><i class="ti-heart"></i></button></li>
-                    </ul>
-                  </div>
-                  <div class="card-body">
-                    <p>Accessories</p>
-                    <h4 class="card-product__title"><a href="#">Quartz Belt Watch</a></h4>
-                    <p class="card-product__price">$150.00</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6 col-lg-4">
-                <div class="card text-center card-product">
-                  <div class="card-product__img">
-                    <img class="card-img" src="img/product/product2.png" alt="">
-                    <ul class="card-product__imgOverlay">
-                      <li><button><i class="ti-search"></i></button></li>
-                      <li><button><i class="ti-shopping-cart"></i></button></li>
-                      <li><button><i class="ti-heart"></i></button></li>
-                    </ul>
-                  </div>
-                  <div class="card-body">
-                    <p>Beauty</p>
-                    <h4 class="card-product__title"><a href="#">Women Freshwash</a></h4>
-                    <p class="card-product__price">$150.00</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6 col-lg-4">
-                <div class="card text-center card-product">
-                  <div class="card-product__img">
-                    <img class="card-img" src="img/product/product3.png" alt="">
-                    <ul class="card-product__imgOverlay">
-                      <li><button><i class="ti-search"></i></button></li>
-                      <li><button><i class="ti-shopping-cart"></i></button></li>
-                      <li><button><i class="ti-heart"></i></button></li>
-                    </ul>
-                  </div>
-                  <div class="card-body">
-                    <p>Decor</p>
-                    <h4 class="card-product__title"><a href="#">Room Flash Light</a></h4>
-                    <p class="card-product__price">$150.00</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6 col-lg-4">
-                <div class="card text-center card-product">
-                  <div class="card-product__img">
-                    <img class="card-img" src="img/product/product4.png" alt="">
-                    <ul class="card-product__imgOverlay">
-                      <li><button><i class="ti-search"></i></button></li>
-                      <li><button><i class="ti-shopping-cart"></i></button></li>
-                      <li><button><i class="ti-heart"></i></button></li>
-                    </ul>
-                  </div>
-                  <div class="card-body">
-                    <p>Decor</p>
-                    <h4 class="card-product__title"><a href="#">Room Flash Light</a></h4>
-                    <p class="card-product__price">$150.00</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6 col-lg-4">
-                <div class="card text-center card-product">
-                  <div class="card-product__img">
-                    <img class="card-img" src="img/product/product5.png" alt="">
-                    <ul class="card-product__imgOverlay">
-                      <li><button><i class="ti-search"></i></button></li>
-                      <li><button><i class="ti-shopping-cart"></i></button></li>
-                      <li><button><i class="ti-heart"></i></button></li>
-                    </ul>
-                  </div>
-                  <div class="card-body">
-                    <p>Accessories</p>
-                    <h4 class="card-product__title"><a href="#">Man Office Bag</a></h4>
-                    <p class="card-product__price">$150.00</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6 col-lg-4">
-                <div class="card text-center card-product">
-                  <div class="card-product__img">
-                    <img class="card-img" src="img/product/product6.png" alt="">
-                    <ul class="card-product__imgOverlay">
-                      <li><button><i class="ti-search"></i></button></li>
-                      <li><button><i class="ti-shopping-cart"></i></button></li>
-                      <li><button><i class="ti-heart"></i></button></li>
-                    </ul>
-                  </div>
-                  <div class="card-body">
-                    <p>Kids Toy</p>
-                    <h4 class="card-product__title"><a href="#">Charging Car</a></h4>
-                    <p class="card-product__price">$150.00</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6 col-lg-4">
-                <div class="card text-center card-product">
-                  <div class="card-product__img">
-                    <img class="card-img" src="img/product/product7.png" alt="">
-                    <ul class="card-product__imgOverlay">
-                      <li><button><i class="ti-search"></i></button></li>
-                      <li><button><i class="ti-shopping-cart"></i></button></li>
-                      <li><button><i class="ti-heart"></i></button></li>
-                    </ul>
-                  </div>
-                  <div class="card-body">
-                    <p>Accessories</p>
-                    <h4 class="card-product__title"><a href="#">Blutooth Speaker</a></h4>
-                    <p class="card-product__price">$150.00</p>
-                  </div> 
-                </div>
-              </div>
-              <div class="col-md-6 col-lg-4">
-                <div class="card text-center card-product">
-                  <div class="card-product__img">
-                    <img class="card-img" src="img/product/product8.png" alt="">
-                    <ul class="card-product__imgOverlay">
-                      <li><button><i class="ti-search"></i></button></li>
-                      <li><button><i class="ti-shopping-cart"></i></button></li>
-                      <li><button><i class="ti-heart"></i></button></li>
-                    </ul>
-                  </div>
-                  <div class="card-body">
-                    <p>Kids Toy</p>
-                    <h4 class="card-product__title"><a href="#">Charging Car</a></h4>
-                    <p class="card-product__price">$150.00</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6 col-lg-4">
-                <div class="card text-center card-product">
-                  <div class="card-product__img">
-                    <img class="card-img" src="img/product/product1.png" alt="">
-                    <ul class="card-product__imgOverlay">
-                      <li><button><i class="ti-search"></i></button></li>
-                      <li><button><i class="ti-shopping-cart"></i></button></li>
-                      <li><button><i class="ti-heart"></i></button></li>
-                    </ul>
-                  </div>
-                  <div class="card-body">
-                    <p>Accessories</p>
-                    <h4 class="card-product__title"><a href="#">Quartz Belt Watch</a></h4>
-                    <p class="card-product__price">$150.00</p>
-                  </div>
-                </div>
-              </div>
+            <div class="row" id="row">
             </div>
           </section>
           <!-- End Best Seller -->
@@ -325,62 +163,34 @@
         <p>베스트 셀러</p>
         <h2>Top <span class="section-intro__style">Product</span></h2>
       </div>
-			<div class="row mt-30">
+		<div class="row mt-30">
         <div class="col-sm-6 col-xl-3 mb-4 mb-xl-0">
           <div class="single-search-product-wrapper">
             <div class="single-search-product d-flex">
-              <a href="#"><img src="img/product/product-sm-1.png" alt=""></a>
+              <a href="#"><img src="" alt=""></a>
               <div class="desc">
                   <a href="#" class="title">Gray Coffee Cup</a>
                   <div class="price">$170.00</div>
               </div>
             </div>
             <div class="single-search-product d-flex">
-              <a href="#"><img src="img/product/product-sm-2.png" alt=""></a>
+              <a href="#"><img src="" alt=""></a>
               <div class="desc">
                 <a href="#" class="title">Gray Coffee Cup</a>
                 <div class="price">$170.00</div>
               </div>
             </div>
             <div class="single-search-product d-flex">
-              <a href="#"><img src="img/product/product-sm-3.png" alt=""></a>
+              <a href="#"><img src="" alt=""></a>
               <div class="desc">
                 <a href="#" class="title">Gray Coffee Cup</a>
                 <div class="price">$170.00</div>
               </div>
             </div>
           </div>
-        </div>
-
-      </div>
+         </div>
+		</div>
 		</div>
 	</section>
-	<!-- ================ top product area end ================= -->		
-
-	<!-- 테스트 -->
-	<%-- <c:forEach begin="1" end="${genreList.size() }" var="i">
-	${i }
-	<div>${genreList.get(i-1).code_value}</div>
-	<div class="wrapper-slider">
- 		<div class="arrow-left"></div>
-   		<div class="arrow-right"></div>
-    	<div class="items">
-			<c:forEach begin="1" end="${books.get(i-1).size() }" var="j">
-				<div class="item item1">
-					<c:if test="${not empty books[i-1][j-1].book_img}">
-						<img onclick="imgClick(${books[i-1][j-1].book_no})" 
-		 					src="filenameDownload.do?filename=${books[i-1][j-1].book_img }" 
-		 					/><br>
-		 				
-					</c:if>
-				</div>
-			</c:forEach>
-		</div>
-	</div>
-</c:forEach>
- --%>
- 	<!-- Optional JavaScript -->
-	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-	
 </body>
 </html>

@@ -49,8 +49,7 @@ public class FrontController extends HttpServlet {
 		list.put("/memberCreateBookCk.do", new member.MemberCreateBookCkServ()); // 내서재 - 나만의 도서
 		list.put("/memberLogin.do", new member.MemberLoginServ()); // 로그인
 		list.put("/memberLogout.do", new member.MemberLogoutServ()); // 로그아웃
-		list.put("/memberFind.do", new member.MemberFindServ()); // 아이디/비밀번호 찾기 - 아이디 찾기 이메일 확인
-		list.put("/memberFindId.do", new member.MemberFindIdServ()); // 아이디/비밀번호 찾기 - 아이디 찾기 확인
+		list.put("/memberFind.do", new member.MemberFindServ()); // 아이디/비밀번호 찾기 - 아이디 찾기
 		list.put("/memberFindemail.do", new member.MemberFindEmailServ()); // 아이디/비밀번호 찾기 - 이메일 보내기
 		list.put("/memberFindCheck.do", new member.MemberFindCheckServ()); // 아이디/비밀번호 찾기 - 인증번호 확인
 		list.put("/memberFindPassword.do", new member.MemberFindPasswordServ()); // 아이디/비밀번호 찾기 - 비밀번호 번경
@@ -178,6 +177,17 @@ public class FrontController extends HttpServlet {
 		list.put("/Ajax/eBookCategoryAjax.do", new ebook.EBookCategoryAjaxServ());
 		
 		list.put("/Ajax/eBookReview.do", new ebook.EBookReviewAjaxServ());
+		
+		list.put("/audioBookIndexUpdate.do", new ebook.AudioBookIndexUpdateServ());
+
+		list.put("/afterLicenceBuyServ.do", new licence.AfterLicenceBuyServ());
+
+		list.put("/Ajax/audioBookCategoryAjax.do", new ebook.AudioBookCategoryAjaxServ());
+
+		list.put("/Ajax/audioBookReview.do", new ebook.AudioBookReviewAjaxServ());
+
+		list.put("/audioBookDetail.do", new ebook.AudioBookDetail());
+
 	}
 
 	public FrontController() {

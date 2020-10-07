@@ -2,6 +2,8 @@ package ebook;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -21,17 +23,21 @@ public class AudioBookCategoryServ implements Controller
 		list = CommonDAO.getInstance().selectAllGenre();
 		request.setAttribute("genreList", list);
 
-		ArrayList<Books> bookList = new ArrayList<Books>();   
+		ArrayList<Books> books=null;
 		
-		ArrayList<ArrayList<Books>> books = new ArrayList<ArrayList<Books>>();
-		for(int i=0; i<list.size(); i++) {
-			bookList = EBookDAO.getInstance().selectAllAudioBook(list.get(i).getCode());
-			books.add(bookList);
-			bookList = new ArrayList<Books>();
+		List<Map<String,Object>> count = EBookDAO.getInstance().genreCount();
+
+		String gen = request.getParameter("gen");
+
+		if(gen == "undefined") {
+			books = EBookDAO.getInstance().raidoAllBooks();
 		}
+		else if(gen != null) {
+			books = EBookDAO.getInstance().radioCheckGenre(gen);
+		}
+		request.setAttribute("count", count);
 		request.setAttribute("books", books);
 		request.getRequestDispatcher("/ebook/audioBookCategory.jsp").forward(request, response);
-
 	
 	}
 

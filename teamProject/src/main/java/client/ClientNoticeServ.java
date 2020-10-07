@@ -20,6 +20,7 @@ public class ClientNoticeServ implements Controller
 		NoticeDAO dao = new NoticeDAO();
 		
 		String p = request.getParameter("p");
+		
 		String notice_title = request.getParameter("notice_title");
 		
 		//유효성 체크
@@ -34,6 +35,7 @@ public class ClientNoticeServ implements Controller
 				
 		Notice notice = new Notice();
 		notice.setNotice_title(notice_title);
+		
 		paging.setTotalRecord(dao.count(notice));
 		notice.setFirst(paging.getFirst());
 		notice.setLast(paging.getLast());

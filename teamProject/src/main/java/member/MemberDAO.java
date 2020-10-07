@@ -3,6 +3,7 @@ package member;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -327,5 +328,46 @@ public class MemberDAO {
 			ConnectionManager.close(rs, pstmt, conn);
 		}
 		return list;
+	}
+
+	public void updateIndex(String index, String member_no, String book_no) {
+		try {
+			conn = ConnectionManager.getConnnect();
+			String sql = "update mylibrary set last_read_index=trunc(?) where member_no =? and book_no=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, index);
+			pstmt.setString(2, member_no);
+			pstmt.setString(3, book_no);
+			int r = pstmt.executeUpdate();
+			System.out.println(r + "건이 업데이트됨.");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionManager.close(conn);
+		}
+	}
+
+	public int myBookIndex(String book_no, String no) {
+		ResultSet rs = null;
+		int r = 0;
+		try {
+		conn = ConnectionManager.getConnnect();
+		String sql = "select last_read_index from mylibrary where member_no = ? and book_no = ?";
+		
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, no);
+			pstmt.setString(2, book_no);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				r = rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionManager.close(conn);
+		}
+		return r;
+		
 	}
 }

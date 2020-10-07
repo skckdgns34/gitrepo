@@ -13,6 +13,7 @@ import common.Controller;
 public class AudioBookSearchAfterServ implements Controller {
 
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		response.setContentType("text/html; charset=UTF-8");
 		AudioBookDAO dao = new AudioBookDAO();
 		String AutoResult = request.getParameter("hidden");
