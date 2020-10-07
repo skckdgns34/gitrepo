@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.dbal.app.company.mapper.CompanyDAO">
+  	<select id="selectAll" parameterType="company" resultType="company">
+  		SELECT *
+  		FROM company
+  	</select>
+  	
+  	<select id="selectOne" parameterType="company" resultType="company">
+  		SELECT *
+  		FROM company
+  		WHERE company_code = #{company_code}
+  	</select>
+  	
+  	<update id="updateComNo">
+		UPDATE
+		seq set no = no + 1
+		WHERE
+		tablename = 'company'
+	</update>
+	
+	<insert id="insert" parameterType="company">
+		<selectKey keyProperty="company_code" resultType="string" order="BEFORE">
+			SELECT NO
+			FROM SEQ
+			WHERE TABLENAME='purchase'
+		</selectKey>
+		INSERT INTO company(company_code,
+							company_name,
+							company_addr,
+							company_mgr,
+							company_tel,
+							company_mgr_tel,
+							company_account,
+							company_bank)
+		VALUES(#{company_code},
+				#{company_name},
+				#{company_addr},
+				#{company_mgr},
+				#{company_tel},
+				#{company_mgr_tel},
+				#{company_account},
+				#{company_bank})
+	</insert>
+	
+	<delete id="delete" parameterType="company">
+		DELETE company
+		WHERE company_code=#{company_code}
+	</delete>
+	
+	<update id="update" parameterType="company">
+		UPDATE company 
+		SET 
+			company_name = #{company_name},
+			company_addr = #{company_addr},
+			company_mgr = #{company_mgr},
+			company_tel = #{company_tel},
+			company_mgr_tel = #{company_mgr_tel},
+			company_account = #{company_account},
+			company_bank = #{company_bank}
+		WHERE company_code = #{company_code}
+	</update>
+  </mapper>

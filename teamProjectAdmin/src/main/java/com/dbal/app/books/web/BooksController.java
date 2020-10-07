@@ -28,13 +28,13 @@ public class BooksController  {
     @RequestMapping("/bookList.ad")
     public String selectAll(Model model,Books books){
     	model.addAttribute("list",booksService.selectAll(books));
-    	return "/bookManage/bookList";
+    	return "bookManage/bookList";
     }
     
     //e-book 등록 페이지
     @RequestMapping(value = "/bookRegister.ad", method = RequestMethod.GET)
     public String BookManageServ() {
-    	return "/bookManage/bookRegister";
+    	return "bookManage/bookRegister";
     }
     
     //e-book 등록
@@ -76,7 +76,7 @@ public class BooksController  {
     //오디오북 등록 페이지
     @RequestMapping(value = "/bookRegisterAudio.ad", method = RequestMethod.GET)
     public String BookManageAudioServ() {
-    	return "/bookManage/bookRegisterAudio";
+    	return "bookManage/bookRegisterAudio";
     }
     
     //오디오북 등록 
@@ -109,26 +109,42 @@ public class BooksController  {
     	booksService.insertAudio(books);
     	return "redirect:/bookList.ad";
     }
+    //도서삭제
+    @RequestMapping("/bookDelete.ad")
+    public String BookDeleteServ(Books books) {
+    	booksService.delete(books);
+    	return "redirect:/bookList.ad";
+    }
     
     //도서 선택
-    @RequestMapping("/bookSelect.ad")
-    public String BookSelectServ(Model model,Books books) {
+    @RequestMapping(value = "/bookSelect.ad", method = RequestMethod.GET)
+    public String BookSelectServ(Model model,Books books, HttpServletRequest request) {
+    	String no = request.getParameter("book_no");
+    	books.setBook_no(no);
     	model.addAttribute("result",booksService.selectOne(books));
-    	return "/bookManage/bookModify";
+    	return "bookManage/bookModify";
     }
 
     //도서 수정
-    @RequestMapping(value ="/bookModify.ad", method = RequestMethod.GET)
-    public String BookModifyForm(Books books) {
-    	
-    	booksService.update(books);
-    	return "redirect:/bookModify.ad";
-    }
-    
     @RequestMapping(value ="/bookModify.ad", method = RequestMethod.POST)
-    public String BookModifyServ() {
+    public String BookModifyServ(Books books, HttpServletRequest request) throws IllegalStateException, IOException {
+    	MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest)request;
+    	//표지 업로드
+    	MultipartFile imgFile = multipartRequest.getFile("book_img1");
+		String path = "c:/전자도서관/책표지";
+		String fileName;
+		if(imgFile !=null && !imgFile.isEmpty() && imgFile.getSize()>0) {
+			fileName = imgFile.getOriginalFilename();
+			//파일명 중복체크
+			File renameFile = FileRenamePolicy.rename(new File(path, fileName));
+			imgFile.transferTo(new File(path,renameFile.getName()));
+			books.setBook_img(renameFile.getName());
+		}
+		
+    	booksService.update(books);
     	return "redirect:/bookList.ad";
     }
+    
 }
 
 
