@@ -25,6 +25,9 @@ public class AudioBookDAO {
 		return instance;
 	}
 
+	
+	
+	
 	// audio-Book detail 페이지에서 해당책 상세내용 뿌려주기용
 	public ArrayList<Books> detailBook(String b) {
 		ResultSet rs = null;
