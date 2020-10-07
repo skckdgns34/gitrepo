@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.Part;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,6 +16,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import com.dbal.app.books.Books;
 import com.dbal.app.books.service.BooksService;
 import com.dbal.app.common.FileRenamePolicy;
+import com.dbal.app.empManage.Employees;
 
 @Controller
 public class BooksController  {
@@ -32,7 +32,7 @@ public class BooksController  {
     }
     
     //e-book 등록 페이지
-    @RequestMapping(value = "/bookRegister.ad", method = RequestMethod.GET)
+    @RequestMapping(value = "/bookManage.ad", method = RequestMethod.GET)
     public String BookManageServ() {
     	return "bookManage/bookRegister";
     }
@@ -69,12 +69,14 @@ public class BooksController  {
 		}
 		
 		//등록처리
+		Employees emp = (Employees) request.getSession().getAttribute("login");
+		books.setEmp_no(emp.getEmp_no());
 		booksService.insert(books);
     	return "redirect:/bookList.ad";
     }
     
     //오디오북 등록 페이지
-    @RequestMapping(value = "/bookRegisterAudio.ad", method = RequestMethod.GET)
+    @RequestMapping(value = "/bookManageAudio.ad", method = RequestMethod.GET)
     public String BookManageAudioServ() {
     	return "bookManage/bookRegisterAudio";
     }

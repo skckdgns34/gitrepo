@@ -10,7 +10,8 @@
 	<typeAlias type="com.dbal.app.memberManage.Questions" alias="questions"/> 
 	<typeAlias type="com.dbal.app.memberManage.Blacklist" alias="blacklist"/> 
 	<typeAlias type="com.dbal.app.memberManage.Member" alias="membermanage"/>
-	<typeAlias type="com.dbal.app.company.Company" alias="company"/>  
+	<typeAlias type="com.dbal.app.company.Company" alias="company"/>
+	<typeAlias type="com.dbal.app.purchase.Purchase" alias="purchase"/>  
 	</typeAliases>
 
 </configuration>
