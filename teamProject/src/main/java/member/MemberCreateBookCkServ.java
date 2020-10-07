@@ -16,10 +16,11 @@ public class MemberCreateBookCkServ implements Controller
 	public void execute(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException
 	{
-		MywritingDAO dao = new MywritingDAO();
+		MemberBookDAO dao = new MemberBookDAO();
 		Mywriting mywriting = new Mywriting();
 		
-		ArrayList<Mywriting> list = dao.selectAll(mywriting);
+		
+		ArrayList<Mywriting> list = dao.Myselect(mywriting);
 		request.setAttribute("list", list);
 		request.getRequestDispatcher("member/memberCreateBookCk.jsp").forward(request, response);
 	}
