@@ -40,17 +40,16 @@ li {
 				<td>결제일</td>
 				<td>구매금액</td>
 				<td>만료일자</td>
-				<td>결제수단</td>
 			</tr>
-			<c:forEach items="${list }" var="member">
+			<c:forEach items="${list }" var="license">
 				<tr>
-					<td>임시번호1</td>
-					<td>임시상태</td>
-					<td>임시상품명</td>
-					<td>임시결제일</td>
-					<td>임시구매금액</td>
-					<td>임시만료일</td>
-					<td>$임시결제수단</td>
+					<td></td>
+					<td>${ }</td>
+					<td>${ }</td>
+					<td>${ }</td>
+					<td>${ }</td>
+					<td>${ }</td>
+					<td>$${ }</td>
 				</tr>
 			</c:forEach>
 		</table>
