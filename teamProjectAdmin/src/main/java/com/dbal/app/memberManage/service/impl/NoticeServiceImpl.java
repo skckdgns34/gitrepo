@@ -24,4 +24,10 @@ public class NoticeServiceImpl implements NoticeService {
 		 noticeDAO.insert(NoticeVO);
 	}
 
+	@Override
+	public void delete(Notice noticeVO) {
+		noticeDAO.delete(noticeVO);
+		
+	}
+
 }

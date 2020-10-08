@@ -66,6 +66,10 @@
 							href="${pageContext.request.contextPath}/audioBookCategory.do"
 							class="nav-link" role="button" aria-haspopup="true"
 							aria-expanded="false">오디오북</a></li>
+						<li class="nav-item"><a
+							href="${pageContext.request.contextPath}/createBookMain.do"
+							class="nav-link" role="button" aria-haspopup="true"
+							aria-expanded="false">나만의도서</a></li>							
 
 						<li class="nav-item"><a
 							href="${pageContext.request.contextPath}/clientNotice.do"
@@ -94,6 +98,7 @@
 								class="nav-link" role="button" aria-haspopup="true"
 								aria-expanded="false">로그아웃</a></li>
 						</c:if>
+						
 					</ul>
 
 					<ul class="nav-shop">

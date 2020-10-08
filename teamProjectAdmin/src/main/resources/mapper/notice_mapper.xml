@@ -16,8 +16,10 @@
 		N.VIEWS,
 		N.EMP_NO,
 		E.EMP_NAME
-		FROM NOTICE N, EMPLOYEES E
+		FROM NOTICE N,
+		EMPLOYEES E
 		WHERE N.EMP_NO = E.EMP_NO
+		AND N.NOTICE_NO IS NOT NULL
 	</select>
 
 	<!-- 공지사항 등록 -->
@@ -50,7 +52,20 @@
 		</if>
 		#{emp_no})
 	</insert>
-
-
+	<!-- 업데이트 (다시 해야 함 ㅠㅠㅠ)-->
+	<update id="update">
+	update notice set
+	notice_title = #{notice_title}
+	notice_title = #{notice_content}
+	notice_title = #{notice_title}
+	notice_title = #{notice_title}
+	notice_title = #{notice_title}
+	</update>
+	
+	<!-- 삭제 -->
+	<delete id="delete">
+		delete from notice
+		where notice_no = #{notice_no}
+	</delete>
 
 </mapper>

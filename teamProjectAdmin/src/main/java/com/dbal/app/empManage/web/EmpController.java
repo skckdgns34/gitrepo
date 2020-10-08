@@ -44,7 +44,7 @@ public class EmpController  {
 				request.getSession().setAttribute("login", resultVo);
 				request.getSession().setAttribute("emp_id", resultVo.getEmp_id());
 				
-				page = "redirect:/";
+				page = "adminMain/adminMain";
 				System.out.println("로그인 성공");
 			}else { //패스워드 불일치
 				request.setAttribute("errormsg", "Password가 잘 못 되었습니다.");
@@ -64,7 +64,11 @@ public class EmpController  {
     	request.getSession().invalidate();
 	return "redirect:/";
     }
-	
+    
+    
+    
+  
+    
     //목록조회 
     @RequestMapping("/empManageList.ad")
     

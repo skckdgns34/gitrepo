@@ -9,6 +9,9 @@ public interface NoticeDAO {
 	public List<Notice> selectAll(Notice noticeVO);
 	//등록 
 	public void insert(Notice NoticeVO);
-	
+	//번호 업데이트
 	public void updateNo();
+	//삭제
+	public void delete(Notice NoticeVO);
+	
 }

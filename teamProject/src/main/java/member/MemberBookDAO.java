@@ -4,12 +4,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import common.ConnectionManager;
 import vo.Books;
-import vo.License;
 import vo.Mywriting;
-import vo.TicketVO;
 
 public class MemberBookDAO {	//내서재 등 관련
 	// 전역변수. 모든 메서드에 공통으로 사용되는 변수
@@ -130,30 +131,65 @@ public class MemberBookDAO {	//내서재 등 관련
 	}
 	
 	//이용권 내역
-	public ArrayList<License> LicenseList(License license) {
-		License resultVo = null;
+//	public ArrayList<License> LicenseList(License license) {
+//		License resultVo = null;
+//		ResultSet rs = null;
+//		ArrayList<License> list = new ArrayList<License>();
+//		try {
+//			conn = ConnectionManager.getConnnect();
+//			String sql = " SELECT rownum, m.member_no, t.ticket_code, t.ticket_name, t.price, p.pay_date, p.pay_date +  t.ticket_date,"
+//					+ " case when sysdate <  p.pay_date +  t.ticket_date then '이용중' else '기간만료' end US"
+//					+ " FROM member m, ticket t, pay p"
+//					+ " WHERE t.ticket_code = p.ticket_code"
+//					+ " AND m.member_no = p.member_no"
+//					+ " AND m.member_no = ?";
+//			pstmt = conn.prepareStatement(sql);
+//			pstmt.setString(1, license.getMember_no());
+//			rs = pstmt.executeQuery();
+//			while (rs.next()) {
+//				resultVo = new License();
+//				resultVo.setMember_no(rs.getString("member_no"));
+//				resultVo.setTicket_code(rs.getString("ticket_code"));
+//				resultVo.setTicket_name(rs.getString("ticket_name"));
+//				resultVo.setPrice(rs.getString("price"));
+//				resultVo.setPay_date(rs.getString("pay_date"));
+//				resultVo.setTicket_date(rs.getString("ticket_date"));
+//				list.add(resultVo);
+//				System.out.println(rs.getString("rownum"));
+//				System.out.println(rs.getString("ticket_name"));
+//				System.out.println(rs.getString("US"));
+//			}
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		} finally {
+//			ConnectionManager.close(rs, pstmt, conn);
+//		}
+//		return list;
+//	}
+	
+	public List<Map<String, Object>> LicenseList() {
 		ResultSet rs = null;
-		ArrayList<License> list = new ArrayList<License>();
+		List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
 		try {
 			conn = ConnectionManager.getConnnect();
-			String sql = " SELECT rownum, m.member_no, t.ticket_code, t.ticket_name, t.price, p.pay_date, p.pay_date +  t.ticket_date,"
+			String sql = " SELECT rownum, m.member_no, t.ticket_code, t.ticket_name, t.price, p.pay_date, p.pay_date +  t.ticket_date expiration,"
 					+ " case when sysdate <  p.pay_date +  t.ticket_date then '이용중' else '기간만료' end US"
 					+ " FROM member m, ticket t, pay p"
 					+ " WHERE t.ticket_code = p.ticket_code"
 					+ " AND m.member_no = p.member_no"
 					+ " AND m.member_no = ?";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, license.getMember_no());
+//			pstmt.setString(1, license.getMember_no());
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				resultVo = new License();
-				resultVo.setMember_no(rs.getString("member_no"));
-				resultVo.setTicket_code(rs.getString("ticket_code"));
-				resultVo.setTicket_name(rs.getString("ticket_name"));
-				resultVo.setPrice(rs.getString("price"));
-				resultVo.setPay_date(rs.getString("pay_date"));
-				resultVo.setTicket_date(rs.getString("ticket_date"));
-				list.add(resultVo);
+				Map<String, Object> map = new HashMap<String, Object>();
+				map.put("member_no",rs.getString("member_no"));
+				map.put("ticket_code",rs.getString("ticket_code"));
+				map.put("ticket_name",rs.getString("ticket_name"));
+				map.put("price",rs.getString("price"));
+				map.put("pay_date",rs.getString("pay_date"));
+				map.put("ticket_date",rs.getString("ticket_date"));
+				list.add(map);
 				System.out.println(rs.getString("rownum"));
 				System.out.println(rs.getString("ticket_name"));
 				System.out.println(rs.getString("US"));
