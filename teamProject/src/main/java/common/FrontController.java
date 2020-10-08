@@ -47,6 +47,7 @@ public class FrontController extends HttpServlet {
 		list.put("/memberBookMark.do", new member.MemberBookMarkServ()); // 내서재 - 읽던책
 		list.put("/memberBookLuvList.do", new member.MemberBookLuvListServ()); // 내서재 - 찜목록
 		list.put("/memberCreateBookCk.do", new member.MemberCreateBookCkServ()); // 내서재 - 나만의 도서
+		list.put("/memberCreateBookComp.do", new member.MemberCreateBookCompServ()); // 내서재 - 나만의 도서
 		list.put("/memberLogin.do", new member.MemberLoginServ()); // 로그인
 		list.put("/memberLogout.do", new member.MemberLogoutServ()); // 로그아웃
 		list.put("/memberFind.do", new member.MemberFindServ()); // 아이디/비밀번호 찾기 - 아이디 찾기
