@@ -23,7 +23,7 @@ li {
 		<li><a
 			href="<%=application.getContextPath()%>/memberModify.do">내정보 수정</a>
 		<li><a
-			href="<%=application.getContextPath()%>/memberLibrary.do">내 서재</a>
+			href="<%=application.getContextPath()%>/memberBookMark.do">내 서재</a>
 		<li><a
 			href="<%=application.getContextPath()%>/memberCreateBookCk.do">나만의 도서 확인</a>
 		<li><a
@@ -32,6 +32,7 @@ li {
 	<br>
 	<br>
 	<hr>
+	<h4>이용권 내역</h4>
 	<table border="1">
 			<tr>
 				<td>번호</td>
@@ -44,23 +45,24 @@ li {
 			<c:forEach items="${list }" var="license">
 				<tr>
 					<td></td>
-					<td>${ }</td>
-					<td>${ }</td>
-					<td>${ticket.ticket_name }</td>
-					<td>${pay.pay_date }</td>
-					<td>${ticket.price }</td>
-					<td>${ }</td>
+					<td>${license.US }</td>
+					<td>${license.ticket_name }</td>
+					<td>${license.pay_date }</td>
+					<td>${license.price }</td>
+					<td>${license.expiration }</td>
 				</tr>
 			</c:forEach>
 		</table>
-		<my:paging paging="${paging }" jsfunc="gopage" />
+
 		
+		<my:paging paging="${paging }" jsfunc="gopage" />
+
 	<script>
 		function gopage(p) {
 			searchFrm.p.value = p;
 			searchFrm.submit();
 
-			//location.href="deptSelectAll?p=" + p;
+			location.href="memberLicense.do?p=" + p;
 		}
 	</script>
 

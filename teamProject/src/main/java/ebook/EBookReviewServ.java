@@ -29,11 +29,11 @@ public class EBookReviewServ implements Controller {
 		int last = paging.getLast();
 		
 		
-		int total = EBookDAO.getInstance().countReview();		
-		paging.setTotalRecord(total);
 		String book_no =  request.getParameter("book_no"); //책넘버
+		int total = EBookDAO.getInstance().countReview(book_no);		
+		paging.setTotalRecord(total);
 
-		ArrayList<Review> review = EBookDAO.getInstance().selectAllReview(book_no); //리뷰전체보여주기
+		ArrayList<Review> review = EBookDAO.getInstance().selectAllReview(book_no,first,last); //리뷰전체보여주기
 		request.setAttribute("paging", paging);
 		request.setAttribute("review", review); //디테일 페이지 넘어가면서 리뷰 뿌려주기
 		request.getRequestDispatcher("/ebook/eBookReview.jsp").forward(request, response);
