@@ -22,13 +22,17 @@ li {
 		<li><a
 			href="<%=application.getContextPath()%>/memberModify.do">내정보 수정</a>
 		<li><a
-			href="<%=application.getContextPath()%>/memberBookLuvList.do">내 서재</a>
+			href="<%=application.getContextPath()%>/memberBookMark.do">내 서재</a>
 		<li><a
 			href="<%=application.getContextPath()%>/memberCreateBookCk.do">나만의 도서 확인</a>
 		<li><a
 			href="<%=application.getContextPath()%>/memberLicense.do">이용권 내용</a>
-	</ul>
+	</ul><br>
 	<br>
+	<ul>
+		<li><a href="<%=application.getContextPath()%>/memberBookMark.do">읽은 책</a>
+		<li><a href="<%=application.getContextPath()%>/memberBookLuvList.do">찜 목록</a>
+	</ul>
 	<br>
 	<hr>
 	<h5>찜목록</h5>

@@ -40,7 +40,7 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
      <!-- Sidebar - Brand 메인로고 부분 (클릭시 adminPage 메인으로 이동하게 만들어야 함.) -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="adminIndex.jsp">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="adminMain.ad">
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laugh-wink"></i>
         </div>

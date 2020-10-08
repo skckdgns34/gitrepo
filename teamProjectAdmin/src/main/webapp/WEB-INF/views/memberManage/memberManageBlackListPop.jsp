@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" isELIgnored="false"%>	
     <%@ taglib prefix="fn" uri = "http://java.sun.com/jsp/jstl/functions" %>
+    	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,8 +29,22 @@
               </div> 
               
               <div class="form-label-group">
-               <label for="inputblacklist_reason" >사유</label><br>
-                <input type="text" name="blacklist_reason" value="${black.blacklist_reason}">
+                              <label for="inputblacklist_reason" >사유</label><br>
+								<select
+									name="blacklist_reason" id="blacklist_reason"
+									style="margin-bottom: 10px" class="form-control">
+									<option value="">선택</option>
+									<option value="f1"
+									<c:if test="${black.blacklist_reason=='f1'}">selected="selected"</c:if>
+									>비방/욕설</option>
+									<option value="f2"
+									<c:if test="${black.blacklist_reason=='f2'}">selected="selected"</c:if>
+									>음란물 게시</option>
+									<option value="f3"
+									<c:if test="${black.blacklist_reason=='f3'}">selected="selected"</c:if>
+									>무단 광고물 게시</option>
+								</select>
+
               </div>
               <div class="form-label-group">
                <label for="inputmember_no">회원번호</label><br>

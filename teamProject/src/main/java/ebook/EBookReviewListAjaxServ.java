@@ -1,7 +1,8 @@
 package ebook;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -9,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import common.Controller;
 import common.Paging;
-import vo.Review;
 
 public class EBookReviewListAjaxServ implements Controller {
 
@@ -17,7 +17,7 @@ public class EBookReviewListAjaxServ implements Controller {
 		
 		String book_no = request.getParameter("book_no");
 		String nickname = request.getParameter("member_nickname");
-		
+		String member_no = request.getParameter("member_no");
 		
 		Paging paging = new Paging();
 		paging.setPageUnit(2);
@@ -35,8 +35,8 @@ public class EBookReviewListAjaxServ implements Controller {
 		paging.setTotalRecord(total);
 		
 		
-		ArrayList<Review> review = EBookDAO.getInstance().selectAllReview(book_no, first, last);
-
+		List<Map<String, Object>> review = EBookDAO.getInstance().selectAllReview(book_no, first, last);
+		request.setAttribute("member_no", member_no);
 		request.setAttribute("nickname", nickname);
 		request.setAttribute("review", review);
 		request.setAttribute("paging", paging);
