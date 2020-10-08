@@ -46,10 +46,10 @@ li {
 					<td></td>
 					<td>${ }</td>
 					<td>${ }</td>
+					<td>${ticket.ticket_name }</td>
+					<td>${pay.pay_date }</td>
+					<td>${ticket.price }</td>
 					<td>${ }</td>
-					<td>${ }</td>
-					<td>${ }</td>
-					<td>$${ }</td>
 				</tr>
 			</c:forEach>
 		</table>
