@@ -52,15 +52,15 @@
 					<thead>
 						<tr>
 							<th>선택</th>
-							<th>MEMBER_ID</th>
-							<th>MEMBER_NO</th>
-							<th>NICKNAME</th>
-							<th>QUESTION_NO</th>
-							<th>QUESTION_DATE</th>
-							<th>QUESTION_CONTENTS</th>
-							<th>QUESTION_TITLE</th>
-							<th>QUESTION_FILE</th>							
-							<th>QUESTION_KIND</th>
+							<th>번호</th>
+							<th>회원 번호</th>
+							<th>회원 아이디</th>
+							<th>닉네임</th>
+							<th>제목</th>
+							<th>내용</th>
+							<th>등록일</th>
+							<th>첨부파일</th>							
+							<th>문의종류</th>
 							
 							
 						</tr>
@@ -71,13 +71,13 @@
 							<tr>
 								<td><input type="checkbox" name="user_CheckBox"
 									onclick="check(this)" value=""></td>
-								<td>${q.member_id}</td>
-								<td>${q.member_no}</td>
-								<td>${q.nickname}</td>
 								<td>${q.question_no}</td>
-								<td>${q.question_date}</td>
-								<td>${q.question_contents}</td>
+								<td>${q.member_no}</td>
+								<td>${q.member_id}</td>
+								<td>${q.nickname}</td>
 								<td>${q.question_title}</td>
+								<td>${q.question_contents}</td>
+								<td>${q.question_date}</td>
 								<td>${q.question_file}</td>
 								<td>${q.question_kind}</td>
 						</c:forEach>
