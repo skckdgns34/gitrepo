@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div class="container">
+<%-- 	<div class="container">
 		<div class="row">
 			<h3>회원글 상세</h3>
 		</div>
@@ -29,6 +29,6 @@
 			
 			
 		</div>
-	</div>
+	</div> --%>
 </body>
 </html>

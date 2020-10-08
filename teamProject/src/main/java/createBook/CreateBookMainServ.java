@@ -22,7 +22,7 @@ public class CreateBookMainServ implements Controller
 		//장르 목록
 		String genre = request.getParameter("genre");
 		ArrayList<Common> genreList=  CommonDAO.getInstance().selectAllGenre();
-		
+
 		//모든 유저들 책
 		ArrayList<Books> userBooks = CreateBookDAO.getInstance().selectAllUserBook(genre);
 		
@@ -31,7 +31,6 @@ public class CreateBookMainServ implements Controller
 		
 		//login
 		String member_no = (String)request.getSession().getAttribute("member_no");
-		
 		request.setAttribute("genreList", genreList);
 		request.setAttribute("userBooks", userBooks);
 		request.setAttribute("userBookRank", userBookRank);

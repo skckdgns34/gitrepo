@@ -19,11 +19,18 @@ $(function(){
 	$("img").on("click",function(){
 		var book_no = $(this).next().val()
 		alert(book_no)
-		location.href="${pageContext.request.contextPath}/eBookDetail.do?book_no="+book_no
+		location.href="${pageContext.request.contextPath}/eBookDetail.do?book_no="+book_no;
 	}).css('cursor','pointer');
 	
 	$("#write").on("click",function(){
-		console.log("${sessionScope.member_no}")
+		var m_no = "${sessionScope.member_no}";
+		console.log(m_no+"a");
+		if(m_no==""){
+			alert("로그인이 필요한 기능.")
+			location.href="${pageContext.request.contextPath}/memberLogin.do";
+		} else{
+			location.href="${pageContext.request.contextPath}/createBookWrite.do";
+		}
 		//location.href="${sessionScope.member_no}"
 	})
 });
@@ -51,10 +58,10 @@ $(function(){
 				<c:forEach items="${userBooks }" var="userBook">
 					<div class="row">
 						<div class="col-xs3">
-							<img src="filenameDownload.do?filename=${userBook.book_img }">
-							<input type="hidden" name ="h_book_no" value="${userBook.book_no }">
+							<img src="filenameDownload.do?filename=${userBook.book_img}">
+							<input type="hidden" name ="h_book_no" value="${userBook.book_no}">
 						</div>
-						<div class="col-xs9"  >
+						<div class="col-xs9">
 							<label>제목: ${userBook.title }</label><br>
 							<label>발행일: ${userBook.publication_date }</label><br>
 							<label>장르: ${userBook.code_value }</label><br>
@@ -78,7 +85,7 @@ $(function(){
 					<tbody>
 						 <c:forEach items="${userBookRank }" var="list">
 							<tr>
-								<td><a href="${pageContext.request.contextPath}/createBook.do?book_no=${list.book_no}">${list.no }</a></td>
+								<td><a href="${pageContext.request.contextPath}/eBookDetail.do?book_no=${list.book_no}">${list.no }</a></td>
 								<td>${list.title}</td>
 								<td>${list.views}</td>
 								<td>${list.writer}</td>
@@ -89,7 +96,7 @@ $(function(){
 			</div>
 		</div>
 		<div class="row">
-			<button id = "write">글쓰기</button>
+			<button type="button" id="write">글쓰기</button>
 		</div>
 	</div>
 </body>
