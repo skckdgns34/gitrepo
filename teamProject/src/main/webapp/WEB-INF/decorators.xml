@@ -19,10 +19,10 @@
 		<pattern>/bookManage/*.jsp</pattern>
 	</decorator>
 	
-	<decorator name="user1" page="layout2.jsp">
+	<decorator name="user1" page="layout.jsp">
 		<pattern>/*.do</pattern>
 	</decorator>
-	<decorator name="user2" page="layout2.jsp">
+	<decorator name="user2" page="layout.jsp">
 		<pattern>/member/*.jsp</pattern>
 	</decorator>
 	<excludes>

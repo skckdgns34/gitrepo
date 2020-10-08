@@ -143,7 +143,7 @@ margin-left: 45px;
       </div>
     </section>
     <!-- ================ Best Selling item  carousel end ==========
-    																		 for문 돌면서 DB에 값 받아서 넣을 수는 없는지? --> 
+    																		 
     																		 
     																		 
 <!-- ================ 시/에세이  item  carousel ================= --> 

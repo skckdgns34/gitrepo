@@ -139,7 +139,7 @@ a {
 }
 
 .header_area .navbar {
-	background: #5F4B8B;
+	background: #002347;
 	padding: 0px;
 	border: 0px;
 	border-radius: 0px
@@ -241,7 +241,7 @@ a {
 
 .header_area .navbar .nav .nav-item.submenu ul .nav-item:hover .nav-link
 	{
-	background: #5F4B8B;
+	background: #002347;
 	color: #fff
 }
 
@@ -431,7 +431,7 @@ a {
 .nav-shop li button .nav-shop__circle {
 	font-size: 9px;
 	display: inline-block;
-	background: #5F4B8B;
+	background: #002347;
 	color: #fff;
 	padding: 0px 5px;
 	border-radius: 50%;
@@ -494,7 +494,7 @@ a {
 		display: block;
 		width: 25px;
 		height: 3px;
-		background: #5F4B8B;
+		background: #002347;
 		margin: auto;
 		margin-bottom: 4px;
 		transition: all 400ms linear;
@@ -690,12 +690,12 @@ a {
 }
 
 .section-intro__style {
-	border-bottom: 2px solid #5F4B8B;
+	border-bottom: 2px solid #002347;
 	padding-bottom: 8px
 }
 
 .hero-banner {
-	background: #F1F6F7;
+	background: ffffff;
 	position: relative;
 	margin-bottom: 10px
 }
@@ -711,7 +711,7 @@ a {
 	display: block;
 	width: 5%;
 	height: 100%;
-	background: #5F4B8B;
+	background: #002347;
 	position: absolute;
 	top: 0;
 	left: 0
@@ -805,7 +805,7 @@ a {
 .hero-carousel__slideOverlay {
 	position: absolute;
 	bottom: 50px;
-	background: #5F4B8B;
+	background: #002347;
 	padding: 23px 90px 23px 25px;
 	transform: translateY(50px);
 	opacity: 0;
@@ -880,7 +880,7 @@ a {
 }
 
 .card-product__imgOverlay li button:hover {
-	background: #5F4B8B
+	background: #002347
 }
 
 .card-product__imgOverlay li:not(:last-child) {
@@ -903,7 +903,7 @@ a {
 }
 
 .card-product:hover .card-product__title a {
-	color: #5F4B8B
+	color: #002347
 }
 
 .offer {
@@ -951,19 +951,19 @@ a {
 #d1Carousel .owl-prev, #d1Carousel .owl-next {
 	width: 40px;
 	height: 40px;
-	background: #f1f6f7
+	background: #ffffff
 }
 
 #d1Carousel .owl-prev i, #d1Carousel .owl-prev span,
 	#d1Carousel .owl-next i, #d1Carousel .owl-next span {
 	font-size: 15px;
-	color: #5F4B8B;
+	color: #002347;
 	line-height: 40px
 }
 
 #d1Carousel .owl-prev:hover, #d1Carousel .owl-next:hover
 	{
-	background: #5F4B8B
+	background: #002347
 }
 
 #d1Carousel .owl-prev:hover i, #d1Carousel .owl-prev:hover span,
@@ -1002,19 +1002,19 @@ a {
 #d2Carousel .owl-prev, #d2Carousel .owl-next {
 	width: 40px;
 	height: 40px;
-	background: #f1f6f7
+	background: #ffffff
 }
 
 #d2Carousel .owl-prev i, #d2Carousel .owl-prev span,
 	#d2Carousel .owl-next i, #d2Carousel .owl-next span {
 	font-size: 15px;
-	color: #5F4B8B;
+	color: #002347;
 	line-height: 40px
 }
 
 #d2Carousel .owl-prev:hover, #d2Carousel .owl-next:hover
 	{
-	background: #5F4B8B
+	background: #002347
 }
 
 #d2Carousel .owl-prev:hover i, #d2Carousel .owl-prev:hover span,
@@ -1055,19 +1055,19 @@ a {
 #d3Carousel .owl-prev, #d3Carousel .owl-next {
 	width: 40px;
 	height: 40px;
-	background: #f1f6f7
+	background: #ffffff
 }
 
 #d3Carousel .owl-prev i, #d3Carousel .owl-prev span,
 	#d3Carousel .owl-next i, #d3Carousel .owl-next span {
 	font-size: 15px;
-	color: #5F4B8B;
+	color: #002347;
 	line-height: 40px
 }
 
 #d3Carousel .owl-prev:hover, #d3Carousel .owl-next:hover
 	{
-	background: #5F4B8B
+	background: #002347
 }
 
 #d3Carousel .owl-prev:hover i, #d3Carousel .owl-prev:hover span,
@@ -1107,19 +1107,19 @@ a {
 #d4Carousel .owl-prev, #d4Carousel .owl-next {
 	width: 40px;
 	height: 40px;
-	background: #f1f6f7
+	background: ffffff
 }
 
 #d4Carousel .owl-prev i, #d4Carousel .owl-prev span,
 	#d4Carousel .owl-next i, #d4Carousel .owl-next span {
 	font-size: 15px;
-	color: #5F4B8B;
+	color: #002347;
 	line-height: 40px
 }
 
 #d4Carousel .owl-prev:hover, #d4Carousel .owl-next:hover
 	{
-	background: #5F4B8B
+	background: #002347
 }
 
 #d4Carousel .owl-prev:hover i, #d4Carousel .owl-prev:hover span,
@@ -1158,19 +1158,19 @@ a {
 #d5Carousel .owl-prev, #d5Carousel .owl-next {
 	width: 40px;
 	height: 40px;
-	background: #f1f6f7
+	background: ffffff
 }
 
 #d5Carousel .owl-prev i, #d5Carousel .owl-prev span,
 	#d5Carousel .owl-next i, #d5Carousel .owl-next span {
 	font-size: 15px;
-	color: #5F4B8B;
+	color: #002347;
 	line-height: 40px
 }
 
 #d5Carousel .owl-prev:hover, #d5Carousel .owl-next:hover
 	{
-	background: #5F4B8B
+	background: #002347
 }
 
 #d5Carousel .owl-prev:hover i, #d5Carousel .owl-prev:hover span,
@@ -1210,19 +1210,19 @@ a {
 #d6Carousel .owl-prev, #d6Carousel .owl-next {
 	width: 40px;
 	height: 40px;
-	background: #f1f6f7
+	background: ffffff
 }
 
 #d6Carousel .owl-prev i, #d6Carousel .owl-prev span,
 	#d6Carousel .owl-next i, #d6Carousel .owl-next span {
 	font-size: 15px;
-	color: #5F4B8B;
+	color: #002347;
 	line-height: 40px
 }
 
 #d6Carousel .owl-prev:hover, #d6Carousel .owl-next:hover
 	{
-	background: #5F4B8B
+	background: #002347
 }
 
 #d6Carousel .owl-prev:hover i, #d6Carousel .owl-prev:hover span,
@@ -1263,19 +1263,19 @@ a {
 #d7Carousel .owl-prev, #d7Carousel .owl-next {
 	width: 40px;
 	height: 40px;
-	background: #f1f6f7
+	background: ffffff
 }
 
 #d7Carousel .owl-prev i, #d7Carousel .owl-prev span,
 	#d7Carousel .owl-next i, #d7Carousel .owl-next span {
 	font-size: 15px;
-	color: #5F4B8B;
+	color: #002347;
 	line-height: 40px
 }
 
 #d7Carousel .owl-prev:hover, #d7Carousel .owl-next:hover
 	{
-	background: #5F4B8B
+	background: #002347
 }
 
 #d7Carousel .owl-prev:hover i, #d7Carousel .owl-prev:hover span,
@@ -1317,19 +1317,19 @@ a {
 #d8Carousel .owl-prev, #d8Carousel .owl-next {
 	width: 40px;
 	height: 40px;
-	background: #f1f6f7
+	background: ffffff
 }
 
 #d8Carousel .owl-prev i, #d8Carousel .owl-prev span,
 	#d8Carousel .owl-next i, #d8Carousel .owl-next span {
 	font-size: 15px;
-	color: #5F4B8B;
+	color: #002347;
 	line-height: 40px
 }
 
 #d8Carousel .owl-prev:hover, #d8Carousel .owl-next:hover
 	{
-	background: #5F4B8B
+	background: #002347
 }
 
 #d8Carousel .owl-prev:hover i, #d8Carousel .owl-prev:hover span,
@@ -1429,11 +1429,11 @@ a {
 }
 
 .card-blog:hover .card-blog__title a {
-	color: #5F4B8B
+	color: #002347
 }
 
 .card-blog:hover .card-blog__link {
-	color: #5F4B8B
+	color: #002347
 }
 
 .card-blog:hover .card-blog__link i, .card-blog:hover .card-blog__link span
@@ -1476,7 +1476,7 @@ a {
 	position: absolute;
 	top: 50px;
 	left: 10px;
-	color: #5F4B8B
+	color: #002347
 }
 
 .subscribe-form .form-control {
@@ -1520,12 +1520,12 @@ a {
 
 .button {
 	display: inline-block;
-	border: 1px solid #5F4B8B;
+	border: 1px solid #002347;
 	border-radius: 30px;
 	color: #222;
 	font-weight: 500;
 	padding: 12px 50px;
-	background: #5F4B8B;
+	background: #002347;
 	color: #fff;
 	transition: all .4s ease
 }
@@ -1558,7 +1558,7 @@ a {
 }
 
 .button-blog:hover {
-	background: #5F4B8B !important;
+	background: #002347 !important;
 	color: #fff !important
 }
 
@@ -1607,7 +1607,7 @@ a {
 	padding: 10px 45px;
 	background: transparent;
 	color: #fff;
-	border-color: #5F4B8B
+	border-color: #002347
 }
 
 .button-hero {
@@ -1615,12 +1615,12 @@ a {
 }
 
 .button--active {
-	background: #5F4B8B;
+	background: #002347;
 	color: #fff
 }
 
 .button-contactForm {
-	border: 1px solid #5F4B8B !important;
+	border: 1px solid #002347 !important;
 	border-radius: 0;
 	padding: 11px 26px
 }
@@ -1632,7 +1632,7 @@ a {
 
 .button:hover {
 	border-color: #fff;
-	background: #5F4B8B;
+	background: #002347;
 	color: #fff
 }
 
@@ -1642,11 +1642,11 @@ a {
 	border-radius: 0;
 	padding: 9px 15px;
 	text-transform: uppercase;
-	background: #5F4B8B;
+	background: #002347;
 }
 
 .button-register:hover {
-	background: #5F4B8B;
+	background: #002347;
 	opacity: .7;
 	color: #fff
 }
@@ -1705,17 +1705,17 @@ a {
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background: #f1f6f7;
+	background: ffffff;
 	z-index: -1
 }
 
 .blog-banner-btn {
-	border: 2px solid #5F4B8B;
+	border: 2px solid #002347;
 	padding: 10px 45px
 }
 
 .blog-banner-btn:hover {
-	background: #5F4B8B;
+	background: #002347;
 	color: #fff
 }
 
@@ -1769,7 +1769,7 @@ a {
 }
 
 .l_blog_item .l_blog_text h4:hover {
-	color: #5F4B8B
+	color: #002347
 }
 
 .l_blog_item .l_blog_text p {
@@ -1795,7 +1795,7 @@ a {
 }
 
 .causes_slider .owl-dots .owl-dot.active {
-	background: #5F4B8B
+	background: #002347
 }
 
 .causes_item {
@@ -1818,7 +1818,7 @@ a {
 .causes_item .causes_img .c_parcent span {
 	width: 70%;
 	height: 3px;
-	background: #5F4B8B;
+	background: #002347;
 	position: absolute;
 	left: 0px;
 	bottom: 0px
@@ -1829,7 +1829,7 @@ a {
 	position: absolute;
 	right: -10px;
 	bottom: 0px;
-	background: #5F4B8B;
+	background: #002347;
 	color: #fff;
 	padding: 0px 5px
 }
@@ -1847,7 +1847,7 @@ a {
 }
 
 .causes_item .causes_text h4:hover {
-	color: #5F4B8B
+	color: #002347
 }
 
 .causes_item .causes_text p {
@@ -1859,11 +1859,11 @@ a {
 
 .causes_item .causes_bottom a {
 	width: 50%;
-	border: 1px solid #5F4B8B;
+	border: 1px solid #002347;
 	text-align: center;
 	float: left;
 	line-height: 50px;
-	background: #5F4B8B;
+	background: #002347;
 	color: #fff;
 	font-size: 14px;
 	font-weight: 500
@@ -1924,7 +1924,7 @@ a {
 }
 
 .tags .tag_btn:before {
-	background: #5F4B8B
+	background: #002347
 }
 
 .tags .tag_btn+.tag_btn {
@@ -2019,7 +2019,7 @@ a {
 }
 
 .blog_info .post_tag a.active {
-	color: #5F4B8B
+	color: #002347
 }
 
 .blog_info .blog_meta li a {
@@ -2040,7 +2040,7 @@ a {
 }
 
 .blog_info .blog_meta li a:hover {
-	color: #5F4B8B
+	color: #002347
 }
 
 .blog_post img {
@@ -2060,7 +2060,7 @@ a {
 }
 
 .blog_details h2:hover {
-	color: #5F4B8B
+	color: #002347
 }
 
 .blog_details p {
@@ -2086,7 +2086,7 @@ a {
 .blog_right_sidebar .widget_title {
 	font-size: 18px;
 	line-height: 25px;
-	background: #5F4B8B;
+	background: #002347;
 	text-align: center;
 	color: #fff;
 	padding: 8px 0px;
@@ -2103,7 +2103,7 @@ a {
 	padding-left: 20px;
 	border-radius: 45px;
 	z-index: 0;
-	background: #5F4B8B
+	background: #002347
 }
 
 .blog_right_sidebar .search_widget .input-group .form-control.placeholder
@@ -2175,7 +2175,7 @@ a {
 }
 
 .blog_right_sidebar .author_widget .social_icon a:hover {
-	color: #5F4B8B
+	color: #002347
 }
 
 .blog_right_sidebar .popular_post_widget .post_item .media-body {
@@ -2194,7 +2194,7 @@ a {
 
 .blog_right_sidebar .popular_post_widget .post_item .media-body h3:hover
 	{
-	color: #5F4B8B
+	color: #002347
 }
 
 .blog_right_sidebar .popular_post_widget .post_item .media-body p {
@@ -2228,11 +2228,11 @@ a {
 }
 
 .blog_right_sidebar .post_category_widget .cat-list li:hover {
-	border-color: #5F4B8B
+	border-color: #002347
 }
 
 .blog_right_sidebar .post_category_widget .cat-list li:hover a {
-	color: #5F4B8B
+	color: #002347
 }
 
 .blog_right_sidebar .newsletter_widget {
@@ -2294,7 +2294,7 @@ a {
 }
 
 .blog_right_sidebar .newsletter_widget .bbtns {
-	background: #5F4B8B;
+	background: #002347;
 	color: #fff;
 	font-size: 12px;
 	line-height: 38px;
@@ -2324,7 +2324,7 @@ a {
 }
 
 .blog_right_sidebar .tag_cloud_widget ul li a:hover {
-	background: #5F4B8B;
+	background: #002347;
 	color: #fff
 }
 
@@ -2354,7 +2354,7 @@ a {
 }
 
 .blog-pagination .page-item.active .page-link {
-	background-color: #5F4B8B;
+	background-color: #002347;
 	border-color: transparent;
 	color: #fff
 }
@@ -2381,7 +2381,7 @@ a {
 .blog-pagination .page-link:hover {
 	color: #fff;
 	text-decoration: none;
-	background-color: #5F4B8B;
+	background-color: #002347;
 	border-color: #eee
 }
 
@@ -2614,7 +2614,7 @@ a {
 }
 
 .comments-area .btn-reply:hover {
-	background-color: #5F4B8B;
+	background-color: #002347;
 	color: #fff;
 	font-weight: 700
 }
@@ -2763,12 +2763,12 @@ a {
 }
 
 .contact-banner-btn {
-	border: 2px solid #5F4B8B;
+	border: 2px solid #002347;
 	padding: 10px 45px
 }
 
 .contact-banner-btn:hover {
-	background: #5F4B8B;
+	background: #002347;
 	color: #fff
 }
 
@@ -2777,7 +2777,7 @@ a {
 }
 
 .contact-info__icon i, .contact-info__icon span {
-	color: #5F4B8B;
+	color: #002347;
 	font-size: 20px
 }
 
@@ -2826,7 +2826,7 @@ a {
 
 .filter-bar {
 	padding: 0px 20px 10px 20px;
-	background: #f1f6f7;
+	background: ffffff;
 	margin-bottom: 30px
 }
 
@@ -2892,7 +2892,7 @@ a {
 .sidebar-categories .head {
 	font-family: 'Oswald', sans-serif;
 	line-height: 50px;
-	background: #5F4B8B;
+	background: #002347;
 	padding: 0 30px;
 	font-size: 18px;
 	font-weight: 400;
@@ -2901,7 +2901,7 @@ a {
 
 .sidebar-categories .main-categories {
 	padding: 20px 28px;
-	background: #f1f6f7
+	background: ffffff
 }
 
 .sidebar-categories .main-categories .pixel-radio {
@@ -2917,7 +2917,7 @@ a {
 }
 
 .sidebar-categories .main-nav-list a:hover {
-	color: #5F4B8B
+	color: #002347
 }
 
 .sidebar-categories .main-nav-list a .number {
@@ -2941,7 +2941,7 @@ a {
 .sidebar-filter .top-filter-head {
 	font-family: 'Oswald', sans-serif;
 	line-height: 50px;
-	background: #5F4B8B;
+	background: #002347;
 	padding: 0 30px;
 	font-size: 18px;
 	font-weight: 400;
@@ -2958,7 +2958,7 @@ a {
 }
 
 .sidebar-filter .common-filter {
-	background: #f1f6f7;
+	background: ffffff;
 	border-bottom: 1px solid #eee;
 	padding-bottom: 25px
 }
@@ -3125,14 +3125,14 @@ absolute
 }
 
 .pixel-radio:checked {
-	border: 8px solid #5F4B8B
+	border: 8px solid #002347
 }
 
 .pixel-radio:checked::after {
 	-webkit-animation: click-wave 0.65s;
 	-moz-animation: click-wave 0.65s;
 	animation: click-wave 0.65s;
-	background: #5F4B8B;
+	background: #002347;
 	content: '';
 	display: block;
 	width: 15px;
@@ -3184,7 +3184,7 @@ absolute
 	top: -5px;
 	border-radius: 50%;
 	border: 0px;
-	background: #5F4B8B;
+	background: #002347;
 	box-shadow: none;
 	cursor: pointer;
 	-webkit-transition: ease 0.1s;
@@ -3198,7 +3198,7 @@ absolute
 }
 
 .price-range-area .noUi-horizontal .noUi-handle:hover {
-	border: 3px solid #5F4B8B;
+	border: 3px solid #002347;
 	background: #fff
 }
 
@@ -3270,11 +3270,11 @@ absolute
 }
 
 .single-search-product:hover .title {
-	color: #5F4B8B
+	color: #002347
 }
 
 .order-wrapper {
-	background: #f1f6f7;
+	background: ffffff;
 	padding: 25px
 }
 
@@ -3323,13 +3323,13 @@ absolute
 
 .billing-alert {
 	font-size: 18px;
-	color: #5F4B8B;
+	color: #002347;
 	margin-bottom: 30px
 }
 
 .confirmation-card {
 	padding: 38px;
-	background: #f1f6f7
+	background: ffffff
 }
 
 .confirmation-card tr td:last-child {
@@ -3338,7 +3338,7 @@ absolute
 }
 
 .order_details_table {
-	background: #f1f6f7;
+	background: ffffff;
 	padding: 30px;
 	margin-top: 75px
 }
@@ -3479,14 +3479,14 @@ absolute
 	font-size: 15px;
 	font-weight: normal;
 	font-family: "Roboto", sans-serif;
-	background: #f1f6f7;
+	background: ffffff;
 	line-height: 40px !important;
 	padding-left: 30px;
 	margin-bottom: 0px
 }
 
 .check_title h2 a {
-	color: #5F4B8B;
+	color: #002347;
 	text-decoration: underline
 }
 
@@ -3601,9 +3601,9 @@ absolute
 }
 
 .tp_btn:hover {
-	background: #5F4B8B;
+	background: #002347;
 	color: #fff;
-	border-color: #5F4B8B
+	border-color: #002347
 }
 
 .billing_details h3 {
@@ -3704,7 +3704,7 @@ absolute
 }
 
 .billing_details .contact_form .form-group .creat_account a {
-	color: #5F4B8B
+	color: #002347
 }
 
 .order_box {
@@ -3815,8 +3815,8 @@ absolute
 }
 
 .order_box .payment_item.active h4:before {
-	background: #5F4B8B;
-	border-color: #5F4B8B
+	background: #002347;
+	border-color: #002347
 }
 
 .order_box .creat_account {
@@ -4019,7 +4019,7 @@ absolute
 
 .order_box .creat_account a {
 	font-size: 12px;
-	color: #5F4B8B
+	color: #002347
 }
 
 .login_box_area .login_box_img {
@@ -4050,7 +4050,7 @@ absolute
 	height: 100%;
 	width: 100%;
 	content: "";
-	background: #5F4B8B;
+	background: #002347;
 	opacity: .9
 }
 
@@ -4088,8 +4088,8 @@ absolute
 
 .login_box_area .login_box_img .button:hover {
 	background: #fff !important;
-	color: #5F4B8B !important;
-	border-color: #5F4B8B !important
+	color: #002347 !important;
+	border-color: #002347 !important
 }
 
 .login_form_inner {
@@ -4451,7 +4451,7 @@ absolute
 	height: 40px;
 	line-height: 38px;
 	text-transform: uppercase;
-	background: #5F4B8B;
+	background: #002347;
 	padding: 0px 38px;
 	margin-right: 5px;
 	margin-left: 10px;
@@ -4510,7 +4510,7 @@ absolute
 	height: 10px;
 	width: 10px;
 	border-radius: 50%;
-	background: #5F4B8B;
+	background: #002347;
 	display: inline-block;
 	position: absolute;
 	right: 3px;
@@ -4542,7 +4542,7 @@ absolute
 	{
 	display: block;
 	width: 100%;
-	background: #f1f6f7;
+	background: ffffff;
 	border: 1px solid #eeeeee;
 	height: 40px;
 	color: #999999;
@@ -4570,7 +4570,7 @@ absolute
 .cart_inner .table tbody tr.shipping_area .shipping_box input {
 	height: 40px;
 	outline: none;
-	background: #f1f6f7;
+	background: ffffff;
 	border: 1px solid #eeeeee;
 	width: 100%;
 	font-size: 14px;
@@ -4594,7 +4594,7 @@ absolute
 	padding: 0px 44px;
 	line-height: 38px;
 	text-transform: capitalize;
-	background: #5F4B8B;
+	background: #002347;
 	border-radius: 30px;
 	color: #fff;
 	font-weight: 500
@@ -4607,7 +4607,7 @@ absolute
 
 .gray_btn {
 	line-height: 38px;
-	background: #f1f6f7;
+	background: ffffff;
 	border: 1px solid #eeeeee;
 	border-radius: 30px;
 	padding: 0px 44px;
@@ -4670,7 +4670,7 @@ absolute
 	font-family: "Roboto", sans-serif;
 	font-size: 24px;
 	font-weight: 700;
-	color: #5F4B8B;
+	color: #002347;
 	margin-bottom: 10px
 }
 
@@ -4823,7 +4823,7 @@ absolute
 }
 
 .product_description_area .nav.nav-tabs {
-	background: #f1f6f7;
+	background: ffffff;
 	text-align: center;
 	display: block;
 	border: none;
@@ -4849,7 +4849,7 @@ absolute
 	padding: 0px;
 	border: none;
 	line-height: 38px;
-	background: #f1f6f7;
+	background: ffffff;
 	padding: 0px 30px;
 	color: #222;
 	font-size: 14px;
@@ -4864,7 +4864,7 @@ absolute
 
 .product_description_area .nav.nav-tabs li a.active {
 	color: #222;
-	background: #f1f6f7;
+	background: ffffff;
 }
 
 .product_description_area .tab-content {
@@ -4875,7 +4875,7 @@ absolute
 }
 
 .product_description_area .tab-content .total_rate .box_total {
-	background: #f1f6f7;
+	background: ffffff;
 	text-align: center;
 	padding-top: 20px;
 	padding-bottom: 20px
@@ -4884,7 +4884,7 @@ absolute
 .product_description_area .tab-content .total_rate .box_total h4 {
 	font-size: 48px;
 	font-weight: bold;
-	color: #f1f6f7
+	color: ffffff
 }
 
 .product_description_area .tab-content .total_rate .box_total h5 {
@@ -5015,8 +5015,8 @@ absolute
 }
 
 .review_item .media .media-body .reply_btn:hover {
-	background: #5F4B8B;
-	border-color: #5F4B8B;
+	background: #002347;
+	border-color: #002347;
 	color: #fff
 }
 
@@ -5078,8 +5078,8 @@ absolute
 }
 
 .footer-area {
-	background: #5F4B8B;
-	padding: 50px 0px 50px
+	background: #002347;
+	padding: 50px 0px 50px;
 }
 
 @media ( min-width : 1000px) {
@@ -5126,7 +5126,7 @@ absolute
 	height: 28px;
 	line-height: 28px;
 	text-align: center;
-	background: #5F4B8B;
+	background: #002347;
 	color: #ffffff;
 	border-radius: 20px
 }
@@ -5141,7 +5141,7 @@ absolute
 }
 
 .tp_widgets .list li a:hover {
-	color: #5F4B8B
+	color: #002347
 }
 
 .tp_widgets .list li:last-child {
@@ -5180,7 +5180,7 @@ absolute
 }
 
 .footer-bottom {
-	background: #5F4B8B;
+	background: #002347;
 	padding: 32px
 }
 
