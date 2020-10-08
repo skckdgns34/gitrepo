@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" isELIgnored="false"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -110,24 +111,46 @@
 							</div>
 
 							<div class="form-label-group">
-								<label for="inputDeptCode">부서코드</label><br> <input
-									type="text" name="dept_code">
+								<label for="inputDeptCode">부서이름</label><br> 
+								<select
+									name="dept_code" id="dept_code"
+									style="margin-bottom: 10px" class="form-control">
+									<option value="">선택</option>
+									<option value="a1">경리</option>
+									<option value="a2">회계</option>
+									<option value="a3">디자인</option>
+									<option value="a4">영업</option>
+									<option value="a5">인사</option>
+									<option value="a6">전산</option>
+									<option value="a7">비서</option>
+								</select>
+								
+								<label for="inputRankCode">관리자코드</label><br> 
+								<select
+									name="rank_code" id="rank_code"
+									style="margin-bottom: 10px" class="form-control">
+									<option value="">선택</option>
+									<option value="c1">인사관리</option>
+									<option value="c2">회계</option>
+									<option value="c3">회원관리</option>
+									<option value="c4">도서관리</option>	
+								</select>
+								
 							</div>
 							<div class="form-label-group">
 								<label for="inputEmpAddr">사원 주소</label><br> <input
-									type="text" id="sample4_postcode" placeholder="우편번호" name="address1"> <input
-									type="button" onclick="sample4_execDaumPostcode()"
-									value="우편번호 찾기"><br> <input type="text"
-									id="sample4_roadAddress" placeholder="도로명주소" name="address2"> <input
-									type="text" id="sample4_jibunAddress" placeholder="지번주소" name="address3">
+									type="text" id="sample4_postcode" placeholder="우편번호"
+									name="address1"> <input type="button"
+									onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
+								<input type="text" id="sample4_roadAddress" placeholder="도로명주소"
+									name="address2"> <input type="text"
+									id="sample4_jibunAddress" placeholder="지번주소" name="address3">
 								<span id="guide" style="color: #999; display: none"></span> <input
-									type="text" id="sample4_detailAddress" placeholder="상세주소" name="address4">
-								<input type="text" id="sample4_extraAddress" placeholder="참고항목" name="address5">
+									type="text" id="sample4_detailAddress" placeholder="상세주소"
+									name="address4"> <input type="text"
+									id="sample4_extraAddress" placeholder="참고항목" name="address5">
 							</div>
-							<div class="form-label-group">
-								<label for="inputRankCode">RANK_CODE</label><br> <input
-									type="text" name="rank_code">
-							</div>
+						
 
 							<hr>
 

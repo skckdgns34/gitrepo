@@ -9,4 +9,5 @@ public class Blacklist {
 	private String member_no;
 	private String limit_date;
 	private String nickname;
+	private String code_value;
 }

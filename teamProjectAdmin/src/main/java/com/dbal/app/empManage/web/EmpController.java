@@ -27,6 +27,12 @@ public class EmpController  {
 
 		return "adminMain/login";
 	}
+  //메인페이지  
+    @RequestMapping(value = "/adminMain.ad", method = RequestMethod.GET)
+	public String adminMain(Locale locale, Model model) {
+
+		return "adminMain/adminMain";
+	}
     //로그인처리
     @RequestMapping(value="/login.ad", method=RequestMethod.POST)
     public String loginCK(Model model, Employees employees, HttpServletRequest request) {
@@ -44,7 +50,7 @@ public class EmpController  {
 				request.getSession().setAttribute("login", resultVo);
 				request.getSession().setAttribute("emp_id", resultVo.getEmp_id());
 				
-				page = "adminMain/adminMain";
+				page = "redirect:/adminMain.ad";
 				System.out.println("로그인 성공");
 			}else { //패스워드 불일치
 				request.setAttribute("errormsg", "Password가 잘 못 되었습니다.");
@@ -95,6 +101,7 @@ public class EmpController  {
 	 String emp_address = address1 +"," +address2 +","+address3 +","+address4
 			 +","+address5;
 	 employees.setEmp_address(emp_address);
+	 
 	 String emp_no = request.getParameter("emp_no");
 	 employees.setEmp_no(emp_no);
        empService.Insert(employees);
@@ -115,10 +122,20 @@ public class EmpController  {
     }
     
     //수정 처리
-    @RequestMapping(value="/employeesModify.ad", method = RequestMethod.POST)
-    public String empManageUpdate(Employees employees) {
+    @RequestMapping(value="/empManageModify.ad", method = RequestMethod.POST)
+    public String empManageUpdate(Employees employees, HttpServletRequest request) {
+    	
+    	String address1 = request.getParameter("address1");
+    	String address2 = request.getParameter("address2");
+	   	String address3 = request.getParameter("address3");
+	   	String address4 = request.getParameter("address4");
+	   	String address5 = request.getParameter("address5");
+	   	String emp_address = address1 +"," +address2 +","+address3 +","+address4
+	   			 +","+address5;
+	   	 employees.setEmp_address(emp_address);
+	   	 
     	empService.Update(employees);
-    	return "redirect:/empManageMain.ad";
+    	return "redirect:/empManageList.ad";
     }
     
  //삭제

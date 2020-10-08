@@ -137,7 +137,7 @@
 		
 <script src="/app/resourse/vendor/chart.js/genderChart.js"></script>
 <script src="/app/resourse/vendor/chart.js/ticketChart.js"></script>
-
+<script src="/app/resourse/vendor/chart.js/moneyChart.js"></script>
 </body>
 
 </html>

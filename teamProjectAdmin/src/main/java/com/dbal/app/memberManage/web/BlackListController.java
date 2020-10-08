@@ -23,7 +23,23 @@ public class BlackListController {
 		return "memberManage/memberManageBlackList";
 		
 	}
+	//수정페이지
+	 @RequestMapping(value="/memberManageBlackListPopForm.ad", method = RequestMethod.GET)
+	public String blackUpdateForm(Model model, Blacklist blacklist, HttpServletRequest request) {
+		 String blacklist_no = request.getParameter("blacklist_no");
+		 blacklist.setBlacklist_no(blacklist_no);
+		 model.addAttribute("black", blackListService.selectOne(blacklist));
+		 return "memberManage/memberManageBlackListPop";
+		 
+	 }
+	 //수정 처리
+	 @RequestMapping(value="/memberManageBlackListPop.ad", method = RequestMethod.POST)
+	public String blackUpdate(Blacklist blacklist, HttpServletRequest request) {
+		 blackListService.update(blacklist);
+		 return "redirect:/memberManageBlackList.ad";
+	 }
 	
+	 
 	//삭제
 	@RequestMapping(value="/memberManageBlackListDelete.ad", method = RequestMethod.GET)
 	public String blackDelete(Blacklist black, HttpServletRequest request) {
