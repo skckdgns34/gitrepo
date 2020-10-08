@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" isELIgnored="false"%>
 	<%@ taglib prefix="fn" uri = "http://java.sun.com/jsp/jstl/functions" %>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	
 <!DOCTYPE html>
 <html>
 <head>
@@ -117,8 +119,53 @@
 									id="entereddate" name="entereddate" value="${fn:substring(employees.entereddate,0,10)}">
 							</div>
 							<div class="form-label-group">
-								<label for="inputAge">부서 코드</label><br> <input type="text"
-									id="dept_code" name="dept_code" value="${employees.dept_code}">
+								<label for="inputDeptCode">부서이름</label><br> 
+								<select
+									name="dept_code" id="dept_code"
+									style="margin-bottom: 10px" class="form-control">
+									<option value="">선택</option>
+									<option value="a1"
+									<c:if test="${employees.dept_code=='a1'}">selected="selected"</c:if>
+									>경리</option>
+									<option value="a2"
+									<c:if test="${employees.dept_code=='a2'}">selected="selected"</c:if>
+									>회계</option>
+									<option value="a3"
+									<c:if test="${employees.dept_code=='a3'}">selected="selected"</c:if>
+									>디자인</option>
+									<option value="a4"
+									<c:if test="${employees.dept_code=='a4'}">selected="selected"</c:if>
+									>영업</option>
+									<option value="a5"
+									<c:if test="${employees.dept_code=='a5'}">selected="selected"</c:if>
+									>인사</option>
+									<option value="a6"
+									<c:if test="${employees.dept_code=='a6'}">selected="selected"</c:if>
+									>전산</option>
+									<option value="a7"
+									<c:if test="${employees.dept_code=='a7'}">selected="selected"</c:if>
+									>비서</option>
+								</select>
+								
+								<label for="inputRankCode">관리자코드</label><br> 
+								<select
+									name="rank_code" id="rank_code"
+									style="margin-bottom: 10px" class="form-control">
+									<option value="">선택</option>
+									<option value="c1"
+									<c:if test="${employees.rank_code=='c1'}">selected="selected"</c:if>
+									>인사관리</option>
+									<option value="c2"
+									<c:if test="${employees.rank_code=='c2'}">selected="selected"</c:if>
+									>회계</option>
+									<option value="c3"
+									<c:if test="${employees.rank_code=='c3'}">selected="selected"</c:if>
+									>회원관리</option>
+									<option value="c4"
+									<c:if test="${employees.rank_code=='c4'}">selected="selected"</c:if>
+									>도서관리</option>	
+								</select>
+									
 							</div>
 							<div class="form-label-group">
 								<label for="inputEmpAddr">사원 주소</label><br> <input
@@ -132,17 +179,12 @@
 								<input type="text" id="sample4_extraAddress" placeholder="참고항목" name="address5" value="${adr[4]}">
 							</div>
 
-							<div class="form-label-group">
-								<label for="inputAge">rank_code</label><br> <input
-									type="text" id="rank_code" name="rank_code"
-									value="${employees.rank_code}">
-							</div>
 
 
 							<hr>
 							<div>
 								<a type="button"
-									href="${pageContext.request.contextPath}/empManageList.ad" onclick="return alert()">되돌아가기</a>
+									href="/app/empManageList.ad" onclick="return alert()">되돌아가기</a>
 							</div>
 							<button class="btn btn-lg btn-primary btn-block text-uppercase"
 								type="submit">수정</button>

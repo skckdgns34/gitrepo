@@ -7,51 +7,55 @@
 	<!-- 전체조회 -->
 	<select id="selectAll" parameterType="employees"
 		resultType="employees">
-		SELECT
-		emp_no,
-		emp_id,
-		emp_pw,
-		emp_name,
-		emp_birth,
-		entereddate,
-		dept_code,
-		emp_address,
-		rank_code
-		FROM employees
-		WHERE EMP_ID IS NOT NULL
+		select 
+					e.emp_no, 
+					e.emp_id, 
+					e.emp_pw, 
+					e.emp_name, 
+					e.emp_birth, 
+					e.entereddate, 
+					e.dept_code, 
+			    (select code_value from common where code=e.dept_code) as dept_code_value,
+					e.emp_address,
+			    e.rank_code,
+			      (select code_value from common where code=e.rank_code) as rank_code_value
+			    from employees e
+			where EMP_ID IS NOT NULL
 	</select>
 
 	<!-- 로그인 체크 -->
 	<select id="loginCk" parameterType="employees"
 		resultType="employees">
 		SELECT
-		emp_no,
-		emp_id,
-		emp_pw,
-		emp_name,
-		emp_birth,
-		entereddate,
-		dept_code,
-		emp_address,
-		rank_code
+				emp_no,
+				emp_id,
+				emp_pw,
+				emp_name,
+				emp_birth,
+				entereddate,
+				dept_code,
+				emp_address,
+				rank_code
 		FROM employees
 		WHERE emp_id = #{emp_id}
 	</select>
 	<!-- 한 건 조회 -->
 	<select id="selectOne" parameterType="employees"
 		resultType="employees">
-		SELECT
-		emp_no,
-		emp_id,
-		emp_pw,
-		emp_name,
-		emp_birth,
-		entereddate,
-		dept_code,
-		emp_address,
-		rank_code
-		FROM employees
-		WHERE emp_no = #{emp_no}
+		select 
+					e.emp_no, 
+					e.emp_id, 
+					e.emp_pw, 
+					e.emp_name, 
+					e.emp_birth, 
+					e.entereddate, 
+					e.dept_code, 
+			    (select code_value from common where code=e.dept_code) as dept_code_value,
+					e.emp_address,
+			    e.rank_code,
+			      (select code_value from common where code=e.rank_code) as rank_code_value
+			    from employees e
+		where emp_no=#{emp_no}
 
 	</select>
 
@@ -97,7 +101,7 @@
 		emp_name = #{emp_name},
 		emp_birth= #{emp_birth},
 		entereddate = #{entereddate},
-		dept_code = #{dept_code},"
+		dept_code = #{dept_code},
 		emp_address = #{emp_address},
 		rank_code = #{rank_code}
 		where emp_no = #{emp_no}

@@ -14,4 +14,8 @@ public class Employees {
 	private String dept_code;
 	private String emp_address;
 	private String rank_code;
+	private String code;
+	private String code_value;
+	private String rank_code_value;
+	private String dept_code_value;
 }

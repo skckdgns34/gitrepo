@@ -11,20 +11,26 @@ SELECT
 			B.MEMBER_NO, 
 			M.NICKNAME, 
 			B.BLACKLIST_REASON, 
-			B.LIMIT_DATE 
-FROM BLACKLIST B, MEMBER M 
+			B.LIMIT_DATE,
+      C.CODE_VALUE
+FROM BLACKLIST B, MEMBER M, COMMON C 
 WHERE B.MEMBER_NO = M.MEMBER_NO
+AND B.BLACKLIST_REASON = C.CODE
 	</select>
 	
 <!--  한 건 조회 -->
 <select id="selectOne"  parameterType="blacklist" resultType="blacklist">
-SELECT 	
-			BLACKLIST_NO,
-			BLACKLIST_REASON,
-			MEMBER_NO,
-			LIMIT_DATE
-FROM BLACKLIST
-WHERE BLACKLIST_NO = #{blacklist_no}		
+SELECT 
+			B.BLACKLIST_NO, 
+			B.MEMBER_NO, 
+			M.NICKNAME, 
+			B.BLACKLIST_REASON, 
+			B.LIMIT_DATE,
+      C.CODE_VALUE
+FROM BLACKLIST B, MEMBER M, COMMON C 
+WHERE B.MEMBER_NO = M.MEMBER_NO
+AND B.BLACKLIST_REASON = C.CODE
+AND B.BLACKLIST_NO = #{blacklist_no}		
 </select>
 	
 <!-- 삭제 -->
@@ -33,5 +39,14 @@ delete from BLACKLIST
 where BLACKLIST_NO = #{blacklist_no}
 
 </delete>
+
+<!-- 업데이트  -->
+<update id="update">
+update blacklist set
+member_no = #{member_no},
+BLACKLIST_REASON = #{blacklist_reason},
+limit_date = #{limit_date}
+where blacklist_no = #{blacklist_no}
+</update>
 
 </mapper>
