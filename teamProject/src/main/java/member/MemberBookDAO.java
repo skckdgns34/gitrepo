@@ -4,12 +4,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import common.ConnectionManager;
 import vo.Books;
-import vo.License;
 import vo.Mywriting;
-import vo.TicketVO;
 
 public class MemberBookDAO {	//내서재 등 관련
 	// 전역변수. 모든 메서드에 공통으로 사용되는 변수
@@ -23,44 +24,6 @@ public class MemberBookDAO {	//내서재 등 관련
 		if (instance == null)
 			instance = new MemberBookDAO();
 		return instance;
-	}
-
-	// 전체조회 (필요한 부분만 뽑아쓰기)
-	public ArrayList<Mywriting> selectAll(Mywriting mywritingVO) {
-		Mywriting resultVo = null;
-		ResultSet rs = null;
-		ArrayList<Mywriting> list = new ArrayList<Mywriting>();
-		try {
-			conn = ConnectionManager.getConnnect();
-			String sql = " SELECT MEMBER_NO, MY_TITLE, MY_WRITE_DATE, GENRE, MY_INTRODUCTION,"
-					+ "  MY_SUMMARY, IMAGE_URI, SCORE, VIEWS, TEMPORARY_STORAGE, MY_CONTENTS"
-					+ " FROM MYWRITING"
-					+ " ORDER BY MEMBER_NO";
-			pstmt = conn.prepareStatement(sql);
-			rs = pstmt.executeQuery();
-			while (rs.next()) {
-				resultVo = new Mywriting();
-				resultVo.setMember_no(rs.getString("MEMBER_NO"));
-				resultVo.setMy_title(rs.getString("MY_TITLE"));
-				resultVo.setMy_write_date(rs.getString("MY_WRITE_DATE"));
-				resultVo.setGenre(rs.getString("GENRE"));
-				resultVo.setMy_introduction(rs.getString("MY_INTRODUCTION"));
-				resultVo.setMy_summary(rs.getString("MY_SUMMARY"));
-				resultVo.setImage_uri(rs.getString("IMAGE_URI"));
-				resultVo.setScore(rs.getString("SCORE"));
-				resultVo.setViews(rs.getString("VIEWS"));
-				resultVo.setTemporary_storage(rs.getString("TEMPORARY_STORAGE"));
-				resultVo.setMy_contents(rs.getString("MY_CONTENTS"));
-				list.add(resultVo);
-				System.out.println(rs.getString("MEMBER_NO"));
-				System.out.println(rs.getString("MY_TITLE"));
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			ConnectionManager.close(rs, pstmt, conn);
-		}
-		return list;
 	}
 	
 	// 나만의 도서 목록
@@ -130,33 +93,33 @@ public class MemberBookDAO {	//내서재 등 관련
 	}
 	
 	//이용권 내역
-	public ArrayList<License> LicenseList(License license) {
-		License resultVo = null;
+	public List<Map<String, Object>> licenseList(String member_no) {
 		ResultSet rs = null;
-		ArrayList<License> list = new ArrayList<License>();
+		List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
 		try {
 			conn = ConnectionManager.getConnnect();
-			String sql = " SELECT rownum, m.member_no, t.ticket_code, t.ticket_name, t.price, p.pay_date, p.pay_date +  t.ticket_date,"
+			String sql = " SELECT rownum, m.member_no, t.ticket_code, t.ticket_name, t.price, p.pay_date, p.pay_date +  t.ticket_date expiration,"
 					+ " case when sysdate <  p.pay_date +  t.ticket_date then '이용중' else '기간만료' end US"
 					+ " FROM member m, ticket t, pay p"
 					+ " WHERE t.ticket_code = p.ticket_code"
 					+ " AND m.member_no = p.member_no"
 					+ " AND m.member_no = ?";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, license.getMember_no());
+			pstmt.setString(1, member_no);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				resultVo = new License();
-				resultVo.setMember_no(rs.getString("member_no"));
-				resultVo.setTicket_code(rs.getString("ticket_code"));
-				resultVo.setTicket_name(rs.getString("ticket_name"));
-				resultVo.setPrice(rs.getString("price"));
-				resultVo.setPay_date(rs.getString("pay_date"));
-				resultVo.setTicket_date(rs.getString("ticket_date"));
-				list.add(resultVo);
-				System.out.println(rs.getString("rownum"));
-				System.out.println(rs.getString("ticket_name"));
-				System.out.println(rs.getString("US"));
+				Map<String, Object> map = new HashMap<String, Object>();
+				map.put("member_no",rs.getString("member_no"));
+				map.put("ticket_code",rs.getString("ticket_code"));
+				map.put("ticket_name",rs.getString("ticket_name"));
+				map.put("price",rs.getString("price"));
+				map.put("pay_date",rs.getString("pay_date"));
+				map.put("expiration",rs.getString("expiration"));
+				map.put("US",rs.getString("US"));
+				list.add(map);
+//				System.out.println(rs.getString("rownum"));
+//				System.out.println(rs.getString("ticket_name"));
+//				System.out.println(rs.getString("US"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -165,4 +128,6 @@ public class MemberBookDAO {	//내서재 등 관련
 		}
 		return list;
 	}
+	
+	//읽던 책
 }
