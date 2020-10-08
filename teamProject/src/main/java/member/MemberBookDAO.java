@@ -57,6 +57,35 @@ public class MemberBookDAO {	//내서재 등 관련
 		}
 		return list;
 	}
+	//읽던 책
+	public ArrayList<Books> reading(Books booksVO) {
+		Books resultVo = null;
+		ResultSet rs = null;
+		ArrayList<Books> list = new ArrayList<Books>();
+		try {
+			conn = ConnectionManager.getConnnect();
+			String sql = " SELECT b.book_img, b.title, b.writer, m.member_no"
+					+ " FROM books b, member m"
+					+ " WHERE b.member_no = m.member_no"
+					+ " AND m.member_no = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, booksVO.getMember_no());
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				resultVo = new Books();
+				resultVo.setTitle(rs.getString("title"));
+				resultVo.setWriter(rs.getString("writer"));
+				list.add(resultVo);
+				System.out.println(rs.getString("title"));
+				System.out.println(rs.getString("writer"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionManager.close(rs, pstmt, conn);
+		}
+		return list;
+	}
 	
 	//찜 목록
 	public ArrayList<Books> ticketList(Books booksVO) {
@@ -129,5 +158,4 @@ public class MemberBookDAO {	//내서재 등 관련
 		return list;
 	}
 	
-	//읽던 책
 }
