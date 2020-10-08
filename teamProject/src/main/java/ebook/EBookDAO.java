@@ -616,13 +616,14 @@ public class EBookDAO
 	}
 	
 	//review 전체 뿌려주기용
-	public ArrayList<Review> selectAllReview(String book_no, int first, int last){
-		ArrayList<Review> list = new ArrayList<Review>();
+	public ArrayList<Map<String, Object>> selectAllReview(String book_no, int first, int last){
+		ArrayList<Map<String, Object>> list = new ArrayList<Map<String,Object>>();
 		ResultSet rs = null;
 		try {
 			conn = ConnectionManager.getConnnect();
 			String sql = "select a.* from ( select  b.*,rownum rn from (  " + 
-					"select review_no, contents, review_date, member_no, book_no from review where book_no=? order by review_no desc"
+					"select r.review_no, r.contents, r.review_date, r.member_no, r.book_no, m.nickname"
+					+ " from review r, member m where r.member_no=m.member_no and book_no=? order by review_no desc"
 					 +  ") b ) a where rn  between ? and ? ";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, book_no);
@@ -630,13 +631,14 @@ public class EBookDAO
 			pstmt.setInt(3, last);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
-				Review review = new Review();
-				review.setReview_no(rs.getString(1));
-				review.setContents(rs.getString(2));
-				review.setReview_date(rs.getString(3));
-				review.setMember_no(rs.getString(4));
-				review.setBook_no(rs.getString(5));
-				list.add(review);
+				Map<String, Object> map = new HashMap<String, Object>();
+				map.put("review_no",rs.getString("review_no"));
+				map.put("contents",rs.getString("contents"));
+				map.put("review_date",rs.getString("review_date"));
+				map.put("member_no",rs.getString("member_no"));
+				map.put("book_no",rs.getString("book_no"));
+				map.put("nickname",rs.getString("nickname"));
+				list.add(map);
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -731,7 +733,23 @@ public class EBookDAO
 		return result;
 	}
 	
-	
+	public void reviewUpdate(String contents, String review_no) {
+
+		try {
+			System.out.println(review_no+"이게바로 리뷰 넘버임");
+			System.out.println(contents+"이게 바로 리뷰내용이다");
+			conn = ConnectionManager.getConnnect();
+			String sql = "update review set contents=? where review_no = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, contents);
+			pstmt.setString(2, review_no);
+			pstmt.executeUpdate();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionManager.close(null, pstmt, conn);
+		}
+	}
 	
 	
 

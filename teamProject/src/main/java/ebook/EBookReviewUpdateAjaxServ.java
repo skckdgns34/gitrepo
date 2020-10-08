@@ -11,8 +11,14 @@ import common.Controller;
 public class EBookReviewUpdateAjaxServ implements Controller {
 
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		String review_no = (String) request.getParameter("review_no");
+		String contents = (String) request.getParameter("contents");
+		
 
+		
+		System.out.println(review_no+"컨트롤러에서 리뷰넘버임");
+		EBookDAO.getInstance().reviewUpdate(contents, review_no);
+	
 	}
 
 }

@@ -15,18 +15,22 @@
 	text-decoration: none;
 }
 </style>
+
 <div>
 	<c:forEach items="${review}" var="reviews">
 		<div class="review_item">
 			<div class="media" id="review_no" data-review_no="${reviews.review_no}">
 				<div class="d-flex"></div>
 				<div class="media-body" >
-					<h4>${nickname}</h4>
+					<h4>${reviews.nickname}</h4>
 				</div >
-				<p>${reviews.review_date}</p> <button onclick="reviewInNListPut()">수정</button>   <button id="reDelBtn" onclick="reviewDelete()">삭제</button>
-			</div>
-			<p>${reviews.contents}</p>
-		
+				<p>${reviews.review_date}</p> 
+				<c:if test="${reviews.member_no == member_no}">
+					<button id="reUpBtn" onclick="reviewUpdateBefore()" class="btn btn-link">수정</button> 
+					<button id="reDelBtn" onclick="reviewDelete()" class="btn btn-link" >삭제</button>
+				</c:if>
+			</div>		
+				<p id="review_contents">${reviews.contents}</p>
 		</div>
 	</c:forEach>
 </div>
