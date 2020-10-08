@@ -36,22 +36,22 @@ li {
 	</ul>
 	<br>
 	<hr>
-	<h5>나만의 도서 확인 - 작성중</h5>
+	<h5>나만의 도서 확인 - 등록완료</h5>
 		<input type="hidden" name="member_no" id="member_no" value="${member_no }">
 		<table border=1>
 			<tr>
 				<td>제목</td>
 				<td>장르</td>
 				<td>조회수</td>
-				<td>작성일자</td>
+				<td>등록일자</td>
 				<td></td>
 			</tr>
-			<c:forEach items="${list }" var="mywriting">
+			<c:forEach items="${list }" var="bookcomp">
 				<tr>
-					<td>${mywriting.my_title }</td>
-					<td>${mywriting.genre }</td>
-					<td>${mywriting.views }</td>
-					<td>${mywriting.my_write_date }</td>
+					<td>${bookcomp.title }</td>
+					<td>${bookcomp.genre }</td>
+					<td>${bookcomp.views }</td>
+					<td>${bookcomp.registration_date }</td>
 					<td><button>바로가기</button> <button>편집하기</button></td>
 				</tr>
 			</c:forEach>

@@ -26,7 +26,7 @@ public class MemberBookDAO {	//내서재 등 관련
 		return instance;
 	}
 	
-	// 나만의 도서 목록
+	// 나만의 도서 목록 작성중
 	public ArrayList<Mywriting> Myselect(Mywriting mywritingVO) {
 		Mywriting resultVo = null;
 		ResultSet rs = null;
@@ -57,6 +57,38 @@ public class MemberBookDAO {	//내서재 등 관련
 		}
 		return list;
 	}
+	
+	//나만의 도서 목록 등록완료
+	public ArrayList<Books> MyBook(Books booksVO) {
+		Books resultVo = null;
+		ResultSet rs = null;
+		ArrayList<Books> list = new ArrayList<Books>();
+		try {
+			conn = ConnectionManager.getConnnect();
+			String sql = " SELECT member_no, title, writer, genre, views, registration_date"
+					+ " FROM books"
+					+ " WHERE MEMBER_NO = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, booksVO.getMember_no());
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				resultVo = new Books();
+				resultVo.setMember_no(rs.getString("MEMBER_NO"));
+				resultVo.setTitle(rs.getString("TITLE"));
+				resultVo.setWriter(rs.getString("writer"));
+				resultVo.setGenre(rs.getString("GENRE"));
+				resultVo.setViews(rs.getString("VIEWS"));
+				resultVo.setRegistration_date(rs.getString("registration_date"));
+				list.add(resultVo);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionManager.close(rs, pstmt, conn);
+		}
+		return list;
+	}
+	
 	//읽던 책
 	public ArrayList<Books> reading(Books booksVO) {
 		Books resultVo = null;
@@ -73,11 +105,10 @@ public class MemberBookDAO {	//내서재 등 관련
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				resultVo = new Books();
+				resultVo.setBook_img(rs.getString("book_img"));
 				resultVo.setTitle(rs.getString("title"));
 				resultVo.setWriter(rs.getString("writer"));
 				list.add(resultVo);
-				System.out.println(rs.getString("title"));
-				System.out.println(rs.getString("writer"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
