@@ -21,16 +21,19 @@ public class CreateBookDAO {
 	}
 	
 	//유저들이 쓴 글 목록
-	public ArrayList<Books> selectAllUserBook() {
+	public ArrayList<Books> selectAllUserBook(String genre) {
 		ResultSet rs = null;
 		ArrayList<Books> list = new ArrayList<Books>();
 		Books resultVO = null;
 			try {
 				conn = ConnectionManager.getConnnect();
-				String sql = "select a.book_no, a.title, a.book_img,a.publication_date, b.code_value, c.nickname " + 
+				String sql = "select a.book_no, a.title, a.book_img,a.publication_date, b.code_value, c.nickname, a.genre " + 
 						"from books a, common b, member c " + 
 						"where a.genre = b.code " + 
 						"and a.member_no = c.member_no";
+				if(genre!=null && !genre.equals("")) {
+					sql+=" and a.genre='"+genre+"'";
+				}
 				pstmt = conn.prepareStatement(sql);
 				rs = pstmt.executeQuery();
 				while (rs.next()) {
@@ -41,6 +44,7 @@ public class CreateBookDAO {
 					resultVO.setPublication_date(rs.getString(4));
 					resultVO.setCode_value(rs.getString(5));
 					resultVO.setWriter(rs.getString(6));
+					resultVO.setGenre(rs.getString(7));
 					list.add(resultVO);
 				}
 			} catch (Exception e) {
@@ -58,7 +62,7 @@ public class CreateBookDAO {
 		Books resultVO = null;
 			try {
 				conn = ConnectionManager.getConnnect();
-				String sql = "select rownum, a.title, a.views, b.nickname " + 
+				String sql = "select rownum, a.title, a.views, b.nickname, a.book_no " + 
 						" from (select * from books order by views desc) a, member b " + 
 						" where a.member_no = b.member_no";
 				pstmt = conn.prepareStatement(sql);
@@ -69,6 +73,7 @@ public class CreateBookDAO {
 					resultVO.setTitle(rs.getString(2));
 					resultVO.setViews(rs.getString(3));
 					resultVO.setWriter(rs.getString(4));
+					resultVO.setBook_no(rs.getString(5));
 					list.add(resultVO);
 				}
 			} catch (Exception e) {
@@ -78,6 +83,33 @@ public class CreateBookDAO {
 			}
 			return list;
 		}
-
+	
+	//책 클릭한거 상세내용(일단)
+	public Books selectedUserBook(String book_no) {
+		ResultSet rs = null;
+		Books resultVO = null;
+			try {
+				conn = ConnectionManager.getConnnect();
+				String sql = "select title, writer, publication_date, summary, views, book_img, genre from books where book_no=?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, book_no);
+				rs = pstmt.executeQuery();
+				if (rs.next()) {
+					resultVO = new Books();
+					resultVO.setTitle(rs.getString(1));
+					resultVO.setWriter(rs.getString(2));
+					resultVO.setPublication_date(rs.getString(3));
+					resultVO.setSummary(rs.getString(4));
+					resultVO.setViews(rs.getString(5));
+					resultVO.setBook_img(rs.getString(6));
+					resultVO.setGenre(rs.getString(7));
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				ConnectionManager.close(rs, pstmt, conn);
+			}
+		return resultVO;
+	}
 	
 }
