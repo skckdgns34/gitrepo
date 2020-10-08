@@ -8,5 +8,6 @@ public class PayVO {
 	private String pay_date;
 	private String member_no;
 	private String ticket_code;
-	
+	private String price;
+	private String ticket_name;
 }

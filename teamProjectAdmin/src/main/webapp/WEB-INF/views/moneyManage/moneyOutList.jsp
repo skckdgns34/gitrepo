@@ -31,7 +31,7 @@
 		//ajax
 		$.ajax({
 			async : false,
-			url : "${pageContext.request.contextPath}/moneyOutList.ad",
+			url : "${pageContext.request.contextPath}/moneyOutList.ad",  //
 			dataType : "json",
 			data :  $("form").serialize(),
 			success : function(datas) {
@@ -39,7 +39,7 @@
 				userListResult(datas);
 				
 				for (i = 0; i < datas.length; i++) {
-					datatable.push([ datas[i].sal_date, datas[i].revenue ]); 
+					datatable.push([ datas[i].pay_date, parseInt(datas[i].price) ]); 
 				}
 			}
 		});
@@ -48,12 +48,11 @@
 		// Set chart options
 		var options = {
 			'title' : '날짜별 통계',
-			'width' : 400,
+			'width' : 1000,
 			'height' : 300
 		};
 		// Instantiate and draw our chart, passing in some options.
-		var chart = new google.visualization.LineChart(document
-				.getElementById('chart_div')); //뒤에 chart_div가 차트가 들어갈 위치
+		var chart = new google.visualization.LineChart(document.getElementById('chart_div')); //뒤에 chart_div가 차트가 들어갈 위치
 		chart.draw(data, options);
 	}
 	//사용자 목록 조회 응답
@@ -68,7 +67,7 @@
 		return $('<tr>')
 		.append($('<td>').html(item.pay_date))
 		.append($('<td>').html(item.price))
-		.append($('<td>').html(item.ticket_code));
+		.append($('<td>').html(item.ticket_name));
 		
 
 	}
@@ -78,7 +77,7 @@
 </head>
 
 <body>
-	<div id="chart_div" style="width: 900px; height: 500px"></div>
+	<div id="chart_div" style="width: 900px; height: 300px"></div>
 	
 	<form>
 		<div>
@@ -92,8 +91,9 @@
 				<option value="2018">2018년</option>
 				<option value="2019">2019년</option>
 				<option value="2020">2020년</option>
-			</select> <label for="quarter">분기선택</label>
-			 
+			</select> 
+			
+			<label for="quarter">분기선택</label>
 			<select id="quarter"name="quarter">
 				<option value="">선택</option>
 				<option value="aquarter">전체</option>
