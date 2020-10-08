@@ -28,11 +28,11 @@ li {
 		<li><a
 			href="<%=application.getContextPath()%>/memberLicense.do">이용권 내용</a>
 	</ul><br>
+	<br>
 	<ul>
-		<li><a href="<%=application.getContextPath()%>/memberBookMark.do">읽은 책 |</a>
+		<li><a href="<%=application.getContextPath()%>/memberBookMark.do">읽은 책</a>
 		<li><a href="<%=application.getContextPath()%>/memberBookLuvList.do">찜 목록</a>
 	</ul>
-	<br>
 	<br>
 	<hr>
 	<h5>찜목록</h5>

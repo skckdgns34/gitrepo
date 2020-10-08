@@ -40,7 +40,7 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
      <!-- Sidebar - Brand 메인로고 부분 (클릭시 adminPage 메인으로 이동하게 만들어야 함.) -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="adminIndex.jsp">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="adminMain.ad">
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laugh-wink"></i>
         </div>
@@ -75,7 +75,7 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">매·출입 관리</h6>
-            <a class="collapse-item" href="★매출관리 url 넣어주세요!">매출관리</a>
+            <a class="collapse-item" href="moneyOutListForm.ad">매출관리</a>
             <a class="collapse-item" href="moneyInList.ad">매입관리</a>
           </div>
         </div>

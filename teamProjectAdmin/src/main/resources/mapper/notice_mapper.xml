@@ -21,6 +21,27 @@
 		WHERE N.EMP_NO = E.EMP_NO
 		AND N.NOTICE_NO IS NOT NULL
 	</select>
+	
+	<!-- 한 건 조회 -->
+	<select id = "selectOne" parameterType="notice" resultType="notice">
+	
+	SELECT
+		N.NOTICE_NO,
+		N.NOTICE_TITLE,
+		N.NOTICE_CONTENT,
+		N.NOTICE_DATE,
+		N.NOTICE_IMG,
+		N.VIEWS,
+		N.EMP_NO,
+		E.EMP_NAME
+		FROM NOTICE N,
+		EMPLOYEES E
+		WHERE N.EMP_NO = E.EMP_NO
+		AND N.NOTICE_NO IS NOT NULL
+		AND NOTICE_NO = #{notice_no}
+		
+</select>	
+	
 
 	<!-- 공지사항 등록 -->
 	<update id="updateNo">
@@ -52,14 +73,14 @@
 		</if>
 		#{emp_no})
 	</insert>
-	<!-- 업데이트 (다시 해야 함 ㅠㅠㅠ)-->
+	
+	<!-- 업데이트-->
 	<update id="update">
 	update notice set
 	notice_title = #{notice_title}
-	notice_title = #{notice_content}
-	notice_title = #{notice_title}
-	notice_title = #{notice_title}
-	notice_title = #{notice_title}
+	notice_content = #{notice_content}
+	notice_img = #{notice_img}
+	where notice_no =#{notice_no}
 	</update>
 	
 	<!-- 삭제 -->

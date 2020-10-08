@@ -22,7 +22,7 @@
 
 	function modifypage() //수정 
 	{
-	window.document.location.href="memberManageBlackListPopForm.ad?no="+ $('input[name="user_CheckBox"]:checked').val();
+	window.document.location.href="memberManageBlackListPopForm.ad?blacklist_no="+ $('input[name="user_CheckBox"]:checked').val();
 	alert( $('input[name="user_CheckBox"]:checked').val())
 	return;
 	}
@@ -53,11 +53,11 @@
 					<thead>
 					<tr>
 						<th>선택</th>
-						<th>BLACKLIST_NO</th>
-						<th>MEMBER_NO</th>
-						<th>NICKNAME</th>						
-						<th>BLACKLIST_REASON</th>
-						<th>LIMIT_DATE</th>
+						<th>번호</th>
+						<th>회원 번호</th>
+						<th>닉네임</th>						
+						<th>사유</th>
+						<th>적용기간</th>
 						</tr>
 					</thead>
 
@@ -68,7 +68,7 @@
 								<td>${black.getBlacklist_no()}</td>
 								<td>${black.getMember_no()}</td>
 								<td>${black.getNickname()}</td>
-								<td>${black.blacklist_reason}</td>
+								<td>${black.getCode_value()}</td>
 								<td>${black.getLimit_date()}</td>
 								
 						</c:forEach>

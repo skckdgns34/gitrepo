@@ -38,6 +38,24 @@ public class NoticeController {
 		return "redirect:/memberManageNotice.ad";
 		
 	}
+	
+	//수정 페이지
+	@RequestMapping(value="/memberManageNoticeModifyForm.ad",method = RequestMethod.GET)
+	public String noticeModifyForm(Notice notice, Model model, HttpServletRequest request) {
+		String notice_no = request.getParameter("notice_no");
+		notice.setNotice_no(notice_no);
+		model.addAttribute("notice", noticeService.selectOne(notice));
+		return "memberManage/memberManageNoticeModify";
+		
+	}
+	//수정 처리
+	@RequestMapping(value="/memberManageNoticeModify.ad",method = RequestMethod.POST)
+	public String noticeModify(Notice notice) {
+		noticeService.update(notice);
+		return "redirect:/memberManageNotice.ad";
+	}
+	
+
 	//삭제
 	@RequestMapping(value="/memberManageNoticeDelete.ad", method = RequestMethod.GET)
 	public String noticeDelete(Notice notice, HttpServletRequest request) {

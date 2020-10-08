@@ -28,33 +28,29 @@ li {
 			href="<%=application.getContextPath()%>/memberCreateBookCk.do">나만의 도서 확인</a>
 		<li><a
 			href="<%=application.getContextPath()%>/memberLicense.do">이용권 내용</a>
-	</ul>
+	</ul><br>
 	<br>
+	<ul>
+		<li><a href="<%=application.getContextPath()%>/memberBookMark.do">읽은 책</a>
+		<li><a href="<%=application.getContextPath()%>/memberBookLuvList.do">찜 목록</a>
+	</ul>
 	<br>
 	<hr>
 	<h4>읽은 책</h4>
-	<table border="1">
-			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td>만료일자</td>
-			</tr>
-			<c:forEach items="${list }" var="">
-				<tr>
-					<td></td>
-					<td>${ }</td>
-					<td>${ }</td>
-					<td>${ }</td>
-					<td>${ }</td>
-					<td>${ }</td>
-				</tr>
-			</c:forEach>
-		</table>
 
-		
+	<c:forEach items="${list }" var="book">
+		<div>
+			<ul>
+				<li> ${book.book_img }</li>
+				<li><label>제목:</label> ${book.title }</li>
+				<li><label>작가:</label>${book.writer }</li>
+			</ul>
+		</div>
+	
+	</c:forEach>
+
+
+
 		<my:paging paging="${paging }" jsfunc="gopage" />
 
 	<script>
