@@ -6,7 +6,7 @@ import com.dbal.app.moneyManage.PayVO;
 
 public interface PayDAO {
 	
-	//매출 단건조회
+	//매출 날짜 선택 조회
 	public ArrayList<PayVO> selectOne(String a , String b);
 	
 	//매출 전체조회

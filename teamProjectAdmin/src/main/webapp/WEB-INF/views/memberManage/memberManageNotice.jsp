@@ -29,7 +29,7 @@
 
 	function modifypage() //수정 ㅡ
 	{
-		window.document.location.href = "memberManageNoticeModifyForm.ad?no="
+		window.document.location.href = "memberManageNoticeModifyForm.ad?notice_no="
 				+ $('input[name="user_CheckBox"]:checked').val();
 		alert($('input[name="user_CheckBox"]:checked').val())
 		return;
@@ -37,7 +37,7 @@
 
 	function deletepage() //삭제
 	{
-		window.document.location.href = "memberManageDelete.ad?no= "
+		window.document.location.href = "memberManageNoticeDelete.ad?notice_no= "
 				+ $('input[name="user_CheckBox"]:checked').val();
 		return;
 	}

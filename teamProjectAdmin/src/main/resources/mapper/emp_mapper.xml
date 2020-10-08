@@ -105,7 +105,6 @@
 
 <!-- 삭제 -->
 <update id="Delete">
-
 update employees set emp_id = null, 
 					emp_pw = null, 
 					emp_name = null, 

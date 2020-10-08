@@ -27,4 +27,5 @@ public class Books {
 	private String purchase_date;
 	private String purchase_content;
 	private String emp_no;
+	private String no;
 }

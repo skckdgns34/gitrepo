@@ -38,4 +38,12 @@ public class NoticeController {
 		return "redirect:/memberManageNotice.ad";
 		
 	}
+	//삭제
+	@RequestMapping(value="/memberManageNoticeDelete.ad", method = RequestMethod.GET)
+	public String noticeDelete(Notice notice, HttpServletRequest request) {
+		String notice_no = request.getParameter("notice_no");
+		notice.setNotice_no(notice_no);
+		noticeService.delete(notice);
+		return "redirect:/memberManageNotice.ad";
+	}
 }
