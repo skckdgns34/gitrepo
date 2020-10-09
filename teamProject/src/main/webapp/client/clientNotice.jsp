@@ -6,20 +6,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<style>
-li {
-	list-style-type: none;
-	float: left;
-	margin-left: 20px;
-}
-</style>
+
 <meta charset="UTF-8">
 <title>공지사항</title>
+
+
+
 <script>
-
-$("#exampleTable").DataTable({ });
-
-
 
 </script>
 </head>
@@ -32,7 +25,7 @@ $("#exampleTable").DataTable({ });
                     <div class="breadcrumb__text">
                         <h4>Menu</h4>
                         <div class="breadcrumb__links">
-                            <a href="./index.html">Home</a>
+                            <a href="">내 정보</a>
                             <span>공지사항</span>
                         </div>
                     </div>
@@ -41,28 +34,28 @@ $("#exampleTable").DataTable({ });
         </div>
     </section>
     <!-- Breadcrumb Section End -->
+	<!--  이건 이제 지워도 되지 않을까??? -->
+	<ul>
+		<li><a
+			href="<%=application.getContextPath()%>/clientNotice.do">공지사항</a>
+		<li><a
+			href="<%=application.getContextPath()%>/clientFAQ.do">FAQ</a>
+		<li><a
+			href="<%=application.getContextPath()%>/clientQuestion.do">문의</a>
+	</ul>
 	
+	
+	  <section class="section-margin--small mb-5">
 	
 	<div class="container">
-	
       <div class="row">
-      
        <div class="col-lg-12">
-       <div class="sidebar-categories">
-         <div class="head"><h3><a
-			href="<%=application.getContextPath()%>/clientNotice.do"></a>공지사항</h3></div>
-			<div class="head"><h3><a
-			href="<%=application.getContextPath()%>/clientFAQ.do"></a>FAO</h3></div>
-			<div class="head"><h3><a
-			href="<%=application.getContextPath()%>/clientQuestion.do"></a>문의</h3>
-			
-			</div>
-			</div>
 	<div class="table-responsive">
+	<form action="${pageContext.request.contextPath }/clientNotice.do"
+		method="get" nane="searchFrm">
 		<table id="exampleTable" class="table table-bordered">
 
   <thead>
-
     <tr>
 				<td>게시물 번호</td>
 				<td>제목</td>
@@ -85,10 +78,12 @@ $("#exampleTable").DataTable({ });
   </tbody>
 
 </table>
+</form>
 </div>
 </div>
 </div>
 </div>
+</section>
 
 	<my:paging paging="${paging }" jsfunc="gopage" />
 	<script>

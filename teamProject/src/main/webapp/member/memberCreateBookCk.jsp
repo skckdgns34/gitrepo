@@ -15,9 +15,25 @@ li {
 </style>
 </head>
 <body>
-	<h1>내 정보</h1>
-	<hr>
-	<br>
+	
+    <!-- Breadcrumb Section Begin -->
+    <section class="breadcrumb-option">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb__text">
+                        <h4>Menu</h4>
+                        <div class="breadcrumb__links">
+                            <a href="./index.html">내 정보</a>
+                            <span>나만의 도서</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breadcrumb Section End -->
+    
 	<ul>
 		<li><a href="<%=application.getContextPath()%>/memberModify.do">내정보
 				수정</a>
@@ -34,11 +50,18 @@ li {
 		<li><a href="<%=application.getContextPath()%>/memberCreateBookCk.do">작성중</a>
 		<li><a href="<%=application.getContextPath()%>/memberCreateBookComp.do">등록완료</a>
 	</ul>
-	<br>
+	
+	
 	<hr>
-	<h5>나만의 도서 확인 - 작성중</h5>
-		<input type="hidden" name="member_no" id="member_no" value="${member_no }">
-		<table border=1>
+	<section class="section-margin--small mb-5">
+	
+	<div class="container">
+      <div class="row">
+       <div class="col-lg-12">
+	<div class="table-responsive">
+		<input type="hidden" name="member_no" id="member_no" value="${member_no }"> <!--  이것의 용도는? -->
+		<table id="exampleTable" class="table table-bordered">
+		 <thead>
 			<tr>
 				<td>제목</td>
 				<td>장르</td>
@@ -46,6 +69,8 @@ li {
 				<td>작성일자</td>
 				<td></td>
 			</tr>
+			</thead>
+			  <tbody>
 			<c:forEach items="${list }" var="mywriting">
 				<tr>
 					<td>${mywriting.my_title }</td>
@@ -55,6 +80,13 @@ li {
 					<td><button>바로가기</button> <button>편집하기</button></td>
 				</tr>
 			</c:forEach>
+			</tbody>
 		</table>
+		</div>
+</div>
+</div>
+</div>
+</section>
+		
 </body>
 </html>

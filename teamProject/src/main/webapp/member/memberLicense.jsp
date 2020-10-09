@@ -16,9 +16,24 @@ li {
 </style>
 </head>
 <body>
-	<h1>이용권 내용</h1>
-	<hr>
-	<br>
+	   <!-- Breadcrumb Section Begin -->
+    <section class="breadcrumb-option">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb__text">
+                        <h4>Menu</h4>
+                        <div class="breadcrumb__links">
+                            <a href="./index.html">내 정보</a>
+                            <span>이용권 내용</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breadcrumb Section End -->
+    <!--  이건 이제 지워도 되지 않을까??? -->
 	<ul>
 		<li><a
 			href="<%=application.getContextPath()%>/memberModify.do">내정보 수정</a>
@@ -29,11 +44,16 @@ li {
 		<li><a
 			href="<%=application.getContextPath()%>/memberLicense.do">이용권 내용</a>
 	</ul>
-	<br>
-	<br>
-	<hr>
-	<h4>이용권 내역</h4>
-	<table border="1">
+	
+	
+	  <section class="section-margin--small mb-5">
+	
+	<div class="container">
+      <div class="row">
+       <div class="col-lg-12">
+	<div class="table-responsive">
+		<table id="exampleTable" class="table table-bordered">
+		 <thead>
 			<tr>
 				<td>번호</td>
 				<td>상태</td>
@@ -42,6 +62,7 @@ li {
 				<td>구매금액</td>
 				<td>만료일자</td>
 			</tr>
+			</thead>
 			<c:forEach items="${list }" var="license">
 				<tr>
 					<td></td>
@@ -53,8 +74,11 @@ li {
 				</tr>
 			</c:forEach>
 		</table>
-
-		
+</div>
+</div>
+</div>
+</div>
+</section>
 		<my:paging paging="${paging }" jsfunc="gopage" />
 
 	<script>

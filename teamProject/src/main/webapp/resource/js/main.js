@@ -118,7 +118,7 @@
         cursorwidth: "5px",
         background: "#e5e5e5",
         cursorborder: "",
-        autohidemode: true,
+        autohidemode: false,
         horizrailenabled: false
     });
 

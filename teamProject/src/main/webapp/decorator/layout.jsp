@@ -46,7 +46,7 @@
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resource/css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resource/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resource/css/style.css" type="text/css">
-    
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
     <script
 	src="<%=request.getContextPath()%>/mainresource/vendors/jquery/jquery-3.2.1.min.js"></script>
 </head>
@@ -58,7 +58,8 @@
 	<!-- 상단 남색 메뉴바 (클릭 시 이용권으로 이동 할 수 있도록 만들까 함!) -->
 		<div class="search_input" id="search_input_box">
 			<div class="container">
-				
+				<a class="navbar-brand logo_h" href="<%=application.getContextPath()%>/licenceList.do"><img
+					src="<%=request.getContextPath()%>/resource/img/ticket.png" style="padding-top: 10px;" /></a>
 			</div>
 		</div>
 
@@ -66,7 +67,7 @@
 			<div class="container">
 
 				<!-- 로고 부분 -->
-				<a class="navbar-brand logo_h" href="index2.jsp"><img
+				<a class="navbar-brand logo_h" href="<%=application.getContextPath()%>/index2.jsp"><img
 					src="<%=request.getContextPath()%>/resource/img/logo.jpg" alt="" /></a>
 					
 				<!-- 이 버튼의 용도는 무엇일까유????? 
@@ -83,7 +84,7 @@
 					id="navbarSupportedContent">
 					   <ul class="nav navbar-nav menu_nav ml-auto">
 						<li class="nav-item active"><a class="nav-link"
-							href="index2.jsp">홈</a></li>
+							href="<%=application.getContextPath()%>/index2.jsp">홈</a></li>
 							
 						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/eBookCategory.do">전자책</a>
 						</li>
@@ -224,5 +225,7 @@
 <script src="<%=request.getContextPath()%>/resource/js/main.js"></script>
     <script src="<%=request.getContextPath()%>/resource/js/owl.carousel.min.js"></script>
 	
+
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
 </body>
 </html>
