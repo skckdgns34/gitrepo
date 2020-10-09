@@ -15,41 +15,66 @@ li {
 </style>
 <meta charset="UTF-8">
 <title>공지사항</title>
+<script>
 
+$("#exampleTable").DataTable({ });
+
+
+
+</script>
 </head>
 <body>
-<!-- ================ start banner area ================= -->
-	<section class="blog-banner-area" id="category">
-		<div class="container h-100">
-			<div class="blog-banner">
-				<div class="text-center">
-					<h1>공지 사항</h1>
-				</div>
-			</div>
-		</div>
-	</section>
+    <!-- Breadcrumb Section Begin -->
+    <section class="breadcrumb-option">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb__text">
+                        <h4>Menu</h4>
+                        <div class="breadcrumb__links">
+                            <a href="./index.html">Home</a>
+                            <span>공지사항</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breadcrumb Section End -->
 	
-	<ul>
-		<li><a
-			href="<%=application.getContextPath()%>/clientNotice.do">공지사항</a>
-		<li><a
-			href="<%=application.getContextPath()%>/clientFAQ.do">FAQ</a>
-		<li><a
-			href="<%=application.getContextPath()%>/clientQuestion.do">문의</a>
-	</ul>
-	<br>
-	<br>
-	<hr>
+	
+	<div class="container">
+	
+      <div class="row">
+      
+       <div class="col-lg-12">
+       <div class="sidebar-categories">
+         <div class="head"><h3><a
+			href="<%=application.getContextPath()%>/clientNotice.do"></a>공지사항</h3></div>
+			<div class="head"><h3><a
+			href="<%=application.getContextPath()%>/clientFAQ.do"></a>FAO</h3></div>
+			<div class="head"><h3><a
+			href="<%=application.getContextPath()%>/clientQuestion.do"></a>문의</h3>
+			
+			</div>
+			</div>
 	<div class="table-responsive">
-		
-		<table class="table">
-			<tr>
+		<table id="exampleTable" class="table table-bordered">
+
+  <thead>
+
+    <tr>
 				<td>게시물 번호</td>
 				<td>제목</td>
 				<td>등록일</td>
 				<td>조회수</td>
 			</tr>
-			<c:forEach items="${list }" var="notice">
+
+  </thead>
+
+  <tbody>
+
+    <c:forEach items="${list }" var="notice">
 				<tr>
 					<td>${notice.emp_no }</td>
 					<td><a onclick="window.open('clientNoticeSelect.do', '공지사항 상세보기', 'width=#, height=#')">${notice.notice_title }</a></td>
@@ -57,8 +82,14 @@ li {
 					<td>${notice.views }</td>
 				</tr>
 			</c:forEach>
-		</table>
-	</div>
+  </tbody>
+
+</table>
+</div>
+</div>
+</div>
+</div>
+
 	<my:paging paging="${paging }" jsfunc="gopage" />
 	<script>
 		function gopage(p) {
@@ -70,6 +101,6 @@ li {
 	</script>
 
 	<input type="text">
-	<button>검색</button>
+	<button>검색</button> <!-- 이거는 기능을 하는 건지? 이것이 용도는????? -->
 </body>
 </html>

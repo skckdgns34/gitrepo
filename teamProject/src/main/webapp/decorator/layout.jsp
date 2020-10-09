@@ -91,8 +91,23 @@
 						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/audioBookCategory.do">오디오북</a>
 						</li>
 						
-						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/clientNotice.do">공지</a>
-						</li>
+						<li class="nav-item submenu dropdown"><a href=""
+							class="nav-link dropdown-toggle" data-toggle="dropdown"
+							role="button" aria-haspopup="true" aria-expanded="false">공지사항</a>
+							<ul class="dropdown-menu">
+							<li class="nav-item"><a class="nav-link"
+									href="<%=application.getContextPath()%>/clientNotice.do">공지사항</a></li>
+								<li class="nav-item"><a class="nav-link"
+									href="<%=application.getContextPath()%>/clientFAQ.do">FAQ</a></li>
+								<li class="nav-item"><a class="nav-link"
+									href="<%=application.getContextPath()%>/clientQuestion.do">문의사항</a></li>
+						
+							</ul></li>
+							
+							<li class="nav-item"></li>
+							<li class="nav-item"></li><!-- 메뉴사이 띄워주기용 li 지우지 마세요 ㅠ -->
+							
+					
 						
 						<c:if test="${sessionScope.member_id == null }">
 						<li class="nav-item"><a class="nav-link" href="<%=application.getContextPath()%>/memberLogin.do">로그인</a>

@@ -1,682 +1,864 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" isELIgnored="false"%>
+	pageEncoding="UTF-8" isELIgnored="false"%>
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Aroma Shop - Product Details</title>
-	<link rel="icon" href="img/Fevicon.png" type="image/png">
-  <link rel="stylesheet" href="vendors/bootstrap/bootstrap.min.css">
-  <link rel="stylesheet" href="vendors/fontawesome/css/all.min.css">
-	<link rel="stylesheet" href="vendors/themify-icons/themify-icons.css">
-	<link rel="stylesheet" href="vendors/linericon/style.css">
-  <link rel="stylesheet" href="vendors/nice-select/nice-select.css">
-  <link rel="stylesheet" href="vendors/owl-carousel/owl.theme.default.min.css">
-  <link rel="stylesheet" href="vendors/owl-carousel/owl.carousel.min.css">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link rel="icon" href="img/favicon.png" type="image/png" />
+    <title>Elements</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/flaticon.css" />
+    <link rel="stylesheet" href="css/themify-icons.css" />
+    <link rel="stylesheet" href="vendors/owl-carousel/owl.carousel.min.css" />
+    <link rel="stylesheet" href="vendors/nice-select/css/nice-select.css" />
+    <!-- main css -->
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
 
-  <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-	<!--================ Start Header Menu Area =================-->
-	<header class="header_area">
-    <div class="main_menu">
-      <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container">
-          <a class="navbar-brand logo_h" href="index.html"><img src="img/logo.png" alt=""></a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
-            <ul class="nav navbar-nav menu_nav ml-auto mr-auto">
-              <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-              <li class="nav-item active submenu dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                  aria-expanded="false">Shop</a>
-                <ul class="dropdown-menu">
-                  <li class="nav-item"><a class="nav-link" href="category.html">Shop Category</a></li>
-                  <li class="nav-item"><a class="nav-link" href="single-product.html">Product Details</a></li>
-                  <li class="nav-item"><a class="nav-link" href="checkout.html">Product Checkout</a></li>
-                  <li class="nav-item"><a class="nav-link" href="confirmation.html">Confirmation</a></li>
-                  <li class="nav-item"><a class="nav-link" href="cart.html">Shopping Cart</a></li>
-                </ul>
-							</li>
-              <li class="nav-item submenu dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                  aria-expanded="false">Blog</a>
-                <ul class="dropdown-menu">
-                  <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
-                  <li class="nav-item"><a class="nav-link" href="single-blog.html">Blog Details</a></li>
-                </ul>
-							</li>
-							<li class="nav-item submenu dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                  aria-expanded="false">Pages</a>
-                <ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
-                  <li class="nav-item"><a class="nav-link" href="register.html">Register</a></li>									
-                  <li class="nav-item"><a class="nav-link" href="tracking-order.html">Tracking</a></li>
-                </ul>
-              </li>
-              <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-            </ul>
-
-            <ul class="nav-shop">
-              <li class="nav-item"><button><i class="ti-search"></i></button></li>
-              <li class="nav-item"><button><i class="ti-shopping-cart"></i><span class="nav-shop__circle">3</span></button> </li>
-              <li class="nav-item"><a class="button button-header" href="#">Buy Now</a></li>
-            </ul>
+  <body>
+    <!--================ Start Header Menu Area =================-->
+    <header class="header_area white-header">
+      <div class="main_menu">
+        <div class="search_input" id="search_input_box">
+          <div class="container">
+            <form class="d-flex justify-content-between" method="" action="">
+              <input
+                type="text"
+                class="form-control"
+                id="search_input"
+                placeholder="Search Here"
+              />
+              <button type="submit" class="btn"></button>
+              <span
+                class="ti-close"
+                id="close_search"
+                title="Close Search"
+              ></span>
+            </form>
           </div>
         </div>
-      </nav>
-    </div>
-  </header>
-	<!--================ End Header Menu Area =================-->
-	
-	<!-- ================ start banner area ================= -->	
-	<section class="blog-banner-area" id="blog">
-		<div class="container h-100">
-			<div class="blog-banner">
-				<div class="text-center">
-					<h1>Shop Single</h1>
-					<nav aria-label="breadcrumb" class="banner-breadcrumb">
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active" aria-current="page">Shop Single</li>
-            </ol>
-          </nav>
-				</div>
-			</div>
-    </div>
-	</section>
-	<!-- ================ end banner area ================= -->
+
+        <nav class="navbar navbar-expand-lg navbar-light">
+          <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <a class="navbar-brand" href="index.html">
+              <img class="logo-2" src="img/logo2.png" alt="" />
+            </a>
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="icon-bar"></span> <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div
+              class="collapse navbar-collapse offset"
+              id="navbarSupportedContent"
+            >
+              <ul class="nav navbar-nav menu_nav ml-auto">
+                <li class="nav-item">
+                  <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="about-us.html">About</a>
+                </li>
+                <li class="nav-item submenu dropdown active">
+                  <a
+                    href="#"
+                    class="nav-link dropdown-toggle"
+                    data-toggle="dropdown"
+                    role="button"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                    >Pages</a
+                  >
+                  <ul class="dropdown-menu">
+                    <li class="nav-item">
+                      <a class="nav-link" href="courses.html">Courses</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="course-details.html"
+                        >Course Details</a
+                      >
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="elements.html">Elements</a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="nav-item submenu dropdown">
+                  <a
+                    href="#"
+                    class="nav-link dropdown-toggle"
+                    data-toggle="dropdown"
+                    role="button"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                    >Blog</a
+                  >
+                  <ul class="dropdown-menu">
+                    <li class="nav-item">
+                      <a class="nav-link" href="blog.html">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="single-blog.html"
+                        >Blog Details</a
+                      >
+                    </li>
+                  </ul>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="contact.html">Contact</a>
+                </li>
+                <li class="nav-item">
+                  <a href="#" class="nav-link search" id="search">
+                    <i class="ti-search"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <!--================ End Header Menu Area =================-->
+
+    <!--================Home Banner Area =================-->
+    <section class="banner_area">
+      <div class="banner_inner d-flex align-items-center">
+        <div class="overlay"></div>
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-6">
+              <div class="banner_content text-center">
+                <h2>Elements</h2>
+                <div class="page_link">
+                  <a href="index.html">Home</a>
+                  <a href="elements.html">Elements</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--================End Home Banner Area =================-->
 
 
-  <!--================Single Product Area =================-->
-	<div class="product_image_area">
+	<!-- Start Sample Area -->
+	<section class="sample-text-area">
 		<div class="container">
-			<div class="row s_product_inner">
-				<div class="col-lg-6">
-					<div class="owl-carousel owl-theme s_Product_carousel">
-						<div class="single-prd-item">
-							<img class="img-fluid" src="img/category/s-p1.jpg" alt="">
-						</div>
-						<!-- <div class="single-prd-item">
-							<img class="img-fluid" src="img/category/s-p1.jpg" alt="">
-						</div>
-						<div class="single-prd-item">
-							<img class="img-fluid" src="img/category/s-p1.jpg" alt="">
-						</div> -->
+			<h3 class="text-heading title_color">Text Sample</h3>
+			<p class="sample-text">
+				Every avid independent filmmaker has <b>Bold</b> about making that <i>Italic</i> interest documentary, or short
+				film to show off their creative prowess. Many have great ideas and want to “wow” the<sup>Superscript</sup> scene,
+				or video renters with their big project. But once you have the<sub>Subscript</sub> “in the can” (no easy feat), how
+				do you move from a <del>Strike</del> through of master DVDs with the <u>“Underline”</u> marked hand-written title
+				inside a secondhand CD case, to a pile of cardboard boxes full of shiny new, retail-ready DVDs, with UPC barcodes
+				and polywrap sitting on your doorstep? You need to create eye-popping artwork and have your project replicated.
+				Using a reputable full service DVD Replication company like PacificDisc, Inc. to partner with is certainly a
+				helpful option to ensure a professional end result, but to help with your DVD replication project, here are 4 easy
+				steps to follow for good DVD replication results:
+
+			</p>
+		</div>
+	</section>
+	<!-- End Sample Area -->
+	<!-- Start Button -->
+	<section class="button-area">
+		<div class="container border-top-generic">
+			<h3 class="text-heading title_color">Sample Buttons</h3>
+			<div class="button-group-area">
+				<a href="#" class="genric-btn default">Default</a>
+				<a href="#" class="genric-btn primary">Primary</a>
+				<a href="#" class="genric-btn success">Success</a>
+				<a href="#" class="genric-btn info">Info</a>
+				<a href="#" class="genric-btn warning">Warning</a>
+				<a href="#" class="genric-btn danger">Danger</a>
+				<a href="#" class="genric-btn link">Link</a>
+				<a href="#" class="genric-btn disable">Disable</a>
+			</div>
+			<div class="button-group-area mt-10">
+				<a href="#" class="genric-btn default-border">Default</a>
+				<a href="#" class="genric-btn primary-border">Primary</a>
+				<a href="#" class="genric-btn success-border">Success</a>
+				<a href="#" class="genric-btn info-border">Info</a>
+				<a href="#" class="genric-btn warning-border">Warning</a>
+				<a href="#" class="genric-btn danger-border">Danger</a>
+				<a href="#" class="genric-btn link-border">Link</a>
+				<a href="#" class="genric-btn disable">Disable</a>
+			</div>
+			<div class="button-group-area mt-40">
+				<a href="#" class="genric-btn default radius">Default</a>
+				<a href="#" class="genric-btn primary radius">Primary</a>
+				<a href="#" class="genric-btn success radius">Success</a>
+				<a href="#" class="genric-btn info radius">Info</a>
+				<a href="#" class="genric-btn warning radius">Warning</a>
+				<a href="#" class="genric-btn danger radius">Danger</a>
+				<a href="#" class="genric-btn link radius">Link</a>
+				<a href="#" class="genric-btn disable radius">Disable</a>
+			</div>
+			<div class="button-group-area mt-10">
+				<a href="#" class="genric-btn default-border radius">Default</a>
+				<a href="#" class="genric-btn primary-border radius">Primary</a>
+				<a href="#" class="genric-btn success-border radius">Success</a>
+				<a href="#" class="genric-btn info-border radius">Info</a>
+				<a href="#" class="genric-btn warning-border radius">Warning</a>
+				<a href="#" class="genric-btn danger-border radius">Danger</a>
+				<a href="#" class="genric-btn link-border radius">Link</a>
+				<a href="#" class="genric-btn disable radius">Disable</a>
+			</div>
+			<div class="button-group-area mt-40">
+				<a href="#" class="genric-btn default circle">Default</a>
+				<a href="#" class="genric-btn primary circle">Primary</a>
+				<a href="#" class="genric-btn success circle">Success</a>
+				<a href="#" class="genric-btn info circle">Info</a>
+				<a href="#" class="genric-btn warning circle">Warning</a>
+				<a href="#" class="genric-btn danger circle">Danger</a>
+				<a href="#" class="genric-btn link circle">Link</a>
+				<a href="#" class="genric-btn disable circle">Disable</a>
+			</div>
+			<div class="button-group-area mt-10">
+				<a href="#" class="genric-btn default-border circle">Default</a>
+				<a href="#" class="genric-btn primary-border circle">Primary</a>
+				<a href="#" class="genric-btn success-border circle">Success</a>
+				<a href="#" class="genric-btn info-border circle">Info</a>
+				<a href="#" class="genric-btn warning-border circle">Warning</a>
+				<a href="#" class="genric-btn danger-border circle">Danger</a>
+				<a href="#" class="genric-btn link-border circle">Link</a>
+				<a href="#" class="genric-btn disable circle">Disable</a>
+			</div>
+			<div class="button-group-area mt-40">
+				<a href="#" class="genric-btn default circle arrow">Default<span class="ti-arrow-right"></span></a>
+				<a href="#" class="genric-btn primary circle arrow">Primary<span class="ti-arrow-right"></span></a>
+				<a href="#" class="genric-btn success circle arrow">Success<span class="ti-arrow-right"></span></a>
+				<a href="#" class="genric-btn info circle arrow">Info<span class="ti-arrow-right"></span></a>
+				<a href="#" class="genric-btn warning circle arrow">Warning<span class="ti-arrow-right"></span></a>
+				<a href="#" class="genric-btn danger circle arrow">Danger<span class="ti-arrow-right"></span></a>
+			</div>
+			<div class="button-group-area mt-10">
+				<a href="#" class="genric-btn default-border circle arrow">Default<span class="ti-arrow-right"></span></a>
+				<a href="#" class="genric-btn primary-border circle arrow">Primary<span class="ti-arrow-right"></span></a>
+				<a href="#" class="genric-btn success-border circle arrow">Success<span class="ti-arrow-right"></span></a>
+				<a href="#" class="genric-btn info-border circle arrow">Info<span class="ti-arrow-right"></span></a>
+				<a href="#" class="genric-btn warning-border circle arrow">Warning<span class="ti-arrow-right"></span></a>
+				<a href="#" class="genric-btn danger-border circle arrow">Danger<span class="ti-arrow-right"></span></a>
+			</div>
+			<div class="button-group-area mt-40">
+				<a href="#" class="genric-btn primary e-large">Extra Large</a>
+				<a href="#" class="genric-btn success large">Large</a>
+				<a href="#" class="genric-btn primary">Default</a>
+				<a href="#" class="genric-btn success medium">Medium</a>
+				<a href="#" class="genric-btn primary small">Small</a>
+			</div>
+			<div class="button-group-area mt-10">
+				<a href="#" class="genric-btn primary-border e-large">Extra Large</a>
+				<a href="#" class="genric-btn success-border large">Large</a>
+				<a href="#" class="genric-btn primary-border">Default</a>
+				<a href="#" class="genric-btn success-border medium">Medium</a>
+				<a href="#" class="genric-btn primary-border small">Small</a>
+			</div>
+		</div>
+	</section>
+	<!-- End Button -->
+	<!-- Start Align Area -->
+	<div class="whole-wrap">
+		<div class="container">
+			<div class="section-top-border">
+				<h3 class="mb-30 title_color">Left Aligned</h3>
+				<div class="row">
+					<div class="col-md-3">
+						<img src="img/elements/d.jpg" alt="" class="img-fluid">
+					</div>
+					<div class="col-md-9 mt-sm-20 left-align-p">
+						<p>Recently, the US Federal government banned online casinos from operating in America by making it illegal to
+							transfer money to them through any US bank or payment system. As a result of this law, most of the popular
+							online casino networks such as Party Gaming and PlayTech left the United States. Overnight, online casino
+							players found themselves being chased by the Federal government. But, after a fortnight, the online casino
+							industry came up with a solution and new online casinos started taking root. These began to operate under a
+							different business umbrella, and by doing that, rendered the transfer of money to and from them legal. A major
+							part of this was enlisting electronic banking systems that would accept this new clarification and start doing
+							business with me. Listed in this article are the electronic banking systems that accept players from the United
+							States that wish to play in online casinos.</p>
 					</div>
 				</div>
-				
-				<div class="col-lg-5 offset-lg-1">
-					<div class="s_product_text">
-						<h3>Faded SkyBlu Denim Jeans</h3>
-						<h2>$149.99</h2>
-						<ul class="list">
-							<li><a class="active" href="#"><span>Category</span> : Household</a></li>
-							<li><a href="#"><span>Availibility</span> : In Stock</a></li>
-						</ul>
-						<p>Mill Oil is an innovative oil filled radiator with the most modern technology. If you are looking for
-							something that can make your interior look awesome, and at the same time give you the pleasant warm feeling
-							during the winter.</p>
-						<div class="product_count">
-              <label for="qty">Quantity:</label>
-              <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
-							 class="increase items-count" type="button"><i class="ti-angle-left"></i></button>
-							<input type="text" name="qty" id="sst" size="2" maxlength="12" value="1" title="Quantity:" class="input-text qty">
-							<button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
-               class="reduced items-count" type="button"><i class="ti-angle-right"></i></button>
-							<a class="button primary-btn" href="#">Add to Cart</a>               
+			</div>
+			<div class="section-top-border text-right">
+				<h3 class="mb-30 title_color">Right Aligned</h3>
+				<div class="row">
+					<div class="col-md-9">
+						<p class="text-right">Over time, even the most sophisticated, memory packed computer can begin to run slow if we
+							don’t do something to prevent it. The reason why has less to do with how computers are made and how they age and
+							more to do with the way we use them. You see, all of the daily tasks that we do on our PC from running programs
+							to downloading and deleting software can make our computer sluggish. To keep this from happening, you need to
+							understand the reasons why your PC is getting slower and do something to keep your PC running at its best. You
+							can do this through regular maintenance and PC performance optimization programs</p>
+						<p class="text-right">Before we discuss all of the things that could be affecting your PC’s performance, let’s
+							talk a little about what symptoms</p>
+					</div>
+					<div class="col-md-3">
+						<img src="img/elements/d.jpg" alt="" class="img-fluid">
+					</div>
+				</div>
+			</div>
+			<div class="section-top-border">
+				<h3 class="mb-30 title_color">Definition</h3>
+				<div class="row">
+					<div class="col-md-4">
+						<div class="single-defination">
+							<h4 class="mb-20">Definition 01</h4>
+							<p>Recently, the US Federal government banned online casinos from operating in America by making it illegal to
+								transfer money to them through any US bank or payment system. As a result of this law, most of the popular
+								online casino networks</p>
 						</div>
-						<div class="card_area d-flex align-items-center">
-							<a class="icon_btn" href="#"><i class="lnr lnr lnr-diamond"></i></a>
-							<a class="icon_btn" href="#"><i class="lnr lnr lnr-heart"></i></a>
+					</div>
+					<div class="col-md-4">
+						<div class="single-defination">
+							<h4 class="mb-20">Definition 02</h4>
+							<p>Recently, the US Federal government banned online casinos from operating in America by making it illegal to
+								transfer money to them through any US bank or payment system. As a result of this law, most of the popular
+								online casino networks</p>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="single-defination">
+							<h4 class="mb-20">Definition 03</h4>
+							<p>Recently, the US Federal government banned online casinos from operating in America by making it illegal to
+								transfer money to them through any US bank or payment system. As a result of this law, most of the popular
+								online casino networks</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="section-top-border">
+				<h3 class="mb-30 title_color">Block Quotes</h3>
+				<div class="row">
+					<div class="col-lg-12">
+						<blockquote class="generic-blockquote">
+							“Recently, the US Federal government banned online casinos from operating in America by making it illegal to
+							transfer money to them through any US bank or payment system. As a result of this law, most of the popular
+							online casino networks such as Party Gaming and PlayTech left the United States. Overnight, online casino
+							players found themselves being chased by the Federal government. But, after a fortnight, the online casino
+							industry came up with a solution and new online casinos started taking root. These began to operate under a
+							different business umbrella, and by doing that, rendered the transfer of money to and from them legal. A major
+							part of this was enlisting electronic banking systems that would accept this new clarification and start doing
+							business with me. Listed in this article are the electronic banking”
+						</blockquote>
+					</div>
+				</div>
+			</div>
+			<div class="section-top-border">
+				<h3 class="mb-30 title_color">Table</h3>
+				<div class="progress-table-wrap">
+					<div class="progress-table">
+						<div class="table-head">
+							<div class="serial">#</div>
+							<div class="country">Countries</div>
+							<div class="visit">Visits</div>
+							<div class="percentage">Percentages</div>
+						</div>
+						<div class="table-row">
+							<div class="serial">01</div>
+							<div class="country"> <img src="img/elements/f1.jpg" alt="flag">Canada</div>
+							<div class="visit">645032</div>
+							<div class="percentage">
+								<div class="progress">
+									<div class="progress-bar color-1" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0"
+									 aria-valuemax="100"></div>
+								</div>
+							</div>
+						</div>
+						<div class="table-row">
+							<div class="serial">02</div>
+							<div class="country"> <img src="img/elements/f2.jpg" alt="flag">Canada</div>
+							<div class="visit">645032</div>
+							<div class="percentage">
+								<div class="progress">
+									<div class="progress-bar color-2" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0"
+									 aria-valuemax="100"></div>
+								</div>
+							</div>
+						</div>
+						<div class="table-row">
+							<div class="serial">03</div>
+							<div class="country"> <img src="img/elements/f3.jpg" alt="flag">Canada</div>
+							<div class="visit">645032</div>
+							<div class="percentage">
+								<div class="progress">
+									<div class="progress-bar color-3" role="progressbar" style="width: 55%" aria-valuenow="55" aria-valuemin="0"
+									 aria-valuemax="100"></div>
+								</div>
+							</div>
+						</div>
+						<div class="table-row">
+							<div class="serial">04</div>
+							<div class="country"> <img src="img/elements/f4.jpg" alt="flag">Canada</div>
+							<div class="visit">645032</div>
+							<div class="percentage">
+								<div class="progress">
+									<div class="progress-bar color-4" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0"
+									 aria-valuemax="100"></div>
+								</div>
+							</div>
+						</div>
+						<div class="table-row">
+							<div class="serial">05</div>
+							<div class="country"> <img src="img/elements/f5.jpg" alt="flag">Canada</div>
+							<div class="visit">645032</div>
+							<div class="percentage">
+								<div class="progress">
+									<div class="progress-bar color-5" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0"
+									 aria-valuemax="100"></div>
+								</div>
+							</div>
+						</div>
+						<div class="table-row">
+							<div class="serial">06</div>
+							<div class="country"> <img src="img/elements/f6.jpg" alt="flag">Canada</div>
+							<div class="visit">645032</div>
+							<div class="percentage">
+								<div class="progress">
+									<div class="progress-bar color-6" role="progressbar" style="width: 70%" aria-valuenow="70" aria-valuemin="0"
+									 aria-valuemax="100"></div>
+								</div>
+							</div>
+						</div>
+						<div class="table-row">
+							<div class="serial">07</div>
+							<div class="country"> <img src="img/elements/f7.jpg" alt="flag">Canada</div>
+							<div class="visit">645032</div>
+							<div class="percentage">
+								<div class="progress">
+									<div class="progress-bar color-7" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0"
+									 aria-valuemax="100"></div>
+								</div>
+							</div>
+						</div>
+						<div class="table-row">
+							<div class="serial">08</div>
+							<div class="country"> <img src="img/elements/f8.jpg" alt="flag">Canada</div>
+							<div class="visit">645032</div>
+							<div class="percentage">
+								<div class="progress">
+									<div class="progress-bar color-8" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0"
+									 aria-valuemax="100"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="section-top-border">
+				<h3 class="title_color">Image Gallery</h3>
+				<div class="row gallery-item">
+					<div class="col-md-4">
+						<a href="img/elements/g1.jpg" class="img-gal">
+							<div class="single-gallery-image" style="background: url(img/elements/g1.jpg);"></div>
+						</a>
+					</div>
+					<div class="col-md-4">
+						<a href="img/elements/g2.jpg" class="img-gal">
+							<div class="single-gallery-image" style="background: url(img/elements/g2.jpg);"></div>
+						</a>
+					</div>
+					<div class="col-md-4">
+						<a href="img/elements/g3.jpg" class="img-gal">
+							<div class="single-gallery-image" style="background: url(img/elements/g3.jpg);"></div>
+						</a>
+					</div>
+					<div class="col-md-6">
+						<a href="img/elements/g4.jpg" class="img-gal">
+							<div class="single-gallery-image" style="background: url(img/elements/g4.jpg);"></div>
+						</a>
+					</div>
+					<div class="col-md-6">
+						<a href="img/elements/g5.jpg" class="img-gal">
+							<div class="single-gallery-image" style="background: url(img/elements/g5.jpg);"></div>
+						</a>
+					</div>
+					<div class="col-md-4">
+						<a href="img/elements/g6.jpg" class="img-gal">
+							<div class="single-gallery-image" style="background: url(img/elements/g6.jpg);"></div>
+						</a>
+					</div>
+					<div class="col-md-4">
+						<a href="img/elements/g7.jpg" class="img-gal">
+							<div class="single-gallery-image" style="background: url(img/elements/g7.jpg);"></div>
+						</a>
+					</div>
+					<div class="col-md-4">
+						<a href="img/elements/g8.jpg" class="img-gal">
+							<div class="single-gallery-image" style="background: url(img/elements/g8.jpg);"></div>
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="section-top-border">
+				<div class="row">
+					<div class="col-lg-4 col-sm-6 typo-sec">
+						<h3 class="mb-20 title_color">Typography</h3>
+						<div class="typography">
+							<h1 class="typo-list">This is header 01</h1>
+							<h2 class="typo-list">This is header 02</h2>
+							<h3 class="typo-list">This is header 03</h3>
+							<h4 class="typo-list">This is header 04</h4>
+							<h5 class="typo-list">This is header 01</h5>
+							<h6 class="typo-list">This is header 01</h6>
+						</div>
+					</div>
+					<div class="col-lg-4 col-sm-6 mt-sm-30 typo-sec">
+						<h3 class="mb-20 title_color">Unordered List</h3>
+						<div class="">
+							<ul class="unordered-list">
+								<li>Fta Keys</li>
+								<li>For Women Only Your Computer Usage</li>
+								<li>Facts Why Inkjet Printing Is Very Appealing
+									<ul>
+										<li>Addiction When Gambling Becomes
+											<ul>
+												<li>Protective Preventative Maintenance</li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+								<li>Dealing With Technical Support 10 Useful Tips</li>
+								<li>Make Myspace Your Best Designed Space</li>
+								<li>Cleaning And Organizing Your Computer</li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-lg-4 col-sm-6 mt-sm-30 typo-sec">
+						<h3 class="mb-20 title_color">Ordered List</h3>
+						<div class="">
+							<ol class="ordered-list">
+								<li><span>Fta Keys</span></li>
+								<li><span>For Women Only Your Computer Usage</span></li>
+								<li><span>Facts Why Inkjet Printing Is Very Appealing</span>
+									<ol class="ordered-list-alpha">
+										<li><span>Addiction When Gambling Becomes</span>
+											<ol class="ordered-list-roman">
+												<li><span>Protective Preventative Maintenance</span></li>
+											</ol>
+										</li>
+									</ol>
+								</li>
+								<li><span>Dealing With Technical Support 10 Useful Tips</span></li>
+								<li><span>Make Myspace Your Best Designed Space</span></li>
+								<li><span>Cleaning And Organizing Your Computer</span></li>
+							</ol>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="section-top-border">
+				<div class="row">
+					<div class="col-lg-8 col-md-8">
+						<h3 class="mb-30 title_color">Form Element</h3>
+						<form action="#">
+							<div class="mt-10">
+								<input type="text" name="first_name" placeholder="First Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'First Name'"
+								 required class="single-input">
+							</div>
+							<div class="mt-10">
+								<input type="text" name="last_name" placeholder="Last Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Last Name'"
+								 required class="single-input">
+							</div>
+							<div class="mt-10">
+								<input type="text" name="last_name" placeholder="Last Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Last Name'"
+								 required class="single-input">
+							</div>
+							<div class="mt-10">
+								<input type="email" name="EMAIL" placeholder="Email address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email address'"
+								 required class="single-input">
+							</div>
+							<div class="input-group-icon mt-10">
+								<div class="icon"><i class="ti-location-pin" aria-hidden="true"></i></div>
+								<input type="text" name="address" placeholder="Address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Address'"
+								 required class="single-input">
+							</div>
+							<div class="input-group-icon mt-10">
+								<div class="icon"><i class="ti-location-arrow" aria-hidden="true"></i></div>
+								<div class="form-select" id="default-select">
+									<select>
+										<option value="1">City</option>
+										<option value="1">Dhaka</option>
+										<option value="1">Dilli</option>
+										<option value="1">Newyork</option>
+										<option value="1">Islamabad</option>
+									</select>
+								</div>
+							</div>
+							<div class="input-group-icon mt-10">
+								<div class="icon"><i class="ti-map" aria-hidden="true"></i></div>
+								<div class="form-select" id="default-select2">
+									<select>
+										<option value="1">Country</option>
+										<option value="1">Bangladesh</option>
+										<option value="1">India</option>
+										<option value="1">England</option>
+										<option value="1">Srilanka</option>
+									</select>
+								</div>
+							</div>
+
+							<div class="mt-10">
+								<textarea class="single-textarea" placeholder="Message" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Message'"
+								 required></textarea>
+							</div>
+							<div class="mt-10">
+								<input type="text" name="first_name" placeholder="Primary color" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Primary color'"
+								 required class="single-input-primary">
+							</div>
+							<div class="mt-10">
+								<input type="text" name="first_name" placeholder="Accent color" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Accent color'"
+								 required class="single-input-accent">
+							</div>
+							<div class="mt-10">
+								<input type="text" name="first_name" placeholder="Secondary color" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Secondary color'"
+								 required class="single-input-secondary">
+							</div>
+						</form>
+					</div>
+					<div class="col-lg-3 col-md-4 mt-sm-30 element-wrap">
+						<div class="single-element-widget">
+							<h3 class="mb-30 title_color">Switches</h3>
+							<div class="switch-wrap d-flex justify-content-between">
+								<p>01. Sample Switch</p>
+								<div class="primary-switch">
+									<input type="checkbox" id="default-switch">
+									<label for="default-switch"></label>
+								</div>
+							</div>
+							<div class="switch-wrap d-flex justify-content-between">
+								<p>02. Primary Color Switch</p>
+								<div class="primary-switch">
+									<input type="checkbox" id="primary-switch" checked>
+									<label for="primary-switch"></label>
+								</div>
+							</div>
+							<div class="switch-wrap d-flex justify-content-between">
+								<p>03. Confirm Color Switch</p>
+								<div class="confirm-switch">
+									<input type="checkbox" id="confirm-switch" checked>
+									<label for="confirm-switch"></label>
+								</div>
+							</div>
+						</div>
+						<div class="single-element-widget">
+							<h3 class="mb-30 title_color">Selectboxes</h3>
+							<div class="default-select" id="default-select">
+								<select>
+									<option value="1">English</option>
+									<option value="1">Spanish</option>
+									<option value="1">Arabic</option>
+									<option value="1">Portuguise</option>
+									<option value="1">Bengali</option>
+								</select>
+							</div>
+						</div>
+						<div class="single-element-widget">
+							<h3 class="mb-30 title_color">Checkboxes</h3>
+							<div class="switch-wrap d-flex justify-content-between">
+								<p>01. Sample Checkbox</p>
+								<div class="primary-checkbox">
+									<input type="checkbox" id="default-checkbox">
+									<label for="default-checkbox"></label>
+								</div>
+							</div>
+							<div class="switch-wrap d-flex justify-content-between">
+								<p>02. Primary Color Checkbox</p>
+								<div class="primary-checkbox">
+									<input type="checkbox" id="primary-checkbox" checked>
+									<label for="primary-checkbox"></label>
+								</div>
+							</div>
+							<div class="switch-wrap d-flex justify-content-between">
+								<p>03. Confirm Color Checkbox</p>
+								<div class="confirm-checkbox">
+									<input type="checkbox" id="confirm-checkbox">
+									<label for="confirm-checkbox"></label>
+								</div>
+							</div>
+							<div class="switch-wrap d-flex justify-content-between">
+								<p>04. Disabled Checkbox</p>
+								<div class="disabled-checkbox">
+									<input type="checkbox" id="disabled-checkbox" disabled>
+									<label for="disabled-checkbox"></label>
+								</div>
+							</div>
+							<div class="switch-wrap d-flex justify-content-between">
+								<p>05. Disabled Checkbox active</p>
+								<div class="disabled-checkbox">
+									<input type="checkbox" id="disabled-checkbox-active" checked disabled>
+									<label for="disabled-checkbox-active"></label>
+								</div>
+							</div>
+						</div>
+						<div class="single-element-widget">
+							<h3 class="mb-30 title_color">Radios</h3>
+							<div class="switch-wrap d-flex justify-content-between">
+								<p>01. Sample radio</p>
+								<div class="primary-radio">
+									<input type="checkbox" id="default-radio">
+									<label for="default-radio"></label>
+								</div>
+							</div>
+							<div class="switch-wrap d-flex justify-content-between">
+								<p>02. Primary Color radio</p>
+								<div class="primary-radio">
+									<input type="checkbox" id="primary-radio" checked>
+									<label for="primary-radio"></label>
+								</div>
+							</div>
+							<div class="switch-wrap d-flex justify-content-between">
+								<p>03. Confirm Color radio</p>
+								<div class="confirm-radio">
+									<input type="checkbox" id="confirm-radio" checked>
+									<label for="confirm-radio"></label>
+								</div>
+							</div>
+							<div class="switch-wrap d-flex justify-content-between">
+								<p>04. Disabled radio</p>
+								<div class="disabled-radio">
+									<input type="checkbox" id="disabled-radio" disabled>
+									<label for="disabled-radio"></label>
+								</div>
+							</div>
+							<div class="switch-wrap d-flex justify-content-between">
+								<p>05. Disabled radio active</p>
+								<div class="disabled-radio">
+									<input type="checkbox" id="disabled-radio-active" checked disabled>
+									<label for="disabled-radio-active"></label>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<!--================End Single Product Area =================-->
+	<!-- End Align Area -->
 
-	<!--================Product Description Area =================-->
-	<section class="product_description_area">
-		<div class="container">
-			<ul class="nav nav-tabs" id="myTab" role="tablist">
-				<li class="nav-item">
-					<a class="nav-link" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Description</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
-					 aria-selected="false">Specification</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact"
-					 aria-selected="false">Comments</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link active" id="review-tab" data-toggle="tab" href="#review" role="tab" aria-controls="review"
-					 aria-selected="false">Reviews</a>
-				</li>
-			</ul>
-			<div class="tab-content" id="myTabContent">
-				<div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
-					<p>Beryl Cook is one of Britain’s most talented and amusing artists .Beryl’s pictures feature women of all shapes
-						and sizes enjoying themselves .Born between the two world wars, Beryl Cook eventually left Kendrick School in
-						Reading at the age of 15, where she went to secretarial school and then into an insurance office. After moving to
-						London and then Hampton, she eventually married her next door neighbour from Reading, John Cook. He was an
-						officer in the Merchant Navy and after he left the sea in 1956, they bought a pub for a year before John took a
-						job in Southern Rhodesia with a motor company. Beryl bought their young son a box of watercolours, and when
-						showing him how to use it, she decided that she herself quite enjoyed painting. John subsequently bought her a
-						child’s painting set for her birthday and it was with this that she produced her first significant work, a
-						half-length portrait of a dark-skinned lady with a vacant expression and large drooping breasts. It was aptly
-						named ‘Hangover’ by Beryl’s husband and</p>
-					<p>It is often frustrating to attempt to plan meals that are designed for one. Despite this fact, we are seeing
-						more and more recipe books and Internet websites that are dedicated to the act of cooking for one. Divorce and
-						the death of spouses or grown children leaving for college are all reasons that someone accustomed to cooking for
-						more than one would suddenly need to learn how to adjust all the cooking practices utilized before into a
-						streamlined plan of cooking that is more efficient for one person creating less</p>
-				</div>
-				<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-					<div class="table-responsive">
-						<table class="table">
-							<tbody>
-								<tr>
-									<td>
-										<h5>Width</h5>
-									</td>
-									<td>
-										<h5>128mm</h5>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<h5>Height</h5>
-									</td>
-									<td>
-										<h5>508mm</h5>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<h5>Depth</h5>
-									</td>
-									<td>
-										<h5>85mm</h5>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<h5>Weight</h5>
-									</td>
-									<td>
-										<h5>52gm</h5>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<h5>Quality checking</h5>
-									</td>
-									<td>
-										<h5>yes</h5>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<h5>Freshness Duration</h5>
-									</td>
-									<td>
-										<h5>03days</h5>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<h5>When packeting</h5>
-									</td>
-									<td>
-										<h5>Without touch of hand</h5>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<h5>Each Box contains</h5>
-									</td>
-									<td>
-										<h5>60pcs</h5>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
-				<div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-					<div class="row">
-						<div class="col-lg-6">
-							<div class="comment_list">
-								<div class="review_item">
-									<div class="media">
-										<div class="d-flex">
-											<img src="img/product/review-1.png" alt="">
-										</div>
-										<div class="media-body">
-											<h4>Blake Ruiz</h4>
-											<h5>12th Feb, 2018 at 05:56 pm</h5>
-											<a class="reply_btn" href="#">Reply</a>
-										</div>
-									</div>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-										dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-										commodo</p>
-								</div>
-								<div class="review_item reply">
-									<div class="media">
-										<div class="d-flex">
-											<img src="img/product/review-2.png" alt="">
-										</div>
-										<div class="media-body">
-											<h4>Blake Ruiz</h4>
-											<h5>12th Feb, 2018 at 05:56 pm</h5>
-											<a class="reply_btn" href="#">Reply</a>
-										</div>
-									</div>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-										dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-										commodo</p>
-								</div>
-								<div class="review_item">
-									<div class="media">
-										<div class="d-flex">
-											<img src="img/product/review-3.png" alt="">
-										</div>
-										<div class="media-body">
-											<h4>Blake Ruiz</h4>
-											<h5>12th Feb, 2018 at 05:56 pm</h5>
-											<a class="reply_btn" href="#">Reply</a>
-										</div>
-									</div>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-										dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-										commodo</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-6">
-							<div class="review_box">
-								<h4>Post a comment</h4>
-								<form class="row contact_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
-									<div class="col-md-12">
-										<div class="form-group">
-											<input type="text" class="form-control" id="name" name="name" placeholder="Your Full name">
-										</div>
-									</div>
-									<div class="col-md-12">
-										<div class="form-group">
-											<input type="email" class="form-control" id="email" name="email" placeholder="Email Address">
-										</div>
-									</div>
-									<div class="col-md-12">
-										<div class="form-group">
-											<input type="text" class="form-control" id="number" name="number" placeholder="Phone Number">
-										</div>
-									</div>
-									<div class="col-md-12">
-										<div class="form-group">
-											<textarea class="form-control" name="message" id="message" rows="1" placeholder="Message"></textarea>
-										</div>
-									</div>
-									<div class="col-md-12 text-right">
-										<button type="submit" value="submit" class="btn primary-btn">Submit Now</button>
-									</div>
-								</form>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="tab-pane fade show active" id="review" role="tabpanel" aria-labelledby="review-tab">
-					<div class="row">
-						<div class="col-lg-6">
-							<div class="row total_rate">
-								<div class="col-6">
-									<div class="box_total">
-										<h5>Overall</h5>
-										<h4>4.0</h4>
-										<h6>(03 Reviews)</h6>
-									</div>
-								</div>
-								<div class="col-6">
-									<div class="rating_list">
-										<h3>Based on 3 Reviews</h3>
-										<ul class="list">
-											<li><a href="#">5 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-													 class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
-											<li><a href="#">4 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-													 class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
-											<li><a href="#">3 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-													 class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
-											<li><a href="#">2 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-													 class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
-											<li><a href="#">1 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-													 class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-							<div class="review_list">
-								<div class="review_item">
-									<div class="media">
-										<div class="d-flex">
-											<img src="img/product/review-1.png" alt="">
-										</div>
-										<div class="media-body">
-											<h4>Blake Ruiz</h4>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-										</div>
-									</div>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-										dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-										commodo</p>
-								</div>
-								<div class="review_item">
-									<div class="media">
-										<div class="d-flex">
-											<img src="img/product/review-2.png" alt="">
-										</div>
-										<div class="media-body">
-											<h4>Blake Ruiz</h4>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-										</div>
-									</div>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-										dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-										commodo</p>
-								</div>
-								<div class="review_item">
-									<div class="media">
-										<div class="d-flex">
-											<img src="img/product/review-3.png" alt="">
-										</div>
-										<div class="media-body">
-											<h4>Blake Ruiz</h4>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-										</div>
-									</div>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-										dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-										commodo</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-6">
-							<div class="review_box">
-								<h4>Add a Review</h4>
-								<p>Your Rating:</p>
-								<ul class="list">
-									<li><a href="#"><i class="fa fa-star"></i></a></li>
-									<li><a href="#"><i class="fa fa-star"></i></a></li>
-									<li><a href="#"><i class="fa fa-star"></i></a></li>
-									<li><a href="#"><i class="fa fa-star"></i></a></li>
-									<li><a href="#"><i class="fa fa-star"></i></a></li>
-								</ul>
-								<p>Outstanding</p>
-                <form action="#/" class="form-contact form-review mt-3">
-                  <div class="form-group">
-                    <input class="form-control" name="name" type="text" placeholder="Enter your name" required>
-                  </div>
-                  <div class="form-group">
-                    <input class="form-control" name="email" type="email" placeholder="Enter email address" required>
-                  </div>
-                  <div class="form-group">
-                    <input class="form-control" name="subject" type="text" placeholder="Enter Subject">
-                  </div>
-                  <div class="form-group">
-                    <textarea class="form-control different-control w-100" name="textarea" id="textarea" cols="30" rows="5" placeholder="Enter Message"></textarea>
-                  </div>
-                  <div class="form-group text-center text-md-right mt-3">
-                    <button type="submit" class="button button--active button-review">Submit Now</button>
-                  </div>
-                </form>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!--================End Product Description Area =================-->
-
-	<!--================ Start related Product area =================-->  
-	<section class="related-product-area section-margin--small mt-0">
-		<div class="container">
-			<div class="section-intro pb-60px">
-        <p>Popular Item in the market</p>
-        <h2>Top <span class="section-intro__style">Product</span></h2>
-      </div>
-			<div class="row mt-30">
-        <div class="col-sm-6 col-xl-3 mb-4 mb-xl-0">
-          <div class="single-search-product-wrapper">
-            <div class="single-search-product d-flex">
-              <a href="#"><img src="img/product/product-sm-1.png" alt=""></a>
-              <div class="desc">
-                  <a href="#" class="title">Gray Coffee Cup</a>
-                  <div class="price">$170.00</div>
-              </div>
-            </div>
-            <div class="single-search-product d-flex">
-              <a href="#"><img src="img/product/product-sm-2.png" alt=""></a>
-              <div class="desc">
-                <a href="#" class="title">Gray Coffee Cup</a>
-                <div class="price">$170.00</div>
-              </div>
-            </div>
-            <div class="single-search-product d-flex">
-              <a href="#"><img src="img/product/product-sm-3.png" alt=""></a>
-              <div class="desc">
-                <a href="#" class="title">Gray Coffee Cup</a>
-                <div class="price">$170.00</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-sm-6 col-xl-3 mb-4 mb-xl-0">
-          <div class="single-search-product-wrapper">
-            <div class="single-search-product d-flex">
-              <a href="#"><img src="img/product/product-sm-4.png" alt=""></a>
-              <div class="desc">
-                  <a href="#" class="title">Gray Coffee Cup</a>
-                  <div class="price">$170.00</div>
-              </div>
-            </div>
-            <div class="single-search-product d-flex">
-              <a href="#"><img src="img/product/product-sm-5.png" alt=""></a>
-              <div class="desc">
-                <a href="#" class="title">Gray Coffee Cup</a>
-                <div class="price">$170.00</div>
-              </div>
-            </div>
-            <div class="single-search-product d-flex">
-              <a href="#"><img src="img/product/product-sm-6.png" alt=""></a>
-              <div class="desc">
-                <a href="#" class="title">Gray Coffee Cup</a>
-                <div class="price">$170.00</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-sm-6 col-xl-3 mb-4 mb-xl-0">
-          <div class="single-search-product-wrapper">
-            <div class="single-search-product d-flex">
-              <a href="#"><img src="img/product/product-sm-7.png" alt=""></a>
-              <div class="desc">
-                  <a href="#" class="title">Gray Coffee Cup</a>
-                  <div class="price">$170.00</div>
-              </div>
-            </div>
-            <div class="single-search-product d-flex">
-              <a href="#"><img src="img/product/product-sm-8.png" alt=""></a>
-              <div class="desc">
-                <a href="#" class="title">Gray Coffee Cup</a>
-                <div class="price">$170.00</div>
-              </div>
-            </div>
-            <div class="single-search-product d-flex">
-              <a href="#"><img src="img/product/product-sm-9.png" alt=""></a>
-              <div class="desc">
-                <a href="#" class="title">Gray Coffee Cup</a>
-                <div class="price">$170.00</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-sm-6 col-xl-3 mb-4 mb-xl-0">
-          <div class="single-search-product-wrapper">
-            <div class="single-search-product d-flex">
-              <a href="#"><img src="img/product/product-sm-1.png" alt=""></a>
-              <div class="desc">
-                  <a href="#" class="title">Gray Coffee Cup</a>
-                  <div class="price">$170.00</div>
-              </div>
-            </div>
-            <div class="single-search-product d-flex">
-              <a href="#"><img src="img/product/product-sm-2.png" alt=""></a>
-              <div class="desc">
-                <a href="#" class="title">Gray Coffee Cup</a>
-                <div class="price">$170.00</div>
-              </div>
-            </div>
-            <div class="single-search-product d-flex">
-              <a href="#"><img src="img/product/product-sm-3.png" alt=""></a>
-              <div class="desc">
-                <a href="#" class="title">Gray Coffee Cup</a>
-                <div class="price">$170.00</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-		</div>
-	</section>
-	<!--================ end related Product area =================-->  	
-
-  <!--================ Start footer Area  =================-->	
-	<footer>
-		<div class="footer-area footer-only">
+	<!--================ Start footer Area  =================-->
+    <footer class="footer-area section_gap">
 			<div class="container">
-				<div class="row section_gap">
-					<div class="col-lg-3 col-md-6 col-sm-6">
-						<div class="single-footer-widget tp_widgets ">
-							<h4 class="footer_title large_title">Our Mission</h4>
-							<p>
-								So seed seed green that winged cattle in. Gathering thing made fly you're no 
-								divided deep moved us lan Gathering thing us land years living.
-							</p>
-							<p>
-								So seed seed green that winged cattle in. Gathering thing made fly you're no divided deep moved 
-							</p>
-						</div>
-					</div>
-					<div class="offset-lg-1 col-lg-2 col-md-6 col-sm-6">
-						<div class="single-footer-widget tp_widgets">
-							<h4 class="footer_title">Quick Links</h4>
-							<ul class="list">
-								<li><a href="#">Home</a></li>
-								<li><a href="#">Shop</a></li>
-								<li><a href="#">Blog</a></li>
-								<li><a href="#">Product</a></li>
-								<li><a href="#">Brand</a></li>
-								<li><a href="#">Contact</a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="col-lg-2 col-md-6 col-sm-6">
-						<div class="single-footer-widget instafeed">
-							<h4 class="footer_title">Gallery</h4>
-							<ul class="list instafeed d-flex flex-wrap">
-								<li><img src="img/gallery/r1.jpg" alt=""></li>
-								<li><img src="img/gallery/r2.jpg" alt=""></li>
-								<li><img src="img/gallery/r3.jpg" alt=""></li>
-								<li><img src="img/gallery/r5.jpg" alt=""></li>
-								<li><img src="img/gallery/r7.jpg" alt=""></li>
-								<li><img src="img/gallery/r8.jpg" alt=""></li>
-							</ul>
-						</div>
-					</div>
-					<div class="offset-lg-1 col-lg-3 col-md-6 col-sm-6">
-						<div class="single-footer-widget tp_widgets">
-							<h4 class="footer_title">Contact Us</h4>
-							<div class="ml-40">
-								<p class="sm-head">
-									<span class="fa fa-location-arrow"></span>
-									Head Office
-								</p>
-								<p>123, Main Street, Your City</p>
-	
-								<p class="sm-head">
-									<span class="fa fa-phone"></span>
-									Phone Number
-								</p>
-								<p>
-									+123 456 7890 <br>
-									+123 456 7890
-								</p>
-	
-								<p class="sm-head">
-									<span class="fa fa-envelope"></span>
-									Email
-								</p>
-								<p>
-									free@infoexample.com <br>
-									www.infoexample.com
-								</p>
-							</div>
-						</div>
-					</div>
+			  <div class="row">
+				<div class="col-lg-2 col-md-6 single-footer-widget">
+				  <h4>Top Products</h4>
+				  <ul>
+					<li><a href="#">Managed Website</a></li>
+					<li><a href="#">Manage Reputation</a></li>
+					<li><a href="#">Power Tools</a></li>
+					<li><a href="#">Marketing Service</a></li>
+				  </ul>
 				</div>
-			</div>
-		</div>
-
-		<div class="footer-bottom">
-			<div class="container">
-				<div class="row d-flex">
-					<p class="col-lg-12 footer-text text-center">
-						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+				<div class="col-lg-2 col-md-6 single-footer-widget">
+				  <h4>Quick Links</h4>
+				  <ul>
+					<li><a href="#">Jobs</a></li>
+					<li><a href="#">Brand Assets</a></li>
+					<li><a href="#">Investor Relations</a></li>
+					<li><a href="#">Terms of Service</a></li>
+				  </ul>
 				</div>
+				<div class="col-lg-2 col-md-6 single-footer-widget">
+				  <h4>Features</h4>
+				  <ul>
+					<li><a href="#">Jobs</a></li>
+					<li><a href="#">Brand Assets</a></li>
+					<li><a href="#">Investor Relations</a></li>
+					<li><a href="#">Terms of Service</a></li>
+				  </ul>
+				</div>
+				<div class="col-lg-2 col-md-6 single-footer-widget">
+				  <h4>Resources</h4>
+				  <ul>
+					<li><a href="#">Guides</a></li>
+					<li><a href="#">Research</a></li>
+					<li><a href="#">Experts</a></li>
+					<li><a href="#">Agencies</a></li>
+				  </ul>
+				</div>
+				<div class="col-lg-4 col-md-6 single-footer-widget">
+				  <h4>Newsletter</h4>
+				  <p>You can trust us. we only send promo offers,</p>
+				  <div class="form-wrap" id="mc_embed_signup">
+					<form
+					  target="_blank"
+					  action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
+					  method="get"
+					  class="form-inline"
+					>
+					  <input
+						class="form-control"
+						name="EMAIL"
+						placeholder="Your Email Address"
+						onfocus="this.placeholder = ''"
+						onblur="this.placeholder = 'Your Email Address'"
+						required=""
+						type="email"
+					  />
+					  <button class="click-btn btn btn-default">
+						<span>subscribe</span>
+					  </button>
+					  <div style="position: absolute; left: -5000px;">
+						<input
+						  name="b_36c4fd991d266f23781ded980_aefe40901a"
+						  tabindex="-1"
+						  value=""
+						  type="text"
+						/>
+					  </div>
+	  
+					  <div class="info"></div>
+					</form>
+				  </div>
+				</div>
+			  </div>
+			  <div class="row footer-bottom d-flex justify-content-between">
+				<p class="col-lg-8 col-sm-12 footer-text m-0 text-white">
+				  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="ti-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+				</p>
+				<div class="col-lg-4 col-sm-12 footer-social">
+				  <a href="#"><i class="ti-facebook"></i></a>
+				  <a href="#"><i class="ti-twitter"></i></a>
+				  <a href="#"><i class="ti-dribbble"></i></a>
+				  <a href="#"><i class="ti-linkedin"></i></a>
+				</div>
+			  </div>
 			</div>
-		</div>
-	</footer>
-	<!--================ End footer Area  =================-->
-
-
-
-  <script src="vendors/jquery/jquery-3.2.1.min.js"></script>
-  <script src="vendors/bootstrap/bootstrap.bundle.min.js"></script>
-  <script src="vendors/skrollr.min.js"></script>
-  <script src="vendors/owl-carousel/owl.carousel.min.js"></script>
-  <script src="vendors/nice-select/jquery.nice-select.min.js"></script>
-  <script src="vendors/jquery.ajaxchimp.min.js"></script>
-  <script src="vendors/mail-script.js"></script>
-  <script src="js/main.js"></script>
-</body>
-</html>
+		  </footer>
+		  <!--================ End footer Area  =================-->
+	  
+		  <!-- Optional JavaScript -->
+		  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+		  <script src="js/jquery-3.2.1.min.js"></script>
+		  <script src="js/popper.js"></script>
+		  <script src="js/bootstrap.min.js"></script>
+		  <script src="vendors/nice-select/js/jquery.nice-select.min.js"></script>
+		  <script src="vendors/owl-carousel/owl.carousel.min.js"></script>
+		  <script src="js/owl-carousel-thumb.min.js"></script>
+		  <script src="js/jquery.ajaxchimp.min.js"></script>
+		  <script src="js/mail-script.js"></script>
+		  <!--gmaps Js-->
+		  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
+		  <script src="js/gmaps.min.js"></script>
+		  <script src="js/theme.js"></script>
+		</body>
+	  </html>
