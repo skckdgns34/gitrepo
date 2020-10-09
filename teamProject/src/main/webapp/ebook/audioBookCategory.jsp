@@ -89,11 +89,31 @@ function imgClick(book_no) {
 </script>
 </head>
 <body>
+ <section class="breadcrumb-option">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb__text">
+                        <h4>Menu</h4>
+                        <div class="breadcrumb__links">
+                            <a href="./index.html">Home</a>
+                            <span>전자책</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
 	<!-- ================ category section start ================= -->		  
   <section class="section-margin--small mb-5">
     <div class="container">
       <div class="row">
-        <div class="col-xl-3 col-lg-4 col-md-5">
+        <div class="col-lg-3 col-md-5">
           <div class="sidebar-categories">
             <div class="head">Categories</div>
             <ul class="main-categories">
@@ -118,63 +138,42 @@ function imgClick(book_no) {
           <div class="sidebar-filter">
             <div class="top-filter-head"></div>
           </div>
-          <section class="related-product-area">
-			<div class="container">
-				<div class="section-intro pb-60px">
-        			<p>Best Seller</p>
-        			<h3>Top <span class="section-intro__style">5</span></h3>
-      			</div>
-			</div>
-		   </section>
-		   
-		   <div class="row mt-30">
-		   	<div class="col-sm-6 col-xl-3 mb-4 mb-xl-0">
-          		<div class="single-search-product-wrapper">
-          			<c:forEach items="${bestBooks}" var="bestBook">
-           				 <div class="single-search-product d-flex">
-             				 <a href="#"></a>
-              				 <div class="desc">
-                  			 	<a href="#" class="title">
-                  				<c:if test="${not empty bestBook.book_img}">
-									<td>
-										<img src="filenameDownload.do?filename=${bestBook.book_img}" style="width: 200px" onclick="imgClick(${bestBook.book_no})">
-									</td>
-								</c:if>
-				  				</a>
-                  			 <div class="price">${bestBook.title}</div>
-              				 </div>
-            			</div>
-         			 </c:forEach>
-         		 </div>
-       	 	</div>
+          
+		  <div class="sidebar-categories">
+          <div class="head">Best Seller Top 5</div>
+          <div class="single-search-product-wrapper">
+          	<c:forEach items="${bestBooks}" var="bestBook">
+	           	<div class="single-search-product d-flex">
+	            	<a href="#"></a>
+		            <div class="desc">
+			            <a href="#" class="title">
+				            <c:if test="${not empty bestBook.book_img}">
+								<td>
+									<img src="filenameDownload.do?filename=${bestBook.book_img}" style="width: 200px" onclick="imgClick(${bestBook.book_no})">
+								</td>
+							</c:if>
+						</a>
+			            <div class="price">${bestBook.title}</div>
+		            </div>
+	            </div>
+         	</c:forEach>
+         	</div>
+         </div>
       </div>
-      </div>
-        <div class="col-xl-9 col-lg-8 col-md-7">
+        <div class="col-xl-9 col-md-7">
           <!-- Start Filter Bar -->
           <div class="filter-bar d-flex flex-wrap align-items-center">
-    <!--         <div class="sorting">
-              <select>
-                <option value="1">Default sorting</option>
-                <option value="1">Default sorting</option>
-                <option value="1">Default sorting</option>
-              </select>
-            </div>
-            <div class="sorting mr-auto">
-              <select>
-                <option value="1">Show 12</option>
-                <option value="1">Show 12</option>
-                <option value="1">Show 12</option>
-              </select> -->
+
             </div>
             <div>
               <div class="input-group filter-bar-search">
                 <input type="text" placeholder="Search" id="testInput">
+                <div class="input-group-append">
+                  <button><i class="ti-search"></i></button>
+                </div>
                 <form action="${pageContext.request.contextPath}/audioBookSearchAfter.do">
                 	<input type="hidden" id="hidden" name="hidden">
                 	<input type="hidden" id="realHidden" name="realHidden">
-                	<div class="input-group-append">
-	                	<button><i class="ti-search"></i></button>
-                	</div>
                 </form>
               </div>
             </div>
@@ -187,7 +186,5 @@ function imgClick(book_no) {
       </div>
     </div>
   </section>
-	<!-- ================ category section end ================= -->		  
-	<!-- ================베스트 셀러! ================= -->	
 </body>
 </html>

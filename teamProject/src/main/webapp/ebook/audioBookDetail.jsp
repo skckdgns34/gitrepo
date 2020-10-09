@@ -14,27 +14,109 @@
 $(function(){
 	btnHideNShow();
 	btnScore();
-	
-	$("#btnreview").on("click", function(){
-		var review = $("#reviewArea").val();
+	reviewAllList();
+});
+
+function reviewInsert(){
+	var review = $("#reviewArea").val();
+	$.ajax({
+		url : "${pageContext.request.contextPath}/Ajax/audioBookReview.do",
+		type: "POST",
+		data: {
+			member_no : "${member_no}",
+			member_nickname : "${member_nickname}",
+			review : review ,
+			book_no : "${book[0].book_no}"
+		},
+		success: function(result){
+			alert("성공");
+			console.log(result);
+			console.log(result.contents);
+			$("#reviewField").prepend(result);
+		}
+	})
+}
+
+function reviewAllList(page){ //리뷰전체조회
+	$.ajax({
+		url : "${pageContext.request.contextPath}/Ajax/audioBookReviewAllList.do",
+		type: "POST",
+		data: {
+			member_no : "${member_no}",
+			book_no : "${book[0].book_no}",
+			page : page
+		},
+		success: function(result){
+			$("#reviewField").html(result);
+		}
+	})
+}
+
+function reviewUpdateBefore(){ //수정버튼 누르면 이걸로옴
+	 var reviewContents =  $(event.target).closest("#review_no").next().html(); //컨텐츠에 들어가있는 값가져옴
+	 $(event.target).closest("#review_no").next().hide();	 
+	 $(event.target).closest(".review_item").append($("<input>").attr("id","newreview").val(reviewContents));
+	 $(event.target).closest(".review_item").append($("<button>등록</button>").attr("id","btnup").attr("class","btn btn-link").on("click",reviewUpdate));
+	 $(event.target).closest(".review_item").append($("<button>취소</button>").attr("id","btncan").attr("class","btn btn-link").on("click",reviewUpdateBeforeCancel));
+	 $(event.target).hide();
+	 $(event.target).next().hide();
+}
+
+function reviewUpdateBeforeCancel(){ // 수정하기 눌러서 뜨는 버튼들 중에 취소누르면 수정하는거 없애는거
+	 $(event.target).parent().find("#reUpBtn").show();
+	 $(event.target).parent().find("#reDelBtn").show();
+	 $(event.target).prevAll("#newreview").hide();
+	 $(event.target).prevAll("#btnup").hide();
+	 $(event.target).prevAll("#review_contents").show();
+	 $(event.target).hide();
+}
+
+function reviewUpdate(){ //리뷰수정
+	 var review_no =$(event.target).prevAll("#review_no").data("review_no");
+	 var page = $(".pagination").find(".active").html();
+	 var paging = $.trim(page);
+	 var contents = $(event.target).prevAll("#newreview").val();
+	 $(event.target).parent().find("#reUpBtn").show();
+	 $(event.target).parent().find("#reDelBtn").show();
+	 $(event.target).prevAll("#newreview").hide();
+	 $(event.target).next("#btncan").hide();
+	 $(event.target).hide();
 		$.ajax({
-			url : "${pageContext.request.contextPath}/Ajax/audioBookReview.do",
+			url : "${pageContext.request.contextPath}/Ajax/audioBookReviewUpdate.do",
 			type: "POST",
 			data: {
-				member_no : "${member_no}",
-				member_nickname : "${member_nickname}",
-				review : review ,
-				book_no : "${book[0].book_no}"
+				review_no : review_no,
+				contents : contents
 			},
 			success: function(result){
-				alert("성공");
-				console.log(result);
-				console.log(result.contents);
-				$("#reviewField").prepend(result);
+				reviewAllList(paging)
 			}
 		})
+	}
+
+
+
+function reviewDelete(){ //리뷰삭제
+	var  review_no =$(event.target).closest("#review_no").data("review_no");
+	var delpage = $(event.target).closest(".review_item");
+	var page = $(".pagination").find(".active").html();
+	var paging = $.trim(page);
+	
+	console.log(paging + "가져와서자른거");
+	console.log(review_no);
+	
+	$.ajax({
+		url : "${pageContext.request.contextPath}/Ajax/audioBookReviewDelete.do",
+		type: "POST",
+		data: {
+			review_no : review_no,
+			member_no : "${member_no}"
+		},
+		success: function(result){
+			reviewAllList(paging);
+		}
 	})
-});
+}
 
 
 function btnHideNShow(){

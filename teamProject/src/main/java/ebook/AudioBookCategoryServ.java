@@ -22,6 +22,7 @@ public class AudioBookCategoryServ implements Controller
 
 		List<Map<String,Object>> count = AudioBookDAO.getInstance().genreCount();
 		ArrayList<Books> bestBooks = AudioBookDAO.getInstance().selectBestBooks(); //베스트북
+		
 		request.setAttribute("bestBooks", bestBooks);
 		
 		String gen = request.getParameter("gen");
