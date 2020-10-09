@@ -32,15 +32,26 @@
 	href="<%=request.getContextPath()%>/mainresource/vendors/nice-select/nice-select.css">
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/mainresource/css/style.css">
-<script
-	src="<%=request.getContextPath()%>/mainresource/vendors/jquery/jquery-3.2.1.min.js"></script>
+
 <!-- main css -->
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resource/css1/style.css" />
+	
+	 <!-- Css Styles -->
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resource/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resource/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resource/css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resource/css/magnific-popup.css" type="text/css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resource/css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resource/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resource/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resource/css/style.css" type="text/css">
+    
+    <script
+	src="<%=request.getContextPath()%>/mainresource/vendors/jquery/jquery-3.2.1.min.js"></script>
 </head>
 
 
-<!--================ Start Header Menu Area =================-->
 <!--================ Start Header Menu Area =================-->
 <header class="header_area">
 	<div class="main_menu">
@@ -159,8 +170,6 @@
 
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-	<script
-		src="<%=request.getContextPath()%>/resource/js1/jquery-3.2.1.min.js"></script>
 	<script src="<%=request.getContextPath()%>/resource/js1/popper.js"></script>
 	<script
 		src="<%=request.getContextPath()%>/resource/js1/bootstrap.min.js"></script>
@@ -189,5 +198,16 @@
 	<script
 		src="<%=request.getContextPath()%>/mainresource/vendors/mail-script.js"></script>
 	<script src="<%=request.getContextPath()%>/mainresource/js/main.js"></script>
+	
+	  <script src="<%=request.getContextPath()%>/resource/js/bootstrap.min.js"></script>
+    <script src="<%=request.getContextPath()%>/resource/js/jquery.nice-select.min.js"></script>
+    <script src="<%=request.getContextPath()%>/resource/js/jquery.nicescroll.min.js"></script>
+    <script src="<%=request.getContextPath()%>/resource/js/jquery.magnific-popup.min.js"></script>
+    <script src="<%=request.getContextPath()%>/resource/js/jquery.countdown.min.js"></script>
+    <script src="<%=request.getContextPath()%>/resource/js/jquery.slicknav.js"></script>
+    <script src="<%=request.getContextPath()%>/resource/js/mixitup.min.js"></script>
+<script src="<%=request.getContextPath()%>/resource/js/main.js"></script>
+    <script src="<%=request.getContextPath()%>/resource/js/owl.carousel.min.js"></script>
+	
 </body>
 </html>

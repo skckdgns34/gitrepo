@@ -12,7 +12,6 @@
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/layout/styles/slider.css">
 <script>
 $(function(){
 	$("#testInput").autocomplete({
@@ -98,11 +97,30 @@ function imgClick(book_no) {
 </script>
 </head>
 <body>
+
+    <!-- Breadcrumb Section Begin -->
+    <section class="breadcrumb-option">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb__text">
+                        <h4>Menu</h4>
+                        <div class="breadcrumb__links">
+                            <a href="./index.html">Home</a>
+                            <span>전자책</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breadcrumb Section End -->
+
 	<!-- ================ category section start ================= -->		  
   <section class="section-margin--small mb-5">
     <div class="container">
       <div class="row">
-        <div class="col-xl-3 col-lg-4 col-md-5">
+        <div class="col-lg-3 col-md-5">
           <div class="sidebar-categories">
             <div class="head">Categories</div>
             <ul class="main-categories">
@@ -129,18 +147,9 @@ function imgClick(book_no) {
 		
           </div>
           
-          	<section class="related-product-area">
-		<div class="container">
-			<div class="section-intro pb-60px">
-        <p>Best Seller</p>
-        <h3>Top <span class="section-intro__style">5</span></h3>
-      </div>
-			
-		</div>
-	</section>
-          <div class="row mt-30">
-        <div class="col-sm-6 col-xl-3 mb-4 mb-xl-0">
-          <div class="single-search-product-wrapper">
+          <div class="sidebar-categories">
+            <div class="head">Best Seller Top 5</div>
+            <div class="single-search-product-wrapper">
           <c:forEach items="${bestBooks}" var="bestBook">
             <div class="single-search-product d-flex">
               <a href="#"></a>
@@ -157,222 +166,43 @@ function imgClick(book_no) {
             </div>
           </c:forEach>
           </div>
-        </div>
-
-      </div>
+          </div>
+       
+         
         </div>
         
         
 
-        <div class="col-xl-9 col-lg-8 col-md-7">
+        <div class="col-lg-9 col-md-7">
           <!-- Start Filter Bar -->
           <div class="filter-bar d-flex flex-wrap align-items-center">
-           <%--  <div class="sorting">
-              <select>
-                <option value="1">Default sorting</option>
-                <option value="1">Default sorting</option>
-                <option value="1">Default sorting</option>
-              </select>
-            </div>
-            <div class="sorting mr-auto">
-              <select>
-                <option value="1">Show 12</option>
-                <option value="1">Show 12</option>
-                <option value="1">Show 12</option>
-              </select>--%>
+         
             </div>
             <div>
               <div class="input-group filter-bar-search">
                 <input type="text" placeholder="Search" id="testInput">
-                
-                <form action="${pageContext.request.contextPath}/eBookSearchAfter.do">
-                <input type="hidden" id="hidden" name="hidden">
-                <input type="hidden" id="realHidden" name="realHidden">
                 <div class="input-group-append">
                   <button><i class="ti-search"></i></button>
                 </div>
+                <form action="${pageContext.request.contextPath}/eBookSearchAfter.do">
+                <input type="hidden" id="hidden" name="hidden">
+                <input type="hidden" id="realHidden" name="realHidden">
+                
                 </form>
               </div>
             </div>
             
             
           <!-- End Filter Bar -->
-          <!-- Start Best Seller -->
-          <section class="lattest-product-area pb-40 category-list" id="row">
-
-
-              <%-- --  <div class="col-md-6 col-lg-4">
-                <div class="card text-center card-product">
-                  <div class="card-product__img">
-                    <img class="card-img" src="" alt="">
-                    <ul class="card-product__imgOverlay">
-                      <li><button><i class="ti-search"></i></button></li>
-                      <li><button><i class="ti-shopping-cart"></i></button></li>
-                      <li><button><i class="ti-heart"></i></button></li>
-                    </ul>
-                  </div>
-                  <div class="card-body">
-                    <c:if test="${not empty books.book_img}">
-						<td>
-					 		<img src="filenameDownload.do?filename=${books.book_img}" style="width:500px">
-						</td>
-					</c:if>
-					<h5>${books.title}</h5>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6 col-lg-4">
-                <div class="card text-center card-product">
-                  <div class="card-product__img">
-                    <img class="card-img" src="" alt="">
-                    <ul class="card-product__imgOverlay">
-                      <li><button><i class="ti-search"></i></button></li>
-                      <li><button><i class="ti-shopping-cart"></i></button></li>
-                      <li><button><i class="ti-heart"></i></button></li>
-                    </ul>
-                  </div>
-                  <div class="card-body">
-                  <c:if test="${not empty books.book_img}">
-						<td>
-					 		<img src="filenameDownload.do?filename=${books.book_img}" style="width:500px">
-						</td>
-					</c:if>
-					<h5>${books.title}</h5>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6 col-lg-4">
-                <div class="card text-center card-product">
-                  <div class="card-product__img">
-                    <img class="card-img" src="" alt="">
-                    <ul class="card-product__imgOverlay">
-                      <li><button><i class="ti-search"></i></button></li>
-                      <li><button><i class="ti-shopping-cart"></i></button></li>
-                      <li><button><i class="ti-heart"></i></button></li>
-                    </ul>
-                  </div>
-                  <div class="card-body">
-                   <c:if test="${not empty books.book_img}">
-						<td>
-					 		<img src="filenameDownload.do?filename=${books.book_img}" style="width:500px">
-						</td>
-					</c:if>
-					<h5>${books.title}</h5>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6 col-lg-4">
-                <div class="card text-center card-product">
-                  <div class="card-product__img">
-                    <img class="card-img" src="" alt="">
-                    <ul class="card-product__imgOverlay">
-                      <li><button><i class="ti-search"></i></button></li>
-                      <li><button><i class="ti-shopping-cart"></i></button></li>
-                      <li><button><i class="ti-heart"></i></button></li>
-                    </ul>
-                  </div>
-                  <div class="card-body">
-                    <c:if test="${not empty books.book_img}">
-						<td>
-					 		<img src="filenameDownload.do?filename=${books.book_img}" style="width:500px">
-						</td>
-					</c:if>
-					<h5>${books.title}</h5>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6 col-lg-4">
-                <div class="card text-center card-product">
-                  <div class="card-product__img">
-                    <img class="card-img" src="" alt="">
-                    <ul class="card-product__imgOverlay">
-                      <li><button><i class="ti-search"></i></button></li>
-                      <li><button><i class="ti-shopping-cart"></i></button></li>
-                      <li><button><i class="ti-heart"></i></button></li>
-                    </ul>
-                  </div>
-                  <div class="card-body">
-                   <c:if test="${not empty books.book_img}">
-						<td>
-					 		<img src="filenameDownload.do?filename=${books.book_img}" style="width:500px">
-						</td>
-					</c:if>
-					<h5>${books.title}</h5>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6 col-lg-4">
-                <div class="card text-center card-product">
-                  <div class="card-product__img">
-                    <img class="card-img" src="" alt="">
-                    <ul class="card-product__imgOverlay">
-                      <li><button><i class="ti-search"></i></button></li>
-                      <li><button><i class="ti-shopping-cart"></i></button></li>
-                      <li><button><i class="ti-heart"></i></button></li>
-                    </ul>
-                  </div>
-                  <div class="card-body">
-                    <c:if test="${not empty books.book_img}">
-						<td>
-					 		<img src="filenameDownload.do?filename=${books.book_img}" style="width:500px">
-						</td>
-					</c:if>
-					<h5>${books.title}</h5>
-                  </div> 
-                </div>
-              </div>
-              <div class="col-md-6 col-lg-4">
-                <div class="card text-center card-product">
-                  <div class="card-product__img">
-                    <img class="card-img" src="" alt="">
-                    <ul class="card-product__imgOverlay">
-                      <li><button><i class="ti-search"></i></button></li>
-                      <li><button><i class="ti-shopping-cart"></i></button></li>
-                      <li><button><i class="ti-heart"></i></button></li>
-                    </ul>
-                  </div>
-                  <div class="card-body">
-                  <c:if test="${not empty books.book_img}">
-						<td>
-					 		<img src="filenameDownload.do?filename=${books.book_img}" style="width:500px">
-						</td>
-					</c:if>
-					<h5>${books.title}</h5>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6 col-lg-4">
-                <div class="card text-center card-product">
-                  <div class="card-product__img">
-                    <img class="card-img" src="" alt="">
-                    <ul class="card-product__imgOverlay">
-                      <li><button><i class="ti-search"></i></button></li>
-                      <li><button><i class="ti-shopping-cart"></i></button></li>
-                      <li><button><i class="ti-heart"></i></button></li>
-                    </ul>
-                  </div>
-                  <div class="card-body">
-                    <c:if test="${not empty books.book_img}">
-						<td>
-					 		<img src="filenameDownload.do?filename=${books.book_img}" style="width:500px">
-						</td>
-					</c:if>
-					<h5>${books.title}</h5>
-                  </div>
-                </div>
-              </div> -->    --%>
-       
-
-          </section>
+          <!-- Start Menu -->
+          <section class="lattest-product-area pb-40 category-list" id="row"> </section>
                     </div>
-          <!-- End Best Seller -->
+          <!-- End Menu -->
         </div>
       </div>
   </section>
   
-	<!-- ================ category section end ================= -->		  
 
-	<!-- ================베스트 셀러! ================= -->	
 
 </body>
 </html>
