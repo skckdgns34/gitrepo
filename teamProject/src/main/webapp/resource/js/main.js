@@ -115,7 +115,7 @@
 	--------------------- */
     $(".nice-scroll").niceScroll({
         cursorcolor: "#0d0d0d",
-        cursorwidth: "5px",
+        cursorwidth: "3px",
         background: "#e5e5e5",
         cursorborder: "",
         autohidemode: false,

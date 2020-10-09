@@ -417,6 +417,6 @@ margin-left: 45px;
         </div>
       </div>
     </section>
-	<script src="layout/styles/slider.js"></script>
+	<script src="<%=request.getContextPath()%>/layout/styles/slider.js"></script>
 </body>
 </html>
