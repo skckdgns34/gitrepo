@@ -13,4 +13,6 @@ public class Questions {
 	private String question_kind;
 	private String member_id;
 	private String nickname;
+	private String code;
+	private String code_value;
 }
