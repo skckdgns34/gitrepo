@@ -16,9 +16,7 @@ public class EBookReviewListAjaxServ implements Controller {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String book_no = request.getParameter("book_no");
-		String nickname = request.getParameter("member_nickname");
 		String member_no = request.getParameter("member_no");
-		
 		Paging paging = new Paging();
 		paging.setPageUnit(2);
 		//현재 페이지번호
@@ -36,8 +34,8 @@ public class EBookReviewListAjaxServ implements Controller {
 		
 		
 		List<Map<String, Object>> review = EBookDAO.getInstance().selectAllReview(book_no, first, last);
-		request.setAttribute("member_no", member_no);
-		request.setAttribute("nickname", nickname);
+		request.setAttribute("member_no"	, member_no);
+
 		request.setAttribute("review", review);
 		request.setAttribute("paging", paging);
 		request.getRequestDispatcher("/ebook/eBookReview.jsp").forward(request, response);

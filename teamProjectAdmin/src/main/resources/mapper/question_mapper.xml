@@ -6,20 +6,43 @@
 	  
 	<!-- 전체조회 -->    
 	<select id="selectAll" parameterType="questions" resultType="questions">
-		SELECT 
+		 SELECT 
 				M.MEMBER_ID, 
-				Q.MEMBER_NO, 
+				M.MEMBER_NO, 
 				M.NICKNAME, 
 				Q.QUESTION_NO,  
 				Q.QUESTION_DATE,  
 				Q.QUESTION_CONTENTS,
 				Q.QUESTION_TITLE, 
 				Q.QUESTION_FILE, 
-				Q.QUESTION_KIND
-		FROM QUESTIONS Q, MEMBER M
+				Q.QUESTION_KIND,
+		        C.CODE_VALUE
+		FROM QUESTIONS Q, MEMBER M, COMMON C
 		WHERE M.MEMBER_NO = Q.MEMBER_NO
-		 AND M.MEMBER_ID IS NOT NULL;
+		AND C.CODE = Q.QUESTION_KIND
+		AND M.MEMBER_ID IS NOT NULL
 	</select>
+	
+	<!-- 한 건 조회 -->
+	<select id = "selectOne" parameterType="questions" resultType="questions">
+	SELECT 
+				M.MEMBER_ID, 
+				M.MEMBER_NO, 
+				M.NICKNAME, 
+				Q.QUESTION_NO,  
+				Q.QUESTION_DATE,  
+				Q.QUESTION_CONTENTS,
+				Q.QUESTION_TITLE, 
+				Q.QUESTION_FILE, 
+				Q.QUESTION_KIND,
+		        C.CODE_VALUE
+		FROM QUESTIONS Q, MEMBER M, COMMON C
+		WHERE M.MEMBER_NO = Q.MEMBER_NO
+		AND C.CODE = Q.QUESTION_KIND
+		AND M.MEMBER_ID IS NOT NULL
+		AND QUESTION_NO = #{question_no}
+		
+</select>	
 
 
 </mapper>

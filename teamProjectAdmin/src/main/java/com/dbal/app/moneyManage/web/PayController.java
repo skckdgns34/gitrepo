@@ -40,12 +40,12 @@ public class PayController  {
     	
     	
     	ArrayList<PayVO> lista = new ArrayList<PayVO>();
-    	if (quarter.equals("aquarter")) {
-    		ArrayList<PayVO> r = payService.selectAll(search);  //전체조회
-    		lista.addAll(r);
-    	}
     	if (startdate != null) {
     		ArrayList<PayVO> r = payService.selectOne(search);  //날짜선택
+    		lista.addAll(r);
+    	}
+    	if (quarter.equals("aquarter")) {
+    		ArrayList<PayVO> r = payService.selectAll(search);  //전체조회
     		lista.addAll(r);
     	}
     	if (quarter.equals("fquarter")) {

@@ -41,7 +41,7 @@
 
 				<div>
 					<button type="button" id='btn_n'
-						class="btn btn-outline btn-primary pull-" onclick="modifypage()">수정</button>
+						class="btn btn-outline btn-primary pull-" onclick="modifypage()">답글</button>
 					<button type="button" id='btn_d'
 						class="btn btn-outline btn-primary pull-right"
 						onclick="deletepage()">삭제</button>
@@ -67,19 +67,19 @@
 					</thead>
 
 					<tbody>
-						<c:forEach items="${list}" var="q">
+						<c:forEach items="${list}" var="list">
 							<tr>
 								<td><input type="checkbox" name="user_CheckBox"
 									onclick="check(this)" value=""></td>
-								<td>${q.question_no}</td>
-								<td>${q.member_no}</td>
-								<td>${q.member_id}</td>
-								<td>${q.nickname}</td>
-								<td>${q.question_title}</td>
-								<td>${q.question_contents}</td>
-								<td>${q.question_date}</td>
-								<td>${q.question_file}</td>
-								<td>${q.question_kind}</td>
+								<td>${list.question_no}</td>
+								<td>${list.member_no}</td>
+								<td>${list.member_id}</td>
+								<td>${list.nickname}</td>
+								<td>${list.question_title}</td>
+								<td>${list.question_contents}</td>
+								<td>${list.question_date}</td>
+								<td>${list.question_file}</td>
+								<td>${list.code_value}</td>
 						</c:forEach>
 					</tbody>
 				</table>
