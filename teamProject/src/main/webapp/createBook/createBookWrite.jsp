@@ -25,7 +25,28 @@ $(function(){
 </script>
 </head>
 <body>
-<div class="container">
+ <!-- Breadcrumb Section Begin -->
+    <section class="breadcrumb-option">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb__text">
+                        <h4>Menu</h4>
+                        <div class="breadcrumb__links">
+                            <a href="">나만의글쓰기</a>
+                            <span>글쓰기</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breadcrumb Section End -->
+ <section class="section-margin--small mb-5">
+	
+	<div class="container">
+      <div class="row">
+       <div class="col-lg-12">
 	<h3>나만의 글쓰기 페이지</h3>
 	<select name="genre" id="genre">
 		<option value="">선택</option>
@@ -48,7 +69,9 @@ $(function(){
 	<button id="save">임시저장</button>
 	<button id="submit">등록</button>
 </div>
-
+</div>
+</div>
+</section>
 
 </body>
 </html>
