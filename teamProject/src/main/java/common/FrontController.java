@@ -104,11 +104,11 @@ public class FrontController extends HttpServlet {
 
 		
 		// 김한범&&내가 범인이다.
-		list.put("/clientQuestion.ad", new client.ClientQuestionServ());
-		list.put("/clientQuestionWtrite.ad", new client.ClientQuestionWtriteServ());
-		list.put("/clientHopeBook.ad", new client.ClientHopeBookServ());
-		list.put("/clientHopeBookWrite.ad", new client.ClientHopeBookWriteServ());
-		list.put("/moneyOutList.ad", new moneyManage.MoneyOutListServ());
+		list.put("/clientQuestion.ad", new client.ClientQuestionServ()); //문의하기 리스트
+		list.put("/clientQuestionWtrite.ad", new client.ClientQuestionWtriteServ()); //문의하기 insert
+		list.put("/clientHopeBook.ad", new client.ClientHopeBookServ()); //희망도서신청 리스트
+		list.put("/clientHopeBookWrite.ad", new client.ClientHopeBookWriteServ()); //희망도서 insert
+		list.put("/moneyOutList.ad", new moneyManage.MoneyOutListServ()); 
 		list.put("/moneyInList.ad", new moneyManage.MoneyInListServ());
 
 		list.put("/bookRegister.ad", new bookManage.BookRegisterServ()); // ebook 등록
