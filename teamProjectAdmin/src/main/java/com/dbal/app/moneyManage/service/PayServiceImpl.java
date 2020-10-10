@@ -21,28 +21,28 @@ public class PayServiceImpl implements PayService {
 	}
 
 	@Override
-	public ArrayList<PayVO> selectAll(PayVO pay) {
-		return payDAO.selectAll(pay);
+	public ArrayList<PayVO> selectAll(SearchVO search) {
+		return payDAO.selectAll(search);
 	}
 
 	@Override
-	public ArrayList<PayVO> selectfQuarterPay(String t) {
-		return payDAO.selectfQuarterPay(t);
+	public ArrayList<PayVO> selectfQuarterPay(SearchVO search) {
+		return payDAO.selectfQuarterPay(search);
 	}
 
 	@Override
-	public ArrayList<PayVO> selectsQuarterPay(String t) {
-		return payDAO.selectsQuarterPay(t);
+	public ArrayList<PayVO> selectsQuarterPay(SearchVO search) {
+		return payDAO.selectsQuarterPay(search);
 	}
 
 	@Override
-	public ArrayList<PayVO> selecttQuarterPay(String t) {
-		return payDAO.selecttQuarterPay(t);
+	public ArrayList<PayVO> selecttQuarterPay(SearchVO search) {
+		return payDAO.selecttQuarterPay(search);
 	}
 
 	@Override
-	public ArrayList<PayVO> selectqQuarterPay(String t) {
-		return payDAO.selectqQuarterPay(t);
+	public ArrayList<PayVO> selectqQuarterPay(SearchVO search) {
+		return payDAO.selectqQuarterPay(search);
 	}
 
 	@Override

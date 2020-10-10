@@ -13,5 +13,6 @@ public interface EmpService {
 	public void Update(Employees emp);
 	public void Delete(Employees emp);
 	public Employees loginCk(Employees employees);
+	public int idCk(Employees employeesVO);
 
 }
