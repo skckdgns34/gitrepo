@@ -91,6 +91,8 @@
 						
 						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/audioBookCategory.do">오디오북</a>
 						</li>
+						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/createBookMain.do">나만의 도서</a>
+						</li>
 						
 						<li class="nav-item submenu dropdown"><a href=""
 							class="nav-link dropdown-toggle" data-toggle="dropdown"
@@ -116,9 +118,7 @@
 						
 						<li class="nav-item"><a class="nav-link" href="<%=application.getContextPath()%>/member/memberJoin.jsp">회원가입</a>
 						</li>
-						</c:if>
-						
-						
+						</c:if>					
 					</ul>
 					<c:if test="${sessionScope.member_id != null }">
 					<ul class="nav navbar-nav menu_nav ml-auto">
@@ -132,7 +132,7 @@
 								<li class="nav-item"><a class="nav-link"
 									href="<%=application.getContextPath()%>/memberBookMark.do">내 서재</a></li>
 								<li class="nav-item"><a class="nav-link"
-									href="<%=application.getContextPath()%>/memberCreateBookCk.do">나만의 도서</a></li>
+									href="<%=application.getContextPath()%>/memberCreateBookCk.do">나만의 도서 확인</a></li>
 								<li class="nav-item"><a class="nav-link"
 									href="<%=application.getContextPath()%>/memberLicense.do">이용권 내용</a></li>
 							</ul></li>
