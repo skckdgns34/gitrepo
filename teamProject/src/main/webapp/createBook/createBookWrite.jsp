@@ -16,7 +16,7 @@ $(function(){
 	});
 	$("#save").on("click",function(){
 		alert("저장되었습니다.")
-		$("form").attr("action", "${pageContext.request.contextPath}/createBookWrite.do");
+		$("form").attr("action", "${pageContext.request.contextPath}/createBookSave.do");
 	});
 	$("#submit").on("click",function(){
 		alert("등록되었습니다.")
@@ -55,20 +55,14 @@ $(function(){
 				<option value="${genre.code}">${genre.code_value }</option>
 			</c:forEach>
 		</select>
-		<select name="chapter" id="chapter">
-			<option value="">챕터</option>
-			<%-- <c:forEach items="${myChapter }" var="chapter">
-				<option value="${chapter }">${chapter}</option>
-			</c:forEach> --%>
-		</select>
 		<br><br><br><br><br><br>
 		
 		작성자: <label>${sessionScope.nickname }</label><br>
-		제목:<input name="title"><br>
-		책표지:<input name="book_img" type="file"><br>
+		제목:<input name="my_title"><br>
+		책표지:<input name="image_uri" type="file"><br>
 		내용:	<textarea name="editor1"></textarea><br><br><br><br><br>
-		소개글:<textarea name="introduction" cols="50" rows="10"></textarea><br>
-		줄거리:<textarea name="summary" cols="50" rows="10"></textarea><br>
+		소개글:<textarea name="my_introduction" cols="50" rows="10"></textarea><br>
+		줄거리:<textarea name="my_summary" cols="50" rows="10"></textarea><br>
 		<button id="cancel">취소</button>
 		<button id="save">임시저장</button>
 		<button id="submit">등록</button>

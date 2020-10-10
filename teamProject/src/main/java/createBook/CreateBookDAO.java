@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import common.ConnectionManager;
 import vo.Books;
+import vo.Mywriting;
 
 public class CreateBookDAO {
 	Connection conn = null;
@@ -151,5 +152,29 @@ public class CreateBookDAO {
 			ConnectionManager.close(rs, pstmt, conn);
 		}
 	}
-	
+	public void saveUserBook(Mywriting book) {
+		ResultSet rs = null;
+		try {
+			
+			conn = ConnectionManager.getConnnect();
+			
+			String sql = "insert into mywriting(member_no,my_title,my_write_date,genre,my_introduction"
+					+ ",my_summary, image_uri,temporary_storage, my_contents)"
+					+ "values(?,?,sysdate,?,?,?,?,'y',?)";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, book.getMember_no());
+			pstmt.setString(2, book.getMy_title());
+			pstmt.setString(3, book.getGenre());
+			pstmt.setString(4, book.getMy_introduction());
+			pstmt.setString(5, book.getMy_summary());
+			pstmt.setString(6, book.getImage_uri());
+			pstmt.setString(7, book.getMy_contents());
+			int r = pstmt.executeUpdate();
+			System.out.println(r+"책등록");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionManager.close(rs, pstmt, conn);
+		}
+	}
 }
