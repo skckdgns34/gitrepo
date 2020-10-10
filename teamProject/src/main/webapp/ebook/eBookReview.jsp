@@ -33,7 +33,7 @@
 				<p id="review_contents">${reviews.contents}</p>
 		</div>
 	</c:forEach>
-</div>
+</div> 
 <p>
 	<my:paging paging="${paging}" jsfunc="reviewAllList"  />
 

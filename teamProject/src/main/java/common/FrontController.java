@@ -185,12 +185,14 @@ public class FrontController extends HttpServlet {
 		list.put("/Ajax/audioBookCategoryAjax.do", new ebook.AudioBookCategoryAjaxServ());
 
 		list.put("/Ajax/audioBookReview.do", new ebook.AudioBookReviewAjaxServ());
-
 		
 		list.put("/eBookReview.do", new ebook.EBookReviewServ());
 
 		list.put("/Ajax/audioBookRecommendation.do", new ebook.AudioBookRecommendationAjaxServ());
-
+		
+		list.put("/Ajax/eBookReviewAllList.do", new ebook.EBookReviewListAjaxServ());
+		list.put("/Ajax/eBookReviewDelete.do", new ebook.EBookReviewDeleteAjaxServ());
+		list.put("/Ajax/eBookReviewUpdate.do", new ebook.EBookReviewUpdateAjaxServ());
 	}
 
 	public FrontController() {
