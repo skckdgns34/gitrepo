@@ -12,19 +12,19 @@ public interface PayDAO {
 	public ArrayList<PayVO> selectOne(SearchVO search);
 	
 	//매출 전체조회
-	public ArrayList<PayVO> selectAll(PayVO pay);
+	public ArrayList<PayVO> selectAll(SearchVO search);
 	
 	//1분기
-	public ArrayList<PayVO> selectfQuarterPay(String t);
+	public ArrayList<PayVO> selectfQuarterPay(SearchVO search);
 	
 	//2분기
-	public ArrayList<PayVO> selectsQuarterPay(String t);
+	public ArrayList<PayVO> selectsQuarterPay(SearchVO search);
 	
 	//3분기
-	public ArrayList<PayVO> selecttQuarterPay(String t);
+	public ArrayList<PayVO> selecttQuarterPay(SearchVO search);
 	
 	//4분기 검색
-	public ArrayList<PayVO> selectqQuarterPay(String t);
+	public ArrayList<PayVO> selectqQuarterPay(SearchVO search);
 	
 	public List<PayVO> myAreaChart();
 }

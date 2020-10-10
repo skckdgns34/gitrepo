@@ -3,6 +3,7 @@ package createBook;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 import common.ConnectionManager;
@@ -110,6 +111,45 @@ public class CreateBookDAO {
 				ConnectionManager.close(rs, pstmt, conn);
 			}
 		return resultVO;
+	}
+
+	public void insertUserBook(Books book) {
+		ResultSet rs = null;
+		try {
+			
+			conn = ConnectionManager.getConnnect();
+			
+			
+			String seqSql = "select no from seq where tablename='books'";
+			Statement stmt = conn.createStatement();
+			rs = stmt.executeQuery(seqSql);
+			rs.next();
+			String no = rs.getString(1);
+			book.setBook_no(no);
+			
+			seqSql = "update seq set no = no + 1 where tablename='books'";
+			stmt = conn.createStatement();
+			stmt.execute(seqSql);
+			
+			String sql = "insert into books(book_no, title, writer, registration_date, introduction"
+					+ ", summary, member_no, book_img, genre )"
+					+ "values(?,?,?,sysdate,?,?,?,?,?)";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, book.getBook_no());
+			pstmt.setString(2, book.getTitle());
+			pstmt.setString(3, book.getWriter());
+			pstmt.setString(4, book.getIntroduction());
+			pstmt.setString(5, book.getSummary());
+			pstmt.setString(6, book.getMember_no());
+			pstmt.setString(7, book.getBook_img());
+			pstmt.setString(8, book.getGenre());
+			int r = pstmt.executeUpdate();
+			System.out.println(r+"책등록");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionManager.close(rs, pstmt, conn);
+		}
 	}
 	
 }

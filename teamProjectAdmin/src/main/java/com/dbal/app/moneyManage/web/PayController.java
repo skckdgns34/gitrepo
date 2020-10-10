@@ -40,28 +40,28 @@ public class PayController  {
     	
     	
     	ArrayList<PayVO> lista = new ArrayList<PayVO>();
-    	if (quarter.equals("aquarter")) {
-    		ArrayList<PayVO> r = payService.selectAll(pay);  //전체조회
-    		lista.addAll(r);
-    	}
     	if (startdate != null) {
     		ArrayList<PayVO> r = payService.selectOne(search);  //날짜선택
     		lista.addAll(r);
     	}
+    	if (quarter.equals("aquarter")) {
+    		ArrayList<PayVO> r = payService.selectAll(search);  //전체조회
+    		lista.addAll(r);
+    	}
     	if (quarter.equals("fquarter")) {
-    		ArrayList<PayVO> r = payService.selectfQuarterPay(quarteryear);  //1분기
+    		ArrayList<PayVO> r = payService.selectfQuarterPay(search);  //1분기
     		lista.addAll(r);
     	}
     	if (quarter.equals("squarter")) {
-    		ArrayList<PayVO> r = payService.selectsQuarterPay(quarteryear);  //2분기
+    		ArrayList<PayVO> r = payService.selectsQuarterPay(search);  //2분기
     		lista.addAll(r);
     	}
     	if (quarter.equals("tquarter")) {
-    		ArrayList<PayVO> r = payService.selecttQuarterPay(quarteryear);  //3분기
+    		ArrayList<PayVO> r = payService.selecttQuarterPay(search);  //3분기
     		lista.addAll(r);
     	}
     	if (quarter.equals("qquarter")) {
-    		ArrayList<PayVO> r = payService.selectqQuarterPay(quarteryear);  //4분기
+    		ArrayList<PayVO> r = payService.selectqQuarterPay(search);  //4분기
     		lista.addAll(r);
     	}
     	
