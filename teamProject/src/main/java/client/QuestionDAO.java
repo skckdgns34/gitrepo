@@ -28,7 +28,7 @@ public class QuestionDAO {
 		Questions result = null;
 		try {
 			conn = ConnectionManager.getConnnect();
-			String sql = " SELECT q.question_no, q.question_date, q.question_contents, q.question_title, q.question_file, c.code_value"
+			String sql = " SELECT q.question_no, q.question_date, q.question_contents, q.question_title, q.question_file, c.code_value, q.question_status"
 					+ " FROM questions q, common c"
 					+ " WHERE q.question_kind = c.code and q.member_no = ?"
 					+ " ORDER BY 1";
@@ -43,6 +43,7 @@ public class QuestionDAO {
 				result.setQuestion_title(rs.getString(4));
 				result.setQuestion_file(rs.getString(5));
 				result.setCode_value(rs.getString(6));
+				result.setQuestion_status(rs.getString(7));
 				list.add(result);
 			}
 		} catch (Exception e) {

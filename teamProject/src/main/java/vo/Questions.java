@@ -14,4 +14,5 @@ public class Questions {
 	private String member_id;
 	private String nickname;
 	private String code_value;
+	private String question_status;
 }

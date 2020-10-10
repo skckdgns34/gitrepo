@@ -25,6 +25,7 @@
 						<th>문의사항내용</th>
 						<th>등록일자</th>
 						<th>문의사항카테고리</th>
+						<th>답변상태</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -35,6 +36,7 @@
 							<td>${questions.question_contents}</td>
 							<td>${fn:substring(questions.question_date,0,10) }</td>
 							<td>${questions.code_value}</td>
+							<td>${questions.question_status}</td>
 						</tr>
 					</c:forEach>
 				</tbody>
