@@ -21,8 +21,8 @@ public class PayServiceImpl implements PayService {
 	}
 
 	@Override
-	public ArrayList<PayVO> selectAll(PayVO pay) {
-		return payDAO.selectAll(pay);
+	public ArrayList<PayVO> selectAll(SearchVO search) {
+		return payDAO.selectAll(search);
 	}
 
 	@Override

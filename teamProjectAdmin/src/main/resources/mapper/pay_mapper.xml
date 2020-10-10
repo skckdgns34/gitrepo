@@ -22,6 +22,8 @@
 		   to_char(p.pay_date, 'yyyy-MM-dd') pay_date,
 		   t.ticket_name
 	FROM	pay p, ticket t
+	WHERE	p.ticket_code = t.ticket_code
+	AND		trunc(p.pay_date) between (#{quarterYear} || '-01-01') and (#{quarterYear} || '-12-31')
 	GROUP BY rollup(to_char(p.pay_date, 'yyyy-MM-dd'), t.ticket_name)
 	ORDER BY 2, 3
 </select>

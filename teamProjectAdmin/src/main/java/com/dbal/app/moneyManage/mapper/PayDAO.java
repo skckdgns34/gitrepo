@@ -12,7 +12,7 @@ public interface PayDAO {
 	public ArrayList<PayVO> selectOne(SearchVO search);
 	
 	//매출 전체조회
-	public ArrayList<PayVO> selectAll(PayVO pay);
+	public ArrayList<PayVO> selectAll(SearchVO search);
 	
 	//1분기
 	public ArrayList<PayVO> selectfQuarterPay(SearchVO search);
