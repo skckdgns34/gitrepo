@@ -2,6 +2,7 @@ package com.dbal.app.memberManage.service.impl;
 
 import java.util.List;
 
+import org.aspectj.weaver.patterns.TypePatternQuestions.Question;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +17,11 @@ public class QuestionServiceImpl implements QuestionService{
 	@Override
 	public List<Questions> selectAll(Questions questions) {
 		return questionDAO.selectAll(questions);
+	}
+
+	@Override
+	public Questions selectOne(Question questions) {
+		return questionDAO.selectOne(questions);
 	}
 	
 }

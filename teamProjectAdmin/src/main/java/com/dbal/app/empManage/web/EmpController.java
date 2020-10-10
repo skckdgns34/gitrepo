@@ -73,11 +73,10 @@ public class EmpController  {
 	return "redirect:/";
     }
     
-    
-    
+
   //아이디 중복체크
     @ResponseBody
-    @RequestMapping(value="/idCk", method=RequestMethod.POST)
+    @RequestMapping(value="/idChk", method=RequestMethod.POST)
     public int idCk(Employees employees) {
     	int result = empService.idCk(employees);
     	return result;
@@ -112,20 +111,21 @@ public class EmpController  {
 	 
 	 String emp_no = request.getParameter("emp_no");
 	 employees.setEmp_no(emp_no);
+	
 	 int result = empService.idCk(employees);
 	 try {
 		 if(result == 1) {
-			 return "empManage/employeesInsert";
-		 }else if (result ==0) {
+			 return "redirect:/employeesInsertForm.ad";
+		 }else if(result ==0) {
+			 
 			 empService.Insert(employees);
 		 }
-	 } catch(Exception e) {
+	 }catch(Exception e) {
 		 
 	 }
-       empService.Insert(employees);
         return "redirect:/empManageList.ad";
     }
-    
+ 
     
     //수정 페이지
     @RequestMapping(value="/empManageModifyForm.ad",method = RequestMethod.GET)
