@@ -41,7 +41,7 @@ public class BookManageDAO {
 			seqSql = "update seq set no = no + 1 where tablename='purchase'";
 			stmt = conn.createStatement();
 			stmt.execute(seqSql);
-			
+			System.out.println(no);
 			
 			/*
 			 * String seqSql2 = "select no from seq where tablename = 'books'"; rs =
