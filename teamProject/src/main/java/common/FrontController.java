@@ -196,6 +196,7 @@ public class FrontController extends HttpServlet {
 
 
 		list.put("/createBookInsert.do", new createBook.CreateBookInsertServ());
+		list.put("/createBookSave.do", new createBook.CreateBookSaveServ());
 
 
 	}
