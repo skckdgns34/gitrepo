@@ -70,6 +70,22 @@
 					}
 				}).open();
 	}
+	function fn_idChk(){
+		$.ajax({
+			url : "/empManage/idCk",
+			type : "post",
+			dataType : "json",
+			data : {"emp_id" : $("#emp_id").val()},
+			success : function(data){
+				if(data == 1){
+					alert("중복된 아이디입니다.");
+				}else if(data == 0){
+					$("#idChk").attr("value", "Y");
+					alert("사용가능한 아이디입니다.");
+				}
+			}
+		})
+	}
 </script>
 
 
@@ -91,7 +107,7 @@
               </div> -->
 							<div class="form-label-group">
 								<label for="inputEmpId">사원아이디</label><br> <input
-									type="text" name="emp_id">
+									type="text" name="emp_id" class="emp_id">	<button class="idChk" type="button" id="idChk" onclick="fn_idChk();" value="N">중복확인</button>
 							</div>
 							<div class="form-label-group">
 								<label for="inputEmpPw">비밀번호</label><br> <input type="text"
