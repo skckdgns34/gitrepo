@@ -9,8 +9,10 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.dbal.app.empManage.Employees;
 import com.dbal.app.empManage.service.EmpService;
@@ -73,7 +75,13 @@ public class EmpController  {
     
     
     
-  
+  //아이디 중복체크
+    @ResponseBody
+    @RequestMapping(value="/idCk", method=RequestMethod.POST)
+    public int idCk(Employees employees) {
+    	int result = empService.idCk(employees);
+    	return result;
+    }
     
     //목록조회 
     @RequestMapping("/empManageList.ad")
@@ -104,6 +112,16 @@ public class EmpController  {
 	 
 	 String emp_no = request.getParameter("emp_no");
 	 employees.setEmp_no(emp_no);
+	 int result = empService.idCk(employees);
+	 try {
+		 if(result == 1) {
+			 return "empManage/employeesInsert";
+		 }else if (result ==0) {
+			 empService.Insert(employees);
+		 }
+	 } catch(Exception e) {
+		 
+	 }
        empService.Insert(employees);
         return "redirect:/empManageList.ad";
     }

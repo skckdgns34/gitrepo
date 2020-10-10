@@ -24,4 +24,7 @@ public interface EmpDAO {
 
 	// 로그인 체크
 	public Employees loginCk(Employees employees);
+	
+	//아이디 중복체크
+	public int idCk(Employees employeesVO);
 }

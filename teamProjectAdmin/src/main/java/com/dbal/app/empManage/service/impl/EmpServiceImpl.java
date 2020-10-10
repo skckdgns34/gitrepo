@@ -46,6 +46,12 @@ public class EmpServiceImpl implements EmpService {
 		return empDAO.loginCk(employees);
 	}
 
+	@Override
+	public int idCk(Employees employeesVO) {
+		int result = empDAO.idCk(employeesVO);
+		return result;
+	}
+
 	
 
 }
