@@ -6,7 +6,7 @@
 	  
 	<!-- 전체조회 -->    
 	<select id="selectAll" parameterType="questions" resultType="questions">
-		 SELECT 
+		SELECT 
 				M.MEMBER_ID, 
 				M.MEMBER_NO, 
 				M.NICKNAME, 
@@ -45,4 +45,33 @@
 </select>	
 
 
+<!-- 답변 관련 -->
+
+<update id="updateNo">
+	update seq set no = no+1 where tablename = 'answer'
+</update>
+
+<update id="updateStatus">
+update questions set question_status = 'y' where question_status is null
+</update>
+<insert id="insert" parameterType="questions">
+<selectKey keyProperty="answer_no" resultType="int"
+	order="BEFORE">
+SELECT NO
+			FROM SEQ
+			WHERE TABLENAME='answer'
+			</selectKey>
+
+insert into answer(answer_no,
+answer_contents,
+answer_date,
+question_no,
+answer_writer)
+values (
+		#{answer_no},
+		#{answer_contents},
+		SYSDATE, 
+		#{question_no},
+		#{answer_writer})
+</insert>
 </mapper>

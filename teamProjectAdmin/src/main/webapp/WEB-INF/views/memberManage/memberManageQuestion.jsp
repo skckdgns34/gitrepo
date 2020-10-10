@@ -19,7 +19,7 @@
 
 	function modifypage() //수정 
 	{
-		window.document.location.href = "memberManageQuestionPop.ad?no="
+		window.document.location.href = "memberManageAnswer.ad?question_no="
 				+ $('input[name="user_CheckBox"]:checked').val();
 		return;
 	}
@@ -70,8 +70,7 @@
 						<c:forEach items="${list}" var="list">
 							<tr>
 								<td><input type="checkbox" name="user_CheckBox"
-									onclick="check(this)" value=""></td>
-								<td>${list.question_no}</td>
+									onclick="check(this)" value="${list.question_no}"></td>
 								<td>${list.member_no}</td>
 								<td>${list.member_id}</td>
 								<td>${list.nickname}</td>

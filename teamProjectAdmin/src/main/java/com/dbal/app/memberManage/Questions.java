@@ -15,4 +15,5 @@ public class Questions {
 	private String nickname;
 	private String code;
 	private String code_value;
+	
 }
