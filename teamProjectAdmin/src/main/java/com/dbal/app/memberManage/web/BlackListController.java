@@ -46,7 +46,7 @@ public class BlackListController {
 		String blacklist_no = request.getParameter("blacklist_no");
 		black.setBlacklist_no(blacklist_no);
 		blackListService.delete(black);		
-		return "redirect:/memberManageBlackList";
+		return "redirect:/memberManageBlackList.ad";
 		
 	}
 }

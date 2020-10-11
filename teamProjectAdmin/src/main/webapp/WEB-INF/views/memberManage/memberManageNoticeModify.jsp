@@ -34,7 +34,7 @@
 									</label>
 									<div class="controls col-md-8 ">
 										<input class="input-md emailinput form-control"
-											id="notice_title" name="notice_title"
+											id="notice_no" name="notice_no"
 											value="${notice.notice_no}" type="text" />
 									</div>
 								</div>
