@@ -69,16 +69,18 @@
 		#{notice_content},
 		SYSDATE,
 		<if test="notice_img!=null and notice_img!=''">
-			#{notice_img}
+			#{notice_img},
 		</if>
 		#{emp_no})
 	</insert>
 	
 	<!-- 업데이트-->
-	<update id="update">
-	update notice set
-	notice_title = #{notice_title}
-	notice_content = #{notice_content}
+	<update id="update" parameterType="notice">
+	update 
+	notice 
+	set
+	notice_title = #{notice_title},
+	notice_content = #{notice_content},
 	notice_img = #{notice_img}
 	where notice_no =#{notice_no}
 	</update>
