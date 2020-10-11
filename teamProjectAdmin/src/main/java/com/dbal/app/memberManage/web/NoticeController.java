@@ -1,5 +1,8 @@
 package com.dbal.app.memberManage.web;
 
+import java.io.File;
+import java.io.IOException;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,7 +10,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.dbal.app.common.FileRenamePolicy;
 import com.dbal.app.memberManage.Notice;
 import com.dbal.app.memberManage.service.NoticeService;
 
@@ -50,7 +56,21 @@ public class NoticeController {
 	}
 	//수정 처리
 	@RequestMapping(value="/memberManageNoticeModify.ad",method = RequestMethod.POST)
-	public String noticeModify(Notice notice) {
+	public String noticeModify(Notice notice, HttpServletRequest request) throws IllegalStateException, IOException {
+		 MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest)request;
+	       //표지 업로드
+	       MultipartFile imgFile = multipartRequest.getFile("notice_img1");
+	      String path = "c:/전자도서관/책표지";
+	      String fileName;
+	      if(imgFile !=null && !imgFile.isEmpty() && imgFile.getSize()>0) {
+	         fileName = imgFile.getOriginalFilename();
+	         //파일명 중복체크
+	         File renameFile = FileRenamePolicy.rename(new File(path, fileName));
+	         imgFile.transferTo(new File(path,renameFile.getName()));
+	         notice.setNotice_img(renameFile.getName());
+	      }
+	      
+
 		noticeService.update(notice);
 		return "redirect:/memberManageNotice.ad";
 	}

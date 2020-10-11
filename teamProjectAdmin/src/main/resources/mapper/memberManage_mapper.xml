@@ -44,6 +44,7 @@
 		MEMBER_PW = #{member_pw},
 		NICKNAME = #{nickname},
 		MEMBER_EMAIL = #{member_email},
+	
 		MEMBER_TEL = #{member_tel}
 		WHERE MEMBER_ID = #{member_id}
 	</update>

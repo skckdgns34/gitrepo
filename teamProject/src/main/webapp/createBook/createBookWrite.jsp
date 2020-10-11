@@ -48,26 +48,29 @@ $(function(){
 		<div class="container">
 	      <div class="row">
 	       <div class="col-lg-12">
-		<h3>나만의 글쓰기 페이지</h3>
-		<select name="genre" id="genre">
-			<option value="">선택</option>
-			<c:forEach items="${genreList }" var="genre">
-				<option value="${genre.code}">${genre.code_value }</option>
-			</c:forEach>
-		</select>
-		<br><br><br><br><br><br>
-		
-		작성자: <label>${sessionScope.nickname }</label><br>
-		제목:<input name="my_title"><br>
-		책표지:<input name="image_uri" type="file"><br>
-		내용:	<textarea name="editor1"></textarea><br><br><br><br><br>
-		소개글:<textarea name="my_introduction" cols="50" rows="10"></textarea><br>
-		줄거리:<textarea name="my_summary" cols="50" rows="10"></textarea><br>
-		<button id="cancel">취소</button>
-		<button id="save">임시저장</button>
-		<button id="submit">등록</button>
-		
+				<h3>나만의 글쓰기 페이지</h3>
+				<select name="genre" id="genre">
+					<option value="">선택</option>
+					<c:forEach items="${genreList }" var="genre">
+						<option value="${genre.code}">${genre.code_value }</option>
+					</c:forEach>
+				</select>
+				<br><br><br><br><br><br>
+				
+				작성자: <label>${sessionScope.nickname }</label><br>
+				제목:<input name="my_title"><br>
+				책표지:<input name="image_uri" type="file"><br>
+				내용:	<textarea name="editor1"></textarea><br><br><br><br><br>
+				소개글:<textarea name="my_introduction" cols="50" rows="10"></textarea><br>
+				줄거리:<textarea name="my_summary" cols="50" rows="10"></textarea><br>
+				<button id="cancel">취소</button>
+				<button id="save">임시저장</button>
+				<button id="submit">등록</button>
+			</div>
+		  </div>
+		</div>
 	</form>
+	
 </section>
 <script>CKEDITOR.replace( 'editor1' );</script>
 </body>

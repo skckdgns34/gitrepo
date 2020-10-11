@@ -3,6 +3,7 @@ package ebook;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -11,6 +12,7 @@ import java.util.Map;
 import common.ConnectionManager;
 import main.MainDAO;
 import vo.Books;
+import vo.Mylibrary;
 import vo.SearchBook;
 
 public class AudioBookDAO {
@@ -372,5 +374,66 @@ public class AudioBookDAO {
 			ConnectionManager.close(rs, pstmt, conn);
 		}
 		return result;
+	}
+
+
+
+
+	public int myBookyn(Mylibrary my) {
+		ResultSet rs = null;
+		int result = 0;
+		try {
+			conn = ConnectionManager.getConnnect();
+			String sql = "select mylibrary_no from mylibrary where member_no=? and book_no=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, my.getMember_no());
+			pstmt.setString(2, my.getBook_no());
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				result = rs.getInt(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionManager.close(rs, pstmt, conn);
+		}
+		return result;
+	}
+
+
+
+
+	public void insertMylib(Mylibrary my) {
+		ResultSet rs = null;
+		try {
+			
+			conn = ConnectionManager.getConnnect();
+			
+			
+			String seqSql = "select no from seq where tablename='mylibrary'";
+			Statement stmt = conn.createStatement();
+			rs = stmt.executeQuery(seqSql);
+			rs.next();
+			String no = rs.getString(1);
+			my.setMylibrary_no(no);
+			
+			seqSql = "update seq set no = no + 1 where tablename='mylibrary'";
+			stmt = conn.createStatement();
+			stmt.execute(seqSql);
+			
+			String sql = "insert into mylibrary(mylibrary_no, member_no, book_no, wish, last_read_index)"
+					+ "values(?,?,?,?,0)";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, my.getMylibrary_no());
+			pstmt.setString(2, my.getMember_no());
+			pstmt.setString(3, my.getBook_no());
+			pstmt.setString(4, my.getWish());
+			int r = pstmt.executeUpdate();
+			System.out.println(r+"mylib등록");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionManager.close(rs, pstmt, conn);
+		}
 	}
 }
