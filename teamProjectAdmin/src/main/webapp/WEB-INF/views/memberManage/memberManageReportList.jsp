@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>신고 조회</title>
+<title>블랙리스트 조회</title>
 
  
 
@@ -41,7 +41,7 @@
 	
 	<div class="container-fluid">
 		
-		<h3 class="page_title">신고 조회</h3>
+		<h3 class="page_title">블랙리스트 조회</h3>
 	<hr>
 		<div class="card-body">
 			<div class="table-responsive">

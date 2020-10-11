@@ -73,7 +73,6 @@
               <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">답글달기</button>
              
               <hr class="my-4">
-              
             </form>
             
              <form class="form-signin" method="post" name="frm" id="frm"
@@ -81,11 +80,11 @@
 			
 			<div class="form-label-group">
                 <input type="hidden" name="answer_writer" value="${login.emp_id}">
-                <input type="hidden" name="question_no" value="${list.question_no}">                
               </div> 
 			
     <div class="form-label-group">
-               <label for="inputquestion_no">답글</label><br>
+                <input type="text" name="question_no" value="${list.question_no}">                
+               <label for="inputAnswer_contents">답글</label><br>
                 <textarea type="text" name="answer_contents" ></textarea>
               </div> 
          

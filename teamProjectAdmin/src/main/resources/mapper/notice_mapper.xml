@@ -82,7 +82,6 @@
 	NOTICE_TITLE = #{notice_title},
 	NOTICE_CONTENT = #{notice_content},
 	NOTICE_IMG = #{notice_img}
-
 	WHERE NOTICE_NO =#{notice_no}
 	</update>
 	

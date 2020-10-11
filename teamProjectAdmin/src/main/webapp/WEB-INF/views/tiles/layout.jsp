@@ -119,7 +119,7 @@
             <h6 class="collapse-header"></h6>
             <a class="collapse-item" href="memberManageMain.ad">회원조회</a>
             <a class="collapse-item" href="memberManageBlackList.ad">블랙리스트관리</a>
-			<a class="collapse-item" href="★신고관리 url 적기">신고관리</a>   
+			<a class="collapse-item" href="memberManageReport.ad">신고관리</a>   
             <a class="collapse-item" href="memberManageQuestion.ad">문의관리</a>
 			<a class="collapse-item" href="memberManageNotice.ad">공지사항관리</a>            
           </div>
@@ -144,8 +144,7 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header"></h6>
             <a class="collapse-item" href="empManageList.ad">직원조회</a>
-            
-            <a class="collapse-item" href="★계정관리 url 넣어주세요!">계정관리</a>
+
             
           </div>
         </div>

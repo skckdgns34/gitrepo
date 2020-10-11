@@ -18,11 +18,15 @@ public interface QuestionDAO {
 	
 	
 	//답글달기
-	public int insert(Answer answer);
+	public int insert(Questions questions);
 	
 	//번호 업데이트
 	public void updateNo();
+//	public void updateNo1();
 	
 	//상태변경
 	public void updateStatus(Questions questions);
+
+	
+
 }

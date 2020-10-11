@@ -3,75 +3,86 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.dbal.app.memberManage.mapper.QuestionDAO">
-	  
-	<!-- 전체조회 -->    
-	<select id="selectAll" parameterType="questions" resultType="questions">
-		SELECT 
-				M.MEMBER_ID, 
-				M.MEMBER_NO, 
-				M.NICKNAME, 
-				Q.QUESTION_NO,  
-				Q.QUESTION_DATE,  
-				Q.QUESTION_CONTENTS,
-				Q.QUESTION_TITLE, 
-				Q.QUESTION_FILE, 
-				Q.QUESTION_KIND,
-		        C.CODE_VALUE
+
+	<!-- 전체조회 -->
+	<select id="selectAll" parameterType="questions"
+		resultType="questions">
+		SELECT
+		M.MEMBER_ID,
+		M.MEMBER_NO,
+		M.NICKNAME,
+		Q.QUESTION_NO,
+		Q.QUESTION_DATE,
+		Q.QUESTION_CONTENTS,
+		Q.QUESTION_TITLE,
+		Q.QUESTION_FILE,
+		Q.QUESTION_KIND,
+		C.CODE_VALUE
 		FROM QUESTIONS Q, MEMBER M, COMMON C
-		WHERE M.MEMBER_NO = Q.MEMBER_NO
+		WHERE
+		M.MEMBER_NO = Q.MEMBER_NO
 		AND C.CODE = Q.QUESTION_KIND
 		AND M.MEMBER_ID IS NOT NULL
+		AND Q.QUESTION_STATUS IS NULL
 	</select>
-	
+
 	<!-- 한 건 조회 -->
-	<select id = "selectOne" parameterType="questions" resultType="questions">
-	SELECT 
-				M.MEMBER_ID, 
-				M.MEMBER_NO, 
-				M.NICKNAME, 
-				Q.QUESTION_NO,  
-				Q.QUESTION_DATE,  
-				Q.QUESTION_CONTENTS,
-				Q.QUESTION_TITLE, 
-				Q.QUESTION_FILE, 
-				Q.QUESTION_KIND,
-		        C.CODE_VALUE
+	<select id="selectOne" parameterType="questions"
+		resultType="questions">
+		SELECT
+		M.MEMBER_ID,
+		M.MEMBER_NO,
+		M.NICKNAME,
+		Q.QUESTION_NO,
+		Q.QUESTION_DATE,
+		Q.QUESTION_CONTENTS,
+		Q.QUESTION_TITLE,
+		Q.QUESTION_FILE,
+		Q.QUESTION_KIND,
+		C.CODE_VALUE
 		FROM QUESTIONS Q, MEMBER M, COMMON C
-		WHERE M.MEMBER_NO = Q.MEMBER_NO
+		WHERE
+		M.MEMBER_NO = Q.MEMBER_NO
 		AND C.CODE = Q.QUESTION_KIND
-		AND M.MEMBER_ID IS NOT NULL
-		AND QUESTION_NO = #{question_no}
-		
-</select>	
+		AND M.MEMBER_ID
+		IS NOT NULL
+		AND QUESTION_NO
+		= #{question_no}
+
+	</select>
 
 
-<!-- 답변 관련 -->
+	<!-- 답변 관련 -->
 
-<update id="updateNo">
-	update seq set no = no+1 where tablename = 'answer'
-</update>
+	<update id="updateNo">
+		update seq set no = no+1 where tablename='answer'
+
+	</update>
 
 <update id="updateStatus">
-update questions set question_status = 'y' where question_status is null
-</update>
-<insert id="insert" parameterType="questions">
-<selectKey keyProperty="answer_no" resultType="string"
-	order="BEFORE">
-SELECT NO
+		update questions set question_status = null where
+		question_status is null 
+	</update>
+	
+	<insert id="insert" parameterType="questions">
+
+		<selectKey keyProperty="answer_no" resultType="string"
+			order="BEFORE">
+			SELECT NO
 			FROM SEQ
 			WHERE TABLENAME='answer'
-			</selectKey>
+		</selectKey>
 
-insert into answer(answer_no,
-answer_contents,
-answer_date,
-question_no,
-answer_writer)
-values (
+		insert into answer(answer_no,
+		answer_contents,
+		answer_date,
+		question_no,
+		answer_writer)
+		values (
 		#{answer_no},
 		#{answer_contents},
-		SYSDATE, 
+		SYSDATE,
 		#{question_no},
 		#{answer_writer})
-</insert>
+	</insert>
 </mapper>

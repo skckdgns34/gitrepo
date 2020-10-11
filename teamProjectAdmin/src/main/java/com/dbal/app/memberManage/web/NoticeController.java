@@ -68,7 +68,7 @@ public class NoticeController {
 	         File renameFile = FileRenamePolicy.rename(new File(path, fileName));
 	         imgFile.transferTo(new File(path,renameFile.getName()));
 	         notice.setNotice_img(renameFile.getName());
-	      }
+	      }else {notice.setNotice_img("");}
 	      
 
 		noticeService.update(notice);

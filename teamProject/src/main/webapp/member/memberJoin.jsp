@@ -34,12 +34,12 @@
 								<div class="eheck_font" id="id_check"></div>
 							</div>
               <div class="col-md-12 form-group">
-								<input type="text" class="form-control" id="member_pw" name="member_pw" placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'">
+								<input type="password" class="form-control" id="member_pw" name="member_pw" placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'">
               					<div class="eheck_font" id="pw_check"></div>
  				
               </div>
               <div class="col-md-12 form-group">
-								<input type="text" class="form-control" id="member_pw2" name="member_pw2" placeholder="비밀번호 확인" onfocus="this.placeholder = ''" onblur="this.placeholder = 'PasswordCk'">
+								<input type="password" class="form-control" id="member_pw2" name="member_pw2" placeholder="비밀번호 확인" onfocus="this.placeholder = ''" onblur="this.placeholder = 'PasswordCk'">
               					<div class="eheck_font" id="pw2_check"></div>
               </div>
               <div class="col-md-12 form-group">
