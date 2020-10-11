@@ -140,7 +140,7 @@ public class BooksController  {
 			File renameFile = FileRenamePolicy.rename(new File(path, fileName));
 			imgFile.transferTo(new File(path,renameFile.getName()));
 			books.setBook_img(renameFile.getName());
-		}
+		}else {books.setBook_img("");}
 		
     	booksService.update(books);
     	return "redirect:/bookList.ad";
