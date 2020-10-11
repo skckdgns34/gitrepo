@@ -52,7 +52,8 @@ li {
       <div class="row">
        <div class="col-lg-12">
 	<div class="table-responsive">
-		<table id="exampleTable" class="table table-bordered">
+	<table class="table table-bordered" id="dataTable" width="100%"
+							cellspacing="0">
 		 <thead>
 			<tr>
 				<td>번호</td>

@@ -45,7 +45,7 @@ $(function(){
                     <div class="breadcrumb__text">
                         <h4>Menu</h4>
                         <div class="breadcrumb__links">
-                            <a href="">내 정보</a>
+                            <a href="">Home</a>
                             <span>나만의 도서</span>
                         </div>
                     </div>

@@ -47,8 +47,8 @@ public class QuestionController {
 	public String answerInsert(Answer answer, Questions questions) {
 		System.out.println(answer.toString());
 		questionService.insert(answer);
-		questionService.updateStatus(questions);
-		return "redirect:/memberManageQuestion";
+		//questionService.updateStatus(questions);
+		return "redirect:/memberManageQuestion.ad";
 	}
 	
 }

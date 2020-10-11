@@ -8,41 +8,59 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<body id="page-top">
-
-	<div class="container-fluid">
-		
-	<h3 class="page_title">문의사항 전체 조회</h3>
-	<hr>
-	<div class="card-body">
-		<div class="table-responsive">
-			<table class="table table-bordered" id="dataTable" width="100%"
-				cellspacing="0">
-				<thead>
-					<tr>
-						<th>번호</th>
-						<th>문의사항제목</th>
-						<th>문의사항내용</th>
-						<th>등록일자</th>
-						<th>문의사항카테고리</th>
-						<th>답변상태</th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach items="${list}" var="questions">
-						<tr>
-							<td><a href="questionSelect.ad?question_no=${questions.question_no}">${questions.question_no}</a></td>
-							<td>${questions.question_title}</td>
-							<td>${questions.question_contents}</td>
-							<td>${fn:substring(questions.question_date,0,10) }</td>
-							<td>${questions.code_value}</td>
-							<td>${questions.question_status}</td>
-						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
+<body>
+	<!-- Breadcrumb Section Begin -->
+	<section class="breadcrumb-option">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="breadcrumb__text">
+						<h4>Menu</h4>
+						<div class="breadcrumb__links">
+							<a href="./index.html">Home</a> <span>문의사항</span>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
-	</div>
-	</div>
+	</section>
+	<!-- Breadcrumb Section End -->
+	<section class="section-margin--small mb-5">
+
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="table-responsive">
+						<table class="table table-bordered" id="dataTable" width="100%"
+							cellspacing="0">
+							<thead>
+								<tr>
+									<th>번호</th>
+									<th>문의사항제목</th>
+									<th>문의사항내용</th>
+									<th>등록일자</th>
+									<th>문의사항카테고리</th>
+									<th>답변상태</th>
+								</tr>
+							</thead>
+							<tbody>
+								<c:forEach items="${list}" var="questions">
+									<tr>
+										<td><a
+											href="questionSelect.ad?question_no=${questions.question_no}">${questions.question_no}</a></td>
+										<td>${questions.question_title}</td>
+										<td>${questions.question_contents}</td>
+										<td>${fn:substring(questions.question_date,0,10) }</td>
+										<td>${questions.code_value}</td>
+										<td>${questions.question_status}</td>
+									</tr>
+								</c:forEach>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 </body>
 </html>

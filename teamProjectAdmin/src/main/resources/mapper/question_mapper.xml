@@ -21,6 +21,7 @@
 		WHERE M.MEMBER_NO = Q.MEMBER_NO
 		AND C.CODE = Q.QUESTION_KIND
 		AND M.MEMBER_ID IS NOT NULL
+		
 	</select>
 	
 	<!-- 한 건 조회 -->
@@ -55,7 +56,7 @@
 update questions set question_status = 'y' where question_status is null
 </update>
 <insert id="insert" parameterType="questions">
-<selectKey keyProperty="answer_no" resultType="int"
+<selectKey keyProperty="answer_no" resultType="string"
 	order="BEFORE">
 SELECT NO
 			FROM SEQ

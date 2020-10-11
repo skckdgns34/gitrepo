@@ -7,22 +7,44 @@
 <meta charset="UTF-8">
 <title>공지사항 상세보기</title>
 <script>
-function closeMe() {
-    var win=window.open("","_self");
-    win.close();
-}
+	function closeMe() {
+		var win = window.open("", "_self");
+		win.close();
+	}
 </script>
 </head>
 <body>
-	<h3>공지사항</h3>
-		<label for="title">제목 ${notice_title }</label>
-		<label for="date"> | 등록일 ${notice_date }</label>
-	<br>
-	<br>
-	<textarea readonly
-		style="width: 50%; border: 1; overflow: visible; text-overflow: ellipsis; resize: none;"
-		rows=30 id="notice_content" name="notice_date" > ${notice_content }</textarea><br>
-		<input type="button" value="닫기 " onclick="window.close();">
+	<!-- Breadcrumb Section Begin -->
+	<section class="breadcrumb-option">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="breadcrumb__text">
+						<h4>Menu</h4>
+						<div class="breadcrumb__links">
+							<a href="./index.html">문의사항</a> <span>확인</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Breadcrumb Section End -->
+	<section class="section-margin--small mb-5">
+		<div class="container">
+			<div class="row"> 
+				<div class="col-lg-12">
 
+					<label for="title">제목 ${notice_title }</label> <label for="date">
+						| 등록일 ${notice_date }</label> <br> <br>
+					<textarea readonly
+						style="width: 50%; border: 1; overflow: visible; text-overflow: ellipsis; resize: none;"
+						rows=30 id="notice_content" name="notice_date"> ${notice_content }</textarea>
+					<br> <input type="button" value="닫기 "
+						onclick="window.close();">
+				</div>
+			</div>
+		</div>
+	</section>
 </body>
 </html>

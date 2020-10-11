@@ -34,7 +34,7 @@ $(function(){
                     <div class="breadcrumb__text">
                         <h4>Menu</h4>
                         <div class="breadcrumb__links">
-                            <a href="">나만의글쓰기</a>
+                            <a href="">나만의도서</a>
                             <span>글쓰기</span>
                         </div>
                     </div>
