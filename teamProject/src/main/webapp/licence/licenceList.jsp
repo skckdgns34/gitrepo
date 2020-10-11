@@ -33,7 +33,6 @@
 
 			}
 			else{
-				alert("로그인됌");
 				window.open('${pageContext.request.contextPath }/licenceAmount.do?account='
 							+boxVal+'&p_name='+p_name
 							+'&ticket_code='+ticket_code, '결제', 'width=850px,height=700px,scrollbars=yes');
@@ -70,9 +69,8 @@
 							<tr>
 								<th>선택</th>
 								<th scope="col">이름</th>
-								<th scope="col">코드</th>
 								<th scope="col">금액</th>
-								<th scope="col">내꺼</th>
+								<th scope="col">보유</th>
 							</tr>
 						</thead>
 						
@@ -80,9 +78,8 @@
 							<c:forEach items="${commonList}" var="list">
 								<tr>
 									<td><input type="checkbox" name="user_CheckBox" <c:if test="${list.ticketyn==1}">disabled</c:if>
-										onclick="check(this)" value="100"></td>
+										onclick="check(this)" value="${list.price }"></td>
 									<td>${list.ticket_name }</td><input type="hidden" value="${list.ticket_code}"></input>
-									<td>${list.ticket_code }</td>
 									<td>${list.price}</td>
 									<td class="member_ticket">
 									<c:if test="${list.ticketyn==1 }">보유중</c:if>								
