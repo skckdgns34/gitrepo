@@ -31,5 +31,5 @@ public class CreateBookSaveServ  implements Controller {
 		CreateBookDAO.getInstance().saveUserBook(book);
 		response.sendRedirect("createBookMain.do");
 	}
-
+	
 }
