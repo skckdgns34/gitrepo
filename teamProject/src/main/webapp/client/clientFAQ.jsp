@@ -26,21 +26,41 @@
 <title>공지사항 - FAQ</title>
 </head>
 <body>
-	<h1>공지</h1>
-	<hr><br>
+	<!-- Breadcrumb Section Begin -->
+	<section class="breadcrumb-option">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="breadcrumb__text">
+						<h4>Menu</h4>
+						<div class="breadcrumb__links">
+							<a href="./index.html">공지사항</a> <span>FAQ</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Breadcrumb Section End -->
 	<ul>
 		<li><a href="<%=application.getContextPath() %>/clientNotice.do">공지사항</a>
 		<li><a href="<%=application.getContextPath() %>/clientFAQ.do">FAQ</a>
 		<li><a href="<%=application.getContextPath() %>/clientQuestion.do">문의</a>
 	</ul><br>
 	<br><hr>
-
+<section class="section-margin--small mb-5">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
 <div id="accordion">
   <h3>${title }</h3>
   <div>
     <p>${contents }</p>
   </div>
 </div>
-
+</div>
+				</div>
+			</div>
+	</section>
 </body>
 </html>

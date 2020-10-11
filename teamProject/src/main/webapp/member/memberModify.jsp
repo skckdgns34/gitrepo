@@ -151,70 +151,84 @@ li {
 
 </head>
 <body>
-	<h1>내정보</h1>
-	<hr>
-	<br>
+	<!-- Breadcrumb Section Begin -->
+	<section class="breadcrumb-option">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="breadcrumb__text">
+						<h4>Menu</h4>
+						<div class="breadcrumb__links">
+							<a href="./index.html">내 정보</a> <span>수정</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Breadcrumb Section End -->
 	<ul>
+		<li><a href="<%=application.getContextPath()%>/memberModify.do">내정보
+				수정</a>
+		<li><a href="<%=application.getContextPath()%>/memberBookMark.do">내
+				서재</a>
 		<li><a
-			href="<%=application.getContextPath()%>/memberModify.do">내정보 수정</a>
-		<li><a
-			href="<%=application.getContextPath()%>/memberBookMark.do">내 서재</a>
-		<li><a
-			href="<%=application.getContextPath()%>/memberCreateBookCk.do">나만의 도서 확인</a>
-		<li><a
-			href="<%=application.getContextPath()%>/memberLicense.do">이용권 내용</a>
+			href="<%=application.getContextPath()%>/memberCreateBookCk.do">나만의
+				도서 확인</a>
+		<li><a href="<%=application.getContextPath()%>/memberLicense.do">이용권
+				내용</a>
 	</ul>
-	<br>
-	<br>
-	<hr>
 
-	<form method="post" name="frm" id="frm" action="${pageContext.request.contextPath }/memberModify.do">
+	<section class="section-margin--small mb-5">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="table-responsive">
+						<form method="post" name="frm" id="frm"
+							action="${pageContext.request.contextPath }/memberModify.do">
 
-		<article class="container">
-			<div class="page-header">
-				<div class="col-md-6 col-md-offset-3">
+									<div class="form-group">
+										<label for="id">아이디 ${member_id }</label> <input type="hidden"
+											name="member_id" id="member_id" value="${member_id }">
+									</div>
+									<div class="form-group">
+										<label for="pw">비밀번호</label> <input type="password"
+											class="form-control" id="member_pw" name="member_pw">
+										<div class="eheck_font" id="pw_check"></div>
+									</div>
+									<div class="form-group">
+										<label for="pw2">비밀번호 확인</label> <input type="password"
+											class="form-control" id="member_pw2" name="member_pw2"
+											placeholder="비밀번호 확인">
+										<div class="eheck_font" id="pw2_check"></div>
+									</div>
+									<div class="form-group">
+										<label for="nickname">닉네임</label> <input type="text"
+											class="form-control" id="nickname" name="nickname"">
+										<div class="eheck_font" id="nickname_check"></div>
+									</div>
+									<div class="form-group">
+										<label for="member_email">이메일</label> <input type="text"
+											class="form-control" id="member_email" name="member_email">
+										<div class="eheck_font" id="nickname_check"></div>
+									</div>
+									<div class="form-group">
+										<label for="member_tel">휴대폰 번호</label> <input type="tel"
+											class="form-control" id="member_tel" name="member_tel"
+											placeholder="('-'없이 번호만 입력해주세요)">
+										<div class="eheck_font" id="pnum_check"></div>
+									</div>
+									<div class="form-group text-center">
+										<button type="submit" class="btn btn-primary">수정</button>
+										<input type="reset" value="초기화">
+									</div>
+						</form>
+						</div>
+						<hr>
+						<a href="/app/member/memberDelete.jsp">탈퇴하기</a>
+					</div>
 				</div>
 			</div>
-			<div class="col-sm-6 col-md-offset-3">
-				<div class="form-group">
-				<label for="id">아이디 ${member_id }</label>
-				<input type="hidden" name="member_id" id="member_id" value="${member_id }">
-				</div>
-				<div class="form-group">
-					<label for="pw">비밀번호</label> <input type="password"
-						class="form-control" id="member_pw" name="member_pw">
-					<div class="eheck_font" id="pw_check"></div>
-				</div>
-				<div class="form-group">
-					<label for="pw2">비밀번호 확인</label> <input type="password"
-						class="form-control" id="member_pw2" name="member_pw2"
-						placeholder="비밀번호 확인">
-					<div class="eheck_font" id="pw2_check"></div>
-				</div>
-				<div class="form-group">
-					<label for="nickname">닉네임</label> <input type="text"
-						class="form-control" id="nickname" name="nickname"">
-					<div class="eheck_font" id="nickname_check"></div>
-				</div>
-				<div class="form-group">
-					<label for="member_email">이메일</label> <input type="text"
-						class="form-control" id="member_email" name="member_email">
-					<div class="eheck_font" id="nickname_check"></div>
-				</div>
-				<div class="form-group">
-					<label for="member_tel">휴대폰 번호</label> <input type="tel"
-						class="form-control" id="member_tel" name="member_tel"
-						placeholder="('-'없이 번호만 입력해주세요)">
-					<div class="eheck_font" id="pnum_check"></div>
-				</div>
-				<div class="form-group text-center">
-					<button type="submit" class="btn btn-primary">수정</button>
-					<input type="reset" value="초기화">
-				</div>
-			</div>
-		</article>
-	</form>
-	<br><hr><br>
-	<a href="/app/member/memberDelete.jsp">탈퇴하기</a>
+	</section>
 </body>
 </html>

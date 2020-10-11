@@ -6,13 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style>
-li {
-	list-style-type: none;
-	float: left;
-	margin-left: 20px;
-}
-</style>
+
 </head>
 <body>
 	
@@ -60,8 +54,9 @@ li {
        <div class="col-lg-12">
 	<div class="table-responsive">
 		<input type="hidden" name="member_no" id="member_no" value="${member_no }"> <!--  이것의 용도는? -->
-		<table id="exampleTable" class="table table-bordered">
-		 <thead>
+		<table class="table table-bordered" id="dataTable" width="100%"
+								cellspacing="0">
+								<thead>
 			<tr>
 				<td>제목</td>
 				<td>장르</td>

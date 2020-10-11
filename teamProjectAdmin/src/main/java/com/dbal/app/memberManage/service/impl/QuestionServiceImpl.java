@@ -29,6 +29,7 @@ public class QuestionServiceImpl implements QuestionService{
 	@Override
 	public void insert(Answer answer) {
 			questionDAO.updateNo(); //번호 업데이트
+			
 			 questionDAO.insert(answer);
 	}
 
