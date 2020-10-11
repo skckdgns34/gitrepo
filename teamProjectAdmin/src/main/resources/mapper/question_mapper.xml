@@ -21,7 +21,6 @@
 		WHERE M.MEMBER_NO = Q.MEMBER_NO
 		AND C.CODE = Q.QUESTION_KIND
 		AND M.MEMBER_ID IS NOT NULL
-		
 	</select>
 	
 	<!-- 한 건 조회 -->
