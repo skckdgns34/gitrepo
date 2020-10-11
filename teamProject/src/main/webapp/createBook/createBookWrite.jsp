@@ -70,6 +70,7 @@ $(function(){
 		  </div>
 		</div>
 	</form>
+	
 </section>
 <script>CKEDITOR.replace( 'editor1' );</script>
 </body>
