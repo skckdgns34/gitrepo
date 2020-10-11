@@ -3,10 +3,11 @@ package client;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 import common.ConnectionManager;
-import vo.FAQ;
 import vo.Questions;
 
 public class QuestionDAO {
@@ -15,7 +16,6 @@ public class QuestionDAO {
 	ResultSet rs = null;
 
 	static QuestionDAO instance;
-
 	public static QuestionDAO getinstance() {
 		if (instance == null)
 			instance = new QuestionDAO();
@@ -53,6 +53,49 @@ public class QuestionDAO {
 		}
 		return list;
 	}
-
+	
+	
+	//문의사항 등록
+	public int insert (Questions questions) {
+		int no = 0;
+		try {
+			conn = ConnectionManager.getConnnect();
+			conn.setAutoCommit(false);
+			String seqSql = "select no from seq where tablename = 'questions'";
+			Statement stmt = conn.createStatement();
+			rs = stmt.executeQuery(seqSql);
+			rs.next();
+			no = rs.getInt(1);
+			questions.setQuestion_no(Integer.toString(no));
+			
+			seqSql = "update seq set no = no + 1 where tablename = 'questions'";
+			stmt = conn.createStatement();
+			stmt.executeUpdate(seqSql);
+			
+			String sql = "insert into questions"
+					+ " values(?,sysdate,?,?,?,?,?,?)";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, questions.getQuestion_no());
+			pstmt.setString(2, questions.getQuestion_contents());
+			pstmt.setString(3, questions.getQuestion_title());
+			pstmt.setString(4, questions.getMember_no());
+			pstmt.setString(5, questions.getQuestion_file());
+			pstmt.setString(6, questions.getQuestion_kind());
+			pstmt.setString(7, questions.getQuestion_status());
+			pstmt.executeUpdate();
+			conn.commit();
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+			try {
+				conn.rollback();
+			}catch(SQLException e1) {
+				e1.printStackTrace();
+			}
+		}finally {
+			ConnectionManager.close(conn);
+		}
+		return no;
+	}
 
 }

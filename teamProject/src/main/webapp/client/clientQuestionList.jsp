@@ -7,6 +7,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script>
+function insertpage() //문의사항 등록 ㅡ
+	{
+		window.document.location.href = "${pageContext.request.contextPath}/clientQuestionForm.do"
+		return;
+	}
+</script>
 </head>
 <body>
 	<!-- Breadcrumb Section Begin -->
@@ -44,6 +51,8 @@
 								</tr>
 							</thead>
 							<tbody>
+							<button type="button" id='btn_n'
+						class="btn btn-outline btn-primary pull-" onclick="insertpage()">문의사항 등록</button>
 								<c:forEach items="${list}" var="questions">
 									<tr>
 										<td><a
