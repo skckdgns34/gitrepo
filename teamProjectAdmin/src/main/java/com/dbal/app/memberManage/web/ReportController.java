@@ -20,20 +20,21 @@ public class ReportController {
 	
 	//전체조회
 	@RequestMapping("/memberManageReportList.ad")
-	public String blackListAll(Model model, Report report) {
-		return "memberManage/memberManageBlackList";
+	public String reportAll(Model model, Report report) {
+		model.addAttribute("list", reportService.selectAll(report));
+		return "memberManage/memberManageReportList";
 		
 	}
 	//수정페이지
-	 @RequestMapping(value="/memberManageBlackListPopForm.ad", method = RequestMethod.GET)
-	public String blackUpdateForm(Model model, Report report, HttpServletRequest request) {
+	 @RequestMapping(value="/memberManageReportModifyForm.ad", method = RequestMethod.GET)
+	public String reportUpdateForm(Model model, Report report, HttpServletRequest request) {
 		
 		 return "memberManage/memberManageBlackListPop";
 		 
 	 }
 	 //수정 처리
-	 @RequestMapping(value="/memberManageBlackListPop.ad", method = RequestMethod.POST)
-	public String blackUpdate(Report report, HttpServletRequest request) {
+	 @RequestMapping(value="/memberManageReportModify.ad", method = RequestMethod.POST)
+	public String reportUpdate(Report report, HttpServletRequest request) {
 		
 		 return "redirect:/memberManageBlackList.ad";
 	 }
