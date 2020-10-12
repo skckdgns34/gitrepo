@@ -107,8 +107,10 @@ public class FrontController extends HttpServlet {
 		list.put("/clientQuestion.do", new client.ClientQuestionServ()); //문의하기 리스트
 		list.put("/clientQuestionWtrite.do", new client.ClientQuestionWtriteServ()); //문의하기 insert
 		list.put("/clientQuestionForm.do", new client.ClientQuestionFormServ());// 문의하기 insert form
+		
 		list.put("/clientHopeBook.do", new client.ClientHopeBookServ()); //희망도서신청 리스트
 		list.put("/clientHopeBookWrite.do", new client.ClientHopeBookWriteServ()); //희망도서 insert
+		list.put("/clientHopeBookWriteForm.do", new client.ClientHopeBookWriteFormServ()); //희망도서 insert form
 		list.put("/moneyOutList.ad", new moneyManage.MoneyOutListServ()); 
 		list.put("/moneyInList.ad", new moneyManage.MoneyInListServ());
 

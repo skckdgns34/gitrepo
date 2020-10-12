@@ -204,18 +204,17 @@ li {
 									</div>
 									<div class="form-group">
 										<label for="nickname">닉네임</label> <input type="text"
-											class="form-control" id="nickname" name="nickname"">
+											class="form-control" id="nickname" name="nickname" value="${nickname }">
 										<div class="eheck_font" id="nickname_check"></div>
 									</div>
 									<div class="form-group">
 										<label for="member_email">이메일</label> <input type="text"
-											class="form-control" id="member_email" name="member_email">
+											class="form-control" id="member_email" name="member_email" value="${member_email }">
 										<div class="eheck_font" id="nickname_check"></div>
 									</div>
 									<div class="form-group">
 										<label for="member_tel">휴대폰 번호</label> <input type="tel"
-											class="form-control" id="member_tel" name="member_tel"
-											placeholder="('-'없이 번호만 입력해주세요)">
+											class="form-control" id="member_tel" name="member_tel" value="${member_tel }">
 										<div class="eheck_font" id="pnum_check"></div>
 									</div>
 									<div class="form-group text-center">

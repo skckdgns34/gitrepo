@@ -6,7 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
+<style>
+	li {list-style-type: none; float: left; margin-left: 20px;}
+</style>
 </head>
 <body>
 	
@@ -19,7 +21,7 @@
                         <h4>Menu</h4>
                         <div class="breadcrumb__links">
                             <a href="./index.html">내 정보</a>
-                            <span>나만의 도서</span>
+                            <span>나만의 도서 - 작성중</span>
                         </div>
                     </div>
                 </div>
@@ -40,13 +42,13 @@
 				내용</a>
 	</ul>
 	<br>
+	<hr>
 	<ul>
 		<li><a href="<%=application.getContextPath()%>/memberCreateBookCk.do">작성중</a>
 		<li><a href="<%=application.getContextPath()%>/memberCreateBookComp.do">등록완료</a>
 	</ul>
 	
 	
-	<hr>
 	<section class="section-margin--small mb-5">
 	
 	<div class="container">
