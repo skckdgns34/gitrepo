@@ -132,6 +132,7 @@
 						<a class="collapse-item" href="memberManageReportList.ad">신고관리</a> <a
 							class="collapse-item" href="memberManageQuestion.ad">문의관리</a> <a
 							class="collapse-item" href="memberManageNotice.ad">공지사항관리</a>
+							<a class="collapse-item" href="memberHopebooksList.ad">희망도서 목록</a>
 					</div>
 				</div></li>
 
