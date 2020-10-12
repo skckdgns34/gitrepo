@@ -17,13 +17,15 @@
 		Q.QUESTION_TITLE,
 		Q.QUESTION_FILE,
 		Q.QUESTION_KIND,
-		C.CODE_VALUE
+		C.CODE_VALUE,
+		NVL(Q.QUESTION_STATUS,'n') question_status
+		
 		FROM QUESTIONS Q, MEMBER M, COMMON C
 		WHERE
 		M.MEMBER_NO = Q.MEMBER_NO
 		AND C.CODE = Q.QUESTION_KIND
 		AND M.MEMBER_ID IS NOT NULL
-		AND Q.QUESTION_STATUS IS NULL
+		ORDER BY Q.QUESTION_STATUS DESC
 	</select>
 
 	<!-- 한 건 조회 -->
@@ -60,8 +62,8 @@
 	</update>
 
 <update id="updateStatus">
-		update questions set question_status = null where
-		question_status is null 
+		update questions set question_status = 'y'
+		 where QUESTION_NO = #{question_no}
 	</update>
 	
 	<insert id="insert" parameterType="questions">

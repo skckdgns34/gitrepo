@@ -61,8 +61,8 @@
 							<th>등록일</th>
 							<th>첨부파일</th>							
 							<th>문의종류</th>
-							
-							
+							<th>답변여부</th>
+
 						</tr>
 					</thead>
 
@@ -71,6 +71,8 @@
 							<tr>
 								<td><input type="checkbox" name="user_CheckBox"
 									onclick="check(this)" value="${list.question_no}"></td>
+								
+								<td>${list.question_no}</td>
 								<td>${list.member_no}</td>
 								<td>${list.member_id}</td>
 								<td>${list.nickname}</td>
@@ -79,6 +81,9 @@
 								<td>${list.question_date}</td>
 								<td>${list.question_file}</td>
 								<td>${list.code_value}</td>
+								<td>${list.question_status}</td>
+								
+								</tr>
 						</c:forEach>
 					</tbody>
 				</table>
