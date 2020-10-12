@@ -191,7 +191,7 @@ $(function (){
 	    buttons: {
 	      "신고제출": function(){
 	    	  $.ajax({
-	    		url:"${pageContext.request.contextPath}/Ajax/",
+	    		url:"${pageContext.request.contextPath}/Ajax/eBookReviewDeclaration.do",
 	    		type: "POST",
 	    	  	data: { 
 	    			member_no : $("#decla_member_no").val(),
@@ -200,7 +200,13 @@ $(function (){
 	    			book_no: $("#decla_book_no").val(),
 	    			declaContents: $("#declaContents").val(),
 	    			declaration_code : $("#declaration_code").val()
-	    		}  
+	    		},
+	    		success :function(result){
+	    			if(result == 1){
+	    				alert("신고가 완료되었습니다.");
+	    				dialog.dialog("close");
+	    			}	
+	    		}
 	    	  })
 	      },
 	      "취소": function() {
