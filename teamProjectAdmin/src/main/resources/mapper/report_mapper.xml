@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.dbal.app.memberManage.mapper.BlackListDAO">
+<mapper namespace="com.dbal.app.memberManage.mapper.ReportDAO">
 	  
 <!-- 전체조회 -->    
 <select id="selectAll" parameterType="report" resultType="report">

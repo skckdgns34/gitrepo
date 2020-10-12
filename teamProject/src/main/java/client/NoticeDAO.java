@@ -62,10 +62,10 @@ public class NoticeDAO {
 					where += " and notice_title like '%' || ? || '%'";
 				}
 				String sql = "select a.* from(select rownum rn, b.* from ( "
-						+ " SELECT EMP_NO, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_DATE, NOTICE_IMG, VIEWS"
+						+ " SELECT notice_no, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_DATE, NOTICE_IMG, VIEWS"
 						+ " FROM NOTICE"
 						+ where
-						+ " ORDER BY EMP_NO"
+						+ " ORDER BY notice_no"
 						+ ")b)a where rn between ? and ? ";
 				pstmt = conn.prepareStatement(sql);
 				int pos = 1;
@@ -78,14 +78,14 @@ public class NoticeDAO {
 				rs = pstmt.executeQuery();
 				while (rs.next()) {
 					resultVO = new Notice();
-					resultVO.setEmp_no(rs.getString("EMP_NO"));					
+					resultVO.setNotice_no(rs.getString("notice_no"));	
 					  resultVO.setNotice_title(rs.getString("NOTICE_TITLE"));
 					  resultVO.setNotice_content(rs.getString("NOTICE_CONTENT"));
 					  resultVO.setNotice_date(rs.getString("NOTICE_DATE"));
 					  resultVO.setNotice_img(rs.getString("NOTICE_IMG"));
 					  resultVO.setViews(rs.getString("VIEWS")); 
 					  list.add(resultVO);
-					  System.out.println(rs.getString("EMP_NO"));
+					  System.out.println(rs.getString("notice_no"));
 					  System.out.println(rs.getString("NOTICE_TITLE"));
 					 
 				}
@@ -96,6 +96,35 @@ public class NoticeDAO {
 			}
 			return list;
 		}
+		
+		// 단건조회
+				public Notice selectOne(String notice_no) {
+					Notice resultVO = null;
+					ResultSet rs = null;
+					try {
+						conn = ConnectionManager.getConnnect();
+						String sql = " SELECT notice_no, notice_title, notice_content, notice_date"
+								+ " FROM notice"
+								+ " WHERE notice_no=?";
+						pstmt = conn.prepareStatement(sql);
+						pstmt.setString(1, notice_no);
+						rs = pstmt.executeQuery();
+						if (rs.next()) {
+							resultVO = new Notice();
+							resultVO.setNotice_no(rs.getString("notice_no"));
+							resultVO.setNotice_title(rs.getString("notice_title"));
+							resultVO.setNotice_content(rs.getString("notice_content"));
+							resultVO.setNotice_date(rs.getString("notice_date"));
+						} else {
+							System.out.println("no data");
+						}
+					} catch (Exception e) {
+						e.printStackTrace();
+					} finally {
+						ConnectionManager.close(rs, pstmt, conn);
+					}
+					return resultVO;
+				}
 
 		// 검색
 		public Notice search(Notice notice) {

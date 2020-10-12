@@ -22,6 +22,9 @@ public class ReportController {
 	@RequestMapping("/memberManageReportList.ad")
 	public String reportAll(Model model, Report report) {
 		model.addAttribute("list", reportService.selectAll(report));
+		System.out.println("sssssssssssssssssssssss");
+		System.out.println(reportService.selectAll(report));
+		System.out.println("sssssssssssssssssssssssssssssssssssss");
 		return "memberManage/memberManageReportList";
 		
 	}

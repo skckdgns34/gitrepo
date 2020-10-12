@@ -66,11 +66,10 @@
   </thead>
 
   <tbody>
-
     <c:forEach items="${list }" var="notice">
 				<tr>
-					<td>${notice.emp_no }</td>
-					<td><a onclick="window.open('clientNoticeSelect.do', '공지사항 상세보기', 'width=#, height=#')">${notice.notice_title }</a></td>
+					<td>${notice.notice_no }</td>
+					<td><a href="javascript:void(window.open('clientNoticeSelect.do?notice_no=${notice.notice_no}', '공지사항 상세보기', 'width=#, height=#'))">${notice.notice_title }</a></td>
 					<td>${notice.notice_date }</td>
 					<td>${notice.views }</td>
 				</tr>

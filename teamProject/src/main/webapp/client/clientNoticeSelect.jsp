@@ -11,6 +11,7 @@
 		var win = window.open("", "_self");
 		win.close();
 	}
+	
 </script>
 </head>
 <body>
@@ -34,12 +35,12 @@
 		<div class="container">
 			<div class="row"> 
 				<div class="col-lg-12">
-
-					<label for="title">제목 ${notice_title }</label> <label for="date">
-						| 등록일 ${notice_date }</label> <br> <br>
+					<input type="hidden" id="pop" value="${notice}">
+					<label for="title">제목 ${notice.notice_title }</label> <label for="date">
+						| 등록일 ${notice.notice_date }</label> <br> <br>
 					<textarea readonly
 						style="width: 50%; border: 1; overflow: visible; text-overflow: ellipsis; resize: none;"
-						rows=30 id="notice_content" name="notice_date"> ${notice_content }</textarea>
+						rows=30 id="notice_content" name="notice_date"> ${notice.notice_content }</textarea>
 					<br> <input type="button" value="닫기 "
 						onclick="window.close();">
 				</div>

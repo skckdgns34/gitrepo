@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>신고 조회</title>
+<title>블랙리스트 조회</title>
 
  
 

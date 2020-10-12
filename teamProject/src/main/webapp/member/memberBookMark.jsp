@@ -68,19 +68,10 @@
 
 
 
-						<my:paging paging="${paging }" jsfunc="gopage" />
 					</div>
 				</div>
 			</div>
 	</section>
-	<script>
-		function gopage(p) {
-			searchFrm.p.value = p;
-			searchFrm.submit();
-
-			location.href = "memberLicense.do?p=" + p;
-		}
-	</script>
 
 </body>
 </html>
