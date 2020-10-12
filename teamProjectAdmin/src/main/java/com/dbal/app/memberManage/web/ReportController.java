@@ -29,14 +29,14 @@ public class ReportController {
 	 @RequestMapping(value="/memberManageReportModifyForm.ad", method = RequestMethod.GET)
 	public String reportUpdateForm(Model model, Report report, HttpServletRequest request) {
 		
-		 return "memberManage/memberManageBlackListPop";
+		 return null;
 		 
 	 }
 	 //수정 처리
 	 @RequestMapping(value="/memberManageReportModify.ad", method = RequestMethod.POST)
 	public String reportUpdate(Report report, HttpServletRequest request) {
 		
-		 return "redirect:/memberManageBlackList.ad";
+		 return null;
 	 }
 	
 	 
