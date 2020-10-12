@@ -24,7 +24,7 @@ function insertpage() //문의사항 등록 ㅡ
 					<div class="breadcrumb__text">
 						<h4>Menu</h4>
 						<div class="breadcrumb__links">
-							<a href="./index2.jsp">Home</a> <span>문의사항</span>
+							<a href="./index2.jsp">Home</a> <span>희망도서</span>
 						</div>
 					</div>
 				</div>
@@ -49,7 +49,7 @@ function insertpage() //문의사항 등록 ㅡ
 							</thead>
 							<tbody>
 							<button type="button" id='btn_n'
-						class="btn btn-outline btn-primary pull-" onclick="insertpage()">문의사항 등록</button>
+						class="btn btn-outline btn-primary pull-" onclick="insertpage()">희망도서 신청하기</button>
 								<c:forEach items="${list}" var="hopebooks">
 									<tr>
 										<td>${hopebooks.title}</td>

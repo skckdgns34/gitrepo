@@ -16,21 +16,6 @@ function insertpage() //문의사항 등록 ㅡ
 </script>
 </head>
 <body>
-	<!-- Breadcrumb Section Begin -->
-	<section class="breadcrumb-option">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="breadcrumb__text">
-						<h4>Menu</h4>
-						<div class="breadcrumb__links">
-							<a href="./index2.jsp">Home</a> <span>문의사항</span>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
 	<!-- Breadcrumb Section End -->
 	<section class="section-margin--small mb-5">
 
@@ -42,16 +27,16 @@ function insertpage() //문의사항 등록 ㅡ
 							cellspacing="0">
 							<thead>
 								<tr>
+									<th>번호</th>
 									<th>제목</th>
 									<th>작가</th>
 									<th>출판사</th>
 								</tr>
 							</thead>
 							<tbody>
-							<button type="button" id='btn_n'
-						class="btn btn-outline btn-primary pull-" onclick="insertpage()">문의사항 등록</button>
 								<c:forEach items="${list}" var="hopebooks">
 									<tr>
+										<td>${hopebooks.hopebooks_no}</td>
 										<td>${hopebooks.title}</td>
 										<td>${hopebooks.writer}</td>
 										<td>${hopebooks.company}</td>
