@@ -46,8 +46,8 @@
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resource/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resource/css/style.css" type="text/css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
-    <script
-	src="<%=request.getContextPath()%>/mainresource/vendors/jquery/jquery-3.2.1.min.js"></script>
+	<script	src="<%=request.getContextPath()%>/mainresource/vendors/jquery/jquery-3.2.1.min.js"></script>
+	<decorator:head />
 </head>
 
 
@@ -150,7 +150,7 @@
 			</div>
 		</nav>
 	</div>
-	<decorator:head />
+
 	
 </header>
 <!-- 사이드 메뉴 끝!!!!!!!!!!!! -->
@@ -187,46 +187,20 @@
 
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-	<script src="<%=request.getContextPath()%>/resource/js1/popper.js"></script>
-	<script
-		src="<%=request.getContextPath()%>/resource/js1/bootstrap.min.js"></script>
-	<script
-		src="<%=request.getContextPath()%>/resource/vendors1/nice-select/js/jquery.nice-select.min.js"></script>
-	<script
-		src="<%=request.getContextPath()%>/resource/vendors1/owl-carousel/owl.carousel.min.js"></script>
-	<script
-		src="<%=request.getContextPath()%>/resource/js1/owl-carousel-thumb.min.js"></script>
-	<script
-		src="<%=request.getContextPath()%>/resource/js1/jquery.ajaxchimp.min.js"></script>
+	<script	src="<%=request.getContextPath()%>/resource/js1/bootstrap.min.js"></script>
+	<script	src="<%=request.getContextPath()%>/resource/vendors1/nice-select/js/jquery.nice-select.min.js"></script>
+	<script	src="<%=request.getContextPath()%>/resource/vendors1/owl-carousel/owl.carousel.min.js"></script>
+	<script	src="<%=request.getContextPath()%>/resource/js1/owl-carousel-thumb.min.js"></script>
+	<script	src="<%=request.getContextPath()%>/resource/js1/jquery.ajaxchimp.min.js"></script>
 	<script src="<%=request.getContextPath()%>/resource/js1/mail-script.js"></script>
-
-
-
-<script
-		src="<%=request.getContextPath()%>/mainresource/vendors/bootstrap/bootstrap.bundle.min.js"></script>
-	<script
-		src="<%=request.getContextPath()%>/mainresource/vendors/skrollr.min.js"></script>
-	<script
-		src="<%=request.getContextPath()%>/mainresource/vendors/owl-carousel/owl.carousel.min.js"></script>
-	<script
-		src="<%=request.getContextPath()%>/mainresource/vendors/nice-select/jquery.nice-select.min.js"></script>
-	<script
-		src="<%=request.getContextPath()%>/mainresource/vendors/jquery.ajaxchimp.min.js"></script>
-	<script
-		src="<%=request.getContextPath()%>/mainresource/vendors/mail-script.js"></script>
-	<script src="<%=request.getContextPath()%>/mainresource/js/main.js"></script>
 	
-	  <script src="<%=request.getContextPath()%>/resource/js/bootstrap.min.js"></script>
-    <script src="<%=request.getContextPath()%>/resource/js/jquery.nice-select.min.js"></script>
-    <script src="<%=request.getContextPath()%>/resource/js/jquery.nicescroll.min.js"></script>
+	<script src="<%=request.getContextPath()%>/mainresource/vendors/skrollr.min.js"></script>	
+	<script src="<%=request.getContextPath()%>/mainresource/js/main.js"></script>
+	<script src="<%=request.getContextPath()%>/resource/js/jquery.nicescroll.min.js"></script>
     <script src="<%=request.getContextPath()%>/resource/js/jquery.magnific-popup.min.js"></script>
     <script src="<%=request.getContextPath()%>/resource/js/jquery.countdown.min.js"></script>
     <script src="<%=request.getContextPath()%>/resource/js/jquery.slicknav.js"></script>
     <script src="<%=request.getContextPath()%>/resource/js/mixitup.min.js"></script>
-<script src="<%=request.getContextPath()%>/resource/js/main.js"></script>
-    <script src="<%=request.getContextPath()%>/resource/js/owl.carousel.min.js"></script>
-	
-
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
+	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
 </body>
 </html>

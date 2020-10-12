@@ -25,9 +25,9 @@ function drawRadarchart(data2){
 	
 	
 	for(var i=0;i<data2.length;i++){
-		datasf[i] = data2[i].f; 
-		datasm[i] = data2[i].m;
-		label[i] = data2[i].code_value;
+		datasf[i] = data2[i].female; 
+		datasm[i] = data2[i].male;
+		label[i] = data2[i].CODE_VALUE;
 	
 	}
 var ctx = document.getElementById('myChart').getContext('2d');
@@ -43,8 +43,8 @@ var myChart = new Chart(ctx, {
     }, {
       label: '여자',
       data: datasf,
-      backgroundColor: "rgba(255,153,0,0.4)",
-      borderColor: "rgba(255,153,0,1)",
+      backgroundColor: "rgba(255, 99, 132, 0.2",
+      borderColor: "rgba(255, 99, 132, 1)",
     }]
   }
 });

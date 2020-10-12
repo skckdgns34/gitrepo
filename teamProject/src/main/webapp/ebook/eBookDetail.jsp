@@ -8,14 +8,18 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 
 <script>
 $(function(){
 	btnHideNShow();
 	btnScore();
 	reviewAllList();
+	reDeclarationBtn();
 });
 
 
@@ -54,6 +58,10 @@ $(function(){
 			}
 		})
 	}
+ 
+
+ 
+ 
  
  
  function reviewUpdateBefore(){ //수정버튼 누르면 이걸로옴
@@ -172,11 +180,67 @@ function btnScore(){ // 추천버튼 클릭시(추천 추가 또는 추천 제�
 }
 
 
+var dialog;	
+$(function (){
+					
+	dialog = $( "#dialog-form" ).dialog({
+    	autoOpen: false,
+	    height: 400,
+	    width: 350,
+	    modal: true,
+	    buttons: {
+	      "신고제출": function(){},
+	      Cancel: function() {
+	        dialog.dialog( "close" );
+	      }
+	    }
+	    /* close: function() {
+	      form[ 0 ].reset();
+	      allFields.removeClass( "ui-state-error" );
+	 	} */
+	});
+
+})
+
+function reDeclarationBtn() {
+	var member_no = "${member_no}";
+	var reported_member =  $(event.target).closest("#review_no").data("member_no");
+	var review_no =  $(event.target).closest("#review_no").data("review_no");
+	console.log(member_no +"신고하는애");
+	console.log(reported_member + "신고당하는애");
+	console.log(review_no+ "리뷰넘버");
+	dialog.dialog( "open" );
+}
+		
+	
+	
+	
+
+
 
 
 </script>
 </head>
 <body>
+<!-- 리뷰 신고 페이지 -->
+<div id="dialog-form" title="신고">
+  <p class="validateTips">신고하실 내용과 한범이를 고르세요</p>
+  <form>
+    <fieldset>
+      <label for="name">Name</label>
+      <input type="text" name="name" id="name" value="Jane Smith" class="text ui-widget-content ui-corner-all">
+      <label for="email">Email</label>
+      <input type="text" name="email" id="email" value="jane@smith.com" class="text ui-widget-content ui-corner-all">
+      <label for="password">Password</label>
+      <input type="password" name="password" id="password" value="xxxxxxx" class="text ui-widget-content ui-corner-all">
+      <!-- Allow form submission with keyboard without duplicating the dialog button -->
+      <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+    </fieldset>
+  </form>
+</div>
+
+
+
 
 <!-- Breadcrumb Section Begin -->
     <section class="breadcrumb-option">
