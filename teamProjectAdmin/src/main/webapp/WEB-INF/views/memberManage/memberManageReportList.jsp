@@ -41,7 +41,7 @@
 	
 	<div class="container-fluid">
 		
-		<h3 class="page_title">블랙리스트 조회</h3>
+		<h3 class="page_title">신고 조회</h3>
 	<hr>
 		<div class="card-body">
 			<div class="table-responsive">
@@ -53,11 +53,13 @@
 					<thead>
 					<tr>
 						<th>선택</th>
-						<th>번호</th>
-						<th>회원 번호</th>
-						<th>닉네임</th>						
-						<th>사유</th>
-						<th>적용기간</th>
+						<th>신고 당한 애 </th>
+						<th>신고 내용</th>
+						<th>신고자 번호</th>						
+						<th>신고일</th>
+						<th>신고코드</th>
+						<th>해당 책 번호</th>
+						<th>리뷰번호</th>
 						</tr>
 					</thead>
 
