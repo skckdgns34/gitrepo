@@ -42,6 +42,7 @@ function insertpage() //문의사항 등록 ㅡ
 							cellspacing="0">
 							<thead>
 								<tr>
+								<th>번호</th>
 									<th>제목</th>
 									<th>작가</th>
 									<th>출판사</th>
@@ -52,6 +53,7 @@ function insertpage() //문의사항 등록 ㅡ
 						class="btn btn-outline btn-primary pull-" onclick="insertpage()">희망도서 신청하기</button>
 								<c:forEach items="${list}" var="hopebooks">
 									<tr>
+									<td>${hopebooks.hopebooks_no}</td>
 										<td>${hopebooks.title}</td>
 										<td>${hopebooks.writer}</td>
 										<td>${hopebooks.company}</td>

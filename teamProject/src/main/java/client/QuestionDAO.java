@@ -28,7 +28,7 @@ public class QuestionDAO {
 		Questions result = null;
 		try {
 			conn = ConnectionManager.getConnnect();
-			String sql = " SELECT q.question_no, q.question_date, q.question_contents, q.question_title, q.question_file, c.code_value, q.question_status"
+			String sql = " SELECT rownum, q.question_date, q.question_contents, q.question_title, q.question_file, c.code_value, q.question_status"
 					+ " FROM questions q, common c"
 					+ " WHERE q.question_kind = c.code and q.member_no = ?"
 					+ " ORDER BY 1";
