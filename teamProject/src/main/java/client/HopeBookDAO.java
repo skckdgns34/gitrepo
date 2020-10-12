@@ -29,10 +29,10 @@ public class HopeBookDAO {
 		Hopebooks result = null;
 		try {
 			conn = ConnectionManager.getConnnect();
-			String sql = " SELECT *"
+			String sql = " SELECT rownum, member_no, title, writer, company"
 					+ " FROM hopebooks"
 					+ " WHERE member_no = ?"
-					+ " ORDER BY 3";
+					+ " ORDER BY 1";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, hopebooks.getMember_no());
 			rs = pstmt.executeQuery();

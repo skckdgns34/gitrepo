@@ -34,16 +34,28 @@ public class PayController  {
     public ArrayList<PayVO> moneyOutList(Model model, PayVO pay, SearchVO search, HttpServletRequest request, HttpServletResponse response) throws IOException {
     	String startdate = request.getParameter("startdate"); //시작일
     	String enddate = request.getParameter("enddate"); //끝일
-    	String quarteryear = request.getParameter("quarterYear"); //받아온년도
-    	String quarter = request.getParameter("quarter"); //1234분기
-    	
-    	
     	
     	ArrayList<PayVO> lista = new ArrayList<PayVO>();
+
     	if (startdate != null) {
     		ArrayList<PayVO> r = payService.selectOne(search);  //날짜선택
     		lista.addAll(r);
     	}
+    	
+    	
+    	
+    	return lista;
+    }
+    
+    
+    @RequestMapping("/moneyOutlist.ad")
+    @ResponseBody
+    public ArrayList<PayVO> moneyOutlist(Model model, PayVO pay, SearchVO search, HttpServletRequest request, HttpServletResponse response) throws IOException {
+    	String quarteryear = request.getParameter("quarterYear"); //받아온년도
+    	String quarter = request.getParameter("quarter"); //1234분기
+    	
+    	ArrayList<PayVO> lista = new ArrayList<PayVO>();
+    	
     	if (quarter.equals("aquarter")) {
     		ArrayList<PayVO> r = payService.selectAll(search);  //전체조회
     		lista.addAll(r);
