@@ -20,6 +20,12 @@
 	
 	google.charts.load('current', {'packages' : [ 'corechart' ]});
 	
+	$(function() {
+		$('#btnSelect2').on('click', drawChart2)
+	});
+	
+	google.charts.load('current', {'packages' : [ 'corechart' ]});
+	
 	
 	function drawChart() {
 		// Create the data table.
@@ -48,13 +54,50 @@
 		// Set chart options
 		var options = {
 			'title' : '날짜별 통계',
-			'width' : 1000,
-			'height' : 300
+			'role'	: 'grid'
 		};
 		// Instantiate and draw our chart, passing in some options.
 		var chart = new google.visualization.LineChart(document.getElementById('chart_div')); //뒤에 chart_div가 차트가 들어갈 위치
 		chart.draw(data, options);
 	}
+	
+	
+	function drawChart2() {
+		// Create the data table.
+		var data = new google.visualization.DataTable();
+		data.addColumn('string', '날짜'); 
+		data.addColumn('number', '매출'); 
+		var datatable = []; 
+		
+		//ajax
+		$.ajax({
+			async : false,
+			url : "${pageContext.request.contextPath}/moneyOutlist.ad",  //
+			dataType : "json",
+			data :  $("form").serialize(),
+			success : function(datas) {
+				console.dir(datas);
+				userlistResult(datas);
+				
+				for (i = 0; i < datas.length; i++) {
+					datatable.push([ datas[i].pay_date, parseInt(datas[i].price) ]); 
+				}
+			}
+		});
+		data.addRows(datatable); 
+		//데이터를 받아온 다음에 addrows를 해야하는데 ajax는 비동기가 default이기 때문에 ajax를 async써준다 이렇게 안하면 데이터도 없는데 addrows해버림
+		// Set chart options
+		var options = {
+			'title' : '날짜별 통계',
+			'role'	: 'grid'
+		};
+		// Instantiate and draw our chart, passing in some options.
+		var chart = new google.visualization.LineChart(document.getElementById('chart_div')); //뒤에 chart_div가 차트가 들어갈 위치
+		chart.draw(data, options);
+	}
+	
+	
+	
 	//사용자 목록 조회 응답
 	function userListResult(data) {
 		$("tbody").empty();
@@ -63,25 +106,42 @@
 		});//each
 	}//userListResult
 	
+	//사용자 목록 조회 응답
+	function userlistResult(data) {
+		$("tbody").empty();
+		$.each(data,function(idx,item2){
+			$('tbody').append ( makeTr2(item2) );
+		});//each
+	}//userListResult
+	
 	function makeTr(item){
 		return $('<tr>')
 		.append($('<td>').html(item.pay_date))
 		.append($('<td>').html(item.price))
 		.append($('<td>').html(item.ticket_name));
-		
-
+	}
+	
+	function makeTr2(item2){
+		return $('<tr>')
+		.append($('<td>').html(item2.pay_date))
+		.append($('<td>').html(item2.price))
+		.append($('<td>').html(item2.ticket_name));
 	}
 	
 	
 	</script>
 </head>
 
-<body>
-	<div id="chart_div" style="width: 900px; height: 300px"></div>
+<body id="page-top">
+<div class="container-fluid">
+<div class="card-body"> 
+<div class="table-responsive">
 	
 	<form>
 		<div>
-			<input name="startdate" type="date" /> - <input name="enddate"type="date" /> <br> 
+			<input name="startdate" type="date" /> - <input name="enddate"type="date"/>  
+		<button type="button" id="btnSelect" class="btn btn-outline btn-primary pull-left">결과조회</button>
+		
 			<label for="quarterYear">연도선택</label> <select
 				id="quarterYear" name="quarterYear">
 				<option value="">선택</option>
@@ -92,7 +152,6 @@
 				<option value="2019">2019년</option>
 				<option value="2020">2020년</option>
 			</select> 
-			
 			<label for="quarter">분기선택</label>
 			<select id="quarter"name="quarter">
 				<option value="">선택</option>
@@ -102,21 +161,28 @@
 				<option value="tquarter">3분기</option>
 				<option value="qquarter">4분기</option>
 			</select>
+		<button type="button" id="btnSelect2" class="btn btn-outline btn-primary pull-left">결과조회</button>
 		</div>
-		<button type="button" id="btnSelect">결과조회</button>
+<div id="chart_div" role="grid">
+		 <img src="./images/moneychart.png" alt="">
+	</div>
 
 
-		<table border="1">
+		<table class="table table-bordered" id="dataTable" width="100%"
+				cellspacing="0" border="1">
 			<thead>
 				<tr>
 					<th>일자</th>
-					<th>금액</th>
-					<th>코드</th>
+					<th>금액(원)</th>
+					<th>이용권</th>
 				</tr>
 			</thead>
 			<tbody>
 			</tbody>
 		</table>
 	</form>
+	</div>
+	</div>
+	</div>
 </body>
 </html>

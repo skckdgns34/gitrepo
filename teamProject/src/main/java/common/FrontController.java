@@ -200,16 +200,15 @@ public class FrontController extends HttpServlet {
 
 		list.put("/createBookInsert.do", new createBook.CreateBookInsertServ());
 		list.put("/createBookSave.do", new createBook.CreateBookSaveServ());
+		list.put("/audioBookMarkInsert.do", new ebook.AudioBookMarkInsertServ());
+		list.put("/audioBookMarkDelete.do", new ebook.AudioBookMarkDeleteServ());
 		list.put("/Ajax/eBookReviewDeclaration.do", new ebook.EBookReviewDeclaration());
-
-
 	}
-
+	
 	public FrontController() {
 		super();
-
 	}
-
+	
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding(charset);

@@ -98,16 +98,16 @@ public class NoticeDAO {
 		}
 		
 		// 단건조회
-				public Notice selectOne(Notice notice) {
+				public Notice selectOne(String notice_no) {
 					Notice resultVO = null;
 					ResultSet rs = null;
 					try {
 						conn = ConnectionManager.getConnnect();
-						String sql = " SELECT notice_no notice_title, notice_content, notice_date"
+						String sql = " SELECT notice_no, notice_title, notice_content, notice_date"
 								+ " FROM notice"
 								+ " WHERE notice_no=?";
 						pstmt = conn.prepareStatement(sql);
-						pstmt.setString(1, notice.getNotice_no());
+						pstmt.setString(1, notice_no);
 						rs = pstmt.executeQuery();
 						if (rs.next()) {
 							resultVO = new Notice();

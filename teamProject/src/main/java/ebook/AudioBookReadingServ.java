@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import common.Controller;
 import member.MemberDAO;
+import vo.Bookmark;
 import vo.Books;
 import vo.Mylibrary;
 
@@ -26,11 +27,11 @@ public class AudioBookReadingServ implements Controller
 		my.setBook_no(book_no);
 		my.setMember_no(no);
 		int r = AudioBookDAO.getInstance().myBookyn(my);
-		System.out.println("r: "+r);
 		
 		if(r==0){
 			AudioBookDAO.getInstance().insertMylib(my);
 		}
+		ArrayList<Bookmark> markList = MemberDAO.getinstance().bookMarkList(book_no, no);
 		
 		//book_no받아와서 해당책의 정보 뿌림
 		ArrayList<Books> book_detail = EBookDAO.getInstance().detailBook(book_no);
@@ -42,9 +43,9 @@ public class AudioBookReadingServ implements Controller
 		//현재 책의 현재 접속자의 last_read_index
 		int index = MemberDAO.getinstance().myBookIndex(book_no, no);
 		request.setAttribute("book_index", index);
-		
 		request.setAttribute("mylib", mylib);
 		request.setAttribute("book", book_detail);
+		request.setAttribute("markList", markList);
 		request.getRequestDispatcher("/ebook/audioBookReading.jsp").forward(request, response);
 	}
 }

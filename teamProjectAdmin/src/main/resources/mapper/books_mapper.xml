@@ -4,21 +4,21 @@
 
 <mapper namespace="com.dbal.app.books.mapper.BooksDAO">
 	<select id="selectAll" parameterType="books" resultType="books">
-		SELECT
-			b.book_no,
-			b.title,
-			b.writer,
-			b.publication_date,
-			b.best_book,
-			b.registration_date,
-			c.code_value,
-			p.company_name
-		FROM
-			books b, common c, company p
-		WHERE
-			b.genre = c.code
-		AND
-			b.company_code = p.company_code
+			SELECT
+				b.book_no,
+				b.title,
+				b.writer,
+				b.publication_date,
+				b.best_book,
+				b.registration_date,
+				c.code_value,
+				p.company_name
+			FROM
+				books b, common c, company p
+			WHERE
+				b.genre = c.code
+			AND
+				b.company_code = p.company_code
 	</select>
 
 	<select id="selectOne" parameterType="books" resultType="books">

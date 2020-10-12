@@ -31,7 +31,7 @@ $(function() {
 					async : true,
 					type : 'POST',
 					data : member_id,
-					url : 'memberJoin.do',
+					url : 'member/memberJoin.do?member_id=' + member_id,
 					dateType: 'json',
 					contentType: "application/json; charset=UTF-8",
 					success : function(data) {
