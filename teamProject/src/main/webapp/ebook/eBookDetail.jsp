@@ -205,6 +205,7 @@ $(function (){
 	    			if(result == 1){
 	    				alert("신고가 완료되었습니다.");
 	    				dialog.dialog("close");
+	    				$("#declaContents").val("");
 	    			}	
 	    		}
 	    	  })
