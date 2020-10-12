@@ -14,8 +14,8 @@ public class HopebookskListController {
 	HopebooksListService hopebooksService;
 	
 	//전체조회
-	@RequestMapping("/memberManageBlackList.ad")
-	public String blackListAll(Model model, Hopebooks hopebooks) {
+	@RequestMapping("/memberHopebooksList.ad")
+	public String hopebooksListAll(Model model, Hopebooks hopebooks) {
 		model.addAttribute("list", hopebooksService.selectAll(hopebooks));
 		return "memberManage/memberHopebooksList";
 		
