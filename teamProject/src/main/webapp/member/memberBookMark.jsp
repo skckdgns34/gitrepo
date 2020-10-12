@@ -7,7 +7,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
+<style>
+	li {list-style-type: none; float: left; margin-left: 20px;}
+</style>
 </head>
 <body>
 	<!-- Breadcrumb Section Begin -->
@@ -66,19 +68,10 @@
 
 
 
-						<my:paging paging="${paging }" jsfunc="gopage" />
 					</div>
 				</div>
 			</div>
 	</section>
-	<script>
-		function gopage(p) {
-			searchFrm.p.value = p;
-			searchFrm.submit();
-
-			location.href = "memberLicense.do?p=" + p;
-		}
-	</script>
 
 </body>
 </html>

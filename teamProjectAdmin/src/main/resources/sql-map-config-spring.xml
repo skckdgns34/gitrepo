@@ -8,9 +8,10 @@
 	<typeAlias type="com.dbal.app.empManage.Employees" alias="employees"/>
 	<typeAlias type="com.dbal.app.memberManage.Notice" alias="notice"/> 
 	<typeAlias type="com.dbal.app.memberManage.Questions" alias="questions"/> 	
-	
+	<typeAlias type="com.dbal.app.memberManage.Report" alias="report"/> 		
 	<typeAlias type="com.dbal.app.memberManage.Blacklist" alias="blacklist"/> 
 	<typeAlias type="com.dbal.app.memberManage.Member" alias="membermanage"/>
+	<typeAlias type="com.dbal.app.memberManage.Hopebooks" alias="hopebooks"/>
 	<typeAlias type="com.dbal.app.company.Company" alias="company"/>
 	<typeAlias type="com.dbal.app.moneyManage.Purchase" alias="purchase"/>  
 	<typeAlias type="com.dbal.app.moneyManage.PayVO" alias="pay"/>

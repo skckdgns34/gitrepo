@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" isELIgnored="false"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    <%@include file="/decorator/moveLoginForm.jsp"%>
     
 <!DOCTYPE html>
 <html>
@@ -22,15 +23,14 @@
 
 	function modifypage() //수정 
 	{
-	window.document.location.href="memberManageBlackListPopForm.ad?blacklist_no="+ $('input[name="user_CheckBox"]:checked').val();
+	window.document.location.href="${pageContext.request.contextPath}/memberManageReportModifyForm.ad?no="+ $('input[name="user_CheckBox"]:checked').val();
 	alert( $('input[name="user_CheckBox"]:checked').val())
 	return;
 	}
 	
 	function deletepage() //삭제
 	{
-	window.document.location.href="memberManageBlackListDelete.ad?blacklist_no="+ $('input[name="user_CheckBox"]:checked').val();
-	alert( $('input[name="user_CheckBox"]:checked').val())
+	window.document.location.href="${pageContext.request.contextPath}/주소 적기...ㅠ.ad";
 	return;
 	}
 	
@@ -53,11 +53,11 @@
 					<thead>
 					<tr>
 						<th>선택</th>
-						<th>번호</th>
-						<th>회원 번호</th>
-						<th>닉네임</th>						
-						<th>사유</th>
-						<th>적용기간</th>
+						<th>BLACKLIST_NO</th>
+						<th>MEMBER_NO</th>
+						<th>NICKNAME</th>						
+						<th>BLACKLIST_REASON</th>
+						<th>LIMIT_DATE</th>
 						</tr>
 					</thead>
 
@@ -68,7 +68,7 @@
 								<td>${black.getBlacklist_no()}</td>
 								<td>${black.getMember_no()}</td>
 								<td>${black.getNickname()}</td>
-								<td>${black.getCode_value()}</td>
+								<td>${black.blacklist_reason}</td>
 								<td>${black.getLimit_date()}</td>
 								
 						</c:forEach>

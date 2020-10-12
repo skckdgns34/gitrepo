@@ -26,24 +26,24 @@ $(function() {
 				$('#id_check').css('color', 'red');
 			} else if($('#member_id').val()!=''){
 				
-				var mem_id=$('#member_id').val();
+				var member_id=$('#member_id').val();
 				$.ajax({
 					async : true,
 					type : 'POST',
 					data : member_id,
-					url : 'idcheck.do',
+					url : 'member/memberJoin.do?member_id=' + member_id,
 					dateType: 'json',
 					contentType: "application/json; charset=UTF-8",
 					success : function(data) {
 						
-						if(data.cnt > 0){ $('#id_check').text('중복된 아이디 입니다.');
+						if(data.cnt > 1){ $('#id_check').text('중복된 아이디 입니다.');
 							$('#id_check').css('color', 'red');
 							$("#usercheck").attr("disabled", true);
-						}else{ if(idJ.test(mem_id)){
+						}else{ if(idJ.test(member_id)){
 							$('#id_check').text('사용가능한 아이디 입니다.');
 							$('#id_check').css('color', 'blue');
 							$("#usercheck").attr("disabled", false);
-						} else if(mem_id==''){
+						} else if(member_id==''){
 							$('#id_check').text('아이디를 입력해주세요.');
 							$('#id_check').css('color', 'red');
 							$("#usercheck").attr("disabled", true);

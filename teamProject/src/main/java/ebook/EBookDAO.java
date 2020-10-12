@@ -751,6 +751,45 @@ public class EBookDAO
 		}
 	}
 	
+	public int reviewDeclaration(String declaration_code,String declaContents,String member_no,String reported_member,String review_no,String book_no) {
+		int no =0;
+		int aa = 0;
+		ResultSet rs =null;
+		try {
+			conn = ConnectionManager.getConnnect();
+			conn.setAutoCommit(false);
+			String seqSql = "select no from seq where tablename = 'declaration'";
+			Statement stmt = conn.createStatement();
+			rs = stmt.executeQuery(seqSql);
+			rs.next();
+			no = rs.getInt(1);
+			
+			
+			seqSql = "update seq set no = no + 1 where tablename = 'declaration'";
+			stmt = conn.createStatement();
+			stmt.executeUpdate(seqSql);
+
+			
+			String sql = "insert into declaration(declaration_no, member_no, declaration_content, reported_member, declaration_date, declaration_code, book_no, review_no)"
+					   + " values(?,?,?,?,sysdate,?,?,?)";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, no);
+			pstmt.setString(2, member_no);
+			pstmt.setString(3, declaContents);
+			pstmt.setString(4, reported_member);
+			pstmt.setString(5, declaration_code);
+			pstmt.setString(6, book_no);
+			pstmt.setString(7, review_no);
+			aa = pstmt.executeUpdate();
+			conn.commit();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionManager.close(rs, pstmt, conn);
+		}
+		return aa;
+	}
+	
 	
 
 }

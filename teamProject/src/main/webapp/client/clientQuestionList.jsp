@@ -42,7 +42,7 @@ function insertpage() //문의사항 등록 ㅡ
 							cellspacing="0">
 							<thead>
 								<tr>
-									<th>번호</th>
+								<th>번호</th>
 									<th>문의사항제목</th>
 									<th>문의사항내용</th>
 									<th>등록일자</th>
@@ -55,8 +55,9 @@ function insertpage() //문의사항 등록 ㅡ
 						class="btn btn-outline btn-primary pull-" onclick="insertpage()">문의사항 등록</button>
 								<c:forEach items="${list}" var="questions">
 									<tr>
-										<td><a
-											href="questionSelect.ad?question_no=${questions.question_no}">${questions.question_no}</a></td>
+										<%-- <td><a
+											href="questionSelect.ad?question_no=${questions.question_no}">${questions.question_no}</a></td> --%>
+										<td>${questions.question_no}</td>	
 										<td>${questions.question_title}</td>
 										<td>${questions.question_contents}</td>
 										<td>${fn:substring(questions.question_date,0,10) }</td>

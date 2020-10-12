@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dbal.app.memberManage.mapper.ReportDAO">
+	  
+<!-- 전체조회 -->    
+<select id="selectAll" parameterType="report" resultType="report">
+   SELECT
+		    D.MEMBER_NO, 
+		    D.DECLARATION_CONTENT, 
+		    D.REPORTED_NUMBER, 
+		    D.DECLARATION_DATE, 
+		    D.DECLARATION_CODE, 
+		    D.BOOK_NO, 
+		    D.REVIEW_NO,
+		    C.CODE_VALUE
+     FROM DECLARATION D, COMMON C
+     WHERE D.DECLARATION_CODE = C.COMMON_CODE
+	</select>
+	
+<!--  한 건 조회 
+<select id="selectOne"  parameterType="blacklist" resultType="blacklist">
+SELECT 
+			B.BLACKLIST_NO, 
+			B.MEMBER_NO, 
+			M.NICKNAME, 
+			B.BLACKLIST_REASON, 
+			B.LIMIT_DATE,
+      C.CODE_VALUE
+FROM BLACKLIST B, MEMBER M, COMMON C 
+WHERE B.MEMBER_NO = M.MEMBER_NO
+AND B.BLACKLIST_REASON = C.CODE
+AND B.BLACKLIST_NO = #{blacklist_no}		
+</select>
+
+
+ 업데이트 
+<update id="update">
+update blacklist set
+member_no = #{member_no},
+BLACKLIST_REASON = #{blacklist_reason},
+limit_date = #{limit_date}
+where blacklist_no = #{blacklist_no}
+</update> -->
+
+</mapper>
