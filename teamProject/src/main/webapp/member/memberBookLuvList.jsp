@@ -6,7 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>내서재 - 찜목록</title>
-
+<style>
+	li {list-style-type: none; float: left; margin-left: 20px;}
+</style>
 </head>
 <body>
 

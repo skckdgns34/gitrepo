@@ -15,9 +15,22 @@ li {
 </style>
 </head>
 <body>
-	<h1>내 정보</h1>
-	<hr>
-	<br>
+	<!-- Breadcrumb Section Begin -->
+	<section class="breadcrumb-option">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="breadcrumb__text">
+						<h4>Menu</h4>
+						<div class="breadcrumb__links">
+							<a href="./index.html">내 정보</a> <span>나만의 도서 - 등록완료</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Breadcrumb Section End -->
 	<ul>
 		<li><a href="<%=application.getContextPath()%>/memberModify.do">내정보
 				수정</a>
@@ -30,31 +43,49 @@ li {
 				내용</a>
 	</ul>
 	<br>
-	<ul>
-		<li><a href="<%=application.getContextPath()%>/memberCreateBookCk.do">작성중</a>
-		<li><a href="<%=application.getContextPath()%>/memberCreateBookComp.do">등록완료</a>
-	</ul>
-	<br>
 	<hr>
-	<h5>나만의 도서 확인 - 등록완료</h5>
-		<input type="hidden" name="member_no" id="member_no" value="${member_no }">
-		<table border=1>
-			<tr>
-				<td>제목</td>
-				<td>장르</td>
-				<td>조회수</td>
-				<td>등록일자</td>
-				<td></td>
-			</tr>
-			<c:forEach items="${list }" var="bookcomp">
-				<tr>
-					<td>${bookcomp.title }</td>
-					<td>${bookcomp.genre }</td>
-					<td>${bookcomp.views }</td>
-					<td>${bookcomp.registration_date }</td>
-					<td><button>바로가기</button> <button>편집하기</button></td>
-				</tr>
-			</c:forEach>
-		</table>
+	<ul>
+		<li><a
+			href="<%=application.getContextPath()%>/memberCreateBookCk.do">작성중</a>
+		<li><a
+			href="<%=application.getContextPath()%>/memberCreateBookComp.do">등록완료</a>
+	</ul>
+	<input type="hidden" name="member_no" id="member_no"
+		value="${member_no }">
+	<section class="section-margin--small mb-5">
+
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="table-responsive">
+						<table class="table table-bordered" id="dataTable" width="100%"
+							cellspacing="0">
+							<thead>
+								<tr>
+									<td>제목</td>
+									<td>장르</td>
+									<td>조회수</td>
+									<td>등록일자</td>
+									<td></td>
+								</tr>
+							</thead>
+							<tbody>
+								<c:forEach items="${list }" var="bookcomp">
+									<tr>
+										<td>${bookcomp.title }</td>
+										<td>${bookcomp.genre }</td>
+										<td>${bookcomp.views }</td>
+										<td>${bookcomp.registration_date }</td>
+										<td><button>바로가기</button>
+											<button>편집하기</button></td>
+									</tr>
+								</c:forEach>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 </body>
 </html>
