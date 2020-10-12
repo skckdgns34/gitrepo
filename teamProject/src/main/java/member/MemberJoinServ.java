@@ -27,7 +27,6 @@ public class MemberJoinServ implements Controller
 		
 		MemberDAO dao = new MemberDAO();
 		dao.insert(memberVO);
-
 		
 		request.getRequestDispatcher("member/Hello.jsp").forward(request, response);
 
