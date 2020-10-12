@@ -5,6 +5,7 @@
 <mapper namespace="com.dbal.app.memberManage.mapper.HopebooksListDAO">
 	<select id="selectAll" parameterType="hopebooks" resultType="hopebooks">
 		SELECT
+			hopebooks_no,
 			title,
 			writer,
 			company

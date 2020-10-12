@@ -95,7 +95,7 @@
 						
 						<li class="nav-item submenu dropdown"><a href=""
 							class="nav-link dropdown-toggle" data-toggle="dropdown"
-							role="button" aria-haspopup="true" aria-expanded="false">공지사항</a>
+							role="button" aria-haspopup="true" aria-expanded="false">고객센터</a>
 							<ul class="dropdown-menu">
 							<li class="nav-item"><a class="nav-link"
 									href="<%=application.getContextPath()%>/clientNotice.do">공지사항</a></li>
@@ -103,6 +103,8 @@
 									href="<%=application.getContextPath()%>/clientFAQ.do">FAQ</a></li>
 								<li class="nav-item"><a class="nav-link"
 									href="<%=application.getContextPath()%>/clientQuestion.do">문의사항</a></li>
+								<li class="nav-item"><a class="nav-link"
+									href="<%=application.getContextPath()%>/clientHopeBook.do">희망도서</a></li>
 						
 							</ul></li>
 							

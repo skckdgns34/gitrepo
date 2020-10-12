@@ -23,7 +23,7 @@ public class ClientHopeBookServ implements Controller
 		
 		ArrayList<Hopebooks> list = hopebookDAO.selectAll(hopebooks);
 		request.setAttribute("list", list);
-		request.getRequestDispatcher("/client/clientHopebooksList.jsp").forward(request, response);
+		request.getRequestDispatcher("/client/clientHopebookList.jsp").forward(request, response);
 
 	}
 

@@ -8,7 +8,6 @@
 		src="<%=request.getContextPath()%>/mainresource/vendors/jquery/jquery-3.2.1.min.js"></script>
 <meta charset="UTF-8">
 <title>회원가입</title>
-
 </head>
 <body>
 
@@ -30,7 +29,7 @@
 						<h3>회원가입</h3>
 						<form class="row login_form" action="/app/memberJoin.do"" id="frm" >
 							<div class="col-md-12 form-group">
-								<input type="text" class="form-control" id="member_id" name="member_id" placeholder="id" onfocus="this.placeholder = ''" onblur="this.placeholder = 'id'">
+								<input type="text" class="form-control" id="member_id" name="member_id" placeholder="id" check_result="fail" required onfocus="this.placeholder = ''" onblur="this.placeholder = 'id'">
 								<div class="eheck_font" id="id_check"></div>
 							</div>
               <div class="col-md-12 form-group">
