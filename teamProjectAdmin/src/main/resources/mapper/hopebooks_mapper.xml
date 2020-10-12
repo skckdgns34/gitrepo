@@ -3,21 +3,13 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.dbal.app.memberManage.mapper.HopeooksListDAO">
-	<select id="selectAll" parameterType="books" resultType="books">
+	<select id="selectAll" parameterType="hopebooks" resultType="hopebooks">
 		SELECT
-			b.book_no,
-			b.title,
-			b.writer,
-			b.publication_date,
-			b.best_book,
-			b.registration_date,
-			c.code_value,
-			p.company_name
+			title,
+			writer,
+			company
 		FROM
-			books b, common c, company p
-		WHERE
-			b.genre = c.code
-		AND
-			b.company_code = p.company_code
+			hopebooks
+		ORDER BY 1
 	</select>
 </mapper>
