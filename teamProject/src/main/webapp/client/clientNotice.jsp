@@ -66,7 +66,6 @@
   </thead>
 
   <tbody>
-
     <c:forEach items="${list }" var="notice">
 				<tr>
 					<td>${notice.notice_no }</td>

@@ -80,16 +80,6 @@ li {
 </div>
 </div>
 </section>
-		<my:paging paging="${paging }" jsfunc="gopage" />
-
-	<script>
-		function gopage(p) {
-			searchFrm.p.value = p;
-			searchFrm.submit();
-
-			location.href="memberLicense.do?p=" + p;
-		}
-	</script>
 
 </body>
 </html>

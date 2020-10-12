@@ -15,10 +15,14 @@ public class ClientNoticeSelectServ implements Controller {
 		Notice notice = new Notice();
 		
 		notice.setNotice_no((String)request.getSession().getAttribute("notice_no"));
-		notice.setNotice_no(request.getParameter("notice_no"));
-		notice.setNotice_title(request.getParameter("notice_title"));
-		notice.setNotice_date(request.getParameter("notice_date"));
-		notice.setNotice_content(request.getParameter("notice_content"));
+		notice.setNotice_title((String)request.getSession().getAttribute("notice_title"));
+		notice.setNotice_date((String)request.getSession().getAttribute("notice_date"));
+		notice.setNotice_content((String)request.getSession().getAttribute("notice_content"));
+		
+//		notice.setNotice_no(request.getParameter("notice_no"));
+//		notice.setNotice_title(request.getParameter("notice_title"));
+//		notice.setNotice_date(request.getParameter("notice_date"));
+//		notice.setNotice_content(request.getParameter("notice_content"));
 		
 		NoticeDAO dao = new NoticeDAO();
 		dao.selectOne(notice);
