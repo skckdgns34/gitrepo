@@ -272,7 +272,7 @@ public class MemberDAO {
 				rs = pstmt.executeQuery();
 				if(rs.next()) {
 					cnt = rs.getInt(1);					
-				}
+				}System.out.println(cnt + "1");
 			} catch (Exception e) {
 				e.printStackTrace();
 			} finally {
@@ -295,6 +295,7 @@ public class MemberDAO {
 						if(rs.next()) {
 							cnt = rs.getInt(1);					
 						}
+						System.out.println(cnt + "d");
 					} catch (Exception e) {
 						e.printStackTrace();
 					} finally {
@@ -317,6 +318,7 @@ public class MemberDAO {
 						if(rs.next()) {
 							cnt = rs.getInt(1);					
 						}
+						System.out.println(cnt + "sf");
 					} catch (Exception e) {
 						e.printStackTrace();
 					} finally {

@@ -8,6 +8,7 @@
 		src="<%=request.getContextPath()%>/mainresource/vendors/jquery/jquery-3.2.1.min.js"></script>
 <meta charset="UTF-8">
 <title>회원가입</title>
+
 <script>
 
 	
@@ -32,7 +33,7 @@
 	function NiChk(){
 		var nickname = $("#nickname").val();
 		$.ajax({
-			url: "${pageContext.request.contextPath}/Ajax/memberIdCheck.do",
+			url: "${pageContext.request.contextPath}/Ajax/memberNiCheck.do",
 			type: "POST",
 			data : {
 				nickname : nickname
@@ -48,12 +49,12 @@
 	}
 	
 	function EmChk(){
-		var member_eamil = $("#member_eamil").val();
-		$.ajax({
-			url: "${pageContext.request.contextPath}/Ajax/memberIdCheck.do",
+		var member_email = $("#member_email").val()
+ 		$.ajax({
+			url: "${pageContext.request.contextPath}/Ajax/memberEmCheck.do",
 			type: "POST",
 			data : {
-				member_eamil : member_eamil
+				member_email : member_email
 			},
 			success: function(result){
 				if(result == 1){
@@ -62,7 +63,7 @@
 					alert("사용 가능한 e-mail 입니다.");
 				}
 			}
-		})
+		}) 
 	}
 	
 </script>
@@ -113,7 +114,7 @@
               <button type="button" onclick="NiChk()" >체크</button>
               <div class="col-md-12 form-group">
 								<input type="text" class="form-control" id="member_email" name="member_email" placeholder="Email 입력" onfocus="this.placeholder = ''" onblur="this.placeholder = 'member_email'">
-              <div class="eheck_font" id="nickname_check"></div>
+              <div class="eheck_font" id="email_check"></div>
               </div>
               <button type="button" onclick="EmChk()" >체크</button>
                <div class="col-md-12 form-group">
