@@ -207,7 +207,6 @@
 				var split_mark_index = data[0].bookmark_index.split(".");
 				var addedMark = $("<tr class='tr-hover'>" +
          		        "<td>" + data[0].bookmark_no + "<input type='hidden' value='data[0].rownum'></td>" +
-         		        "<td>" + data[0].book_no + "</td>" +
          		        "<td>" + split_mark_index[0]+ "</td>" + 
          		        "<td>" + data[0].bookmark_contents + "</td>" +
          		        "<td><button class='delete'>삭제</button></td>" +

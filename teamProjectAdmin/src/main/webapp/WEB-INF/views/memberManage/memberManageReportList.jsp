@@ -30,9 +30,20 @@
 		return;
 	}
 
+<<<<<<< HEAD
+	function deletepage() //삭제
+	{
+		window.document.location.href = "memberManageReportDelete.ad?declaration_no="
+				+ $('input[name="user_CheckBox"]:checked').val();
+		alert($('input[name="user_CheckBox"]:checked').val())
+		return;
+	}
+
+=======
 	
 	
 	
+>>>>>>> branch 'master' of https://github.com/skckdgns34/gitrepo.git
 </script>
 </head>
 <body id="page-top">

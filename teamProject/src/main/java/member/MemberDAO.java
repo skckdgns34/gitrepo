@@ -484,7 +484,6 @@ public class MemberDAO {
 			rs = stmt.executeQuery(seqSql);
 			rs.next();
 			String row_no = rs.getString(1);
-			System.out.println(row_no);
 			mark.setRownum(row_no);
 			
 			
@@ -516,7 +515,6 @@ public class MemberDAO {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, bookM_no);
 			int r = pstmt.executeUpdate();
-			System.out.println("del: " + r);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

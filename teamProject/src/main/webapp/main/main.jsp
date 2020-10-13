@@ -17,13 +17,13 @@
 	
 <script>
 
-	function imgClick(book_no) {
-		if (book_no != null) {
-			if (confirm("해당 책 상세페이지로 이동하시겠습니까?")) {
-				location.href = "${pageContext.request.contextPath}/eBookDetail.do?book_no="
-						+ book_no;
+	$(".img_fluid").on("click",function(){
+		if (confirm("해당 책 상세페이지로 이동하시겠습니까?")) {
+			location.href = "${pageContext.request.contextPath}/eBookDetail.do?book_no="+ book_no;
 			}
-		}
+	})
+	function imgClick(book_no) {
+		
 	}
 </script>
 <style>
@@ -126,12 +126,16 @@ margin-left: 45px;
               </ul>
             </div>
             <div class="card-body">
-              <p>
-              	<c:if test="${not empty book.epub_path }">전자 책</c:if>
-              	<c:if test="${empty book.epub_path }">오디오 북</c:if>
-              </p>
-              <h4 class="card-product__title"><a href="single-product.html">${book.title }</a></h4>
-              <p class="card-product__price">${book.writer }</p>
+              <c:if test="${not empty book.epub_path }">
+				<p>전자 책</p>
+                <h4 class="card-product__title"><a href="${pageContext.request.contextPath}/eBookDetail.do?book_no=${book.book_no}">${book.title }</a></h4>
+                <p class="card-product__price">${book.writer }</p>
+			  </c:if>
+              <c:if test="${empty book.epub_path }">
+	              <p>오디오 북</p>
+	              <h4 class="card-product__title"><a href="${pageContext.request.contextPath}/audioBookDetail.do?book_no=${book.book_no}">${book.title }</a></h4>
+	              <p class="card-product__price">${book.writer }</p>
+              </c:if>
             </div>
           </div>
       		
@@ -172,12 +176,16 @@ margin-left: 45px;
               </ul>
             </div>
             <div class="card-body">
-              <p>
-              	<c:if test="${not empty book.epub_path }">전자 책</c:if>
-              	<c:if test="${empty book.epub_path }">오디오 북</c:if>
-              </p>
-              <h4 class="card-product__title"><a href="single-product.html">${book.title }</a></h4>
-              <p class="card-product__price">${book.writer }</p>
+              <c:if test="${not empty book.epub_path }">
+				<p>전자 책</p>
+                <h4 class="card-product__title"><a href="${pageContext.request.contextPath}/eBookDetail.do?book_no=${book.book_no}">${book.title }</a></h4>
+                <p class="card-product__price">${book.writer }</p>
+			  </c:if>
+              <c:if test="${empty book.epub_path }">
+	              <p>오디오 북</p>
+	              <h4 class="card-product__title"><a href="${pageContext.request.contextPath}/audioBookDetail.do?book_no=${book.book_no}">${book.title }</a></h4>
+	              <p class="card-product__price">${book.writer }</p>
+              </c:if>
             </div>
           </div>
     	</c:if>
@@ -211,12 +219,16 @@ margin-left: 45px;
               </ul>
             </div>
             <div class="card-body">
-              <p>
-              	<c:if test="${not empty book.epub_path }">전자 책</c:if>
-              	<c:if test="${empty book.epub_path }">오디오 북</c:if>
-              </p>
-              <h4 class="card-product__title"><a href="single-product.html">${book.title }</a></h4>
-              <p class="card-product__price">${book.writer }</p>
+              <c:if test="${not empty book.epub_path }">
+				<p>전자 책</p>
+                <h4 class="card-product__title"><a href="${pageContext.request.contextPath}/eBookDetail.do?book_no=${book.book_no}">${book.title }</a></h4>
+                <p class="card-product__price">${book.writer }</p>
+			  </c:if>
+              <c:if test="${empty book.epub_path }">
+	              <p>오디오 북</p>
+	              <h4 class="card-product__title"><a href="${pageContext.request.contextPath}/eBookDetail.do?book_no=${book.book_no}">${book.title }</a></h4>
+	              <p class="card-product__price">${book.writer }</p>
+              </c:if>
             </div>
           </div>
     	</c:if>
@@ -250,12 +262,16 @@ margin-left: 45px;
               </ul>
             </div>
             <div class="card-body">
-              <p>
-              	<c:if test="${not empty book.epub_path }">전자 책</c:if>
-              	<c:if test="${empty book.epub_path }">오디오 북</c:if>
-              </p>
-              <h4 class="card-product__title"><a href="single-product.html">${book.title }</a></h4>
-              <p class="card-product__price">${book.writer }</p>
+              <c:if test="${not empty book.epub_path }">
+				<p>전자 책</p>
+                <h4 class="card-product__title"><a href="${pageContext.request.contextPath}/eBookDetail.do?book_no=${book.book_no}">${book.title }</a></h4>
+                <p class="card-product__price">${book.writer }</p>
+			  </c:if>
+              <c:if test="${empty book.epub_path }">
+	              <p>오디오 북</p>
+	              <h4 class="card-product__title"><a href="${pageContext.request.contextPath}/eBookDetail.do?book_no=${book.book_no}">${book.title }</a></h4>
+	              <p class="card-product__price">${book.writer }</p>
+              </c:if>
             </div>
           </div>
     	</c:if>
@@ -289,12 +305,16 @@ margin-left: 45px;
               </ul>
             </div>
             <div class="card-body">
-              <p>
-              	<c:if test="${not empty book.epub_path }">전자 책</c:if>
-              	<c:if test="${empty book.epub_path }">오디오 북</c:if>
-              </p>
-              <h4 class="card-product__title"><a href="single-product.html">${book.title }</a></h4>
-              <p class="card-product__price">${book.writer }</p>
+              <c:if test="${not empty book.epub_path }">
+				<p>전자 책</p>
+                <h4 class="card-product__title"><a href="${pageContext.request.contextPath}/eBookDetail.do?book_no=${book.book_no}">${book.title }</a></h4>
+                <p class="card-product__price">${book.writer }</p>
+			  </c:if>
+              <c:if test="${empty book.epub_path }">
+	              <p>오디오 북</p>
+	              <h4 class="card-product__title"><a href="${pageContext.request.contextPath}/eBookDetail.do?book_no=${book.book_no}">${book.title }</a></h4>
+	              <p class="card-product__price">${book.writer }</p>
+              </c:if>
             </div>
           </div>
     	</c:if>
@@ -328,12 +348,16 @@ margin-left: 45px;
               </ul>
             </div>
             <div class="card-body">
-              <p>
-              	<c:if test="${not empty book.epub_path }">전자 책</c:if>
-              	<c:if test="${empty book.epub_path }">오디오 북</c:if>
-              </p>
-              <h4 class="card-product__title"><a href="single-product.html">${book.title }</a></h4>
-              <p class="card-product__price">${book.writer }</p>
+              <c:if test="${not empty book.epub_path }">
+				<p>전자 책</p>
+                <h4 class="card-product__title"><a href="${pageContext.request.contextPath}/eBookDetail.do?book_no=${book.book_no}">${book.title }</a></h4>
+                <p class="card-product__price">${book.writer }</p>
+			  </c:if>
+              <c:if test="${empty book.epub_path }">
+	              <p>오디오 북</p>
+	              <h4 class="card-product__title"><a href="${pageContext.request.contextPath}/eBookDetail.do?book_no=${book.book_no}">${book.title }</a></h4>
+	              <p class="card-product__price">${book.writer }</p>
+              </c:if>
             </div>
           </div>
     	</c:if>
@@ -367,12 +391,16 @@ margin-left: 45px;
               </ul>
             </div>
             <div class="card-body">
-              <p>
-              	<c:if test="${not empty book.epub_path }">전자 책</c:if>
-              	<c:if test="${empty book.epub_path }">오디오 북</c:if>
-              </p>
-              <h4 class="card-product__title"><a href="single-product.html">${book.title }</a></h4>
-              <p class="card-product__price">${book.writer }</p>
+              <c:if test="${not empty book.epub_path }">
+				<p>전자 책</p>
+                <h4 class="card-product__title"><a href="${pageContext.request.contextPath}/eBookDetail.do?book_no=${book.book_no}">${book.title }</a></h4>
+                <p class="card-product__price">${book.writer }</p>
+			  </c:if>
+              <c:if test="${empty book.epub_path }">
+	              <p>오디오 북</p>
+	              <h4 class="card-product__title"><a href="${pageContext.request.contextPath}/eBookDetail.do?book_no=${book.book_no}">${book.title }</a></h4>
+	              <p class="card-product__price">${book.writer }</p>
+              </c:if>
             </div>
           </div>
     	</c:if>
@@ -404,12 +432,16 @@ margin-left: 45px;
               </ul>
             </div>
             <div class="card-body">
-              <p>
-              	<c:if test="${not empty book.epub_path }">전자 책</c:if>
-              	<c:if test="${empty book.epub_path }">오디오 북</c:if>
-              </p>
-              <h4 class="card-product__title"><a href="single-product.html">${book.title }</a></h4>
-              <p class="card-product__price">${book.writer }</p>
+              <c:if test="${not empty book.epub_path }">
+				<p>전자 책</p>
+                <h4 class="card-product__title"><a href="${pageContext.request.contextPath}/eBookDetail.do?book_no=${book.book_no}">${book.title }</a></h4>
+                <p class="card-product__price">${book.writer }</p>
+			  </c:if>
+              <c:if test="${empty book.epub_path }">
+	              <p>오디오 북</p>
+	              <h4 class="card-product__title"><a href="${pageContext.request.contextPath}/eBookDetail.do?book_no=${book.book_no}">${book.title }</a></h4>
+	              <p class="card-product__price">${book.writer }</p>
+              </c:if>
             </div>
           </div>
     	</c:if>

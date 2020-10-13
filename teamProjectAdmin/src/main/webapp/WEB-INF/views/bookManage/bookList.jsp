@@ -34,7 +34,7 @@
 					<c:forEach items="${list}" var="books">
 						<tr>
 							<td><a href="bookSelect.ad?book_no=${books.book_no}">${books.book_no}</a></td>
-							<td>${books.title}</td>
+							<td><img src="/app/common/FileDownloadServlet.jsp?filename=${books.book_img }">${books.title}</td>
 							<td>${books.writer}</td>
 							<td>${fn:substring(books.publication_date,0,10) }</td>
 							<td>${books.company_name}</td>

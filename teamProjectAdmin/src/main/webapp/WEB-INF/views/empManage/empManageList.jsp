@@ -38,6 +38,22 @@
 				+ $('input[name="user_CheckBox"]:checked').val();
 		return;
 	}
+	$(document).on(
+			"click",
+			"#excel",
+			function() {
+
+				var data_type = 'data:application/vnd.ms-excel;charset=utf-8';
+				var table_html = encodeURIComponent(document
+						.getElementById('dataTable').outerHTML);
+
+				var a = document.createElement('a');
+				a.href = data_type + ',%EF%BB%BF' + table_html;
+				a.download = 'test' + '_excel' + '.xls';
+				a.click();
+
+	})
+	
 </script>
 </head>
 
@@ -61,6 +77,8 @@
 					<button type="button" id='btn_d'
 						class="btn btn-outline btn-primary pull-right"
 						onclick="deletepage()">삭제</button>
+					<button class="btn btn-primary" id="excel">엑셀</button>
+					
 				</div>
 				<table class="table table-bordered table-hover" id="dataTable"
 					width="100%" cellspacing="0">

@@ -28,7 +28,11 @@
 					type="text" value="${result.writer }">
 			</div>
 			<div>
-				<label for="company_code">출판사</label> <input id="company_code"
+				<label for="company_code">출판사</label> 
+				
+				
+				
+				<input id="company_code"
 					name="company_code" type="text" value="${result.company_code }">
 			</div>
 			<div>

@@ -9,13 +9,14 @@ import javax.servlet.http.HttpServletResponse;
 import common.Controller;
 import member.MemberDAO;
 import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
 import vo.Bookmark;
 
 public class AudioBookMarkInsertServ implements Controller {
 
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		
+		
+		
 		Bookmark mark = new Bookmark();
 		String member_no = (String)request.getSession().getAttribute("member_no");
 		String book_no = request.getParameter("book_no");
@@ -27,6 +28,7 @@ public class AudioBookMarkInsertServ implements Controller {
 		mark.setBookmark_contents(contents);
 		
 		mark = MemberDAO.getinstance().insertBookMark(mark);
+		
 		response.getWriter().print(JSONArray.fromObject(mark)); 
 	}
 }

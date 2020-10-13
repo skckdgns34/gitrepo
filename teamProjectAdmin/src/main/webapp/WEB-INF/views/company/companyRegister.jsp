@@ -16,6 +16,7 @@
 		selector : 'textarea'
 	});
 </script>
+
 </head>
 <body>
 	<div class="container col-xs-12">
@@ -84,7 +85,7 @@
 							</div>
 							</div>
 							
-							<div class="col-sm-6 col-md-6 col-xs-6" style="margin-bottom: 300px">
+							<div class="col-sm-6 col-md-6 col-xs-6" style="margin-bottom: 70px">
 								<label for="company_account" class="control-label col-md-4  requiredField">출판사계좌정보</label> 
 								<div class="col-sm-6 col-md-6 col-xs-6">
 								<input
