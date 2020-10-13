@@ -21,6 +21,7 @@ public class MemberBookMarkServ implements Controller
 		Mylibrary mylibraryVO = new Mylibrary();
 		
 		mylibraryVO.setMember_no((String)request.getSession().getAttribute("member_no"));
+		mylibraryVO.setBook_no(request.getParameter("book_no"));
 		
 		ArrayList<Mylibrary> list = dao.reading(mylibraryVO);
 		request.setAttribute("list", list);
