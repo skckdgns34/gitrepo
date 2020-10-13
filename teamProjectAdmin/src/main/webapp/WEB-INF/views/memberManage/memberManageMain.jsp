@@ -112,7 +112,6 @@
 
 		function btnClick() {
 			var member_no= $(event.target).val();
-			var a ;
 			$.ajax({
 				url : "${pageContext.request.contextPath}/memberManageDetail.ad",
 				type : "POST",
@@ -120,11 +119,34 @@
 				data : {member_no:member_no},
 				success : function(result) {
 					for(var i=0; i<result.ticket.length; i++){
-						
-						
-					}
-					
+						console.log( result.ticket[i].pay_no);
+						console.log(result.ticket[i].code_value);
+						console.log(result.ticket[i].pay_date);
+						/*  var addedTicket = $("<tr>" +
+				                       "<td>" + result.ticket[i].pay_no + "</td>" +
+				                       "<td>" + result.ticket[i].code_value + "</td>" + 
+				                       "<td>" + result.ticket[i].pay_date + "</td>" +
+				                       "</tr>");
+				            $("#tbody").append(addedTicket);  */
+				    }	
 				}
+					/* for(var i=0; i<result.review.length; i++){
+						review_no[i] = result.review[i].review_no;
+						book_no[i] = result.review[i].book_no;
+						contents[i] = result.review[i].contents;
+						title[i] = result.review[i].title;
+						review_date[i] = result.review[i].review_date;						
+						
+						
+					}for(var i=0; i<result.mylib.length; i++){
+						mylibrary_no[i] = result.mylib[i].mylibrary_no;
+						title[i] = result.mylib[i].title;
+						book_no[i] = result.mylib[i].book_no;
+						wish[i] = result.mylib[i].wish;
+						last_read_index[i] = result.mylib[i].last_read_index;
+					} */	
+
+				
 			})
 		}
 	</script>
@@ -153,9 +175,7 @@
         <div class="modal-body">
           <h3>Some text to enable scrolling..</h3>
           <p>Some text</p>
-          <p>Some.</p>
-
-         
+          <p>Some.</p>         
         </div>
         
         <!-- Modal footer -->
