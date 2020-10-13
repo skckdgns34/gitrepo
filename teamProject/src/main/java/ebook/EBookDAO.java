@@ -790,6 +790,65 @@ public class EBookDAO
 		return aa;
 	}
 	
+	//책열자마자 그냥 mylibrary에다가 insert
+	public int myLibraryFirstInsert(String member_no, String book_no) {
+		int no =0;
+		int aa = 0;
+		ResultSet rs =null;
+		try {
+			conn = ConnectionManager.getConnnect();
+			conn.setAutoCommit(false);
+			String seqSql = "select no from seq where tablename = 'mylibrary'";
+			Statement stmt = conn.createStatement();
+			rs = stmt.executeQuery(seqSql);
+			rs.next();
+			no = rs.getInt(1);
+			
+			
+			seqSql = "update seq set no = no + 1 where tablename = 'mylibrary'";
+			stmt = conn.createStatement();
+			stmt.executeUpdate(seqSql);
+
+			
+			String sql = "insert into mylibrary(mylibrary_no, member_no, book_no)"
+					   + " values(?,?,?)";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, no);
+			pstmt.setString(2, member_no);
+			pstmt.setString(3, book_no);
+			aa = pstmt.executeUpdate();
+			conn.commit();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionManager.close(rs, pstmt, conn);
+		}
+		return aa;
+	}
+	
+	//책 열자마자 insert할려는데 그전에 일단 얘가 insert먼저 해놨나 체크
+	public int myLibraryInsertAfterCheck(String member_no, String book_no) {
+		int aa = 0;
+		ResultSet rs =null;
+		try {
+			conn = ConnectionManager.getConnnect();
+			String sql = "select count(mylibrary_no) from mylibrary where member_no = ? and book_no = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, member_no);
+			pstmt.setString(2, book_no);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				aa = rs.getInt(1);
+			}
+			conn.commit();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionManager.close(rs, pstmt, conn);
+		}
+		return aa;
+	}
+	
 	
 
 }
