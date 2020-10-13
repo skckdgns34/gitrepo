@@ -28,23 +28,6 @@
 </select>
 
 
-	
- <!--  한 건 조회  --> 
-<select id="selectMem"  parameterType="report" resultType="report">
- SELECT
- 			D.DECLARATION_NO,
-		    D.MEMBER_NO, 
-		    D.DECLARATION_CONTENT, 
-		    D.REPORTED_MEMBER, 
-		    D.DECLARATION_DATE, 
-		    D.DECLARATION_CODE, 
-		    D.BOOK_NO, 
-		    D.REVIEW_NO,
-		    C.CODE_VALUE
-     FROM DECLARATION D, COMMON C
-     WHERE D.DECLARATION_CODE = C.CODE
-     AND D.DECLARATION_NO = #{declaration_no}	
-</select>
 
 <!--블랙리스트 등록-->
 <update id="updateNo">
@@ -71,10 +54,10 @@
 				limit_date)
 				values 
 				(
-				#{blacklist_no},
-				#{blacklist_reason},
-				#{member_no},
-				SYSDATE
+				#{blacklist_no}, 
+				(select DECLARATION_CODE from DECLARATION where DECLARATION_no=#{declaration_no}),
+				(select REPORTED_MEMBER from DECLARATION where DECLARATION_no=#{declaration_no}),
+				SYSDATE+7
 		)
 	</insert>
 

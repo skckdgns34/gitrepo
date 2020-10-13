@@ -23,8 +23,7 @@ function insertpage() //문의사항 등록 ㅡ
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="table-responsive">
-						<table class="table table-bordered" id="dataTable" width="100%"
-							cellspacing="0">
+						 <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
 							<thead>
 								<tr>
 									<th>번호</th>

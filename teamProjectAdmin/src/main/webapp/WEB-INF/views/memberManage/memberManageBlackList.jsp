@@ -41,14 +41,14 @@
 	
 	<div class="container-fluid">
 		
-		<h3 class="page_title">신고 조회</h3>
+		<h3 class="page_title">블랙리스트 조회</h3>
 	<hr>
 		<div class="card-body">
 			<div class="table-responsive">
 			
 					<div><button type="button" id='btn_n' class="btn btn-outline btn-primary pull-" onclick="modifypage()">수정</button>
 					<button type="button" id='btn_d' class="btn btn-outline btn-primary pull-right" onclick="deletepage()">삭제</button></div>
-				<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+				 <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
 
 					<thead>
 					<tr>
