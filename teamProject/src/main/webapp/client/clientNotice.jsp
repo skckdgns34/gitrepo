@@ -14,6 +14,7 @@
 
 <style >
 	li {list-style-type: none; float: left; margin-left: 20px;}
+	
 </style>
 </head>
 <body>
@@ -60,7 +61,6 @@
 				<td>게시물 번호</td>
 				<td>제목</td>
 				<td>등록일</td>
-				<td>조회수</td>
 			</tr>
 
   </thead>
@@ -71,7 +71,6 @@
 					<td>${notice.notice_no }</td>
 					<td><a href="javascript:void(window.open('clientNoticeSelect.do?notice_no=${notice.notice_no}', '공지사항 상세보기', 'width=#, height=#'))">${notice.notice_title }</a></td>
 					<td>${notice.notice_date }</td>
-					<td>${notice.views }</td>
 				</tr>
 			</c:forEach>
   </tbody>
@@ -84,17 +83,5 @@
 </div>
 </section>
 
-	<my:paging paging="${paging }" jsfunc="gopage" />
-	<script>
-		function gopage(p) {
-			searchFrm.p.value = p;
-			searchFrm.submit();
-
-			//location.href="deptSelectAll?p=" + p;
-		}
-	</script>
-
-	<input type="text">
-	<button>검색</button> <!-- 이거는 기능을 하는 건지? 이것이 용도는????? -->
 </body>
 </html>
