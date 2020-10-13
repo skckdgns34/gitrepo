@@ -24,7 +24,7 @@
 
 	function modifypage() //블랙리스트 등록
 	{
-		window.document.location.href = "memberManageReportModifyForm.ad?member_no="
+		window.document.location.href = "memberManageReportModifyForm.ad?declaration_no="
 				+ $('input[name="user_CheckBox"]:checked').val();
 		alert($('input[name="user_CheckBox"]:checked').val())
 		return;
@@ -32,7 +32,7 @@
 
 	function deletepage() //삭제
 	{
-		window.document.location.href = "memberManageReportDelete.ad?member_no="
+		window.document.location.href = "memberManageReportDelete.ad?declaration_no="
 				+ $('input[name="user_CheckBox"]:checked').val();
 		alert($('input[name="user_CheckBox"]:checked').val())
 		return;
