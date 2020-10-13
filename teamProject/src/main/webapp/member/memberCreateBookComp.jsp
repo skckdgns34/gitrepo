@@ -84,8 +84,7 @@ button {
 										<td>${bookcomp.genre }</td>
 										<td>${bookcomp.views }</td>
 										<td>${bookcomp.registration_date }</td>
-										<td><button>바로가기</button>
-											<button>편집하기</button></td>
+										<td><button>바로가기</button></td>
 									</tr>
 								</c:forEach>
 							</tbody>
