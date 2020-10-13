@@ -56,6 +56,23 @@ public class MemberManageServiceImpl implements MemberManageService{
 	public List<Books> selectViews() {
 		return memberManageDAO.selectViews();
 	}
+
+	//이용권 조회
+	@Override
+	public List<Member> selectTicket(Member memberVO) {
+		return memberManageDAO.selectTicket(memberVO);
+	}
+	
+	//리뷰 조회
+	@Override
+	public List<Member> selectReview(Member memberVO) {
+		return memberManageDAO.selectReview(memberVO);
+	}
+	//나만의 도서 조회
+	@Override
+	public List<Member> selectMylib(Member memberVO) {
+		return memberManageDAO.selectMylib(memberVO);
+	}
 	
 
 }

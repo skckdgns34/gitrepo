@@ -1,5 +1,7 @@
 package com.dbal.app.memberManage.web;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
+
 import java.util.HashMap;
 import java.util.List;
 
@@ -24,7 +26,7 @@ public class MemberManageController {
 
 	// 전체조회
 	@RequestMapping("/memberManageMain.ad")
-	public String blackListAll(Model model, Member member) {
+	public String selectAll(Model model, Member member) {
 		model.addAttribute("list", memberManageService.selectAll(member));
 		return "memberManage/memberManageMain";
 	}
@@ -51,6 +53,20 @@ public class MemberManageController {
 		memberVO.setMember_no(member_no);
 		memberManageService.delete(memberVO);
 		return "redirect:/memberManageMain.ad"; 
+	}
+	
+	//상세 조회
+	@RequestMapping("memberManageDetail.ad")
+	@ResponseBody
+	public String memberManageDetail(Model model,Member memberVO, HttpServletRequest request) {
+		String member_no = request.getParameter("member_no");
+		memberVO.setMember_no(member_no);
+		model.addAttribute("ticket", memberManageService.selectTicket(memberVO));
+		model.addAttribute("review", memberManageService.selectReview(memberVO));
+		model.addAttribute("mylib", memberManageService.selectMylib(memberVO));
+		
+	System.out.println("sssssssssssssssssssssssssssssssssssssssssssssssss");
+		return "memberManage/memberManageMain";
 	}
 	
 	

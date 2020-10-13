@@ -7,6 +7,7 @@ public class Report {
 	private String member_no;
 	private String declaration_content;
 	private String reported_member;
+	private String declaration_no;
 	private String declaration_date;
 	private String declaration_code;
 	private String book_no;
