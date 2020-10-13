@@ -34,6 +34,21 @@ $(function(){
 		}
 		//location.href="${sessionScope.member_no}"
 	})
+	
+	//북마크, mylob 고른거 호버주고
+	$(".tr").hover(function(){
+		$(this).css("background-color", "lightgray");
+		$(this).css("cursor","pointer");
+	},function(){
+		$(this).css("background-color", "");
+	});
+	
+	//북마크 온클릭
+	$(".tr").on("click",function(){
+		var book_no = $(this).find('input[type=hidden]').val();
+		location.href="${pageContext.request.contextPath}/eBookDetail.do?book_no="+book_no;
+	});
+
 });
 </script>
 </head>
@@ -98,8 +113,11 @@ $(function(){
 					</thead>
 					<tbody>
 						 <c:forEach items="${userBookRank }" var="list">
-							<tr>
-								<td><a href="${pageContext.request.contextPath}/eBookDetail.do?book_no=${list.book_no}">${list.no }</a></td>
+							<tr class="tr">
+								<td>
+									<input type="hidden" value="${list.book_no }">
+									${list.no }
+								</td>
 								<td>${list.title}</td>
 								<td>${list.views}</td>
 								<td>${list.writer}</td>
@@ -110,7 +128,11 @@ $(function(){
 			</div>
 		</div>
 		<div class="row">
-			<button type="button" id="write">글쓰기</button>
+			<div class="col-7">
+			</div>
+			<div class="col-5">
+				<button type="button" class="btn btn-primary" id="write">글쓰기</button>
+			</div>
 		</div>
 	</div>
 </body>
