@@ -93,7 +93,8 @@
             <span id="chapter-title"></span>
           </div>
           <div id="title-controls">
-          	<input type="text" id="bookmark_text" placeholder="북마크를 남기실 이름을 적어주세요"/>
+          	<a href="${pageContext.request.contextPath}/main.do">메인페이지로 이동</a>
+          	<input type="text" id="bookmark_text" placeholder="북마크 제목 입력"/>
             <a id="bookmark" class="icon-bookmark-empty">Bookmark</a>
             <a id="setting" class="icon-cog">Settings</a>
             <a id="fullscreen" class="icon-resize-full">Fullscreen</a>

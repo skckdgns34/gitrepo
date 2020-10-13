@@ -139,7 +139,11 @@ function btnHideNShow(){
 	}else if("${checkCode}" == ""){
 		$("#read").hide();
 		$("#check").show();
+		if("${member_no}" == null){
+			$("#check").hide();
+		}
 	}
+	
 }
 
 
@@ -352,8 +356,9 @@ function reDeclarationBtn() {
 							<form action="${pageContext.request.contextPath}/eBookReading.do" method="post">
 								<input type="hidden" name="reading_book_no" value="${book[0].book_no}"/>
 								<input type="hidden" name="reading_member_no" value="${member_no}"/>
-								<button class="button primary-btn" href="#" id="read">읽기</button>
+								<button class="button primary-btn" id="read">읽기</button>
 							</form>
+							
          					<a class="button primary-btn" href="#" id="check" onclick="licence()">결제</a> 
 							</div>	
 				</div>
