@@ -37,8 +37,7 @@
 		alert($('input[name="user_CheckBox"]:checked').val())
 		return;
 	}
-	
-	
+
 </script>
 </head>
 <body id="page-top">
