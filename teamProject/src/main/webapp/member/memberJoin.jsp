@@ -8,7 +8,29 @@
 		src="<%=request.getContextPath()%>/mainresource/vendors/jquery/jquery-3.2.1.min.js"></script>
 <meta charset="UTF-8">
 <title>회원가입</title>
-
+<style type="text/css">
+.button1 {
+  background-color: white; 
+  color: black; 
+  border: 2px solid 002347;
+  padding: 7px 15px;
+  font-size: 12px;
+}
+.button2 {
+  background-color: white; 
+  color: black; 
+  border: 2px solid 002347;
+  padding: 7px 15px;
+  font-size: 12px;
+}
+.button3 {
+  background-color: white; 
+  color: black; 
+  border: 2px solid 002347;
+  padding: 7px 15px;
+  font-size: 12px;
+}
+</style>
 <script>
 
 	
@@ -93,7 +115,7 @@
 								<div class="eheck_font" id="id_check"></div>
 							</div>
 							<input type="hidden" name="idCheckh" value="idUnCheck"> 
-							<button type="button" onclick="IdChk()" >체크</button>
+							<button type="button" class="button button1" onclick="IdChk()" >체크</button>
               <div class="col-md-12 form-group">
 								<input type="password" class="form-control" id="member_pw" name="member_pw" placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'">
               					<div class="eheck_font" id="pw_check"></div>
@@ -111,12 +133,12 @@
 								<input type="text" class="form-control" id="nickname" name="nickname" placeholder="닉네임 입력" onfocus="this.placeholder = ''" onblur="this.placeholder = 'nickname'">
               					<div class="eheck_font" id="nickname_check"></div>
               </div>
-              <button type="button" onclick="NiChk()" >체크</button>
+              <button type="button" class="button button2" onclick="NiChk()" >체크</button>
               <div class="col-md-12 form-group">
 								<input type="text" class="form-control" id="member_email" name="member_email" placeholder="Email 입력" onfocus="this.placeholder = ''" onblur="this.placeholder = 'member_email'">
               <div class="eheck_font" id="email_check"></div>
               </div>
-              <button type="button" onclick="EmChk()" >체크</button>
+              <button type="button" class="button button3"  onclick="EmChk()" >체크</button>
                <div class="col-md-12 form-group">
 				<label for="gender">성별:</label>
 					<input type="radio" id="male"name="gender" value="male">
