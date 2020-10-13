@@ -12,6 +12,14 @@ li {
 	float: left;
 	margin-left: 20px;
 }
+
+button {
+  background-color: white; 
+  color: black; 
+  border: 2px solid 002347;
+  padding: 7px 15px;
+  font-size: 12px;
+}
 </style>
 </head>
 <body>
@@ -76,8 +84,7 @@ li {
 										<td>${bookcomp.genre }</td>
 										<td>${bookcomp.views }</td>
 										<td>${bookcomp.registration_date }</td>
-										<td><button>바로가기</button>
-											<button>편집하기</button></td>
+										<td><button>바로가기</button></td>
 									</tr>
 								</c:forEach>
 							</tbody>

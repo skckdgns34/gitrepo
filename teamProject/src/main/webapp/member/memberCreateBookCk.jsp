@@ -8,6 +8,14 @@
 <title>Insert title here</title>
 <style>
 	li {list-style-type: none; float: left; margin-left: 20px;}
+	
+	button {
+  background-color: white; 
+  color: black; 
+  border: 2px solid 002347;
+  padding: 7px 15px;
+  font-size: 12px;
+}
 </style>
 </head>
 <body>
@@ -55,7 +63,7 @@
       <div class="row">
        <div class="col-lg-12">
 	<div class="table-responsive">
-		<input type="hidden" name="member_no" id="member_no" value="${member_no }"> <!--  이것의 용도는? -->
+		<input type="hidden" name="member_no" id="member_no" value="${member_no }">
 		<table class="table table-bordered" id="dataTable" width="100%"
 								cellspacing="0">
 								<thead>
