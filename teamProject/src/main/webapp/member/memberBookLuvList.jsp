@@ -17,6 +17,13 @@
   font-size: 12px;
 }
 </style>
+<script>
+$(function(){
+	$("#btnsend").on("click", function(){
+		location.href = "${pageContext.request.contextPath }/eBookDetail.do?book_no=" + $("#book_no").val()
+	});
+})
+</script>
 </head>
 <body>
 
@@ -75,14 +82,14 @@
 								<tbody>
 
 									<c:forEach items="${list }" var="books">
+										<input type="hidden" id="book_no" value="${books.book_no }">
 										<tr>
 											<td>${rownum }</td>
 											<td>${books.title }</td>
 											<td>${books.writer }</td>
 											<td>${books.genre }</td>
 											<td>${books.views }</td>
-											<td><button>바로가기</button>
-												<button>편집하기</button></td>
+											<td><button id="btnsend">바로가기</button></td>
 										</tr>
 									</c:forEach>
 								</tbody>

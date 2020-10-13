@@ -20,8 +20,9 @@ public class MemberBookLuvListServ implements Controller
 		Books books = new Books();
 		
 		books.setMember_no((String)request.getSession().getAttribute("member_no"));
+		books.setBook_no(request.getParameter("book_no"));
 		
-		ArrayList<Books> list = dao.ticketList(books);
+		ArrayList<Books> list = dao.myLuvList(books);
 		request.setAttribute("list", list);
 		request.getRequestDispatcher("member/memberBookLuvList.jsp").forward(request, response);
 		

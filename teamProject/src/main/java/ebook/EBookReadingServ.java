@@ -1,6 +1,8 @@
 package ebook;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -15,16 +17,17 @@ public class EBookReadingServ implements Controller
 	{
 		String book_no = request.getParameter("reading_book_no");
 		String member_no =request.getParameter("reading_member_no");
-		int insertMy =0;
-		int checkMy = 0;
-		checkMy = EBookDAO.getInstance().myLibraryInsertAfterCheck(member_no, book_no);
-		if(checkMy == 0) {
-			insertMy = EBookDAO.getInstance().myLibraryFirstInsert(member_no,book_no);
-		}
 		request.setAttribute("member_no", member_no);
-		request.setAttribute(book_no, book_no);
-		request.getRequestDispatcher("/index.jsp").forward(request, response);
-		//response.sendRedirect("/epub/index.jsp");
+		request.setAttribute("book_no", book_no);		
+		List<Map<String, Object>> checkMy = null;
+		checkMy = EBookDAO.getInstance().myLibraryInsertAfterCheck(member_no, book_no);
+		
+		if(checkMy.size() == 0) {
+			EBookDAO.getInstance().myLibraryFirstInsert(member_no,book_no);
+			request.getRequestDispatcher("/index.jsp").forward(request, response);
+		}else {
+			request.getRequestDispatcher("/index.jsp#"+ checkMy.get(0).get("last_read_index")).forward(request, response);
+		}
 	}
 
 }
