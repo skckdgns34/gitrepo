@@ -39,10 +39,7 @@ public class QuestionController {
 		model.addAttribute("login", request.getSession().getAttribute("login"));
 	
 		model.addAttribute("list", questionService.selectOne(q));
-		System.out.println("--------------------------dddd--------------------------------");
-		System.out.println(question_no);
-		System.out.println(q);
-		System.out.println("aaaaaaaaaaaaaaaaaaaaaa");
+	
 	return "memberManage/memberManageAnswer";
 	}
 	

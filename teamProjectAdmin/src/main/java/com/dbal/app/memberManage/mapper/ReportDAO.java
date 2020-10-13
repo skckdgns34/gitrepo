@@ -10,8 +10,14 @@ public interface ReportDAO {
 	
 	//한 건 조회
 	public Report selectOne(Report report);
+	// 멤버 한명 조회
+	public Report selectMem(Report report);
 	
+	//번호 업데이트
+	public void updateNo();
 	//블랙 리스트 등록
 	public void insert(Report report);
+	
+	
 
 }

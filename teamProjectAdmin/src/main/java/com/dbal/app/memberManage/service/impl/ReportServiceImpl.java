@@ -30,6 +30,18 @@ public class ReportServiceImpl implements ReportService  {
 	public void insert(Report report) {
 		reportDAO.insert(report);
 	}
+//번호 업데이트
+	
+	@Override
+	public void updateNo() {
+		
+	}
+
+	@Override
+	public Report selectMem(Report report) {
+		return reportDAO.selectMem(report);
+	}
+	
 	
 	
 }

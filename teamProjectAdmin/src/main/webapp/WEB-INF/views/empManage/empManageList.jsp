@@ -52,6 +52,7 @@
 		<div class="card-body">
 			<div class="table-responsive">
 				<div>
+				
 					<button type='button' id='btn_i'
 						class="btn btn-outline btn-primary pull-left" onclick="addpage()">추가</button>
 					<button type='button' id='btn_n'
