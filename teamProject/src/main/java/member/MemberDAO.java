@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-
 import common.ConnectionManager;
 import vo.Bookmark;
 import vo.Member;
@@ -259,6 +258,72 @@ public class MemberDAO {
 			}
 			return resultVO;
 		}
+		
+	//아이디 중복검사
+		public int memberIdCheck(String idCheck) {
+			int cnt = 0;
+			ResultSet rs = null;
+			PreparedStatement pstmt = null;
+			try {
+				conn = ConnectionManager.getConnnect();
+				String sql = "  select count(member_id) from member where member_id = ?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, idCheck);
+				rs = pstmt.executeQuery();
+				if(rs.next()) {
+					cnt = rs.getInt(1);					
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				ConnectionManager.close(rs, pstmt, conn);
+			}
+			return cnt;
+		}
+		
+		//아이디 닉네임
+				public int memberNiCheck(String NiCheck) {
+					int cnt = 0;
+					ResultSet rs = null;
+					PreparedStatement pstmt = null;
+					try {
+						conn = ConnectionManager.getConnnect();
+						String sql = "  select count(nickname) from member where nickname = ?";
+						pstmt = conn.prepareStatement(sql);
+						pstmt.setString(1, NiCheck);
+						rs = pstmt.executeQuery();
+						if(rs.next()) {
+							cnt = rs.getInt(1);					
+						}
+					} catch (Exception e) {
+						e.printStackTrace();
+					} finally {
+						ConnectionManager.close(rs, pstmt, conn);
+					}
+					return cnt;
+				}
+				
+				//아이디 이메일
+				public int memberEmCheck(String EmCheck) {
+					int cnt = 0;
+					ResultSet rs = null;
+					PreparedStatement pstmt = null;
+					try {
+						conn = ConnectionManager.getConnnect();
+						String sql = "  select count(member_email) from member where member_email = ?";
+						pstmt = conn.prepareStatement(sql);
+						pstmt.setString(1, EmCheck);
+						rs = pstmt.executeQuery();
+						if(rs.next()) {
+							cnt = rs.getInt(1);					
+						}
+					} catch (Exception e) {
+						e.printStackTrace();
+					} finally {
+						ConnectionManager.close(rs, pstmt, conn);
+					}
+					return cnt;
+				}
 
 	//
 	// 메일수신회원수 : select count(id) from member where mailyn='y'

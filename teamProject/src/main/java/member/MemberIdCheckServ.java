@@ -8,11 +8,16 @@ import javax.servlet.http.HttpServletResponse;
 
 import common.Controller;
 
-public class MemberJoinCheckServ implements Controller {
+public class MemberIdCheckServ implements Controller {
 
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-
+		String member_id = request.getParameter("member_id");
+		
+		int a = 0;
+		MemberDAO dao = new MemberDAO();
+		a = dao.memberIdCheck(member_id);
+		response.getWriter().print(a);
+		
 	}
 
 }

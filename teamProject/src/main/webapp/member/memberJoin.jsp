@@ -11,14 +11,60 @@
 <script>
 
 	
-	function openIdChk(){
-		window.name="parentform";
-		window.open("member/memberCheck.jsp", "chkForm", "width=500, height=300m resizable = no, scrollbars = no");
+	function IdChk(){
+		var member_id = $("#member_id").val();
+		$.ajax({
+			url: "${pageContext.request.contextPath}/Ajax/memberIdCheck.do",
+			type: "POST",
+			data : {
+				member_id : member_id
+			},
+			success: function(result){
+				if(result == 1){
+					alert("이미 존재하는 ID 입니다.");
+				}else{
+					alert("사용 가능한 ID 입니다.");
+				}
+			}
+		})
 	}
 	
-	function inputIdCheck(){
-		document.userInfo.idDuplication.val = "idUnCheck";
+	function NiChk(){
+		var nickname = $("#nickname").val();
+		$.ajax({
+			url: "${pageContext.request.contextPath}/Ajax/memberIdCheck.do",
+			type: "POST",
+			data : {
+				nickname : nickname
+			},
+			success: function(result){
+				if(result == 1){
+					alert("이미 존재하는 닉네임 입니다.");
+				}else{
+					alert("사용 가능한 닉네임 입니다.");
+				}
+			}
+		})
 	}
+	
+	function EmChk(){
+		var member_eamil = $("#member_eamil").val();
+		$.ajax({
+			url: "${pageContext.request.contextPath}/Ajax/memberIdCheck.do",
+			type: "POST",
+			data : {
+				member_eamil : member_eamil
+			},
+			success: function(result){
+				if(result == 1){
+					alert("이미 존재하는 e-mail 입니다.");
+				}else{
+					alert("사용 가능한 e-mail 입니다.");
+				}
+			}
+		})
+	}
+	
 </script>
 </head>
 <body>
@@ -41,12 +87,12 @@
 						<h3>회원가입</h3>
 						<form class="row login_form" action="/app/memberJoin.do"" id="frm" >
 							<div class="col-md-12 form-group">
-								<input type="text" class="form-control" id="member_id" name="member_id" placeholder="id" check_result="fail"
-								required onfocus="this.placeholder = ''" onblur="this.placeholder = 'id'" onkeydown="inputIdChk()">
+								<input type="text" class="form-control" id="member_id" name="member_id" placeholder="id"
+								required onfocus="this.placeholder = ''" onblur="this.placeholder = 'id'">
 								<div class="eheck_font" id="id_check"></div>
 							</div>
 							<input type="hidden" name="idCheckh" value="idUnCheck"> 
-							<button onclick="openIdChk()">체크</button>
+							<button type="button" onclick="IdChk()" >체크</button>
               <div class="col-md-12 form-group">
 								<input type="password" class="form-control" id="member_pw" name="member_pw" placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'">
               					<div class="eheck_font" id="pw_check"></div>
@@ -64,10 +110,12 @@
 								<input type="text" class="form-control" id="nickname" name="nickname" placeholder="닉네임 입력" onfocus="this.placeholder = ''" onblur="this.placeholder = 'nickname'">
               					<div class="eheck_font" id="nickname_check"></div>
               </div>
+              <button type="button" onclick="NiChk()" >체크</button>
               <div class="col-md-12 form-group">
 								<input type="text" class="form-control" id="member_email" name="member_email" placeholder="Email 입력" onfocus="this.placeholder = ''" onblur="this.placeholder = 'member_email'">
               <div class="eheck_font" id="nickname_check"></div>
               </div>
+              <button type="button" onclick="EmChk()" >체크</button>
                <div class="col-md-12 form-group">
 				<label for="gender">성별:</label>
 					<input type="radio" id="male"name="gender" value="male">
