@@ -3642,16 +3642,38 @@ EPUBJS.reader.ControlsController = function(book) {
 
 	$bookmark.on("click", function() {
 		var cfi = reader.rendition.currentLocation().start.cfi;
-		alert(cfi);
 		var bookmarked = reader.isBookmarked(cfi);
 		console.log(bookmarked)
-
+		var bookmark_content = $("#bookmark_text").val();
 		if(bookmarked === -1) { //-- Add bookmark
 			reader.addBookmark(cfi);
 			$bookmark.addClass("icon-bookmark").removeClass("icon-bookmark-empty");
+			
+			$.ajax({
+				url: page+"/Ajax/eBookReadingBookInsertMark.do",
+				type : "POST",
+				data : {
+					member_no : member_no,
+					book_no : book_no,
+					bookmark_index : cfi,
+					bookmark_content : bookmark_content
+				},
+				success: function(result){
+					$("#bookmark_text").val("");
+				}
+			});
 		} else { //-- Remove Bookmark
 			reader.removeBookmark(cfi);
 			$bookmark.removeClass("icon-bookmark").addClass("icon-bookmark-empty");
+			$.ajax({
+				url: page+"/Ajax/eBookReadingBookDeleteMark.do",
+				type : "POST",
+				data : {
+					member_no : member_no,
+					book_no : book_no,
+					bookmark_index : cfi
+				}
+			});
 		}
 	});
 

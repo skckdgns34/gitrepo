@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8" isELIgnored="false"%>
 <!DOCTYPE html>
 <html class="no-js">
     <head>
@@ -20,7 +20,9 @@
 
         <script>
             "use strict";
-
+            var page = "${pageContext.request.contextPath}";
+			var member_no = "${member_no}";
+			var book_no = "${book_no}";
             document.onreadystatechange = function () {
               if (document.readyState == "complete") {
                 window.reader = ePubReader("The-Lost-World.epub", { //url 경로
@@ -58,6 +60,7 @@
 
           <!-- <a id="show-Search" class="show_view icon-search" data-view="Search">Search</a> -->
           <a id="show-Toc" class="show_view icon-list-1 active" data-view="Toc">TOC</a>
+          
           <a id="show-Bookmarks" class="show_view icon-bookmark" data-view="Bookmarks">Bookmarks</a>
           <!-- <a id="show-Notes" class="show_view icon-edit" data-view="Notes">Notes</a> -->
 
@@ -90,6 +93,7 @@
             <span id="chapter-title"></span>
           </div>
           <div id="title-controls">
+          	<input type="text" id="bookmark_text" placeholder="북마크를 남기실 이름을 적어주세요"/>
             <a id="bookmark" class="icon-bookmark-empty">Bookmark</a>
             <a id="setting" class="icon-cog">Settings</a>
             <a id="fullscreen" class="icon-resize-full">Fullscreen</a>
