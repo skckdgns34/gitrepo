@@ -8,6 +8,14 @@
 <title>내서재 - 찜목록</title>
 <style>
 	li {list-style-type: none; float: left; margin-left: 20px;}
+	
+	button {
+  background-color: white; 
+  color: black; 
+  border: 2px solid 002347;
+  padding: 7px 15px;
+  font-size: 12px;
+}
 </style>
 </head>
 <body>
