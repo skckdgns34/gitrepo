@@ -24,9 +24,9 @@ public class EBookReadingServ implements Controller
 		
 		if(checkMy.size() == 0) {
 			EBookDAO.getInstance().myLibraryFirstInsert(member_no,book_no);
-			request.getRequestDispatcher("/index.jsp").forward(request, response);
+			request.getRequestDispatcher("/eBookViewer.jsp").forward(request, response);
 		}else {
-			request.getRequestDispatcher("/index.jsp#"+ checkMy.get(0).get("last_read_index")).forward(request, response);
+			request.getRequestDispatcher("/eBookViewer.jsp#"+ checkMy.get(0).get("last_read_index")).forward(request, response);
 		}
 	}
 
