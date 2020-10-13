@@ -30,13 +30,7 @@
 		return;
 	}
 
-	function deletepage() //삭제
-	{
-		window.document.location.href = "memberManageReportDelete.ad?declaration_no="
-				+ $('input[name="user_CheckBox"]:checked').val();
-		alert($('input[name="user_CheckBox"]:checked').val())
-		return;
-	}
+	
 	
 	
 </script>
@@ -55,8 +49,7 @@
 						class="btn btn-outline btn-primary pull-right"
 						onclick="deletepage()">삭제</button>
 				</div>
-				<table class="table table-bordered" id="dataTable" width="100%"
-					cellspacing="0">
+				 <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
 
 					<thead>
 						<tr>
@@ -84,7 +77,7 @@
 								<td>${report.getDeclaration_date()}</td>
 								<td>${report.getBook_no()}</td>
 								<td><button type="button" class="btn btn-link" onclick="btnClick()" value="${report.getReview_no()}">${report.getReview_no()}</button></td>
-								<td>${report.getCode_value()}</td>
+							
 						</c:forEach>
 					</tbody>
 				</table>

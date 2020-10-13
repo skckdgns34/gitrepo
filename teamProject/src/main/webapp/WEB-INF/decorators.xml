@@ -34,5 +34,6 @@
 		<pattern>/audioBookReading*</pattern>
 		<pattern>/memberDeletePassword.do</pattern>
 		<pattern>/eBookReview.do</pattern>
+		<pattern>/eBookReading.do</pattern>
 	</excludes>
 </decorators>

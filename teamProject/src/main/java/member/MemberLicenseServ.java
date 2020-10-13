@@ -19,7 +19,7 @@ public class MemberLicenseServ implements Controller
 	{
 		String member_no = (String)request.getSession().getAttribute("member_no");
 		MemberBookDAO dao = new MemberBookDAO();
-		List<Map<String, Object>> list = dao.licenseList(member_no);
+		List<Map<String, Object>> list = dao.ticketList(member_no);
 		System.out.println(list);
 		request.setAttribute("list", list);
 		 

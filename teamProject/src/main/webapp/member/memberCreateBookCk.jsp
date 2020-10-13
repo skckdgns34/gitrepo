@@ -8,7 +8,22 @@
 <title>Insert title here</title>
 <style>
 	li {list-style-type: none; float: left; margin-left: 20px;}
+	
+	button {
+  background-color: white; 
+  color: black; 
+  border: 2px solid 002347;
+  padding: 7px 15px;
+  font-size: 12px;
+}
 </style>
+<script>
+$(function(){
+	$("#btnsend").on("click", function(){
+		location.href = "${pageContext.request.contextPath }/.do?book_no=" + $("#book_no").val()
+	});
+})
+</script>
 </head>
 <body>
 	
@@ -55,7 +70,7 @@
       <div class="row">
        <div class="col-lg-12">
 	<div class="table-responsive">
-		<input type="hidden" name="member_no" id="member_no" value="${member_no }"> <!--  이것의 용도는? -->
+		<input type="hidden" name="member_no" id="member_no" value="${member_no }">
 		<table class="table table-bordered" id="dataTable" width="100%"
 								cellspacing="0">
 								<thead>
@@ -74,7 +89,7 @@
 					<td>${mywriting.genre }</td>
 					<td>${mywriting.views }</td>
 					<td>${mywriting.my_write_date }</td>
-					<td><button>바로가기</button> <button>편집하기</button></td>
+					<td><button>편집하기</button></td>
 				</tr>
 			</c:forEach>
 			</tbody>

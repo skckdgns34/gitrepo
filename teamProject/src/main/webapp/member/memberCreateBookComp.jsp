@@ -12,7 +12,22 @@ li {
 	float: left;
 	margin-left: 20px;
 }
+
+button {
+  background-color: white; 
+  color: black; 
+  border: 2px solid 002347;
+  padding: 7px 15px;
+  font-size: 12px;
+}
 </style>
+<script>
+$(function(){
+	$("#btnsend").on("click", function(){
+		location.href = "${pageContext.request.contextPath }/eBookDetail.do?book_no=" + $("#book_no").val()
+	});
+})
+</script>
 </head>
 <body>
 	<!-- Breadcrumb Section Begin -->
@@ -53,7 +68,6 @@ li {
 	<input type="hidden" name="member_no" id="member_no"
 		value="${member_no }">
 	<section class="section-margin--small mb-5">
-
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12">
@@ -71,13 +85,13 @@ li {
 							</thead>
 							<tbody>
 								<c:forEach items="${list }" var="bookcomp">
+	<input type="hidden" id="book_no" value="${bookcomp.book_no }">
 									<tr>
 										<td>${bookcomp.title }</td>
 										<td>${bookcomp.genre }</td>
 										<td>${bookcomp.views }</td>
 										<td>${bookcomp.registration_date }</td>
-										<td><button>바로가기</button>
-											<button>편집하기</button></td>
+										<td><button id="btnsend">바로가기</button></td>
 									</tr>
 								</c:forEach>
 							</tbody>

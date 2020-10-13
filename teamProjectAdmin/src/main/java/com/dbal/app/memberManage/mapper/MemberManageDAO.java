@@ -22,6 +22,14 @@ public interface MemberManageDAO {
 
 	// 입력
 	public void insert(Member memberVO);
+	
+
+	//이용권 조회
+	public List<Member> selectTicket(Member memberVO);
+	//리뷰 조회
+	public List<Member> selectReview(Member memberVO);
+	//나만의 도서 조회
+	public List<Member> selectMylib(Member memberVO);
 
 	// 최다 조회수
 	public List<Books> selectViews();

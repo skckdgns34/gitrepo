@@ -145,7 +145,7 @@ function btnHideNShow(){
 
 
 function goRead(){ //읽기버튼이 생성되면 읽는페이지로 이동
-	location.href="${pageContext.request.contextPath}/eBookReading.do";
+	
 }
 
 function reviewLogin(){ //하트 추천기능  로그인안하고 누를려고 하면 로그인 표시 보여주는거
@@ -349,10 +349,13 @@ function reDeclarationBtn() {
 								
 								</c:if>
 							</c:if>
-							<a class="button primary-btn" href="#" id="read" onclick="goRead()">읽기</a>
+							<form action="${pageContext.request.contextPath}/eBookReading.do" method="post">
+								<input type="hidden" name="reading_book_no" value="${book[0].book_no}"/>
+								<input type="hidden" name="reading_member_no" value="${member_no}"/>
+								<button class="button primary-btn" href="#" id="read">읽기</button>
+							</form>
          					<a class="button primary-btn" href="#" id="check" onclick="licence()">결제</a> 
 							</div>	
-
 				</div>
 			</div>
 		</div>

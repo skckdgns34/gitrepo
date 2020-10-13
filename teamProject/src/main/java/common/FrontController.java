@@ -47,7 +47,7 @@ public class FrontController extends HttpServlet {
 		list.put("/memberBookMark.do", new member.MemberBookMarkServ()); // 내서재 - 읽던책
 		list.put("/memberBookLuvList.do", new member.MemberBookLuvListServ()); // 내서재 - 찜목록
 		list.put("/memberCreateBookCk.do", new member.MemberCreateBookCkServ()); // 내서재 - 나만의 도서
-		list.put("/memberCreateBookComp.do", new member.MemberCreateBookCompServ()); // 내서재 - 나만의 도서
+		list.put("/memberCreateBookComp.do", new member.MemberCreateBookCompServ()); // 내서재 - 나만의 도서 등록완료
 		list.put("/memberLogin.do", new member.MemberLoginServ()); // 로그인
 		list.put("/memberLogout.do", new member.MemberLogoutServ()); // 로그아웃
 		list.put("/memberFind.do", new member.MemberFindServ()); // 아이디/비밀번호 찾기 - 아이디 찾기
@@ -55,6 +55,9 @@ public class FrontController extends HttpServlet {
 		list.put("/memberFindCheck.do", new member.MemberFindCheckServ()); // 아이디/비밀번호 찾기 - 인증번호 확인
 		list.put("/memberFindPassword.do", new member.MemberFindPasswordServ()); // 아이디/비밀번호 찾기 - 비밀번호 번경
 		list.put("/memberJoin.do", new member.MemberJoinServ()); // 회원가입
+		list.put("/Ajax/memberIdCheck.do", new member.MemberIdCheckServ()); //아이디 중복체크
+		list.put("/Ajax/memberNiCheck.do", new member.MemberNiCheckServ()); //닉네임 중복체크
+		list.put("/Ajax/memberEmCheck.do", new member.MemberEmCheckServ()); //이메일 중복체크
 		list.put("/memberPopup.do", new member.MemberPopupServ()); // 알람팝업
 		list.put("/memberLicense.do", new member.MemberLicenseServ()); // 내서재 - 이용권
 		list.put("/memberLibrary.do", new member.MemberLibraryServ()); // 내서재
@@ -203,6 +206,10 @@ public class FrontController extends HttpServlet {
 		list.put("/audioBookMarkInsert.do", new ebook.AudioBookMarkInsertServ());
 		list.put("/audioBookMarkDelete.do", new ebook.AudioBookMarkDeleteServ());
 		list.put("/Ajax/eBookReviewDeclaration.do", new ebook.EBookReviewDeclaration());
+		
+		
+		list.put("/Ajax/eBookReadingBookInsertMark.do", new ebook.EBookReadingBookMarkInsertAjaxServ()); //뷰어에서 북마크 인설트
+		list.put("/Ajax/eBookReadingBookDeleteMark.do", new ebook.EBookReadingBookMarkDeleteAjaxServ()); //뷰어에서 북마크 지우기
 	}
 	
 	public FrontController() {

@@ -10,6 +10,7 @@ import java.util.Map;
 
 import common.ConnectionManager;
 import vo.Books;
+import vo.Mylibrary;
 import vo.Mywriting;
 
 public class MemberBookDAO {	//내서재 등 관련
@@ -65,7 +66,7 @@ public class MemberBookDAO {	//내서재 등 관련
 		ArrayList<Books> list = new ArrayList<Books>();
 		try {
 			conn = ConnectionManager.getConnnect();
-			String sql = " SELECT member_no, title, writer, genre, views, registration_date"
+			String sql = " SELECT book_no, member_no, title, writer, genre, views, registration_date"
 					+ " FROM books"
 					+ " WHERE MEMBER_NO = ?";
 			pstmt = conn.prepareStatement(sql);
@@ -73,6 +74,7 @@ public class MemberBookDAO {	//내서재 등 관련
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				resultVo = new Books();
+				resultVo.setBook_no(rs.getString("BOOK_NO"));
 				resultVo.setMember_no(rs.getString("MEMBER_NO"));
 				resultVo.setTitle(rs.getString("TITLE"));
 				resultVo.setWriter(rs.getString("writer"));
@@ -90,22 +92,23 @@ public class MemberBookDAO {	//내서재 등 관련
 	}
 	
 	//읽던 책
-	public ArrayList<Books> reading(Books booksVO) {
-		Books resultVo = null;
+	public ArrayList<Mylibrary> reading(Mylibrary mylibraryVO) {
+		Mylibrary resultVo = null;
 		ResultSet rs = null;
-		ArrayList<Books> list = new ArrayList<Books>();
+		ArrayList<Mylibrary> list = new ArrayList<Mylibrary>();
 		try {
 			conn = ConnectionManager.getConnnect();
-			String sql = " SELECT b.book_img, b.title, b.writer, m.member_no"
-					+ " FROM books b, member m"
-					+ " WHERE b.member_no = m.member_no"
-					+ " AND m.member_no = ?";
+			String sql = " SELECT l.member_no, l.book_no, b.title, b.writer"
+					+ " FROM mylibrary l, books b"
+					+ " WHERE l.book_no = b.book_no"
+					+ " and l.member_no = ?";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, booksVO.getMember_no());
+			pstmt.setString(1, mylibraryVO.getMember_no());
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				resultVo = new Books();
-				resultVo.setBook_img(rs.getString("book_img"));
+				resultVo = new Mylibrary();
+				resultVo.setMember_no(rs.getString("member_no"));
+				resultVo.setBook_no(rs.getString("book_no"));
 				resultVo.setTitle(rs.getString("title"));
 				resultVo.setWriter(rs.getString("writer"));
 				list.add(resultVo);
@@ -119,13 +122,13 @@ public class MemberBookDAO {	//내서재 등 관련
 	}
 	
 	//찜 목록
-	public ArrayList<Books> ticketList(Books booksVO) {
+	public ArrayList<Books>  myLuvList(Books booksVO) {
 		Books resultVo = null;
 		ResultSet rs = null;
 		ArrayList<Books> list = new ArrayList<Books>();
 		try {
 			conn = ConnectionManager.getConnnect();
-			String sql = " SELECT rownum, m.member_no, b.title, b.writer, b.genre, b.views, l.wish"
+			String sql = " SELECT rownum, m.member_no, b.book_no, b.title, b.writer, b.genre, b.views, l.wish"
 					+ " FROM member m, books b, mylibrary l"
 					+ " WHERE b.book_no = l.book_no"
 					+ " AND m.member_no = l.member_no"
@@ -136,6 +139,7 @@ public class MemberBookDAO {	//내서재 등 관련
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				resultVo = new Books();
+				resultVo.setBook_no(rs.getString("book_no"));
 				resultVo.setTitle(rs.getString("title"));
 				resultVo.setWriter(rs.getString("writer"));
 				resultVo.setGenre(rs.getString("genre"));
@@ -153,7 +157,7 @@ public class MemberBookDAO {	//내서재 등 관련
 	}
 	
 	//이용권 내역
-	public List<Map<String, Object>> licenseList(String member_no) {
+	public List<Map<String, Object>> ticketList(String member_no) {
 		ResultSet rs = null;
 		List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
 		try {

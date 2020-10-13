@@ -9,7 +9,22 @@
 <title>Insert title here</title>
 <style>
 	li {list-style-type: none; float: left; margin-left: 20px;}
+	
+	button {
+  background-color: white; 
+  color: black; 
+  border: 2px solid 002347;
+  padding: 7px 15px;
+  font-size: 12px;
+}
 </style>
+<script>
+$(function(){
+	$("#btnsend").on("click", function(){
+		location.href = "${pageContext.request.contextPath }/eBookDetail.do?book_no=" + $("#book_no").val()
+	});
+})
+</script>
 </head>
 <body>
 	<!-- Breadcrumb Section Begin -->
@@ -49,29 +64,36 @@
 				목록</a>
 	</ul>
 	<section class="section-margin--small mb-5">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-
-						<h4>읽은 책</h4>
-
-						<c:forEach items="${list }" var="book">
-							<div>
-								<ul>
-									<li>${book.book_img }</li>
-									<li><label>제목:</label> ${book.title }</li>
-									<li><label>작가:</label>${book.writer }</li>
-								</ul>
-							</div>
-
-						</c:forEach>
-
-
-
-					</div>
-				</div>
-			</div>
-	</section>
+	
+	<div class="container">
+      <div class="row">
+       <div class="col-lg-12">
+	<div class="table-responsive">
+		<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+		<thead>
+			<tr>
+				<td>제목</td>
+				<td>작가</td>
+				<td></td>
+			</tr>
+			</thead>
+			  <tbody>
+			<c:forEach items="${list }" var="mylibrary">
+			<input type="hidden" id="book_no" value="${mylibrary.book_no }">
+				<tr>
+					<td>${mylibrary.title }</td>
+					<td>${mylibrary.writer }</td>
+					<td><button id="btnsend">바로가기</button>
+					</td>
+				</tr>
+			</c:forEach>
+			</tbody>
+		</table>
+		</div>
+</div>
+</div>
+</div>
+</section>
 
 </body>
 </html>

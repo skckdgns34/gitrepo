@@ -790,6 +790,117 @@ public class EBookDAO
 		return aa;
 	}
 	
+	//책열자마자 그냥 mylibrary에다가 insert
+	public int myLibraryFirstInsert(String member_no, String book_no) {
+		int no =0;
+		int aa = 0;
+		ResultSet rs =null;
+		try {
+			conn = ConnectionManager.getConnnect();
+			conn.setAutoCommit(false);
+			String seqSql = "select no from seq where tablename = 'mylibrary'";
+			Statement stmt = conn.createStatement();
+			rs = stmt.executeQuery(seqSql);
+			rs.next();
+			no = rs.getInt(1);
+			
+			
+			seqSql = "update seq set no = no + 1 where tablename = 'mylibrary'";
+			stmt = conn.createStatement();
+			stmt.executeUpdate(seqSql);
+
+			
+			String sql = "insert into mylibrary(mylibrary_no, member_no, book_no)"
+					   + " values(?,?,?)";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, no);
+			pstmt.setString(2, member_no);
+			pstmt.setString(3, book_no);
+			aa = pstmt.executeUpdate();
+			conn.commit();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionManager.close(rs, pstmt, conn);
+		}
+		return aa;
+	}
 	
+	//책 열자마자 insert할려는데 그전에 일단 얘가 insert먼저 해놨나 체크
+	public ArrayList<Map<String, Object>> myLibraryInsertAfterCheck(String member_no, String book_no) {
+		ArrayList<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+		ResultSet rs =null;
+		try {
+			conn = ConnectionManager.getConnnect();
+			String sql = "select count(mylibrary_no) cnt , last_read_index from mylibrary where member_no = ? and book_no = ? group by last_read_index";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, member_no);
+			pstmt.setString(2, book_no);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				Map<String, Object> map = new HashMap<String, Object>();
+				map.put("cnt", rs.getInt("cnt"));
+				map.put("last_read_index", rs.getString("last_read_index"));
+				list.add(map);
+			}
+			conn.commit();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionManager.close(rs, pstmt, conn);
+		}
+		return list;
+	}
+	
+	//ebook 북마크 넣기
+	public void eBookMarkInsert(String member_no, String book_no, String bookmark_index, String bookmark_content) {
+		int no =0;
+		ResultSet rs = null;
+		try {
+			conn = ConnectionManager.getConnnect();
+			conn.setAutoCommit(false);
+			String seqSql = "select no from seq where tablename = 'bookmark'";
+			Statement stmt = conn.createStatement();
+			rs = stmt.executeQuery(seqSql);
+			rs.next();
+			no = rs.getInt(1);
+			
+			
+			seqSql = "update seq set no = no + 1 where tablename = 'bookmark'";
+			stmt = conn.createStatement();
+			stmt.executeUpdate(seqSql);
+
+			String sql = " insert into bookmark(bookmark_no,member_no, book_no, bookmark_index, bookmark_contents) values(?,?,?,?,?)";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, no);
+			pstmt.setString(2, member_no);
+			pstmt.setString(3, book_no);
+			pstmt.setString(4, bookmark_index);
+			pstmt.setString(5, bookmark_content);
+			pstmt.executeUpdate();
+			conn.commit();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionManager.close(rs, pstmt, conn);
+		}
+	}
+	
+	//ebook 북마크 삭제
+	public void eBookMarkDelete(String member_no, String book_no, String bookmark_index) {
+		try {
+			conn = ConnectionManager.getConnnect();
+			String sql = " delete bookmark where member_no = ? and book_no = ? and bookmark_index = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, member_no);
+			pstmt.setString(2, book_no);
+			pstmt.setString(3, bookmark_index);
+			pstmt.executeUpdate();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionManager.close(null, pstmt, conn);
+		}
+	}
 
 }
