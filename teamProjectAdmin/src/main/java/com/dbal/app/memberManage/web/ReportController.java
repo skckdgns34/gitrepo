@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.dbal.app.memberManage.Blacklist;
 import com.dbal.app.memberManage.Report;
@@ -22,20 +23,29 @@ public class ReportController {
 	@RequestMapping("/memberManageReportList.ad")
 	public String reportAll(Model model, Report report) {
 		model.addAttribute("list", reportService.selectAll(report));
-		System.out.println("sssssssssssssssssssssss");
-		System.out.println(reportService.selectAll(report));
-		System.out.println("sssssssssssssssssssssssssssssssssssss");
 		return "memberManage/memberManageReportList";
 		
 	}
-	//수정페이지
-	 @RequestMapping(value="/memberManageReportModifyForm.ad", method = RequestMethod.GET)
-	public String reportUpdateForm(Model model, Report report, HttpServletRequest request) {
-		
-		 return null;
+	
+	//한건 조회
+	 @RequestMapping(value = "/reportSelect.ad")
+	 @ResponseBody
+	 public Report reportSelect(Model model, Report report, HttpServletRequest request) {
+		 String review_no = request.getParameter("review_no");
+		 report.setReview_no(review_no);
 		 
+		 return reportService.selectOne(report);
 	 }
-	 //수정 처리
+	//블랙리스트 등록페이지
+	 @RequestMapping(value="/memberManageReportModifyForm.ad", method = RequestMethod.GET)
+	public String reportUpdateForm(Report report, Model model,HttpServletRequest request ) {
+		 String declaration_no = request.getParameter("declaration_no");
+		 report.setMember_no(declaration_no);
+		 model.addAttribute("list", reportService.selectMem(report));
+		 
+		 return "memberManage/memberManageblacklistInsert";
+	 }
+	 //블랙리스트 등록처리
 	 @RequestMapping(value="/memberManageReportModify.ad", method = RequestMethod.POST)
 	public String reportUpdate(Report report, HttpServletRequest request) {
 		

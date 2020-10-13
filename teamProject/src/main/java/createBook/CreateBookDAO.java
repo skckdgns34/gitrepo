@@ -65,8 +65,8 @@ public class CreateBookDAO {
 			try {
 				conn = ConnectionManager.getConnnect();
 				String sql = "select rownum, a.title, a.views, b.nickname, a.book_no " + 
-						" from (select * from books order by views desc) a, member b " + 
-						" where a.member_no = b.member_no";
+						" from (select * from books where views is not null order by views desc) a, member b " + 
+						" where a.member_no = b.member_no and rownum<=5";
 				pstmt = conn.prepareStatement(sql);
 				rs = pstmt.executeQuery();
 				while (rs.next()) {
@@ -85,6 +85,7 @@ public class CreateBookDAO {
 			}
 			return list;
 		}
+	
 	
 	//책 클릭한거 상세내용(일단)
 	public Books selectedUserBook(String book_no) {

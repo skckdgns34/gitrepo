@@ -10,6 +10,7 @@ import java.util.Map;
 
 import common.ConnectionManager;
 import vo.Books;
+import vo.Mylibrary;
 import vo.Mywriting;
 
 public class MemberBookDAO {	//내서재 등 관련
@@ -90,22 +91,23 @@ public class MemberBookDAO {	//내서재 등 관련
 	}
 	
 	//읽던 책
-	public ArrayList<Books> reading(Books booksVO) {
-		Books resultVo = null;
+	public ArrayList<Mylibrary> reading(Mylibrary mylibraryVO) {
+		Mylibrary resultVo = null;
 		ResultSet rs = null;
-		ArrayList<Books> list = new ArrayList<Books>();
+		ArrayList<Mylibrary> list = new ArrayList<Mylibrary>();
 		try {
 			conn = ConnectionManager.getConnnect();
-			String sql = " SELECT b.book_img, b.title, b.writer, m.member_no"
-					+ " FROM books b, member m"
-					+ " WHERE b.member_no = m.member_no"
-					+ " AND m.member_no = ?";
+			String sql = " SELECT l.member_no, l.book_no, b.title, b.writer"
+					+ " FROM mylibrary l, books b"
+					+ " WHERE l.book_no = b.book_no"
+					+ " and l.member_no = ?";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, booksVO.getMember_no());
+			pstmt.setString(1, mylibraryVO.getMember_no());
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				resultVo = new Books();
-				resultVo.setBook_img(rs.getString("book_img"));
+				resultVo = new Mylibrary();
+				resultVo.setMember_no(rs.getString("member_no"));
+				resultVo.setBook_no(rs.getString("book_no"));
 				resultVo.setTitle(rs.getString("title"));
 				resultVo.setWriter(rs.getString("writer"));
 				list.add(resultVo);

@@ -79,7 +79,7 @@
 								<tr>
 									<td><input type="checkbox" name="user_CheckBox" <c:if test="${list.ticketyn==1}">disabled</c:if>
 										onclick="check(this)" value="${list.price }"></td>
-									<td>${list.ticket_name }</td><input type="hidden" value="${list.ticket_code}"></input>
+									<td>${list.ticket_name }</td><input type="hidden" value="${list.ticket_code}"/>
 									<td>${list.price}</td>
 									<td class="member_ticket">
 									<c:if test="${list.ticketyn==1 }">보유중</c:if>								

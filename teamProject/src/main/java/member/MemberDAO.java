@@ -9,8 +9,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-
 import common.ConnectionManager;
+import vo.Bookmark;
 import vo.Member;
 import vo.Mylibrary;
 
@@ -258,6 +258,72 @@ public class MemberDAO {
 			}
 			return resultVO;
 		}
+		
+	//아이디 중복검사
+		public int memberIdCheck(String idCheck) {
+			int cnt = 0;
+			ResultSet rs = null;
+			PreparedStatement pstmt = null;
+			try {
+				conn = ConnectionManager.getConnnect();
+				String sql = "  select count(member_id) from member where member_id = ?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, idCheck);
+				rs = pstmt.executeQuery();
+				if(rs.next()) {
+					cnt = rs.getInt(1);					
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				ConnectionManager.close(rs, pstmt, conn);
+			}
+			return cnt;
+		}
+		
+		//아이디 닉네임
+				public int memberNiCheck(String NiCheck) {
+					int cnt = 0;
+					ResultSet rs = null;
+					PreparedStatement pstmt = null;
+					try {
+						conn = ConnectionManager.getConnnect();
+						String sql = "  select count(nickname) from member where nickname = ?";
+						pstmt = conn.prepareStatement(sql);
+						pstmt.setString(1, NiCheck);
+						rs = pstmt.executeQuery();
+						if(rs.next()) {
+							cnt = rs.getInt(1);					
+						}
+					} catch (Exception e) {
+						e.printStackTrace();
+					} finally {
+						ConnectionManager.close(rs, pstmt, conn);
+					}
+					return cnt;
+				}
+				
+				//아이디 이메일
+				public int memberEmCheck(String EmCheck) {
+					int cnt = 0;
+					ResultSet rs = null;
+					PreparedStatement pstmt = null;
+					try {
+						conn = ConnectionManager.getConnnect();
+						String sql = "  select count(member_email) from member where member_email = ?";
+						pstmt = conn.prepareStatement(sql);
+						pstmt.setString(1, EmCheck);
+						rs = pstmt.executeQuery();
+						if(rs.next()) {
+							cnt = rs.getInt(1);					
+						}
+					} catch (Exception e) {
+						e.printStackTrace();
+					} finally {
+						ConnectionManager.close(rs, pstmt, conn);
+					}
+					return cnt;
+				}
 
 	//
 	// 메일수신회원수 : select count(id) from member where mailyn='y'
@@ -308,7 +374,7 @@ public class MemberDAO {
 		try {
 			conn = ConnectionManager.getConnnect();
 			
-			String sql = "select a.mylibrary_no, b.title, a.wish, a.last_read_index,a.book_no from mylibrary a, books b where a.book_no = b.book_no and a.member_no = ?";
+			String sql = "select a.mylibrary_no, b.title, a.wish, a.last_read_index,a.book_no, b.writer from mylibrary a, books b where a.book_no = b.book_no and a.member_no = ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, member_no);
 			rs = pstmt.executeQuery();
@@ -320,6 +386,7 @@ public class MemberDAO {
 				lib.setWish(rs.getString(3));
 				lib.setLast_read_index(rs.getString(4));
 				lib.setBook_no(rs.getString(5));
+				lib.setWriter(rs.getString(6));
 				list.add(lib);
 			}
 		} catch (Exception e) {
@@ -369,5 +436,91 @@ public class MemberDAO {
 		}
 		return r;
 		
+	}
+
+	public ArrayList<Bookmark> bookMarkList(String book_no, String no) {
+		ArrayList<Bookmark> list = new ArrayList<Bookmark>();
+		ResultSet rs = null;
+		try {
+			conn = ConnectionManager.getConnnect();
+			
+			String sql = "select bookmark_no, book_no, bookmark_index, bookmark_contents,rownum from bookmark where book_no=? and member_no=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, book_no);
+			pstmt.setString(2, no);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				Bookmark mark = new Bookmark();
+				mark.setBookmark_no(rs.getString(1));
+				mark.setBook_no(rs.getString(2));
+				mark.setBookmark_index(rs.getString(3));
+				mark.setBookmark_contents(rs.getString(4));
+				mark.setRownum(rs.getString(5));
+				list.add(mark);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionManager.close(rs, pstmt, conn);
+		}
+		return list;
+	}
+	
+	//북마크에 추가하는거
+	public Bookmark insertBookMark(Bookmark mark) {
+		ResultSet rs = null;
+		try {
+			
+			conn = ConnectionManager.getConnnect();
+			String seqSql = "select no from seq where tablename='bookmark'";
+			Statement stmt = conn.createStatement();
+			rs = stmt.executeQuery(seqSql);
+			rs.next();
+			String no = rs.getString(1);
+			mark.setBookmark_no(no);
+			
+			seqSql = "select count(*)+1 from bookmark where member_no="+mark.getMember_no()+" and book_no="+mark.getBook_no();
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(seqSql);
+			rs.next();
+			String row_no = rs.getString(1);
+			System.out.println(row_no);
+			mark.setRownum(row_no);
+			
+			
+			seqSql = "update seq set no = no + 1 where tablename='bookmark'";
+			stmt = conn.createStatement();
+			stmt.execute(seqSql);
+			
+			String sql = "insert into bookmark(bookmark_no, member_no, book_no, bookmark_index, bookmark_contents)"
+					+ "values(?,?,?,trunc(?),?)";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, mark.getBookmark_no());
+			pstmt.setString(2, mark.getMember_no());
+			pstmt.setString(3, mark.getBook_no());
+			pstmt.setString(4, mark.getBookmark_index());
+			pstmt.setString(5, mark.getBookmark_contents());
+			int r = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionManager.close(rs, pstmt, conn);
+		}
+		return mark;
+	}
+
+	public void deleteBookM(String bookM_no) {
+		try {
+			conn = ConnectionManager.getConnnect();
+			String sql = "delete bookmark where bookmark_no = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, bookM_no);
+			int r = pstmt.executeUpdate();
+			System.out.println("del: " + r);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionManager.close(conn);
+		}
 	}
 }

@@ -6,42 +6,76 @@
 	  
 <!-- 전체조회 -->    
 <select id="selectAll" parameterType="report" resultType="report">
-   SELECT
+  SELECT 
+			  MEMBER_NO, 
+			  DECLARATION_CONTENT, 
+			  DECLARATION_DATE, 
+			  DECLARATION_CODE, 
+			  BOOK_NO, 
+			  REVIEW_NO, 
+			  DECLARATION_NO, 
+			  REPORTED_MEMBER
+	FROM DECLARATION 
+	WHERE REPORTED_MEMBER NOT IN (SELECT MEMBER_NO FROM BLACKLIST)
+	</select>
+	
+ <!-- 리뷰 한 건 조회  --> 
+<select id="selectOne"  parameterType="report" resultType="report">
+ SELECT
+	 CONTENTS
+     FROM REVIEW
+     WHERE REVIEW_NO = #{review_no}		
+</select>
+
+
+	
+ <!--  한 건 조회  --> 
+<select id="selectMem"  parameterType="report" resultType="report">
+ SELECT
+ 			D.DECLARATION_NO,
 		    D.MEMBER_NO, 
 		    D.DECLARATION_CONTENT, 
-		    D.REPORTED_NUMBER, 
+		    D.REPORTED_MEMBER, 
 		    D.DECLARATION_DATE, 
 		    D.DECLARATION_CODE, 
 		    D.BOOK_NO, 
 		    D.REVIEW_NO,
 		    C.CODE_VALUE
      FROM DECLARATION D, COMMON C
-     WHERE D.DECLARATION_CODE = C.COMMON_CODE
-	</select>
-	
-<!--  한 건 조회 
-<select id="selectOne"  parameterType="blacklist" resultType="blacklist">
-SELECT 
-			B.BLACKLIST_NO, 
-			B.MEMBER_NO, 
-			M.NICKNAME, 
-			B.BLACKLIST_REASON, 
-			B.LIMIT_DATE,
-      C.CODE_VALUE
-FROM BLACKLIST B, MEMBER M, COMMON C 
-WHERE B.MEMBER_NO = M.MEMBER_NO
-AND B.BLACKLIST_REASON = C.CODE
-AND B.BLACKLIST_NO = #{blacklist_no}		
+     WHERE D.DECLARATION_CODE = C.CODE
+     AND D.DECLARATION_NO = #{declaration_no}	
 </select>
 
+<!--블랙리스트 등록-->
+<update id="updateNo">
+		update seq set no = no+1 where tablename='blacklist'
 
- 업데이트 
-<update id="update">
-update blacklist set
-member_no = #{member_no},
-BLACKLIST_REASON = #{blacklist_reason},
-limit_date = #{limit_date}
-where blacklist_no = #{blacklist_no}
-</update> -->
+	</update>
+	
+	
+	<insert id="insert" parameterType="report">
+
+		<selectKey keyProperty="blacklist_no" resultType="string"
+			order="BEFORE">
+			SELECT NO
+			FROM SEQ
+			WHERE TABLENAME='blacklist'
+		</selectKey>
+
+		insert 
+		into 
+		blacklist
+				(blacklist_no,
+				blacklist_reason,
+				member_no,
+				limit_date)
+				values 
+				(
+				#{blacklist_no},
+				#{blacklist_reason},
+				#{member_no},
+				SYSDATE
+		)
+	</insert>
 
 </mapper>

@@ -9,4 +9,5 @@ public class Bookmark {
 	private String book_no;
 	private String bookmark_index;
 	private String bookmark_contents;
+	private String rownum;
 }

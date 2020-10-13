@@ -3,6 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@page isELIgnored="false"%>
 <!DOCTYPE html>
@@ -51,6 +52,7 @@
 		<div class="card-body">
 			<div class="table-responsive">
 				<div>
+				
 					<button type='button' id='btn_i'
 						class="btn btn-outline btn-primary pull-left" onclick="addpage()">추가</button>
 					<button type='button' id='btn_n'
@@ -83,8 +85,8 @@
 								<td>${employees.getEmp_no()}</td>
 								<td>${employees.getEmp_id()}</td>
 								<td>${employees.getEmp_name()}</td>
-								<td>${employees.getEmp_birth()}</td>
-								<td>${employees.getEntereddate()}</td>
+								<td>${fn:substring(employees.emp_birth,0,10)}</td>
+								<td>${fn:substring(employees.entereddate,0,10)}</td>
 								<td>${employees.getDept_code_value()}</td>
 								<td>${employees.getEmp_address()}</td>
 								<td>${employees.getRank_code_value()}</td>
