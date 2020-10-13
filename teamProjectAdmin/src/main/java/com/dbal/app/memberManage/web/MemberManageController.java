@@ -24,7 +24,7 @@ public class MemberManageController {
 
 	// 전체조회
 	@RequestMapping("/memberManageMain.ad")
-	public String blackListAll(Model model, Member member) {
+	public String selectAll(Model model, Member member) {
 		model.addAttribute("list", memberManageService.selectAll(member));
 		return "memberManage/memberManageMain";
 	}
@@ -51,6 +51,18 @@ public class MemberManageController {
 		memberVO.setMember_no(member_no);
 		memberManageService.delete(memberVO);
 		return "redirect:/memberManageMain.ad"; 
+	}
+	
+	//상세 조회
+	@RequestMapping("memberManageDetail.ad")
+	@ResponseBody
+	public HashMap<String, Object>  memberManageDetail(Model model,Member memberVO, HttpServletRequest request) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("ticket", memberManageService.selectTicket(memberVO));
+		map.put("review",memberManageService.selectReview(memberVO));
+		map.put("mylib", memberManageService.selectMylib(memberVO));
+			
+		return map;
 	}
 	
 	
