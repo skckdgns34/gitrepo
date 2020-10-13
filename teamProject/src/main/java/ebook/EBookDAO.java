@@ -827,18 +827,21 @@ public class EBookDAO
 	}
 	
 	//책 열자마자 insert할려는데 그전에 일단 얘가 insert먼저 해놨나 체크
-	public int myLibraryInsertAfterCheck(String member_no, String book_no) {
-		int aa = 0;
+	public ArrayList<Map<String, Object>> myLibraryInsertAfterCheck(String member_no, String book_no) {
+		ArrayList<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
 		ResultSet rs =null;
 		try {
 			conn = ConnectionManager.getConnnect();
-			String sql = "select count(mylibrary_no) from mylibrary where member_no = ? and book_no = ?";
+			String sql = "select count(mylibrary_no) cnt , last_read_index from mylibrary where member_no = ? and book_no = ? group by last_read_index";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, member_no);
 			pstmt.setString(2, book_no);
 			rs = pstmt.executeQuery();
-			if(rs.next()) {
-				aa = rs.getInt(1);
+			while(rs.next()) {
+				Map<String, Object> map = new HashMap<String, Object>();
+				map.put("cnt", rs.getInt("cnt"));
+				map.put("last_read_index", rs.getString("last_read_index"));
+				list.add(map);
 			}
 			conn.commit();
 		}catch(Exception e) {
@@ -846,7 +849,7 @@ public class EBookDAO
 		}finally {
 			ConnectionManager.close(rs, pstmt, conn);
 		}
-		return aa;
+		return list;
 	}
 	
 	
