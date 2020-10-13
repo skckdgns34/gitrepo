@@ -30,7 +30,6 @@ public class MemberJoinServ implements Controller
 		
 		request.getRequestDispatcher("member/Hello.jsp").forward(request, response);
 
-
 	}
 
 }

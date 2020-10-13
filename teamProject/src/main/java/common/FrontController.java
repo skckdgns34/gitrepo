@@ -55,6 +55,7 @@ public class FrontController extends HttpServlet {
 		list.put("/memberFindCheck.do", new member.MemberFindCheckServ()); // 아이디/비밀번호 찾기 - 인증번호 확인
 		list.put("/memberFindPassword.do", new member.MemberFindPasswordServ()); // 아이디/비밀번호 찾기 - 비밀번호 번경
 		list.put("/memberJoin.do", new member.MemberJoinServ()); // 회원가입
+		list.put("/memberJoinCheck.do", new member.MemberJoinCheckServ()); // 회원가입 - 중복체크
 		list.put("/memberPopup.do", new member.MemberPopupServ()); // 알람팝업
 		list.put("/memberLicense.do", new member.MemberLicenseServ()); // 내서재 - 이용권
 		list.put("/memberLibrary.do", new member.MemberLibraryServ()); // 내서재

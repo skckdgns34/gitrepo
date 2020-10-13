@@ -8,6 +8,18 @@
 		src="<%=request.getContextPath()%>/mainresource/vendors/jquery/jquery-3.2.1.min.js"></script>
 <meta charset="UTF-8">
 <title>회원가입</title>
+<script>
+
+	
+	function openIdChk(){
+		window.name="parentform";
+		window.open("member/memberCheck.jsp", "chkForm", "width=500, height=300m resizable = no, scrollbars = no");
+	}
+	
+	function inputIdCheck(){
+		document.userInfo.idDuplication.val = "idUnCheck";
+	}
+</script>
 </head>
 <body>
 
@@ -29,9 +41,12 @@
 						<h3>회원가입</h3>
 						<form class="row login_form" action="/app/memberJoin.do"" id="frm" >
 							<div class="col-md-12 form-group">
-								<input type="text" class="form-control" id="member_id" name="member_id" placeholder="id" check_result="fail" required onfocus="this.placeholder = ''" onblur="this.placeholder = 'id'">
+								<input type="text" class="form-control" id="member_id" name="member_id" placeholder="id" check_result="fail"
+								required onfocus="this.placeholder = ''" onblur="this.placeholder = 'id'" onkeydown="inputIdChk()">
 								<div class="eheck_font" id="id_check"></div>
 							</div>
+							<input type="hidden" name="idCheckh" value="idUnCheck"> 
+							<button onclick="openIdChk()">체크</button>
               <div class="col-md-12 form-group">
 								<input type="password" class="form-control" id="member_pw" name="member_pw" placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'">
               					<div class="eheck_font" id="pw_check"></div>
