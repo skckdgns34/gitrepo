@@ -19,6 +19,8 @@ public class MemberCreateBookCompServ implements Controller {
 		Books books = new Books();
 		
 		books.setMember_no((String)request.getSession().getAttribute("member_no"));
+		books.setBook_no(request.getParameter("book_no"));
+		
 		
 		ArrayList<Books> list = dao.MyBook(books);
 		request.setAttribute("list", list);

@@ -18,6 +18,13 @@
   font-size: 12px;
 }
 </style>
+<script>
+$(function(){
+	$("#btnsend").on("click", function(){
+		location.href = "${pageContext.request.contextPath }/eBookDetail.do?book_no=" + $("#book_no").val()
+	});
+})
+</script>
 </head>
 <body>
 	<!-- Breadcrumb Section Begin -->
@@ -72,10 +79,12 @@
 			</thead>
 			  <tbody>
 			<c:forEach items="${list }" var="mylibrary">
+			<input type="hidden" id="book_no" value="${mylibrary.book_no }">
 				<tr>
 					<td>${mylibrary.title }</td>
 					<td>${mylibrary.writer }</td>
-					<td><button>바로가기</button></td>
+					<td><button id="btnsend">바로가기</button>
+					</td>
 				</tr>
 			</c:forEach>
 			</tbody>

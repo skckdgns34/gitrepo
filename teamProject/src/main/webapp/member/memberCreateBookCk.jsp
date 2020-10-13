@@ -17,6 +17,13 @@
   font-size: 12px;
 }
 </style>
+<script>
+$(function(){
+	$("#btnsend").on("click", function(){
+		location.href = "${pageContext.request.contextPath }/.do?book_no=" + $("#book_no").val()
+	});
+})
+</script>
 </head>
 <body>
 	
@@ -82,7 +89,7 @@
 					<td>${mywriting.genre }</td>
 					<td>${mywriting.views }</td>
 					<td>${mywriting.my_write_date }</td>
-					<td><button>바로가기</button> <button>편집하기</button></td>
+					<td><button>편집하기</button></td>
 				</tr>
 			</c:forEach>
 			</tbody>
