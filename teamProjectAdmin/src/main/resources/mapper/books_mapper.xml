@@ -20,6 +20,12 @@
 			AND
 				b.company_code = p.company_code
 	</select>
+	
+	<select id="bookselectCompany" parameterType="books" resultType="books">
+  		SELECT company_name
+  		FROM company
+  		WHERE  company_name LIKE '%'||#{company_name}||'%'
+	</select>
 
 	<select id="selectOne" parameterType="books" resultType="books">
 		SELECT

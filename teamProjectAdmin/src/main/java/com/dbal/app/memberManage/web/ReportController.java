@@ -27,7 +27,7 @@ public class ReportController {
 		
 	}
 	
-	//한건 조회
+	//리뷰에 해당하는 내용 조회
 	 @RequestMapping(value = "/reportSelect.ad")
 	 @ResponseBody
 	 public Report reportSelect(Model model, Report report, HttpServletRequest request) {
@@ -36,16 +36,15 @@ public class ReportController {
 		 
 		 return reportService.selectOne(report);
 	 }
-	//블랙리스트 등록페이지
+	//블랙리스트 등록
 	 @RequestMapping(value="/memberManageReportModifyForm.ad", method = RequestMethod.GET)
 	public String reportUpdateForm(Report report, Model model,HttpServletRequest request ) {
-		 String declaration_no = request.getParameter("declaration_no");
-		 report.setMember_no(declaration_no);
-		 model.addAttribute("list", reportService.selectMem(report));
+	
+		 reportService.insert(report);
 		 
-		 return "memberManage/memberManageblacklistInsert";
+		 return "redirect:/memberManageBlackList.ad";
 	 }
-	 //블랙리스트 등록처리
+	/* 
 	 @RequestMapping(value="/memberManageReportModify.ad", method = RequestMethod.POST)
 	public String reportUpdate(Report report, HttpServletRequest request) {
 		
@@ -53,7 +52,7 @@ public class ReportController {
 	 }
 	
 	 
-	/*
+	
 	@RequestMapping(value="/memberManageBlackListDelete.ad", method = RequestMethod.GET)
 	public String blackDelete(Report report, HttpServletRequest request) {
 		

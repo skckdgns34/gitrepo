@@ -167,9 +167,7 @@
 		 <img src="./images/moneychart.png" alt="">
 	</div>
 
-
-		<table class="table table-bordered" id="dataTable" width="100%"
-				cellspacing="0" border="1">
+ <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
 			<thead>
 				<tr>
 					<th>일자</th>

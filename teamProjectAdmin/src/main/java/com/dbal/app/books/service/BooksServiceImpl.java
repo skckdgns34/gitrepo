@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.dbal.app.books.Books;
 import com.dbal.app.books.mapper.BooksDAO;
+import com.dbal.app.company.Company;
 
 @Service
 public class BooksServiceImpl implements BooksService {
@@ -48,5 +49,10 @@ public class BooksServiceImpl implements BooksService {
 		booksDAO.updateBookNo();
 		booksDAO.updatePurNo();
 		
+	}
+
+	@Override
+	public ArrayList<Books> bookselectCompany(Books books) {
+		return booksDAO.bookselectCompany(books);
 	}
 }
