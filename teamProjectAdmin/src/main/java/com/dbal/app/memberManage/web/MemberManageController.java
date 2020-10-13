@@ -1,7 +1,5 @@
 package com.dbal.app.memberManage.web;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
-
 import java.util.HashMap;
 import java.util.List;
 
@@ -58,15 +56,13 @@ public class MemberManageController {
 	//상세 조회
 	@RequestMapping("memberManageDetail.ad")
 	@ResponseBody
-	public String memberManageDetail(Model model,Member memberVO, HttpServletRequest request) {
-		String member_no = request.getParameter("member_no");
-		memberVO.setMember_no(member_no);
-		model.addAttribute("ticket", memberManageService.selectTicket(memberVO));
-		model.addAttribute("review", memberManageService.selectReview(memberVO));
-		model.addAttribute("mylib", memberManageService.selectMylib(memberVO));
-		
-	System.out.println("sssssssssssssssssssssssssssssssssssssssssssssssss");
-		return "memberManage/memberManageMain";
+	public HashMap<String, Object>  memberManageDetail(Model model,Member memberVO, HttpServletRequest request) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("ticket", memberManageService.selectTicket(memberVO));
+		map.put("review",memberManageService.selectReview(memberVO));
+		map.put("mylib", memberManageService.selectMylib(memberVO));
+			
+		return map;
 	}
 	
 	

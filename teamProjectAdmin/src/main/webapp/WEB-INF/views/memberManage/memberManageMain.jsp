@@ -112,19 +112,6 @@
 
 		function btnClick() {
 			var member_no= $(event.target).val();
-			var dialog;
-			dialog = $("#myModal").dialog({
-				autoOpen : false,
-				height : 500,
-				width : 600,
-				modal : true,
-				buttons : {
-					"확인" : function() {
-						dialog.dialog("close");
-					}
-				}
-
-			});
 			var a ;
 			$.ajax({
 				url : "${pageContext.request.contextPath}/memberManageDetail.ad",
@@ -132,13 +119,13 @@
 				dataType : "JSON",
 				data : {member_no:member_no},
 				success : function(result) {
-					a= "${ticket[0].ticket_code}";
-					console.log(result);
-					console.log(a+"jj")
-					alert(a);
+					for(var i=0; i<result.ticket.length; i++){
+						
+						
+					}
+					
 				}
 			})
-			dialog.dialog("open");
 		}
 	</script>
 	
