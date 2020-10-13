@@ -3,6 +3,7 @@ package com.dbal.app.books.mapper;
 import java.util.ArrayList;
 
 import com.dbal.app.books.Books;
+import com.dbal.app.company.Company;
 
 public interface BooksDAO {
 	//매입입력
@@ -17,6 +18,8 @@ public interface BooksDAO {
 	public Books selectOne(Books book);
 	//도서전체조회
 	public ArrayList<Books> selectAll(Books books);
+	
+	public ArrayList<Books> bookselectCompany(Books books);
 	//도서정보업데이트
 	public void update(Books books);
 	

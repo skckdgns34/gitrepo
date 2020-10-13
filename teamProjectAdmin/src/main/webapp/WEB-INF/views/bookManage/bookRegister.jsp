@@ -16,6 +16,17 @@
 		selector : 'textarea'
 	});
 </script>
+<script type="text/javascript">
+	var openWin;
+
+	function openChild() {
+		// window.name = "부모창 이름"; 
+		window.name = "parentForm";
+		// window.open("open할 window", "자식창 이름", "팝업창 옵션");
+		openWin = window.open("${pageContext.request.contextPath }/bookcompanySelect.ad", "childForm",
+				"width=570, height=350, resizable = no, scrollbars = no");
+	}
+</script>
 </head>
 <body>
 	<div class="container col-xs-12">
@@ -24,7 +35,7 @@
 		<div class="panel-title text-center">
 			<h3>e-book 등록</h3>
 		</div>
-		
+
 		<div id="signupbox" style="margin-top: 30px">
 			<div class="panel panel-default">
 
@@ -55,7 +66,25 @@
 										style="margin-bottom: 10px" type="text" />
 								</div>
 							</div>
+						
+						<div class="col-sm-6 col-md-6 col-xs-6">
+								<label for="writer"
+									class="control-label col-md-4  requiredField">출판사<span
+									class="asteriskField">*</span>
+								</label>
+								<div class="controls col-md-8 ">
+									<input class="input-md emailinput form-control" id="company"
+										name="company" placeholder="출판사를 입력 해 주세요."
+										style="margin-bottom: 10px" type="text" />
+									<input type="button" value="검색" onclick="openChild()">
+								</div>
+							</div>
+						
 						</div>
+
+
+
+
 						<div class="row">
 							<div class="col-sm-6 col-md-6 col-xs-6">
 								<label for="company_code"
@@ -228,7 +257,8 @@
 
 						<div class="row">
 							<div class="col-md-10 text-center">
-							<button type='submit' class="btn btn-outline btn-primary pull-left" >도서 등록</button>
+								<button type='submit'
+									class="btn btn-outline btn-primary pull-left">도서 등록</button>
 								<button class="btn btn-danger btn-md" type="reset">초기화</button>
 							</div>
 						</div>

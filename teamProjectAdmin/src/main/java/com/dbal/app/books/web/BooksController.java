@@ -2,6 +2,7 @@ package com.dbal.app.books.web;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -28,8 +30,28 @@ public class BooksController  {
     @RequestMapping("/bookList.ad")
     public String selectAll(Model model,Books books){
     	model.addAttribute("list",booksService.selectAll(books));
+    	
+    	
     	return "bookManage/bookList";
     }
+    
+    
+    //출판사 선택창으로 이동
+    @RequestMapping("/bookcompanySelect.ad")
+    public String CompanySelectServ() {
+    	return "bookRegisterChild";
+    }
+    
+    @RequestMapping("/bookcompanySelect.do")
+    @ResponseBody
+    public ArrayList<Books> CompanySelectServr(Model model, Books books, HttpServletRequest request) {
+    	String name = request.getParameter("searchCompany");
+    	System.out.println(name+"ddddddddddddddddddddddddddddddddddddddd");
+    	books.setCompany_name(name);
+    	return booksService.bookselectCompany(books);
+    }
+    
+    
     
     //e-book 등록 페이지
     @RequestMapping(value = "/bookManage.ad", method = RequestMethod.GET)
@@ -116,6 +138,7 @@ public class BooksController  {
     	booksService.delete(books);
     	return "redirect:/bookList.ad";
     }
+    
     
     //도서 선택
     @RequestMapping(value = "/bookSelect.ad", method = RequestMethod.GET)
