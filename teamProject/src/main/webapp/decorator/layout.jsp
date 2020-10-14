@@ -129,7 +129,7 @@
 							role="button" aria-haspopup="true" aria-expanded="false">${sessionScope.member_id}</a>님
 							<ul class="dropdown-menu">
 							<li class="nav-item"><a class="nav-link"
-									href="<%=application.getContextPath()%>/memberModify.do">내 정보수정</a></li>
+									href="<%=application.getContextPath()%>/member/memberModify.jsp">내 정보수정</a></li>
 								<li class="nav-item"><a class="nav-link"
 									href="<%=application.getContextPath()%>/memberBookMark.do">내 서재</a></li>
 									

@@ -39,8 +39,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12">
-						<form method="post" name="frm" id="frm"
-							action="${pageContext.request.contextPath }/memberModify.do">
+						<form method="post" name="frm" id="frm" action="/app/memberModify.do">
 
 									<div class="form-group">
 										<label for="id">아이디 ${member_id }</label> <input type="hidden"
