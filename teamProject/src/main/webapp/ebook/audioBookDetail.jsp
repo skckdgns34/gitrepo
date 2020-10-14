@@ -131,7 +131,7 @@ function btnHideNShow(){
 
 function goRead(){ //읽기버튼이 생성되면 읽는페이지로 이동
 	window.open('${pageContext.request.contextPath}/audioBookReading.do?book_no=${book[0].book_no}',
-			'audioBook', 'width=1000px,height=1000px,scrollbars=yes');
+			'audioBook', 'width=1200px,height=900px,scrollbars=yes');
 }
 
 function reviewLogin(){ //하트 추천기능  로그인안하고 누를려고 하면 로그인 표시 보여주는거
@@ -164,6 +164,11 @@ function btnScore(){ // 추천버튼 클릭시(추천 추가 또는 추천 제�
 		})
 	})
 }
+
+function licence(){
+	location.href="${pageContext.request.contextPath}/licenceList.do"
+}
+
 
 </script>
 </head>

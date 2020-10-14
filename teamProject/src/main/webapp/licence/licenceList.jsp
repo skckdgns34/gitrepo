@@ -25,7 +25,6 @@
 			var boxVal = checked.val();
 			var p_name = checked.parent().parent().children().eq(1).html();
 			var ticket_code = checked.closest('tr').find('input[type=hidden]').val();
-			alert(ticket_code);
 			 
 			if(login_no == ''){
 				alert("로그인필요")

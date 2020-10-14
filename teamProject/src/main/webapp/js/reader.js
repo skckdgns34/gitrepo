@@ -3672,6 +3672,9 @@ EPUBJS.reader.ControlsController = function(book) {
 					member_no : member_no,
 					book_no : book_no,
 					bookmark_index : cfi
+				},
+				success: function(result){
+					$("#bookmark_text").val("");
 				}
 			});
 		}

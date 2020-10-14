@@ -60,12 +60,12 @@ $(function(){
 				작성자: <label>${sessionScope.nickname }</label><br>
 				제목:<input name="my_title"><br>
 				책표지:<input name="image_uri" type="file"><br>
-				내용:	<textarea name="editor1"></textarea><br><br><br><br><br>
-				소개글:<textarea name="my_introduction" cols="50" rows="10"></textarea><br>
-				줄거리:<textarea name="my_summary" cols="50" rows="10"></textarea><br>
-				<button id="cancel">취소</button>
-				<button id="save">임시저장</button>
-				<button id="submit">등록</button>
+				내용	<textarea name="editor1"></textarea><br><br><br><br><br>
+				소개글<br><textarea name="my_introduction" cols="160" rows="5"></textarea><br>
+				줄거리<br><textarea name="my_summary" cols="160" rows="10"></textarea><br>
+				<button class="btn btn-primary" id="cancel">취소</button>
+				<button class="btn btn-primary" id="save">임시저장</button>
+				<button class="btn btn-primary" id="submit">등록</button>
 			</div>
 		  </div>
 		</div>
