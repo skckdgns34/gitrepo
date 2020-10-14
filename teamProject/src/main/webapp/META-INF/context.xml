@@ -7,7 +7,7 @@
               maxWaitMillis="-1"/>-->
  <Resource name="jdbc/oracle" auth="Container"
               type="javax.sql.DataSource" driverClassName="oracle.jdbc.OracleDriver"
-              url="jdbc:oracle:thin:@192.168.0.64:1521:xe"
+              url="jdbc:oracle:thin:@39.116.34.40:1521:orcl"
               username="team" password="team" maxTotal="20" maxIdle="10"
               maxWaitMillis="-1"/>
 </Context>
