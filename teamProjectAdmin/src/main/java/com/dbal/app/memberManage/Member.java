@@ -26,6 +26,7 @@ public class Member {
 	private String contents;
 	private String review_date;
 	private String book_no;
+	private String title;
 
 	private String mylibrary_no;
 	private String wish;
