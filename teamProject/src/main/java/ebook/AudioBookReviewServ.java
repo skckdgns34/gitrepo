@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import common.Controller;
 import common.Paging;
 
-public class EBookReviewServ implements Controller {
+public class AudioBookReviewServ implements Controller {
 
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Paging paging = new Paging();
@@ -36,7 +36,7 @@ public class EBookReviewServ implements Controller {
 		List<Map<String, Object>> review = EBookDAO.getInstance().selectAllReview(book_no,first,last); //리뷰전체보여주기
 		request.setAttribute("paging", paging);
 		request.setAttribute("review", review); //디테일 페이지 넘어가면서 리뷰 뿌려주기
-		request.getRequestDispatcher("/ebook/eBookReview.jsp").forward(request, response);
+		request.getRequestDispatcher("/ebook/audioBookReview.jsp").forward(request, response);
 	}
 
 }

@@ -3517,20 +3517,39 @@ EPUBJS.reader.BookmarksController = function() {
 		$bookmarks.hide();
 	};
 
+	
+	
+	function bookMarkList(){
+		
+	};
+	
+	
 	var counter = 0;
-
-	var createBookmarkItem = function(cfi) {
+	//북마크추가하면 리스트에 보이는거
+	var createBookmarkItem = function(cfi, myLabel) {
 		var listitem = document.createElement("li"),
 				link = document.createElement("a");
-
+		
+		var bookmark_text_val =$("#bookmark_text").val();
+		console.dir(bookmark_text_val+"북마크내가쓴곳");
+		//if(bookmark_text_val != null){
+			//tocItem.label = bookmark_text_val; 			
+		//}
+		
 		listitem.id = "bookmark-"+counter;
 		listitem.classList.add('list_item');
 
 		var spineItem = book.spine.get(cfi);
 		var tocItem;
-		if (spineItem.index in book.navigation.toc) {
+		if(bookmark_text_val){
+			link.textContent = bookmark_text_val;
+		}else if(myLabel){
+			link.textContent = myLabel;
+		}
+		else if (spineItem.index in book.navigation.toc) {
 			tocItem = book.navigation.toc[spineItem.index];
 			link.textContent = tocItem.label;
+			
 		} else {
 			link.textContent = cfi;
 		}
@@ -3552,8 +3571,8 @@ EPUBJS.reader.BookmarksController = function() {
 		return listitem;
 	};
 
-	this.settings.bookmarks.forEach(function(cfi) {
-		var bookmark = createBookmarkItem(cfi);
+	this.settings.bookmarks.forEach(function(cfi, i) {
+		var bookmark = createBookmarkItem(cfi, listMarkName[i]);
 		docfrag.appendChild(bookmark);
 	});
 
@@ -3643,8 +3662,14 @@ EPUBJS.reader.ControlsController = function(book) {
 	$bookmark.on("click", function() {
 		var cfi = reader.rendition.currentLocation().start.cfi;
 		var bookmarked = reader.isBookmarked(cfi);
-		console.log(bookmarked)
+		
 		var bookmark_content = $("#bookmark_text").val();
+		if(bookmark_content == "" && bookmark_content == null){
+			bookmark_content = "북마크";
+			alert("북마크 네임을 적어주지 않을 시 북마크로 저장됩니다.");
+		}
+		
+		
 		if(bookmarked === -1) { //-- Add bookmark
 			reader.addBookmark(cfi);
 			$bookmark.addClass("icon-bookmark").removeClass("icon-bookmark-empty");
@@ -4248,9 +4273,8 @@ EPUBJS.reader.SidebarController = function(book) {
 EPUBJS.reader.TocController = function(toc) {
 	var book = this.book;
 	var rendition = this.rendition;
-
-	var $list = $("#tocView"),
-			docfrag = document.createDocumentFragment();
+	
+	var $list = $("#tocView"), docfrag = document.createDocumentFragment();
 
 	var currentChapter = false;
 
@@ -4268,7 +4292,7 @@ EPUBJS.reader.TocController = function(toc) {
 
 			listitem.id = "toc-"+chapter.id;
 			listitem.classList.add('list_item');
-
+			
 			link.textContent = chapter.label;
 			link.href = chapter.href;
 

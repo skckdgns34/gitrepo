@@ -17,11 +17,10 @@
 <!--
 <link rel="stylesheet"
 	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>-->
 
 <script>
@@ -94,8 +93,7 @@
 								<td><input type="checkbox" name="user_CheckBox"
 									onclick="check(this)" value="${member.getMember_no()}"></td>
 								<td><button type="button" class="btn btn-link"
-										onclick="btnClick()" data-toggle="modal"
-										data-target="#myModal" value="${member.getMember_no()}">${member.getMember_no()}</button></td>
+										onclick="btnClick()" value="${member.getMember_no()}">${member.getMember_no()}</button></td>
 								<td>${member.getMember_id()}</td>
 								<td>${member.getMember_pw()}</td>
 								<td>${member.getNickname()}</td>

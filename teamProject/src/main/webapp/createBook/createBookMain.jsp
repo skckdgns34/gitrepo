@@ -7,7 +7,20 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+.image { 
+      position: relative; 
+      width: 100%; /* for IE 6 */
+}
 
+h5 { 
+      position: absolute; 
+      top: 10px; 
+      left: 0; 
+      width: 20%; 
+      background-color : white;
+}
+</style>
 <script>
 $(function(){
 	$("#genre").on("change",function(){
@@ -35,7 +48,7 @@ $(function(){
 		//location.href="${sessionScope.member_no}"
 	})
 	
-	//북마크, mylob 고른거 호버주고
+	//
 	$(".tr").hover(function(){
 		$(this).css("background-color", "lightgray");
 		$(this).css("cursor","pointer");
@@ -43,7 +56,7 @@ $(function(){
 		$(this).css("background-color", "");
 	});
 	
-	//북마크 온클릭
+	//
 	$(".tr").on("click",function(){
 		var book_no = $(this).find('input[type=hidden]').val();
 		location.href="${pageContext.request.contextPath}/eBookDetail.do?book_no="+book_no;
@@ -82,13 +95,17 @@ $(function(){
 			</select>
 		</div>
 		<div class="row">
-			<div class="col-8">
+			<div class="col-7">
 			<c:if test="${empty userBooks }">없다</c:if>
 				<c:forEach items="${userBooks }" var="userBook">
 					<div class="row">
 						<div class="col-xs3">
-							<img src="filenameDownload.do?filename=asdasd${userBook.book_img}">
-							<input type="hidden" name ="h_book_no" value="${userBook.book_no}">
+							<div class="image">
+								<img src="filenameDownload.do?filename=${userBook.book_img}">
+								<input type="hidden" name ="h_book_no" value="${userBook.book_no}">
+								<h5>하하하하하핳</h5>
+							</div>
+							
 						</div>
 						<div class="col-xs9">
 							<label>제목: ${userBook.title }</label><br>
@@ -100,7 +117,7 @@ $(function(){
 					<hr>
 				</c:forEach>
 			</div>
-			<div class="col-4" >
+			<div class="col-5" >
 				<label>순위</label><br>
 				<table class="table">
 					<thead>
@@ -125,15 +142,8 @@ $(function(){
 						</c:forEach> 
 					</tbody>
 				</table>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-7">
-			</div>
-			<div class="col-5">
 				<button type="button" class="btn btn-primary" id="write">글쓰기</button>
 			</div>
 		</div>
-	</div>
 </body>
 </html>
