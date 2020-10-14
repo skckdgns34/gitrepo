@@ -206,6 +206,7 @@ public class FrontController extends HttpServlet {
 		list.put("/audioBookMarkInsert.do", new ebook.AudioBookMarkInsertServ());
 		list.put("/audioBookMarkDelete.do", new ebook.AudioBookMarkDeleteServ());
 		list.put("/Ajax/eBookReviewDeclaration.do", new ebook.EBookReviewDeclaration());
+		list.put("/fileupload.do", new createBook.FileUpload());
 		
 		
 		list.put("/Ajax/eBookReadingBookInsertMark.do", new ebook.EBookReadingBookMarkInsertAjaxServ()); //뷰어에서 북마크 인설트

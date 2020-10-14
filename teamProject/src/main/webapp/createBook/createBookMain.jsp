@@ -87,7 +87,7 @@ $(function(){
 				<c:forEach items="${userBooks }" var="userBook">
 					<div class="row">
 						<div class="col-xs3">
-							<img src="filenameDownload.do?filename=asdasd${userBook.book_img}">
+							<img src="filenameDownload.do?filename=${userBook.book_img}">
 							<input type="hidden" name ="h_book_no" value="${userBook.book_no}">
 						</div>
 						<div class="col-xs9">
