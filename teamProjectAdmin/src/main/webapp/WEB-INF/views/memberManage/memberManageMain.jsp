@@ -180,33 +180,7 @@
 
 		} //end function
 		
-		 $(document).ready(function() {
-		        $("#dataTable1").DataTable();
-		        // 표시 건수기능 숨기기
-			lengthChange: true,
-			// 검색 기능 숨기기
-			searching: false,
-			// 정렬 기능 숨기기
-			ordering: true,
-			// 정보 표시 숨기기
-			info: false,
-			// 페이징 기능 숨기기
-			paging: true
-			
-			// 가로 스크롤바를 표시
-			// 설정 값은 true 또는 false
-			scrollX: true,
-
-			// 세로 스크롤바를 표시
-			// 설정 값은 px단위
-			scrollY: 300
-			
-		    } );
-		
-		$("#dataTable1").Datatable({
-			
-		});
-		
+	
 	</script>
 
 
@@ -288,6 +262,28 @@
 		</div>
 
 	</div>
+<script>
 
+$("#dataTable1").DataTable({
+    // 표시 건수기능 숨기기
+lengthChange: true,
+// 검색 기능 숨기기
+searching: false,
+// 정렬 기능 숨기기
+ordering: true,
+// 정보 표시 숨기기
+info: false,
+// 페이징 기능 숨기기
+paging: true
+
+// 가로 스크롤바를 표시
+// 설정 값은 true 또는 false
+scrollX: true,
+scrollY: 200
+// 세로 스크롤바를 표시
+// 설정 값은 px단위
+
+});
+</script>
 </body>
 </html>

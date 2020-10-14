@@ -132,8 +132,7 @@
 									href="<%=application.getContextPath()%>/memberModify.do">내 정보수정</a></li>
 								<li class="nav-item"><a class="nav-link"
 									href="<%=application.getContextPath()%>/memberBookMark.do">내 서재</a></li>
-									<li class="nav-item"><a class="nav-link"
-									href="<%=application.getContextPath()%>/memberBookLuvList.do">찜 목록</a></li>
+									
 								<li class="nav-item"><a class="nav-link"
 									href="<%=application.getContextPath()%>/memberCreateBookCk.do">나만의 도서 확인</a></li>
 								<li class="nav-item"><a class="nav-link"
@@ -203,6 +202,7 @@
     <script src="<%=request.getContextPath()%>/resource/js/jquery.countdown.min.js"></script>
     <script src="<%=request.getContextPath()%>/resource/js/jquery.slicknav.js"></script>
     <script src="<%=request.getContextPath()%>/resource/js/mixitup.min.js"></script>
+     <script src="<%=request.getContextPath()%>/resource/js1/theme.js"></script>
 	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
 </body>
 </html>
