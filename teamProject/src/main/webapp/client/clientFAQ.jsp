@@ -7,15 +7,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>clientFAQ</title>
-<script>
-	$(function() {
-		$("#accordion").accordion({
-			collapsible : true,
-			active : true
-
-		});
-	});
-</script>
 
 <meta charset="UTF-8">
 <title>공지사항 - FAQ</title>
@@ -42,6 +33,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12">
+					
 					<div id="accordion">
 						<h3>로그인 관련 문의</h3>
 						<div>
@@ -56,5 +48,17 @@
 			</div>
 		</div>
 	</section>
+	
+	
+	<script>
+	$(function() {
+		$("#accordion").accordion({
+			collapsible : true,
+			active : true
+
+		});
+	});
+</script>
+	
 </body>
 </html>

@@ -72,8 +72,6 @@
 							<th>내용</th>
 							<th>작성일</th>
 							<th>첨부파일</th>
-							<th>조회수</th>
-							<th>등록 사원번호</th>
 							<th>등록 사원이름</th>
 
 						</tr>
@@ -89,8 +87,6 @@
 								<td>${notice.getNotice_content()}</td>
 								<td>${notice.getNotice_date()}</td>
 								<td>${notice.getNotice_img()}</td>
-								<td>${notice.getViews()}</td>
-								<td>${notice.getEmp_no()}</td>
 								<td>${notice.getEmp_name()}</td>
 						</c:forEach>
 					</tbody>

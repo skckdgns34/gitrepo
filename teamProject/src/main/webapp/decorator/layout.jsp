@@ -60,14 +60,14 @@
 				<a class="navbar-brand logo_h" href="<%=application.getContextPath()%>/licenceList.do"><img
 					src="<%=request.getContextPath()%>/resource/img/ticket.png" style="padding-top: 10px;" /></a>
 			</div>
-		</div>
+		</div> 
 
 		<nav class="navbar navbar-expand-lg navbar-light">
 			<div class="container">
 
 				<!-- 로고 부분 -->
 				<a class="navbar-brand logo_h" href="<%=application.getContextPath()%>/index2.jsp"><img
-					src="<%=request.getContextPath()%>/resource/img/logo.jpg" alt="" /></a>
+					src="${pageContext.request.contextPath}/resource/img/logo.jpg" alt="" /></a>
 					
 				<!-- 이 버튼의 용도는 무엇일까유????? 
 				<button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -91,6 +91,8 @@
 						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/audioBookCategory.do">오디오북</a>
 						</li>
 						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/createBookMain.do">나만의 도서</a>
+						</li>
+						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/licenceList.do">이용권</a>
 						</li>
 						
 						<li class="nav-item submenu dropdown"><a href=""

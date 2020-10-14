@@ -13,15 +13,13 @@
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
-
-<!--
 <link rel="stylesheet"
 	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>-->
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 <script>
 	function check(ck) {
@@ -92,7 +90,8 @@
 							<tr>
 								<td><input type="checkbox" name="user_CheckBox"
 									onclick="check(this)" value="${member.getMember_no()}"></td>
-								<td><button type="button" class="btn btn-link"
+								<td><button type="button" class="btn btn-link" data-toggle="modal" data-target="#myModal"
+								
 										onclick="btnClick()" value="${member.getMember_no()}">${member.getMember_no()}</button></td>
 								<td>${member.getMember_id()}</td>
 								<td>${member.getMember_pw()}</td>
@@ -113,10 +112,11 @@
 
 
 	<script>
+	
 		function btnClick() {
 			var member_no = $(event.target).val();
-			$
-					.ajax({
+			
+			$.ajax({
 						url : "${pageContext.request.contextPath}/memberManageDetail.ad",
 						type : "POST",
 						dataType : "JSON",
@@ -124,8 +124,10 @@
 							member_no : member_no
 						},
 						success : function(result) {
+							
 							$("#tbody").empty();
 							for (var i = 0; i < result.ticket.length; i++) {
+								console.log(result.ticket[i].code_value)
 								var addedTicket = $("<tr>" + "<td>"
 										+ result.ticket[i].code_value + "</td>"
 										+ "<td>" + result.ticket[i].pay_date
@@ -134,11 +136,7 @@
 								$("#tbody").append(addedTicket);
 							}
 
-							/*<th>번호</th>
-									<th>도서 번호</th>
-									<th>도서 이름</th>
-									<th>내용</th>
-									<th>작성날짜</th>*/
+						
 									$("#tbody1").empty();
 							for (var i = 0; i < result.review.length; i++) {
 								var addReview = $("<tr>" + "<td>"
@@ -177,7 +175,7 @@
 					}); //end ajax
 
 		} //end function
-		
+	
 	
 	</script>
 
@@ -200,7 +198,7 @@
 					<!-- Modal body -->
 					<div class="modal-body">
 						<h3>이용권 목록</h3>
-						<table class="table table-bordered table-hover" id="dataTable1"
+						<table class="table table-bordered table-hover" id="dataTable"
 							width="95%" cellspacing="0">
 							<thead>
 								<tr>
@@ -260,28 +258,6 @@
 		</div>
 
 	</div>
-<script>
 
-$("#dataTable1").DataTable({
-    // 표시 건수기능 숨기기
-lengthChange: true,
-// 검색 기능 숨기기
-searching: false,
-// 정렬 기능 숨기기
-ordering: true,
-// 정보 표시 숨기기
-info: false,
-// 페이징 기능 숨기기
-paging: true
-
-// 가로 스크롤바를 표시
-// 설정 값은 true 또는 false
-scrollX: true,
-scrollY: 200
-// 세로 스크롤바를 표시
-// 설정 값은 px단위
-
-});
-</script>
 </body>
 </html>
