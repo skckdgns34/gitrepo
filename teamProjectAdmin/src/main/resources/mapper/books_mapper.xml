@@ -29,21 +29,22 @@
 
 	<select id="selectOne" parameterType="books" resultType="books">
 		SELECT
-			book_no,
-			title,
-			book_img,
-			writer,
-			publication_date,
-			company_code,
-			introduction,
-			summary,
-			best_book,
-			genre,
-			registration_date
+			b.book_no,
+			b.title,
+			b.book_img,
+			b.writer,
+			b.publication_date,
+			c.company_name,
+			b.introduction,
+			b.summary,
+			b.best_book,
+			b.genre,
+			b.registration_date
 		FROM
-			books
+			books b, company c
 		WHERE
-			book_no = #{book_no}
+			b.company_code = c.company_code
+			and book_no = #{book_no}
 	</select>
 
 	<delete id="delete" parameterType="books">

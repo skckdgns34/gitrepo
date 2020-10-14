@@ -903,4 +903,28 @@ public class EBookDAO
 		}
 	}
 
+	public ArrayList<Map<String, Object>> selectBookMark(String member_no , String book_no) {
+		ArrayList<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+		ResultSet rs =null;
+		try {
+			conn = ConnectionManager.getConnnect();
+			String sql = "select bookmark_index, bookmark_contents from bookmark where member_no = ? and book_no = ? ";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, member_no);
+			pstmt.setString(2, book_no);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				Map<String, Object> map = new HashMap<String, Object>();
+				map.put("bookmark_index", rs.getString("bookmark_index"));
+				map.put("bookmark_contents", rs.getString("bookmark_contents"));
+				list.add(map);
+			}
+			conn.commit();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionManager.close(rs, pstmt, conn);
+		}
+		return list;
+	}
 }

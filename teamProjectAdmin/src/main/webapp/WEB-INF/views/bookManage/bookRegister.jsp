@@ -66,7 +66,12 @@
 										style="margin-bottom: 10px" type="text" />
 								</div>
 							</div>
-						
+						</div>
+
+
+
+
+						<div class="row">
 						<div class="col-sm-6 col-md-6 col-xs-6">
 								<label for="writer"
 									class="control-label col-md-4  requiredField">출판사<span
@@ -76,35 +81,9 @@
 									<input class="input-md emailinput form-control" id="company"
 										name="company" placeholder="출판사를 입력 해 주세요."
 										style="margin-bottom: 10px" type="text" />
-									<input type="button" value="검색" onclick="openChild()">
+									<button type="button" value="검색" onclick="openChild()">검색</button>
 								</div>
 							</div>
-						
-						</div>
-
-
-
-
-						<div class="row">
-							<div class="col-sm-6 col-md-6 col-xs-6">
-								<label for="company_code"
-									class="control-label col-md-4  requiredField">출판사<span
-									class="asteriskField">*</span>
-								</label>
-								<div class="controls col-md-8 ">
-									<select name="company_code" id="company_code"
-										style="margin-bottom: 10px" class="form-control">
-										<option value="">선택</option>
-										<option value=1>예담</option>
-										<option value=2>한양</option>
-										<option value=3>창비</option>
-										<option value=4>웅진</option>
-										<option value=5>한빛</option>
-
-									</select>
-								</div>
-							</div>
-
 							<div class="col-sm-6 col-md-6 col-xs-6">
 								<label for="genre" class="control-label col-md-4  requiredField">장르<span
 									class="asteriskField">*</span>
@@ -122,7 +101,6 @@
 										<option value="d7">경제/경영</option>
 										<option value="d8">아동</option>
 										<option value="d9">유아</option>
-
 									</select>
 								</div>
 							</div>
@@ -175,12 +153,12 @@
 									class="asteriskField">*</span>
 								</label>
 								<div class="controls col-md-8 " style="margin-bottom: 10px">
-									<label class="radio-inline"> <input type="radio"
+									<label class="radio-inline"> Y <input type="radio"
 										name="best_book" id="id_categry_1" value="Y"
-										style="margin-bottom: 10px">Y
-									</label> <label class="radio-inline"> <input type="radio"
+										style="margin-bottom: 10px">
+									</label> <label class="radio-inline"> N <input type="radio"
 										name="best_book" id="id_category_2" value="N"
-										style="margin-bottom: 10px">N
+										style="margin-bottom: 10px" checked="checked">
 									</label> <input type="hidden" name="price" id="price"
 										placeholder="Enter Cost of Project ">
 								</div>
@@ -217,13 +195,13 @@
 						<div class="row">
 							<div class="col-sm-6 col-md-6 col-xs-6">
 								<label for="purchase_price"
-									class="control-label col-md-4  requiredField">도서 구매 비용<span
+									class="control-label col-md-4  requiredField">도서 구매 비용(원)<span
 									class="asteriskField"></span>
 								</label>
 								<div class="controls col-md-8 ">
 									<input class="input-md emailinput form-control"
 										id="purchase_price" name="purchase_price"
-										style="margin-bottom: 10px" type="text" />
+										style="margin-bottom: 10px" type="text" value="0"/>
 								</div>
 							</div>
 
