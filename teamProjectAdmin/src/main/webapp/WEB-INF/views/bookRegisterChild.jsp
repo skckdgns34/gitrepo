@@ -55,7 +55,7 @@
 
 
 	<br>
-	<b><font size="5" color="gray">자식창</font></b>
+	<b><font size="5" color="gray">출판사 검색</font></b>
 	<br>
 	<br>
 	<input type="text" id="company_name" name="company_name">
