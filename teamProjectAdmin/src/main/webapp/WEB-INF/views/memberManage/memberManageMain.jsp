@@ -11,12 +11,18 @@
 <meta charset="UTF-8">
 <title>사원 목록</title>
 <link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+
+<!--
+<link rel="stylesheet"
 	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>-->
 
 <script>
 	function check(ck) {
@@ -88,7 +94,8 @@
 								<td><input type="checkbox" name="user_CheckBox"
 									onclick="check(this)" value="${member.getMember_no()}"></td>
 								<td><button type="button" class="btn btn-link"
-										onclick="btnClick()" value="${member.getMember_no()}">${member.getMember_no()}</button></td>
+										onclick="btnClick()" data-toggle="modal"
+										data-target="#myModal" value="${member.getMember_no()}">${member.getMember_no()}</button></td>
 								<td>${member.getMember_id()}</td>
 								<td>${member.getMember_pw()}</td>
 								<td>${member.getNickname()}</td>
@@ -104,90 +111,183 @@
 			</div>
 		</div>
 	</div>
-	
-	
+
+
 
 	<script>
-
-
 		function btnClick() {
-			var member_no= $(event.target).val();
-			$.ajax({
-				url : "${pageContext.request.contextPath}/memberManageDetail.ad",
-				type : "POST",
-				dataType : "JSON",
-				data : {member_no:member_no},
-				success : function(result) {
-					for(var i=0; i<result.ticket.length; i++){
-						console.log( result.ticket[i].pay_no);
-						console.log(result.ticket[i].code_value);
-						console.log(result.ticket[i].pay_date);
-						/*  var addedTicket = $("<tr>" +
-				                       "<td>" + result.ticket[i].pay_no + "</td>" +
-				                       "<td>" + result.ticket[i].code_value + "</td>" + 
-				                       "<td>" + result.ticket[i].pay_date + "</td>" +
-				                       "</tr>");
-				            $("#tbody").append(addedTicket);  */
-				    }	
-				}
-					/* for(var i=0; i<result.review.length; i++){
-						review_no[i] = result.review[i].review_no;
-						book_no[i] = result.review[i].book_no;
-						contents[i] = result.review[i].contents;
-						title[i] = result.review[i].title;
-						review_date[i] = result.review[i].review_date;						
+			var member_no = $(event.target).val();
+			$
+					.ajax({
+						url : "${pageContext.request.contextPath}/memberManageDetail.ad",
+						type : "POST",
+						dataType : "JSON",
+						data : {
+							member_no : member_no
+						},
+						success : function(result) {
+							$("#tbody").empty();
+							for (var i = 0; i < result.ticket.length; i++) {
+								var addedTicket = $("<tr>" + "<td>"
+										+ result.ticket[i].code_value + "</td>"
+										+ "<td>" + result.ticket[i].pay_date
+										+ "</td>" + "</tr>");
 						
-						
-					}for(var i=0; i<result.mylib.length; i++){
-						mylibrary_no[i] = result.mylib[i].mylibrary_no;
-						title[i] = result.mylib[i].title;
-						book_no[i] = result.mylib[i].book_no;
-						wish[i] = result.mylib[i].wish;
-						last_read_index[i] = result.mylib[i].last_read_index;
-					} */	
+								$("#tbody").append(addedTicket);
+							}
 
-				
-			})
-		}
+							/*<th>번호</th>
+									<th>도서 번호</th>
+									<th>도서 이름</th>
+									<th>내용</th>
+									<th>작성날짜</th>*/
+									$("#tbody1").empty();
+							for (var i = 0; i < result.review.length; i++) {
+								var addReview = $("<tr>" + "<td>"
+										+ result.review[i].review_no + "</td>"
+										+ "<td>" + result.review[i].title
+										+ "</td>" + "<td>"
+										+ result.review[i].contents + "</td>"
+										+ "<td>" + result.review[i].review_date
+										+ "</td>" + "</tr>");
+								$("#tbody1").append(addReview);
+
+							}
+							$("#tbody2").empty();
+							for (var i = 0; i < result.mylib.length; i++) {
+								var addlib = $("<tr>" + "<td>"
+										+ result.mylib[i].mylibrary_no
+										+ "</td>" + "<td>"
+										+ result.mylib[i].book_no + "</td>"
+										+ "<td>" + result.mylib[i].title
+										+ "</td>" + "<td>"
+										+ result.mylib[i].wish + "</td>"
+										+ "<td>"
+										+ result.mylib[i].last_read_index
+										+ "</td>" + "</tr>");
+								console.log(result.mylib[i].mylibrary_no);
+								console.log(result.mylib[i].book_no);
+								console.log(result.mylib[i].title);
+								console.log(result.mylib[i].wish);
+								console.log(result.mylib[i].last_read_index);
+
+							
+								$("#tbody2").append(addlib);
+
+							} //end for
+						} //end success
+					}); //end ajax
+
+		} //end function
+		
+		 $(document).ready(function() {
+		        $("#dataTable1").DataTable();
+		        // 표시 건수기능 숨기기
+			lengthChange: true,
+			// 검색 기능 숨기기
+			searching: false,
+			// 정렬 기능 숨기기
+			ordering: true,
+			// 정보 표시 숨기기
+			info: false,
+			// 페이징 기능 숨기기
+			paging: true
+			
+			// 가로 스크롤바를 표시
+			// 설정 값은 true 또는 false
+			scrollX: true,
+
+			// 세로 스크롤바를 표시
+			// 설정 값은 px단위
+			scrollY: 300
+			
+		    } );
+		
+		$("#dataTable1").Datatable({
+			
+		});
+		
 	</script>
-	
-	
+
+
 	<!--  modal 폼 -->
 	<div class="container">
-  <h2>Modal Scroll Example</h2>
-  <!-- Button to Open the Modal -->
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-    Open modal
-  </button>
 
-  <!-- The Modal -->
-  <div class="modal" id="myModal">
-    <div class="modal-dialog">
-      <div class="modal-content">
-      
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h1 class="modal-title">회원 상세보기</h1>
-          <button type="button" class="close" data-dismiss="modal">×</button>
-        </div>
-        
-        <!-- Modal body -->
-        <div class="modal-body">
-          <h3>Some text to enable scrolling..</h3>
-          <p>Some text</p>
-          <p>Some.</p>         
-        </div>
-        
-        <!-- Modal footer -->
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-        </div>
-        
-      </div>
-    </div>
-  </div>
-  
-</div>
-	
+
+		<!-- The Modal -->
+		<div class="modal fade" id="myModal">
+			<div class="modal-dialog modal-xl">
+				<div class="modal-content">
+
+					<!-- Modal Header -->
+					<div class="modal-header">
+						<h1 class="modal-title">회원 상세보기</h1>
+						<button type="button" class="close" data-dismiss="modal">×</button>
+					</div>
+
+					<!-- Modal body -->
+					<div class="modal-body">
+						<h3>이용권 목록</h3>
+						<table class="table table-bordered table-hover" id="dataTable1"
+							width="95%" cellspacing="0">
+							<thead>
+								<tr>
+									<th>이용권 명</th>
+									<th>만료일</th>
+								</tr>
+							</thead>
+							<tbody id="tbody">
+
+							</tbody>
+						</table>
+
+						<hr>
+
+						<h3>댓글 목록</h3>
+						<table class="table table-bordered table-hover" id="dataTable"
+							width="100%" cellspacing="0">
+							<thead>
+								<tr>
+									<th>번호</th>
+									<th>도서 이름</th>
+									<th>내용</th>
+									<th>작성날짜</th>
+								</tr>
+							</thead>
+							<tbody id="tbody1">
+
+							</tbody>
+						</table>
+						<hr>
+
+						<h3>찜 목록</h3>
+						<table class="table table-bordered table-hover" id="dataTable"
+							width="95%" cellspacing="0">
+							<thead>
+								<tr>
+									<th>도서 번호</th>
+									<th>제목</th>
+									<th>책 번호</th>
+									<th>찜?</th>
+									<th>책갈피</th>
+								</tr>
+							</thead>
+							<tbody id="tbody2">
+
+							</tbody>
+						</table>
+					</div>
+
+					<!-- Modal footer -->
+					<div class="modal-footer">
+						<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+	</div>
+
 </body>
 </html>
