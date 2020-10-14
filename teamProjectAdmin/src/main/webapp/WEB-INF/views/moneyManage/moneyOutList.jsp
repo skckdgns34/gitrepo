@@ -33,7 +33,7 @@
 		data.addColumn('string', '날짜'); 
 		data.addColumn('number', '매출'); 
 		var datatable = []; 
-		
+		var cnt = 0;
 		//ajax
 		$.ajax({
 			async : false,
@@ -43,8 +43,8 @@
 			success : function(datas) {
 				console.dir(datas);
 				userListResult(datas);
-				
-				for (i = 0; i < datas.length; i++) {
+				cnt = datas.length-1; //마지막 배열은 값이 입력되지 않음
+				for (i = 0; i < datas.length-1; i++) {
 					datatable.push([ datas[i].pay_date, parseInt(datas[i].price) ]); 
 				}
 			}
@@ -59,6 +59,9 @@
 		// Instantiate and draw our chart, passing in some options.
 		var chart = new google.visualization.LineChart(document.getElementById('chart_div')); //뒤에 chart_div가 차트가 들어갈 위치
 		chart.draw(data, options);
+		//차트까지 그린 후 넣지 않았던 값을 테이블에 따로 넣어줌
+		datatable.push([ datas[cnt].pay_date, parseInt(datas[cnt].price) ]);
+		data.addRows(datatable);
 	}
 	
 	
@@ -68,7 +71,7 @@
 		data.addColumn('string', '날짜'); 
 		data.addColumn('number', '매출'); 
 		var datatable = []; 
-		
+		var cnt = 0;
 		//ajax
 		$.ajax({
 			async : false,
@@ -78,8 +81,8 @@
 			success : function(datas) {
 				console.dir(datas);
 				userlistResult(datas);
-				
-				for (i = 0; i < datas.length; i++) {
+				cnt = datas.length-1;
+				for (i = 0; i < datas.length-1; i++) {
 					datatable.push([ datas[i].pay_date, parseInt(datas[i].price) ]); 
 				}
 			}
@@ -94,6 +97,9 @@
 		// Instantiate and draw our chart, passing in some options.
 		var chart = new google.visualization.LineChart(document.getElementById('chart_div')); //뒤에 chart_div가 차트가 들어갈 위치
 		chart.draw(data, options);
+		
+		datatable.push([ datas[cnt].pay_date, parseInt(datas[cnt].price) ]);
+		data.addRows(datatable); 
 	}
 	
 	
@@ -117,15 +123,13 @@
 	function makeTr(item){
 		return $('<tr>')
 		.append($('<td>').html(item.pay_date))
-		.append($('<td>').html(item.price))
-		.append($('<td>').html(item.ticket_name));
+		.append($('<td>').html(item.price));
 	}
 	
 	function makeTr2(item2){
 		return $('<tr>')
 		.append($('<td>').html(item2.pay_date))
-		.append($('<td>').html(item2.price))
-		.append($('<td>').html(item2.ticket_name));
+		.append($('<td>').html(item2.price));
 	}
 	
 	
@@ -172,7 +176,6 @@
 				<tr>
 					<th>일자</th>
 					<th>금액(원)</th>
-					<th>이용권</th>
 				</tr>
 			</thead>
 			<tbody>

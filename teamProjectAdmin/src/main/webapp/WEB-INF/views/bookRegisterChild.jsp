@@ -15,6 +15,7 @@
 	function setParentText() {
 		opener.document.getElementById("company").value = document
 				.getElementById("company_name").value
+				window.close();
 	}
 </script>
 <script>
@@ -45,7 +46,14 @@
 	
 	function makeTr(item){
 		return $('<tr>')
-		.append($('<td>').html(item.company_name));
+		.append($('<td class="name" onclick="name_click()">').html(item.company_name));
+	}
+	function name_click(){
+		$(".name").on("click",function(){
+			var c_name = $(this).html();
+			console.log(c_name);
+			$("#company_name").val(c_name);
+		})
 	}
 	
 </script>
@@ -58,7 +66,7 @@
 	<b><font size="5" color="gray">출판사 검색</font></b>
 	<br>
 	<br>
-	<input type="text" id="company_name" name="company_name">
+	<input type="text" id="company_name" name="company_name" >
 	<!-- <input type="text" id="cInput" name="cInput"> -->
 	<button type="button" id="btnSelect" onclick="insertName()">결과조회</button>
 	<input type="button" value="등록하기" onclick="setParentText()">
