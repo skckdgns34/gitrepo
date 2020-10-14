@@ -43,6 +43,7 @@ $(function(){
 		</div>
 	</section>
 	<!-- Breadcrumb Section End -->
+	<ul>
 	<li><a href="<%=application.getContextPath()%>/memberModify.do">내정보
 			수정</a>
 	<li><a href="<%=application.getContextPath()%>/memberBookMark.do">내

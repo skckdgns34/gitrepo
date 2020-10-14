@@ -75,10 +75,13 @@ where member_no = #{member_no}
 <!-- 리뷰 조회 -->
 <select id="selectReview" parameterType="membermanage"
 		resultType="membermanage">
-	SELECT R.REVIEW_NO, R.CONTENTS, R.BOOK_NO, B.TITLE, R.REVIEW_DATE
+	SELECT R.REVIEW_NO,  R.CONTENTS, R.BOOK_NO, R.REVIEW_DATE, R.MEMBER_NO, B.TITLE
   FROM REVIEW R, BOOKS B
-  WHERE R.MEMBER_NO =#{member_no}	
+  WHERE R.MEMBER_NO = B.MEMBER_NO(+)
+  AND R.MEMBER_NO =#{member_no}	
+  ORDER BY REVIEW_NO
 </select>
+
 
 <!-- 나만의 도서 확인 -->
 <select id="selectMylib" parameterType="membermanage"
@@ -89,7 +92,8 @@ SELECT L.MYLIBRARY_NO,
 			L.WISH, 
 			L.LAST_READ_INDEX
  FROM MYLIBRARY L, BOOKS B
-WHERE L.MEMBER_NO = #{member_no}		
+WHERE L.MEMBER_NO =B.MEMBER_NO 
+AND L.MEMBER_NO = #{member_no}		
 		
 </select>
 <!--최다 조회수  -->

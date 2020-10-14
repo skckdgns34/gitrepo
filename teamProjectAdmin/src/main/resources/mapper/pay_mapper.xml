@@ -7,25 +7,23 @@
 <!-- 선택날짜조회 -->    
 <select id="selectOne" parameterType="pay" resultType="pay">
 	SELECT sum(t.price) price, 
-		   to_char(p.pay_date, 'yyyy-MM-dd') pay_date, 
-		   t.ticket_name
+		   to_char(p.pay_date, 'yyyy-MM-dd') pay_date
 	FROM pay p, ticket t
 	WHERE	p.ticket_code = t.ticket_code
 	AND		trunc(p.pay_date) between #{startdate} and #{enddate}
-	GROUP BY rollup(to_char(p.pay_date, 'yyyy-MM-dd'), t.ticket_name)
-	ORDER BY 2, 3
+	GROUP BY rollup(to_char(p.pay_date, 'yyyy-MM-dd'))
+	ORDER BY 2
 			
 	</select>
 <!-- 전체매출조회 -->
 <select id = "selectAll" parameterType="pay" resultType="pay">
 	SELECT sum(t.price) price,
-		   to_char(p.pay_date, 'yyyy-MM-dd') pay_date,
-		   t.ticket_name
+		   to_char(p.pay_date, 'yyyy-MM') pay_date
 	FROM	pay p, ticket t
 	WHERE	p.ticket_code = t.ticket_code
 	AND		trunc(p.pay_date) between (#{quarterYear} || '-01-01') and (#{quarterYear} || '-12-31')
-	GROUP BY rollup(to_char(p.pay_date, 'yyyy-MM-dd'), t.ticket_name)
-	ORDER BY 2, 3
+	GROUP BY rollup(to_char(p.pay_date, 'yyyy-MM'))
+	ORDER BY 2
 </select>
 <!-- 1분기 매출 조회 -->
 <select id="selectfQuarterPay" parameterType="pay" resultType="pay">
