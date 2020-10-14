@@ -23,10 +23,22 @@
             var page = "${pageContext.request.contextPath}";
 			var member_no = "${member_no}";
 			var book_no = "${book_no}";
+			
+			var i = 0;
+			var list = ${list};
+			var listBook = [];
+			var listMarkName = [];
+			for(var i=0; i<list.length; i++){
+				listBook.push(list[i].bookmark_index);
+				listMarkName.push(list[i].bookmark_contents);
+			}
+			console.dir(listBook);
+			
             document.onreadystatechange = function () {
               if (document.readyState == "complete") {
                 window.reader = ePubReader("The-Lost-World.epub", { //url 경로
-                   restore: true
+                   restore: true,
+                   bookmarks : listBook 
                  });
               }
             };
@@ -93,11 +105,11 @@
             <span id="chapter-title"></span>
           </div>
           <div id="title-controls">
-          	<a href="${pageContext.request.contextPath}/main.do">메인페이지로 이동</a>
           	<input type="text" id="bookmark_text" placeholder="북마크 제목 입력"/>
             <a id="bookmark" class="icon-bookmark-empty">Bookmark</a>
             <a id="setting" class="icon-cog">Settings</a>
             <a id="fullscreen" class="icon-resize-full">Fullscreen</a>
+          	<a href="${pageContext.request.contextPath}/main.do">Home</a>
           </div>
         </div>
 
