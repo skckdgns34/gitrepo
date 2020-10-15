@@ -32,7 +32,7 @@ public class MemberLoginServ implements Controller
 			request.setAttribute("errormsg", "해당ID가 없습니다.");
 		} else {
 			if(memberVO.getMember_pw().equals(resultVO.getMember_pw())) {	//로그인 성공
-				page = "/index2.jsp";
+				page = "/index.jsp";
 				request.getSession().setAttribute("memberLogin", resultVO);
 				request.getSession().setAttribute("member_id", resultVO.getMember_id());
 				request.getSession().setAttribute("member_no", resultVO.getMember_no());
