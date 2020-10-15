@@ -30,6 +30,18 @@ $(function(){
 .ck-editor__editable{
 	min-height: 500px;
 }
+
+h2{
+    font-size: 15px;
+      padding-right: 30px;
+      padding-b
+}
+
+.form-group{
+    padding-bottom: 15px;
+}
+.popular_courses{
+ padding-bottom: 0px;}
 </style>
 </head>
 <body>
@@ -50,32 +62,81 @@ $(function(){
         </div>
     </section>
     <!-- Breadcrumb Section End -->
- <section class="section-margin--small mb-5">
-	<form>
-		<div class="container">
-	      <div class="row">
-	       <div class="col-lg-12">
-				작성자: <input value="${sessionScope.nickname }" readonly><br>
-				제목:<input name="my_title"><br>
-				책표지:<input name="image_uri" type="file"><br>
-				<select name="genre" id="genre">
-					<option value="">장르 선택</option>
-					<c:forEach items="${genreList }" var="genre">
-						<option value="${genre.code}">${genre.code_value }</option>
-					</c:forEach>
-				</select><br><br>
-				내용	<textarea id="content" name="editor1" rows="30"></textarea><br><br><br><br><br>
-				소개글<br><textarea name="my_introduction" cols="160" rows="5"></textarea><br>
-				줄거리<br><textarea name="my_summary" cols="160" rows="10"></textarea><br>
-				<button class="btn btn-primary" id="cancel">취소</button>
-				<button class="btn btn-primary" id="save">임시저장</button>
-				<button class="btn btn-primary" id="submit">등록</button>
-			</div>
-		  </div>
-		</div>
-	</form>
-	
-</section>
+    
+    <!-- Start Sample Area --> 
+    <div class="popular_courses section_gap_top">
+      <div class="container">
+    <div class="row justify-content-center">
+          <div class="col-lg-5" style="height: 50px;">
+            <div class="main_title">
+              <h2 class="mb-3">My Book Writing</h2>
+              <p> Make Your Own Book</p>
+            </div>
+          </div>
+        </div>
+   </div>
+   </div>
+   
+    <section class="blog_area single-post-area section_gap" style="padding: 20px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 posts-list">
+    				 <div class="comment-form">
+                       
+                        <form>
+                            <div class="form-group form-inline">
+                                <div class="form-group col-lg-8">
+                                	<h2 style="margin-bottom: 0px;">작성자: </h2><br>
+                                	<input type="text" class="form-control" value="${sessionScope.nickname }" readonly>
+                                </div>
+                                
+                                <select name="genre" id="genre">
+									<option value="">장르 선택</option>
+									<c:forEach items="${genreList }" var="genre">
+										<option value="${genre.code}">${genre.code_value }</option>
+									</c:forEach>
+								</select>
+                                
+                                <div class="form-group col-lg-8">
+                              <h2 style="margin-bottom: 0px;">제목 </h2><br>
+                               <input  style="width: 600px;" type="text" class="form-control" name="my_title" placeholder="제목을 입력 해 주세요.">
+                                </div>
+                                
+                              
+                               
+                               
+                               
+                            </div>
+                            
+                        
+               <div class="form-group">              
+                            <textarea id="content" name="editor1" rows="30"></textarea>
+               </div>
+               
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="subject" placeholder="소개글" onfocus="this.placeholder = ''"
+                                    onblur="this.placeholder = '소개글'">
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-control mb-10" rows="5" name="message" placeholder="줄거리"
+                                    onfocus="this.placeholder = ''" onblur="this.placeholder = '줄거리'" required=""></textarea>
+                            </div>
+                            
+                         		   <button id="cancel" class="button button-login w-20">취소</button>
+									<button id="save" class="button button-login w-20">저장</button>
+									<button id="submit" class="button button-login w-20">등록</button>
+					                            
+                        </form>
+                        
+                    	</div>
+                    </div>
+                    
+      </div>
+        </div>
+    </section>
+	<!-- End Sample Area -->
+    
+
 	<script>
     ClassicEditor
     .create( document.querySelector( '#content' ),{

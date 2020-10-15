@@ -134,11 +134,12 @@
               					<div class="eheck_font" id="nickname_check"></div>
               </div>
               <button type="button" class="button button2" onclick="NiChk()" >체크</button>
-              <div class="col-md-12 form-group">
-								<input type="text" class="form-control" id="member_email" name="member_email" placeholder="Email 입력" onfocus="this.placeholder = ''" onblur="this.placeholder = 'member_email'">
+              
+              <div class="col-md-12 form-group"><button type="button" class="button button3"  onclick="EmChk()" >체크</button>
+			<input type="text" class="form-control" id="member_email" name="member_email" placeholder="Email 입력" onfocus="this.placeholder = ''" onblur="this.placeholder = 'member_email'">
               <div class="eheck_font" id="email_check"></div>
               </div>
-              <button type="button" class="button button3"  onclick="EmChk()" >체크</button>
+              
                <div class="col-md-12 form-group">
 				<label for="gender">성별:</label>
 					<input type="radio" id="male"name="gender" value="male">

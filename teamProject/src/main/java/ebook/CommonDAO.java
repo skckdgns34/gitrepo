@@ -25,7 +25,11 @@ public class CommonDAO {
 		ArrayList<Common> list = new ArrayList<Common>();
 		try {
 			conn = ConnectionManager.getConnnect();
-			String sql = "select code,code_value from common where common_code = '0D'";
+			String sql = "select a.code,a.code_value,nvl(b.cnt,0) " + 
+					" from common a left outer join " + 
+					" (select genre,count(*) cnt from books where member_no is not null group by genre) b " + 
+					" on(a.code=b.genre) " + 
+					" where a.common_code='0D'";
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			
@@ -33,6 +37,7 @@ public class CommonDAO {
 				Common com = new Common();
 				com.setCode(rs.getString("code"));
 				com.setCode_value(rs.getString("code_value"));
+				com.setCount(rs.getString(3));
 				list.add(com);
 			}
 		} catch (Exception e) {
