@@ -6,95 +6,45 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resource/css1/bootstrap.css" />
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resource/css1/flaticon.css" />
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resource/css1/themify-icons.css" />
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resource/vendors1/owl-carousel/owl.carousel.min.css" />
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resource/vendors1/nice-select/css/nice-select.css" />
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/mainresource/vendors/fontawesome/css/all.min.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/mainresource/vendors/nice-select/nice-select.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/mainresource/css/style.css">
 
-</head>
-<body>
-	<div class="container">
-		<div class="row" align="center">
-			<div class="col">
-				<img src="filenameDownload.do?filename=${book[0].book_img}" width="300"/><br>
-				<label id="book_no">book_no: ${book[0].book_no}</label><br> 
-				<label>title: ${book[0].title}</label><br>
-				<label">writer: ${book[0].writer}</label><br>
-				<label">book_index: ${book_index}</label><br>
-			</div>
-			<div class="col" style="border-left: 1px solid gray">
-				<table id="bookmark">
-					<thead>
-						<tr>
-							<th>번호</th>
-							<th>마크 인덱스</th>
-							<th>마크 내용</th>
-							<th>삭제</th>
-							
-						</tr>
-					</thead>
-					<tbody id="bookMarkTbody">
-						<c:forEach items="${markList }" var="markList">
-							<tr class="tr-hover">
-								<td >${markList.rownum }<input type="hidden" value="${markList.bookmark_no}"></td>
-								<td class="mark_index">${markList.bookmark_index } 초</td> 
-								<td>${markList.bookmark_contents }</td>
-								<td><button class="delete">삭제</button></td>
-							</tr>
-						</c:forEach>
-					</tbody>
-				</table>
-				<input id="markContent">
-				<button class="btn btn-primary" id="button3">북마크</button><br>
-				
-				<audio controls="controls" id="audio" preload="preload">
-					<source
-						src="/mediaServer/audio/a.mp3"<%-- ${book.audio_path } --%>
-						type="audio/ogg"/>
-				</audio>
-				<br><br>
-				볼륨<input type="range" id="volume" min="0" max="2" value="1" step="0.01"><br>
-				
-				<button class="btn btn-primary" id="button1" data-playing="false" role="switch" aria-checked="false">
-					<span>재생/정지</span>
-				</button>
-				<button class="btn btn-primary" id="button2">초기화</button><br>
-			</div>
-		</div>
-		<br><br><br>
-		<div class="row">
-			<div class="col">
-				<table id="mylib" >
-					<thead>
-						<tr>
-							<th>mylib_no</th>
-							<th>책 제목</th>
-							<th>찜 여부</th>
-							<th>저자</th>
-							<th>last index</th>
-						</tr>
-					</thead>
-					<tbody>
-						<c:forEach items="${mylib }" var="list">
-							<tr class="tr-hover2">
-								<td>${list.mylibrary_no }
-									<input type="hidden" value="${list.book_no }">
-								</td>
-								<td>${list.title }</td>
-								<td>${list.wish}</td>
-								<td>${list.writer }
-								<td>${list.last_read_index}</td>
-							</tr>
-						</c:forEach>
-					</tbody>
-				</table>
-			</div>
+<!-- main css -->
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resource/css1/style.css" />
 	
-		</div>
-	</div>
-	
+	 <!-- Css Styles -->
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resource/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resource/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resource/css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resource/css/magnific-popup.css" type="text/css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resource/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resource/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resource/css/style.css" type="text/css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
+	<script	src="<%=request.getContextPath()%>/mainresource/vendors/jquery/jquery-3.2.1.min.js"></script>
+<style>
+
+.section_gap{
+padding : 40px;
+}
+</style>
+
 <script>
 	const AudioContext = window.AudioContext || window.webkitAudioContext;
 	const audioContext = new AudioContext();
@@ -216,7 +166,158 @@
 		});
 	});
 	
+	 
+	 
 </script>
+</head>
+<body>
 
+
+ <!--================Blog Area =================-->
+    <section class="blog_area single-post-area section_gap">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 posts-list">
+                    <div class="single-post row">
+                    
+                    <!-- 도서 이미지  -->
+                        <div class="col-lg-5" style="padding: 10px;">
+                            <div class="feature-img">
+                               <img src="filenameDownload.do?filename=${book[0].book_img}" width="300"/>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-5">
+                            <div class="blog_info text-right">
+                                <div class="post_tag">
+                                   <h2> <a href="#">${book[0].title}</a></h2>
+                                    
+                                </div>
+                                <ul class="blog_meta list">
+                                    <li><a href="#">${book[0].writer}</a></li>
+                                    <li><a href="#"></a></li>
+                                    <li><a href="#">${book_index}</a></li>
+                                </ul>
+                                
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-9 col-md-9 blog_details">
+                            <h2>Astronomy Binoculars A Great Alternative</h2>
+                        <table id="bookmark">
+					<thead>
+						<tr>
+							<th>번호</th>
+							<th>마크 인덱스</th>
+							<th>마크 내용</th>
+							<th>삭제</th>
+							
+						</tr>
+					</thead>
+					<tbody id="bookMarkTbody">
+						<c:forEach items="${markList }" var="markList">
+							<tr class="tr-hover">
+								<td >${markList.rownum }<input type="hidden" value="${markList.bookmark_no}"></td>
+								<td class="mark_index">${markList.bookmark_index } </td> 
+								<td>${markList.bookmark_contents }</td>
+								<td><button class="delete">삭제</button></td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+                        </div> <!-- end blog-detail -->
+  		  </div>	<!-- end single row -->
+    
+    
+    <!--  내가 읽은 책 목록 띄워줄 곳 -->
+                    <div class="navigation-area">
+                    <div class="comment-form">
+                        <h4>Leave a Reply</h4>
+                        <form>
+                            <div class="form-group form-inline">
+                                <div class="form-group col-lg-6 col-md-6 name">
+                                    <input type="text" class="form-control" id="name" placeholder="Enter Name" onfocus="this.placeholder = ''"
+                                        onblur="this.placeholder = 'Enter Name'">
+                                </div>
+                                <div class="form-group col-lg-6 col-md-6 email">
+                                    <input type="email" class="form-control" id="email" placeholder="Enter email address"
+                                        onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="subject" placeholder="Subject" onfocus="this.placeholder = ''"
+                                    onblur="this.placeholder = 'Subject'">
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-control mb-10" rows="5" name="message" placeholder="Messege"
+                                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Messege'" required=""></textarea>
+                            </div>
+                            <a href="#" class="primary-btn">Post Comment</a>
+                        </form>
+                    </div>
+                </div>
+              </div> <!-- posts-list --> 
+                
+                
+                <!-- 오른쪽 메뉴바 -->
+                <div class="col-lg-4">
+                        <div class="blog_right_sidebar">
+                            <aside class="single_sidebar_widget search_widget">
+                            <!-- 검색부분 -->
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Search Posts">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default" type="button"><i class="ti-search"></i></button>
+                                    </span>
+                                </div><!-- /input-group -->
+                                <div class="br"></div>
+                            </aside>
+                            
+                          
+                            
+                            
+                            
+                            <aside class="single-sidebar-widget tag_cloud_widget">
+                                <h4 class="widget_title">Tag Clouds</h4>
+                                <ul class="list">
+                                    <li><a href="#">Technology</a></li>
+                                    <li><a href="#">Fashion</a></li>
+                                    <li><a href="#">Architecture</a></li>
+                                    <li><a href="#">Fashion</a></li>
+                                    <li><a href="#">Food</a></li>
+                                    <li><a href="#">Technology</a></li>
+                                    <li><a href="#">Lifestyle</a></li>
+                                    <li><a href="#">Art</a></li>
+                                    <li><a href="#">Adventure</a></li>
+                                    <li><a href="#">Food</a></li>
+                                    <li><a href="#">Lifestyle</a></li>
+                                    <li><a href="#">Adventure</a></li>
+                                </ul>
+                            </aside>
+                        </div>
+                    </div>
+        </div>
+        </div>
+    </section>
+    <!--================Blog Area =================-->
+
+
+
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script	src="<%=request.getContextPath()%>/resource/js1/bootstrap.min.js"></script>
+	<script	src="<%=request.getContextPath()%>/resource/vendors1/nice-select/js/jquery.nice-select.min.js"></script>
+	<script	src="<%=request.getContextPath()%>/resource/vendors1/owl-carousel/owl.carousel.min.js"></script>
+	<script	src="<%=request.getContextPath()%>/resource/js1/owl-carousel-thumb.min.js"></script>
+	<script	src="<%=request.getContextPath()%>/resource/js1/jquery.ajaxchimp.min.js"></script>
+	<script src="<%=request.getContextPath()%>/resource/js1/mail-script.js"></script>
+	
+	<script src="<%=request.getContextPath()%>/mainresource/vendors/skrollr.min.js"></script>	
+	<script src="<%=request.getContextPath()%>/mainresource/js/main.js"></script>
+	<script src="<%=request.getContextPath()%>/resource/js/jquery.nicescroll.min.js"></script>
+    <script src="<%=request.getContextPath()%>/resource/js/jquery.magnific-popup.min.js"></script>
+    <script src="<%=request.getContextPath()%>/resource/js/jquery.countdown.min.js"></script>
+    <script src="<%=request.getContextPath()%>/resource/js/jquery.slicknav.js"></script>
+    <script src="<%=request.getContextPath()%>/resource/js/mixitup.min.js"></script>
+	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
 </body>
 </html>
