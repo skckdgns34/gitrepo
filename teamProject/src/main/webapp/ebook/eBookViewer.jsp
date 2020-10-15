@@ -14,7 +14,7 @@
         <link rel="stylesheet" href="css/main.css">
         <link rel="stylesheet" href="css/popup.css">
 
-        <script src="js/libs/jquery.min.js"></script>
+		<script src="js/libs/jquery.min.js"></script>
 
         <script src="js/libs/zip.min.js"></script>
 

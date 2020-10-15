@@ -3643,13 +3643,9 @@ EPUBJS.reader.ControlsController = function(book) {
 			document.addEventListener(screenfull.raw.fullscreenchange, function() {
 					fullscreen = screenfull.isFullscreen;
 					if(fullscreen) {
-						$fullscreen
-							.addClass("icon-resize-small")
-							.removeClass("icon-resize-full");
+						$fullscreen.addClass("icon-resize-small").removeClass("icon-resize-full");
 					} else {
-						$fullscreen
-							.addClass("icon-resize-full")
-							.removeClass("icon-resize-small");
+						$fullscreen.addClass("icon-resize-full").removeClass("icon-resize-small");
 					}
 			});
 		}
@@ -4138,13 +4134,18 @@ EPUBJS.reader.ReaderController = function(book) {
 	document.addEventListener('keydown', arrowKeys, false);
 
 	$next.on("click", function(e){
-
+		var cfi = reader.rendition.currentLocation().start.cfi;
+		console.log("오른쪽누름");
+		console.log(cfi);
+			$.ajax({
+				url: page+"/Ajax/" 
+			});
+		
 		if(book.package.metadata.direction === "rtl") {
 			rendition.prev();
 		} else {
 			rendition.next();
 		}
-
 		e.preventDefault();
 	});
 
