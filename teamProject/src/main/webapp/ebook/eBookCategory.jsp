@@ -128,9 +128,9 @@ function imgClick(book_no) {
 							<li class="common-filter">
 
 								<ul>
-									<li class="filter-list"><input class="pixel-radio" type="radio" id="r1" name="gen" value="" checked="checked"> <label for="r1">전체<span></span></label></li>
+									<li class="filter-list"><input class="pixel-radio" type="radio" id="r1" name="gen" value="" checked="checked"> <label for="r1">전체<span>(${allCount})</span></label></li>
 									<c:forEach items="${count}" var="count" varStatus="status">
-										<li class="filter-list"><input class="pixel-radio" type="radio" id="r2" name="gen" value="${count.genre }"><label for="r2">${count2[status.index].genreName }<span> (${count.count})</span></label></li>
+										<li class="filter-list"><input class="pixel-radio" type="radio" id="${count.genre}" name="gen" value="${count.genre}"><label for="${count.genre}">${genreName[status.index].genreName }<span> (${count.count})</span></label></li>
 									</c:forEach>
 									<!-- <li class="filter-list"><input class="pixel-radio" type="radio" id="r3" name="gen" value="d2"><label for="r3">시/에세이<span> (${count[1].count})</span></label></li>
                     <li class="filter-list"><input class="pixel-radio" type="radio" id="r4" name="gen" value="d3"><label for="r4">무협/판타지<span> (${count[2].count})</span></label></li>
@@ -159,10 +159,7 @@ function imgClick(book_no) {
 									<div class="desc">
 										<a href="#" class="title"> <c:if
 												test="${not empty bestBook.book_img}">
-												<td><img
-													src="filenameDownload.do?filename=${bestBook.book_img}"
-													style="width: 200px"
-													onclick="imgClick(${bestBook.book_no})"></td>
+												<td><img src="filenameDownload.do?filename=${bestBook.book_img}"  style= "width: 200px" onclick="imgClick(${bestBook.book_no})" ></td>
 											</c:if>
 										</a>
 										<div class="price">${bestBook.title}</div>
