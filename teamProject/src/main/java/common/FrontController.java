@@ -220,7 +220,7 @@ public class FrontController extends HttpServlet {
 		list.put("/Ajax/audioBookReviewAllList.do", new ebook.AudioBookReviewListAjaxServ());
 		list.put("/Ajax/audioBookReviewDelete.do", new ebook.AudioBookReviewDeleteAjaxServ());
 		list.put("/Ajax/audioBookReviewUpdate.do", new ebook.AudioBookReviewUpdateAjaxServ());
-
+		list.put("/Ajax/audioBookWishAjax.do", new ebook.AudioBookWishAjaxServ());
 
 		
 	}
