@@ -10,7 +10,62 @@
 
 <meta charset="UTF-8">
 <title>회원정보 수정</title>
+<style type="text/css">
+.button2 {
+  background-color: white; 
+  color: black; 
+  border: 2px solid 002347;
+  padding: 7px 15px;
+  font-size: 12px;
+}
+.button3 {
+  background-color: white; 
+  color: black; 
+  border: 2px solid 002347;
+  padding: 7px 15px;
+  font-size: 12px;
+}
+</style>
+<script>
 
+	
+	function NiChk(){
+		var nickname = $("#nickname").val();
+		$.ajax({
+			url: "${pageContext.request.contextPath}/Ajax/memberNiCheck.do",
+			type: "POST",
+			data : {
+				nickname : nickname
+			},
+			success: function(result){
+				if(result == 1){
+					alert("이미 존재하는 닉네임 입니다.");
+				}else{
+					alert("사용 가능한 닉네임 입니다.");
+				}
+			}
+		})
+	}
+	
+	function EmChk(){
+		var member_email = $("#member_email").val()
+ 		$.ajax({
+			url: "${pageContext.request.contextPath}/Ajax/memberEmCheck.do",
+			type: "POST",
+			data : {
+				member_email : member_email
+			},
+			success: function(result){
+				if(result == 1){
+					alert("이미 존재하는 e-mail 입니다.");
+				}else{
+					alert("사용 가능한 e-mail 입니다.");
+				}
+			}
+		}) 
+	}
+	
+</script>
 </head>
 <body>
 	<!-- Breadcrumb Section Begin -->
@@ -57,11 +112,13 @@
 											class="form-control" id="nickname" name="nickname" value="${nickname }">
 										<div class="eheck_font" id="nickname_check"></div>
 									</div>
+									<button type="button" class="button button2" onclick="NiChk()" >체크</button>
 									<div class="form-group">
 										<label for="member_email">이메일</label> <input type="text"
 											class="form-control" id="member_email" name="member_email" value="${member_email }">
 										<div class="eheck_font" id="nickname_check"></div>
 									</div>
+									<button type="button" class="button button3"  onclick="EmChk()" >체크</button>
 									<div class="form-group">
 										<label for="member_tel">휴대폰 번호</label> <input type="tel"
 											class="form-control" id="member_tel" name="member_tel" value="${member_tel }">

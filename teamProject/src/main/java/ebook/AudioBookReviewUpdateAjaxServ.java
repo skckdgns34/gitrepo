@@ -11,8 +11,8 @@ import common.Controller;
 public class AudioBookReviewUpdateAjaxServ implements Controller {
 
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String review_no = (String) request.getParameter("review_no");
-		String contents = (String) request.getParameter("contents");
+		String review_no = request.getParameter("review_no");
+		String contents =  request.getParameter("contents");
 		
 
 		
