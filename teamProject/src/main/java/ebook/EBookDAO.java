@@ -12,6 +12,7 @@ import java.util.Map;
 import common.ConnectionManager;
 import vo.Books;
 import vo.Good;
+import vo.Mylibrary;
 import vo.Review;
 import vo.SearchBook;
 
@@ -969,5 +970,62 @@ public class EBookDAO
 			ConnectionManager.close(rs, pstmt, conn);
 		}
 		return list;
+	}
+
+	public String wishYn(String book_no, String member_no) {
+		ResultSet rs =null;
+		String yn = null;
+		try {
+			conn = ConnectionManager.getConnnect();
+			String sql = " select nvl(wish,'n') from mylibrary where book_no = ? and member_no = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, book_no);
+			pstmt.setString(2, member_no);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				yn = rs.getString(1);
+			}
+			conn.commit();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionManager.close(rs, pstmt, conn);
+		}
+		return yn;
+	}
+
+	public String bookWishUpdate(Mylibrary wish) {
+		String yn = null;
+		ResultSet rs = null;
+		try {
+			conn = ConnectionManager.getConnnect();
+			conn.setAutoCommit(false);
+			String cntsql = "select nvl(wish,'n') from mylibrary "
+					+ " where book_no ='" + wish.getBook_no() + "' and member_no = '" + wish.getMember_no() + "'";
+			Statement stmt = conn.createStatement();
+			rs = stmt.executeQuery(cntsql);
+			rs.next();
+			yn = rs.getString(1);
+			
+			String sql = null;
+			if(yn.equals("n")) {
+				sql="update mylibrary set wish='y' ";
+			}else{
+				sql="update mylibrary set wish='n' ";
+			}
+			sql += " where book_no=? and member_no=?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, wish.getBook_no());
+			pstmt.setString(2, wish.getMember_no());
+			pstmt.executeQuery();
+			conn.commit();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionManager.close(rs, pstmt, conn);
+		}
+		
+		return yn;
 	}
 }
