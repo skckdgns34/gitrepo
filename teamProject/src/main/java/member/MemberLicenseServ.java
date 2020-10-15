@@ -20,30 +20,12 @@ public class MemberLicenseServ implements Controller
 		String member_no = (String)request.getSession().getAttribute("member_no");
 		MemberBookDAO dao = new MemberBookDAO();
 		List<Map<String, Object>> list = dao.ticketList(member_no);
-		System.out.println(list);
 		request.setAttribute("list", list);
 		 
-//		request.setAttribute("member_no",);
-//		request.setAttribute("ticket_code", dao.LicenseList());
-//		request.setAttribute("ticket_name", dao.LicenseList());
-//		request.setAttribute("price", dao.LicenseList());
-//		request.setAttribute("pay_date", dao.LicenseList());
-//		request.setAttribute("ticket_date", dao.LicenseList());
-//		request.setAttribute("expiration", dao.LicenseList());
-//		request.setAttribute("US", dao.LicenseList());
-		
 		
 		request.getRequestDispatcher("member/memberLicense.jsp").forward(request, response);
 		
 		
-//		MemberBookDAO dao = new MemberBookDAO();
-//		License license = new License();
-//		
-//		license.setMember_no((String)request.getSession().getAttribute("member_no"));
-//
-//		ArrayList<License> list = dao.LicenseList(license);
-//		request.setAttribute("list", list);
-//		request.getRequestDispatcher("member/memberLicense.jsp").forward(request, response);
 	}
 
 }
