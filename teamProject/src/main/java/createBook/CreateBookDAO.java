@@ -24,17 +24,21 @@ public class CreateBookDAO {
 	
 	//유저들이 쓴 글 목록
 	public ArrayList<Books> selectAllUserBook(String genre) {
+		System.out.println(genre+"b");
 		ResultSet rs = null;
 		ArrayList<Books> list = new ArrayList<Books>();
 		Books resultVO = null;
 			try {
 				conn = ConnectionManager.getConnnect();
-				String sql = "select a.book_no, a.title, a.book_img,a.publication_date, b.code_value, c.nickname, a.genre " + 
-						"from books a, common b, member c " + 
-						"where a.genre = b.code " + 
-						"and a.member_no = c.member_no";
+				String sql = "select a.book_no, a.title, a.book_img,a.publication_date, b.code_value, c.nickname, a.genre, nvl(a.views,0), nvl(d.cnt,0) review " + 
+						" from books a join common b " + 
+						" on(a.genre = b.code) " + 
+						" join member c " + 
+						" on(a.member_no = c.member_no) " + 
+						" left outer join (select a.book_no, count(*) cnt from books a, review b where a.book_no = b.book_no group by a.book_no) d " + 
+						" on(a.book_no=d.book_no)";
 				if(genre!=null && !genre.equals("")) {
-					sql+=" and a.genre='"+genre+"'";
+					sql+=" where a.genre='"+genre+"'";
 				}
 				pstmt = conn.prepareStatement(sql);
 				rs = pstmt.executeQuery();
@@ -47,6 +51,8 @@ public class CreateBookDAO {
 					resultVO.setCode_value(rs.getString(5));
 					resultVO.setWriter(rs.getString(6));
 					resultVO.setGenre(rs.getString(7));
+					resultVO.setViews(rs.getString(8));
+					resultVO.setScore(rs.getString(9));
 					list.add(resultVO);
 				}
 			} catch (Exception e) {

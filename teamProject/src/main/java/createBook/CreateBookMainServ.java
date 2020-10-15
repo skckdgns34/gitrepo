@@ -21,10 +21,21 @@ public class CreateBookMainServ implements Controller
 		
 		//장르 목록
 		String genre = request.getParameter("genre");
+		String genre2 = request.getParameter("genre2");
+		System.out.println(genre+"1");
+		System.out.println(genre2+"2");
+		ArrayList<Books> userBooks = null;
+
+		
+		if(genre2!=null && !genre2.equals("")) {
+			userBooks = CreateBookDAO.getInstance().selectAllUserBook(genre2);
+		}else {
+			userBooks = CreateBookDAO.getInstance().selectAllUserBook(genre);
+		}
+		
 		ArrayList<Common> genreList=  CommonDAO.getInstance().selectAllGenre();
 
 		//모든 유저들 책
-		ArrayList<Books> userBooks = CreateBookDAO.getInstance().selectAllUserBook(genre);
 		
 		//유저들 책 rank
 		ArrayList<Books> userBookRank = CreateBookDAO.getInstance().userBookRankList();
