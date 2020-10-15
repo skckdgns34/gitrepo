@@ -84,74 +84,184 @@
 		</div>
 	</section>
 	<!-- Breadcrumb Section End -->
-
-
+	
+	
 	<!--================Blog Area =================-->
-	<!-- Blog Section Begin -->
-	<section class="blog spad">
-		<div class="container">
-			<select name="genre" id="genre">
-				<option value="">전체</option>
-				<c:forEach items="${genreList }" var="genre">
-					<option value="${genre.code }">${genre.code_value }</option>
-				</c:forEach>
-			</select>
-			<div class="row">
-			
-  <div class="col-lg-3">				
-  <label>순위</label><br>
-				<table class="table">
-					<thead>
-						<tr>
-							<th>순위</th>
-							<th>책 제목</th>
-							<th>조회수</th>
-							<th>닉네임(글쓴이)</th>
-						</tr>
-					</thead>
-					<tbody>
-						 <c:forEach items="${userBookRank }" var="list">
-							<tr class="tr">
-								<td>
-									<input type="hidden" value="${list.book_no }">
-									${list.no }
-								</td>
-								<td>${list.title}</td>
-								<td>${list.views}</td>
-								<td>${list.writer}</td>
-							</tr>
-						</c:forEach> 
-					</tbody>
-				</table>
-				
-			</div>
-			                <div class="col-lg-9">
-			
-				<div class="col-lg-4 col-md-6 col-sm-6">
-					<c:if test="${empty userBooks }">없다</c:if>
-					<div class="blog__item">
-					<button type="button" class="btn btn-primary" id="write">글쓰기</button>
-						<c:forEach items="${userBooks }" var="userBook">
-							<div class="blog__item__pic set-bg"
-								data-setbg="img/blog/blog-1.jpg"></div>
-							<div class="blog__item__text">
-								<span><img
-									src="filenameDownload.do?filename=${userBook.book_img}"></span>
-								<h5>${userBook.title }</h5>
-								<h5>${userBook.publication_date }</h5>
-								<h5>${userBook.code_value} </h5>
-								<h5>${userBook.writer }</h5>
+    <section class="blog_area section_gap">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="blog_left_sidebar">
+                     <c:if test="${empty userBooks }">없다</c:if>
+		                                       <select name="genre" id="genre">
+													<option value="">전체</option>
+													<c:forEach items="${genreList }" var="genre">
+														<option value="${genre.code }">${genre.code_value }</option>
+													</c:forEach>
+												</select>
+                        <article class="row blog_item">
+                        
+                        <c:forEach items="${userBooks }" var="userBook">
+                            <div class="col-md-3">
+                                <div class="blog_info text-right">
+                                
+                                    <div class="post_tag">
+							             
+												
+                                        <a href="#">장르</a>
+                                        <a class="active" href="#">소설</a>
+                                       
+                                    </div>
+                                    
+                                    <ul class="blog_meta list">
+                                        <li><a href="#">${userBook.writer }<i class="ti-user"></i></a></li>
+                                        <li><a href="#">${userBook.publication_date }<i class="ti-calendar"></i></a></li>
+                                        <li><a href="#">조회수(넣어주기)<i class="ti-eye"></i></a></li>
+                                        <li><a href="#">댓글수(넣어주기)<i class="ti-comment"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-9">
+                                <div class="blog_post">
+							<img src="<%=request.getContextPath()%>/resource/img/blog/main-blog/m-blog-1.jpg" alt="">
+								 <!--  <img src="filenameDownload.do?filename=${userBook.book_img}">-->
+                                   <input type="hidden" name ="h_book_no" value="${userBook.book_no}">
+                                    <div class="blog_details">
+                                        <a href="★상세보기 경로 넣기">
+                                            <h2>${userBook.title }</h2>
+                                        </a>
+                                        
+                                     
+                                        <p>${userBook.publication_date }</p>
+                                 		 <p>${userBook.code_value }</p>
+                                 		    <!-- 줄거리만 넣어주자! -->
+                                 		 <p>${userBook.writer }</p>
+                                        <a href="★상세보기 경로 넣기" class="blog_btn">View More</a>
+                                    </div>
 
-								<a href="#">Read More</a> <!--   이 거 살려서 쓸거면 쓰기..ㅎ 필요없으면 지우고-->
-							</div>
-						</c:forEach>
-					</div>
+                                </div>
+                            </div>
+                             </c:forEach>
+                             
+                        </article>
+                        
+                        
+                      <!-- 페이징(기능 없음... 껍데기만 있음) -->
+                        <nav class="blog-pagination justify-content-center d-flex">
+                            <ul class="pagination">
+                                <li class="page-item">
+                                    <a href="#" class="page-link" aria-label="Previous">
+                                        <span aria-hidden="true">
+                                            <i class="ti-angle-left"></i>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="page-item active"><a href="#" class="page-link">01</a></li>
+                                <li class="page-item"><a href="#" class="page-link">02</a></li>
+                                <li class="page-item"><a href="#" class="page-link">03</a></li>
+                                <li class="page-item"><a href="#" class="page-link">04</a></li>
+                                <li class="page-item"><a href="#" class="page-link">09</a></li>
+                                <li class="page-item">
+                                    <a href="#" class="page-link" aria-label="Next">
+                                        <span aria-hidden="true">
+                                            <i class="ti-angle-right"></i>
+                                        </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                
+                
+                
+                <!-- 베스트셀러 들어 갈 부분 -->
+              
+              
+               <div class="col-lg-4">
+                    <div class="blog_right_sidebar">
+                        <aside class="single_sidebar_widget search_widget">
+                        
+                        <!-- 검색창(껍데기만 있음) -->
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Search">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button"><i class="ti-search"></i></button>
+                                </span>
+                            </div><!-- /input-group -->
+                            
+                            <div class="br"></div>
+                            
+                        </aside>
+                        
+                       <!-- 인기책ㅋㅋ -->
+                        <aside class="single_sidebar_widget popular_post_widget">
+                            <h3 class="widget_title">Popular Books</h3>
+                             <c:forEach items="${userBookRank }" var="list">
+                            <div class="media post_item">
+                            <input type="hidden" value="${list.book_no }">${list.no }
+                                <img src="<%=request.getContextPath()%>/resource/img/blog/popular-post/post4.jpg" alt="post">
+                                
+									
+                                <div class="media-body">
+                                    <a href="blog-details.html">
+                                        <h3>${list.title}</h3>
+                                    </a>
+                                    <p>${list.views}</p>
+                                    <p>${list.writer}</p>
+                                </div>
+                            </div>
+                            </c:forEach>     
+                            <div class="br"></div>
+                        </aside>
+                        
+                       <!-- 장르별 카테고리 나타내기 -->
+                        <aside class="single_sidebar_widget post_category_widget">
+                            <h4 class="widget_title">Post Catgories</h4>
+                            <ul class="list cat-list">
+                               <c:forEach items="${genreList }" var="genre">
+								 <li>
+                                    <a href="#" class="d-flex justify-content-between">
+                                        <p>${genre.code_value }</p>
+                                        <p>37</p>
+                                    </a>
+                                </li>		
+							</c:forEach>
+                               
+                         
+                            </ul>
+                            <div class="br"></div>
+                        </aside>
+                        
+                       <!--  디자인 용으로 걍 살려둡...시다! -->
+                        <aside class="single_sidebar_widget author_widget">
+                            <img class="author_img rounded-circle" src="img/blog/author.png" alt="">
+                            <h4>Charlie Barber</h4>
+                            <p>Senior blog writer</p>
+                            <div class="social_icon">
+                                <a href="#"><i class="ti-facebook"></i></a>
+                                <a href="#"><i class="ti-twitter"></i></a>
+                                <a href="#"><i class="ti-github"></i></a>
+                                <a href="#"><i class="ti-linkedin"></i></a>
+                            </div>
+                            <p>Boot camps have its supporters andit sdetractors. Some people do not understand why you
+                                should have to spend money on boot camp when you can get. Boot camps have itssuppor
+                                ters andits detractors.</p>
+                            <div class="br"></div>
+                        </aside>
+                        
+                    </div>
+                </div>
+              
+              
+              
+            </div>
+        </div>
+    </section>
+    <!--================Blog Area =================-->
+	
+	
 
-				</div>
-</div>
-			</div>
-		</div>
-	</section>
-	<!-- Blog Section End -->
 </body>
 </html>
