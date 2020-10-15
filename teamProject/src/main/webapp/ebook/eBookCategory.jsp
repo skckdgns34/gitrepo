@@ -180,17 +180,16 @@ function imgClick(book_no) {
          
             </div>
             <div>
+                <form action="${pageContext.request.contextPath}/eBookSearchAfter.do">
               <div class="input-group filter-bar-search">
                 <input type="text" placeholder="Search" id="testInput">
                 <div class="input-group-append">
                   <button><i class="ti-search"></i></button>
                 </div>
-                <form action="${pageContext.request.contextPath}/eBookSearchAfter.do">
-                <input type="hidden" id="hidden" name="hidden">
-                <input type="hidden" id="realHidden" name="realHidden">
-                
-                </form>
+                	<input type="hidden" id="hidden" name="hidden">
+                	<input type="hidden" id="realHidden" name="realHidden">
               </div>
+                </form>
             </div>
             
             
