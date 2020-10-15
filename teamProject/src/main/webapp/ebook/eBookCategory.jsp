@@ -159,10 +159,7 @@ function imgClick(book_no) {
 									<div class="desc">
 										<a href="#" class="title"> <c:if
 												test="${not empty bestBook.book_img}">
-												<td><img
-													src="filenameDownload.do?filename=${bestBook.book_img}"
-													style="width: 200px"
-													onclick="imgClick(${bestBook.book_no})"></td>
+												<td><img src="filenameDownload.do?filename=${bestBook.book_img}"  style= "width: 200px" onclick="imgClick(${bestBook.book_no})" ></td>
 											</c:if>
 										</a>
 										<div class="price">${bestBook.title}</div>
