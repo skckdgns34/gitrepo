@@ -98,7 +98,24 @@ public class MemberDAO {
 		}
 		return resultVO;
 	}
-
+	
+	//최종접속일
+	public void lastaccessdate(Member memberVO) {
+		try {
+			conn = ConnectionManager.getConnnect();
+			String sql = "update member set last_access_date = sysdate"
+						+ " where member_id = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, memberVO.getMember_id());
+			int r = pstmt.executeUpdate();
+			System.out.println(r + "건이 수정됨.");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionManager.close(null, pstmt, conn);
+		}
+	}
+	
 	//회원탈퇴 PK 제외 null값 처리
 	public void delete(Member memberVO) {
 		Member resultVO = null;

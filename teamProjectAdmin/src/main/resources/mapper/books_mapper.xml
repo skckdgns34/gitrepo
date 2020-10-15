@@ -12,7 +12,8 @@
 				b.best_book,
 				b.registration_date,
 				c.code_value,
-				p.company_name
+				p.company_name,
+				b.book_img
 			FROM
 				books b, common c, company p
 			WHERE
