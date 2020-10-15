@@ -39,6 +39,9 @@ public class MemberLoginServ implements Controller
 				request.getSession().setAttribute("nickname", resultVO.getNickname());
 				request.getSession().setAttribute("member_tel", resultVO.getMember_tel());
 				request.getSession().setAttribute("member_email", resultVO.getMember_email());
+				MemberDAO dao = new MemberDAO();
+				dao.lastaccessdate(memberVO);
+				
 			} else {	//패스워드 불일치
 				request.setAttribute("errormsg", "패스워드 불일치");
 				page = "member/memberLogin.jsp";
