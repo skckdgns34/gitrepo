@@ -578,6 +578,27 @@ public class EBookDAO
 		return list;
 	}
 	
+	//epub 전체 카운팅
+	
+	public int genreAllCount() {
+		int a = 0;
+		ResultSet rs = null;
+		try {
+			conn = ConnectionManager.getConnnect();
+			String sql = "select count(book_no) from books where epub_path is not null";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				a= rs.getInt(1);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionManager.close(rs, pstmt, conn);
+		}
+		return a;
+	}
+	
 	public int insertReview(Review review) {
 		int no = 0;
 		ResultSet rs = null;
