@@ -24,12 +24,13 @@ public class EBookCategoryServ implements Controller
 	{
 		
 		List<Map<String,Object>> count = EBookDAO.getInstance().genreCount();
+		List<Map<String,Object>> genreName = EBookDAO.getInstance().genreName();
 		ArrayList<Books> bestBooks = EBookDAO.getInstance().selectBestBooks(); //베스트북
 		
 		//결과저장
 		request.setAttribute("bestBooks", bestBooks);
 
-
+		request.setAttribute("genreName", genreName);
 		request.setAttribute("count", count);
 		request.getRequestDispatcher("/ebook/eBookCategory.jsp").forward(request, response);
 	}

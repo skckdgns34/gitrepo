@@ -129,8 +129,8 @@ function imgClick(book_no) {
 
 								<ul>
 									<li class="filter-list"><input class="pixel-radio" type="radio" id="r1" name="gen" value="" checked="checked"> <label for="r1">전체<span></span></label></li>
-									<c:forEach items="${count}" var="count" >
-										<li class="filter-list"><input class="pixel-radio" type="radio" id="r2" name="gen" value="${count.genre }"><label for="r2"> asd<span> (${count.count})</span></label></li>
+									<c:forEach items="${count}" var="count" varStatus="status">
+										<li class="filter-list"><input class="pixel-radio" type="radio" id="r2" name="gen" value="${count.genre }"><label for="r2">${count2[status.index].genreName }<span> (${count.count})</span></label></li>
 									</c:forEach>
 									<!-- <li class="filter-list"><input class="pixel-radio" type="radio" id="r3" name="gen" value="d2"><label for="r3">시/에세이<span> (${count[1].count})</span></label></li>
                     <li class="filter-list"><input class="pixel-radio" type="radio" id="r4" name="gen" value="d3"><label for="r4">무협/판타지<span> (${count[2].count})</span></label></li>

@@ -556,6 +556,28 @@ public class EBookDAO
 		return list;
 	}
 	
+	//도서코드별 이름 뽑아주기용임
+	public ArrayList<Map<String, Object>> genreName() {
+		ArrayList<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+		ResultSet rs = null;
+		try {
+			conn = ConnectionManager.getConnnect();
+			String sql = "select code_value from common where common_name = '도서장르코드' order by code ";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				Map<String, Object> map = new HashMap<String,Object>();
+				map.put("genreName", rs.getString("code_value"));
+				list.add(map);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionManager.close(rs, pstmt, conn);
+		}
+		return list;
+	}
+	
 	public int insertReview(Review review) {
 		int no = 0;
 		ResultSet rs = null;
