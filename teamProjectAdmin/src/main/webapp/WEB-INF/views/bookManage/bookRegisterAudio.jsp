@@ -34,9 +34,7 @@
 <body>
 	<div class="container col-xs-12">
 		<hr>
-		<div class="panel-title text-center">
 			<h3>AudioBook 등록</h3>
-		</div>
 		<div id="signupbox" style="margin-top: 50px">
 			<div class="panel panel-default">
 

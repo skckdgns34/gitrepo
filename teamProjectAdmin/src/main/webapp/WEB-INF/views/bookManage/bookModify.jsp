@@ -35,9 +35,7 @@
 	<div class="container col-xs-12">
 		<c:if test="${not empty result}">
 			<hr>
-			<div class="panel-title text-center">
-				<h3>도서 정보 수정</h3>
-			</div>
+				<h3 class="page_title">도서 정보 수정</h3>
 
 			<div id="signupbox" style="margin-top: 30px">
 				<div class="panel panel-default">

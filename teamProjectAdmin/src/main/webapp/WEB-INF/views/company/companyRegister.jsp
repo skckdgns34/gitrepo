@@ -22,9 +22,7 @@
 	<div class="container col-xs-12">
 
 		<hr>
-		<div class="panel-title text-center">
 			<h3>출판사 등록</h3>
-		</div>
 		
 		<div id="signupbox" style="margin-top: 30px">
 			<div class="panel panel-default">

@@ -66,7 +66,7 @@
 			<div class="container">
 
 				<!-- 로고 부분 -->
-				<a class="navbar-brand logo_h" href="<%=application.getContextPath()%>/index2.jsp"><img
+				<a class="navbar-brand logo_h" href="<%=application.getContextPath()%>/index.jsp"><img
 					src="${pageContext.request.contextPath}/resource/img/logo.jpg" alt="" /></a>
 			
 				<!-- 메뉴바 시작! -->
@@ -74,7 +74,7 @@
 					id="navbarSupportedContent">
 					   <ul class="nav navbar-nav menu_nav ml-auto">
 						<li class="nav-item active"><a class="nav-link"
-							href="<%=application.getContextPath()%>/index2.jsp">홈</a></li>
+							href="<%=application.getContextPath()%>/index.jsp">홈</a></li>
 							
 						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/eBookCategory.do">전자책</a>
 						</li>
