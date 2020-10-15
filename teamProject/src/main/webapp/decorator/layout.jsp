@@ -99,7 +99,8 @@
 									href="<%=application.getContextPath()%>/clientHopeBook.do">희망도서</a></li>
 						
 							</ul></li>
-							
+							<li class="nav-item"><a class="nav-link" ></a></li>
+								<li class="nav-item"><a class="nav-link" ></a></li> <!-- 띄워쓰기용 지우지 마세요 ㅠ -->
 						
 					
 						
