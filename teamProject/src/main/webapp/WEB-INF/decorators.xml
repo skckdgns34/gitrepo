@@ -35,5 +35,7 @@
 		<pattern>/memberDeletePassword.do</pattern>
 		<pattern>/eBookReview.do</pattern>
 		<pattern>/eBookReading.do</pattern>
+		<pattern>/fileupload.do</pattern>
+		<pattern>/clientNoticeSelect.do*</pattern>
 	</excludes>
 </decorators>

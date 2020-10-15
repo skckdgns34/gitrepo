@@ -42,6 +42,7 @@ $(function(){
 			</div>
 		</div>
 	</section>
+	
 	<!-- Breadcrumb Section End -->
 	<ul>
 	<li><a href="<%=application.getContextPath()%>/memberModify.do">내정보

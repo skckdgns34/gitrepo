@@ -29,7 +29,7 @@ public class NoticeDAO {
 			int cnt = 0;
 			try {
 				conn = ConnectionManager.getConnnect();
-				String where ="where 1=1";
+				String where =" where 1=1";
 				if(notice.getNotice_title() !=null) {
 					where += " and notice_title like '%' || ? || '%'";
 				}

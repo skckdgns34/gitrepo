@@ -29,6 +29,9 @@
 					<button id="reUpBtn" onclick="reviewUpdateBefore()" class="btn btn-link">수정</button> 
 					<button id="reDelBtn" onclick="reviewDelete()" class="btn btn-link" >삭제</button>
 				</c:if>
+				<c:if test="${reviews.member_no != member_no && not empty member_no}">
+					<button type="button" onclick="reDeclarationBtn()" id="reDeclarationBtn" class="btn btn-link btnDeclaration">신고</button> 
+				</c:if>
 			</div>		
 				<p id="review_contents">${reviews.contents}</p>
 		</div>

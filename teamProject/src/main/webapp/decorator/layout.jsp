@@ -60,26 +60,17 @@
 				<a class="navbar-brand logo_h" href="<%=application.getContextPath()%>/licenceList.do"><img
 					src="<%=request.getContextPath()%>/resource/img/ticket.png" style="padding-top: 10px;" /></a>
 			</div>
-		</div>
+		</div> 
 
 		<nav class="navbar navbar-expand-lg navbar-light">
 			<div class="container">
 
 				<!-- 로고 부분 -->
 				<a class="navbar-brand logo_h" href="<%=application.getContextPath()%>/index2.jsp"><img
-					src="<%=request.getContextPath()%>/resource/img/logo.jpg" alt="" /></a>
-					
-				<!-- 이 버튼의 용도는 무엇일까유????? 
-				<button class="navbar-toggler" type="button" data-toggle="collapse"
-					data-target="#navbarSupportedContent"
-					aria-controls="navbarSupportedContent" aria-expanded="false"
-					aria-label="Toggle navigation">
-					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>-->
-				
+					src="${pageContext.request.contextPath}/resource/img/logo.jpg" alt="" /></a>
+			
 				<!-- 메뉴바 시작! -->
-				<div class="collapse navbar-collapse offset"
+				<div class="collapse navbar-collapse "
 					id="navbarSupportedContent">
 					   <ul class="nav navbar-nav menu_nav ml-auto">
 						<li class="nav-item active"><a class="nav-link"
@@ -92,6 +83,7 @@
 						</li>
 						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/createBookMain.do">나만의 도서</a>
 						</li>
+						
 						
 						<li class="nav-item submenu dropdown"><a href=""
 							class="nav-link dropdown-toggle" data-toggle="dropdown"
@@ -108,9 +100,7 @@
 						
 							</ul></li>
 							
-							<li class="nav-item"></li>
-							<li class="nav-item"></li><!-- 메뉴사이 띄워주기용 li 지우지 마세요 ㅠ -->
-							
+						
 					
 						
 						<c:if test="${sessionScope.member_id == null }">
@@ -129,19 +119,17 @@
 							role="button" aria-haspopup="true" aria-expanded="false">${sessionScope.member_id}</a>님
 							<ul class="dropdown-menu">
 							<li class="nav-item"><a class="nav-link"
-									href="<%=application.getContextPath()%>/memberModify.do">내 정보수정</a></li>
+									href="<%=application.getContextPath()%>/member/memberModify.jsp">내 정보수정</a></li>
 								<li class="nav-item"><a class="nav-link"
 									href="<%=application.getContextPath()%>/memberBookMark.do">내 서재</a></li>
-									<li class="nav-item"><a class="nav-link"
-									href="<%=application.getContextPath()%>/memberBookLuvList.do">찜 목록</a></li>
+									
 								<li class="nav-item"><a class="nav-link"
 									href="<%=application.getContextPath()%>/memberCreateBookCk.do">나만의 도서 확인</a></li>
 								<li class="nav-item"><a class="nav-link"
 									href="<%=application.getContextPath()%>/memberLicense.do">이용권 내용</a></li>
 							</ul></li>
 							
-							<li class="nav-item"></li>
-							<li class="nav-item"></li><!-- 메뉴사이 띄워주기용 li 지우지 마세요 ㅠ -->
+						
 							
 						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/memberLogout.do">로그아웃</a>
 						</li>

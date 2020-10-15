@@ -25,7 +25,6 @@ public class AudioBookCategoryServ implements Controller
 		
 		request.setAttribute("bestBooks", bestBooks);
 		
-		String gen = request.getParameter("gen");
 		request.setAttribute("count", count);
 		request.getRequestDispatcher("/ebook/audioBookCategory.jsp").forward(request, response);
 	

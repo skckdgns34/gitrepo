@@ -1,4 +1,3 @@
-
 package ebook;
 
 import java.io.IOException;
@@ -12,11 +11,14 @@ import javax.servlet.http.HttpServletResponse;
 import common.Controller;
 import common.Paging;
 
-public class EBookReviewServ implements Controller {
+public class AudioBookReviewListAjaxServ implements Controller {
 
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		String book_no = request.getParameter("book_no");
+		String member_no = request.getParameter("member_no");
 		Paging paging = new Paging();
-		paging.setPageUnit(10);
+		paging.setPageUnit(2);
 		//현재 페이지번호
 		String page = request.getParameter("page");
 		int p = 1;
@@ -27,16 +29,17 @@ public class EBookReviewServ implements Controller {
 		//검색 파라미터
 		int first = paging.getFirst();
 		int last = paging.getLast();
-		
-		
-		String book_no =  request.getParameter("book_no"); //책넘버
 		int total = EBookDAO.getInstance().countReview(book_no);		
 		paging.setTotalRecord(total);
 		
-		List<Map<String, Object>> review = EBookDAO.getInstance().selectAllReview(book_no,first,last); //리뷰전체보여주기
+		
+		List<Map<String, Object>> review = EBookDAO.getInstance().selectAllReview(book_no, first, last);
+		request.setAttribute("member_no"	, member_no);
+
+		request.setAttribute("review", review);
 		request.setAttribute("paging", paging);
-		request.setAttribute("review", review); //디테일 페이지 넘어가면서 리뷰 뿌려주기
-		request.getRequestDispatcher("/ebook/eBookReview.jsp").forward(request, response);
+		request.getRequestDispatcher("/ebook/audioBookReview.jsp").forward(request, response);
+		
 	}
 
 }

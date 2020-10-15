@@ -53,7 +53,6 @@ public class CreateBookInsertServ implements Controller {
 		}
 		
 		
-		
 		System.out.println(book);
 		CreateBookDAO.getInstance().insertUserBook(book);
 		response.sendRedirect("createBookMain.do");

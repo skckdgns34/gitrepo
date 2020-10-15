@@ -77,25 +77,18 @@
 
 						<div class="row">
 							<div class="col-sm-6 col-md-6 col-xs-6">
-								<label for="emp_no"
-									class="control-label col-md-4  requiredField">등록 사원 번호<span
-									class="asteriskField"></span>
-								</label>
+								
 								<div class="controls col-md-8 ">
 									<input class="input-md emailinput form-control"
-										id="emp_no" name="emp_no"
+										id="emp_no" name="emp_no"  type="hidden"
 										style="margin-bottom: 10px" type="text" value="${login.emp_no}" />
 								</div>
 							</div>
 
 						<div class="col-sm-6 col-md-6 col-xs-6">
-								<label for="emp_name"
-									class="control-label col-md-4  requiredField">등록 사원 이름<span
-									class="asteriskField"></span>
-								</label>
 								<div class="controls col-md-8 ">
 									<input class="input-md emailinput form-control"
-										id="emp_name" name="emp_name"
+										id="emp_name" name="emp_name" type="hidden"
 										style="margin-bottom: 10px" type="text"  value="${login.emp_name}"/>
 								</div>
 							</div>
