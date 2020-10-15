@@ -11,7 +11,7 @@ import common.Controller;
 public class ClientQuestionModifyFormServ implements Controller {
 
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		request.getRequestDispatcher("client/clientQuestionModify.jsp.jsp").forward(request, response);
 
 	}
 

@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import common.ConnectionManager;
+import vo.Books;
 import vo.Questions;
 
 public class QuestionDAO {
@@ -53,6 +54,55 @@ public class QuestionDAO {
 		}
 		return list;
 	}
+	
+	//문의사항 상세조회
+	public void selectOne(Questions questions) {
+		Questions result = null;
+		try {conn = ConnectionManager.getConnnect();
+		String sql = "SELECT q.question_date, q.question_contents, q.question_title,"
+				+ " c.code_value, q.question_status, a.answer_contents, a.answer_date"
+				+ " FROM questions q, common c, answer a"
+				+ " WHERE q.question_no = a.question_no and q.question_kind = c.code and q.question_no=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, questions.getQuestion_no());
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				result = new Questions();
+				result.setQuestion_date(rs.getString(1));
+				result.setQuestion_contents(rs.getString(2));
+				result.setQuestion_title(rs.getString(3));
+				result.setCode_value(rs.getString(4));
+				result.setQuestion_status(rs.getString(5));
+				result.setAnswer_contents(rs.getString(6));
+				result.setAnswer_date(rs.getString(7));
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally {
+			ConnectionManager.close(conn);
+		}
+	}
+	
+	public Questions update(Questions questions) {
+		Questions result = null;
+	      try {
+	         conn = ConnectionManager.getConnnect();
+	         String sql = "UPDATE questions SET question_title=?, question_contents=?, question_file=?, question_kind=?, "
+	         			+ "WHERE question_no = ?";
+	         pstmt = conn.prepareStatement(sql);
+	         pstmt.setString(1, result.getQuestion_title());
+	         pstmt.setString(2, result.getQuestion_contents());
+	         pstmt.setString(3, result.getQuestion_file());
+	         pstmt.setString(4, result.getQuestion_kind());
+	         pstmt.setString(5, result.getQuestion_no());
+	         pstmt.executeUpdate();
+	      } catch (Exception e) {
+	         e.printStackTrace();
+	      } finally {
+	         ConnectionManager.close(null, pstmt, conn);
+	      }
+	      return result;
+	   }
 	
 	
 	//문의사항 등록
