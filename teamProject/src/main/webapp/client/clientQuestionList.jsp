@@ -54,7 +54,7 @@ function insertpage() //문의사항 등록 ㅡ
 								<c:forEach items="${list}" var="questions">
 									<tr>
 										<td>${questions.question_no}</td>	
-										<td><a href = >${questions.question_title}</a></td>
+										<td><a href = "clientQuestionModifyForm.do?question_no=${questions.question_no}">${questions.question_title}</a></td>
 										<td>${fn:substring(questions.question_date,0,10) }</td>
 										<td>${questions.code_value}</td>
 										<td>${questions.question_status}</td>

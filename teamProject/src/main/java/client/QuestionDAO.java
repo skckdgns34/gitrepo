@@ -29,9 +29,9 @@ public class QuestionDAO {
 		Questions result = null;
 		try {
 			conn = ConnectionManager.getConnnect();
-			String sql = " SELECT rownum, q.question_date, q.question_contents, q.question_title, q.question_file, c.code_value, q.question_status"
+			String sql = " SELECT q.question_no, q.question_date, q.question_title, q.question_file, c.code_value, q.question_status"
 					+ " FROM questions q, common c"
-					+ " WHERE q.question_kind = c.code and q.member_no = ?"
+					+ " WHERE q.question_kind = c.code and q.member_no = ? and question_title is not null"
 					+ " ORDER BY 1";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, questions.getMember_no());
@@ -40,11 +40,10 @@ public class QuestionDAO {
 				result = new Questions();
 				result.setQuestion_no(rs.getString(1));
 				result.setQuestion_date(rs.getString(2));
-				result.setQuestion_contents(rs.getString(3));
-				result.setQuestion_title(rs.getString(4));
-				result.setQuestion_file(rs.getString(5));
-				result.setCode_value(rs.getString(6));
-				result.setQuestion_status(rs.getString(7));
+				result.setQuestion_title(rs.getString(3));
+				result.setQuestion_file(rs.getString(4));
+				result.setCode_value(rs.getString(5));
+				result.setQuestion_status(rs.getString(6));
 				list.add(result);
 			}
 		} catch (Exception e) {
@@ -56,7 +55,7 @@ public class QuestionDAO {
 	}
 	
 	//문의사항 상세조회
-	public void selectOne(Questions questions) {
+	public Questions selectOne(Questions questions) {
 		Questions result = null;
 		try {conn = ConnectionManager.getConnnect();
 		String sql = "SELECT q.question_date, q.question_contents, q.question_title,"
@@ -79,10 +78,12 @@ public class QuestionDAO {
 		}catch(Exception e){
 			e.printStackTrace();
 		}finally {
-			ConnectionManager.close(conn);
+			ConnectionManager.close(rs, pstmt, conn);
 		}
+		return result;
 	}
 	
+	//문의사항 수정
 	public Questions update(Questions questions) {
 		Questions result = null;
 	      try {
