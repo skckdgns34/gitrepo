@@ -15,4 +15,6 @@ public class Questions {
 	private String nickname;
 	private String code_value;
 	private String question_status;
+	private String answer_contents;
+	private String answer_date;
 }

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ taglib prefix="fmt"  uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,40 +10,38 @@
 
 <script>
 	$(function() {
-		$("#genre")
-				.on(
-						"change",
-						function() {
-							var genre = $(this).val();
-							location.href = "${pageContext.request.contextPath}/createBookMain.do?genre="
-									+ genre
-
+		$("#genre").on("change",function() {
+			var genre = $(this).val();
+			location.href = "${pageContext.request.contextPath}/createBookMain.do?genre="+ genre
 						}) //장르 select 태그 바뀔때마다 페이지 새로 띄우는거.
 
-		$("img")
-				.on(
-						"click",
-						function() {
-							var book_no = $(this).next().val()
-							alert(book_no)
-							location.href = "${pageContext.request.contextPath}/eBookDetail.do?book_no="
-									+ book_no;
-						}).css('cursor', 'pointer');
+		$("img").on("click",function() {
+			var book_no = $(this).next().val()
+			alert(book_no)
+			location.href = "${pageContext.request.contextPath}/eBookDetail.do?book_no="+ book_no;
+		}).css('cursor', 'pointer');
 
-		$("#write")
-				.on(
-						"click",
-						function() {
-							var m_no = "${sessionScope.member_no}";
-							console.log(m_no + "a");
-							if (m_no == "") {
-								alert("로그인이 필요한 기능.")
-								location.href = "${pageContext.request.contextPath}/memberLogin.do";
-							} else {
-								location.href = "${pageContext.request.contextPath}/createBookWrite.do";
-							}
-							//location.href="${sessionScope.member_no}"
-						})
+		$(".blog_details").hover(function() {
+			$(this).css("cursor", "pointer");
+		});
+		
+		$(".blog_details").on("click",function() {
+			var book_no = $(this).parent().parent().find("input[type=hidden]").val()
+			alert(book_no)
+			location.href = "${pageContext.request.contextPath}/eBookDetail.do?book_no="+ book_no;
+		}).css('cursor', 'pointer');
+		
+		$("#write").on("click",function() {
+			var m_no = "${sessionScope.member_no}";
+			console.log(m_no + "a");
+			if (m_no == "") {
+				alert("로그인이 필요한 기능.")
+				location.href = "${pageContext.request.contextPath}/memberLogin.do";
+			} else {
+				location.href = "${pageContext.request.contextPath}/createBookWrite.do";
+			}
+			//location.href="${sessionScope.member_no}"
+			})
 
 		//
 		$(".tr").hover(function() {
@@ -54,16 +52,10 @@
 		});
 
 		//
-		$(".tr")
-				.on(
-						"click",
-						function() {
-							var book_no = $(this).find('input[type=hidden]')
-									.val();
-							location.href = "${pageContext.request.contextPath}/eBookDetail.do?book_no="
-									+ book_no;
-						});
-
+		$(".tr").on("click",function() {
+			var book_no = $(this).find('input[type=hidden]').val();
+			location.href = "${pageContext.request.contextPath}/eBookDetail.do?book_no="+ book_no;
+		});
 	});
 </script>
 </head>
@@ -93,12 +85,12 @@
                 <div class="col-lg-8">
                     <div class="blog_left_sidebar">
                      <c:if test="${empty userBooks }">없다</c:if>
-		                                       <select name="genre" id="genre">
-													<option value="">전체</option>
-													<c:forEach items="${genreList }" var="genre">
-														<option value="${genre.code }">${genre.code_value }</option>
-													</c:forEach>
-												</select>
+		                   <select name="genre" id="genre">
+								<option>전체</option>
+								<c:forEach items="${genreList }" var="genre">
+									<option value="${genre.code }">${genre.code_value }(${genre.count })</option>
+								</c:forEach>
+						    </select>
                         <article class="row blog_item">
                         
                         <c:forEach items="${userBooks }" var="userBook">
@@ -115,9 +107,16 @@
                                     
                                     <ul class="blog_meta list">
                                         <li><a href="#">${userBook.writer }<i class="ti-user"></i></a></li>
-                                        <li><a href="#">${userBook.publication_date }<i class="ti-calendar"></i></a></li>
-                                        <li><a href="#">조회수(넣어주기)<i class="ti-eye"></i></a></li>
-                                        <li><a href="#">댓글수(넣어주기)<i class="ti-comment"></i></a></li>
+                                       
+                                        <li>
+	                                        <fmt:parseDate value="${userBook.publication_date}" pattern="yyyy-MM-dd HH:mm:ss" var="publication_date"/>
+							    			
+                                        	<a href="#"><fmt:formatDate value="${publication_date}"  pattern="yyyy/MM/dd"/>
+                                        		<i class="ti-calendar"></i>
+                                        	</a>
+                                        </li>
+                                        <li><a href="#">${userBook.views }<i class="ti-eye"></i></a></li>
+                                        <li><a href="#">(${userBook.score })<i class="ti-comment"></i></a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -128,16 +127,13 @@
 								 <!--  <img src="filenameDownload.do?filename=${userBook.book_img}">-->
                                    <input type="hidden" name ="h_book_no" value="${userBook.book_no}">
                                     <div class="blog_details">
-                                        <a href="★상세보기 경로 넣기">
+                                        <a href="">
                                             <h2>${userBook.title }</h2>
                                         </a>
-                                        
-                                     
-                                        <p>${userBook.publication_date }</p>
+                                        <p><fmt:formatDate value="${publication_date}"  pattern="yyyy/MM/dd"/></p>
                                  		 <p>${userBook.code_value }</p>
-                                 		    <!-- 줄거리만 넣어주자! -->
-                                 		 <p>${userBook.writer }</p>
-                                        <a href="★상세보기 경로 넣기" class="blog_btn">View More</a>
+                                 		 <p></p>   <!-- 줄거리만 넣어주자! -->
+                                        <a href="" class="blog_btn">View More</a>
                                     </div>
 
                                 </div>
@@ -178,7 +174,6 @@
                 
                 <!-- 베스트셀러 들어 갈 부분 -->
               
-              
                <div class="col-lg-4">
                     <div class="blog_right_sidebar">
                         <aside class="single_sidebar_widget search_widget">
@@ -200,8 +195,8 @@
                             <h3 class="widget_title">Popular Books</h3>
                              <c:forEach items="${userBookRank }" var="list">
                             <div class="media post_item">
-                            <input type="hidden" value="${list.book_no }">${list.no }
-                                <img src="<%=request.getContextPath()%>/resource/img/blog/popular-post/post4.jpg" alt="post">
+                                ${list.no }<img src="<%=request.getContextPath()%>/resource/img/blog/popular-post/post4.jpg" alt="post">
+                            	<input type="hidden" value="${list.book_no }">
                                 
 									
                                 <div class="media-body">
@@ -222,9 +217,9 @@
                             <ul class="list cat-list">
                                <c:forEach items="${genreList }" var="genre">
 								 <li>
-                                    <a href="#" class="d-flex justify-content-between">
+                                    <a href="${pageContext.request.contextPath}/createBookMain.do?genre2=${genre.code }" class="d-flex justify-content-between">
                                         <p>${genre.code_value }</p>
-                                        <p>37</p>
+                                        <p>(${genre.count })</p>
                                     </a>
                                 </li>		
 							</c:forEach>
@@ -250,12 +245,8 @@
                                 ters andits detractors.</p>
                             <div class="br"></div>
                         </aside>
-                        
                     </div>
                 </div>
-              
-              
-              
             </div>
         </div>
     </section>

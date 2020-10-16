@@ -12,6 +12,7 @@ import common.ConnectionManager;
 import vo.Books;
 import vo.Mylibrary;
 import vo.Mywriting;
+import vo.PayVO;
 
 public class MemberBookDAO {	//내서재 등 관련
 	// 전역변수. 모든 메서드에 공통으로 사용되는 변수
@@ -98,7 +99,7 @@ public class MemberBookDAO {	//내서재 등 관련
 		ArrayList<Mylibrary> list = new ArrayList<Mylibrary>();
 		try {
 			conn = ConnectionManager.getConnnect();
-			String sql = " SELECT l.member_no, l.book_no, b.title, b.writer"
+			String sql = " SELECT l.member_no, l.book_no, b.book_img, b.title, b.writer"
 					+ " FROM mylibrary l, books b"
 					+ " WHERE l.book_no = b.book_no"
 					+ " and l.member_no = ?";
@@ -109,6 +110,7 @@ public class MemberBookDAO {	//내서재 등 관련
 				resultVo = new Mylibrary();
 				resultVo.setMember_no(rs.getString("member_no"));
 				resultVo.setBook_no(rs.getString("book_no"));
+				resultVo.setBook_img(rs.getString("book_img"));
 				resultVo.setTitle(rs.getString("title"));
 				resultVo.setWriter(rs.getString("writer"));
 				list.add(resultVo);
@@ -191,6 +193,28 @@ public class MemberBookDAO {	//내서재 등 관련
 			ConnectionManager.close(rs, pstmt, conn);
 		}
 		return list;
+	}
+
+	//이용권 만료
+	public void status(PayVO payVO) {
+		try {
+			conn = ConnectionManager.getConnnect();
+			String sql = " update pay set pay_status = 'n'" 
+					 + " where  pay_no in(select p.pay_no"
+					 + " FROM member m, ticket t, pay p"
+					 + " WHERE t.ticket_code = p.ticket_code"
+					 +  " AND m.member_no = p.member_no" 
+					 + " and sysdate >  p.pay_date +  t.ticket_date"
+					 + " and m.member_no = ?)" ;
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, payVO.getMember_no());
+			int r = pstmt.executeUpdate();
+			System.out.println(r + "건이 수정됨.");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionManager.close(null, pstmt, conn);
+		}
 	}
 	
 }

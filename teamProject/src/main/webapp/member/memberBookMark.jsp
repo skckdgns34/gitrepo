@@ -17,6 +17,10 @@
   padding: 7px 15px;
   font-size: 12px;
 }
+
+	a {
+	color: #002347;
+	}
 </style>
 <script>
 $(function(){
@@ -43,18 +47,6 @@ $(function(){
 		</div>
 	</section>
 	<!-- Breadcrumb Section End -->
-	<ul>
-		<li><a href="<%=application.getContextPath()%>/memberModify.do">내정보
-				수정</a>
-		<li><a href="<%=application.getContextPath()%>/memberBookMark.do">내
-				서재</a>
-		<li><a
-			href="<%=application.getContextPath()%>/memberCreateBookCk.do">나만의
-				도서 확인</a>
-		<li><a href="<%=application.getContextPath()%>/memberLicense.do">이용권
-				내용</a>
-	</ul>
-	<br>
 	<br>
 	<ul>
 		<li><a href="<%=application.getContextPath()%>/memberBookMark.do">읽은
@@ -63,6 +55,7 @@ $(function(){
 			href="<%=application.getContextPath()%>/memberBookLuvList.do">찜
 				목록</a>
 	</ul>
+	<br><hr>
 	<section class="section-margin--small mb-5">
 	
 	<div class="container">
@@ -81,7 +74,8 @@ $(function(){
 			<c:forEach items="${list }" var="mylibrary">
 			<input type="hidden" id="book_no" value="${mylibrary.book_no }">
 				<tr>
-					<td>${mylibrary.title }</td>
+					<td><img src="filenameDownload.do?filename=${mylibrary.book_img}" style="width: 200px">
+							${mylibrary.title }</td>
 					<td>${mylibrary.writer }</td>
 					<td><button id="btnsend">바로가기</button>
 					</td>
@@ -94,6 +88,5 @@ $(function(){
 </div>
 </div>
 </section>
-
 </body>
 </html>

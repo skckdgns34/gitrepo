@@ -1238,7 +1238,7 @@ button:focus {
   .blog_right_sidebar .popular_post_widget .post_item .media-body {
     justify-content: center;
     align-self: center;
-    padding-left: 20px; }
+    padding-left: 25% }
     .blog_right_sidebar .popular_post_widget .post_item .media-body h3 {
       font-size: 14px;
       line-height: 20px;
@@ -1522,7 +1522,7 @@ button:focus {
       color: #002347; }
 
 .comment-form {
-  background: #f1f9ff;
+  background: #f6f6f6;
   text-align: center;
   padding: 47px 30px 43px;
   margin-top: 50px;
