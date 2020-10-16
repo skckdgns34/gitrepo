@@ -40,7 +40,8 @@ public class EBookReadingServ implements Controller
 			EBookDAO.getInstance().myLibraryFirstInsert(member_no,book_no);
 			request.getRequestDispatcher("/ebook/eBookViewer.jsp").forward(request, response);
 		}else {
-			request.getRequestDispatcher("/ebook/eBookViewer.jsp#"+ checkMy.get(0).get("last_read_index")).forward(request, response);
+			request.setAttribute("last_index", checkMy.get(0).get("last_read_index"));
+			request.getRequestDispatcher("/ebook/eBookViewer.jsp").forward(request, response);
 		}
 	}
 
