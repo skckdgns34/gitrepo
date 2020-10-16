@@ -7,93 +7,141 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath }/layout/styles/content-styles.css"
+	type="text/css">
+<script
+	src="https://cdn.ckeditor.com/ckeditor5/11.1.1/classic/ckeditor.js"></script>
+<style>
+.ck-editor__editable {
+	min-height: 500px;
+}
+
+h2 {
+	font-size: 15px;
+	padding-right: 30px;
+	padding-b
+}
+
+.form-group {
+	padding-bottom: 15px;
+}
+
+.popular_courses {
+	padding-bottom: 0px;
+}
+</style>
 </head>
 <body>
+	<section class="breadcrumb-option">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="breadcrumb__text">
+						<h4>Menu</h4>
+						<div class="breadcrumb__links">
+							<a href="">문의사항</a> <span>답변확인</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
 	<c:if test="${not empty result}">
-		<h1 class="page_title">문의사항상세정보</h1>
+		<div class="popular_courses section_gap_top">
+			<div class="container">
+				<div class="row justify-content-center">
+					<div class="col-lg-5" style="height: 50px;">
+						<div class="main_title">
+							<h2 class="mb-3">답변 확인</h2>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<section class="blog_area single-post-area section_gap" style="padding: 20px;">
+		<div class="container">
+            <div class="row">
+                <div class="col-lg-12 posts-list">
+    				 <div class="comment-form">
 		<form method="post" name="frm" id="frm"
-		enctype="multipart/form-data"
+			enctype="multipart/form-data"
 			action="${pageContext.request.contextPath}/clientQuestionModify.do">
-			<div>
-				<label for="question_no">문의사항 번호</label> <input id="question_no" name="question_no"
-					type="hidden" value="${result.question_no }" >
+			<div class="form-label-group">
+				<label for="question_no">문의사항 번호</label> <input id="question_no"
+					name="question_no" type="hidden" value="${result.question_no }">
 			</div>
-			<div>
-				<label for="question_title">제목</label> <input id="question_title" name="question_title"
-					type="text" value="${result.question_title }">
+			
+			<div class="form-group form-inline">
+			<div class="form-group col-lg-8">
+				<h2 style="margin-bottom: 0px;">제목</h2><br> 
+				<input  style="width: 600px;" type="text" class="form-control" name="question_title" value="${result.question_title }" readonly>
 			</div>
-			<div>
-				<label for="question_contents">내용</label> <textarea id="question_contents" name="question_contents"
-					>${result.question_contents}</textarea>
+			
+				<label for="form-group form-inline">내용</label>
+				<textarea id="question_contents" name="question_contents">${result.question_contents}</textarea>
+			<div class="form-label-group">
+				<label for="form-group form-inline">등록일</label> <input id="question_date"
+					name="question_date" type="date"
+					value="${fn:substring(result.question_date,0,10) }">
 			</div>
-			<div>
-				<label for="question_date">등록일</label> <input id="question_date"
-					name="question_date" type="date" value="${fn:substring(result.question_date,0,10) }">
-			</div>
-			<div>
-				<label for="genre">장르</label> <select name="genre" id="genre"
-					size="4">
+			<div class="form-group form-inline">
+				<label for="question_kind">문의사항 카테고리</label> <select
+					name="question_kind" id="question_kind" size="1"
+					class="form-control">
 					<option value="">선택</option>
-					<option value="d1"
-						<c:if test="${result.genre=='d1'}">selected="selected"</c:if>>소설</option>
-					<option value="d2"
-						<c:if test="${result.genre=='d2'}">selected="selected"</c:if>>시/에세이</option>
-					<option value="d3"
-						<c:if test="${result.genre=='d3'}">selected="selected"</c:if>>무협/판타지</option>
-					<option value="d4"
-						<c:if test="${result.genre=='d4'}">selected="selected"</c:if>>인문</option>
-					<option value="d5"
-						<c:if test="${result.genre=='d5'}">selected="selected"</c:if>>로맨스</option>
-					<option value="d6"
-						<c:if test="${result.genre=='d6'}">selected="selected"</c:if>>자기계발</option>
-					<option value="d7"
-						<c:if test="${result.genre=='d7'}">selected="selected"</c:if>>경제/경영</option>
-					<option value="d8"
-						<c:if test="${result.genre=='d8'}">selected="selected"</c:if>>아동</option>
-					<option value="d9"
-						<c:if test="${result.genre=='d9'}">selected="selected"</c:if>>유아</option>
+					<option value="e1"
+						<c:if test="${result.question_kind=='e1'}">selected="selected"</c:if>>회원정보문의</option>
+					<option value="e2"
+						<c:if test="${result.question_kind=='e2'}">selected="selected"</c:if>>결제/취소/환불문의</option>
+					<option value="e3"
+						<c:if test="${result.question_kind=='e3'}">selected="selected"</c:if>>구독/서비스이용문의</option>
+					<option value="e4"
+						<c:if test="${result.question_kind=='e4'}">selected="selected"</c:if>>기기관련
+						문의</option>
+					<option value="e5"
+						<c:if test="${result.question_kind=='e5'}">selected="selected"</c:if>>도서관련
+						문의</option>
+					<option value="e6"
+						<c:if test="${result.question_kind=='e6'}">selected="selected"</c:if>>기타/제휴
+						문의</option>
 				</select>
 			</div>
-			<div>
-				<label for="introduction">소개글</label>
-				<textarea id="introduction" name="introduction">${result.introduction}</textarea>
 			</div>
-			<div>
-				<label for="summary">줄거리</label>
-				<textarea id="summary" name="summary">${result.summary}</textarea>
+			
+			
+			<div class="form-label-group">
+				<label for="question_status">답변상태</label> <input
+					id="question_status" name="question_status" type="text"
+					value="${result.question_status }">
 			</div>
-			<div>
-				<label for="publication_date">발간일</label> <input
-					id="publication_date" name="publication_date" 
-					type="date" value="${fn:substring(result.publication_date,0,10) }">
+			<div class="form-label-group">
+				<label for="answer_contents">답변내용</label>
+				<textarea id="answer_contents" name="answer_contents">${result.answer_contents}</textarea>
 			</div>
-			<div>
-				<label for="best_book">베스트셀러</label> <input type="radio"
-					name="best_book" value="y"
-					<c:if test="${result.best_book=='y'}">checked="checked"</c:if>>Yes
-				<input type="radio" name="best_book" value="n"
-					<c:if test="${result.best_book=='n'}">checked="checked"</c:if>>No
+			<div class="form-label-group">
+				<label for="answer_date">답변일자</label> <input id="answer_date"
+					name="answer_date" type="date"
+					value="${fn:substring(result.answer_date,0,10) }">
 			</div>
-			<div>
-				<label for="book_img">책 사진첨부</label><input type="file"
-					name="book_img">${result.book_img }
-			</div>
-			<%-- <div>
-				<label for="epub_path">전자책 첨부</label><input type="file"
-					name="epub_path"> ${result.epub_path }
-			</div> --%>
 			<div>
 				<button type="reset">초기화</button>
 				<button>등록</button>
 			</div>
 		</form>
-			<c:if test="${not empty result}">
+		</div>
+                    </div>
+                    
+      </div>
+        </div>
+    </section>
+		<%-- <c:if test="${not empty result}">
 				<form action="${pageContext.request.contextPath}/bookDelete.ad">
 					<input type="hidden" name="book_no" value="${result.book_no}">
 					<button>삭제</button>
 				</form>
-			</c:if>
+			</c:if> --%>
 	</c:if>
 </body>
 </html>

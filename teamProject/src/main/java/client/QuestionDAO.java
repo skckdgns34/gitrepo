@@ -59,7 +59,7 @@ public class QuestionDAO {
 		Questions result = null;
 		try {conn = ConnectionManager.getConnnect();
 		String sql = "SELECT q.question_date, q.question_contents, q.question_title,"
-				+ " c.code_value, q.question_status, a.answer_contents, a.answer_date"
+				+ " c.code_value, q.question_status, a.answer_contents, a.answer_date, q.question_kind"
 				+ " FROM questions q, common c, answer a"
 				+ " WHERE q.question_no = a.question_no and q.question_kind = c.code and q.question_no=?";
 			pstmt = conn.prepareStatement(sql);
@@ -67,13 +67,14 @@ public class QuestionDAO {
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				result = new Questions();
-				result.setQuestion_date(rs.getString(1));
-				result.setQuestion_contents(rs.getString(2));
-				result.setQuestion_title(rs.getString(3));
-				result.setCode_value(rs.getString(4));
-				result.setQuestion_status(rs.getString(5));
-				result.setAnswer_contents(rs.getString(6));
-				result.setAnswer_date(rs.getString(7));
+				result.setQuestion_date(rs.getString(1));		//등록일자
+				result.setQuestion_contents(rs.getString(2));	//문의내용
+				result.setQuestion_title(rs.getString(3));		//문의제목
+				result.setCode_value(rs.getString(4));			//문의카테고리
+				result.setQuestion_status(rs.getString(5));		//답변상태
+				result.setAnswer_contents(rs.getString(6));		//답변내용
+				result.setAnswer_date(rs.getString(7));			//답변일자
+				result.setQuestion_kind(rs.getString(8));
 			}
 		}catch(Exception e){
 			e.printStackTrace();
