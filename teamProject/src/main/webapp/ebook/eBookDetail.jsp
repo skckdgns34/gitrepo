@@ -242,14 +242,28 @@ function reDeclarationBtn() {
 	dialog.dialog( "open" );
 }
 		
-	
-	
-	
-
-
-
-
 </script>
+<style>
+a{
+color: black;
+}
+
+span{
+
+color:black;
+text-align: end;
+}
+.desc{
+min-width: 300px;
+    padding-left: 25%;
+    text-align: center;
+}
+.s_product_text{
+margin-top:10px;}
+
+
+
+</style>
 </head>
 <body>
 <!-- 리뷰 신고 페이지 -->
@@ -276,7 +290,7 @@ function reDeclarationBtn() {
 
 
 
-
+<!-- 배너 부분 -->
 	<!-- Breadcrumb Section Begin -->
     <section class="breadcrumb-option">
         <div class="container">
@@ -295,38 +309,86 @@ function reDeclarationBtn() {
     </section>
     <!-- Breadcrumb Section End -->
 
-<div class="product_image_area">
+
+<!-- 메인 -->
+
+  <!--================Single Product Area =================-->
+	<div class="product_image_area">
 		<div class="container">
 			<div class="row s_product_inner">
-				<div class="col-lg-6">
-					<div class="owl-carousel owl-theme s_Product_carousel">
-						<div class="single-prd-item">
-							<c:if test="${not empty book[0].book_img}">
-									<img  src="filenameDownload.do?filename=${book[0].book_img}" style="width:500px">
-							</c:if>
+			
+			<!-- 이미지 영역 -->
+				<div class="col-lg-7">
+						<div class="single-prd-item" style="padding-left: 20%;">
+						<c:if test="${not empty book[0].book_img}">
+							<img  src="filenameDownload.do?filename=${book[0].book_img}" style="width:400px;">
+						</c:if>
 						</div>
-						
-					</div>
 				</div>
 				
-				<div class="col-lg-5 offset-lg-1">
-					<div class="s_product_text">
-						<h3>책 제목  : ${book[0].title}</h3>
-						<h2>책 저자 : ${book[0].writer}</h2>
-						<ul class="list">
-							<li><a class="active"><span>카테고리</span> : ${book[0].genre}</a></li>
-							<li>출간일 : 
-								<fmt:parseDate value="${book[0].publication_date}" pattern="yyyy-MM-dd HH:mm:ss" var="publication_date"/>
-						    	<fmt:formatDate value="${publication_date}"  pattern="yyyy/MM/dd"/>
-						    </li> 
-							<li><a ><span>조회수</span> ${book[0].views}</a></li>
-							<li><a ><span>줄거리</span> ${book[0].summary}</a></li>
-							<li><a ><span>베스트셀러</span> ${book[0].best_book}</a></li>
-						</ul>
-						</div>
-						<hr>
+				<div class="col-lg 5">
+				
+				 <aside class="single-sidebar-widget tag_cloud_widget">
+                        <div class="blog_right_sidebar">
+                       <div class="user justify-content-between d-flex">
+                                 <div class="desc">
+                                        <h5>${book[0].title}</a></h5>
+                                        <p class="date"><fmt:parseDate value="${book[0].publication_date}" pattern="yyyy-MM-dd HH:mm:ss" var="publication_date"/>
+						    	<fmt:formatDate value="${publication_date}"  pattern="yyyy/MM/dd"/></p>
+                                        <p class="comment">
+                                           ${book[0].writer}
+                                        </p>
+                                    </div>
+                                   
+                                </div>   
+                                </div>
+						<ul style="padding: 10%; max-width: 450px;">
 						
-					<div class="s_product_text">
+						<!-- 장르명 -->
+						<!-- 카테고리 명이 나왔으면 좋겠는데 ㅠㅠㅠ 수정해주기-->
+						<li>
+                            <a class="justify-content-between d-flex" href="#">
+                                <p>Category</p>
+                                <span class="or">${book[0].genre}</span>
+                            </a>
+                        </li>
+                        
+						<!-- 등록일 -->
+						 <li>
+                            <a class="justify-content-between d-flex" href="#">
+                                <p>등록일</p>
+                                <span class="or"><fmt:parseDate value="${book[0].publication_date}" pattern="yyyy-MM-dd HH:mm:ss" var="publication_date"/>
+						    	<fmt:formatDate value="${publication_date}"  pattern="yyyy/MM/dd"/></span>
+                            </a>
+                        </li>
+						<!-- 조회수 -->
+                        <li>
+                            <a class="justify-content-between d-flex" href="#">
+                                <p>조회수</p>
+                                <span class="or">${book[0].views}</span>
+                            </a>
+                        </li>
+                        <!-- 소개글 -->
+                         <li>
+                            <a  href="#">
+                                <p>소개글</p>
+                                <span class="or" style="max-width: 400px; text-align: end;">${book[0].introduction}</span>
+                            </a>
+                        </li>
+                        
+                        <!-- 베스트 셀러 여부 -->
+                         <li>
+                            <a class="justify-content-between d-flex" href="#">
+                                <p>베스트 셀러 여부</p>
+                                <span class="or">${book[0].best_book}</span>
+                            </a>
+                        </li>
+                        </ul>
+                       </aside> 
+						    <hr>	
+					
+						<div class="s_product_text">
+						
 							<c:if test="${ member_no == null }">
 							
 								추천 기능은 <button type="button" id="newLogin" >
@@ -335,6 +397,7 @@ function reDeclarationBtn() {
 								<i class="fa fa-heart" id="heart" style="font-size:16px;color:red"></i>
 								<span class="rec_count"></span>			
 							</c:if>
+							
 							<c:if test="${ member_no != null }">
 							
 								<c:if test="${check == 1}">
@@ -353,131 +416,49 @@ function reDeclarationBtn() {
 								
 								</c:if>
 							</c:if>
+							<hr>
+							<div style=" padding-left: 22%;">
+							
 							<form action="${pageContext.request.contextPath}/eBookReading.do" method="post">
 								<input type="hidden" name="reading_book_no" value="${book[0].book_no}"/>
 								<input type="hidden" name="reading_member_no" value="${member_no}"/>
-								<button class="button primary-btn" id="read">읽기</button>
+								<button class="button primary-btn" id="read" style="width: 250px; height: 80px;">읽기</button>
 							</form>
 							
-         					<a class="button primary-btn" href="#" id="check" onclick="licence()">결제</a> 
-							</div>	
-				</div>
-			</div>
-		</div>
-	</div>
+         					<button class="button primary-btn" id="check" onclick="licence()" style="width: 250px; height: 80px;">결제</button>
+							</div>
+							</div>	  <!-- end product count -->
+	
+					</div><!-- end col-lg 5 -->
+				</div><!--  end product inner-->
+			</div><!-- end container -->
+		</div> <!--end image area  -->
+		
 	<!--================End Single Product Area =================-->
 	
+	
+	<!-- 리뷰파트 -->
+
 <!--================Product Description Area =================-->
 	<section class="product_description_area">
 		<div class="container">
+	
 			<ul class="nav nav-tabs" id="myTab" role="tablist">
 				<li class="nav-item">
-					<a class="nav-link" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">소개글</a>
+					<a class="nav-link" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">줄거리</a>
 				</li>
-				<!--  
-				<li class="nav-item">
-					<a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact"
-					 aria-selected="false">Comments</a>
-				</li>-->
-				
+	
 				<li class="nav-item">
 					<a class="nav-link active" id="review-tab" data-toggle="tab" href="#review" role="tab" aria-controls="review"
-					 aria-selected="false">Reviews</a>
+					 aria-selected="false">리뷰</a>
 				</li>
-				
 			</ul>
+			
 			<div class="tab-content" id="myTabContent">
 				<div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
-					<p>${book[0].introduction }</p>
+					<p>${book[0].summary}</p>
 				</div>
-				
-				
-			<!--  
-				<div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-					<div class="row">
-						<div class="col-lg-6">
-							<div class="comment_list">
-								<div class="review_item">
-									<div class="media">
-										<div class="d-flex">
-											<%-- <img src="img/product/review-1.png" alt=""> --%>
-										</div>
-										<div class="media-body">
-											<h4>Blake Ruiz</h4>
-											<h5>12th Feb, 2018 at 05:56 pm</h5>
-											<a class="reply_btn" href="#">Reply</a>
-										</div>
-									</div>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-										dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-										commodo</p>
-								</div>
-								<div class="review_item reply">
-									<div class="media">
-										<div class="d-flex">
-										<%--	<img src="img/product/review-2.png" alt="">--%>
-										</div>
-										<div class="media-body">
-											<h4>Blake Ruiz</h4>
-											<h5>12th Feb, 2018 at 05:56 pm</h5>
-											<a class="reply_btn" href="#">Reply</a>
-										</div>
-									</div>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-										dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-										commodo</p>
-								</div>
-								<div class="review_item">
-									<div class="media">
-										<div class="d-flex">
-										<%--	<img src="img/product/review-3.png" alt="">--%>
-										</div>
-										<div class="media-body">
-											<h4>Blake Ruiz</h4>
-											<h5>12th Feb, 2018 at 05:56 pm</h5>
-											<a class="reply_btn" href="#">Reply</a>
-										</div>
-									</div>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-										dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-										commodo</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-6">
-							<div class="review_box">
-								<h4>Post a comment</h4>
-								<form class="row contact_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
-									<div class="col-md-12">
-										<div class="form-group">
-											<input type="text" class="form-control" id="name" name="name" placeholder="Your Full name">
-										</div>
-									</div>
-									<div class="col-md-12">
-										<div class="form-group">
-											<input type="email" class="form-control" id="email" name="email" placeholder="Email Address">
-										</div>
-									</div>
-									<div class="col-md-12">
-										<div class="form-group">
-											<input type="text" class="form-control" id="number" name="number" placeholder="Phone Number">
-										</div>
-									</div>
-									<div class="col-md-12">
-										<div class="form-group">
-											<textarea class="form-control" name="message" id="message" rows="1" placeholder="Message"></textarea>
-										</div>
-									</div>
-									<div class="col-md-12 text-right">
-										<button type="submit" value="submit" class="btn primary-btn">Submit Now</button>
-									</div>
-								</form>
-							</div>
-						</div>
-					</div>
-				</div>
-				
-				-->
+		
 				<div class="tab-pane fade show active" id="review" role="tabpanel" aria-labelledby="review-tab">
 					<div class="row">
 						<div class="col-lg-12">
@@ -486,21 +467,7 @@ function reDeclarationBtn() {
 							</div>
 							<div class="review_list" id="reviewField">
 							</div>
-							<%--여기가 iframe자리임 ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ --%>
-						</div>
-						<div class="col-lg-6">
-							<div class="review_box">
-								<%-- <h4>Add a Review</h4>
-								<p>Your Rating:</p>
-								<ul class="list">
-									<li><a href="#"><i class="fa fa-star"></i></a></li>
-									<li><a href="#"><i class="fa fa-star"></i></a></li>
-									<li><a href="#"><i class="fa fa-star"></i></a></li>
-									<li><a href="#"><i class="fa fa-star"></i></a></li>
-									<li><a href="#"><i class="fa fa-star"></i></a></li>
-								</ul>
-								<p>Outstanding</p>--%>
-								
+							
 								<!-- 리뷰쓰고 액션 -->
                		
                		
@@ -520,7 +487,7 @@ function reDeclarationBtn() {
 	                    <textarea class="form-control different-control w-100" name="textarea"  cols="30" rows="5" placeholder="리뷰 내용 입력" id="reviewArea"></textarea>
     	              </div>
     	              <div class="form-group text-center text-md-right mt-3">
-                    <button type="submit" class="button button--active button-review" id="btnreview" onclick="reviewInsert()">Submit Now</button>
+                    <button type="submit" class="button button--active button-review" id="btnreview" onclick="reviewInsert()">댓글쓰기</button>
                   </div>
                   </c:if>   
 
@@ -532,5 +499,6 @@ function reDeclarationBtn() {
 		</div>
 	</section>
 	<!--================End Product Description Area =================-->	
+
 </body>
 </html>
