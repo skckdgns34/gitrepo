@@ -74,7 +74,8 @@ $(function(){
 			<c:forEach items="${list }" var="mylibrary">
 			<input type="hidden" id="book_no" value="${mylibrary.book_no }">
 				<tr>
-					<td>${mylibrary.title }</td>
+					<td><img src="filenameDownload.do?filename=${mylibrary.book_img}" style="width: 200px">
+							${mylibrary.title }</td>
 					<td>${mylibrary.writer }</td>
 					<td><button id="btnsend">바로가기</button>
 					</td>
@@ -87,6 +88,5 @@ $(function(){
 </div>
 </div>
 </section>
-
 </body>
 </html>
