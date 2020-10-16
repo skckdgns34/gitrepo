@@ -12,6 +12,14 @@
 	type="text/css">
 <script
 	src="https://cdn.ckeditor.com/ckeditor5/11.1.1/classic/ckeditor.js"></script>
+	<script>
+$(function(){
+	$("#delete").on("click",function(){
+		$("form").attr("action", "${pageContext.request.contextPath}/clientQuestionDelete.do");
+	});
+})
+
+</script>
 <style>
 .ck-editor__editable {
 	min-height: 500px;
@@ -115,6 +123,7 @@ h2 {
 
 								<div>
 								<button>수정하기</button>
+										<button id="delete">삭제</button>
 									<button id="btnPage" type="button">돌아가기</button>
 									<script>
 										btnPage.addEventListener("click",
@@ -132,12 +141,6 @@ h2 {
 				</div>
 			</div>
 		</section>
-		<%-- <c:if test="${not empty result}">
-				<form action="${pageContext.request.contextPath}/clientQuestion.do">
-					<input type="hidden" name="member_no" value="${result.book_no}">
-					<button>삭제</button>
-				</form>
-			</c:if> --%>
 	</c:if>
 </body>
 </html>

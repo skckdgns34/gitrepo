@@ -12,6 +12,14 @@
 	type="text/css">
 <script
 	src="https://cdn.ckeditor.com/ckeditor5/11.1.1/classic/ckeditor.js"></script>
+	<script>
+$(function(){
+	$("#delete").on("click",function(){
+		$("form").attr("action", "${pageContext.request.contextPath}/clientQuestionDelete.do");
+	});
+})
+
+</script>
 <style>
 .ck-editor__editable {
 	min-height: 500px;
@@ -72,6 +80,7 @@ h2 {
 
 								<div class="form-group form-inline">
 									<div class="form-group col-lg-8">
+									<input type="text" name="question_no" value="${result.question_no }" hidden="hidden">
 										<h2 style="margin-bottom: 0px;">제목</h2>
 										<br> <input style="width: 600px;" type="text"
 											class="form-control" name="question_title"
@@ -103,11 +112,7 @@ h2 {
 									<h2 style="margin-bottom: 0px;">답변등록일</h2>
 									<input id="answer_date" name="answer_date" type="text" class="form-control" readonly
 										value="${fn:substring(result.answer_date,0,10) }">
-
-
 								</div>
-
-
 								<div>
 									<button id="btnPage" type="button">돌아가기</button>
 									<script>
@@ -118,6 +123,7 @@ h2 {
 
 										}
 									</script>
+										<button id="delete">삭제</button>
 								</div>
 							</form>
 						</div>
@@ -126,12 +132,6 @@ h2 {
 				</div>
 			</div>
 		</section>
-		<%-- <c:if test="${not empty result}">
-				<form action="${pageContext.request.contextPath}/clientQuestion.do">
-					<input type="hidden" name="member_no" value="${result.book_no}">
-					<button>삭제</button>
-				</form>
-			</c:if> --%>
 	</c:if>
 </body>
 </html>

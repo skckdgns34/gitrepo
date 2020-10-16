@@ -61,7 +61,7 @@ public class QuestionDAO {
 		try {
 			conn = ConnectionManager.getConnnect();
 			String sql = "SELECT q.question_date, q.question_contents, q.question_title,"
-					+ " c.code_value, q.question_status, a.answer_contents, a.answer_date, q.question_kind"
+					+ " c.code_value, q.question_status, a.answer_contents, a.answer_date, q.question_kind, q.question_no"
 					+ " FROM questions q, common c, answer a"
 					+ " WHERE q.question_no = a.question_no and q.question_kind = c.code and q.question_no=?";
 			pstmt = conn.prepareStatement(sql);
@@ -77,6 +77,7 @@ public class QuestionDAO {
 				result.setAnswer_contents(rs.getString(6)); // 답변내용
 				result.setAnswer_date(rs.getString(7)); // 답변일자
 				result.setQuestion_kind(rs.getString(8));
+				result.setQuestion_no(rs.getString(9));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
