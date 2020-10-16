@@ -4134,28 +4134,52 @@ EPUBJS.reader.ReaderController = function(book) {
 	document.addEventListener('keydown', arrowKeys, false);
 
 	$next.on("click", function(e){
-		var cfi = reader.rendition.currentLocation().start.cfi;
-		console.log("오른쪽누름");
-		console.log(cfi);
-			$.ajax({
-				url: page+"/Ajax/" 
-			});
+		
 		
 		if(book.package.metadata.direction === "rtl") {
 			rendition.prev();
 		} else {
 			rendition.next();
 		}
+		var cfi = reader.rendition.currentLocation().start.cfi;
+		console.log("오른쪽누름");
+		console.log(cfi);
+			$.ajax({
+				url: page+"/Ajax/eBookViewerBookMarkUpdate.do",
+				type:"POST",
+				data: {
+					book_no : book_no,
+					member_no : member_no,
+					book_index : cfi
+				}
+			});
+		
+		
+		
 		e.preventDefault();
 	});
 
 	$prev.on("click", function(e){
-
+		
 		if(book.package.metadata.direction === "rtl") {
 			rendition.next();
 		} else {
 			rendition.prev();
 		}
+		
+		var cfi = reader.rendition.currentLocation().start.cfi;
+		console.log("왼쪽누름");
+		console.log(cfi);
+		$.ajax({
+			url: page+"/Ajax/eBookViewerBookMarkUpdate.do",
+			type:"POST",
+			data: {
+				book_no : book_no,
+				member_no : member_no,
+				book_index : cfi
+			}
+		});
+		
 
 		e.preventDefault();
 	});

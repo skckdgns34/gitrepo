@@ -37,6 +37,5 @@
 		<pattern>/eBookReading.do</pattern>
 		<pattern>/fileupload.do</pattern>
 		<pattern>/clientNoticeSelect.do*</pattern>
-		<pattern>reader.js</pattern>
 	</excludes>
 </decorators>

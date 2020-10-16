@@ -970,4 +970,21 @@ public class EBookDAO
 		}
 		return list;
 	}
+	
+	
+	public void bookMarkUpdate(String member_no, String book_no, String book_index) {
+		try {
+			conn = ConnectionManager.getConnnect();
+			String sql = "update mylibrary set last_read_index =? where member_no = ? and book_no = ? ";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, book_index);
+			pstmt.setString(2, member_no);
+			pstmt.setString(3, book_no);
+			pstmt.executeUpdate();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionManager.close(null, pstmt, conn);
+		}
+	}
 }

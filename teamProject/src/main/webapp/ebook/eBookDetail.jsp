@@ -299,14 +299,12 @@ function reDeclarationBtn() {
 		<div class="container">
 			<div class="row s_product_inner">
 				<div class="col-lg-6">
-					<div class="owl-carousel owl-theme s_Product_carousel">
+					
 						<div class="single-prd-item">
 							<c:if test="${not empty book[0].book_img}">
 									<img  src="filenameDownload.do?filename=${book[0].book_img}" style="width:500px">
 							</c:if>
 						</div>
-						
-					</div>
 				</div>
 				
 				<div class="col-lg-5 offset-lg-1">
