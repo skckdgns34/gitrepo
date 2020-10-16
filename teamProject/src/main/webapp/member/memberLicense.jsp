@@ -69,6 +69,17 @@ li {
 </div>
 </div>
 </section>
+<script type="text/javascript">
+jQuery(function($){ 
+	$("#dataTable").DataTable(); 
+}); 
+
+$("#dataTable").DataTable({
+	
+	// 표시 건수를 10건 단위로 설정
+	lengthMenu: [ 10, 20, 30, 40, 50 ]
+});
+</script>
 
 </body>
 </html>

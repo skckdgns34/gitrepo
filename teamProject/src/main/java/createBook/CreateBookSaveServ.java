@@ -1,6 +1,7 @@
 package createBook;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -9,7 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.beanutils.BeanUtils;
 
 import common.Controller;
-import vo.Books;
+import ebook.CommonDAO;
+import vo.Common;
 import vo.Mywriting;
 
 public class CreateBookSaveServ  implements Controller {
@@ -24,12 +26,15 @@ public class CreateBookSaveServ  implements Controller {
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-		System.out.println(contents);
 		book.setMember_no(member_no);
 		book.setMy_contents(contents);
-		System.out.println(book);
 		CreateBookDAO.getInstance().saveUserBook(book);
-		response.sendRedirect("createBookMain.do");
+		ArrayList<Common> genreList=  CommonDAO.getInstance().selectAllGenre();
+		request.setAttribute("genreList", genreList);
+		ArrayList<Mywriting> chapterList = CreateBookDAO.getInstance().selectAllChapter(member_no, book.getMy_title());
+		request.setAttribute("chapterList", chapterList);
+		request.setAttribute("title",book.getMy_title());
+		request.setAttribute("my_genre",book.getGenre());
+		request.getRequestDispatcher("/createBook/createBookWrite.jsp").forward(request, response);
 	}
-	
 }

@@ -127,7 +127,6 @@ public class CreateBookDAO {
 			
 			conn = ConnectionManager.getConnnect();
 			
-			
 			String seqSql = "select no from seq where tablename='books'";
 			Statement stmt = conn.createStatement();
 			rs = stmt.executeQuery(seqSql);
@@ -161,13 +160,25 @@ public class CreateBookDAO {
 	}
 	public void saveUserBook(Mywriting book) {
 		ResultSet rs = null;
+		int no = 0;
 		try {
-			
 			conn = ConnectionManager.getConnnect();
 			
+			String chapsql = "select nvl(max(chapter),0) from mywriting where member_no='"+book.getMember_no()+"'";
+			if(book.getMy_title() != null && !book.getMy_title().equals("")) {
+				chapsql+= " and my_title='"+book.getMy_title()+"'";
+			}
+			Statement stmt = conn.createStatement();
+			rs = stmt.executeQuery(chapsql);
+			rs.next();
+			no = rs.getInt(1)+1;
+			book.setChapter(Integer.toString(no));
+			
+			
+			
 			String sql = "insert into mywriting(member_no,my_title,my_write_date,genre,my_introduction"
-					+ ",my_summary, image_uri,temporary_storage, my_contents)"
-					+ "values(?,?,sysdate,?,?,?,?,'y',?)";
+					+ ",my_summary, image_uri,temporary_storage, my_contents, chapter)"
+					+ "values(?,?,sysdate,?,?,?,?,'n',?,?)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, book.getMember_no());
 			pstmt.setString(2, book.getMy_title());
@@ -176,12 +187,103 @@ public class CreateBookDAO {
 			pstmt.setString(5, book.getMy_summary());
 			pstmt.setString(6, book.getImage_uri());
 			pstmt.setString(7, book.getMy_contents());
+			pstmt.setString(8, book.getChapter());
 			int r = pstmt.executeUpdate();
-			System.out.println(r+"책등록");
+			System.out.println(r+"책저장");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			ConnectionManager.close(rs, pstmt, conn);
 		}
+	}
+
+	//유저 챕터 다 긁
+	public ArrayList<Mywriting> selectAllChapter(String member_no, String my_title) {
+		ResultSet rs = null;
+		ArrayList<Mywriting> list = new ArrayList<Mywriting>();
+		Mywriting resultVO = null;
+		try {
+			conn = ConnectionManager.getConnnect();
+			String sql = "select nvl(chapter,1) from mywriting where member_no=?";
+			if(my_title != null && !my_title.equals("")) {
+				sql += " and my_title='"+my_title+"'";
+			}
+			sql+=" order by 1";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, member_no);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				resultVO = new Mywriting();
+				resultVO.setChapter(rs.getString(1));
+				list.add(resultVO);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionManager.close(rs, pstmt, conn);
+		}
+		return list;
+	}
+
+	public int myBookMaxChapter(String member_no, String my_title) {
+		int r = 0;
+		ResultSet rs = null;
+		try {
+			conn = ConnectionManager.getConnnect();
+			String sql = "select max(chapter) from mywriting where member_no=?";
+			if(my_title != null && !my_title.equals("")) {
+				sql += " and my_title='"+my_title+"'";
+			}
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, member_no);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				r = rs.getInt(1)+1;
+			}
+			System.out.println("max챕터");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionManager.close(rs, pstmt, conn);
+		}
+		return r;
+		
+	}
+
+	public Mywriting myBookDetail(Mywriting m_book) {
+		Mywriting book = new Mywriting();
+		ResultSet rs = null;
+		try {
+			conn = ConnectionManager.getConnnect();
+			String sql = "select member_no, my_title, my_write_date, genre, my_introduction,"
+					+ " my_summary, image_uri, score, views, temporary_storage, my_contents, chapter "
+					+ " from mywriting "
+					+ " where member_no = ? and my_title = ? and chapter = ?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, m_book.getMember_no());
+			pstmt.setString(2, m_book.getMy_title());
+			pstmt.setString(3, m_book.getChapter());
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				book.setMember_no(rs.getString(1));
+				book.setMy_title(rs.getString(2));
+				book.setMy_write_date(rs.getString(3));
+				book.setGenre(rs.getString(4));
+				book.setMy_introduction(rs.getString(5));
+				book.setMy_summary(rs.getString(6));
+				book.setImage_uri(rs.getString(7));
+				book.setScore(rs.getString(8));
+				book.setViews(rs.getString(9));
+				book.setTemporary_storage(rs.getString(10));
+				book.setMy_contents(rs.getString(11));
+				book.setChapter(rs.getString(12));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionManager.close(rs, pstmt, conn);
+		}
+		return book;
 	}
 }

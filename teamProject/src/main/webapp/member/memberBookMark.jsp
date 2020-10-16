@@ -21,6 +21,14 @@
 	a {
 	color: #002347;
 	}
+	
+	.div1{
+		float: left;
+	}
+	
+	h6{
+	font-weight: bold
+	}
 </style>
 <script>
 $(function(){
@@ -28,6 +36,14 @@ $(function(){
 		location.href = "${pageContext.request.contextPath }/eBookDetail.do?book_no=" + $("#book_no").val()
 	});
 })
+
+function imgClick(book_no) {
+	if(book_no != null){
+		if(confirm("해당 책 상세페이지로 이동하시겠습니까?")){			
+			location.href="${pageContext.request.contextPath}/eBookDetail.do?book_no="+book_no;
+		}
+	}
+}
 </script>
 </head>
 <body>
@@ -62,27 +78,22 @@ $(function(){
       <div class="row">
        <div class="col-lg-12">
 	<div class="table-responsive">
-		<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-		<thead>
-			<tr>
-				<td>제목</td>
-				<td>작가</td>
-				<td></td>
-			</tr>
-			</thead>
-			  <tbody>
+		
 			<c:forEach items="${list }" var="mylibrary">
 			<input type="hidden" id="book_no" value="${mylibrary.book_no }">
-				<tr>
-					<td><img src="filenameDownload.do?filename=${mylibrary.book_img}" style="width: 200px">
-							${mylibrary.title }</td>
-					<td>${mylibrary.writer }</td>
-					<td><button id="btnsend">바로가기</button>
-					</td>
-				</tr>
+				<div  class="col-md-6 col-lg-4" style="float: left;">
+						<div  Class=" text-center card-product" style="width: 58%;" onclick="imgClick(${mylibrary.book_no})">
+							<div class="card-product__img">
+								<img class="card-img" alt="" src="">
+							</div>
+					<img src="filenameDownload.do?filename=${mylibrary.book_img}" style="width: 200px" >
+							<br>
+							<br>
+							<h6>${mylibrary.title }</h6>
+							${mylibrary.writer }
+						</div>
+				</div>
 			</c:forEach>
-			</tbody>
-		</table>
 		</div>
 </div>
 </div>

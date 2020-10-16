@@ -50,11 +50,11 @@ function insertpage() //문의사항 등록 ㅡ
 								</tr>
 							</thead>
 							<tbody>
-							<button type="button" id='btn_n' class="btn btn-outline btn-primary pull-" onclick="insertpage()">문의사항 등록</button>
+							<button type="button" id='btn_n' class="btn btn-outline btn-primary pull-" onclick="insertpage()">문의사항 등록</button><br><br>
 								<c:forEach items="${list}" var="questions">
 									<tr>
 										<td>${questions.question_no}</td>	
-										<td><a href = "clientQuestionModifyForm.do?question_no=${questions.question_no}">${questions.question_title}</a></td>
+										<td><a href = "clientQuestionModifyForm.do?question_no=${questions.question_no}&&question_status=${questions.question_status}">${questions.question_title}</a></td>
 										<td>${fn:substring(questions.question_date,0,10) }</td>
 										<td>${questions.code_value}</td>
 										<td>${questions.question_status}</td>

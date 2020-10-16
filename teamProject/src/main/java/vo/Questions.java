@@ -17,4 +17,5 @@ public class Questions {
 	private String question_status;
 	private String answer_contents;
 	private String answer_date;
+	private String rownum;
 }
