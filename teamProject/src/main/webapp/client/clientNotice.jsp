@@ -35,16 +35,6 @@
         </div>
     </section>
     <!-- Breadcrumb Section End -->
-	<!--  이건 이제 지워도 되지 않을까??? -->
-	<ul>
-		<li><a
-			href="<%=application.getContextPath()%>/clientNotice.do">공지사항</a>
-		<li><a
-			href="<%=application.getContextPath()%>/clientFAQ.do">FAQ</a>
-		<li><a
-			href="<%=application.getContextPath()%>/clientQuestion.do">문의</a>
-	</ul>
-	
 	
 	  <section class="section-margin--small mb-5">
 	
@@ -82,6 +72,16 @@
 </div>
 </div>
 </section>
+<script type="text/javascript">
+jQuery(function($){ 
+	$("#exampleTable").DataTable(); 
+}); 
 
+$("#exampleTable").DataTable({
+	
+	// 표시 건수를 10건 단위로 설정
+	lengthMenu: [ 10, 20, 30, 40, 50 ]
+});
+</script>
 </body>
 </html>
