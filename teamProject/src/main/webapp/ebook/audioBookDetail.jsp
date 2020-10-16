@@ -18,7 +18,6 @@ $(function(){
 	btnScore();
 	reviewAllList();
 	reDeclarationBtn();
-	wishtest();
 });
 
 function reviewInsert(){
@@ -171,14 +170,6 @@ function licence(){
 		})
 	})
 } */
-function wishtest(){
-	$("#wish_update").click(function(){
-		console.log("aa");
-	})
-	$("#wish_update2").click(function(){
-		console.log("22")
-	})
-}
 
 function btnScore(){ // 추천버튼 클릭시(추천 추가 또는 추천 제거)
 	$("#rec_update").click(function(){
@@ -363,11 +354,6 @@ function reDeclarationBtn() {
 							</c:if>
 							<a class="button primary-btn" href="#" id="read" onclick="goRead()">읽기</a>
          					<a class="button primary-btn" href="#" id="check" onclick="licence()">결제</a> 
-							<button type="button" id="wish_update">
-								<i class="fas fa-star" style="color:gray"></i>
-								<input id="wish" type="hidden" value="${wish}">
-							</button>
-							<button id="wish_update2">2번쨰</button>
 							</div>	
 
 				</div>

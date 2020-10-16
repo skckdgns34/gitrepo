@@ -99,7 +99,7 @@ public class MemberBookDAO {	//내서재 등 관련
 		ArrayList<Mylibrary> list = new ArrayList<Mylibrary>();
 		try {
 			conn = ConnectionManager.getConnnect();
-			String sql = " SELECT l.member_no, l.book_no, b.title, b.writer"
+			String sql = " SELECT l.member_no, l.book_no, b.book_img, b.title, b.writer"
 					+ " FROM mylibrary l, books b"
 					+ " WHERE l.book_no = b.book_no"
 					+ " and l.member_no = ?";
@@ -110,6 +110,7 @@ public class MemberBookDAO {	//내서재 등 관련
 				resultVo = new Mylibrary();
 				resultVo.setMember_no(rs.getString("member_no"));
 				resultVo.setBook_no(rs.getString("book_no"));
+				resultVo.setBook_img(rs.getString("book_img"));
 				resultVo.setTitle(rs.getString("title"));
 				resultVo.setWriter(rs.getString("writer"));
 				list.add(resultVo);
