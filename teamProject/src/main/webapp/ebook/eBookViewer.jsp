@@ -14,7 +14,7 @@
         <link rel="stylesheet" href="css/main.css">
         <link rel="stylesheet" href="css/popup.css">
 
-        <script src="js/libs/jquery.min.js"></script>
+		<script src="js/libs/jquery.min.js"></script>
 
         <script src="js/libs/zip.min.js"></script>
 
@@ -23,6 +23,7 @@
             var page = "${pageContext.request.contextPath}";
 			var member_no = "${member_no}";
 			var book_no = "${book_no}";
+			var last_index = "${last_index}";
 			
 			var i = 0;
 			var list = ${list};
@@ -36,10 +37,13 @@
 			
             document.onreadystatechange = function () {
               if (document.readyState == "complete") {
-                window.reader = ePubReader("The-Lost-World.epub", { //url 경로
-                   restore: true,
-                   bookmarks : listBook 
+                window.reader = ePubReader("test4.epub", { //url 경로
+                   //restore: true,
+                   bookmarks : listBook
                  });
+                if(last_index){
+                	reader.rendition.display("${last_index}");
+                }
               }
             };
 
@@ -125,7 +129,7 @@
               <h3>Settings</h3>
               <div>
                   <p>
-                    <input type="checkbox" id="sidebarReflow" name="sidebarReflow">Reflow text when sidebars are open.
+                    <input type="checkbox" id="sidebarReflow" name="sidebarReflow">북마크 리스트가 열려있을때도 북마크&페이지넘기기 기능 사용가능
                   </p>
               </div>
               <div class="closer icon-cancel-circled"></div>

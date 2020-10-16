@@ -316,6 +316,7 @@ margin-top:10px;}
 	<div class="product_image_area">
 		<div class="container">
 			<div class="row s_product_inner">
+<<<<<<< HEAD
 			
 			<!-- 이미지 영역 -->
 				<div class="col-lg-7">
@@ -323,6 +324,14 @@ margin-top:10px;}
 						<c:if test="${not empty book[0].book_img}">
 							<img  src="filenameDownload.do?filename=${book[0].book_img}" style="width:400px;">
 						</c:if>
+=======
+				<div class="col-lg-6">
+					
+						<div class="single-prd-item">
+							<c:if test="${not empty book[0].book_img}">
+									<img  src="filenameDownload.do?filename=${book[0].book_img}" style="width:500px">
+							</c:if>
+>>>>>>> branch 'master' of https://github.com/skckdgns34/gitrepo.git
 						</div>
 				</div>
 				

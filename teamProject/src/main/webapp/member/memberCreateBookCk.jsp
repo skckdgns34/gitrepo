@@ -20,6 +20,17 @@
 	a {
 	color: #002347;
 	}
+	
+	table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
 </style>
 <script>
 $(function(){
@@ -63,15 +74,14 @@ $(function(){
        <div class="col-lg-12">
 	<div class="table-responsive">
 		<input type="hidden" name="member_no" id="member_no" value="${member_no }">
-		<table class="table table-bordered" id="dataTable" width="100%"
-								cellspacing="0">
+		<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 								<thead>
 			<tr>
-				<td>제목</td>
-				<td>장르</td>
-				<td>조회수</td>
-				<td>작성일자</td>
-				<td></td>
+				<th>제목</th>
+				<th>장르</th>
+				<th>조회수</th>
+				<th>작성일자</th>
+				<th></td>
 			</tr>
 			</thead>
 			  <tbody>
@@ -91,6 +101,16 @@ $(function(){
 </div>
 </div>
 </section>
-		
+<script type="text/javascript">
+jQuery(function($){ 
+	$("#dataTable").DataTable(); 
+}); 
+
+$("#dataTable").DataTable({
+	
+	// 표시 건수를 10건 단위로 설정
+	lengthMenu: [ 10, 20, 30, 40, 50 ]
+});
+</script>
 </body>
 </html>
