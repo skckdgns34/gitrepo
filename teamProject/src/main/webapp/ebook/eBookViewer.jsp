@@ -37,7 +37,7 @@
 			
             document.onreadystatechange = function () {
               if (document.readyState == "complete") {
-                window.reader = ePubReader("Alice-in-Wonderland.epub", { //url 경로
+                window.reader = ePubReader("test4.epub", { //url 경로
                    //restore: true,
                    bookmarks : listBook
                  });

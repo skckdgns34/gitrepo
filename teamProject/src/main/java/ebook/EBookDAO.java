@@ -13,6 +13,7 @@ import common.ConnectionManager;
 import vo.Books;
 import vo.Good;
 import vo.Mylibrary;
+import vo.Mywriting;
 import vo.Review;
 import vo.SearchBook;
 
@@ -1043,6 +1044,38 @@ public class EBookDAO
 		}
 		
 		return yn;
-
+	}
+	
+	public ArrayList<Map<String, Object>> selectEpubFile(String member_no , String my_title) {
+		ResultSet rs = null;
+		ArrayList<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+		try {
+			conn = ConnectionManager.getConnnect();
+			String sql = "select w.my_title, w.genre, w.my_introduction, w.my_summary, w.image_uri, w.score, w.views, w.my_contents, w.chapter, m.nickname"
+						+" from mywriting w, member m  where w.member_no = m.member_no and w.member_no = ? and w.my_title = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, member_no);
+			pstmt.setString(2, my_title);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				Map<String, Object> map = new HashMap<String, Object>();
+				map.put("my_title",rs.getString("my_title"));
+				map.put("genre",rs.getString("genre"));
+				map.put("my_introduction",rs.getString("my_introduction"));
+				map.put("my_summary",rs.getString("my_summary"));
+				map.put("image_uri",rs.getString("image_uri"));
+				map.put("score",rs.getString("score"));
+				map.put("views",rs.getString("views"));
+				map.put("my_contents",rs.getString("my_contents"));
+				map.put("chapter",rs.getString("chapter"));
+				map.put("nickname", rs.getString("nickname"));
+				list.add(map);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionManager.close(rs, pstmt, conn);
+		}
+		return list;
 	}
 }
