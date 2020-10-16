@@ -16,6 +16,10 @@
   padding: 7px 15px;
   font-size: 12px;
 }
+
+	a {
+	color: #002347;
+	}
 </style>
 <script>
 $(function(){
@@ -42,19 +46,7 @@ $(function(){
 			</div>
 		</div>
 	</section>
-	
-	<!-- Breadcrumb Section End -->
-	<ul>
-	<li><a href="<%=application.getContextPath()%>/memberModify.do">내정보
-			수정</a>
-	<li><a href="<%=application.getContextPath()%>/memberBookMark.do">내
-			서재</a>
-	<li><a
-		href="<%=application.getContextPath()%>/memberCreateBookCk.do">나만의
-			도서 확인</a>
-	<li><a href="<%=application.getContextPath()%>/memberLicense.do">이용권
-			내용</a>
-		</ul> <br> <br>
+	<br>
 		<ul>
 			<li><a
 				href="<%=application.getContextPath()%>/memberBookMark.do">읽은 책</a>
@@ -101,5 +93,16 @@ $(function(){
 				</div>
 			</div>
 		</section>
+<script type="text/javascript">
+jQuery(function($){ 
+	$("#dataTable").DataTable(); 
+}); 
+
+$("#dataTable").DataTable({
+	
+	// 표시 건수를 10건 단위로 설정
+	lengthMenu: [ 10, 20, 30, 40, 50 ]
+});
+</script>
 </body>
 </html>

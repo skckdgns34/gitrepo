@@ -8,7 +8,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
@@ -144,6 +143,34 @@ var check = "${check}"
 function licence(){
 	location.href="${pageContext.request.contextPath}/licenceList.do";
 }
+
+
+/* function btnWish(){	//별표(찜) 클릭
+	console.log("as")
+	$("#wish_update").on("click",function(){
+		console.log("as")
+		$.ajax({
+			url: "${pageContext.request.contextPath}/Ajax/audioBookWishAjax.do",
+			type:"POST",
+			dataType: "JSON",
+	        data: {
+	        book_no: "${book[0].book_no}",
+	        member_no: "${member_no}", 
+	        wish : wish
+	            },
+	        success: function (result){
+	        	console.log(result)
+	        	if(result.equals("n")){
+	        		$(".fas fa-star").css("color", "gray")
+	        	}else{
+	        		$(".fas fa-star").css("color", "red")
+	        	}
+	        	$("#wish").val(result)
+	        }
+		})
+	})
+} */
+
 function btnScore(){ // 추천버튼 클릭시(추천 추가 또는 추천 제거)
 	$("#rec_update").click(function(){
 		$.ajax({
@@ -263,7 +290,7 @@ function reDeclarationBtn() {
                         <h4>Menu</h4>
                         <div class="breadcrumb__links">
                             <a href="./index2.jsp">Home</a>
-                            <span>전자책</span>
+                            <span>오디오북</span>
                         </div>
                     </div>
                 </div>
@@ -276,16 +303,12 @@ function reDeclarationBtn() {
 		<div class="container">
 			<div class="row s_product_inner">
 				<div class="col-lg-6">
-					<div class="owl-carousel owl-theme s_Product_carousel">
-						<div class="single-prd-item">
-							<c:if test="${not empty book[0].book_img}">
-									<img  src="filenameDownload.do?filename=${book[0].book_img}" style="width:500px">
-							</c:if>
-						</div>
-						
+					<div class="single-prd-item">
+						<c:if test="${not empty book[0].book_img}">
+							<img  src="filenameDownload.do?filename=${book[0].book_img}" style="width:400px">
+						</c:if>
 					</div>
 				</div>
-				
 				<div class="col-lg-5 offset-lg-1">
 					<div class="s_product_text">
 						<h3>책 제목  : ${book[0].title}</h3>
@@ -327,7 +350,6 @@ function reDeclarationBtn() {
 										<i class="fa fa-heart" style="font-size:16px;color:gray"></i>
 										&nbsp;<span class="rec_count">${count}</span><!-- 좋아요수 -->
 									</button> 
-								
 								</c:if>
 							</c:if>
 							<a class="button primary-btn" href="#" id="read" onclick="goRead()">읽기</a>
