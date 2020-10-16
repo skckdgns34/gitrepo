@@ -20,6 +20,10 @@ button {
   padding: 7px 15px;
   font-size: 12px;
 }
+
+	a {
+	color: #002347;
+	}
 </style>
 <script>
 $(function(){
@@ -46,25 +50,14 @@ $(function(){
 		</div>
 	</section>
 	<!-- Breadcrumb Section End -->
-	<ul>
-		<li><a href="<%=application.getContextPath()%>/memberModify.do">내정보
-				수정</a>
-		<li><a href="<%=application.getContextPath()%>/memberBookMark.do">내
-				서재</a>
-		<li><a
-			href="<%=application.getContextPath()%>/memberCreateBookCk.do">나만의
-				도서 확인</a>
-		<li><a href="<%=application.getContextPath()%>/memberLicense.do">이용권
-				내용</a>
-	</ul>
 	<br>
-	<hr>
 	<ul>
 		<li><a
 			href="<%=application.getContextPath()%>/memberCreateBookCk.do">작성중</a>
 		<li><a
 			href="<%=application.getContextPath()%>/memberCreateBookComp.do">등록완료</a>
 	</ul>
+	<br><hr>
 	<input type="hidden" name="member_no" id="member_no"
 		value="${member_no }">
 	<section class="section-margin--small mb-5">
