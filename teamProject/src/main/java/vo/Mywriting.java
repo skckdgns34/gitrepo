@@ -15,4 +15,5 @@ public class Mywriting {
 	private String score;
 	private String views;
 	private String temporary_storage;
+	private String chapter;
 }
