@@ -19,4 +19,16 @@ public class Member {
 	private String female;
 	private String male;
 	
+	private String pay_no;
+	private String pay_date;
+
+	private String review_no;
+	private String contents;
+	private String review_date;
+	private String book_no;
+	private String title;
+
+	private String mylibrary_no;
+	private String wish;
+	private String last_read_index;
 }

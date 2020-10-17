@@ -10,7 +10,7 @@
 $(function(){
 		
 	
-	function CheckForm(Join) {
+	 function CheckForm(Join) {
 		var chk1 = document.Join.member_pw.checked;
 		if (chk1 == "") {
 			alert('동의 후 다음단계로 진행합니다.');
@@ -18,10 +18,10 @@ $(function(){
 		} else {
 			return true;
 		}
-	}
+	} 
 	
 
-	$(document).ready(function(){
+	 $(document).ready(function(){
 		$("#btndel").prop("disabled", true);
 		
 		$("#pwcheck").change(function(){
@@ -32,14 +32,14 @@ $(function(){
 });
 
 	
-	function ToggleButton(){
+	 function ToggleButton(){
 		if($("#pwcheck").val() != "") {
 			$("#btndel").prop("disabled", false);
 			return true;
 		} else {
 			$("#btndel").prop("disabled", true);
 			return false;
-		}
+		} 
 	}
 </script>
 </head>

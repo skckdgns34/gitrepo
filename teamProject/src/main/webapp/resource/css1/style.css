@@ -98,7 +98,7 @@ button:focus {
       padding: 70px 0; } }
 
 .section_gap_top {
-  padding-top: 130px; }
+  padding-top: 60px; }
   @media (max-width: 991px) {
     .section_gap_top {
       padding-top: 70px; } }
@@ -1169,7 +1169,7 @@ button:focus {
   background: #fff; }
 
 .blog_right_sidebar {
-  background: #f1f9ff;
+  background: #f3f2ee;
   padding: 30px; }
   @media (max-width: 991px) {
     .blog_right_sidebar {
@@ -1238,7 +1238,7 @@ button:focus {
   .blog_right_sidebar .popular_post_widget .post_item .media-body {
     justify-content: center;
     align-self: center;
-    padding-left: 20px; }
+    padding-left: 25% }
     .blog_right_sidebar .popular_post_widget .post_item .media-body h3 {
       font-size: 14px;
       line-height: 20px;
@@ -1522,7 +1522,7 @@ button:focus {
       color: #002347; }
 
 .comment-form {
-  background: #f1f9ff;
+  background: #f6f6f6;
   text-align: center;
   padding: 47px 30px 43px;
   margin-top: 50px;

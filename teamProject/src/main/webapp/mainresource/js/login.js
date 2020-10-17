@@ -17,51 +17,55 @@
 $(function() {
 		//var address = $('#mem_detailaddress');
 		
-		//아이디 중복확인
-		$("#member_id").blur(function() {
-			if($('#member_id').val()==''){ $('#id_check').text('아이디를 입력하세요.');
-				$('#id_check').css('color', 'red');
-			} else if(idJ.test($('#member_id').val())!=true){
-				$('#id_check').text('4~12자의 영문, 숫자만 사용 가능합니다.');
-				$('#id_check').css('color', 'red');
-			} else if($('#member_id').val()!=''){
-				
-				var mem_id=$('#member_id').val();
-				$.ajax({
-					async : true,
-					type : 'POST',
-					data : member_id,
-					url : 'idcheck.do',
-					dateType: 'json',
-					contentType: "application/json; charset=UTF-8",
-					success : function(data) {
-						
-						if(data.cnt > 0){ $('#id_check').text('중복된 아이디 입니다.');
-							$('#id_check').css('color', 'red');
-							$("#usercheck").attr("disabled", true);
-						}else{ if(idJ.test(mem_id)){
-							$('#id_check').text('사용가능한 아이디 입니다.');
-							$('#id_check').css('color', 'blue');
-							$("#usercheck").attr("disabled", false);
-						} else if(mem_id==''){
-							$('#id_check').text('아이디를 입력해주세요.');
-							$('#id_check').css('color', 'red');
-							$("#usercheck").attr("disabled", true);
-						} else{ $('#id_check').text("아이디는 소문자와 숫자 4~12자리만 가능합니다.");
-							$('#id_check').css('color', 'red');
-							$("#usercheck").attr("disabled", true);
-							}
-						}
-					}
-				}); //ajax///
-			}//else if 
-		});//blur
+//		//아이디 중복확인
+//		$("#member_id").blur(function() {
+//			if($('#member_id').val()==''){ $('#id_check').text('아이디를 입력하세요.');
+//				$('#id_check').css('color', 'red');
+//			} else if(idJ.test($('#member_id').val())!=true){
+//				$('#id_check').text('4~12자의 영문, 숫자만 사용 가능합니다.');
+//				$('#id_check').css('color', 'red');
+//			} else if($('#member_id').val()!=''){
+//				
+//				var member_id=$('#member_id').val();
+//				$.ajax({
+//					async : true,
+//					type : 'POST',
+//					data : {
+//						member_id : member_id
+//					},
+//					url : '/app/Ajax/memberJoinCheck.do?member_id=',
+//					dateType: 'json',
+//					contentType: "application/json; charset=UTF-8",
+//					success : function(data) {
+//						
+//						if(data.cnt > 1){ $('#id_check').text('중복된 아이디 입니다.');
+//							$('#id_check').css('color', 'red');
+//							$("#usercheck").attr("disabled", true);
+//						}else{ if(idJ.test(member_id)){
+//							$('#id_check').text('사용가능한 아이디 입니다.');
+//							$('#id_check').css('color', 'blue');
+//							$("#usercheck").attr("disabled", false);
+//						} else if(member_id==''){
+//							$('#id_check').text('아이디를 입력해주세요.');
+//							$('#id_check').css('color', 'red');
+//							$("#usercheck").attr("disabled", true);
+//						} else{ $('#id_check').text("아이디는 소문자와 숫자 4~12자리만 가능합니다.");
+//							$('#id_check').css('color', 'red');
+//							$("#usercheck").attr("disabled", true);
+//							}
+//						}
+//					}
+//				}); //ajax///
+//			}//else if 
+//		});//blur
 				
 		$('form').on('submit',function(){
 			var inval_Arr = new Array(8).fill(false);
 			if (idJ.test($('#member_id').val())) {
+//				$("#idChkBtn").attr("disabled",true);
 				inval_Arr[0] = true;
 				} else {
+//					$("#idChkBtn").attr("disabled",false);
 					inval_Arr[0] = false; alert('아이디를 확인하세요.');
 					return false;
 				}

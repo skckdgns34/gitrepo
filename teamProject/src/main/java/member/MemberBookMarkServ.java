@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import common.Controller;
 import vo.Books;
+import vo.Mylibrary;
 
 public class MemberBookMarkServ implements Controller
 {
@@ -17,11 +18,12 @@ public class MemberBookMarkServ implements Controller
 			HttpServletResponse response) throws ServletException, IOException
 	{
 		MemberBookDAO dao = new MemberBookDAO();
-		Books books = new Books();
+		Mylibrary mylibraryVO = new Mylibrary();
 		
-		books.setMember_no((String)request.getSession().getAttribute("member_no"));
+		mylibraryVO.setMember_no((String)request.getSession().getAttribute("member_no"));
+		mylibraryVO.setBook_no(request.getParameter("book_no"));
 		
-		ArrayList<Books> list = dao.reading(books);
+		ArrayList<Mylibrary> list = dao.reading(mylibraryVO);
 		request.setAttribute("list", list);
 		request.getRequestDispatcher("member/memberBookMark.jsp").forward(request, response);
 	}

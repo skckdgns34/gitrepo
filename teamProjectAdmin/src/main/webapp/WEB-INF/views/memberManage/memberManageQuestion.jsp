@@ -19,7 +19,7 @@
 
 	function modifypage() //수정 
 	{
-		window.document.location.href = "memberManageQuestionPop.ad?no="
+		window.document.location.href = "memberManageAnswer.ad?question_no="
 				+ $('input[name="user_CheckBox"]:checked').val();
 		return;
 	}
@@ -41,13 +41,12 @@
 
 				<div>
 					<button type="button" id='btn_n'
-						class="btn btn-outline btn-primary pull-" onclick="modifypage()">수정</button>
+						class="btn btn-outline btn-primary pull-" onclick="modifypage()">답글</button>
 					<button type="button" id='btn_d'
 						class="btn btn-outline btn-primary pull-right"
 						onclick="deletepage()">삭제</button>
 				</div>
-				<table class="table table-bordered" id="dataTable" width="100%"
-					cellspacing="0">
+				 <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
 
 					<thead>
 						<tr>
@@ -61,25 +60,29 @@
 							<th>등록일</th>
 							<th>첨부파일</th>							
 							<th>문의종류</th>
-							
-							
+							<th>답변여부</th>
+
 						</tr>
 					</thead>
 
 					<tbody>
-						<c:forEach items="${list}" var="q">
+						<c:forEach items="${list}" var="list">
 							<tr>
 								<td><input type="checkbox" name="user_CheckBox"
-									onclick="check(this)" value=""></td>
-								<td>${q.question_no}</td>
-								<td>${q.member_no}</td>
-								<td>${q.member_id}</td>
-								<td>${q.nickname}</td>
-								<td>${q.question_title}</td>
-								<td>${q.question_contents}</td>
-								<td>${q.question_date}</td>
-								<td>${q.question_file}</td>
-								<td>${q.question_kind}</td>
+									onclick="check(this)" value="${list.question_no}"></td>
+								
+								<td>${list.question_no}</td>
+								<td>${list.member_no}</td>
+								<td>${list.member_id}</td>
+								<td>${list.nickname}</td>
+								<td>${list.question_title}</td>
+								<td>${list.question_contents}</td>
+								<td>${list.question_date}</td>
+								<td>${list.question_file}</td>
+								<td>${list.code_value}</td>
+								<td>${list.question_status}</td>
+								
+								</tr>
 						</c:forEach>
 					</tbody>
 				</table>

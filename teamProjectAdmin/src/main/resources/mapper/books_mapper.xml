@@ -4,40 +4,48 @@
 
 <mapper namespace="com.dbal.app.books.mapper.BooksDAO">
 	<select id="selectAll" parameterType="books" resultType="books">
-		SELECT
-			b.book_no,
-			b.title,
-			b.writer,
-			b.publication_date,
-			b.best_book,
-			b.registration_date,
-			c.code_value,
-			p.company_name
-		FROM
-			books b, common c, company p
-		WHERE
-			b.genre = c.code
-		AND
-			b.company_code = p.company_code
+			SELECT
+				b.book_no,
+				b.title,
+				b.writer,
+				b.publication_date,
+				b.best_book,
+				b.registration_date,
+				c.code_value,
+				p.company_name,
+				b.book_img
+			FROM
+				books b, common c, company p
+			WHERE
+				b.genre = c.code
+			AND
+				b.company_code = p.company_code
+	</select>
+	
+	<select id="bookselectCompany" parameterType="books" resultType="books">
+  		SELECT company_name
+  		FROM company
+  		WHERE  company_name LIKE '%'||#{company_name}||'%'
 	</select>
 
 	<select id="selectOne" parameterType="books" resultType="books">
 		SELECT
-			book_no,
-			title,
-			book_img,
-			writer,
-			publication_date,
-			company_code,
-			introduction,
-			summary,
-			best_book,
-			genre,
-			registration_date
+			b.book_no,
+			b.title,
+			b.book_img,
+			b.writer,
+			b.publication_date,
+			c.company_name,
+			b.introduction,
+			b.summary,
+			b.best_book,
+			b.genre,
+			b.registration_date
 		FROM
-			books
+			books b, company c
 		WHERE
-			book_no = #{book_no}
+			b.company_code = c.company_code
+			and book_no = #{book_no}
 	</select>
 
 	<delete id="delete" parameterType="books">

@@ -16,14 +16,13 @@
 		selector : 'textarea'
 	});
 </script>
+
 </head>
 <body>
 	<div class="container col-xs-12">
 
 		<hr>
-		<div class="panel-title text-center">
 			<h3>출판사 등록</h3>
-		</div>
 		
 		<div id="signupbox" style="margin-top: 30px">
 			<div class="panel panel-default">
@@ -84,7 +83,7 @@
 							</div>
 							</div>
 							
-							<div class="col-sm-6 col-md-6 col-xs-6" style="margin-bottom: 300px">
+							<div class="col-sm-6 col-md-6 col-xs-6" style="margin-bottom: 70px">
 								<label for="company_account" class="control-label col-md-4  requiredField">출판사계좌정보</label> 
 								<div class="col-sm-6 col-md-6 col-xs-6">
 								<input

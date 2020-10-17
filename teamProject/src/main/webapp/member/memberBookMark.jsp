@@ -1,66 +1,103 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" isELIgnored="false"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-	<%@ taglib prefix="my" tagdir="/WEB-INF/tags"%>
+	pageEncoding="UTF-8" isELIgnored="false"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="my" tagdir="/WEB-INF/tags"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-li {
-	list-style-type: none;
-	float: left;
-	margin-left: 20px;
+	li {list-style-type: none; float: left; margin-left: 20px;}
+	
+	button {
+  background-color: white; 
+  color: black; 
+  border: 2px solid 002347;
+  padding: 7px 15px;
+  font-size: 12px;
 }
+
+	a {
+	color: #002347;
+	}
+	
+	.div1{
+		float: left;
+	}
+	
+	h6{
+	font-weight: bold
+	}
 </style>
+<script>
+$(function(){
+	$("#btnsend").on("click", function(){
+		location.href = "${pageContext.request.contextPath }/eBookDetail.do?book_no=" + $("#book_no").val()
+	});
+})
+
+function imgClick(book_no) {
+	if(book_no != null){
+		if(confirm("해당 책 상세페이지로 이동하시겠습니까?")){			
+			location.href="${pageContext.request.contextPath}/eBookDetail.do?book_no="+book_no;
+		}
+	}
+}
+</script>
 </head>
 <body>
-	<h1>읽은 책</h1>
-	<hr>
-	<br>
-	<ul>
-		<li><a
-			href="<%=application.getContextPath()%>/memberModify.do">내정보 수정</a>
-		<li><a
-			href="<%=application.getContextPath()%>/memberBookMark.do">내 서재</a>
-		<li><a
-			href="<%=application.getContextPath()%>/memberCreateBookCk.do">나만의 도서 확인</a>
-		<li><a
-			href="<%=application.getContextPath()%>/memberLicense.do">이용권 내용</a>
-	</ul><br>
-	<br>
-	<ul>
-		<li><a href="<%=application.getContextPath()%>/memberBookMark.do">읽은 책</a>
-		<li><a href="<%=application.getContextPath()%>/memberBookLuvList.do">찜 목록</a>
-	</ul>
-	<br>
-	<hr>
-	<h4>읽은 책</h4>
-
-	<c:forEach items="${list }" var="book">
-		<div>
-			<ul>
-				<li> ${book.book_img }</li>
-				<li><label>제목:</label> ${book.title }</li>
-				<li><label>작가:</label>${book.writer }</li>
-			</ul>
+	<!-- Breadcrumb Section Begin -->
+	<section class="breadcrumb-option">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="breadcrumb__text">
+						<h4>Menu</h4>
+						<div class="breadcrumb__links">
+							<a href="./index.html">내 서재</a> <span>읽은 책</span>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
+	</section>
+	<!-- Breadcrumb Section End -->
+	<br>
+	<ul>
+		<li><a href="<%=application.getContextPath()%>/memberBookMark.do">읽은
+				책</a>
+		<li><a
+			href="<%=application.getContextPath()%>/memberBookLuvList.do">찜
+				목록</a>
+	</ul>
+	<br><hr>
+	<section class="section-margin--small mb-5">
 	
-	</c:forEach>
-
-
-
-		<my:paging paging="${paging }" jsfunc="gopage" />
-
-	<script>
-		function gopage(p) {
-			searchFrm.p.value = p;
-			searchFrm.submit();
-
-			location.href="memberLicense.do?p=" + p;
-		}
-	</script>
-
+	<div class="container">
+      <div class="row">
+       <div class="col-lg-12">
+	<div class="table-responsive">
+		
+			<c:forEach items="${list }" var="mylibrary">
+			<input type="hidden" id="book_no" value="${mylibrary.book_no }">
+				<div  class="col-md-6 col-lg-4" style="float: left;">
+						<div  Class=" text-center card-product" style="width: 58%;" onclick="imgClick(${mylibrary.book_no})">
+							<div class="card-product__img">
+								<img class="card-img" alt="" src="">
+							</div>
+					<img src="filenameDownload.do?filename=${mylibrary.book_img}" style="width: 200px" >
+							<br>
+							<br>
+							<h6>${mylibrary.title }</h6>
+							${mylibrary.writer }
+						</div>
+				</div>
+			</c:forEach>
+		</div>
+</div>
+</div>
+</div>
+</section>
 </body>
 </html>

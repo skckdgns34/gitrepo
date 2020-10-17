@@ -46,7 +46,7 @@
 							<fmt:formatDate value="${publication_date}"  pattern="yyyy/MM/dd"/> </td>
 						<c:if test="${not empty book.book_img}">
 						<td>
-							<img onclick="imgClick(${book.book_no})" src="filenameDownload.do?filename=${book.book_img}" style="width:500px">
+							<img onclick="imgClick(${book.book_no})" src="filenameDownload.do?filename=${book.book_img}" style="width:100px">
 						</td>
 						</c:if>
 						<td>${book.company_name}</td>

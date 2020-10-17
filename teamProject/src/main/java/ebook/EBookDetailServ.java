@@ -33,10 +33,10 @@ public class EBookDetailServ implements Controller
 		int check = EBookDAO.getInstance().recCheck( book_no,member_no); // 좋아요 싫어요 했는지 안햇는지 체크
 		ArrayList<Books> book = EBookDAO.getInstance().detailBook(book_no); //책의 상세내용
 		int count = EBookDAO.getInstance().recCount(book_no); //조회수
-		
+		String wish = EBookDAO.getInstance().wishYn(book_no, member_no);
 
 		
-		
+		request.setAttribute("wish", wish);
 		request.setAttribute("member_nickname", member_nickname);
 		request.setAttribute("count", count);
 		request.setAttribute("book", book);

@@ -7,14 +7,17 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
-<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 
 <script>
 $(function(){
 	btnHideNShow();
 	btnScore();
 	reviewAllList();
+	reDeclarationBtn();
 });
 
 function reviewInsert(){
@@ -29,10 +32,8 @@ function reviewInsert(){
 			book_no : "${book[0].book_no}"
 		},
 		success: function(result){
-			alert("성공");
-			console.log(result);
-			console.log(result.contents);
-			$("#reviewField").prepend(result);
+			reviewAllList(1);
+			$("#reviewField").val('');
 		}
 	})
 }
@@ -130,7 +131,8 @@ function btnHideNShow(){
 }
 
 function goRead(){ //읽기버튼이 생성되면 읽는페이지로 이동
-	location.href="${pageContext.request.contextPath}/audioBookReading.do?book_no=${book[0].book_no}";
+	window.open('${pageContext.request.contextPath}/audioBookReading.do?book_no=${book[0].book_no}',
+			'audioBook', 'width=1200px,height=900px,scrollbars=yes');
 }
 
 function reviewLogin(){ //하트 추천기능  로그인안하고 누를려고 하면 로그인 표시 보여주는거
@@ -138,6 +140,36 @@ function reviewLogin(){ //하트 추천기능  로그인안하고 누를려고 �
 }
 
 var check = "${check}"
+function licence(){
+	location.href="${pageContext.request.contextPath}/licenceList.do";
+}
+
+
+/* function btnWish(){	//별표(찜) 클릭
+	console.log("as")
+	$("#wish_update").on("click",function(){
+		console.log("as")
+		$.ajax({
+			url: "${pageContext.request.contextPath}/Ajax/audioBookWishAjax.do",
+			type:"POST",
+			dataType: "JSON",
+	        data: {
+	        book_no: "${book[0].book_no}",
+	        member_no: "${member_no}", 
+	        wish : wish
+	            },
+	        success: function (result){
+	        	console.log(result)
+	        	if(result.equals("n")){
+	        		$(".fas fa-star").css("color", "gray")
+	        	}else{
+	        		$(".fas fa-star").css("color", "red")
+	        	}
+	        	$("#wish").val(result)
+	        }
+		})
+	})
+} */
 
 function btnScore(){ // 추천버튼 클릭시(추천 추가 또는 추천 제거)
 	$("#rec_update").click(function(){
@@ -164,9 +196,90 @@ function btnScore(){ // 추천버튼 클릭시(추천 추가 또는 추천 제�
 	})
 }
 
+var dialog;	
+$(function (){
+					
+	dialog = $( "#dialog-form" ).dialog({
+    	autoOpen: false,
+	    height: 600,
+	    width: 550,
+	    modal: true,
+	    buttons: {
+	      "신고제출": function(){
+	    	  $.ajax({
+	    		url:"${pageContext.request.contextPath}/Ajax/audioBookReviewDeclaration.do",
+	    		type: "POST",
+	    	  	data: { 
+	    			member_no : $("#decla_member_no").val(),
+	    			reported_member: $("#decla_reported_member").val(),
+	    			review_no: $("#decla_review_no").val(),
+	    			book_no: $("#decla_book_no").val(),
+	    			declaContents: $("#declaContents").val(),
+	    			declaration_code : $("#declaration_code").val()
+	    		},
+	    		success :function(result){
+	    			if(result == 1){
+	    				alert("신고가 완료되었습니다.");
+	    				dialog.dialog("close");
+	    				$("#declaContents").val("");
+	    			}	
+	    		}
+	    	  })
+	      },
+	      "취소": function() {
+	        dialog.dialog( "close" );
+	      }
+	    }
+	    /* close: function() {
+	      form[ 0 ].reset();
+	      allFields.removeClass( "ui-state-error" );
+	 	} */
+	});
+})
+function reDeclarationBtn() {
+	var member_no = "${member_no}";
+	var reported_member =  $(event.target).closest("#review_no").data("member_no");
+	var review_no =  $(event.target).closest("#review_no").data("review_no");
+	var book_no = "${book[0].book_no}"
+	console.log(member_no +"신고하는애");
+	console.log(book_no + "북넘버임")
+	console.log(reported_member + "신고당하는애");
+	console.log(review_no+ "리뷰넘버");
+	
+	$("#decla_member_no").val(member_no);
+	$("#decla_reported_member").val(reported_member);
+	$("#decla_book_no").val(book_no);
+	$("#decla_review_no").val(review_no);
+	dialog.dialog( "open" );
+}
+
 </script>
 </head>
 <body>
+<!-- 리뷰 신고 페이지 -->
+	<div id="dialog-form" title="신고">
+		<p class="validateTips">신고하실 내용을 고르세요</p>
+			<fieldset>
+				<input type="hidden" id="decla_member_no">
+				<input type="hidden" id="decla_reported_member">
+				<input type="hidden" id="decla_book_no">
+				<input type="hidden" id="decla_review_no"> 
+				<label for="fruit">신고 카테고리</label><br> 
+				<select name="declaration_code" id="declaration_code">
+					<option value="f1">욕설/비방</option>
+					<option value="f2">음란물     </option>
+					<option value="f3">광고        </option>
+				</select>
+				<br>
+				<label for="declaContents">신고내용</label><br>
+				<textarea rows="8" cols="50" name="declaContents" id="declaContents" placeholder="신고하실 내용을 적어주세요." class="text ui-widget-content ui-corner-all" ></textarea>
+				<!-- Allow form submission with keyboard without duplicating the dialog button -->
+				<input type="submit" tabindex="-1" style="position: absolute; top: -1000px">
+			</fieldset>
+	</div>
+
+
+
 
 <!-- Breadcrumb Section Begin -->
     <section class="breadcrumb-option">
@@ -177,7 +290,7 @@ function btnScore(){ // 추천버튼 클릭시(추천 추가 또는 추천 제�
                         <h4>Menu</h4>
                         <div class="breadcrumb__links">
                             <a href="./index2.jsp">Home</a>
-                            <span>전자책</span>
+                            <span>오디오북</span>
                         </div>
                     </div>
                 </div>
@@ -190,16 +303,12 @@ function btnScore(){ // 추천버튼 클릭시(추천 추가 또는 추천 제�
 		<div class="container">
 			<div class="row s_product_inner">
 				<div class="col-lg-6">
-					<div class="owl-carousel owl-theme s_Product_carousel">
-						<div class="single-prd-item">
-							<c:if test="${not empty book[0].book_img}">
-									<img  src="filenameDownload.do?filename=${book[0].book_img}" style="width:500px">
-							</c:if>
-						</div>
-						
+					<div class="single-prd-item">
+						<c:if test="${not empty book[0].book_img}">
+							<img  src="filenameDownload.do?filename=${book[0].book_img}" style="width:400px">
+						</c:if>
 					</div>
 				</div>
-				
 				<div class="col-lg-5 offset-lg-1">
 					<div class="s_product_text">
 						<h3>책 제목  : ${book[0].title}</h3>
@@ -241,7 +350,6 @@ function btnScore(){ // 추천버튼 클릭시(추천 추가 또는 추천 제�
 										<i class="fa fa-heart" style="font-size:16px;color:gray"></i>
 										&nbsp;<span class="rec_count">${count}</span><!-- 좋아요수 -->
 									</button> 
-								
 								</c:if>
 							</c:if>
 							<a class="button primary-btn" href="#" id="read" onclick="goRead()">읽기</a>

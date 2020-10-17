@@ -42,13 +42,12 @@
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resource/css/font-awesome.min.css" type="text/css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resource/css/elegant-icons.css" type="text/css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resource/css/magnific-popup.css" type="text/css">
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/resource/css/nice-select.css" type="text/css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resource/css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resource/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resource/css/style.css" type="text/css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
-    <script
-	src="<%=request.getContextPath()%>/mainresource/vendors/jquery/jquery-3.2.1.min.js"></script>
+	<script	src="<%=request.getContextPath()%>/mainresource/vendors/jquery/jquery-3.2.1.min.js"></script>
+	<decorator:head />
 </head>
 
 
@@ -61,30 +60,21 @@
 				<a class="navbar-brand logo_h" href="<%=application.getContextPath()%>/licenceList.do"><img
 					src="<%=request.getContextPath()%>/resource/img/ticket.png" style="padding-top: 10px;" /></a>
 			</div>
-		</div>
+		</div> 
 
 		<nav class="navbar navbar-expand-lg navbar-light">
 			<div class="container">
 
 				<!-- 로고 부분 -->
-				<a class="navbar-brand logo_h" href="<%=application.getContextPath()%>/index2.jsp"><img
-					src="<%=request.getContextPath()%>/resource/img/logo.jpg" alt="" /></a>
-					
-				<!-- 이 버튼의 용도는 무엇일까유????? 
-				<button class="navbar-toggler" type="button" data-toggle="collapse"
-					data-target="#navbarSupportedContent"
-					aria-controls="navbarSupportedContent" aria-expanded="false"
-					aria-label="Toggle navigation">
-					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>-->
-				
+				<a class="navbar-brand logo_h" href="<%=application.getContextPath()%>/index.jsp"><img
+					src="${pageContext.request.contextPath}/resource/img/logo.jpg" alt="" /></a>
+			
 				<!-- 메뉴바 시작! -->
-				<div class="collapse navbar-collapse offset"
+				<div class="collapse navbar-collapse "
 					id="navbarSupportedContent">
 					   <ul class="nav navbar-nav menu_nav ml-auto">
 						<li class="nav-item active"><a class="nav-link"
-							href="<%=application.getContextPath()%>/index2.jsp">홈</a></li>
+							href="<%=application.getContextPath()%>/index.jsp">홈</a></li>
 							
 						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/eBookCategory.do">전자책</a>
 						</li>
@@ -94,9 +84,10 @@
 						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/createBookMain.do">나만의 도서</a>
 						</li>
 						
+						
 						<li class="nav-item submenu dropdown"><a href=""
 							class="nav-link dropdown-toggle" data-toggle="dropdown"
-							role="button" aria-haspopup="true" aria-expanded="false">공지사항</a>
+							role="button" aria-haspopup="true" aria-expanded="false">고객센터</a>
 							<ul class="dropdown-menu">
 							<li class="nav-item"><a class="nav-link"
 									href="<%=application.getContextPath()%>/clientNotice.do">공지사항</a></li>
@@ -104,12 +95,13 @@
 									href="<%=application.getContextPath()%>/clientFAQ.do">FAQ</a></li>
 								<li class="nav-item"><a class="nav-link"
 									href="<%=application.getContextPath()%>/clientQuestion.do">문의사항</a></li>
+								<li class="nav-item"><a class="nav-link"
+									href="<%=application.getContextPath()%>/clientHopeBook.do">희망도서</a></li>
 						
 							</ul></li>
-							
-							<li class="nav-item"></li>
-							<li class="nav-item"></li><!-- 메뉴사이 띄워주기용 li 지우지 마세요 ㅠ -->
-							
+							<li class="nav-item"><a class="nav-link" ></a></li>
+								<li class="nav-item"><a class="nav-link" ></a></li> <!-- 띄워쓰기용 지우지 마세요 ㅠ -->
+						
 					
 						
 						<c:if test="${sessionScope.member_id == null }">
@@ -128,17 +120,17 @@
 							role="button" aria-haspopup="true" aria-expanded="false">${sessionScope.member_id}</a>님
 							<ul class="dropdown-menu">
 							<li class="nav-item"><a class="nav-link"
-									href="<%=application.getContextPath()%>/memberModify.do">내 정보수정</a></li>
+									href="<%=application.getContextPath()%>/member/memberModify.jsp">내 정보수정</a></li>
 								<li class="nav-item"><a class="nav-link"
 									href="<%=application.getContextPath()%>/memberBookMark.do">내 서재</a></li>
+									
 								<li class="nav-item"><a class="nav-link"
 									href="<%=application.getContextPath()%>/memberCreateBookCk.do">나만의 도서 확인</a></li>
 								<li class="nav-item"><a class="nav-link"
 									href="<%=application.getContextPath()%>/memberLicense.do">이용권 내용</a></li>
 							</ul></li>
 							
-							<li class="nav-item"></li>
-							<li class="nav-item"></li><!-- 메뉴사이 띄워주기용 li 지우지 마세요 ㅠ -->
+						
 							
 						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/memberLogout.do">로그아웃</a>
 						</li>
@@ -149,7 +141,7 @@
 			</div>
 		</nav>
 	</div>
-	<decorator:head />
+
 	
 </header>
 <!-- 사이드 메뉴 끝!!!!!!!!!!!! -->
@@ -186,46 +178,20 @@
 
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-	<script src="<%=request.getContextPath()%>/resource/js1/popper.js"></script>
-	<script
-		src="<%=request.getContextPath()%>/resource/js1/bootstrap.min.js"></script>
-	<script
-		src="<%=request.getContextPath()%>/resource/vendors1/nice-select/js/jquery.nice-select.min.js"></script>
-	<script
-		src="<%=request.getContextPath()%>/resource/vendors1/owl-carousel/owl.carousel.min.js"></script>
-	<script
-		src="<%=request.getContextPath()%>/resource/js1/owl-carousel-thumb.min.js"></script>
-	<script
-		src="<%=request.getContextPath()%>/resource/js1/jquery.ajaxchimp.min.js"></script>
+	<script	src="<%=request.getContextPath()%>/resource/js1/bootstrap.min.js"></script>
+	<script	src="<%=request.getContextPath()%>/resource/vendors1/nice-select/js/jquery.nice-select.min.js"></script>
+	<script	src="<%=request.getContextPath()%>/resource/vendors1/owl-carousel/owl.carousel.min.js"></script>
+	<script	src="<%=request.getContextPath()%>/resource/js1/owl-carousel-thumb.min.js"></script>
+	<script	src="<%=request.getContextPath()%>/resource/js1/jquery.ajaxchimp.min.js"></script>
 	<script src="<%=request.getContextPath()%>/resource/js1/mail-script.js"></script>
-
-
-
-<script
-		src="<%=request.getContextPath()%>/mainresource/vendors/bootstrap/bootstrap.bundle.min.js"></script>
-	<script
-		src="<%=request.getContextPath()%>/mainresource/vendors/skrollr.min.js"></script>
-	<script
-		src="<%=request.getContextPath()%>/mainresource/vendors/owl-carousel/owl.carousel.min.js"></script>
-	<script
-		src="<%=request.getContextPath()%>/mainresource/vendors/nice-select/jquery.nice-select.min.js"></script>
-	<script
-		src="<%=request.getContextPath()%>/mainresource/vendors/jquery.ajaxchimp.min.js"></script>
-	<script
-		src="<%=request.getContextPath()%>/mainresource/vendors/mail-script.js"></script>
-	<script src="<%=request.getContextPath()%>/mainresource/js/main.js"></script>
 	
-	  <script src="<%=request.getContextPath()%>/resource/js/bootstrap.min.js"></script>
-    <script src="<%=request.getContextPath()%>/resource/js/jquery.nice-select.min.js"></script>
-    <script src="<%=request.getContextPath()%>/resource/js/jquery.nicescroll.min.js"></script>
+	<script src="<%=request.getContextPath()%>/mainresource/vendors/skrollr.min.js"></script>	
+	<script src="<%=request.getContextPath()%>/mainresource/js/main.js"></script>
+	<script src="<%=request.getContextPath()%>/resource/js/jquery.nicescroll.min.js"></script>
     <script src="<%=request.getContextPath()%>/resource/js/jquery.magnific-popup.min.js"></script>
     <script src="<%=request.getContextPath()%>/resource/js/jquery.countdown.min.js"></script>
     <script src="<%=request.getContextPath()%>/resource/js/jquery.slicknav.js"></script>
     <script src="<%=request.getContextPath()%>/resource/js/mixitup.min.js"></script>
-<script src="<%=request.getContextPath()%>/resource/js/main.js"></script>
-    <script src="<%=request.getContextPath()%>/resource/js/owl.carousel.min.js"></script>
-	
-
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
+	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
 </body>
 </html>

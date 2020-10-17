@@ -42,21 +42,34 @@
 
             </div>
 
-            <!-- 회원 남.녀 성 비율Donut Chart -->
+            
             <div class="col-xl-4 col-lg-5">
+            
+            <!-- 회원 남.녀 성 비율Donut Chart -->
               <div class="card shadow mb-4">
-                <!-- Card Header - Dropdown -->
                 <div class="card-header py-3">
                   <h6 class="m-0 font-weight-bold text-primary">회원 성 비율</h6>
                 </div>
-                <!-- Card Body -->
                 <div class="card-body">
-                  <div class="chart-pie pt-4">
+                  <div class="chart-area">
                     <canvas id="myPieChart"></canvas>
                   </div>
                 </div>
               </div>
-            </div>
+          
+            
+            <!-- Content Column -->
+              <div class="card shadow mb-4">
+			 <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">이용원 구매 추이</h6>
+				</div>
+				<div class="card-body">
+					 <div class="chart-bar">
+								<canvas id="myChart"></canvas>
+							</div>
+				</div>
+			</div>
+			  </div>
           </div>
 	
 
@@ -69,7 +82,7 @@
 			<!-- Project Card Example -->
 			<div class="card shadow mb-4">
 				<div class="card-header py-3">
-					<h6 class="m-0 font-weight-bold text-primary">사원...</h6>
+					<h6 class="m-0 font-weight-bold text-primary">사원 별 </h6>
 				</div>
 				<div class="card-body">
 					<h4 class="small font-weight-bold">
@@ -115,19 +128,6 @@
 			</div>
 		</div>
 		
-		<!-- Content Column -->
-		   <div class="col-xl-4 col-lg-5">
-              <div class="card shadow mb-4">
-			 <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">이용원 구매 추이</h6>
-				</div>
-				<div class="card-body">
-					<div class="chart-rader pt-4"">
-								<canvas id="myChart"></canvas>
-							</div>
-				</div>
-			</div>
-		</div>
 	</div>
 	<!-- Page level plugins -->
 	<script

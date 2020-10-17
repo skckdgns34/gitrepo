@@ -15,7 +15,7 @@
 
 		<hr>
 		<div class="panel-title text-center">
-			<h3>공지사항 등록</h3>
+			<h3>공지사항 수정</h3>
 		</div>
 
 		<div id="signupbox" style="margin-top: 30px">
@@ -28,13 +28,13 @@
 						<div class="row">
 							<div class="col-sm-6 col-md-6 col-xs-6">
 								<div id="div_id_downloads" class="form-group required">
-									<label for="notice_title"
+									<label for="notice_no"
 										class="control-label col-md-4  requiredField">번호<span
 										class="asteriskField"></span>
 									</label>
 									<div class="controls col-md-8 ">
 										<input class="input-md emailinput form-control"
-											id="notice_title" name="notice_title"
+											id="notice_no" name="notice_no"
 											value="${notice.notice_no}" type="text" />
 									</div>
 								</div>
@@ -82,7 +82,7 @@
 								</label>
 								<div class="controls col-md-8 " style="margin-bottom: 10px">
 
-									<input class="input-md emailinput form-control" id="notice_img"
+									<input class="input-md emailinput form-control" id=notice_img
 										name="notice_img1"
 										style="margin-bottom: 10px; width: 600px" type="file" />
 								</div>

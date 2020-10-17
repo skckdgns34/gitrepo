@@ -63,11 +63,11 @@ public class MemberFindEmailServ implements Controller
 			switch (rIndex) {
 			case 0:
 				//a-z
-				temp.append((char) ((int) (rnd.nextInt(26)) + 97));
+				temp.append((char) (rnd.nextInt(26)) + 97);
 				 break;
             case 1:
                 // A-Z
-                temp.append((char) ((int) (rnd.nextInt(26)) + 65));
+                temp.append((char) (rnd.nextInt(26)) + 65);
                 break;
             case 2:
                 // 0-9

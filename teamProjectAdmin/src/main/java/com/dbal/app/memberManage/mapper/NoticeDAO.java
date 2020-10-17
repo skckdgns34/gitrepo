@@ -3,6 +3,7 @@ package com.dbal.app.memberManage.mapper;
 import java.util.List;
 
 import com.dbal.app.memberManage.Notice;
+import com.dbal.app.memberManage.Questions;
 
 public interface NoticeDAO {
 	//전체 조회
@@ -17,6 +18,7 @@ public interface NoticeDAO {
 	public void delete(Notice NoticeVO);
 	//수정
 	public void update(Notice notice);
+
 	
 	
 }
