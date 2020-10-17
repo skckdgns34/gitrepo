@@ -113,7 +113,9 @@
             <a id="bookmark" class="icon-bookmark-empty">Bookmark</a>
             <a id="setting" class="icon-cog">Settings</a>
             <a id="fullscreen" class="icon-resize-full">Fullscreen</a>
-          	<a href="${pageContext.request.contextPath}/main.do">Home</a>
+          	<i class="fas fa-home" style="width:20px;"></i>
+          	<a href="${pageContext.request.contextPath}/main.do"></a>
+          	
           </div>
         </div>
 
@@ -129,7 +131,7 @@
               <h3>Settings</h3>
               <div>
                   <p>
-                    <input type="checkbox" id="sidebarReflow" name="sidebarReflow">북마크 리스트가 열려있을때도 북마크&페이지넘기기 기능 사용가능
+                    <input type="checkbox" id="sidebarReflow" name="sidebarReflow">북마크 리스트가 열려있을때도 북마크,페이지넘기기 기능 사용가능
                   </p>
               </div>
               <div class="closer icon-cancel-circled"></div>
