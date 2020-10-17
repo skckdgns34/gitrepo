@@ -127,16 +127,11 @@ function imgClick(book_no) {
               <li class="common-filter">
                 <form action="#">
                   <ul>
-                    <li class="filter-list"><input class="pixel-radio" type="radio" id="r1" name="gen" value="" checked="checked"><label for="r1">전체<span></span></label></li>
-                    <li class="filter-list"><input class="pixel-radio" type="radio" id="r2" name="gen" value="d1"><label for="r2">소설<span> (${count[0].count})</span></label></li>
-                    <li class="filter-list"><input class="pixel-radio" type="radio" id="r3" name="gen" value="d2"><label for="r3">시/에세이<span> (${count[1].count})</span></label></li>
-                    <li class="filter-list"><input class="pixel-radio" type="radio" id="r4" name="gen" value="d3"><label for="r4">무협/판타지<span> (${count[2].count})</span></label></li>
-                    <li class="filter-list"><input class="pixel-radio" type="radio" id="r5" name="gen" value="d4"><label for="r5">인문<span> (${count[3].count})</span></label></li>
-                    <li class="filter-list"><input class="pixel-radio" type="radio" id="r6" name="gen" value="d5"><label for="r6">로맨스<span> (${count[4].count})</span></label></li>
-                    <li class="filter-list"><input class="pixel-radio" type="radio" id="r7" name="gen" value="d6"><label for="r7">자기계발<span> (${count[5].count})</span></label></li>
-                    <li class="filter-list"><input class="pixel-radio" type="radio" id="r8" name="gen" value="d7"><label for="r8">경제경영<span> (${count[6].count})</span></label></li>
-                    <li class="filter-list"><input class="pixel-radio" type="radio" id="r9" name="gen" value="d8"><label for="r9">아동<span> (${count[7].count})</span></label></li>
-                    <li class="filter-list"><input class="pixel-radio" type="radio" id="r10" name="gen" value="d9"><label for="r10">유아<span> (${count[8].count})</span></label></li>
+                    <li class="filter-list"><input class="pixel-radio" type="radio" id="r1" name="gen" value="" checked="checked"><label for="r1">전체<span>(${allBooksCount})</span></label></li>
+                    <c:forEach items="${countName}"  var="countName" varStatus="status">
+                       <li class="filter-list"><input class="pixel-radio" type="radio" id="r2" name="gen" value="${countName.code }"><label for="r2">${countName.code_value }<span> (${count[status.index].count})</span></label></li>
+                    </c:forEach>
+
                   </ul>
                 </form>
               </li>

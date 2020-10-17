@@ -19,17 +19,19 @@ import vo.Common;
 public class EBookCategoryServ implements Controller
 {
 
-	public void execute(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException
+	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
-		
-		List<Map<String,Object>> count = EBookDAO.getInstance().genreCount();
+		int allBooksCount = 0 ;
+		allBooksCount = EBookDAO.getInstance().allBooksCount();
+		List<Map<String,Object>> count = EBookDAO.getInstance().genreCount(); //장르별 책갯수
 		ArrayList<Books> bestBooks = EBookDAO.getInstance().selectBestBooks(); //베스트북
 		
+		ArrayList<Map<String,Object>> countName = EBookDAO.getInstance().genreCountName(); //장르별 책갯수
 		//결과저장
+		request.setAttribute("allBooksCount", allBooksCount);
 		request.setAttribute("bestBooks", bestBooks);
 
-
+		request.setAttribute("countName", countName);
 		request.setAttribute("count", count);
 		request.getRequestDispatcher("/ebook/eBookCategory.jsp").forward(request, response);
 	}

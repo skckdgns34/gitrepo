@@ -556,6 +556,28 @@ public class EBookDAO
 		return list;
 	}
 	
+	public ArrayList<Map<String, Object>> genreCountName(){
+		ArrayList<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+		ResultSet rs = null;
+		try {
+			conn = ConnectionManager.getConnnect();
+			String sql = "select code, code_value from common where common_code = '0D' order by code";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				Map<String, Object> map = new HashMap<String,Object>();
+				map.put("code", rs.getString("code"));
+				map.put("code_value", rs.getString("code_value"));
+				list.add(map);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionManager.close(rs, pstmt, conn);
+		}
+		return list;
+	}
+	
 	public int insertReview(Review review) {
 		int no = 0;
 		ResultSet rs = null;
@@ -749,6 +771,25 @@ public class EBookDAO
 		}finally {
 			ConnectionManager.close(null, pstmt, conn);
 		}
+	}
+	
+	public int allBooksCount() {
+		int r = 0;
+		ResultSet rs =null;
+		try {
+			conn = ConnectionManager.getConnnect();
+			String sql = "select count(book_no) bookCount from books where epub_path is not null ";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				r = rs.getInt("bookCount");
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionManager.close(null, pstmt, conn);
+		}
+		return r;
 	}
 	
 	
