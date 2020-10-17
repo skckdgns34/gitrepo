@@ -1,8 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" isELIgnored="false"%>
+
 <!DOCTYPE html>
 <html class="no-js">
     <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title></title>
@@ -113,8 +115,8 @@
             <a id="bookmark" class="icon-bookmark-empty">Bookmark</a>
             <a id="setting" class="icon-cog">Settings</a>
             <a id="fullscreen" class="icon-resize-full">Fullscreen</a>
-          	<i class="fas fa-home" style="width:20px;"></i>
-          	<a href="${pageContext.request.contextPath}/main.do"></a>
+          	<i class="fas fa-home"></i>
+          <a href="${pageContext.request.contextPath}/main.do">H</a>
           	
           </div>
         </div>
