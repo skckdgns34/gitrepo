@@ -210,7 +210,7 @@
 							<div class="row" style="margin-bottom: 10px">
 							<div class="col-md-10 text-center">
 								<button type='submit'
-									class="btn btn-outline btn-primary pull-left">도서 등록</button>
+									class="btn btn-outline btn-primary pull-left">수정하기</button>
 								<button class="btn btn-danger btn-md" type="reset">초기화</button>
 							</div>
 						</div>
