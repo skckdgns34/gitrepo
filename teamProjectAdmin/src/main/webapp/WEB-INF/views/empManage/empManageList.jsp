@@ -23,20 +23,28 @@
 	};
 
 	function modifypage() {
-
+		if (confirm("수정하시겠습니까?") == true){ 
 		window.document.location.href = "empManageModifyForm.ad?emp_no="
 				+ $('input[name="user_CheckBox"]:checked').val();
-		return;
+		document.form.submit();
+		}else{   //취소
+		    return;
+		}
 	}
+		
 	function addpage() {
 		window.document.location.href = "employeesInsertForm.ad";
 		return;
 	}
 
 	function deletepage() {
+		if (confirm("삭제하시겠습니까?") == true){  
 		window.document.location.href = "employeesDelete.ad?emp_no="
 				+ $('input[name="user_CheckBox"]:checked').val();
-		return;
+		document.form.submit();
+		}else{   //취소
+		    return;
+		}
 	}
 	$(document).on(
 			"click",

@@ -20,6 +20,7 @@
 		EMPLOYEES E
 		WHERE N.EMP_NO = E.EMP_NO
 		AND N.NOTICE_NO IS NOT NULL
+		ORDER BY NOTICE_NO
 	</select>
 	
 	<!-- 한 건 조회 -->

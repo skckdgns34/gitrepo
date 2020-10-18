@@ -7,6 +7,26 @@
 <head>
 <meta charset="UTF-8">
 <title>문의글 조회</title>
+
+<style>
+thead{
+  max-width: 90px;
+ 
+
+  }
+  tbody{
+   max-width: 90px;
+
+  }
+  td{
+ overflow: hidden;
+  text-overflow: ellipsis !important;
+  white-space: nowrap;
+  max-width: 90px;
+  height: 20px;
+  }
+</style>
+
 <script>
 	function check(ck) {
 		var obj = document.getElementsByName("user_CheckBox");
@@ -42,9 +62,7 @@
 				<div>
 					<button type="button" id='btn_n'
 						class="btn btn-outline btn-primary pull-" onclick="modifypage()">답글</button>
-					<button type="button" id='btn_d'
-						class="btn btn-outline btn-primary pull-right"
-						onclick="deletepage()">삭제</button>
+					
 				</div>
 				 <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
 

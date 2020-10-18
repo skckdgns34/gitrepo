@@ -21,6 +21,7 @@
 			      (select code_value from common where code=e.rank_code) as rank_code_value
 			    from employees e
 			where EMP_ID IS NOT NULL
+			ORDER BY EMP_NO
 	</select>
 
 	<!-- 로그인 체크 -->

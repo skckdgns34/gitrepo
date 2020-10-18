@@ -3,7 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@page isELIgnored="false"%>
 <!DOCTYPE html>
 <html>
@@ -35,16 +35,22 @@
 	{
 		window.document.location.href = "memberManageModifyForm.ad?member_no="
 				+ $('input[name="user_CheckBox"]:checked').val();
-		alert($('input[name="user_CheckBox"]:checked').val())
+		
 		return;
 	}
 
-	function deletepage() //삭제
-	{
+	function deletepage(){ //삭제
+		if (confirm("삭제하시겠습니까?") == true){  
 		window.document.location.href = "memberManageDelete.ad?member_no="
 				+ $('input[name="user_CheckBox"]:checked').val();
-		return;
+		document.form.submit();
+		}else{   //취소
+		    return "/memberManageMain.ad";
+		}
 	}
+	
+
+		
 </script>
 
 </head>
@@ -98,9 +104,13 @@
 								<td>${member.getNickname()}</td>
 								<td>${member.getMember_tel()}</td>
 								<td>${member.getMember_email()}</td>
-								<td>${member.getSignup_date()}</td>
+								<td>${fn:substring(member.getSignup_date(),0,10)}</td>
 								<td>${member.getLast_access_date()}</td>
-								<td>${member.getGender()}</td>
+							
+								<c:if test="${member.getGender() eq 'male'}">
+								<td>남자</td></c:if>
+								<c:if test="${member.getGender() eq 'female'}">
+								<td>여자</td></c:if>
 						</c:forEach>
 					</tbody>
 				</table>
@@ -238,7 +248,7 @@
 									<th>도서 번호</th>
 									<th>제목</th>
 									<th>책 번호</th>
-									<th>찜?</th>
+									<th>찜 여부</th>
 									<th>책갈피</th>
 								</tr>
 							</thead>

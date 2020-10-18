@@ -19,6 +19,7 @@
 		GENDER
 		FROM MEMBER
 		WHERE MEMBER_ID IS NOT NULL
+		ORDER BY MEMBER_NO
 	</select>
 
 <!-- 한 건 조회 -->

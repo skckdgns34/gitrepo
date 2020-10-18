@@ -7,6 +7,16 @@
 <head>
 <meta charset="UTF-8">
 <title>문의 답글 달기</title>
+
+<script>
+function show() { 
+	var myDiv = document.getElementById("test"); // 초기화 
+	if(myDiv.style == "block") { myDiv.style.display = "none"; } 
+	else { myDiv.style.display = "block"; }
+	}
+
+
+</script>
 </head>
 <body style="padding-top: 70px;">
 
@@ -19,8 +29,7 @@
           </div>
           <div class="card-body">
             <h5 class="card-title text-center">문의내용 </h5>
-            <form class="form-signin" method="post" name="frm" id="frm"
-			action="문의하기 답글url 적기" onsubmit="return inputCheck()">
+            <div class="form-signin">
 			
                 <div class="form-label-group">
                <label for="inputquestion_no">번호</label><br>
@@ -50,7 +59,7 @@
               
               <div class="form-label-group">
                <label for="inputquestion_contents">내용</label><br>
-                <input type="text" name="question_contents" value="${list.question_title}" readonly="readonly">
+                <textarea  name="question_contents"  readonly="readonly" style="width: 600px;">${list.question_contents}</textarea>
               </div>
               
               <div class="form-label-group">
@@ -60,42 +69,35 @@
               
               <div class="form-label-group">
                <label for="inputquestion_title">첨부파일</label><br>
-                <input type="text" name="question_title" value="${list.question_title}" readonly="readonly">
+                <input type="text" name="question_file" value="${list.question_file}" readonly="readonly">
               </div>
               
               <div class="form-label-group">
                <label for="inputcode_value">질문유형</label><br>
                 <input type="text" name="code_value" value="${list.code_value}" readonly="readonly">
               </div>
-  
               <hr>
-
-              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">답글달기</button>
-             
+              <button class="btn btn-lg btn-primary btn-block text-uppercase" onclick="show()">답글달기</button>
               <hr class="my-4">
-            </form>
+            </div>
             
+            
+            
+            <div id="test" style="display:none">
              <form class="form-signin" method="post" name="frm" id="frm"
-			action="memberManageAnswerInsert.ad" onsubmit="return inputCheck()">
-			
-			<div class="form-label-group">
-                <input type="hidden" name="answer_writer" value="${login.emp_id}">
+					action="memberManageAnswerInsert.ad" onsubmit="return inputCheck()" >
+    		<div class="form-label-group" >
+	               <input  type="hidden" name="question_no" value="${list.question_no}">                
+	               <label for="inputAnswer_contents">답글</label><br>
+	               <textarea type="text" name="answer_contents" style="width: 650px; height: 400px;"></textarea>
               </div> 
-			
-    <div class="form-label-group">
-                <input type="text" name="question_no" value="${list.question_no}">                
-               <label for="inputAnswer_contents">답글</label><br>
-                <textarea type="text" name="answer_contents" ></textarea>
-              </div> 
-         
-              <hr>
-
+              	<hr>
               <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">제출하기</button>
              
               <hr class="my-4">
               
             </form>
-            
+            </div>
             
           </div>
         </div>

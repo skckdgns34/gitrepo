@@ -17,6 +17,7 @@ FROM BLACKLIST B, MEMBER M, COMMON C
 WHERE B.MEMBER_NO = M.MEMBER_NO
 AND B.BLACKLIST_REASON = C.CODE
 and m.member_id is not null
+ORDER BY BLACK_NO
 	</select>
 	
 <!--  한 건 조회 -->

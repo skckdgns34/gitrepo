@@ -72,6 +72,24 @@
 	}
 	
 </script>
+<style>
+thead{
+  max-width: 90px;
+ 
+
+  }
+  tbody{
+   max-width: 90px;
+
+  }
+  td{
+ overflow: hidden;
+  text-overflow: ellipsis !important;
+  white-space: nowrap;
+  max-width: 90px;
+  height: 20px;
+  }
+</style>
 </head>
 <body>
 

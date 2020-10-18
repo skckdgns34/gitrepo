@@ -92,25 +92,19 @@
 
 						<div class="row">
 							<div class="col-sm-6 col-md-6 col-xs-6">
-								<label for="emp_no"
-									class="control-label col-md-4  requiredField">등록 사원 번호<span
-									class="asteriskField"></span>
-								</label>
+								
 								<div class="controls col-md-8 ">
 									<input class="input-md emailinput form-control" id="emp_no"
-										name="emp_no" style="margin-bottom: 10px" type="text"
+										name="emp_no" style="margin-bottom: 10px" type="hidden"
 										value="${login.emp_no}" />
 								</div>
 							</div>
 
 							<div class="col-sm-6 col-md-6 col-xs-6">
-								<label for="emp_name"
-									class="control-label col-md-4  requiredField">등록 사원 이름<span
-									class="asteriskField"></span>
-								</label>
+								
 								<div class="controls col-md-8 ">
 									<input class="input-md emailinput form-control" id="emp_name"
-										name="emp_name" style="margin-bottom: 10px" type="text"
+										name="emp_name" style="margin-bottom: 10px" type="hidden"
 										value="${login.emp_name}" />
 								</div>
 							</div>
@@ -120,9 +114,9 @@
 						<hr />
 
 						<div class="row">
-							<div class="col-md-10 text-center">
+							<div class="col-md-12 text-center">
 								<button type='submit'
-									class="btn btn-outline btn-primary pull-left">등록</button>
+									class="btn btn-outline btn-primary pull-left" style="margin-right: 30px;" >등록</button>
 								<button class="btn btn-danger btn-md" type="reset">초기화</button>
 							</div>
 						</div>
