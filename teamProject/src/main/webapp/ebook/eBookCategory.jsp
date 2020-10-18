@@ -118,63 +118,6 @@ function imgClick(book_no) {
 	<!-- Breadcrumb Section End -->
 
 
-	<section class="section-margin--small mb-5">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-3 col-md-5">
-					<div class="sidebar-categories">
-						<div class="head">Categories</div>
-						<ul class="main-categories">
-							<li class="common-filter">
-								<form action="#">
-									<ul>
-										<li class="filter-list"><input class="pixel-radio"
-											type="radio" id="r1" name="gen" value="" checked="checked"><label
-											for="r1">전체<span>(${allBooksCount})</span></label></li>
-										<c:forEach items="${countName}" var="countName"
-											varStatus="status">
-											<li class="filter-list"><input class="pixel-radio"
-												type="radio" id="r2" name="gen" value="${countName.code }"><label
-												for="r2">${countName.code_value }<span>
-														(${count[status.index].count})</span></label></li>
-										</c:forEach>
-
-									</ul>
-								</form>
-							</li>
-						</ul>
-					</div>
-					<div class="sidebar-filter">
-						<div class="top-filter-head"></div>
-
-					</div>
-
-					<div class="sidebar-categories">
-						<div class="head">Best Seller Top 5</div>
-						<div class="single-search-product-wrapper">
-							<c:forEach items="${bestBooks}" var="bestBook">
-								<div class="single-search-product d-flex">
-									<a href="#"></a>
-									<div class="desc">
-										<a href="#" class="title"> 
-										<c:if test="${not empty bestBook.book_img}">
-												<td>
-													<img src="filenameDownload.do?filename=${bestBook.book_img}" style="width: 200px" onclick="imgClick(${bestBook.book_no})">
-												</td>
-										</c:if>
-										</a>
-										<div class="price">${bestBook.title}</div>
-									</div>
-								</div>
-							</c:forEach>
-						</div>
-					</div>
-
-
-				</div>
-</div>
-</div>
-</section>
 
 
 				<!-- ================ category section start ================= -->

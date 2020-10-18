@@ -3,6 +3,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="my" tagdir="/WEB-INF/tags"%>
 <style>
+.review_item{
+padding-left: 80px;
+padding-right: 80px;
+}
+.pagination ul {
+padding-left: 50%;
+}
 .pagination li {
 	display: inline-block;
 	border: 15px solid white;

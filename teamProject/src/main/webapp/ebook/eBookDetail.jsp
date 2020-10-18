@@ -279,6 +279,9 @@ span {
 .s_product_text {
 	margin-top: 10px;
 }
+
+
+
 </style>
 </head>
 <body>
@@ -315,7 +318,7 @@ span {
 					<div class="breadcrumb__text">
 						<h4>Menu</h4>
 						<div class="breadcrumb__links">
-							<a href="./index2.jsp">Home</a> <span>전자책</span>
+							<a href="./main.do">Home</a> <span>전자책</span>
 						</div>
 					</div>
 				</div>
@@ -334,16 +337,9 @@ span {
 				<!-- 이미지 영역 -->
 				<div class="col-lg-7">
 					<div class="single-prd-item" style="padding-left: 20%;">
-						<c:if test="${not empty book[0].book_img}">
-							<img src="filenameDownload.do?filename=${book[0].book_img}"
-								style="width: 400px;">
-						</c:if>
-						<div class="col-lg-6">
-
-							<div class="single-prd-item">
 								<c:if test="${not empty book[0].book_img}">
 									<img src="filenameDownload.do?filename=${book[0].book_img}"
-										style="width: 500px">
+										style="width: 400px">
 								</c:if>
 							</div>
 						</div>
@@ -366,6 +362,7 @@ span {
 
 									</div>
 								</div>
+								
 								<ul style="padding: 10%; max-width: 450px;">
 
 									<!-- 장르명 -->
@@ -451,80 +448,82 @@ span {
 							<!-- end product count -->
 
 						</div>
-						<!-- end col-lg 5 -->
 					</div>
-					<!--  end product inner-->
 				</div>
-				<!-- end container -->
+				<!-- end col-lg 5 -->
 			</div>
-			<!--end image area  -->
+			<!--  end product inner-->
+		</div>
+		<!-- end container -->
+	</div>
+	<!--end image area  -->
 
-			<!--================End Single Product Area =================-->
+	<!--================End Single Product Area =================-->
+
+<!-- 리뷰파트 -->
+
+	<!--================Product Description Area =================-->
+	<section class="product_description_area">
+		<div class="container">
+
+			<ul class="nav nav-tabs" id="myTab" role="tablist" style="background-color: #f3f2ee;">
+				<li class="nav-item"><a class="nav-link" id="home-tab"
+					data-toggle="tab" href="#home" role="tab" aria-controls="home"
+					aria-selected="true">줄거리</a></li>
+
+				<li class="nav-item"><a class="nav-link active" id="review-tab"
+					data-toggle="tab" href="#review" role="tab" aria-controls="review"
+					aria-selected="false">리뷰</a></li>
+			</ul>
+
+			<div class="tab-content" id="myTabContent">
+				<div class="tab-pane fade" id="home" role="tabpanel"
+					aria-labelledby="home-tab">
+					<p>${book[0].summary}</p>
+				</div>
+
+				<div class="tab-pane fade show active" id="review" role="tabpanel"
+					aria-labelledby="review-tab">
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="row total_rate"></div>
+							<div class="review_list" id="reviewField"></div>
+
+							<!-- 리뷰쓰고 액션 -->
 
 
-			<!-- 리뷰파트 -->
-
-			<!--================Product Description Area =================-->
-			<section class="product_description_area">
-				<div class="container">
-
-					<ul class="nav nav-tabs" id="myTab" role="tablist">
-						<li class="nav-item"><a class="nav-link" id="home-tab"
-							data-toggle="tab" href="#home" role="tab" aria-controls="home"
-							aria-selected="true">줄거리</a></li>
-
-						<li class="nav-item"><a class="nav-link active"
-							id="review-tab" data-toggle="tab" href="#review" role="tab"
-							aria-controls="review" aria-selected="false">리뷰</a></li>
-					</ul>
-
-					<div class="tab-content" id="myTabContent">
-						<div class="tab-pane fade" id="home" role="tabpanel"
-							aria-labelledby="home-tab">
-							<p>${book[0].summary}</p>
-						</div>
-
-						<div class="tab-pane fade show active" id="review" role="tabpanel"
-							aria-labelledby="review-tab">
-							<div class="row">
-								<div class="col-lg-12">
-									<div class="row total_rate"></div>
-									<div class="review_list" id="reviewField"></div>
-
-									<!-- 리뷰쓰고 액션 -->
-
-
-									<div class="form-group">
-										<input class="form-control" name="name" type="text"
-											readonly="readonly" placeholder="${member_nickname}" required>
-									</div>
-									<c:if test="${member_no == null }">
-										<div class="form-group">
-											<textarea class="form-control different-control w-100"
-												name="textarea" readonly="readonly" cols="30" rows="5"
-												placeholder="리뷰는 로그인 후 사용 가능 합니다." id=""></textarea>
-										</div>
-									</c:if>
-									<c:if test="${member_no != null}">
-										<div class="form-group">
-											<textarea class="form-control different-control w-100"
-												name="textarea" cols="30" rows="5" placeholder="리뷰 내용 입력"
-												id="reviewArea"></textarea>
-										</div>
-										<div class="form-group text-center text-md-right mt-3">
-											<button type="submit"
-												class="button button--active button-review" id="btnreview"
-												onclick="reviewInsert()">댓글쓰기</button>
-										</div>
-									</c:if>
-								</div>
+							<div class="form-group">
+								<input class="form-control" name="name" type="text"
+									readonly="readonly" placeholder="${member_nickname}" required>
 							</div>
+							<c:if test="${member_no == null }">
+								<div class="form-group">
+									<textarea class="form-control different-control w-100"
+										name="textarea" readonly="readonly" cols="30" rows="5"
+										placeholder="리뷰는 로그인 후 사용 가능 합니다." id=""></textarea>
+								</div>
+							</c:if>
+							<c:if test="${member_no != null}">
+								<div class="form-group">
+									<textarea class="form-control different-control w-100"
+										name="textarea" cols="30" rows="5" placeholder="리뷰 내용 입력"
+										id="reviewArea"></textarea>
+								</div>
+								<div class="form-group text-center text-md-right mt-3">
+									<button type="submit"
+										class="button button--active button-review" id="btnreview"
+										onclick="reviewInsert()">댓글쓰기</button>
+								</div>
+							</c:if>
 						</div>
 					</div>
 				</div>
-				</section>
+			</div>
+
 		</div>
-		</section>
-		<!--================End Product Description Area =================-->
+	</section>
+
+	<!--================End Product Description Area =================-->
+	
 </body>
 </html>
