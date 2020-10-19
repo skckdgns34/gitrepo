@@ -28,7 +28,24 @@ public class AudioBookDAO {
 	}
 
 	
-	
+	public int allBooksCount() {
+		int r = 0;
+		ResultSet rs =null;
+		try {
+			conn = ConnectionManager.getConnnect();
+			String sql = "select count(book_no) bookCount from books where audio_path is not null ";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				r = rs.getInt("bookCount");
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionManager.close(null, pstmt, conn);
+		}
+		return r;
+	}
 	
 	// audio-Book detail 페이지에서 해당책 상세내용 뿌려주기용
 	public ArrayList<Books> detailBook(String b) {
@@ -435,5 +452,70 @@ public class AudioBookDAO {
 		} finally {
 			ConnectionManager.close(rs, pstmt, conn);
 		}
+	}
+
+
+	public List<Map<String, Object>> genreName() {
+		ArrayList<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+		ResultSet rs = null;
+		try {
+			conn = ConnectionManager.getConnnect();
+			String sql = "select code_value from common where common_name = '도서장르코드' order by code ";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				Map<String, Object> map = new HashMap<String,Object>();
+				map.put("genreName", rs.getString("code_value"));
+				list.add(map);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionManager.close(rs, pstmt, conn);
+		}
+		return list;
+	}
+
+
+	public ArrayList<Map<String, Object>> genreCountName() {
+		ArrayList<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+		ResultSet rs = null;
+		try {
+			conn = ConnectionManager.getConnnect();
+			String sql = "select code, code_value from common where common_code = '0D' order by code";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				Map<String, Object> map = new HashMap<String,Object>();
+				map.put("code", rs.getString("code"));
+				map.put("code_value", rs.getString("code_value"));
+				list.add(map);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionManager.close(rs, pstmt, conn);
+		}
+		return list;
+	}
+
+
+	public int genreAllCount() {
+		int a = 0;
+		ResultSet rs = null;
+		try {
+			conn = ConnectionManager.getConnnect();
+			String sql = "select count(book_no) from books where audio_path is not null";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				a= rs.getInt(1);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionManager.close(rs, pstmt, conn);
+		}
+		return a;
 	}
 }

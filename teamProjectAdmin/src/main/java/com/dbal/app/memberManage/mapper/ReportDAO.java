@@ -18,6 +18,9 @@ public interface ReportDAO {
 	//블랙 리스트 등록
 	public void insert(Report report);
 	
+	//삭제
+		public void delete(Report report);
+	
 	
 
 }

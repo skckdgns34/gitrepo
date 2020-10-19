@@ -259,6 +259,9 @@
 		$("#decla_review_no").val(review_no);
 		dialog.dialog("open");
 	}
+	function licence(){
+		location.href='${pageContext.request.contextPath }/licenceList.do';
+	}
 </script>
 <style>
 a {
@@ -287,7 +290,7 @@ span {
 <body>
 	<!-- 리뷰 신고 페이지 -->
 	<div id="dialog-form" title="신고">
-		<p class="validateTips">신고하실 내용과 한범이를 고르세요</p>
+		<p class="validateTips">신고하실 내용을 적어주세요</p>
 		<fieldset>
 			<input type="hidden" id="decla_member_no"> <input
 				type="hidden" id="decla_reported_member"> <input
@@ -335,7 +338,7 @@ span {
 		<div class="container">
 			<div class="row s_product_inner">
 				<!-- 이미지 영역 -->
-				<div class="col-lg-7">
+				<div class="col-lg-7" style="border: 1px solid #f3f2ee; padding: 20px;">
 					<div class="single-prd-item" style="padding-left: 20%;">
 								<c:if test="${not empty book[0].book_img}">
 									<img src="filenameDownload.do?filename=${book[0].book_img}"
