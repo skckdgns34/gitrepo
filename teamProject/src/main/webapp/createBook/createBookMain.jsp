@@ -66,7 +66,7 @@
 					<div class="breadcrumb__text">
 						<h4>Menu</h4>
 						<div class="breadcrumb__links">
-							<a href="">Home</a> <span>나만의 도서</span>
+							<a href="${pageContext.request.contextPath}/main.do">Home</a> <span>나만의 도서</span>
 						</div>
 					</div>
 				</div>
@@ -75,9 +75,9 @@
 	</section>
 	<!-- Breadcrumb Section End -->
 	
-	<button id="write">쓰기</button>
 	<!--================Blog Area =================-->
     <section class="blog_area section_gap">
+    
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
@@ -131,7 +131,7 @@
                                         <p><fmt:formatDate value="${publication_date}"  pattern="yyyy/MM/dd"/></p>
                                  		 <p>${userBook.code_value }</p>
                                  		 <p>${userBook.summary }</p>
-                                        <a href="" class="blog_btn">View More</a>
+                                        <a href="${pageContext.request.contextPath}/eBookDetail.do?book_no=${userBook.book_no}" class="blog_btn">View More</a>
                                     </div>
 
                                 </div>
@@ -173,17 +173,20 @@
                 <!-- 베스트셀러 들어 갈 부분 -->
               
                <div class="col-lg-4">
+                                  
+               
                     <div class="blog_right_sidebar">
+                    		<button id="write" class="button button-login w-20">글쓰기</button>
                         <aside class="single_sidebar_widget search_widget">
-                        
+                        	
                         <!-- 검색창(껍데기만 있음) -->
                             <div class="input-group">
                                 <input type="text" class="form-control" placeholder="Search">
                                 <span class="input-group-btn">
                                     <button class="btn btn-default" type="button"><i class="ti-search"></i></button>
                                 </span>
+                                	
                             </div><!-- /input-group -->
-                            
                             <div class="br"></div>
                             
                         </aside>
@@ -193,7 +196,7 @@
                             <h3 class="widget_title">Popular Books</h3>
                              <c:forEach items="${userBookRank }" var="list">
                             <div class="media post_item">
-                                ${list.no }<img src="<%=request.getContextPath()%>/resource/img/blog/popular-post/post4.jpg" alt="post">
+                                ${list.no }<img src="filenameDownload.do?filename=${list.book_img}">
                             	<input type="hidden" value="${list.book_no }">
                                 
 									
