@@ -338,7 +338,7 @@ span {
 		<div class="container">
 			<div class="row s_product_inner">
 				<!-- 이미지 영역 -->
-				<div class="col-lg-7">
+				<div class="col-lg-7" style="border: 1px solid #f3f2ee; padding: 20px;">
 					<div class="single-prd-item" style="padding-left: 20%;">
 								<c:if test="${not empty book[0].book_img}">
 									<img src="filenameDownload.do?filename=${book[0].book_img}"

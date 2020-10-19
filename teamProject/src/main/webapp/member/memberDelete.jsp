@@ -5,7 +5,28 @@
 <head>
 <meta charset="UTF-8">
 <title>내정보 수정-탈퇴</title>
+<style type="text/css">
+body {
+	text-align: center;
+	}
+	
+	#btns {
+	 background-color: white; 
+  color: black; 
+  border: 2px solid 002347;
+  padding: 7px 15px;
+  font-size: 12px;
 
+	}
+	
+	#btndel {
+ 	background-color: #002347;
+	color: white;
+	border: 1px solid white;
+	padding: 9px 20px;
+  	font-size: 12px;
+}
+	</style>
 <script type="text/javascript">
 $(function(){
 		
@@ -48,7 +69,7 @@ $(function(){
 <h2>회원탈퇴 유의사항</h2><br>
 <h5>회원탈퇴 시 개인정보 및 DumBook&DamBook에서 만들어진 모든 데이터는 삭제됩니다.</h5><br>
 	<textarea readonly
-	style="width: 70%; border: 1; overflow: visible; text-overflow: ellipsis; resize: none;"
+	style="width: 50%; border: 1; overflow: visible; text-overflow: ellipsis; resize: none;"
 	rows=10 id="notice_content" name="notice_date" >
 -탈퇴시 보유하고 계신 이용권은 즉시 소멸되며, 소멸이후에는 복구가 불가능합니다.
 	
@@ -74,7 +95,7 @@ $(function(){
 		<button id="btndel">탈퇴</button>
 
 	</form>
-		<button onclick="location='memberModify.jsp'">취소</button>
+		<button id="btns" onclick="location='memberModify.jsp'">취소</button>
 
 </body>
 </html>
