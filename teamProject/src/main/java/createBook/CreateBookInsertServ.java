@@ -14,29 +14,21 @@ import org.apache.commons.beanutils.BeanUtils;
 import bookManage.FileRenamePolicy;
 import common.Controller;
 import vo.Books;
+import vo.Mywriting;
 
 public class CreateBookInsertServ implements Controller {
 
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String contents = request.getParameter("editor1");
-		String member_no =(String)request.getSession().getAttribute("member_no");
 		String nickname = (String)request.getSession().getAttribute("nickname");
-		String genre = request.getParameter("genre");
-		String title = request.getParameter("my_title");
-		String image_uri = request.getParameter("image_uri");
-		String intro = request.getParameter("my_introduction");
-		String my_summary = request.getParameter("my_summary");
-		Books book = new Books();
-		
-		System.out.println(contents);
-		book.setMember_no(member_no);
-		book.setWriter(nickname);
-		book.setGenre(genre);
-		book.setTitle(title);
-		book.setBook_img(image_uri);
-		book.setIntroduction(intro);
-		book.setSummary(my_summary);
+		String member_no =(String)request.getSession().getAttribute("member_no");
+		Mywriting  book = new Mywriting();
+		try {
+			BeanUtils.copyProperties(book, request.getParameterMap());
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
 		//contents는 변환 한 다음 epub_path에 담아주기.(upload)
 		
 		
@@ -47,14 +39,14 @@ public class CreateBookInsertServ implements Controller {
 		File renameFile = FileRenamePolicy.rename(new File(path, book_img));
 		part.write(path + "/" + renameFile.getName());
 		if (renameFile.getName().equals("책표지1")) {
-			book.setBook_img(null);
+			book.setImage_uri(null);
 		} else {
-			book.setBook_img(renameFile.getName());
+			book.setImage_uri(renameFile.getName());
 		}
-		
-		
-		System.out.println(book);
-		CreateBookDAO.getInstance().insertUserBook(book);
+		book.setMember_no(member_no);
+		book.setMy_contents(contents);
+		CreateBookDAO.getInstance().saveUserBook(book);
+		CreateBookDAO.getInstance().updateUserBook(book);
 		response.sendRedirect("createBookMain.do");
 	}
 	
