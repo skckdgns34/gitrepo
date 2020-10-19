@@ -91,9 +91,5 @@
 		</div>
 	</section>
 	<!--================End Login Box Area =================-->
-
-
-
-
 </body>
 </html>
