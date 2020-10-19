@@ -12,9 +12,12 @@
 
 
 
-<script>
-
-</script>
+<style >
+	li {list-style-type: none; float: left; margin-left: 20px;}
+	
+	a {
+	color: black}
+</style>
 </head>
 <body>
     <!-- Breadcrumb Section Begin -->
@@ -34,16 +37,6 @@
         </div>
     </section>
     <!-- Breadcrumb Section End -->
-	<!--  이건 이제 지워도 되지 않을까??? -->
-	<ul>
-		<li><a
-			href="<%=application.getContextPath()%>/clientNotice.do">공지사항</a>
-		<li><a
-			href="<%=application.getContextPath()%>/clientFAQ.do">FAQ</a>
-		<li><a
-			href="<%=application.getContextPath()%>/clientQuestion.do">문의</a>
-	</ul>
-	
 	
 	  <section class="section-margin--small mb-5">
 	
@@ -60,19 +53,16 @@
 				<td>게시물 번호</td>
 				<td>제목</td>
 				<td>등록일</td>
-				<td>조회수</td>
 			</tr>
 
   </thead>
 
   <tbody>
-
     <c:forEach items="${list }" var="notice">
 				<tr>
-					<td>${notice.emp_no }</td>
-					<td><a onclick="window.open('clientNoticeSelect.do', '공지사항 상세보기', 'width=#, height=#')">${notice.notice_title }</a></td>
+					<td>${notice.notice_no }</td>
+					<td><a href="javascript:void(window.open('clientNoticeSelect.do?notice_no=${notice.notice_no}', '공지사항 상세보기', 'width=700, height=700'))">${notice.notice_title }</a></td>
 					<td>${notice.notice_date }</td>
-					<td>${notice.views }</td>
 				</tr>
 			</c:forEach>
   </tbody>
@@ -84,18 +74,16 @@
 </div>
 </div>
 </section>
+<script type="text/javascript">
+jQuery(function($){ 
+	$("#exampleTable").DataTable(); 
+}); 
 
-	<my:paging paging="${paging }" jsfunc="gopage" />
-	<script>
-		function gopage(p) {
-			searchFrm.p.value = p;
-			searchFrm.submit();
-
-			//location.href="deptSelectAll?p=" + p;
-		}
-	</script>
-
-	<input type="text">
-	<button>검색</button> <!-- 이거는 기능을 하는 건지? 이것이 용도는????? -->
+$("#exampleTable").DataTable({
+	
+	// 표시 건수를 10건 단위로 설정
+	lengthMenu: [ 10, 20, 30, 40, 50 ]
+});
+</script>
 </body>
 </html>

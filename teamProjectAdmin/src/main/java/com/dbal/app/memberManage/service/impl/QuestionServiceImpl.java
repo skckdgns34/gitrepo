@@ -27,10 +27,11 @@ public class QuestionServiceImpl implements QuestionService{
 	}
 
 	@Override
-	public void insert(Answer answer) {
-			questionDAO.updateNo(); //번호 업데이트
-			
-			 questionDAO.insert(answer);
+	public void insert(Questions questions) {
+		questionDAO.updateNo(); //번호 업데이트
+		//	questionDAO.updateNo1();
+			questionDAO.updateStatus(questions);
+			 questionDAO.insert(questions);
 	}
 
 	
@@ -39,7 +40,14 @@ public class QuestionServiceImpl implements QuestionService{
 	public void updateStatus(Questions questions) {
 		questionDAO.updateStatus(questions);
 	}
-	
+
+	@Override
+	public void updateNo() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
 	
 	
 }

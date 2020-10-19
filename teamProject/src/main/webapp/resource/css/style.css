@@ -29,7 +29,6 @@
 /*----------------------------------------*/
 /* Template default CSS
 /*----------------------------------------*/
-
 html,
 body {
 	height: 100%;
@@ -97,7 +96,7 @@ a:hover,
 a:focus {
 	text-decoration: none;
 	outline: none;
-	color: #ffffff;
+	color: #222;
 }
 
 ul,
@@ -1394,7 +1393,7 @@ ol {
 .shop__sidebar__accordion .card-heading a:after,
 .shop__sidebar__accordion .card-heading>a.active[aria-expanded=false]:after {
 	content: "";
-	font-family: "FontAwesome";
+	font-family: "Nunito Sans", sans-serif;
 	font-size: 24px;
 	font-weight: 700;
 	color: #111111;
@@ -1406,8 +1405,7 @@ ol {
 
 .shop__sidebar__accordion .card-heading.active a:after {
 	content: "";
-	font-family: "FontAwesome";
-	font-size: 24px;
+font-family: "Nunito Sans", sans-serif;	font-size: 24px;
 	font-weight: 700;
 	color: #111111;
 	position: absolute;
@@ -1575,8 +1573,7 @@ ol {
 	right: -14px;
 	top: 0;
 	content: "";
-	font-family: "FontAwesome";
-}
+font-family: "Nunito Sans", sans-serif;}
 
 .product__details__breadcrumb span {
 	font-size: 15px;
@@ -2055,7 +2052,8 @@ ol {
 
 .breadcrumb-option {
 	background: #f3f2ee;
-	padding: 40px 0;
+	padding: 20px 0;
+  height: 110px;
 }
 
 .breadcrumb__text h4 {
@@ -2077,8 +2075,7 @@ ol {
 	right: -14px;
 	top: 0;
 	content: "";
-	font-family: "FontAwesome";
-}
+font-family: "Nunito Sans", sans-serif;}
 
 .breadcrumb__links span {
 	font-size: 15px;

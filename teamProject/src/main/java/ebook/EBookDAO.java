@@ -12,6 +12,8 @@ import java.util.Map;
 import common.ConnectionManager;
 import vo.Books;
 import vo.Good;
+import vo.Mylibrary;
+import vo.Mywriting;
 import vo.Review;
 import vo.SearchBook;
 
@@ -556,6 +558,72 @@ public class EBookDAO
 		return list;
 	}
 	
+	public ArrayList<Map<String, Object>> genreCountName(){
+		ArrayList<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+		ResultSet rs = null;
+		try {
+			conn = ConnectionManager.getConnnect();
+			String sql = "select code, code_value from common where common_code = '0D' order by code";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				Map<String, Object> map = new HashMap<String,Object>();
+				map.put("code", rs.getString("code"));
+				map.put("code_value", rs.getString("code_value"));
+				list.add(map);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionManager.close(rs, pstmt, conn);
+		}
+		return list;
+	}
+	
+	//도서코드별 이름 뽑아주기용임
+	public ArrayList<Map<String, Object>> genreName() {
+		ArrayList<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+		ResultSet rs = null;
+		try {
+			conn = ConnectionManager.getConnnect();
+			String sql = "select code_value from common where common_name = '도서장르코드' order by code ";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				Map<String, Object> map = new HashMap<String,Object>();
+				map.put("genreName", rs.getString("code_value"));
+				list.add(map);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionManager.close(rs, pstmt, conn);
+		}
+		return list;
+	}
+	
+	//epub 전체 카운팅
+	
+	public int genreAllCount() {
+		int a = 0;
+		ResultSet rs = null;
+		try {
+			conn = ConnectionManager.getConnnect();
+			String sql = "select count(book_no) from books where epub_path is not null";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				a= rs.getInt(1);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionManager.close(rs, pstmt, conn);
+		}
+		return a;
+
+	}
+	
 	public int insertReview(Review review) {
 		int no = 0;
 		ResultSet rs = null;
@@ -751,6 +819,341 @@ public class EBookDAO
 		}
 	}
 	
+
+	public int allBooksCount() {
+		int r = 0;
+		ResultSet rs =null;
+		try {
+			conn = ConnectionManager.getConnnect();
+			String sql = "select count(book_no) bookCount from books where epub_path is not null ";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				r = rs.getInt("bookCount");
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionManager.close(null, pstmt, conn);
+		}
+		return r;
+	}
+	
 	
 
+	public int reviewDeclaration(String declaration_code,String declaContents,String member_no,String reported_member,String review_no,String book_no) {
+		int no =0;
+		int aa = 0;
+		ResultSet rs =null;
+		try {
+			conn = ConnectionManager.getConnnect();
+			conn.setAutoCommit(false);
+			String seqSql = "select no from seq where tablename = 'declaration'";
+			Statement stmt = conn.createStatement();
+			rs = stmt.executeQuery(seqSql);
+			rs.next();
+			no = rs.getInt(1);
+			
+			
+			seqSql = "update seq set no = no + 1 where tablename = 'declaration'";
+			stmt = conn.createStatement();
+			stmt.executeUpdate(seqSql);
+
+
+			
+			String sql = "insert into declaration(declaration_no, member_no, declaration_content, reported_member, declaration_date, declaration_code, book_no, review_no)"
+					   + " values(?,?,?,?,sysdate,?,?,?)";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, no);
+			pstmt.setString(2, member_no);
+			pstmt.setString(3, declaContents);
+			pstmt.setString(4, reported_member);
+			pstmt.setString(5, declaration_code);
+			pstmt.setString(6, book_no);
+			pstmt.setString(7, review_no);
+			aa = pstmt.executeUpdate();
+			conn.commit();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionManager.close(rs, pstmt, conn);
+		}
+		return aa;
+	}
+	
+	//책열자마자 그냥 mylibrary에다가 insert
+	public int myLibraryFirstInsert(String member_no, String book_no) {
+		int no =0;
+		int aa = 0;
+		ResultSet rs =null;
+		try {
+			conn = ConnectionManager.getConnnect();
+			conn.setAutoCommit(false);
+			String seqSql = "select no from seq where tablename = 'mylibrary'";
+			Statement stmt = conn.createStatement();
+			rs = stmt.executeQuery(seqSql);
+			rs.next();
+			no = rs.getInt(1);
+			
+			
+			seqSql = "update seq set no = no + 1 where tablename = 'mylibrary'";
+			stmt = conn.createStatement();
+			stmt.executeUpdate(seqSql);
+
+			
+			String sql = "insert into mylibrary(mylibrary_no, member_no, book_no) values(?,?,?)";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, no);
+			pstmt.setString(2, member_no);
+			pstmt.setString(3, book_no);
+			aa = pstmt.executeUpdate();
+			conn.commit();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionManager.close(rs, pstmt, conn);
+		}
+		return aa;
+	}
+	
+	//책 열자마자 insert할려는데 그전에 일단 얘가 insert먼저 해놨나 체크
+	public ArrayList<Map<String, Object>> myLibraryInsertAfterCheck(String member_no, String book_no) {
+		ArrayList<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+		ResultSet rs =null;
+		try {
+			conn = ConnectionManager.getConnnect();
+			String sql = "select count(mylibrary_no) cnt , last_read_index from mylibrary where member_no = ? and book_no = ? group by last_read_index";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, member_no);
+			pstmt.setString(2, book_no);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				Map<String, Object> map = new HashMap<String, Object>();
+				map.put("cnt", rs.getInt("cnt"));
+				map.put("last_read_index", rs.getString("last_read_index"));
+				list.add(map);
+			}
+			conn.commit();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionManager.close(rs, pstmt, conn);
+		}
+		return list;
+	}
+	
+	//ebook 북마크 넣기
+	public void eBookMarkInsert(String member_no, String book_no, String bookmark_index, String bookmark_content) {
+		int no =0;
+		ResultSet rs = null;
+		try {
+			conn = ConnectionManager.getConnnect();
+			conn.setAutoCommit(false);
+			String seqSql = "select no from seq where tablename = 'bookmark'";
+			Statement stmt = conn.createStatement();
+			rs = stmt.executeQuery(seqSql);
+			rs.next();
+			no = rs.getInt(1);
+			
+			
+			seqSql = "update seq set no = no + 1 where tablename = 'bookmark'";
+			stmt = conn.createStatement();
+			stmt.executeUpdate(seqSql);
+
+			String sql = " insert into bookmark(bookmark_no,member_no, book_no, bookmark_index, bookmark_contents) values(?,?,?,?,?)";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, no);
+			pstmt.setString(2, member_no);
+			pstmt.setString(3, book_no);
+			pstmt.setString(4, bookmark_index);
+			pstmt.setString(5, bookmark_content);
+			pstmt.executeUpdate();
+			conn.commit();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionManager.close(rs, pstmt, conn);
+		}
+	}
+	
+	//ebook 북마크 삭제
+	public void eBookMarkDelete(String member_no, String book_no, String bookmark_index) {
+		try {
+			conn = ConnectionManager.getConnnect();
+			String sql = " delete bookmark where member_no = ? and book_no = ? and bookmark_index = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, member_no);
+			pstmt.setString(2, book_no);
+			pstmt.setString(3, bookmark_index);
+			pstmt.executeUpdate();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionManager.close(null, pstmt, conn);
+		}
+	}
+
+	public ArrayList<Map<String, Object>> selectBookMark(String member_no , String book_no) {
+		ArrayList<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+		ResultSet rs =null;
+		try {
+			conn = ConnectionManager.getConnnect();
+			String sql = "select bookmark_index, bookmark_contents from bookmark where member_no = ? and book_no = ? ";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, member_no);
+			pstmt.setString(2, book_no);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				Map<String, Object> map = new HashMap<String, Object>();
+				map.put("bookmark_index", rs.getString("bookmark_index"));
+				map.put("bookmark_contents", rs.getString("bookmark_contents"));
+				list.add(map);
+			}
+			conn.commit();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionManager.close(rs, pstmt, conn);
+		}
+		return list;
+	}
+	
+	
+	public void bookMarkUpdate(String member_no, String book_no, String book_index) {
+		try {
+			conn = ConnectionManager.getConnnect();
+			String sql = "update mylibrary set last_read_index =? where member_no = ? and book_no = ? ";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, book_index);
+			pstmt.setString(2, member_no);
+			pstmt.setString(3, book_no);
+			pstmt.executeUpdate();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionManager.close(null, pstmt, conn);
+		}
+	}
+	public String wishYn(String book_no, String member_no) {
+		ResultSet rs =null;
+		String yn = null;
+		try {
+			conn = ConnectionManager.getConnnect();
+			String sql = " select nvl(wish,'n') from mylibrary where book_no = ? and member_no = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, book_no);
+			pstmt.setString(2, member_no);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				yn = rs.getString(1);
+			}
+			conn.commit();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionManager.close(rs, pstmt, conn);
+		}
+		return yn;
+	}
+
+	public String bookWishUpdate(Mylibrary wish) {
+		String yn = null;
+		ResultSet rs = null;
+		try {
+			conn = ConnectionManager.getConnnect();
+			conn.setAutoCommit(false);
+			String cntsql = "select nvl(wish,'n') from mylibrary "
+					+ " where book_no ='" + wish.getBook_no() + "' and member_no = '" + wish.getMember_no() + "'";
+			Statement stmt = conn.createStatement();
+			rs = stmt.executeQuery(cntsql);
+			rs.next();
+			yn = rs.getString(1);
+			
+			String sql = null;
+			if(yn.equals("n")) {
+				sql="update mylibrary set wish='y' ";
+			}else{
+				sql="update mylibrary set wish='n' ";
+			}
+			sql += " where book_no=? and member_no=?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, wish.getBook_no());
+			pstmt.setString(2, wish.getMember_no());
+			pstmt.executeQuery();
+			conn.commit();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionManager.close(rs, pstmt, conn);
+		}
+		
+		return yn;
+	}
+	
+	public ArrayList<Map<String, Object>> selectEpubFile(String member_no , String my_title) {
+		ResultSet rs = null;
+		ArrayList<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+		try {
+			conn = ConnectionManager.getConnnect();
+			String sql = "select w.my_title, w.genre, w.my_introduction, w.my_summary, w.image_uri, w.score, w.views, w.my_contents, w.chapter, m.nickname"
+						+" from mywriting w, member m  where w.member_no = m.member_no and w.member_no = ? and w.my_title = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, member_no);
+			pstmt.setString(2, my_title);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				Map<String, Object> map = new HashMap<String, Object>();
+				map.put("my_title",rs.getString("my_title"));
+				map.put("genre",rs.getString("genre"));
+				map.put("my_introduction",rs.getString("my_introduction"));
+				map.put("my_summary",rs.getString("my_summary"));
+				map.put("image_uri",rs.getString("image_uri"));
+				map.put("score",rs.getString("score"));
+				map.put("views",rs.getString("views"));
+				map.put("my_contents",rs.getString("my_contents"));
+				map.put("chapter",rs.getString("chapter"));
+				map.put("nickname", rs.getString("nickname"));
+				list.add(map);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionManager.close(rs, pstmt, conn);
+		}
+		return list;
+	}
+	
+	public void updateViews(String book_no) {
+		try {
+			conn = ConnectionManager.getConnnect();
+			String sql = "update books set views = views + 1 where book_no="+book_no+"";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.executeUpdate();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionManager.close(null, pstmt, conn);
+		}
+	}
+	public String selectEpubPath(String book_no) {
+		String epub = null;
+		ResultSet rs = null;
+		
+		try{
+			conn = ConnectionManager.getConnnect();
+			String sql = "select epub_path from books where book_no = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, book_no);
+			rs = pstmt.executeQuery();
+				if(rs.next()) {
+					epub = rs.getString("epub_path");
+				}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionManager.close(rs, pstmt, conn);
+		}
+		return epub;
+	}
 }

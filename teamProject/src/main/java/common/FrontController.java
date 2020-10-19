@@ -47,7 +47,7 @@ public class FrontController extends HttpServlet {
 		list.put("/memberBookMark.do", new member.MemberBookMarkServ()); // 내서재 - 읽던책
 		list.put("/memberBookLuvList.do", new member.MemberBookLuvListServ()); // 내서재 - 찜목록
 		list.put("/memberCreateBookCk.do", new member.MemberCreateBookCkServ()); // 내서재 - 나만의 도서
-		list.put("/memberCreateBookComp.do", new member.MemberCreateBookCompServ()); // 내서재 - 나만의 도서
+		list.put("/memberCreateBookComp.do", new member.MemberCreateBookCompServ()); // 내서재 - 나만의 도서 등록완료
 		list.put("/memberLogin.do", new member.MemberLoginServ()); // 로그인
 		list.put("/memberLogout.do", new member.MemberLogoutServ()); // 로그아웃
 		list.put("/memberFind.do", new member.MemberFindServ()); // 아이디/비밀번호 찾기 - 아이디 찾기
@@ -55,6 +55,9 @@ public class FrontController extends HttpServlet {
 		list.put("/memberFindCheck.do", new member.MemberFindCheckServ()); // 아이디/비밀번호 찾기 - 인증번호 확인
 		list.put("/memberFindPassword.do", new member.MemberFindPasswordServ()); // 아이디/비밀번호 찾기 - 비밀번호 번경
 		list.put("/memberJoin.do", new member.MemberJoinServ()); // 회원가입
+		list.put("/Ajax/memberIdCheck.do", new member.MemberIdCheckServ()); //아이디 중복체크
+		list.put("/Ajax/memberNiCheck.do", new member.MemberNiCheckServ()); //닉네임 중복체크
+		list.put("/Ajax/memberEmCheck.do", new member.MemberEmCheckServ()); //이메일 중복체크
 		list.put("/memberPopup.do", new member.MemberPopupServ()); // 알람팝업
 		list.put("/memberLicense.do", new member.MemberLicenseServ()); // 내서재 - 이용권
 		list.put("/memberLibrary.do", new member.MemberLibraryServ()); // 내서재
@@ -107,8 +110,14 @@ public class FrontController extends HttpServlet {
 		list.put("/clientQuestion.do", new client.ClientQuestionServ()); //문의하기 리스트
 		list.put("/clientQuestionWtrite.do", new client.ClientQuestionWtriteServ()); //문의하기 insert
 		list.put("/clientQuestionForm.do", new client.ClientQuestionFormServ());// 문의하기 insert form
+		list.put("/clientQuestionModifyForm.do", new client.ClientQuestionModifyFormServ()); //자세히 보기 form & 답변보이기
+		list.put("/clientQuestionModify.do", new client.ClientQuestionModifyServ()); // 내용 수정하기
+		list.put("/clientQuestionDelete.do", new client.ClientQuestionDeleteServ()); // 문의하기 삭제
+		
 		list.put("/clientHopeBook.do", new client.ClientHopeBookServ()); //희망도서신청 리스트
 		list.put("/clientHopeBookWrite.do", new client.ClientHopeBookWriteServ()); //희망도서 insert
+		list.put("/clientHopeBookWriteForm.do", new client.ClientHopeBookWriteFormServ()); //희망도서 insert form
+		
 		list.put("/moneyOutList.ad", new moneyManage.MoneyOutListServ()); 
 		list.put("/moneyInList.ad", new moneyManage.MoneyInListServ());
 
@@ -198,15 +207,41 @@ public class FrontController extends HttpServlet {
 
 		list.put("/createBookInsert.do", new createBook.CreateBookInsertServ());
 		list.put("/createBookSave.do", new createBook.CreateBookSaveServ());
+		list.put("/audioBookMarkInsert.do", new ebook.AudioBookMarkInsertServ());
+		list.put("/audioBookMarkDelete.do", new ebook.AudioBookMarkDeleteServ());
+		list.put("/Ajax/eBookReviewDeclaration.do", new ebook.EBookReviewDeclaration());
+		list.put("/Ajax/audioBookReviewDeclaration.do", new ebook.AudioBookReviewDeclaration());
+		list.put("/fileupload.do", new createBook.FileUpload());
+		
+		
+		list.put("/Ajax/eBookReadingBookInsertMark.do", new ebook.EBookReadingBookMarkInsertAjaxServ()); //뷰어에서 북마크 인설트
+		list.put("/Ajax/eBookReadingBookDeleteMark.do", new ebook.EBookReadingBookMarkDeleteAjaxServ()); //뷰어에서 북마크 지우기
+		
+		list.put("/audioBookReview.do", new ebook.AudioBookReviewServ());
+		
+		list.put("/Ajax/audioBookReviewAllList.do", new ebook.AudioBookReviewListAjaxServ());
+		list.put("/Ajax/audioBookReviewDelete.do", new ebook.AudioBookReviewDeleteAjaxServ());
+		list.put("/Ajax/audioBookReviewUpdate.do", new ebook.AudioBookReviewUpdateAjaxServ());
 
+		
+		
+		list.put("/Ajax/eBookViewerBookMarkUpdate.do", new ebook.eBookViewerBookMarkUpdateAjaxServ());
+		list.put("/eBookEpubCreate.do", new ebook.eBookEpubCreateServ());
 
+		list.put("/Ajax/audioBookWishAjax.do", new ebook.AudioBookWishAjaxServ());
+		list.put("/Ajax/createBookAddChapterAjax.do", new createBook.CreateBookAddChapterAjaxServ());
+		list.put("/Ajax/createBookChapterChangeAjaxServ.do", new createBook.CreateBookChapterChangeAjaxServ());
+		
+		list.put("/EpubFileDownloadServ.do", new common.EpubFileDownloadServlet());
+		list.put("/audioBookViewUpdate.do", new ebook.AudioBookViewUpdateServ());
+
+		
 	}
-
+	
 	public FrontController() {
 		super();
-
 	}
-
+	
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding(charset);

@@ -54,6 +54,7 @@ public class TicketDAO {
 		}
 		return list;
 	}
+	
 	public List<PayVO> userTicketList(String member_no) {
 		ResultSet rs = null;
 		PayVO payVO = null;

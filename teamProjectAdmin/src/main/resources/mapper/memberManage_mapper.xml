@@ -19,6 +19,7 @@
 		GENDER
 		FROM MEMBER
 		WHERE MEMBER_ID IS NOT NULL
+		ORDER BY MEMBER_NO
 	</select>
 
 <!-- 한 건 조회 -->
@@ -41,9 +42,11 @@
 	<update id="update" parameterType="membermanage">
 		UPDATE
 		MEMBER SET
+		
 		MEMBER_PW = #{member_pw},
 		NICKNAME = #{nickname},
 		MEMBER_EMAIL = #{member_email},
+	
 		MEMBER_TEL = #{member_tel}
 		WHERE MEMBER_ID = #{member_id}
 	</update>
@@ -60,7 +63,41 @@ update member set member_id = null,
 					gender = null
 where member_no = #{member_no}
 </update>
+<!-- 사용중인 이용권 -->
+<select id="selectTicket" parameterType="membermanage"
+		resultType="membermanage">
+ SELECT 
+ P.PAY_NO, 
+ P.PAY_DATE, 
+ C.CODE_VALUE  
+ FROM PAY P, COMMON C
+  WHERE P.TICKET_CODE = C.CODE
+  AND MEMBER_NO=#{member_no}
+</select>
+<!-- 리뷰 조회 -->
+<select id="selectReview" parameterType="membermanage"
+		resultType="membermanage">
+	SELECT R.REVIEW_NO,  R.CONTENTS, R.BOOK_NO, R.REVIEW_DATE, R.MEMBER_NO, B.TITLE
+  FROM REVIEW R, BOOKS B
+  WHERE R.MEMBER_NO = B.MEMBER_NO(+)
+  AND R.MEMBER_NO =#{member_no}	
+  ORDER BY REVIEW_NO
+</select>
 
+
+<!-- 나만의 도서 확인 -->
+<select id="selectMylib" parameterType="membermanage"
+		resultType="membermanage">
+SELECT L.MYLIBRARY_NO, 
+			B.TITLE, 
+			L.BOOK_NO, 
+			L.WISH, 
+			L.LAST_READ_INDEX
+ FROM MYLIBRARY L, BOOKS B
+WHERE L.MEMBER_NO =B.MEMBER_NO 
+AND L.MEMBER_NO = #{member_no}		
+		
+</select>
 <!--최다 조회수  -->
 <select id="selectViews"  resultType="books">
 SELECT TITLE, VIEWS 

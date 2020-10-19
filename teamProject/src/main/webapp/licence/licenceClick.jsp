@@ -15,7 +15,7 @@ IMP.request_pay({
     pay_method : 'card',
     merchant_uid : 'merchant_' + new Date().getTime(),
     name : '${p_name}',//오른쪽에 상품명
-    amount :'${pay}', //판매 가격
+    amount :100, //판매 가격
     buyer_email : 'iamport@siot.do',
     buyer_name : '구매자이름',
     buyer_tel : '010-1234-5678',
@@ -32,7 +32,6 @@ IMP.request_pay({
 		/* 로그인된 사용자의 pay에 정보 추가.(ticket_code, member_no, pay_date(sysdate)) */
         $.post("afterLicenceBuyServ.do", {ticket_code: '${ticket_code}'
 	    	},function(data){
-	    		alert("${ticket_code}")
 	            window.close();
 		});
     } else {

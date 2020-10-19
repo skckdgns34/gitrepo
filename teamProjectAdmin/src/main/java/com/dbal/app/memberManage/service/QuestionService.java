@@ -11,8 +11,10 @@ public interface QuestionService {
 	public List<Questions> selectAll(Questions questions);
 	public Questions selectOne(Questions questions);
 
-	public void  insert(Answer answer);
-		
+	// 답변 등록
+	public void  insert(Questions questions);
+public void updateNo();
+	//public void updateNo1();
 	
 	public void updateStatus(Questions questions);
 }

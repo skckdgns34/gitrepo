@@ -25,7 +25,6 @@
 			var boxVal = checked.val();
 			var p_name = checked.parent().parent().children().eq(1).html();
 			var ticket_code = checked.closest('tr').find('input[type=hidden]').val();
-			alert(ticket_code);
 			 
 			if(login_no == ''){
 				alert("로그인필요")
@@ -51,7 +50,7 @@
                     <div class="breadcrumb__text">
                         <h4>Menu</h4>
                         <div class="breadcrumb__links">
-                            <a href="./index.html">Home</a>
+                            <a href="${pageContext.request.contextPath}/main.do">Home</a>
                             <span>이용권</span>
                         </div>
                     </div>
@@ -79,7 +78,7 @@
 								<tr>
 									<td><input type="checkbox" name="user_CheckBox" <c:if test="${list.ticketyn==1}">disabled</c:if>
 										onclick="check(this)" value="${list.price }"></td>
-									<td>${list.ticket_name }</td><input type="hidden" value="${list.ticket_code}"></input>
+									<td>${list.ticket_name }</td><input type="hidden" value="${list.ticket_code}"/>
 									<td>${list.price}</td>
 									<td class="member_ticket">
 									<c:if test="${list.ticketyn==1 }">보유중</c:if>								

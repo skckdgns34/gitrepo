@@ -35,18 +35,19 @@ public class QuestionController {
 	public String answerForm(Questions questions ,Model model, HttpServletRequest request) {
 		String question_no = request.getParameter("question_no");
 		questions.setQuestion_no(question_no);
-		
+		Questions q =questionService.selectOne(questions);
 		model.addAttribute("login", request.getSession().getAttribute("login"));
 	
-		model.addAttribute("list", questionService.selectOne(questions));
+		model.addAttribute("list", questionService.selectOne(q));
+	
 	return "memberManage/memberManageAnswer";
 	}
 	
 	//답글달기 처리
 	@RequestMapping(value="/memberManageAnswerInsert.ad", method = RequestMethod.POST)
-	public String answerInsert(Answer answer, Questions questions) {
-		System.out.println(answer.toString());
-		questionService.insert(answer);
+	public String answerInsert(Questions questions) {
+		//System.out.println(questions.toString());
+		questionService.insert(questions);
 		//questionService.updateStatus(questions);
 		return "redirect:/memberManageQuestion.ad";
 	}

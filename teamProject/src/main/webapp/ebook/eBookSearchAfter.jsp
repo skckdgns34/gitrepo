@@ -17,16 +17,63 @@
 		}
 	}
 </script>
+<style>
+table{
+text-align: center;
+}
+thead{
+  max-width: 90px;
+ 
+
+  }
+  tbody{
+   max-width: 90px;
+
+  }
+  td{
+ overflow: hidden;
+  text-overflow: ellipsis !important;
+  white-space: nowrap;
+  max-width: 90px;
+  height: 20px;
+  }
+</style>
 </head>
 <body>
-	<table border="1">
-		<thead>
+	
+
+<!-- Breadcrumb Section Begin -->
+	<section class="breadcrumb-option">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="breadcrumb__text">
+						<h4>Menu</h4>
+						<div class="breadcrumb__links">
+							<a href="${pageContext.request.contextPath}/main.do">Home</a> <span>검색결과</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	<!-- Breadcrumb Section End -->
+<section class="section-margin--small mb-5">
+					<div class="container">
+						<div class="row">
+							<div class="col-lg-12">
+
+	<table class="table table-bordered table-hover" id="dataTable"
+					width="100%" cellspacing="0">
+
+					<thead>
 			<tr>
+				<td>책이미지</td>
 				<td>북넘버</td>
 				<td>제목</td>
 				<td>저자</td>
 				<td>출판일</td>
-				<td>북이미지</td>
 				<td>출판사</td>
 				<td>소개글</td>
 				<td>줄거리</td>
@@ -39,16 +86,16 @@
 		<tbody>
 			<c:forEach items="${list}" var="book">
 					<tr>
+						<c:if test="${not empty book.book_img}">
+						<td style="margin-left: 30px;">
+							<img onclick="imgClick(${book.book_no})" src="filenameDownload.do?filename=${book.book_img}" style="width:100px">
+						</td>
+						</c:if>
 						<td>${book.book_no}</td>
 						<td>${book.title}</td>
 						<td>${book.writer}</td>
 						<td><fmt:parseDate value="${book.publication_date}" pattern="yyyy-MM-dd HH:mm:ss" var="publication_date"/>
 							<fmt:formatDate value="${publication_date}"  pattern="yyyy/MM/dd"/> </td>
-						<c:if test="${not empty book.book_img}">
-						<td>
-							<img onclick="imgClick(${book.book_no})" src="filenameDownload.do?filename=${book.book_img}" style="width:500px">
-						</td>
-						</c:if>
 						<td>${book.company_name}</td>
 						<td>${book.introduction}</td>
 						<td>${book.summary}</td>
@@ -60,5 +107,9 @@
 			</c:forEach>
 		</tbody>
 	</table>
+	</div>
+	</div>
+	</div>
+	</section>
 </body>
 </html>

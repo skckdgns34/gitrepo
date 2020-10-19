@@ -9,11 +9,11 @@
 <script
 	src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js"
 	referrerpolicy="origin"></script>
-<script>
+<!-- <script>
 	tinymce.init({
 		selector : 'textarea'
 	});
-</script>
+</script> -->
 </head>
 <body>
 	<div class="container col-xs-12">
@@ -50,8 +50,8 @@
 										class="control-label col-md-2  requiredField">내용<span
 										class="asteriskField"></span>
 									</label>
-									<div class="controls col-md-10 ">
-										<textarea style="height: 450px;" id="question_contents" name="question_contents"></textarea>
+									<div class="controls col-md-10 " style = "height:300px">
+										<textarea style="height: 300px; width: 100%;" id="question_contents" name="question_contents"></textarea>
 									</div>
 								</div>
 							</div>

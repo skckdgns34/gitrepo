@@ -3,6 +3,7 @@ package com.dbal.app.books.service;
 import java.util.ArrayList;
 
 import com.dbal.app.books.Books;
+import com.dbal.app.company.Company;
 
 public interface BooksService {
 	//ebook입력
@@ -17,4 +18,7 @@ public interface BooksService {
 	public ArrayList<Books> selectAll(Books books);
 	//도서정보업데이트
 	public void update(Books books);
+	
+	public ArrayList<Books> bookselectCompany(Books books);
+	
 }

@@ -7,12 +7,158 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 <meta charset="UTF-8">
 <title>회원정보 수정</title>
+<style type="text/css">
+.button2 {
+  background-color: white; 
+  color: black; 
+  border: 2px solid 002347;
+  padding: 7px 15px;
+  font-size: 12px;
+}
+.button3 {
+  background-color: white; 
+  color: black; 
+  border: 2px solid 002347;
+  padding: 7px 15px;
+  font-size: 12px;
+}
+  input {
+  background-color: white; 
+  color: black; 
+  border: 2px solid 002347;
+  padding: 7px 15px;
+  font-size: 12px;
+}
+	#mobtn{
+	background-color: #002347;
+	color: white;
+	border: 2px solid white;
+	padding: 9px 20px;
+  	font-size: 12px;
+	}
 
-<script type="text/javascript">
+	#a{
+	color: #002347;
+	border-bottom: 1px solid;
+	}
+
+</style>
+<script>
+
+	
+	function NiChk(){
+		var nickname = $("#nickname").val();
+		$.ajax({
+			url: "${pageContext.request.contextPath}/Ajax/memberNiCheck.do",
+			type: "POST",
+			data : {
+				nickname : nickname
+			},
+			success: function(result){
+				if(result == 1){
+					alert("이미 존재하는 닉네임 입니다.");
+				}else{
+					alert("사용 가능한 닉네임 입니다.");
+				}
+			}
+		})
+	}
+	
+	function EmChk(){
+		var member_email = $("#member_email").val()
+ 		$.ajax({
+			url: "${pageContext.request.contextPath}/Ajax/memberEmCheck.do",
+			type: "POST",
+			data : {
+				member_email : member_email
+			},
+			success: function(result){
+				if(result == 1){
+					alert("이미 존재하는 e-mail 입니다.");
+				}else{
+					alert("사용 가능한 e-mail 입니다.");
+				}
+			}
+		}) 
+	}
+	
+</script>
+</head>
+<body>
+	<!-- Breadcrumb Section Begin -->
+	<section class="breadcrumb-option">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="breadcrumb__text">
+						<h4>Menu</h4>
+						<div class="breadcrumb__links">
+							<a href="./index.html">내 정보</a> <span>수정</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	<!-- Breadcrumb Section End -->
+	
+	<section class="section-margin--small mb-5">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+						<form method="post" name="frm" id="frm" action="/app/memberModify.do">
+
+									<div class="form-group">
+										<label for="id">아이디 ${member_id }</label> <input type="hidden"
+											name="member_id" id="member_id" value="${member_id }">
+									</div>
+									<div class="form-group">
+										<label for="pw">비밀번호</label> <input type="password"
+											class="form-control" id="member_pw" name="member_pw">
+										<div class="eheck_font" id="pw_check"></div>
+									</div>
+									<div class="form-group">
+										<label for="pw2">비밀번호 확인</label> <input type="password"
+											class="form-control" id="member_pw2" name="member_pw2"
+											placeholder="비밀번호 확인">
+										<div class="eheck_font" id="pw2_check"></div>
+									</div>
+									<div class="form-group">
+										<label for="nickname">닉네임</label> <input type="text"
+											class="form-control" id="nickname" name="nickname" value="${nickname }">
+										<div class="eheck_font" id="nickname_check"></div>
+									</div>
+									<button type="button" class="button button2" onclick="NiChk()" >중복체크</button>
+									<div class="form-group">
+										<label for="member_email">이메일</label> <input type="text"
+											class="form-control" id="member_email" name="member_email" value="${member_email }">
+										<div class="eheck_font" id="nickname_check"></div>
+									</div>
+									<button type="button" class="button button3"  onclick="EmChk()" >중복체크</button>
+									<div class="form-group">
+										<label for="member_tel">휴대폰 번호</label> <input type="tel"
+											class="form-control" id="member_tel" name="member_tel" value="${member_tel }">
+										<div class="eheck_font" id="pnum_check"></div>
+									</div>
+									<div class="form-group text-center">
+										<button id="mobtn" type="submit" class="btn btn-primary">수정</button>
+										<input type="reset" value="초기화">
+									</div>
+						</form>
+						</div>
+						<hr>
+						<a id="a" href="/app/member/memberDelete.jsp"> 탈퇴하기</a>
+					</div>
+					</div>
+	</section>
+	
+	
+	
+	<script type="text/javascript">
 	//모든 공백 체크 정규식
 	var empJ = /\s/g;
 	//아이디 정규식
@@ -140,95 +286,5 @@
 				});
 			});
 </script>
-
-<style>
-li {
-	list-style-type: none;
-	float: left;
-	margin-left: 20px;
-}
-</style>
-
-</head>
-<body>
-	<!-- Breadcrumb Section Begin -->
-	<section class="breadcrumb-option">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="breadcrumb__text">
-						<h4>Menu</h4>
-						<div class="breadcrumb__links">
-							<a href="./index.html">내 정보</a> <span>수정</span>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- Breadcrumb Section End -->
-	<ul>
-		<li><a href="<%=application.getContextPath()%>/memberModify.do">내정보
-				수정</a>
-		<li><a href="<%=application.getContextPath()%>/memberBookMark.do">내
-				서재</a>
-		<li><a
-			href="<%=application.getContextPath()%>/memberCreateBookCk.do">나만의
-				도서 확인</a>
-		<li><a href="<%=application.getContextPath()%>/memberLicense.do">이용권
-				내용</a>
-	</ul>
-
-	<section class="section-margin--small mb-5">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="table-responsive">
-						<form method="post" name="frm" id="frm"
-							action="${pageContext.request.contextPath }/memberModify.do">
-
-									<div class="form-group">
-										<label for="id">아이디 ${member_id }</label> <input type="hidden"
-											name="member_id" id="member_id" value="${member_id }">
-									</div>
-									<div class="form-group">
-										<label for="pw">비밀번호</label> <input type="password"
-											class="form-control" id="member_pw" name="member_pw">
-										<div class="eheck_font" id="pw_check"></div>
-									</div>
-									<div class="form-group">
-										<label for="pw2">비밀번호 확인</label> <input type="password"
-											class="form-control" id="member_pw2" name="member_pw2"
-											placeholder="비밀번호 확인">
-										<div class="eheck_font" id="pw2_check"></div>
-									</div>
-									<div class="form-group">
-										<label for="nickname">닉네임</label> <input type="text"
-											class="form-control" id="nickname" name="nickname"">
-										<div class="eheck_font" id="nickname_check"></div>
-									</div>
-									<div class="form-group">
-										<label for="member_email">이메일</label> <input type="text"
-											class="form-control" id="member_email" name="member_email">
-										<div class="eheck_font" id="nickname_check"></div>
-									</div>
-									<div class="form-group">
-										<label for="member_tel">휴대폰 번호</label> <input type="tel"
-											class="form-control" id="member_tel" name="member_tel"
-											placeholder="('-'없이 번호만 입력해주세요)">
-										<div class="eheck_font" id="pnum_check"></div>
-									</div>
-									<div class="form-group text-center">
-										<button type="submit" class="btn btn-primary">수정</button>
-										<input type="reset" value="초기화">
-									</div>
-						</form>
-						</div>
-						<hr>
-						<a href="/app/member/memberDelete.jsp">탈퇴하기</a>
-					</div>
-				</div>
-			</div>
-	</section>
 </body>
 </html>

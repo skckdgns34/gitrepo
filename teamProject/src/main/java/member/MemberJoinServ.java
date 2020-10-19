@@ -15,7 +15,7 @@ public class MemberJoinServ implements Controller
 	public void execute(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException
 	{
-System.out.println("등록실행");
+		System.out.println("등록실행");
 		
 		Member memberVO = new Member();
 		memberVO.setMember_id(request.getParameter("member_id"));
@@ -27,10 +27,8 @@ System.out.println("등록실행");
 		
 		MemberDAO dao = new MemberDAO();
 		dao.insert(memberVO);
-
 		
 		request.getRequestDispatcher("member/Hello.jsp").forward(request, response);
-
 
 	}
 

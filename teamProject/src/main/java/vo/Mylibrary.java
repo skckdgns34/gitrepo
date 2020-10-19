@@ -10,4 +10,7 @@ public class Mylibrary {
 	private String wish;
 	private String last_read_index;
 	private String title;
+	private String writer;
+	//========
+	private String book_img;
 }

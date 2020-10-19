@@ -29,20 +29,48 @@
 
 	function modifypage() //수정 ㅡ
 	{
+		if (confirm("수정하시겠습니까?") == true){
 		window.document.location.href = "memberManageNoticeModifyForm.ad?notice_no="
 				+ $('input[name="user_CheckBox"]:checked').val();
-		alert($('input[name="user_CheckBox"]:checked').val())
-		return;
+		document.form.submit();
+		}else{   //취소
+			$('user_CheckBox').attr('checked',false);
+			window.document.location.href = "memberManageNotice.ad";
+		    return;
+		}
 	}
 
 	function deletepage() //삭제
 	{
+		if (confirm("삭제하시겠습니까?") == true){
 		window.document.location.href = "memberManageNoticeDelete.ad?notice_no= "
 				+ $('input[name="user_CheckBox"]:checked').val();
-		return;
+		document.form.submit();
+		}else{   //취소
+			$('user_CheckBox').attr('checked',false);
+			window.document.location.href = "memberManageNotice.ad";
+			return ;
+		}
 	}
 </script>
+<style>
+thead{
+  max-width: 90px;
+ 
 
+  }
+  tbody{
+   max-width: 90px;
+
+  }
+  td{
+ overflow: hidden;
+  text-overflow: ellipsis !important;
+  white-space: nowrap;
+  max-width: 90px;
+  height: 20px;
+  }
+</style>
 </head>
 <body id="page-top">
 
@@ -72,8 +100,6 @@
 							<th>내용</th>
 							<th>작성일</th>
 							<th>첨부파일</th>
-							<th>조회수</th>
-							<th>등록 사원번호</th>
 							<th>등록 사원이름</th>
 
 						</tr>
@@ -86,11 +112,9 @@
 									onclick="check(this)" value="${notice.getNotice_no()}"></td>
 								<td>${notice.getNotice_no()}</td>
 								<td>${notice.getNotice_title()}</td>
-								<td>${notice.getNotice_content()}</td>
+								<td class="test">${notice.getNotice_content()}</td>
 								<td>${notice.getNotice_date()}</td>
 								<td>${notice.getNotice_img()}</td>
-								<td>${notice.getViews()}</td>
-								<td>${notice.getEmp_no()}</td>
 								<td>${notice.getEmp_name()}</td>
 						</c:forEach>
 					</tbody>

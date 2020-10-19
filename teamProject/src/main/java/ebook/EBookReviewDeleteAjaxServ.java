@@ -12,7 +12,7 @@ import net.sf.json.JSONObject;
 public class EBookReviewDeleteAjaxServ implements Controller {
 
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String review_no = (String) request.getParameter("review_no");
+		String review_no =request.getParameter("review_no");
 		
 		int result = 0;
 		
