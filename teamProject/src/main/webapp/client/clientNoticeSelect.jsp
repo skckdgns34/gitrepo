@@ -12,11 +12,11 @@
 	}
 	
 	#div1{
-	background-color: #002347;
+	 background: linear-gradient( to bottom, #002347, White );
 	}
 
 	#h3{
-	color: White;
+	color: #fdc632;
 	}
 	
 	#title{
