@@ -27,9 +27,10 @@ public class EBookReadingServ implements Controller
 		} else {
 			book_no = (String)request.getSession().getAttribute("book_no");
 		}
-
-		EBookDAO.getInstance().updateViews(book_no);
+		String epub_path = EBookDAO.getInstance().selectEpubPath(book_no);
 		
+		EBookDAO.getInstance().updateViews(book_no);
+		request.setAttribute("epub_path", epub_path);
 		request.setAttribute("book_no", book_no);
 		request.setAttribute("member_no", member_no);
 		request.setAttribute("list", JSONArray.fromObject(list).toString());

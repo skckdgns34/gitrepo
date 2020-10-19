@@ -231,7 +231,8 @@ public class FrontController extends HttpServlet {
 		list.put("/Ajax/audioBookWishAjax.do", new ebook.AudioBookWishAjaxServ());
 		list.put("/Ajax/createBookAddChapterAjax.do", new createBook.CreateBookAddChapterAjaxServ());
 		list.put("/Ajax/createBookChapterChangeAjaxServ.do", new createBook.CreateBookChapterChangeAjaxServ());
-
+		
+		list.put("/EpubFileDownloadServ.do", new common.EpubFileDownloadServlet());
 
 		
 	}

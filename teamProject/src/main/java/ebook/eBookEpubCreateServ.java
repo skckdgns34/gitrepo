@@ -1,8 +1,10 @@
 package ebook;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -99,8 +101,10 @@ public class eBookEpubCreateServ implements Controller {
 				for(int j=0; j<imgFile.size(); j++) { //이미지 업로드
 					
 					File file = new File(path+imgFile.get(j));
-
-					book.getResources().add(new Resource(path+"/"+imgFile.get(j).substring(9), file.length(), imgFile.get(j))); //경로 / 파일길이 / 파일이름
+					FileInputStream fi = new FileInputStream(file); 
+					
+					
+					book.getResources().add(new Resource(Files.readAllBytes(file.toPath()), imgFile.get(j))); //경로 / 파일길이 / 파일이름
 					//book.getResources().add(new Resource(imgFile.get(j).getBytes(), "book"+b+".jsp"));
 
 					//book.getResources().add(new Resource(path, file.length(), imgFile.get(j))); //경로 / 파일길이 / 파일이름
