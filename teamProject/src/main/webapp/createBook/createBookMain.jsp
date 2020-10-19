@@ -75,7 +75,7 @@
 	</section>
 	<!-- Breadcrumb Section End -->
 	
-	
+	<button id="write">쓰기</button>
 	<!--================Blog Area =================-->
     <section class="blog_area section_gap">
         <div class="container">
