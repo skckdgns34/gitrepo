@@ -25,7 +25,7 @@ li {
                     <div class="breadcrumb__text">
                         <h4>Menu</h4>
                         <div class="breadcrumb__links">
-                            <a href="./index.html">내 정보</a>
+                            <a href="${pageContext.request.contextPath}/main.do">내 정보</a>
                             <span>이용권 내용</span>
                         </div>
                     </div>

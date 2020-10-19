@@ -50,7 +50,7 @@ $(function(){
                     <div class="breadcrumb__text">
                         <h4>Menu</h4>
                         <div class="breadcrumb__links">
-                            <a href="./index.html">내 정보</a>
+                            <a href="${pageContext.request.contextPath}/main.do">내 정보</a>
                             <span>나만의 도서 - 작성중</span>
                         </div>
                     </div>
@@ -91,7 +91,7 @@ $(function(){
 					<td>${mywriting.genre }</td>
 					<td>${mywriting.views }</td>
 					<td>${mywriting.my_write_date }</td>
-					<td><button>편집하기</button></td>
+					<td><button class="updateBook">편집하기</button></td>
 				</tr>
 			</c:forEach>
 			</tbody>
@@ -106,11 +106,19 @@ jQuery(function($){
 	$("#dataTable").DataTable(); 
 }); 
 
-$("#dataTable").DataTable({
+// 이부분 자꾸 오류나서 일단 주석처리 해놨는데 확인 한번..
+/*$("#dataTable").DataTable({
 	
 	// 표시 건수를 10건 단위로 설정
 	lengthMenu: [ 10, 20, 30, 40, 50 ]
-});
+});*/
+
+$(function(){
+	$(".updateBook").on("click",function(){
+		var title = $(this).parent().parent().children().eq(0).html();
+		location.href="${pageContext.request.contextPath}/createBook.do?title="+title;
+	})
+})
 </script>
 </body>
 </html>

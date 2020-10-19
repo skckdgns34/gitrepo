@@ -46,8 +46,10 @@ $(function(){
 				$("#my_summary").html(data.my_summary);
 				ckeditor.data.set(data.my_contents);
 				console.log(data.genre);
-				//console.log($('.list').find('li:checked').data());
-
+			 	var option = $(".list").first().find('li[data-value='+data.genre+']')
+			 	option.prev().attr("class","option focus");
+			 	option.attr("class","option selected");
+				//console.log(option)
 			}
 		});
 	});
@@ -148,9 +150,11 @@ h2 {
 								</select>
 								<select name="chapter" id="chapter">
 									<option value="">챕터</option>
-									<c:forEach items="${chapterList}" var="chapter">
+									<c:if test="${not empty chapterList }">
+										<c:forEach items="${chapterList}" var="chapter">
 										<option value="${chapter.chapter}">${chapter.chapter}</option>
 									</c:forEach>
+									</c:if>
 								</select>
 								<div class="form-group col-lg-8">
 									<h2 style="margin-bottom: 0px;">제목</h2>

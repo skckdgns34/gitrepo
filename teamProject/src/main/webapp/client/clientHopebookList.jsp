@@ -50,7 +50,7 @@ function insertpage() //문의사항 등록 ㅡ
 							</thead>
 							<tbody>
 							<button type="button" id='btn_n'
-						class="btn btn-outline btn-primary pull-" onclick="insertpage()">희망도서 신청하기</button>
+						class="btn btn-outline btn-primary pull-" onclick="insertpage()">희망도서 신청하기</button><br><br>
 								<c:forEach items="${list}" var="hopebooks">
 									<tr>
 									<td>${hopebooks.hopebooks_no}</td>
