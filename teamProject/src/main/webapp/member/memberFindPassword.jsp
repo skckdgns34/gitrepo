@@ -8,6 +8,25 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+body {
+	text-align: center;
+	}
+	
+	#btnsend{
+	background-color : #002347;
+	color: white;
+	}
+	
+	#btncheck{
+	background-color: white;
+	color: #002347;
+	}
+	
+	#btnupdate{
+	color: #002347;
+	}
+</style>
 <script>
 	//비밀번호 정규식
 	var pwJ = /^[A-Za-z0-9]{4,12}$/;
@@ -105,19 +124,21 @@ $(function(){
 </script>
 </head>
 <body>
+<br>
 <h3>비밀번호 변경</h3>
+<br>
 <form name="frm" id="frm" action="${pageContext.request.contextPath }/memberFindPassword.do"  method="post">
 <input type="email" name="member_email" id="member_email" placeholder="이메일을 입력해주세요" value="${param.member_email }" required>
-<button type="button" id="btnsend">인증번호 보내기</button>
+<button type="button" id="btnsend" Class="a">인증번호 보내기</button><br>
 ${ errormsg}
 <br>
 <input type="text" placeholder="인증번호 입력" id="check">
-<button type="button" id="btncheck">인증번호 확인</button>
+<button type="button" id="btncheck">인증번호 확인</button><br>
 ${ msg}
 <br>
 		<label for="pw">비밀번호</label> <input type="password"
 			 id="member_pw" name="member_pw">
-		<div class="eheck_font" id="pw_check"></div>
+		<div class="eheck_font" id="pw_check"></div><br>
 	<div class="form-group">
 		<label for="pw2">비밀번호 확인</label> <input type="password"
 			 id="member_pw2" name="member_pw2"
@@ -126,5 +147,6 @@ ${ msg}
 		<div class="eheck_font" id="pw2_check"></div>
 <button id="btnupdate">변경</button>
 </form>
+<br>
 </body>
 </html>
