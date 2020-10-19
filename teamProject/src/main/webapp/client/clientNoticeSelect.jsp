@@ -23,7 +23,7 @@
 					<div class="breadcrumb__text">
 						<h4>Menu</h4>
 						<div class="breadcrumb__links">
-							<a href="./index.html">문의사항</a> <span>확인</span>
+							<a href="${pageContext.request.contextPath}/main.do">문의사항</a> <span>확인</span>
 						</div>
 					</div>
 				</div>

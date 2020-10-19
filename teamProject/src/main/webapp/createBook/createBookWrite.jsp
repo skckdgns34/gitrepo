@@ -45,8 +45,8 @@ $(function(){
 				$("#my_introduction").val(data.my_introduction);
 				$("#my_summary").html(data.my_summary);
 				ckeditor.data.set(data.my_contents);
-				console.log(data.genre)
-				$('#genre option[value='+data.genre+']').attr('selected','selected');
+				console.log(data.genre);
+				//console.log($('.list').find('li:checked').data());
 
 			}
 		});
@@ -176,16 +176,31 @@ h2 {
 							</div>
 
 							<div class="form-group">
-								<input type="text" class="form-control" id="my_introduction" name="my_introduction"
-									placeholder="소개글" onfocus="this.placeholder = ''"
-									onblur="this.placeholder = '소개글'">
+								<c:if test="${empty intro }">
+									<input type="text" class="form-control" id="my_introduction" name="my_introduction"
+										placeholder="소개글" onfocus="this.placeholder = ''"
+										onblur="this.placeholder = '소개글'">
+								</c:if>
+								<c:if test="${not empty intro }">
+									<input type="text" class="form-control" id="my_introduction" name="my_introduction"
+										placeholder="소개글" onfocus="this.placeholder = ''"
+										onblur="this.placeholder = '소개글'" value="${intro }">
+								</c:if>
 							</div>
-							<div class="form-group">
-								<textarea class="form-control mb-10" rows="5" id="my_summary" name="my_summary"
-									placeholder="줄거리" onfocus="this.placeholder = ''"
-									onblur="this.placeholder = '줄거리'" required=""></textarea>
-							</div>
-
+							<c:if test="${empty summary }">
+								<div class="form-group">
+									<textarea class="form-control mb-10" rows="5" id="my_summary" name="my_summary"
+										placeholder="줄거리" onfocus="this.placeholder = ''"
+										onblur="this.placeholder = '줄거리'" required=""></textarea>
+								</div>
+							</c:if>
+							<c:if test="${not empty summary }">
+								<div class="form-group">
+									<textarea class="form-control mb-10" rows="5" id="my_summary" name="my_summary"
+										placeholder="줄거리" onfocus="this.placeholder = ''"
+										onblur="this.placeholder = '줄거리'" required="">${summary }</textarea>
+								</div>
+							</c:if>
 							<button id="cancel" class="button button-login w-20">취소</button>
 							<button id="save" class="button button-login w-20">저장</button>
 							<button id="submit" class="button button-login w-20">등록</button>

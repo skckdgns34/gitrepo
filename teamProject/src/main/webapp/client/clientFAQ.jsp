@@ -30,7 +30,7 @@
 					<div class="breadcrumb__text">
 						<h4>Menu</h4>
 						<div class="breadcrumb__links">
-							<a href="./index.html">공지사항</a> <span>FAQ</span>
+							<a href="${pageContext.request.contextPath}/main.do">공지사항</a> <span>FAQ</span>
 						</div>
 					</div>
 				</div>

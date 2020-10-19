@@ -17,7 +17,6 @@
 
 		$("img").on("click",function() {
 			var book_no = $(this).next().val()
-			alert(book_no)
 			location.href = "${pageContext.request.contextPath}/eBookDetail.do?book_no="+ book_no;
 		}).css('cursor', 'pointer');
 
@@ -27,7 +26,6 @@
 		
 		$(".blog_details").on("click",function() {
 			var book_no = $(this).parent().parent().find("input[type=hidden]").val()
-			alert(book_no)
 			location.href = "${pageContext.request.contextPath}/eBookDetail.do?book_no="+ book_no;
 		}).css('cursor', 'pointer');
 		
@@ -123,8 +121,8 @@
                             
                             <div class="col-md-9">
                                 <div class="blog_post">
-							<img src="<%=request.getContextPath()%>/resource/img/blog/main-blog/m-blog-1.jpg" alt="">
-								 <!--  <img src="filenameDownload.do?filename=${userBook.book_img}">-->
+							<%-- <img src="<%=request.getContextPath()%>/resource/img/blog/main-blog/m-blog-1.jpg" alt=""> --%>
+								 <img src="filenameDownload.do?filename=${userBook.book_img}" style="width:368px; height:186px;">
                                    <input type="hidden" name ="h_book_no" value="${userBook.book_no}">
                                     <div class="blog_details">
                                         <a href="">
@@ -132,7 +130,7 @@
                                         </a>
                                         <p><fmt:formatDate value="${publication_date}"  pattern="yyyy/MM/dd"/></p>
                                  		 <p>${userBook.code_value }</p>
-                                 		 <p></p>   <!-- 줄거리만 넣어주자! -->
+                                 		 <p>${userBook.summary }</p>
                                         <a href="" class="blog_btn">View More</a>
                                     </div>
 

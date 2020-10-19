@@ -34,6 +34,8 @@ public class CreateBookSaveServ  implements Controller {
 		ArrayList<Mywriting> chapterList = CreateBookDAO.getInstance().selectAllChapter(member_no, book.getMy_title());
 		request.setAttribute("chapterList", chapterList);
 		request.setAttribute("title",book.getMy_title());
+		request.setAttribute("intro",book.getMy_introduction());
+		request.setAttribute("summary",book.getMy_summary());
 		request.setAttribute("my_genre",book.getGenre());
 		request.getRequestDispatcher("/createBook/createBookWrite.jsp").forward(request, response);
 	}

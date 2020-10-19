@@ -30,7 +30,7 @@ public class CreateBookDAO {
 		Books resultVO = null;
 			try {
 				conn = ConnectionManager.getConnnect();
-				String sql = "select a.book_no, a.title, a.book_img,a.publication_date, b.code_value, c.nickname, a.genre, nvl(a.views,0), nvl(d.cnt,0) review " + 
+				String sql = "select a.book_no, a.title, a.book_img,a.publication_date, b.code_value, c.nickname, a.genre, nvl(a.views,0), nvl(d.cnt,0) review, summary " + 
 						" from books a join common b " + 
 						" on(a.genre = b.code) " + 
 						" join member c " + 
@@ -53,6 +53,7 @@ public class CreateBookDAO {
 					resultVO.setGenre(rs.getString(7));
 					resultVO.setViews(rs.getString(8));
 					resultVO.setScore(rs.getString(9));
+					resultVO.setSummary(rs.getString(10));
 					list.add(resultVO);
 				}
 			} catch (Exception e) {
@@ -164,7 +165,7 @@ public class CreateBookDAO {
 		try {
 			conn = ConnectionManager.getConnnect();
 			
-			String chapsql = "select nvl(max(chapter),0) from mywriting where member_no='"+book.getMember_no()+"'";
+			String chapsql = "select nvl(max(to_number(chapter)),0) from mywriting where member_no='"+book.getMember_no()+"'";
 			if(book.getMy_title() != null && !book.getMy_title().equals("")) {
 				chapsql+= " and my_title='"+book.getMy_title()+"'";
 			}
@@ -172,6 +173,7 @@ public class CreateBookDAO {
 			rs = stmt.executeQuery(chapsql);
 			rs.next();
 			no = rs.getInt(1)+1;
+			System.out.println(no);
 			book.setChapter(Integer.toString(no));
 			
 			

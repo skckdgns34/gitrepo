@@ -259,6 +259,9 @@
 		$("#decla_review_no").val(review_no);
 		dialog.dialog("open");
 	}
+	function licence(){
+		location.href='${pageContext.request.contextPath }/licenceList.do';
+	}
 </script>
 <style>
 a {
