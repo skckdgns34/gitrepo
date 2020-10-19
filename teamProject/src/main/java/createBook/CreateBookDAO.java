@@ -37,7 +37,7 @@ public class CreateBookDAO {
 						" on(a.member_no = c.member_no) " + 
 						" left outer join (select a.book_no, count(*) cnt from books a, review b where a.book_no = b.book_no group by a.book_no) d " + 
 						" on(a.book_no=d.book_no)";
-				if(genre!=null && !genre.equals("")) {
+				if(genre!=null && !genre.equals("") && !genre.equals("전체")) {
 					sql+=" where a.genre='"+genre+"'";
 				}
 				pstmt = conn.prepareStatement(sql);
