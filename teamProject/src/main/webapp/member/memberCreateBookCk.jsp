@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -79,7 +80,6 @@ $(function(){
 			<tr>
 				<th>제목</th>
 				<th>장르</th>
-				<th>조회수</th>
 				<th>작성일자</th>
 				<th></td>
 			</tr>
@@ -89,8 +89,10 @@ $(function(){
 				<tr>
 					<td>${mywriting.my_title }</td>
 					<td>${mywriting.genre }</td>
-					<td>${mywriting.views }</td>
-					<td>${mywriting.my_write_date }</td>
+					<td>
+						<fmt:parseDate value="${mywriting.my_write_date}" pattern="yyyy-MM-dd HH:mm:ss" var="my_write_date" />
+						<fmt:formatDate value="${my_write_date}" pattern="yyyy/MM/dd" />
+					</td>
 					<td><button class="updateBook">편집하기</button></td>
 				</tr>
 			</c:forEach>

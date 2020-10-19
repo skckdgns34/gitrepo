@@ -2,6 +2,7 @@
     pageEncoding="UTF-8" isELIgnored="false"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 	<%@ taglib prefix="my" tagdir="/WEB-INF/tags"%>
+	<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -58,9 +59,15 @@ li {
 					<td></td>
 					<td>${license.US }</td>
 					<td>${license.ticket_name }</td>
-					<td>${license.pay_date }</td>
+					<td>
+						<fmt:parseDate value="${license.pay_date}" pattern="yyyy-MM-dd HH:mm:ss" var="pay_date" />
+						<fmt:formatDate value="${pay_date}" pattern="yyyy/MM/dd" />
+					</td>
 					<td>${license.price }</td>
-					<td>${license.expiration }</td>
+					<td>
+						<fmt:parseDate value="${license.expiration}" pattern="yyyy-MM-dd HH:mm:ss" var="expiration" />
+						<fmt:formatDate value="${expiration}" pattern="yyyy/MM/dd" />
+					</td>
 				</tr>
 			</c:forEach>
 		</table>

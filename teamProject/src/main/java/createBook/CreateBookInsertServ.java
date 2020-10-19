@@ -36,7 +36,7 @@ public class CreateBookInsertServ implements Controller {
 		book.setMy_contents(contents);
 		CreateBookDAO.getInstance().saveUserBook(book);
 		CreateBookDAO.getInstance().updateUserBook(book);
-		response.sendRedirect("createBookMain.do");
+		response.sendRedirect("memberCreateBookCk.do");
 	}
 	
 

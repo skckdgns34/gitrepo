@@ -16,7 +16,6 @@ public class CreateBookAddChapterAjaxServ implements Controller{
 		String my_title = request.getParameter("my_title");
 		
 		int r = CreateBookDAO.getInstance().myBookMaxChapter(member_no, my_title);
-		System.out.println(r+"맥스값");
 		response.getWriter().print(r); 
 
 	}

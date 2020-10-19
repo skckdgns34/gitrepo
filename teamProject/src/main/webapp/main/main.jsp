@@ -29,9 +29,6 @@ $(function(){
 			
 		}
 	})
-	$(".ti-search").on("click",function(){
-		
-	})
 })
 	
 </script>
@@ -191,7 +188,8 @@ a{
 
 			<c:if test="${not empty book.book_img }">
 				 <img class="img-fluid" src="filenameDownload.do?filename=${book.book_img}" alt="">
-				 <input type="hidden" value="${book.book_no }">
+ 				 <input type="hidden" value="${book.book_no }">
+				 <input class="epubyn" type="hidden" value="${book.epub_path }">
 			</c:if>              
               <ul class="card-product__imgOverlay">
                 <li><button><i class="ti-search"></i></button></li>
@@ -235,6 +233,8 @@ a{
 
 			<c:if test="${not empty book.book_img }">
 				 <img class="img-fluid" src="filenameDownload.do?filename=${book.book_img}" alt="">
+				 <input type="hidden" value="${book.book_no }">
+				 <input class="epubyn" type="hidden" value="${book.epub_path }">
 			</c:if>              
               <ul class="card-product__imgOverlay">
                 <li><button><i class="ti-search"></i></button></li>
@@ -278,6 +278,8 @@ a{
 
 			<c:if test="${not empty book.book_img }">
 				 <img class="img-fluid" src="filenameDownload.do?filename=${book.book_img}" alt="">
+				 <input type="hidden" value="${book.book_no }">
+				 <input class="epubyn" type="hidden" value="${book.epub_path }">
 			</c:if>              
               <ul class="card-product__imgOverlay">
                 <li><button><i class="ti-search"></i></button></li>
@@ -321,6 +323,8 @@ a{
 
 			<c:if test="${not empty book.book_img }">
 				 <img class="img-fluid" src="filenameDownload.do?filename=${book.book_img}" alt="">
+				 <input type="hidden" value="${book.book_no }">
+				 <input class="epubyn" type="hidden" value="${book.epub_path }">
 			</c:if>              
               <ul class="card-product__imgOverlay">
                 <li><button><i class="ti-search"></i></button></li>
@@ -364,6 +368,8 @@ a{
 
 			<c:if test="${not empty book.book_img }">
 				 <img class="img-fluid" src="filenameDownload.do?filename=${book.book_img}" alt="">
+				 <input type="hidden" value="${book.book_no }">
+				 <input class="epubyn" type="hidden" value="${book.epub_path }">
 			</c:if>              
 			<ul class="card-product__imgOverlay">
                 <li><button><i class="ti-search"></i></button></li>
@@ -406,6 +412,8 @@ a{
             <div class="card-product__img">
 			<c:if test="${not empty book.book_img }">
 				 <img class="img-fluid" src="filenameDownload.do?filename=${book.book_img}" alt="">
+				 <input type="hidden" value="${book.book_no }">
+				 <input class="epubyn" type="hidden" value="${book.epub_path }">
 			</c:if>
              
               <ul class="card-product__imgOverlay">
@@ -447,9 +455,12 @@ a{
 
          <div class="card text-center card-product">
             <div class="card-product__img">
-	<c:if test="${not empty book.book_img }">
+			<c:if test="${not empty book.book_img }">
 				 <img class="img-fluid" src="filenameDownload.do?filename=${book.book_img}" alt="">
-			</c:if>              <ul class="card-product__imgOverlay">
+				 <input type="hidden" value="${book.book_no }">
+				 <input class="epubyn" type="hidden" value="${book.epub_path }">
+			</c:if>              
+			<ul class="card-product__imgOverlay">
                 <li><button><i class="ti-search"></i></button></li>
                 <li><button><i class="ti-shopping-cart"></i></button></li>
                 <li><button><i class="ti-heart"></i></button></li>

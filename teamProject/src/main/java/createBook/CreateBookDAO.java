@@ -24,7 +24,6 @@ public class CreateBookDAO {
 	
 	//유저들이 쓴 글 목록
 	public ArrayList<Books> selectAllUserBook(String genre) {
-		System.out.println(genre+"b");
 		ResultSet rs = null;
 		ArrayList<Books> list = new ArrayList<Books>();
 		Books resultVO = null;
@@ -123,6 +122,7 @@ public class CreateBookDAO {
 		return resultVO;
 	}
 
+	//상태 y로 바꿔주기
 	public void updateUserBook(Mywriting book) {
 		try {
 			conn = ConnectionManager.getConnnect();
@@ -131,7 +131,6 @@ public class CreateBookDAO {
 			pstmt.setString(1, book.getMember_no());
 			pstmt.setString(2, book.getMy_title());
 			int r = pstmt.executeUpdate();
-			System.out.println(r+"건 업뎃");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -152,7 +151,6 @@ public class CreateBookDAO {
 			rs = stmt.executeQuery(chapsql);
 			rs.next();
 			no = rs.getInt(1)+1;
-			System.out.println(no);
 			book.setChapter(Integer.toString(no));
 			
 			String sql = "insert into mywriting(member_no,my_title,my_write_date,genre,my_introduction"
@@ -262,5 +260,28 @@ public class CreateBookDAO {
 			ConnectionManager.close(rs, pstmt, conn);
 		}
 		return book;
+	}
+
+	//글 수정하면 바꿔주기
+	public void updateUserBookDetail(Mywriting book) {
+		try {
+			conn = ConnectionManager.getConnnect();
+			String sql = "update mywriting "
+					+ " set my_write_date=sysdate, my_summary=?,"
+					+ " my_introduction=?, my_contents=?"
+					+ " where member_no=? and my_title=? and chapter=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, book.getMy_summary());
+			pstmt.setString(2, book.getMy_introduction());
+			pstmt.setString(3, book.getMy_contents());
+			pstmt.setString(4, book.getMember_no());
+			pstmt.setString(5, book.getMy_title());
+			pstmt.setString(6, book.getChapter());
+			int r = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionManager.close(conn);
+		}
 	}
 }

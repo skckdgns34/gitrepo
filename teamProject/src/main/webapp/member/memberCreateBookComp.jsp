@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -83,7 +85,10 @@ $(function(){
 										<td>${bookcomp.title }</td>
 										<td>${bookcomp.genre }</td>
 										<td>${bookcomp.views }</td>
-										<td>${bookcomp.registration_date }</td>
+										<td>
+											<fmt:parseDate value="${bookcomp.registration_date}" pattern="yyyy-MM-dd HH:mm:ss" var="registration_date" />
+											<fmt:formatDate value="${registration_date}" pattern="yyyy/MM/dd" />
+										</td>
 										<td><button id="btnsend">바로가기</button></td>
 									</tr>
 								</c:forEach>
