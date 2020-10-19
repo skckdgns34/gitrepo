@@ -25,6 +25,26 @@
   padding: 7px 15px;
   font-size: 12px;
 }
+  input {
+  background-color: white; 
+  color: black; 
+  border: 2px solid 002347;
+  padding: 7px 15px;
+  font-size: 12px;
+}
+	#mobtn{
+	background-color: #002347;
+	color: white;
+	border: 2px solid white;
+	padding: 9px 20px;
+  	font-size: 12px;
+	}
+
+	#a{
+	color: #002347;
+	border-bottom: 1px solid;
+	}
+
 </style>
 <script>
 
@@ -112,26 +132,26 @@
 											class="form-control" id="nickname" name="nickname" value="${nickname }">
 										<div class="eheck_font" id="nickname_check"></div>
 									</div>
-									<button type="button" class="button button2" onclick="NiChk()" >체크</button>
+									<button type="button" class="button button2" onclick="NiChk()" >중복체크</button>
 									<div class="form-group">
 										<label for="member_email">이메일</label> <input type="text"
 											class="form-control" id="member_email" name="member_email" value="${member_email }">
 										<div class="eheck_font" id="nickname_check"></div>
 									</div>
-									<button type="button" class="button button3"  onclick="EmChk()" >체크</button>
+									<button type="button" class="button button3"  onclick="EmChk()" >중복체크</button>
 									<div class="form-group">
 										<label for="member_tel">휴대폰 번호</label> <input type="tel"
 											class="form-control" id="member_tel" name="member_tel" value="${member_tel }">
 										<div class="eheck_font" id="pnum_check"></div>
 									</div>
 									<div class="form-group text-center">
-										<button type="submit" class="btn btn-primary">수정</button>
+										<button id="mobtn" type="submit" class="btn btn-primary">수정</button>
 										<input type="reset" value="초기화">
 									</div>
 						</form>
 						</div>
 						<hr>
-						<a href="/app/member/memberDelete.jsp">탈퇴하기</a>
+						<a id="a" href="/app/member/memberDelete.jsp"> 탈퇴하기</a>
 					</div>
 					</div>
 	</section>

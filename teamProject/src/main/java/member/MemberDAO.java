@@ -391,7 +391,10 @@ public class MemberDAO {
 		try {
 			conn = ConnectionManager.getConnnect();
 			
-			String sql = "select a.mylibrary_no, b.title, a.wish, a.last_read_index,a.book_no, b.writer from mylibrary a, books b where a.book_no = b.book_no and a.member_no = ?";
+			String sql = "select a.mylibrary_no, b.title, a.wish, a.last_read_index,a.book_no, b.writer "
+					+ " from mylibrary a, books b "
+					+ " where a.book_no = b.book_no and a.member_no = ? "
+					+ " and b.audio_path is not null";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, member_no);
 			rs = pstmt.executeQuery();

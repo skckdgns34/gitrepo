@@ -39,7 +39,7 @@
 			
             document.onreadystatechange = function () {
               if (document.readyState == "complete") {
-                window.reader = ePubReader("test4.epub", { //url 경로
+                window.reader = ePubReader("용원.epub", { //url 경로
                    //restore: true,
                    bookmarks : listBook
                  });

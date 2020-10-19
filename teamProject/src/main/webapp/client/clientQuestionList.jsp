@@ -24,7 +24,7 @@ function insertpage() //문의사항 등록 ㅡ
 					<div class="breadcrumb__text">
 						<h4>Menu</h4>
 						<div class="breadcrumb__links">
-							<a href="./index.html">Home</a> <span>문의사항</span>
+							<a href="${pageContext.request.contextPath}/main.do">Home</a> <span>문의사항</span>
 						</div>
 					</div>
 				</div>

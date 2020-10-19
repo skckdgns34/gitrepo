@@ -901,8 +901,7 @@ public class EBookDAO
 			stmt.executeUpdate(seqSql);
 
 			
-			String sql = "insert into mylibrary(mylibrary_no, member_no, book_no)"
-					   + " values(?,?,?)";
+			String sql = "insert into mylibrary(mylibrary_no, member_no, book_no) values(?,?,?)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, no);
 			pstmt.setString(2, member_no);
@@ -1123,5 +1122,18 @@ public class EBookDAO
 			ConnectionManager.close(rs, pstmt, conn);
 		}
 		return list;
+	}
+	
+	public void updateViews(String book_no) {
+		try {
+			conn = ConnectionManager.getConnnect();
+			String sql = "update books set views = views + 1 where book_no="+book_no+"";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.executeUpdate();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionManager.close(null, pstmt, conn);
+		}
 	}
 }

@@ -47,7 +47,15 @@
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resource/css/style.css" type="text/css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
 	<script	src="<%=request.getContextPath()%>/mainresource/vendors/jquery/jquery-3.2.1.min.js"></script>
+	
+
 	<decorator:head />
+	
+	<style>
+	.site-main{
+	min-height: 690px;
+	}
+	</style>
 </head>
 
 
@@ -149,7 +157,7 @@
 
 <body>
 	<!--================ 메인 부분~ =================-->
-	<main class="site-main">
+	<main class="site-main" >
 		<decorator:body />
 
 	</main>

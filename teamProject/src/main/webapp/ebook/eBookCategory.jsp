@@ -108,7 +108,7 @@ function imgClick(book_no) {
 					<div class="breadcrumb__text">
 						<h4>Menu</h4>
 						<div class="breadcrumb__links">
-							<a href="./index.html">Home</a> <span>전자책</span>
+							<a href="${pageContext.request.contextPath}/main.do">Home</a> <span>전자책</span>
 						</div>
 					</div>
 				</div>
@@ -176,7 +176,7 @@ function imgClick(book_no) {
 
 
 
-							<div class="col-lg-9 col-md-7">
+        					<div class="col-xl-9 col-lg-8 col-md-7">
 								<!-- Start Filter Bar -->
 								<div class="filter-bar d-flex flex-wrap align-items-center">
 

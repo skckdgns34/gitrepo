@@ -34,6 +34,8 @@
 				+ $('input[name="user_CheckBox"]:checked').val();
 		document.form.submit();
 		}else{   //취소
+			$('user_CheckBox').attr('checked',false);
+			window.document.location.href = "memberManageNotice.ad";
 		    return;
 		}
 	}

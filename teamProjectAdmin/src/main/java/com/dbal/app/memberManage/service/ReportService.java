@@ -18,6 +18,8 @@ public interface ReportService {
 	// 블랙 리스트 등록
 	public void insert(Report report);
 
+	//삭제
+	public void delete(Report report);
 	// 멤버 한명 조회
 		public Report selectMem(Report report);
 }

@@ -16,8 +16,6 @@
     $( "#accordion" ).accordion();
   } );
   </script>
-<title>clientFAQ</title>
-
 <meta charset="UTF-8">
 <title>공지사항 - FAQ</title>
 </head>
@@ -30,7 +28,7 @@
 					<div class="breadcrumb__text">
 						<h4>Menu</h4>
 						<div class="breadcrumb__links">
-							<a href="./index.html">공지사항</a> <span>FAQ</span>
+							<a href="${pageContext.request.contextPath}/main.do">공지사항</a> <span>FAQ</span>
 						</div>
 					</div>
 				</div>

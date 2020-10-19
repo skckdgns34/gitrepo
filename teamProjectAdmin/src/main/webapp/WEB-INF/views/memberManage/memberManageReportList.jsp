@@ -26,16 +26,20 @@
 	{
 		window.document.location.href = "memberManageReportModifyForm.ad?declaration_no="
 				+ $('input[name="user_CheckBox"]:checked').val();
-		alert($('input[name="user_CheckBox"]:checked').val())
 		return;
 	}
 
 	function deletepage() //삭제
 	{
+		if (confirm("삭제하시겠습니까?") == true){
 		window.document.location.href = "memberManageReportDelete.ad?declaration_no="
 				+ $('input[name="user_CheckBox"]:checked').val();
-		alert($('input[name="user_CheckBox"]:checked').val())
-		return;
+		document.form.submit();
+		}else{   //취소
+			$('user_CheckBox').attr('checked',false);
+			window.document.location.href = "memberManageReportList.ad";
+			return ;
+		}
 	}
 
 
@@ -61,10 +65,10 @@
 					<thead>
 						<tr>
 							<th>선택</th>
-							<th>신고번호</th>
+							
 							<th>신고자</th>
 							<th>신고 내용</th>
-							<th>신고 당한 애</th>
+							<th>신고 당한 회원</th>
 							<th>신고일</th>
 							<th>해당 책 번호</th>
 							<th>리뷰 번호</th>
@@ -77,14 +81,13 @@
 							<tr>
 								<td><input type="checkbox" name="user_CheckBox"
 									onclick="check(this)" value="${report.getDeclaration_no()}"></td>
-								<td>${report.getDeclaration_no()}</td>
 								<td>${report.getMember_no()}</td>
 								<td>${report.getDeclaration_content()}</td>
 								<td>${report.getReported_member()}</td>
 								<td>${report.getDeclaration_date()}</td>
 								<td>${report.getBook_no()}</td>
 								<td><button type="button" class="btn btn-link" onclick="btnClick()" value="${report.getReview_no()}">${report.getReview_no()}</button></td>
-							
+								<td>${report.getCode_value()}</td>
 						</c:forEach>
 					</tbody>
 				</table>
