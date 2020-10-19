@@ -95,13 +95,18 @@ public class eBookEpubCreateServ implements Controller {
 				book.addSection("chapter "+a, new Resource(epubFile.getBytes(), "chapter"+a+".html"));
 				a++;
 				imgFile = getImgSrc(epubFile);
-				
+				System.out.println(imgFile+"이미지파일이름");
 				for(int j=0; j<imgFile.size(); j++) { //이미지 업로드
 					
 					File file = new File(path+imgFile.get(j));
-					book.getResources().add(new Resource(path, file.length(), imgFile.get(j))); //경로 / 파일길이 / 파일이름
+
+					book.getResources().add(new Resource(path+"/"+imgFile.get(j).substring(9), file.length(), imgFile.get(j))); //경로 / 파일길이 / 파일이름
+					//book.getResources().add(new Resource(imgFile.get(j).getBytes(), "book"+b+".jsp"));
+
+					//book.getResources().add(new Resource(path, file.length(), imgFile.get(j))); //경로 / 파일길이 / 파일이름
 					//book.getResources().add(new Resource(imgFile.get(j).getBytes(), "book"+b+".jsp"));
 					//b++;
+
 				}
 			}
 			
