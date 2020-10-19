@@ -29,7 +29,7 @@
 				<img src="filenameDownload.do?filename=${book[0].book_img}" />
 			</div>
 			<div class="col" style="border-left: 1px solid gray">
-				<table border="1">
+				<table class="table table-hover">
 					<thead>
 						<tr>
 							<th>mylib_no</th>
