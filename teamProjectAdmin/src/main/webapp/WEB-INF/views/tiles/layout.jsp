@@ -21,9 +21,9 @@
 <!-- Custom fonts for this template-->
 <link href="/app/resourse/vendor/fontawesome-free/css/all.min.css"
 	rel="stylesheet" type="text/css">
-<link
-	href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-	rel="stylesheet">
+	
+<link href="https://fonts.googleapis.com/css2?family=Hi+Melody&display=swap" rel="stylesheet">
+	
 
 <!-- Custom styles for this template-->
 <link href="/app/resourse/css/sb-admin-2.min.css" rel="stylesheet">
@@ -106,7 +106,8 @@
 						<h6 class="collapse-header">도서관리</h6>
 						<a class="collapse-item" href="bookList.ad">도서조회</a> <a
 							class="collapse-item" href="bookManage.ad">E-Book 등록</a> <a
-							class="collapse-item" href="bookManageAudio.ad">A-Book 등록</a>
+							class="collapse-item" href="bookManageAudio.ad">A-Book 등록</a><a
+							class="collapse-item" href="mybookList.ad">내가 쓴글 등록</a>
 
 					</div>
 				</div></li>

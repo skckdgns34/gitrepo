@@ -132,13 +132,13 @@
 											class="form-control" id="nickname" name="nickname" value="${nickname }">
 										<div class="eheck_font" id="nickname_check"></div>
 									</div>
-									<button type="button" class="button button2" onclick="NiChk()" >체크</button>
+									<button type="button" class="button button2" onclick="NiChk()" >중복체크</button>
 									<div class="form-group">
 										<label for="member_email">이메일</label> <input type="text"
 											class="form-control" id="member_email" name="member_email" value="${member_email }">
 										<div class="eheck_font" id="nickname_check"></div>
 									</div>
-									<button type="button" class="button button3"  onclick="EmChk()" >체크</button>
+									<button type="button" class="button button3"  onclick="EmChk()" >중복체크</button>
 									<div class="form-group">
 										<label for="member_tel">휴대폰 번호</label> <input type="tel"
 											class="form-control" id="member_tel" name="member_tel" value="${member_tel }">

@@ -24,10 +24,14 @@
 			action="memberManageBlackListPop.ad" onsubmit="return inputCheck()">
 			
                 <div class="form-label-group">
-               <label for="inputblacklist_no">번호</label><br>
-                <input type="text" name="blacklist_no" value="${black.blacklist_no}" readonly="readonly">
+             
+                <input type="hidden" name="blacklist_no" value="${black.blacklist_no}" readonly="readonly">
               </div> 
               
+               <div class="form-label-group">
+               <label for="inputmember_no">회원번호</label><br>
+                <input type="text" name="member_no" value="${black.member_no}" readonly="readonly">
+              </div>
               <div class="form-label-group">
                               <label for="inputblacklist_reason" >사유</label><br>
 								<select
@@ -46,10 +50,7 @@
 								</select>
 
               </div>
-              <div class="form-label-group">
-               <label for="inputmember_no">회원번호</label><br>
-                <input type="text" name="member_no" value="${black.member_no}">
-              </div>
+             
               <div class="form-label-group">
                <label for="inputlimit_date">등록 일자</label><br>
                 <input type="text" name="limit_date" value="${fn:substring(black.limit_date,0,10)}">

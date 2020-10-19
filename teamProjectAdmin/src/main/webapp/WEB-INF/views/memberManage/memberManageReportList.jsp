@@ -65,7 +65,7 @@
 					<thead>
 						<tr>
 							<th>선택</th>
-							<th>신고번호</th>
+							
 							<th>신고자</th>
 							<th>신고 내용</th>
 							<th>신고 당한 회원</th>
@@ -81,7 +81,6 @@
 							<tr>
 								<td><input type="checkbox" name="user_CheckBox"
 									onclick="check(this)" value="${report.getDeclaration_no()}"></td>
-								<td>${report.getDeclaration_no()}</td>
 								<td>${report.getMember_no()}</td>
 								<td>${report.getDeclaration_content()}</td>
 								<td>${report.getReported_member()}</td>

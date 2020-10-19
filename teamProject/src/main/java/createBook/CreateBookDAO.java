@@ -71,7 +71,7 @@ public class CreateBookDAO {
 		Books resultVO = null;
 			try {
 				conn = ConnectionManager.getConnnect();
-				String sql = "select rownum, a.title, a.views, b.nickname, a.book_no " + 
+				String sql = "select rownum, a.title, a.views, b.nickname, a.book_no, a.book_img " + 
 						" from (select * from books where views is not null order by views desc) a, member b " + 
 						" where a.member_no = b.member_no and rownum<=5";
 				pstmt = conn.prepareStatement(sql);
@@ -83,6 +83,7 @@ public class CreateBookDAO {
 					resultVO.setViews(rs.getString(3));
 					resultVO.setWriter(rs.getString(4));
 					resultVO.setBook_no(rs.getString(5));
+					resultVO.setBook_img(rs.getString(6));
 					list.add(resultVO);
 				}
 			} catch (Exception e) {
@@ -122,41 +123,19 @@ public class CreateBookDAO {
 		return resultVO;
 	}
 
-	public void insertUserBook(Books book) {
-		ResultSet rs = null;
+	public void updateUserBook(Mywriting book) {
 		try {
-			
 			conn = ConnectionManager.getConnnect();
-			
-			String seqSql = "select no from seq where tablename='books'";
-			Statement stmt = conn.createStatement();
-			rs = stmt.executeQuery(seqSql);
-			rs.next();
-			String no = rs.getString(1);
-			book.setBook_no(no);
-			
-			seqSql = "update seq set no = no + 1 where tablename='books'";
-			stmt = conn.createStatement();
-			stmt.execute(seqSql);
-			
-			String sql = "insert into books(book_no, title, writer, registration_date, introduction"
-					+ ", summary, member_no, book_img, genre )"
-					+ "values(?,?,?,sysdate,?,?,?,?,?)";
+			String sql = "update mywriting set temporary_storage='y' where member_no=? and my_title=?";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, book.getBook_no());
-			pstmt.setString(2, book.getTitle());
-			pstmt.setString(3, book.getWriter());
-			pstmt.setString(4, book.getIntroduction());
-			pstmt.setString(5, book.getSummary());
-			pstmt.setString(6, book.getMember_no());
-			pstmt.setString(7, book.getBook_img());
-			pstmt.setString(8, book.getGenre());
+			pstmt.setString(1, book.getMember_no());
+			pstmt.setString(2, book.getMy_title());
 			int r = pstmt.executeUpdate();
-			System.out.println(r+"책등록");
+			System.out.println(r+"건 업뎃");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			ConnectionManager.close(rs, pstmt, conn);
+			ConnectionManager.close(conn);
 		}
 	}
 	public void saveUserBook(Mywriting book) {
@@ -176,8 +155,6 @@ public class CreateBookDAO {
 			System.out.println(no);
 			book.setChapter(Integer.toString(no));
 			
-			
-			
 			String sql = "insert into mywriting(member_no,my_title,my_write_date,genre,my_introduction"
 					+ ",my_summary, image_uri,temporary_storage, my_contents, chapter)"
 					+ "values(?,?,sysdate,?,?,?,?,'n',?,?)";
@@ -191,7 +168,6 @@ public class CreateBookDAO {
 			pstmt.setString(7, book.getMy_contents());
 			pstmt.setString(8, book.getChapter());
 			int r = pstmt.executeUpdate();
-			System.out.println(r+"책저장");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -242,7 +218,6 @@ public class CreateBookDAO {
 			if(rs.next()) {
 				r = rs.getInt(1)+1;
 			}
-			System.out.println("max챕터");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

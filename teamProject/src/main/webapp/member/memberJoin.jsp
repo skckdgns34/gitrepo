@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" isELIgnored="false"%>
+       <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+        <%
+    String member_id = request.getParameter("member_id"); 
+    String nickname = request.getParameter("nickname");
+   %>
   
 <!DOCTYPE html>
 <html>
@@ -114,7 +119,7 @@
 								<div class="eheck_font" id="id_check"></div>
 							</div>
 							<input type="hidden" name="idCheckh" value="idUnCheck"> 
-							<button type="button" class="button button1" onclick="IdChk()" >체크</button>
+							<button type="button" class="button button1" onclick="IdChk()" >중복체크</button>
               <div class="col-md-12 form-group">
 								<input type="password" class="form-control" id="member_pw" name="member_pw" placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'">
               					<div class="eheck_font" id="pw_check"></div>
@@ -132,13 +137,13 @@
 								<input type="text" class="form-control" id="nickname" name="nickname" placeholder="닉네임 입력" onfocus="this.placeholder = ''" onblur="this.placeholder = 'nickname'">
               					<div class="eheck_font" id="nickname_check"></div>
               </div>
-              <button type="button" class="button button2" onclick="NiChk()" >체크</button>
+              <button type="button" class="button button2" onclick="NiChk()" >중복체크</button>
               
               <div class="col-md-12 form-group">
 			<input type="text" class="form-control" id="member_email" name="member_email" placeholder="Email 입력" onfocus="this.placeholder = ''" onblur="this.placeholder = 'member_email'">
               <div class="eheck_font" id="email_check"></div>
               </div>
-               <button type="button" class="button button3" onclick="EmChk()" >체크</button>
+               <button type="button" class="button button3" onclick="EmChk()" >중복체크</button>
               
                <div class="col-md-12 form-group">
 				<label for="gender">성별:</label>
@@ -149,7 +154,7 @@
               </div>
 							
 							<div class="col-md-12 form-group">
-								<button type="submit" value="submit" class="button button-register w-100">회원가입</button>
+								<button type="submit" value="submit" class="button button-register w-100" onclick="Se()">회원가입</button>
 							</div>
 						</form>
 					</div>

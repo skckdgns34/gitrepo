@@ -25,7 +25,6 @@
 		if (confirm("수정하시겠습니까?") == true) {
 			window.document.location.href = "memberManageBlackListPopForm.ad?blacklist_no="
 					+ $('input[name="user_CheckBox"]:checked').val();
-			alert($('input[name="user_CheckBox"]:checked').val())
 			document.form.submit();
 		} else { //취소
 			$('user_CheckBox').attr('checked', false);
@@ -66,6 +65,7 @@ td {
 }
 </style>
 </head>
+
 <body id="page-top">
 
 	<div class="container-fluid">
@@ -88,7 +88,6 @@ td {
 					<thead>
 						<tr>
 							<th>선택</th>
-							<th>번호</th>
 							<th>회원 번호</th>
 							<th>닉네임</th>
 							<th>사유</th>
@@ -101,7 +100,6 @@ td {
 							<tr>
 								<td><input type="checkbox" name="user_CheckBox"
 									onclick="check(this)" value="${black.getBlacklist_no()}"></td>
-								<td>${black.getBlacklist_no()}</td>
 								<td>${black.getMember_no()}</td>
 								<td>${black.getNickname()}</td>
 								<td>${black.getCode_value()}</td>
