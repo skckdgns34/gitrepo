@@ -94,9 +94,24 @@ function imgClick(book_no) {
 }
 
 
-
-
 </script>
+
+<style>
+
+.price{
+ 
+  font-size: 18px;
+   font-weight: 500;
+   display:inline-block;
+  width:100px; 
+  white-space: nowrap; 
+  overflow: hidden; 
+  text-overflow: ellipsis;
+  border:1px solid transparent; 
+ 
+
+}
+</style>
 </head>
 <body>
 
@@ -184,7 +199,7 @@ function imgClick(book_no) {
 								<div>
 									<form
 										action="${pageContext.request.contextPath}/eBookSearchAfter.do">
-										<div class="input-group filter-bar-search">
+										<div class="input-group filter-bar-search" style="padding-bottom: 30px">
 											<input type="text" placeholder="Search" id="testInput">
 											<div class="input-group-append">
 												<button>
