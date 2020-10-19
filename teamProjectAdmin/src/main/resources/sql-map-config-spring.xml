@@ -15,6 +15,7 @@
 	<typeAlias type="com.dbal.app.company.Company" alias="company"/>
 	<typeAlias type="com.dbal.app.moneyManage.Purchase" alias="purchase"/>  
 	<typeAlias type="com.dbal.app.moneyManage.PayVO" alias="pay"/>
+	<typeAlias type="com.dbal.app.mywriting.Mywriting" alias="mywriting"/>
 	</typeAliases>
 
 </configuration>

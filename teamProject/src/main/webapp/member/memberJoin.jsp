@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" isELIgnored="false"%>
+       <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+        <%
+    String member_id = request.getParameter("member_id"); 
+    String nickname = request.getParameter("nickname");
+   %>
   
 <!DOCTYPE html>
 <html>
@@ -149,7 +154,7 @@
               </div>
 							
 							<div class="col-md-12 form-group">
-								<button type="submit" value="submit" class="button button-register w-100">회원가입</button>
+								<button type="submit" value="submit" class="button button-register w-100" onclick="Se()">회원가입</button>
 							</div>
 						</form>
 					</div>

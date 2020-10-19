@@ -79,6 +79,7 @@
 									<input class="input-md emailinput form-control" id="company"
 										name="company" placeholder="출판사를 입력 해 주세요."
 										style="margin-bottom: 10px" type="text" />
+									<input id="company_code" name="company_code" hidden="hidden">
 									<button type="button" value="검색" onclick="openChild()">검색</button>
 								</div>
 							</div>
