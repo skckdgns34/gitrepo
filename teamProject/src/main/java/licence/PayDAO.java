@@ -36,7 +36,7 @@ public class PayDAO {
 			stmt = conn.createStatement();
 			stmt.execute(seqSql);
 
-			String sql = "insert into pay values(?,sysdate,?,?)";
+			String sql = "insert into pay values(?,sysdate,?,?,null)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, payVO.getPay_no());
 			pstmt.setString(2, payVO.getMember_no());

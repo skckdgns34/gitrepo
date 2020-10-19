@@ -13,8 +13,8 @@
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
 	function setParentText() {
-		opener.document.getElementById("company").value = document
-				.getElementById("company_name").value
+		opener.document.getElementById("company").value = document.getElementById("company_name").value
+		opener.document.getElementById("company_code").value = document.getElementById("company_code").value
 				window.close();
 	}
 </script>
@@ -32,7 +32,7 @@
 				console.dir(datas);
 				userlistResult(datas);
 				for (i = 0; i < datas.length; i++) {
-					datatable.push.val(datas[i].company_name);
+					dataTable.push(datas[i].company_name);
 			}
 			}
 		});
@@ -46,13 +46,25 @@
 	
 	function makeTr(item){
 		return $('<tr>')
-		.append($('<td class="name" onclick="name_click()">').html(item.company_name));
+		.append($('<td>').html(item.company_name))
+		.append($('<td hidden="hidden">').html(item.company_code))
+		.append($('<td><button type="button" class="click" onclick="company_click()">선택</button>'));
 	}
 	function name_click(){
 		$(".name").on("click",function(){
 			var c_name = $(this).html();
 			console.log(c_name);
 			$("#company_name").val(c_name);
+		})
+	}
+	function company_click(){
+		$(".click").on("click",function(){
+			var com_name = $(this).closest("td").prev().prev().html();
+			console.log(com_name);
+			$("#company_name").val(com_name);
+			var com_code = $(this).closest("td").prev().html();
+			console.log(com_code);
+			$("#company_code").val(com_code);
 		})
 	}
 	
@@ -67,6 +79,7 @@
 	<br>
 	<br>
 	<input type="text" id="company_name" name="company_name" >
+	<input type="text" id="company_code" name="company_code" hidden="hidden">
 	<!-- <input type="text" id="cInput" name="cInput"> -->
 	<button type="button" id="btnSelect" onclick="insertName()">결과조회</button>
 	<input type="button" value="등록하기" onclick="setParentText()">
@@ -78,6 +91,8 @@
 			<thead>
 				<tr>
 					<th>출판사 이름</th>
+					<th hidden="hidden">코드</th>
+					<th>선택</th>
 				</tr>
 			</thead>
 			<tbody>

@@ -57,7 +57,7 @@ margin-left: 45px;
 			<!-- The slideshow -->
 			<div class="carousel-inner">
 				<div class="carousel-item active">
-					<a href="<%=application.getContextPath()%>/licenceList.do"> <img src="${pageContext.request.contextPath}/images/4.jpg"
+					<a href="${pageContext.request.contextPath}/eBookCategory.do"> <img src="${pageContext.request.contextPath}/images/4.jpg"
 						alt="슬라이드1">
 						<div class="text-box">
 							<h2 class="wow slideInRight" data-wow-duration="1s"></h2>
@@ -66,7 +66,7 @@ margin-left: 45px;
 				</div>
 
 				<div class="carousel-item">
-					<a href="${pageContext.request.contextPath}/eBookDetail.do"> <img src="${pageContext.request.contextPath}/images/3.jpg"
+					<a href="${pageContext.request.contextPath}/eBookCategory.do"> <img src="${pageContext.request.contextPath}/images/3.jpg"
 						alt="슬라이드2">
 						<div class="text-box">
 							<h2 class="wow slideInUp" data-wow-duration="1s"></h2>
@@ -76,7 +76,7 @@ margin-left: 45px;
 				</div>
 
 				<div class="carousel-item">
-					<a href="${pageContext.request.contextPath}/eBookDetail.do"> <img src="${pageContext.request.contextPath}/images/1.jpg">
+					<a href="${pageContext.request.contextPath}/eBookCategory.do"> <img src="${pageContext.request.contextPath}/images/1.jpg">
 						<div class="text-box">
 
 							<h2 class="wow fadeInUp" data-wow-duration="1s"></h2>
@@ -85,7 +85,7 @@ margin-left: 45px;
 					</a>
 				</div>
 				<div class="carousel-item">
-					<a href="★해당 배너클릭시 이동시킬 페이지 적기~"> <img src="${pageContext.request.contextPath}/images/2.jpg"
+					<a href="${pageContext.request.contextPath}/eBookCategory.do"> <img src="${pageContext.request.contextPath}/images/2.jpg"
 						alt="슬라이드2">
 						<div class="text-box">
 							<h2 class="wow slideInUp" data-wow-duration="1s"></h2>

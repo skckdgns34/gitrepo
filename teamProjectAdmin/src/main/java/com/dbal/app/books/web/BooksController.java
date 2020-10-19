@@ -48,7 +48,6 @@ public class BooksController  {
     @ResponseBody
     public ArrayList<Books> CompanySelectServr(Model model, Books books, HttpServletRequest request) {
     	String name = request.getParameter("searchCompany");
-    	System.out.println(name+"ddddddddddddddddddddddddddddddddddddddd");
     	books.setCompany_name(name);
     	return booksService.bookselectCompany(books);
     }

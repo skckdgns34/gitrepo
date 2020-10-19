@@ -163,7 +163,7 @@ text-align: end;}
 									<th>책 제목</th>
 									<th>찜 여부</th>
 									<th>저자</th>
-									<th>last index</th>
+									<th>마지막 읽던 위치</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -175,7 +175,7 @@ text-align: end;}
 										<td>${list.title }</td>
 										<td>${list.wish}</td>
 										<td>${list.writer }
-										<td>${list.last_read_index}</td>
+										<td id="last_index">${list.last_read_index}</td>
 									</tr>
 								</c:forEach>
 							</tbody>
@@ -237,6 +237,7 @@ text-align: end;}
 	        this.dataset.playing = 'false';
 	        $.post("audioBookIndexUpdate.do", {index: audioElement.currentTime,
               	book_no: book_no},function(data){
+              		$("#last_index").html(audioElement.currentTime.toFixed(0));
            }); 
 	    }
 	}, false);

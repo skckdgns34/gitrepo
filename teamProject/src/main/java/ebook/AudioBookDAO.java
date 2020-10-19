@@ -518,4 +518,20 @@ public class AudioBookDAO {
 		}
 		return a;
 	}
+
+
+	public void updateViews(String book_no) {
+		try {
+			conn = ConnectionManager.getConnnect();
+			String sql = "update books set views=views+1 where book_no=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, book_no);
+			int r = pstmt.executeUpdate();
+			System.out.println(r+"건 업뎃");
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionManager.close(conn);
+		}
+	}
 }
