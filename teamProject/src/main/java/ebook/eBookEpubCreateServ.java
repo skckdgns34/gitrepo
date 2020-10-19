@@ -87,7 +87,8 @@ public class eBookEpubCreateServ implements Controller {
 			List<String> imgFile = null;
 			int a = 0;
 			int b = 0;
-			String path = request.getSession().getServletContext().getRealPath("/images");
+			String path = request.getSession().getServletContext().getRealPath("");
+			System.out.println(path + " 패스야ㅑㅑㅑㅑㅑㅑㅑㅑ");
 			for(int i=0; i < my.size(); i++) {
 			// Add Chapter 1
 				String epubFile = (String)my.get(i).get("my_contents");
@@ -98,8 +99,14 @@ public class eBookEpubCreateServ implements Controller {
 				for(int j=0; j<imgFile.size(); j++) { //이미지 업로드
 					
 					File file = new File(path+imgFile.get(j));
+
 					book.getResources().add(new Resource(path+"/"+imgFile.get(j).substring(9), file.length(), imgFile.get(j))); //경로 / 파일길이 / 파일이름
-					book.getResources().add(new Resource(imgFile.get(j).getBytes(), "book"+b+".jsp"));
+					//book.getResources().add(new Resource(imgFile.get(j).getBytes(), "book"+b+".jsp"));
+
+					//book.getResources().add(new Resource(path, file.length(), imgFile.get(j))); //경로 / 파일길이 / 파일이름
+					//book.getResources().add(new Resource(imgFile.get(j).getBytes(), "book"+b+".jsp"));
+					//b++;
+
 				}
 			}
 			

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.dbal.app.moneyManage.mapper.PurchaseDAO">
+  <select id="selectAll" parameterType="purchase" resultType="purchase">
+  	SELECT p.purchase_no,
+  		   p.purchase_price,
+  		   p.purchase_date,
+  		   p.purchase_content,
+  		   e.emp_name,
+  		   b.title
+  	FROM	purchase p, books b, employees e
+  	WHERE	p.book_no = b.book_no AND p.emp_no = e.emp_no
+  </select>
+  
+  </mapper>

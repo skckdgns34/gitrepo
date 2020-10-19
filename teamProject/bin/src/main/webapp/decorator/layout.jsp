@@ -1,143 +1,197 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" isELIgnored="false"%>
-<%@ taglib uri="http://www.opensymphony.com/sitemesh/decorator" prefix="decorator" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-	
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8" isELIgnored="false"%>
+<%@ taglib uri="http://www.opensymphony.com/sitemesh/decorator"
+	prefix="decorator"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
-  <head>
-<title>Kiraric</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<link href="${pageContext.request.contextPath}/layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
+<!-- Required meta tags -->
+<meta charset="utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="${pageContext.request.contextPath}/layout/scripts/jquery.backtotop.js"></script>
-<script src="${pageContext.request.contextPath}/layout/scripts/jquery.mobilemenu.js"></script>
-
+<link rel="icon"
+	href="<%=request.getContextPath()%>/resource/img/favicon.png"
+	type="image/png" />
+<title>test</title>
+<!-- Bootstrap CSS -->
 <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	href="<%=request.getContextPath()%>/resource/css1/bootstrap.css" />
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resource/css1/flaticon.css" />
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resource/css1/themify-icons.css" />
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resource/vendors1/owl-carousel/owl.carousel.min.css" />
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resource/vendors1/nice-select/css/nice-select.css" />
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/mainresource/vendors/fontawesome/css/all.min.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/mainresource/vendors/nice-select/nice-select.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/mainresource/css/style.css">
+
+<!-- main css -->
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resource/css1/style.css" />
+	
+	 <!-- Css Styles -->
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resource/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resource/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resource/css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resource/css/magnific-popup.css" type="text/css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resource/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resource/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resource/css/style.css" type="text/css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
+	<script	src="<%=request.getContextPath()%>/mainresource/vendors/jquery/jquery-3.2.1.min.js"></script>
+	<decorator:head />
 </head>
-<decorator:head> </decorator:head>
-</head>
-<body id="top">
-<!-- ################################################################################################ -->
 
-<div class="wrapper row1">
-  <header id="header" class="hoc clear"> 
-   
-    <div id="logo" class="fl_left">
-      <a href="${pageContext.request.contextPath}/index.jsp">
-      	<img class="img-fluid"style="width: 90px;" src="${pageContext.request.contextPath}/images/로고.png"/>
-      </a>
-    </div>
-    <nav id="mainav" class="fl_right">
-      	<ul class="clear">
-					<li class="active"><a href="index.jsp">Home</a></li>
-					<li><a class="drop"
-						href="${pageContext.request.contextPath}/eBookCategory.do">전자책</a></li>
-					<li><a class="drop"
-						href="${pageContext.request.contextPath}/audioBookCategory.do">오디오북</a></li>
-					<li><a href="${pageContext.request.contextPath}/clientNotice.do">공지</a></li>
-					<c:if test="${sessionScope.member_id == null }">
-						<li><a
-							href="<%=application.getContextPath()%>/memberLogin.do">로그인</a>
-					</c:if>
+
+<!--================ Start Header Menu Area =================-->
+<header class="header_area">
+	<div class="main_menu">
+	<!-- 상단 남색 메뉴바 (클릭 시 이용권으로 이동 할 수 있도록 만들까 함!) -->
+		<div class="search_input" id="search_input_box">
+			<div class="container">
+				<a class="navbar-brand logo_h" href="<%=application.getContextPath()%>/licenceList.do"><img
+					src="<%=request.getContextPath()%>/resource/img/ticket.png" style="padding-top: 10px;" /></a>
+			</div>
+		</div> 
+
+		<nav class="navbar navbar-expand-lg navbar-light">
+			<div class="container">
+
+				<!-- 로고 부분 -->
+				<a class="navbar-brand logo_h" href="<%=application.getContextPath()%>/index.jsp"><img
+					src="${pageContext.request.contextPath}/resource/img/logo.jpg" alt="" /></a>
+			
+				<!-- 메뉴바 시작! -->
+				<div class="collapse navbar-collapse "
+					id="navbarSupportedContent">
+					   <ul class="nav navbar-nav menu_nav ml-auto">
+						<li class="nav-item active"><a class="nav-link"
+							href="<%=application.getContextPath()%>/index.jsp">홈</a></li>
+							
+						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/eBookCategory.do">전자책</a>
+						</li>
+						
+						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/audioBookCategory.do">오디오북</a>
+						</li>
+						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/createBookMain.do">나만의 도서</a>
+						</li>
+						
+						
+						<li class="nav-item submenu dropdown"><a href=""
+							class="nav-link dropdown-toggle" data-toggle="dropdown"
+							role="button" aria-haspopup="true" aria-expanded="false">고객센터</a>
+							<ul class="dropdown-menu">
+							<li class="nav-item"><a class="nav-link"
+									href="<%=application.getContextPath()%>/clientNotice.do">공지사항</a></li>
+								<li class="nav-item"><a class="nav-link"
+									href="<%=application.getContextPath()%>/clientFAQ.do">FAQ</a></li>
+								<li class="nav-item"><a class="nav-link"
+									href="<%=application.getContextPath()%>/clientQuestion.do">문의사항</a></li>
+								<li class="nav-item"><a class="nav-link"
+									href="<%=application.getContextPath()%>/clientHopeBook.do">희망도서</a></li>
+						
+							</ul></li>
+							<li class="nav-item"><a class="nav-link" ></a></li>
+								<li class="nav-item"><a class="nav-link" ></a></li> <!-- 띄워쓰기용 지우지 마세요 ㅠ -->
+						
+					
+						
+						<c:if test="${sessionScope.member_id == null }">
+						<li class="nav-item"><a class="nav-link" href="<%=application.getContextPath()%>/memberLogin.do">로그인</a>
+						</li>
+						
+						<li class="nav-item"><a class="nav-link" href="<%=application.getContextPath()%>/member/memberJoin.jsp">회원가입</a>
+						</li>
+						</c:if>					
+					</ul>
 					<c:if test="${sessionScope.member_id != null }">
-						<li><a href="${pageContext.request.contextPath }/memberLogout.do">로그아웃</a>
+					<ul class="nav navbar-nav menu_nav ml-auto">
+				
+						<li class="nav-item submenu dropdown"><a href=""
+							class="nav-link dropdown-toggle" data-toggle="dropdown"
+							role="button" aria-haspopup="true" aria-expanded="false">${sessionScope.member_id}</a>님
+							<ul class="dropdown-menu">
+							<li class="nav-item"><a class="nav-link"
+									href="<%=application.getContextPath()%>/member/memberModify.jsp">내 정보수정</a></li>
+								<li class="nav-item"><a class="nav-link"
+									href="<%=application.getContextPath()%>/memberBookMark.do">내 서재</a></li>
+									
+								<li class="nav-item"><a class="nav-link"
+									href="<%=application.getContextPath()%>/memberCreateBookCk.do">나만의 도서 확인</a></li>
+								<li class="nav-item"><a class="nav-link"
+									href="<%=application.getContextPath()%>/memberLicense.do">이용권 내용</a></li>
+							</ul></li>
+							
+						
+							
+						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/memberLogout.do">로그아웃</a>
+						</li>
+					
+					</ul>
 					</c:if>
-					<c:if test="${sessionScope.member_id == null }">
-						<li><a
-							href="<%=application.getContextPath()%>/member/memberJoin.jsp">회원가입</a>
-					</c:if>
-					<c:if test="${sessionScope.member_id != null }">
-						<li><a
-							href="<%=application.getContextPath()%>/memberModify.do">내정보</a>
-					</c:if>
-					<c:if test="${sessionScope.member_id != null }">
-						<li><a
-							href="<%=application.getContextPath()%>/licenceList.do">이용권
-						</a>
-					</c:if>
-				</ul>
-    </nav>
-  </header>
-</div>
+				</div>
+			</div>
+		</nav>
+	</div>
+
+	
+</header>
+<!-- 사이드 메뉴 끝!!!!!!!!!!!! -->
 
 
-<div class="wrapper bgded overlay" style="background-color: white;">
-  <div id="pageintro" class="hoc clear"> 
-   <decorator:body/>
-  </div>
-</div>
-   
+<body>
+	<!--================ 메인 부분~ =================-->
+	<main class="site-main">
+		<decorator:body />
+
+	</main>
 
 
-<div class="wrapper row4">
-  <footer id="footer" class="hoc clear"> 
-  
-    <!-- ################################################################################################ -->
-    <div class="one_third first">
-      <h6 class="heading">Vitae vehicula aliquam</h6>
-      <ul class="nospace btmspace-30 linklist contact">
-        <li><i class="fa fa-map-marker"></i>
-          <address>
-          Street Name &amp; Number, Town, Postcode/Zip
-          </address>
-        </li>
-        <li><i class="fa fa-phone"></i> +00 (123) 456 7890</li>
-        <li><i class="fa fa-envelope-o"></i> info@domain.com</li>
-      </ul>
-      <ul class="faico clear">
-        <li><a class="faicon-facebook" href="#"><i class="fa fa-facebook"></i></a></li>
-        <li><a class="faicon-twitter" href="#"><i class="fa fa-twitter"></i></a></li>
-        <li><a class="faicon-dribble" href="#"><i class="fa fa-dribbble"></i></a></li>
-        <li><a class="faicon-linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
-        <li><a class="faicon-google-plus" href="#"><i class="fa fa-google-plus"></i></a></li>
-        <li><a class="faicon-vk" href="#"><i class="fa fa-vk"></i></a></li>
-      </ul>
-    </div>
-    <div class="one_third">
-      <h6 class="heading">Eget efficitur sodales</h6>
-      <ul class="nospace linklist">
-        <li>
-          <article>
-            <h2 class="nospace font-x1"><a href="#">Ac mauris egestas ipsum</a></h2>
-            <time class="font-xs block btmspace-10" datetime="2045-04-06">Friday, 6<sup>th</sup> April 2045</time>
-            <p class="nospace">At commodo dolor nulla eu eleifend velit eu posuere neque phasellus ut [&hellip;]</p>
-          </article>
-        </li>
-        <li>
-          <article>
-            <h2 class="nospace font-x1"><a href="#">Pretium tempus interdum</a></h2>
-            <time class="font-xs block btmspace-10" datetime="2045-04-05">Thursday, 5<sup>th</sup> April 2045</time>
-            <p class="nospace">Risus luctus dapibus libero in bibendum nulla ut sodales fermentum eros [&hellip;]</p>
-          </article>
-        </li>
-      </ul>
-    </div>
-    <div class="one_third">
-      <h6 class="heading">Pretium eleifend mauris</h6>
-      <p class="nospace btmspace-30">Lobortis aliquam eu placerat dui sed fermentum nibh eu nunc semper non.</p>
-      <form method="post" action="#">
-        <fieldset>
-          <legend>Newsletter:</legend>
-          <input class="btmspace-15" type="text" value="" placeholder="Name">
-          <input class="btmspace-15" type="text" value="" placeholder="Email">
-          <button type="submit" value="submit">Submit</button>
-        </fieldset>
-      </form>
-    </div>
-  </footer>
-</div>
+	<!--================ footer Area=================-->
+	<footer>
+		<div class="footer-bottom">
+			<div class="container">
+				<div class="row d-flex">
+					<p class="col-lg-12 footer-text text-center">
+						Copyright &copy;
+						<script>
+							document.write(new Date().getFullYear());
+						</script>
+						듬북담북 <i class="far fa-thumbs-up" aria-hidden="true"></i> by <a
+							href="https://github.com/skckdgns34/gitrepo" target="_blank">최창훈/
+							김한범/ 손용원/ 조현주/ 한채빈</a>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!--================ End footer Area  =================-->
 
 
+
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script	src="<%=request.getContextPath()%>/resource/js1/bootstrap.min.js"></script>
+	<script	src="<%=request.getContextPath()%>/resource/vendors1/nice-select/js/jquery.nice-select.min.js"></script>
+	<script	src="<%=request.getContextPath()%>/resource/vendors1/owl-carousel/owl.carousel.min.js"></script>
+	<script	src="<%=request.getContextPath()%>/resource/js1/owl-carousel-thumb.min.js"></script>
+	<script	src="<%=request.getContextPath()%>/resource/js1/jquery.ajaxchimp.min.js"></script>
+	<script src="<%=request.getContextPath()%>/resource/js1/mail-script.js"></script>
+	
+	<script src="<%=request.getContextPath()%>/mainresource/vendors/skrollr.min.js"></script>	
+	<script src="<%=request.getContextPath()%>/mainresource/js/main.js"></script>
+	<script src="<%=request.getContextPath()%>/resource/js/jquery.nicescroll.min.js"></script>
+    <script src="<%=request.getContextPath()%>/resource/js/jquery.magnific-popup.min.js"></script>
+    <script src="<%=request.getContextPath()%>/resource/js/jquery.countdown.min.js"></script>
+    <script src="<%=request.getContextPath()%>/resource/js/jquery.slicknav.js"></script>
+    <script src="<%=request.getContextPath()%>/resource/js/mixitup.min.js"></script>
+	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
 </body>
 </html>

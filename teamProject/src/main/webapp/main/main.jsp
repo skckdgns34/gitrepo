@@ -16,15 +16,24 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 	
 <script>
-
-	$(".img_fluid").on("click",function(){
+$(function(){
+	$(".img-fluid").on("click",function(){
 		if (confirm("해당 책 상세페이지로 이동하시겠습니까?")) {
-			location.href = "${pageContext.request.contextPath}/eBookDetail.do?book_no="+ book_no;
+			var book_no = $(this).next().val()
+			var epubyn = $(".epubyn").val()
+			if(epubyn != null && epubyn != ("")){
+				location.href = "${pageContext.request.contextPath}/eBookDetail.do?book_no="+book_no;	
+			}else{
+				location.href = "${pageContext.request.contextPath}/audioBookDetail.do?book_no="+book_no;	
 			}
+			
+		}
 	})
-	function imgClick(book_no) {
+	$(".ti-search").on("click",function(){
 		
-	}
+	})
+})
+	
 </script>
 <style>
 .carousel-item{
@@ -118,6 +127,8 @@ margin-left: 45px;
 
 			<c:if test="${not empty book.book_img }">
 				 <img class="img-fluid" src="filenameDownload.do?filename=${book.book_img}" alt="">
+				 <input type="hidden" value="${book.book_no }">
+				 <input class="epubyn" type="hidden" value="${book.epub_path }">
 			</c:if>              
               <ul class="card-product__imgOverlay">
                 <li><button><i class="ti-search"></i></button></li>
@@ -168,6 +179,7 @@ margin-left: 45px;
 
 			<c:if test="${not empty book.book_img }">
 				 <img class="img-fluid" src="filenameDownload.do?filename=${book.book_img}" alt="">
+				 <input type="hidden" value="${book.book_no }">
 			</c:if>              
               <ul class="card-product__imgOverlay">
                 <li><button><i class="ti-search"></i></button></li>

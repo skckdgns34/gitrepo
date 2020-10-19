@@ -108,7 +108,7 @@ function imgClick(book_no) {
 					<div class="breadcrumb__text">
 						<h4>Menu</h4>
 						<div class="breadcrumb__links">
-							<a href="./index.html">Home</a> <span>전자책</span>
+							<a href="${pageContext.request.contextPath}/main.do">Home</a> <span>전자책</span>
 						</div>
 					</div>
 				</div>
