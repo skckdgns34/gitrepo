@@ -21,7 +21,7 @@ public class FileUpload implements Controller{
 		Part part = request.getPart("upload");
 		String book_img = getFilename(part);
 		String folder = request.getSession().getServletContext().getRealPath("/images"); 
-		String path = "./images";
+		String path = "images";
 		// 파일명 중복체크
 		File renameFile = FileRenamePolicy.rename(new File(folder, book_img));
 		part.write(folder + "/" + renameFile.getName());

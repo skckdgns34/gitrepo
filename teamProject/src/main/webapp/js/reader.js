@@ -3418,6 +3418,7 @@ EPUBJS.Reader.prototype.isSaved = function(bookPath) {
 	}
 
 	storedSettings = localStorage.getItem(this.settings.bookKey);
+	console.dir(storedSettings+"스토리지");
 
 	if(storedSettings === null) {
 		return false;
@@ -4100,6 +4101,18 @@ EPUBJS.reader.ReaderController = function(book) {
 			} else {
 				rendition.prev();
 			}
+			var cfii = reader.rendition.currentLocation().start.cfi;
+			console.log("오른쪽누름");
+			console.log(cfi);
+				$.ajax({
+					url: page+"/Ajax/eBookViewerBookMarkUpdate.do",
+					type:"POST",
+					data: {
+						book_no : book_no,
+						member_no : member_no,
+						book_index : cfii
+					}
+				});
 
 			$prev.addClass("active");
 
@@ -4118,6 +4131,18 @@ EPUBJS.reader.ReaderController = function(book) {
 			} else {
 				rendition.next();
 			}
+			var cfii = reader.rendition.currentLocation().start.cfi;
+			console.log("오른쪽누름");
+			console.log(cfi);
+				$.ajax({
+					url: page+"/Ajax/eBookViewerBookMarkUpdate.do",
+					type:"POST",
+					data: {
+						book_no : book_no,
+						member_no : member_no,
+						book_index : cfii
+					}
+				});
 
 			$next.addClass("active");
 
