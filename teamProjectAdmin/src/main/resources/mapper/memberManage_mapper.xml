@@ -42,6 +42,7 @@
 	<update id="update" parameterType="membermanage">
 		UPDATE
 		MEMBER SET
+		
 		MEMBER_PW = #{member_pw},
 		NICKNAME = #{nickname},
 		MEMBER_EMAIL = #{member_email},
