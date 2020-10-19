@@ -88,6 +88,7 @@
 		}) 
 	}
 	
+	
 </script>
 </head>
 <body>
@@ -149,7 +150,7 @@
               </div>
 							
 							<div class="col-md-12 form-group">
-								<button type="submit" value="submit" class="button button-register w-100">회원가입</button>
+								<button type="submit" value="submit" class="button button-register w-100" id="Se()">회원가입</button>
 							</div>
 						</form>
 					</div>
