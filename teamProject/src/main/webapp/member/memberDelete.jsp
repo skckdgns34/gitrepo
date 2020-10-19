@@ -20,8 +20,6 @@ body {
 	}
 	
 	#btndel {
- 	background-color: #002347;
-	color: white;
 	border: 1px solid white;
 	padding: 9px 20px;
   	font-size: 12px;
@@ -62,6 +60,13 @@ $(function(){
 			return false;
 		} 
 	}
+	 
+	 function Se() 
+		{
+			window.document.location.href = "${pageContext.request.contextPath}/memberDelete.do"
+			alert("회원탈퇴가 완료되었습니다. ")
+			return;
+		}
 </script>
 </head>
 <body>
@@ -92,7 +97,7 @@ $(function(){
 		<input type="hidden" name="pwcheck" id="pwcheck">
 		<input type="hidden" name="member_id" id="member_id" value="${member_id }">
 		
-		<button id="btndel">탈퇴</button>
+		<button id="btndel" onclick="Se()">탈퇴</button>
 
 	</form>
 		<button id="btns" onclick="location='memberModify.jsp'">취소</button>
