@@ -44,19 +44,11 @@ public class ReportController {
 		 
 		 return "redirect:/memberManageBlackList.ad";
 	 }
-	/* 
-	 @RequestMapping(value="/memberManageReportModify.ad", method = RequestMethod.POST)
-	public String reportUpdate(Report report, HttpServletRequest request) {
-		
-		 return null;
-	 }
-	
-	 
-	
-	@RequestMapping(value="/memberManageBlackListDelete.ad", method = RequestMethod.GET)
+	//신고 삭제
+	@RequestMapping(value="/memberManageReportDelete.ad", method = RequestMethod.GET)
 	public String blackDelete(Report report, HttpServletRequest request) {
+		reportService.delete(report);
+		return "redirect:/memberManageReportList.ad";
 		
-		return "redirect:/memberManageBlackList.ad";
-		
-	} */
+	} 
 }

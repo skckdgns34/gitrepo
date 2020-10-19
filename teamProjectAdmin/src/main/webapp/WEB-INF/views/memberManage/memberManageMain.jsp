@@ -33,10 +33,15 @@
 
 	function modifypage() //수정 ㅡ
 	{
+		if (confirm("수정하시겠습니까?") == true){
 		window.document.location.href = "memberManageModifyForm.ad?member_no="
 				+ $('input[name="user_CheckBox"]:checked').val();
-		
-		return;
+		document.form.submit();
+		}else{   //취소
+			$('user_CheckBox').attr('checked',false);
+			window.document.location.href = "memberManageMain.ad";
+		    return;
+		}
 	}
 
 	function deletepage(){ //삭제
@@ -45,7 +50,9 @@
 				+ $('input[name="user_CheckBox"]:checked').val();
 		document.form.submit();
 		}else{   //취소
-		    return "/memberManageMain.ad";
+			$('user_CheckBox').attr('checked',false);
+			window.document.location.href = "memberManageMain.ad";
+		    return;
 		}
 	}
 	

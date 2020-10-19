@@ -18,7 +18,7 @@
 		Q.QUESTION_FILE,
 		Q.QUESTION_KIND,
 		C.CODE_VALUE,
-		NVL(Q.QUESTION_STATUS,'n') question_status
+		NVL(Q.QUESTION_STATUS,'답변대기') question_status
 		
 		FROM QUESTIONS Q, MEMBER M, COMMON C
 		WHERE
@@ -62,7 +62,7 @@
 	</update>
 
 <update id="updateStatus">
-		update questions set question_status = 'y'
+		update questions set question_status = '답변완료'
 		 where QUESTION_NO = #{question_no}
 	</update>
 	
