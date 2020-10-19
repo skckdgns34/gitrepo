@@ -71,7 +71,7 @@ public class CreateBookDAO {
 		Books resultVO = null;
 			try {
 				conn = ConnectionManager.getConnnect();
-				String sql = "select rownum, a.title, a.views, b.nickname, a.book_no " + 
+				String sql = "select rownum, a.title, a.views, b.nickname, a.book_no, a.book_img " + 
 						" from (select * from books where views is not null order by views desc) a, member b " + 
 						" where a.member_no = b.member_no and rownum<=5";
 				pstmt = conn.prepareStatement(sql);
@@ -83,6 +83,7 @@ public class CreateBookDAO {
 					resultVO.setViews(rs.getString(3));
 					resultVO.setWriter(rs.getString(4));
 					resultVO.setBook_no(rs.getString(5));
+					resultVO.setBook_img(rs.getString(6));
 					list.add(resultVO);
 				}
 			} catch (Exception e) {

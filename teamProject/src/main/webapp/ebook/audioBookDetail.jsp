@@ -141,7 +141,8 @@
 	}
 
 	function goRead() { //읽기버튼이 생성되면 읽는페이지로 이동
-		
+		$.post("audioBookViewUpdate.do", {book_no: '${book[0].book_no}'
+    	});
 		window.open(
 						'${pageContext.request.contextPath}/audioBookReading.do?book_no=${book[0].book_no}',
 						'audioBook', 'width=1200px,height=900px,scrollbars=yes');
