@@ -139,7 +139,7 @@ h2 {
 									<br> <input type="text" class="form-control"
 										value="${sessionScope.nickname }" readonly>
 								</div>
-
+							
 								<select name="genre" id="genre">
 									<option value="">장르 선택</option>
 									<c:forEach items="${genreList }" var="genre">

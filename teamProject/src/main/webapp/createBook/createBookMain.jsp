@@ -196,7 +196,7 @@
                             <h3 class="widget_title">Popular Books</h3>
                              <c:forEach items="${userBookRank }" var="list">
                             <div class="media post_item">
-                                ${list.no }<img src="filenameDownload.do?filename=${list.book_img}">
+                                ${list.no }<img src="filenameDownload.do?filename=${list.book_img}" style="width:100px; padding-left:20px" >
                             	<input type="hidden" value="${list.book_no }">
                                 
 									
