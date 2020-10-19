@@ -290,7 +290,7 @@ span {
 <body>
 	<!-- 리뷰 신고 페이지 -->
 	<div id="dialog-form" title="신고">
-		<p class="validateTips">신고하실 내용과 한범이를 고르세요</p>
+		<p class="validateTips">신고하실 내용을 적어주세요</p>
 		<fieldset>
 			<input type="hidden" id="decla_member_no"> <input
 				type="hidden" id="decla_reported_member"> <input
