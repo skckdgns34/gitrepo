@@ -121,7 +121,7 @@ public class BooksController  {
 		
 		//Audiobook 업로드
 		MultipartFile audioFile = multipartRequest.getFile("audio_path1");
-		String path2 = "c:/전자도서관/음성책";
+		String path2 = "C:\\Users\\admin\\git\\gitrepo\\mediaServer\\WebContent\\audio";
 		if(audioFile !=null && !audioFile.isEmpty() && audioFile.getSize()>0) {
 			fileName = audioFile.getOriginalFilename();
 			//파일명 중복체크
@@ -130,6 +130,8 @@ public class BooksController  {
 			books.setAudio_path(renameFile.getName());
 		}
     	//등록처리
+		Employees emp = (Employees) request.getSession().getAttribute("login");
+		books.setEmp_no(emp.getEmp_no());
     	booksService.insertAudio(books);
     	return "redirect:/bookList.ad";
     }

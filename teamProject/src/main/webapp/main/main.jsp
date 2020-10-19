@@ -41,6 +41,18 @@ margin-left: 45px;
 }
 </style>
 <link rel="stylesheet" href="layout/styles/slider.css">
+
+<style>
+
+span{
+    font-weight: bold;
+}
+
+a{
+    font-weight: bold;
+    color: #002347;
+}
+</style>
 </head>
 <body>
 	<section id="hhh">
