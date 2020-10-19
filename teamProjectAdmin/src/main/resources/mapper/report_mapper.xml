@@ -6,17 +6,19 @@
 	  
 <!-- 전체조회 -->    
 <select id="selectAll" parameterType="report" resultType="report">
-  SELECT 
-			  MEMBER_NO, 
-			  DECLARATION_CONTENT, 
-			  DECLARATION_DATE, 
-			  DECLARATION_CODE, 
-			  BOOK_NO, 
-			  REVIEW_NO, 
-			  DECLARATION_NO, 
-			  REPORTED_MEMBER
-	FROM DECLARATION 
-	WHERE REPORTED_MEMBER NOT IN (SELECT MEMBER_NO FROM BLACKLIST)
+ SELECT 
+			  D.MEMBER_NO, 
+			  D.DECLARATION_CONTENT, 
+			  D.DECLARATION_DATE, 
+			  D.DECLARATION_CODE, 
+			  D.BOOK_NO, 
+			  D.REVIEW_NO, 
+			  D.DECLARATION_NO, 
+			  D.REPORTED_MEMBER,
+        C.CODE_VALUE
+	FROM DECLARATION D, COMMON C
+WHERE D.DECLARATION_CODE = C.CODE
+ORDER BY DECLARATION_NO
 	</select>
 	
  <!-- 리뷰 한 건 조회  --> 
@@ -52,13 +54,27 @@
 				blacklist_reason,
 				member_no,
 				limit_date)
-				values 
-				(
-				#{blacklist_no}, 
-				(select DECLARATION_CODE from DECLARATION where DECLARATION_no=#{declaration_no}),
+				values	(#{blacklist_no},(select DECLARATION_CODE from DECLARATION where DECLARATION_no=#{declaration_no}),
 				(select REPORTED_MEMBER from DECLARATION where DECLARATION_no=#{declaration_no}),
 				SYSDATE+7
 		)
 	</insert>
+
+	<!-- 삭제 -->
+	<update id="delete">
+		UPDATE
+		DECLARATION SET
+		DECLARATION_CONTENT = null,
+		DECLARATION_DATE = null,
+		DECLARATION_CODE = null,
+		BOOK_NO = null,
+		REVIEW_NO = null,
+		
+		REPORTED_MEMBER = null
+		WHERE DECLARATION_NO= #{declaration_no}
+
+	</update>
+	
+	
 
 </mapper>

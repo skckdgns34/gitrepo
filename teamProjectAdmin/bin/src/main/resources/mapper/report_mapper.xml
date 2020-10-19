@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dbal.app.memberManage.mapper.ReportDAO">
+	  
+<!-- 전체조회 -->    
+<select id="selectAll" parameterType="report" resultType="report">
+  SELECT 
+			  MEMBER_NO, 
+			  DECLARATION_CONTENT, 
+			  DECLARATION_DATE, 
+			  DECLARATION_CODE, 
+			  BOOK_NO, 
+			  REVIEW_NO, 
+			  DECLARATION_NO, 
+			  REPORTED_MEMBER
+	FROM DECLARATION 
+	WHERE REPORTED_MEMBER NOT IN (SELECT MEMBER_NO FROM BLACKLIST)
+	</select>
+	
+ <!-- 리뷰 한 건 조회  --> 
+<select id="selectOne"  parameterType="report" resultType="report">
+ SELECT
+	 CONTENTS
+     FROM REVIEW
+     WHERE REVIEW_NO = #{review_no}		
+</select>
+
+
+
+<!--블랙리스트 등록-->
+<update id="updateNo">
+		update seq set no = no+1 where tablename='blacklist'
+
+	</update>
+	
+	
+	<insert id="insert" parameterType="report">
+
+		<selectKey keyProperty="blacklist_no" resultType="string"
+			order="BEFORE">
+			SELECT NO
+			FROM SEQ
+			WHERE TABLENAME='blacklist'
+		</selectKey>
+
+		insert 
+		into 
+		blacklist
+				(blacklist_no,
+				blacklist_reason,
+				member_no,
+				limit_date)
+				values 
+				(
+				#{blacklist_no}, 
+				(select DECLARATION_CODE from DECLARATION where DECLARATION_no=#{declaration_no}),
+				(select REPORTED_MEMBER from DECLARATION where DECLARATION_no=#{declaration_no}),
+				SYSDATE+7
+		)
+	</insert>
+
+</mapper>

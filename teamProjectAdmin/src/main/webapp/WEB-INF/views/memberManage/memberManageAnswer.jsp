@@ -86,6 +86,7 @@ function show() {
             <div id="test" style="display:none">
              <form class="form-signin" method="post" name="frm" id="frm"
 					action="memberManageAnswerInsert.ad" onsubmit="return inputCheck()" >
+				 <input type="hidden" name="answer_writer" value="${login.emp_id}">
     		<div class="form-label-group" >
 	               <input  type="hidden" name="question_no" value="${list.question_no}">                
 	               <label for="inputAnswer_contents">답글</label><br>
