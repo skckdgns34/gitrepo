@@ -152,8 +152,6 @@ h2 {
 										<option value="${chapter.chapter}">${chapter.chapter}</option>
 									</c:forEach>
 								</select>
-								
-								<button id="addChapter" class="button button-login w-20">추가</button>
 								<div class="form-group col-lg-8">
 									<h2 style="margin-bottom: 0px;">제목</h2>
 									<br>

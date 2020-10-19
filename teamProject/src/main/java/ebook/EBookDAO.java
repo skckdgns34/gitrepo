@@ -1136,4 +1136,24 @@ public class EBookDAO
 			ConnectionManager.close(null, pstmt, conn);
 		}
 	}
+	public String selectEpubPath(String book_no) {
+		String epub = null;
+		ResultSet rs = null;
+		
+		try{
+			conn = ConnectionManager.getConnnect();
+			String sql = "select epub_path from books where book_no = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, book_no);
+			rs = pstmt.executeQuery();
+				if(rs.next()) {
+					epub = rs.getString("epub_path");
+				}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionManager.close(rs, pstmt, conn);
+		}
+		return epub;
+	}
 }

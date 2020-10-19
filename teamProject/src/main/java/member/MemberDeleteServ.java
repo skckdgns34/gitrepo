@@ -27,7 +27,8 @@ public class MemberDeleteServ implements Controller
 		
 		session.invalidate();
 		
-		request.getRequestDispatcher("member/Bye.jsp").forward(request, response);
+		response.sendRedirect(request.getContextPath()+"/main.do");
+
 	}
 
 }

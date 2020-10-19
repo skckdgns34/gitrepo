@@ -21,6 +21,12 @@
    	<description></description>
    	<servlet-class>main.MainSearchResultAjax</servlet-class>
    </servlet>
+   <servlet>
+   	<servlet-name>EpubFileDownloadServlet</servlet-name>
+   	<display-name>EpubFileDownloadServlet</display-name>
+   	<description></description>
+   	<servlet-class>common.EpubFileDownloadServlet</servlet-class>
+   </servlet>
    <servlet-mapping>
       <servlet-name>front</servlet-name>
       <url-pattern>*.do</url-pattern>
@@ -32,6 +38,10 @@
    <servlet-mapping>
    	<servlet-name>MainSearchResultAjax</servlet-name>
    	<url-pattern>/MainSearchResultAjax</url-pattern>
+   </servlet-mapping>
+   <servlet-mapping>
+   	<servlet-name>EpubFileDownloadServlet</servlet-name>
+   	<url-pattern>/EpubFileDownloadServlet</url-pattern>
    </servlet-mapping>
       <filter>
       <filter-name>sitemesh</filter-name>

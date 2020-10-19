@@ -36,10 +36,9 @@
 				listMarkName.push(list[i].bookmark_contents);
 			}
 			console.dir(listBook);
-			
             document.onreadystatechange = function () {
               if (document.readyState == "complete") {
-                window.reader = ePubReader("용원.epub", { //url 경로
+                window.reader = ePubReader("/mediaServer/epub/${epub_path}", {   //url 경로
                    //restore: true,
                    bookmarks : listBook
                  });
