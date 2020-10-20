@@ -379,7 +379,7 @@ span {
 									<!-- 장르명 -->
 									<!-- 카테고리 명이 나왔으면 좋겠는데 ㅠㅠㅠ 수정해주기-->
 									<li><a class="justify-content-between d-flex" href="#">
-											<p>Category</p> <span class="or">${book[0].genre}</span>
+											<p>장르</p> <span class="or">${book[0].genre}</span>
 									</a></li>
 
 									<!-- 등록일 -->
@@ -393,16 +393,24 @@ span {
 									<li><a class="justify-content-between d-flex" href="#">
 											<p>조회수</p> <span class="or">${book[0].views}</span>
 									</a></li>
+									<!-- 베스트 셀러 여부 -->
+									<li>
+										<a class="justify-content-between d-flex" href="#">
+											<c:if test="${book[0].best_book == 'Y'}">
+												<p style="color : red;">베스트 셀러</p> <span class="or"></span>
+											</c:if>
+											<c:if test="${book[0].best_book == 'N'}">
+												
+											</c:if>
+										</a>
+									</li>
+									
 									<!-- 소개글 -->
 									<li><a href="#">
 											<p>소개글</p> <span class="or"
 											style="max-width: 400px; text-align: end;">${book[0].introduction}</span>
 									</a></li>
 
-									<!-- 베스트 셀러 여부 -->
-									<li><a class="justify-content-between d-flex" href="#">
-											<p>베스트 셀러 여부</p> <span class="or">${book[0].best_book}</span>
-									</a></li>
 								</ul>
 							</aside>
 							<hr>
