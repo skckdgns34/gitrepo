@@ -722,7 +722,7 @@ public class EBookDAO
 		ResultSet rs = null;
 		try {
 			conn = ConnectionManager.getConnnect();
-			String sql = "select book_no, title, book_img from books where best_book='y' and rownum<6 and epub_path is not null order by book_no desc";
+			String sql = "select book_no, title, book_img from books where best_book='Y' and rownum<6 and epub_path is not null order by book_no desc";
 			pstmt = conn.prepareStatement(sql);
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
@@ -1155,5 +1155,42 @@ public class EBookDAO
 			ConnectionManager.close(rs, pstmt, conn);
 		}
 		return epub;
+	}
+	
+	public void CreateEpubAfterInsert(String my_title, String nickname, String epub_path,String member_no,String genre,String image_uri,String my_summary,String my_introduction) {
+		int no =0;
+		ResultSet rs = null;
+		try {
+			conn = ConnectionManager.getConnnect();
+			conn.setAutoCommit(false);
+			String seqSql = "select no from seq where tablename = 'books'";
+			Statement stmt = conn.createStatement();
+			rs = stmt.executeQuery(seqSql);
+			rs.next();
+			no = rs.getInt(1);
+			
+			
+			seqSql = "update seq set no = no + 1 where tablename = 'books'";
+			stmt = conn.createStatement();
+			stmt.executeUpdate(seqSql);
+			String sql = "insert into books(book_no , title, writer, publication_date, epub_path, introduction, summary, member_no, book_img, genre, registration_date)"
+					+ " values(?,?,?,sysdate,?,?,?,?,?,?,sysdate)";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, no);
+			pstmt.setString(2, my_title);
+			pstmt.setString(3, nickname);
+			pstmt.setString(4, epub_path);
+			pstmt.setString(5, my_introduction);
+			pstmt.setString(6, my_summary);
+			pstmt.setString(7, member_no);
+			pstmt.setString(8, image_uri);
+			pstmt.setString(9, genre);
+			pstmt.executeUpdate();
+			conn.commit();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionManager.close(null,pstmt,conn);
+		}
 	}
 }

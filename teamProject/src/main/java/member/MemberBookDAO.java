@@ -136,7 +136,7 @@ public class MemberBookDAO {	//내서재 등 관련
 					+ " WHERE b.book_no = l.book_no"
 					+ " AND m.member_no = l.member_no"
 					+ " AND c.code = b.genre "
-					+ " AND wish = '찜'"
+					+ " AND wish = 'y'"
 					+ " AND m.member_no = ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, booksVO.getMember_no());
