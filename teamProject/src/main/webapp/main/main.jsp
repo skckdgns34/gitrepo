@@ -29,6 +29,10 @@ $(function(){
 			
 		}
 	})
+	$(".ti-Heart").on("click",function(){
+		var w_book_no = $(this).parent().find('input[type=hidden]').val();
+		$.post("mainWish.do", {book_no: w_book_no});
+	})
 })
 	
 </script>
@@ -142,7 +146,7 @@ a{
               <ul class="card-product__imgOverlay">
                 <li><button><i class="ti-search"></i></button></li>
                 <li><button><i class="ti-shopping-cart"></i></button></li>
-                <li><button><i class="ti-heart"></i></button></li>
+                <li><button class="ti-Heart"><i class="ti-heart"></i><input type="hidden" value="${book.book_no }"></button></li>
               </ul>
             </div>
             <div class="card-body">
@@ -194,7 +198,7 @@ a{
               <ul class="card-product__imgOverlay">
                 <li><button><i class="ti-search"></i></button></li>
                 <li><button><i class="ti-shopping-cart"></i></button></li>
-                <li><button><i class="ti-heart"></i></button></li>
+                <li><button class="ti-Heart"><i class="ti-heart"></i><input type="hidden" value="${book.book_no }"></button></li>
               </ul>
             </div>
             <div class="card-body">
@@ -239,7 +243,7 @@ a{
               <ul class="card-product__imgOverlay">
                 <li><button><i class="ti-search"></i></button></li>
                 <li><button><i class="ti-shopping-cart"></i></button></li>
-                <li><button><i class="ti-heart"></i></button></li>
+                <li><button class="ti-Heart"><i class="ti-heart"></i><input type="hidden" value="${book.book_no }"></button></li>
               </ul>
             </div>
             <div class="card-body">
@@ -284,7 +288,7 @@ a{
               <ul class="card-product__imgOverlay">
                 <li><button><i class="ti-search"></i></button></li>
                 <li><button><i class="ti-shopping-cart"></i></button></li>
-                <li><button><i class="ti-heart"></i></button></li>
+                <li><button class="ti-Heart"><i class="ti-heart"></i><input type="hidden" value="${book.book_no }"></button></li>
               </ul>
             </div>
             <div class="card-body">
@@ -329,7 +333,7 @@ a{
               <ul class="card-product__imgOverlay">
                 <li><button><i class="ti-search"></i></button></li>
                 <li><button><i class="ti-shopping-cart"></i></button></li>
-                <li><button><i class="ti-heart"></i></button></li>
+                <li><button class="ti-Heart"><i class="ti-heart"></i><input type="hidden" value="${book.book_no }"></button></li>
               </ul>
             </div>
             <div class="card-body">
@@ -374,7 +378,7 @@ a{
 			<ul class="card-product__imgOverlay">
                 <li><button><i class="ti-search"></i></button></li>
                 <li><button><i class="ti-shopping-cart"></i></button></li>
-                <li><button><i class="ti-heart"></i></button></li>
+                <li><button class="ti-Heart"><i class="ti-heart"></i><input type="hidden" value="${book.book_no }"></button></li>
               </ul>
             </div>
             <div class="card-body">
@@ -419,7 +423,7 @@ a{
               <ul class="card-product__imgOverlay">
                 <li><button><i class="ti-search"></i></button></li>
                 <li><button><i class="ti-shopping-cart"></i></button></li>
-                <li><button><i class="ti-heart"></i></button></li>
+                <li><button class="ti-Heart"><i class="ti-heart"></i><input type="hidden" value="${book.book_no }"></button></li>
               </ul>
             </div>
             <div class="card-body">
@@ -463,7 +467,7 @@ a{
 			<ul class="card-product__imgOverlay">
                 <li><button><i class="ti-search"></i></button></li>
                 <li><button><i class="ti-shopping-cart"></i></button></li>
-                <li><button><i class="ti-heart"></i></button></li>
+                <li><button class="ti-Heart"><i class="ti-heart"></i><input type="hidden" value="${book.book_no }"></button></li>
               </ul>
             </div>
             <div class="card-body">

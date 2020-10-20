@@ -284,4 +284,25 @@ public class CreateBookDAO {
 			ConnectionManager.close(conn);
 		}
 	}
+
+	public ArrayList<String> selectAllTitle() {
+		ArrayList<String> list = new ArrayList<String>();
+		ResultSet rs = null;
+		String result = null;
+		try {
+			conn = ConnectionManager.getConnnect();
+			String sql = "select title from books";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				result = rs.getString(1);
+				list.add(result);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionManager.close(rs, pstmt, conn);
+		}
+		return list;
+	}
 }

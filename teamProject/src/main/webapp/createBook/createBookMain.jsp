@@ -7,7 +7,22 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
 
+#summary{
+ 
+  font-size: 15px;
+  font-weight: 500;
+  display:inline-block;
+  width:368px;
+  height:100px; 
+  overflow: hidden; 
+  text-overflow: ellipsis;
+  border:1px solid transparent; 
+ 
+
+}
+</style>
 <script>
 	$(function() {
 		$("#genre").on("change",function() {
@@ -18,7 +33,7 @@
 
 		$("img").on("click",function() {
 			var book_no = $(this).next().val()
-			location.href = "${pageContext.request.contextPath}/eBookDetail.do?book_no="+ book_no;
+			location.href = "${pageContext.request.contextPath}/eBookDetail.do?book_no="+ book_no+"&m_book=y";
 		}).css('cursor', 'pointer');
 
 		$(".blog_details").hover(function() {
@@ -27,7 +42,7 @@
 		
 		$(".blog_details").on("click",function() {
 			var book_no = $(this).parent().parent().find("input[type=hidden]").val()
-			location.href = "${pageContext.request.contextPath}/eBookDetail.do?book_no="+ book_no;
+			location.href = "${pageContext.request.contextPath}/eBookDetail.do?book_no="+ book_no+"&m_book=y";
 		}).css('cursor', 'pointer');
 		
 		$("#write").on("click",function() {
@@ -53,7 +68,7 @@
 		//
 		$(".tr").on("click",function() {
 			var book_no = $(this).find('input[type=hidden]').val();
-			location.href = "${pageContext.request.contextPath}/eBookDetail.do?book_no="+ book_no;
+			location.href = "${pageContext.request.contextPath}/eBookDetail.do?book_no="+ book_no+"&m_book=y";
 		});
 	});
 </script>
@@ -131,7 +146,7 @@
                                         </a>
                                         <p><fmt:formatDate value="${publication_date}"  pattern="yyyy/MM/dd"/></p>
                                  		 <p>${userBook.code_value }</p>
-                                 		 <p>${userBook.summary }</p>
+                                 		 <p id="summary">${userBook.summary }</p>
                                         <a href="${pageContext.request.contextPath}/eBookDetail.do?book_no=${userBook.book_no}" class="blog_btn">View More</a>
                                     </div>
 

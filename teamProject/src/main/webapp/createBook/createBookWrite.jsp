@@ -14,14 +14,27 @@
 	src="https://cdn.ckeditor.com/ckeditor5/12.3.0/classic/ckeditor.js"></script>
 <script>
 $(function(){
+
 	$("#cancel").on("click",function(){
 		alert("취소했슴다")
 		location.href="${pageContext.request.contextPath}/createBookMain.do";
 	});
 	$("#save").on("click",function(){
-		alert("저장됐슴다.")
+		alert("저장됐슴다.");
 		$("form").attr("action", "${pageContext.request.contextPath}/createBookSave.do");
 	});
+	
+	$("button[name=titleck]").on("click",function(){
+		var my_title = $("#my_title").val();
+		var titleList = '${titleList}';
+		var n = titleList.includes(my_title);
+		if(n){
+			alert("중복되는 제목입니다.");
+		}else{
+			alert("사용가능 한 제목.");
+		}
+	});
+	
 	$("#submit").on("click",function(){
 		alert("등록됐슴다.")
 		$("form").attr("action", "${pageContext.request.contextPath}/eBookEpubCreate.do");
@@ -37,7 +50,7 @@ $(function(){
 	$("#chapter").on("change",function(){
 		var chapter = $(this).val();
 		var my_title = $("#my_title").val();
-		
+
 		$.ajax({
 			url : "${pageContext.request.contextPath}/Ajax/createBookChapterChangeAjaxServ.do",
 			type: "POST",
@@ -168,12 +181,14 @@ h2 {
 											class="form-control" name="my_title"
 											placeholder="제목을 입력 해 주세요."
 											id="my_title">
+										<button class="button button-login w-20" name="titleck">중복확인</button>
 									</c:if>
 									<c:if test="${not empty title }">
 										<input style="width: 600px;" type="text"
 											class="form-control" name="my_title"
 											placeholder="제목을 입력 해 주세요."
 											id="my_title" value="${title }" readonly>
+										<button class="button button-login w-20" name="titleck">중복확인</button>
 									</c:if>
 								</div>
 								<div class="form-group col-lg-8">

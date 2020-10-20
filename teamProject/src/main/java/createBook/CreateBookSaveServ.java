@@ -29,6 +29,10 @@ public class CreateBookSaveServ  implements Controller {
 		String chapter = book.getChapter();
 		book.setMember_no(member_no);
 		book.setMy_contents(contents);
+		
+		
+				
+		
 		if(chapter!=null && !chapter.equals("")) {
 			CreateBookDAO.getInstance().updateUserBookDetail(book);
 		}else{
@@ -37,6 +41,7 @@ public class CreateBookSaveServ  implements Controller {
 		
 		ArrayList<Common> genreList=  CommonDAO.getInstance().selectAllGenre();
 		ArrayList<Mywriting> chapterList = CreateBookDAO.getInstance().selectAllChapter(member_no, book.getMy_title());
+		
 		
 		request.setAttribute("genreList", genreList);
 		request.setAttribute("chapterList", chapterList);
