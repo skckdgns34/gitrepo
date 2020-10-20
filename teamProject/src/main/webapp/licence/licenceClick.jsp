@@ -15,7 +15,7 @@ IMP.request_pay({
     pay_method : 'card',
     merchant_uid : 'merchant_' + new Date().getTime(),
     name : '${p_name}',//오른쪽에 상품명
-    amount :100, //'${pay}' //판매 가격
+    amount :'${pay}', //판매 가격
     buyer_email : 'iamport@siot.do',
     buyer_name : '구매자이름',
     buyer_tel : '010-1234-5678',
