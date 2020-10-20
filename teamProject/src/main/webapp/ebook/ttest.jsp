@@ -23,7 +23,6 @@
 		reviewAllList();
 		reDeclarationBtn();
 	});
-
 	//리뷰작성하면 바로 리뷰리스트에 맨위에다가 붙이기
 	function reviewInsert() {
 		var review = $("#reviewArea").val();
@@ -42,7 +41,6 @@
 			}
 		})
 	}
-
 	function reviewAllList(page) { //리뷰전체조회
 		$
 				.ajax({
@@ -58,7 +56,6 @@
 					}
 				})
 	}
-
 	function reviewUpdateBefore() { //수정버튼 누르면 이걸로옴
 		var reviewContents = $(event.target).closest("#review_no").next()
 				.html(); //컨텐츠에 들어가있는 값가져옴
@@ -74,7 +71,6 @@
 		$(event.target).hide();
 		$(event.target).next().hide();
 	}
-
 	function reviewUpdateBeforeCancel() { // 수정하기 눌러서 뜨는 버튼들 중에 취소누르면 수정하는거 없애는거
 		$(event.target).parent().find("#reUpBtn").show();
 		$(event.target).parent().find("#reDelBtn").show();
@@ -83,7 +79,6 @@
 		$(event.target).prevAll("#review_contents").show();
 		$(event.target).hide();
 	}
-
 	function reviewUpdate() { //리뷰수정
 		var review_no = $(event.target).prevAll("#review_no").data("review_no");
 		var page = $(".pagination").find(".active").html();
@@ -107,17 +102,15 @@
 					}
 				})
 	}
-
 	function reviewDelete() { //리뷰삭제
 		var review_no = $(event.target).closest("#review_no").data("review_no");
 		var delpage = $(event.target).closest(".review_item");
 		var page = $(".pagination").find(".active").html();
 		var paging = $.trim(page);
-
 		console.log(paging + "가져와서자른거");
 		console.log(review_no);
-
-		$.ajax({
+		$
+				.ajax({
 					url : "${pageContext.request.contextPath}/Ajax/eBookReviewDelete.do",
 					type : "POST",
 					data : {
@@ -129,7 +122,9 @@
 					}
 				})
 	}
-
+	function m_btnHideNShow(){
+	}
+	
 	function btnHideNShow() {
 		var m_book = '${m_book}';
 		if ("${checkCode}" != "") { //이용자가 티켓코드가 없을시 결재버튼 보여주기 & 있으면 읽기버튼보여주기
@@ -140,21 +135,18 @@
 			$("#check").show();
 			if ("${member_no}" == null) {
 				$("#check").hide();
+			}else if(m_book == 'y'){
+				$("#check").hide();
+				$("#read").show();
 			}
 		}
-
 	}
-
 	function goRead() { //읽기버튼이 생성되면 읽는페이지로 이동
-
 	}
-
 	function reviewLogin() { //하트 추천기능  로그인안하고 누를려고 하면 로그인 표시 보여주는거
 		location.href = "${pageContext.request.contextPath}/memberLogin.do";
 	}
-
 	var check = "${check}"
-
 	function btnScore() { // 추천버튼 클릭시(추천 추가 또는 추천 제거)
 		$("#rec_update")
 				.click(
@@ -184,10 +176,8 @@
 									})
 						})
 	}
-
 	var dialog;
 	$(function() {
-
 		dialog = $("#dialog-form")
 				.dialog(
 						{
@@ -241,7 +231,6 @@
 						} */
 						});
 	})
-
 	function reDeclarationBtn() {
 		var member_no = "${member_no}";
 		var reported_member = $(event.target).closest("#review_no").data(
@@ -252,7 +241,6 @@
 		console.log(book_no + "북넘버임")
 		console.log(reported_member + "신고당하는애");
 		console.log(review_no + "리뷰넘버");
-
 		$("#decla_member_no").val(member_no);
 		$("#decla_reported_member").val(reported_member);
 		$("#decla_book_no").val(book_no);
@@ -267,24 +255,18 @@
 a {
 	color: black;
 }
-
 span {
 	color: black;
 	text-align: end;
 }
-
 .desc {
 	min-width: 300px;
 	padding-left: 25%;
 	text-align: center;
 }
-
 .s_product_text {
 	margin-top: 10px;
 }
-
-
-
 </style>
 </head>
 <body>
@@ -411,7 +393,7 @@ span {
 
 								<c:if test="${ member_no == null }">
 							
-								추천 및 읽기 기능은 <button type="button" id="newLogin">
+								추천 기능은 <button type="button" id="newLogin">
 										<b class="w3-text-blue" onclick="reviewLogin()">로그인</b>
 									</button> 후 사용 가능합니다.
 
@@ -421,7 +403,9 @@ span {
 								</c:if>
 
 								<c:if test="${ member_no != null }">
+
 									<c:if test="${check == 1}">
+
 										<button class="w3-button w3-black w3-round" id="rec_update">
 											<i class="fa fa-heart" style="font-size: 16px; color: red"></i>
 											&nbsp;<span class="rec_count">${count}</span>
@@ -443,15 +427,15 @@ span {
 									<form
 										action="${pageContext.request.contextPath}/eBookReading.do"
 										method="post">
-										<input type="hidden" name="reading_book_no" value="${book[0].book_no}" />
-										<input type="hidden" name="reading_member_no" value="${member_no}" />
-										<c:if test="${not empty member_no}">
-											<button class="button primary-btn" id="read" style="width: 250px; height: 80px;">읽기</button>
-										</c:if>
+										<input type="hidden" name="reading_book_no"
+											value="${book[0].book_no}" /> <input type="hidden"
+											name="reading_member_no" value="${member_no}" />
+										<button class="button primary-btn" id="read"
+											style="width: 250px; height: 80px;">읽기</button>
 									</form>
-									<c:if test="${not empty member_no}">
-										<button class="button primary-btn" id="check" onclick="licence()" style="width: 250px; height: 80px;">결제</button>
-									</c:if>
+
+									<button class="button primary-btn" id="check"
+										onclick="licence()" style="width: 250px; height: 80px;">결제</button>
 								</div>
 							</div>
 							<!-- end product count -->
@@ -536,3 +520,4 @@ span {
 	
 </body>
 </html>
+

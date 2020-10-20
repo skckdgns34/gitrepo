@@ -78,10 +78,14 @@ function button_event(){
                <label for="inputlastAccess">최종접속일</label>
                 <input type="text" name="last_access_date" value="${member.last_access_date}" style="margin-left:10%;">
               </div>  
-              <div class="form-label-group">
-               <label for="inputmemberGender">회원 성별</label>
-                <input type="text" name="gender" value="${member.gender}" style="margin-left:10%;">
-              </div> 
+              
+              <div class="col-md-12 form-group">
+				<label for="gender">성별:</label>
+					<input type="radio" id="male"name="gender" value="male">
+					<label for="male">남</label>
+					<input type="radio" id="female" name="gender" value="female">
+					<label for="female">여</label><br>
+              </div>
               <div class="form-label-group">
                <label for="inputTicketCode">보유이용권</label>
                 <input type="text" name="ticket_code" value="${member.ticket_code}" style="margin-left:10%;">
