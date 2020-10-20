@@ -27,8 +27,6 @@ $(function(){
 		$("form").attr("action", "${pageContext.request.contextPath}/createBookInsert.do");
 	});
 	
-
-	
 	$("#chapter").on("change",function(){
 		var chapter = $(this).val();
 		var my_title = $("#my_title").val();
