@@ -147,7 +147,7 @@ public class EBookDAO
 					+ " union all "
 					+ " select 'writer', writer from books where  writer like '%' || ? || '%' and epub_path is not null "
 					+ " union all "
-					+ " select 'company', company_name from company c, books b where  c.company_name like '%' || ? || '%' and b.epub_path is not null ";
+					+ " select DISTINCT  company_name, 'company' from company c, books b where  c.company_name like '%' || ? || '%' and b.epub_path is not null ";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, a);
 			pstmt.setString(2, a);
