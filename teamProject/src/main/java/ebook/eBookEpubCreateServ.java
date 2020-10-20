@@ -15,11 +15,15 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.beanutils.BeanUtils;
+
 import common.Controller;
+import createBook.CreateBookDAO;
 import nl.siegmann.epublib.domain.Author;
 import nl.siegmann.epublib.domain.Book;
 import nl.siegmann.epublib.domain.Resource;
 import nl.siegmann.epublib.epub.EpubWriter;
+import vo.Mywriting;
 
 public class eBookEpubCreateServ implements Controller {
 	
@@ -49,11 +53,35 @@ public class eBookEpubCreateServ implements Controller {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		List<Map<String,Object>> my = null;
-		String member_no = request.getParameter("member_no");
-		String my_title = request.getParameter("titlee");
-		String nickname = request.getParameter("nicknamee");
+		String my_title = request.getParameter("my_title");
+		String contents = request.getParameter("editor1");
+		String nickname = (String)request.getSession().getAttribute("nickname");
+		String member_no =(String)request.getSession().getAttribute("member_no");
+		Mywriting  mywriting = new Mywriting();
+		try {
+			BeanUtils.copyProperties(mywriting, request.getParameterMap());
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		//contents는 변환 한 다음 epub_path에 담아주기.(upload)
+		
+
+		mywriting.setMember_no(member_no);
+		mywriting.setMy_contents(contents);
+		CreateBookDAO.getInstance().saveUserBook(mywriting);
+		CreateBookDAO.getInstance().updateUserBook(mywriting);
+		
 		
 		my = EBookDAO.getInstance().selectEpubFile(member_no, my_title);
+		
+		String genre = (String)my.get(0).get("genre");
+		String image_uri = (String)my.get(0).get("image_uri");
+		String my_summary = (String)my.get(0).get("my_summary");
+		String my_introduction = (String)my.get(0).get("my_introduction");
+		String epub_path = my_title+".epub";
+		EBookDAO.getInstance().CreateEpubAfterInsert(my_title,  nickname, epub_path, member_no,  genre,  image_uri,  my_summary,  my_introduction);
+		
+		
 //		System.out.println(my);
 //		for(int i=0; i < my.size(); i++) {
 //			int bookindex = 0;
@@ -91,7 +119,8 @@ public class eBookEpubCreateServ implements Controller {
 			int a = 0;
 			int b = 0;
 			String path = request.getSession().getServletContext().getRealPath("");
-			System.out.println(path + " 패스야ㅑㅑㅑㅑㅑㅑㅑㅑ");
+
+			
 			for(int i=0; i < my.size(); i++) {
 			// Add Chapter 1
 				String epubFile = (String)my.get(i).get("my_contents");

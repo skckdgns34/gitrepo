@@ -24,15 +24,15 @@ $(function(){
 	});
 	$("#submit").on("click",function(){
 		alert("등록됐슴다.")
-		$("form").attr("action", "${pageContext.request.contextPath}/createBookInsert.do");
+		$("form").attr("action", "${pageContext.request.contextPath}/eBookEpubCreate.do");
 	});
 	
-	$("#my_title").on("keydown", function(){
+/* 	$("#my_title").on("keydown", function(){
 		 $('#titlee').val($(this).val());
 	});
 	$("#my_title").on("change", function(){
 		 $('#titlee').val($(this).val());
-	});
+	}); */
 
 	$("#chapter").on("change",function(){
 		var chapter = $(this).val();
@@ -216,13 +216,12 @@ h2 {
 							</c:if>
 							<button id="cancel" class="button button-login w-20">취소</button>
 							<button id="save" class="button button-login w-20">저장</button>
-						</form>
-						<form action="${pageContext.request.contextPath}/eBookEpubCreate.do">
 							<button id="submit" class="button button-login w-20">등록</button>
-							<input type="hidden" id="member_noo"  value="${sessionScope.member_no}" name="member_noo" >
-							<input type="hidden" id="nicknamee" value="${sessionScope.nickname }"name="nicknamee" >
-							<input type="hidden" id="titlee" name="titlee" >
+							<input type="hidden" value="${sessionScope.nickname}" name="nicknamee"/>
+							<input type="hidden" value="${sessionScope.member_no }" name="member_noo"/>
 						</form>
+
+
 					</div>
 				</div>
 			</div>

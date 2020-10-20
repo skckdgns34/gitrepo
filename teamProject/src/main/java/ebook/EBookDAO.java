@@ -1156,4 +1156,26 @@ public class EBookDAO
 		}
 		return epub;
 	}
+	
+	public void CreateEpubAfterInsert(String my_title, String nickname, String epub_path,String member_no,String genre,String image_uri,String my_summary,String my_introduction) {
+		try {
+			conn = ConnectionManager.getConnnect();
+			String sql = "insert into books(title, writer, publication_date, epub_path, introduction, summary, member_no, book_img, genre, registration_date)"
+					+ " values(?,?,sysdate,?,?,?,?,?,?,sysdate)";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, my_title);
+			pstmt.setString(2, nickname);
+			pstmt.setString(3, epub_path);
+			pstmt.setString(4, my_introduction);
+			pstmt.setString(5, my_summary);
+			pstmt.setString(6, member_no);
+			pstmt.setString(7, image_uri);
+			pstmt.setString(8, genre);
+			pstmt.executeUpdate();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionManager.close(null,pstmt,conn);
+		}
+	}
 }
