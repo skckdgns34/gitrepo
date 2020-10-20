@@ -114,8 +114,8 @@
             <a id="bookmark" class="icon-bookmark-empty">Bookmark</a>
             <a id="setting" class="icon-cog">Settings</a>
             <a id="fullscreen" class="icon-resize-full">Fullscreen</a>
-          	<i class="fas fa-home"></i>
-          <a href="${pageContext.request.contextPath}/main.do">H</a>
+          	
+          <a href="${pageContext.request.contextPath}/main.do"><img src="${pageContext.request.contextPath}/ebook/home.png" style="width:20px"/></a>
           	
           </div>
         </div>

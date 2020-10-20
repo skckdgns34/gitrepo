@@ -117,8 +117,7 @@
 		console.log(paging + "가져와서자른거");
 		console.log(review_no);
 
-		$
-				.ajax({
+		$.ajax({
 					url : "${pageContext.request.contextPath}/Ajax/eBookReviewDelete.do",
 					type : "POST",
 					data : {
@@ -419,7 +418,7 @@ span {
 
 								<c:if test="${ member_no == null }">
 							
-								추천 기능은 <button type="button" id="newLogin">
+								추천 및 읽기 기능은 <button type="button" id="newLogin">
 										<b class="w3-text-blue" onclick="reviewLogin()">로그인</b>
 									</button> 후 사용 가능합니다.
 
@@ -429,9 +428,7 @@ span {
 								</c:if>
 
 								<c:if test="${ member_no != null }">
-
 									<c:if test="${check == 1}">
-
 										<button class="w3-button w3-black w3-round" id="rec_update">
 											<i class="fa fa-heart" style="font-size: 16px; color: red"></i>
 											&nbsp;<span class="rec_count">${count}</span>
@@ -456,12 +453,13 @@ span {
 										<input type="hidden" name="reading_book_no"
 											value="${book[0].book_no}" /> <input type="hidden"
 											name="reading_member_no" value="${member_no}" />
-										<button class="button primary-btn" id="read"
-											style="width: 250px; height: 80px;">읽기</button>
+										<c:if test="${not empty member_no}">
+											<button class="button primary-btn" id="read" style="width: 250px; height: 80px;">읽기</button>
+										</c:if>
 									</form>
-
-									<button class="button primary-btn" id="check"
-										onclick="licence()" style="width: 250px; height: 80px;">결제</button>
+									<c:if test="${not empty member_no}">
+										<button class="button primary-btn" id="check" onclick="licence()" style="width: 250px; height: 80px;">결제</button>
+									</c:if>
 								</div>
 							</div>
 							<!-- end product count -->
