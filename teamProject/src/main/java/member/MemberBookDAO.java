@@ -103,6 +103,7 @@ public class MemberBookDAO {	//내서재 등 관련
 			String sql = " SELECT l.member_no, l.book_no, b.book_img, b.title, b.writer"
 					+ " FROM mylibrary l, books b"
 					+ " WHERE l.book_no = b.book_no"
+					+ " and l.last_read_index is not null"
 					+ " and l.member_no = ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, mylibraryVO.getMember_no());
