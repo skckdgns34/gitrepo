@@ -36,8 +36,13 @@ $(function(){
 	});
 	
 	$("#submit").on("click",function(){
-		alert("등록됐슴다.")
-		$("form").attr("action", "${pageContext.request.contextPath}/eBookEpubCreate.do");
+		var result = confirm("등록하실텨? 하면 못고쳐");
+		if(result){
+			alert("등록됐슴다.");
+			$("form").attr("action", "${pageContext.request.contextPath}/eBookEpubCreate.do");
+		}else{
+			alert("취소했수다");
+		}
 	});
 	
 /* 	$("#my_title").on("keydown", function(){
