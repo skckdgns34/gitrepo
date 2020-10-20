@@ -216,7 +216,7 @@ public class AudioBookDAO {
 		ResultSet rs = null;
 		try {
 			conn = ConnectionManager.getConnnect();
-			String sql = "select book_no, title, book_img from books where best_book='y' and rownum<6 and audio_path is not null order by book_no desc";
+			String sql = "select book_no, title, book_img from books where best_book='Y' and rownum<6 and audio_path is not null order by book_no desc";
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
