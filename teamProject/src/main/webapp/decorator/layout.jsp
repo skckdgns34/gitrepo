@@ -125,7 +125,7 @@
 				
 						<li class="nav-item submenu dropdown"><a href=""
 							class="nav-link dropdown-toggle" data-toggle="dropdown"
-							role="button" aria-haspopup="true" aria-expanded="false">${sessionScope.member_id}</a>님
+							role="button" aria-haspopup="true" aria-expanded="false">${sessionScope.nickname}</a>님
 							<ul class="dropdown-menu">
 							<li class="nav-item"><a class="nav-link"
 									href="<%=application.getContextPath()%>/member/memberModify.jsp">내 정보수정</a></li>
