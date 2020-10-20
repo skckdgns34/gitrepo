@@ -337,8 +337,8 @@ public class EBookDAO
 		{
 			conn = ConnectionManager.getConnnect();
 			String sql = "select book_no, title, writer, publication_date,"
-					+ " company_code, introduction, summary, views, best_book,genre,registration_date, book_img"
-					+ " from books where book_no=" + b;
+					+ " company_code, introduction, summary, views, best_book,b.code_value,registration_date, book_img"
+					+ " from books a, common b where a.genre = b.code and book_no=" + b;
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while (rs.next())

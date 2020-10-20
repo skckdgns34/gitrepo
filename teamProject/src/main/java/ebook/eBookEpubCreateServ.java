@@ -49,8 +49,8 @@ public class eBookEpubCreateServ implements Controller {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		List<Map<String,Object>> my = null;
-		String member_no = "13";
-		String my_title = "용원";
+		String member_no = request.getParameter("member_no");
+		String my_title = request.getParameter("my_title");
 		
 		my = EBookDAO.getInstance().selectEpubFile(member_no, my_title);
 //		System.out.println(my);
