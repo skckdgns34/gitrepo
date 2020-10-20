@@ -145,7 +145,7 @@ public class EBookDAO
 
 			String sql = "select 'book', title from books where title like '%' || ? || '%' and epub_path is not null "
 					+ " union all "
-					+ " select 'writer', writer from books where  writer like '%' || ? || '%' and epub_path is not null "
+					+ " select DISTINCT writer,'writer' from books where  writer like '%' || ? || '%' and epub_path is not null "
 					+ " union all "
 					+ " select DISTINCT  company_name, 'company' from company c, books b where  c.company_name like '%' || ? || '%' and b.epub_path is not null ";
 			pstmt = conn.prepareStatement(sql);
@@ -157,8 +157,8 @@ public class EBookDAO
 			while (rs.next())
 			{
 				aa = new SearchBook();
-				aa.setResult(rs.getString(1));
-				aa.setTitle(rs.getString(2));
+				aa.setResult(rs.getString(2));
+				aa.setTitle(rs.getString(1));
 
 				list.add(aa);
 			}
