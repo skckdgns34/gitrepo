@@ -80,7 +80,7 @@ public class BooksController  {
 		
 		//Ebook 업로드
 		MultipartFile epubFile = multipartRequest.getFile("epub_path1");
-		String path2 = "c:/전자도서관/전자책";
+		String path2 = "C:\\Users\\admin\\git\\gitrepo\\teamProject\\src\\main\\webapp\\ebookepub";
 		System.out.println(path2);
 		if(epubFile !=null && !epubFile.isEmpty() && epubFile.getSize()>0) {
 			fileName = epubFile.getOriginalFilename();
