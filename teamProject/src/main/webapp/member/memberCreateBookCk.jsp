@@ -18,8 +18,13 @@
   font-size: 12px;
 }
 
-	a {
+	#a{
 	color: #002347;
+	border-bottom: 1px solid;
+	}
+	#b{
+	color: #002347;
+	border-bottom: 1px solid;
 	}
 	
 	table {
@@ -62,8 +67,8 @@ $(function(){
     <!-- Breadcrumb Section End -->
     <br>
 	<ul>
-		<li><a href="<%=application.getContextPath()%>/memberCreateBookCk.do">작성중</a>
-		<li><a href="<%=application.getContextPath()%>/memberCreateBookComp.do">등록완료</a>
+		<li><a id="a" href="<%=application.getContextPath()%>/memberCreateBookCk.do">작성중</a>
+		<li><a id="b" href="<%=application.getContextPath()%>/memberCreateBookComp.do">등록완료</a>
 	</ul>
 	<br><hr>
 	

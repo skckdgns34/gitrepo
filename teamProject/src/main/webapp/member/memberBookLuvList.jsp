@@ -17,8 +17,13 @@
   font-size: 12px;
 }
 
-	a {
+	#a{
 	color: #002347;
+	border-bottom: 1px solid;
+	}
+	#b{
+	color: #002347;
+	border-bottom: 1px solid;
 	}
 </style>
 <script>
@@ -48,9 +53,9 @@ $(function(){
 	</section>
 	<br>
 		<ul>
-			<li><a
+			<li><a id="a"
 				href="<%=application.getContextPath()%>/memberBookMark.do">읽은 책</a>
-			<li><a
+			<li><a id="b"
 				href="<%=application.getContextPath()%>/memberBookLuvList.do">찜
 					목록</a>
 		</ul> <br>
