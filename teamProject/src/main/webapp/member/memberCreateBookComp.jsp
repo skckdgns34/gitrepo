@@ -76,11 +76,11 @@ $(function(){
 							cellspacing="0">
 							<thead>
 								<tr>
-									<td>제목</td>
-									<td>장르</td>
-									<td>조회수</td>
-									<td>등록일자</td>
-									<td></td>
+									<th>제목</th>
+									<th>장르</th>
+									<th>조회수</th>
+									<th>등록일자</th>
+									<th></th>
 								</tr>
 							</thead>
 							<tbody>
