@@ -138,7 +138,7 @@ h2 {
 				<div class="col-lg-12 posts-list">
 					<div class="comment-form">
 
-						<form>
+						<form method="POST">
 							<div class="form-group form-inline">
 								<div class="form-group col-lg-8">
 									<h2 style="margin-bottom: 0px;">작성자:</h2>
