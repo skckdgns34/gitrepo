@@ -541,7 +541,7 @@ public class EBookDAO
 		ResultSet rs = null;
 		try {
 			conn = ConnectionManager.getConnnect();
-			String sql = "select genre, count(book_no) from books where epub_path is not null group by genre order by genre";
+			String sql = "select genre, count(book_no) from books where epub_path is not null and member_no is null group by genre order by genre";
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
@@ -609,7 +609,7 @@ public class EBookDAO
 		ResultSet rs = null;
 		try {
 			conn = ConnectionManager.getConnnect();
-			String sql = "select count(book_no) from books where epub_path is not null";
+			String sql = "select count(book_no) from books where epub_path is not null and member_no is null";
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
@@ -722,7 +722,7 @@ public class EBookDAO
 		ResultSet rs = null;
 		try {
 			conn = ConnectionManager.getConnnect();
-			String sql = "select book_no, title, book_img from books where best_book='Y' and rownum<6 and epub_path is not null order by book_no desc";
+			String sql = "select book_no, title, book_img from books where best_book='Y' and rownum<6 and epub_path is not null and member_no is null order by book_no desc";
 			pstmt = conn.prepareStatement(sql);
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
@@ -825,7 +825,7 @@ public class EBookDAO
 		ResultSet rs =null;
 		try {
 			conn = ConnectionManager.getConnnect();
-			String sql = "select count(book_no) bookCount from books where epub_path is not null ";
+			String sql = "select count(book_no) bookCount from books where epub_path is not null and member_no is null ";
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
