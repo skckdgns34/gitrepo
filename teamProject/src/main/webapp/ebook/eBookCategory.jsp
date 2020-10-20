@@ -181,6 +181,7 @@ function imgClick(book_no) {
 													</a>
 													<div class="price">${bestBook.title}</div>
 												</div>
+												
 											</div>
 										</c:forEach>
 									</div>
@@ -206,8 +207,8 @@ function imgClick(book_no) {
 													<i class="ti-search"></i>
 												</button>
 											</div>
-											<input type="hidden" id="hidden" name="hidden"> <input
-												type="hidden" id="realHidden" name="realHidden">
+											<input type="hidden" id="hidden" name="hidden"> 
+											<input type="hidden" id="realHidden" name="realHidden">
 										</div>
 									</form>
 								</div>

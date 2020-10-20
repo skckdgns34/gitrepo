@@ -23,8 +23,13 @@ button {
   font-size: 12px;
 }
 
-	a {
+	#a{
 	color: #002347;
+	border-bottom: 1px solid;
+	}
+	#b{
+	color: #002347;
+	border-bottom: 1px solid;
 	}
 </style>
 <script>
@@ -54,9 +59,9 @@ $(function(){
 	<!-- Breadcrumb Section End -->
 	<br>
 	<ul>
-		<li><a
+		<li><a id="a"
 			href="<%=application.getContextPath()%>/memberCreateBookCk.do">작성중</a>
-		<li><a
+		<li><a id="b"
 			href="<%=application.getContextPath()%>/memberCreateBookComp.do">등록완료</a>
 	</ul>
 	<br><hr>
@@ -71,11 +76,11 @@ $(function(){
 							cellspacing="0">
 							<thead>
 								<tr>
-									<td>제목</td>
-									<td>장르</td>
-									<td>조회수</td>
-									<td>등록일자</td>
-									<td></td>
+									<th>제목</th>
+									<th>장르</th>
+									<th>조회수</th>
+									<th>등록일자</th>
+									<th></th>
 								</tr>
 							</thead>
 							<tbody>

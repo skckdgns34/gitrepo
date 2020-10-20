@@ -426,7 +426,6 @@ public class AudioBookDAO {
 			
 			conn = ConnectionManager.getConnnect();
 			
-			
 			String seqSql = "select no from seq where tablename='mylibrary'";
 			Statement stmt = conn.createStatement();
 			rs = stmt.executeQuery(seqSql);
@@ -439,12 +438,11 @@ public class AudioBookDAO {
 			stmt.execute(seqSql);
 			
 			String sql = "insert into mylibrary(mylibrary_no, member_no, book_no, wish, last_read_index)"
-					+ "values(?,?,?,?,0)";
+					+ "values(?,?,?,'y',null)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, my.getMylibrary_no());
 			pstmt.setString(2, my.getMember_no());
 			pstmt.setString(3, my.getBook_no());
-			pstmt.setString(4, my.getWish());
 			int r = pstmt.executeUpdate();
 			System.out.println(r+"mylib등록");
 		} catch (Exception e) {

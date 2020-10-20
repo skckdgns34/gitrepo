@@ -117,8 +117,7 @@
 		console.log(paging + "가져와서자른거");
 		console.log(review_no);
 
-		$
-				.ajax({
+		$.ajax({
 					url : "${pageContext.request.contextPath}/Ajax/eBookReviewDelete.do",
 					type : "POST",
 					data : {
@@ -132,6 +131,7 @@
 	}
 
 	function btnHideNShow() {
+		var m_book = '${m_book}';
 		if ("${checkCode}" != "") { //이용자가 티켓코드가 없을시 결재버튼 보여주기 & 있으면 읽기버튼보여주기
 			$("#check").hide();
 			$("#read").show();
@@ -371,7 +371,7 @@ span {
 									<!-- 장르명 -->
 									<!-- 카테고리 명이 나왔으면 좋겠는데 ㅠㅠㅠ 수정해주기-->
 									<li><a class="justify-content-between d-flex" href="#">
-											<p>Category</p> <span class="or">${book[0].genre}</span>
+											<p>장르</p> <span class="or">${book[0].genre}</span>
 									</a></li>
 
 									<!-- 등록일 -->
@@ -385,16 +385,24 @@ span {
 									<li><a class="justify-content-between d-flex" href="#">
 											<p>조회수</p> <span class="or">${book[0].views}</span>
 									</a></li>
+									<!-- 베스트 셀러 여부 -->
+									<li>
+										<a class="justify-content-between d-flex" href="#">
+											<c:if test="${book[0].best_book == 'Y'}">
+												<p style="color : red;">베스트 셀러</p> <span class="or"></span>
+											</c:if>
+											<c:if test="${book[0].best_book == 'N'}">
+												
+											</c:if>
+										</a>
+									</li>
+									
 									<!-- 소개글 -->
 									<li><a href="#">
 											<p>소개글</p> <span class="or"
 											style="max-width: 400px; text-align: end;">${book[0].introduction}</span>
 									</a></li>
 
-									<!-- 베스트 셀러 여부 -->
-									<li><a class="justify-content-between d-flex" href="#">
-											<p>베스트 셀러 여부</p> <span class="or">${book[0].best_book}</span>
-									</a></li>
 								</ul>
 							</aside>
 							<hr>
@@ -403,7 +411,7 @@ span {
 
 								<c:if test="${ member_no == null }">
 							
-								추천 기능은 <button type="button" id="newLogin">
+								추천 및 읽기 기능은 <button type="button" id="newLogin">
 										<b class="w3-text-blue" onclick="reviewLogin()">로그인</b>
 									</button> 후 사용 가능합니다.
 
@@ -413,9 +421,7 @@ span {
 								</c:if>
 
 								<c:if test="${ member_no != null }">
-
 									<c:if test="${check == 1}">
-
 										<button class="w3-button w3-black w3-round" id="rec_update">
 											<i class="fa fa-heart" style="font-size: 16px; color: red"></i>
 											&nbsp;<span class="rec_count">${count}</span>
@@ -440,12 +446,13 @@ span {
 										<input type="hidden" name="reading_book_no"
 											value="${book[0].book_no}" /> <input type="hidden"
 											name="reading_member_no" value="${member_no}" />
-										<button class="button primary-btn" id="read"
-											style="width: 250px; height: 80px;">읽기</button>
+										<c:if test="${not empty member_no}">
+											<button class="button primary-btn" id="read" style="width: 250px; height: 80px;">읽기</button>
+										</c:if>
 									</form>
-
-									<button class="button primary-btn" id="check"
-										onclick="licence()" style="width: 250px; height: 80px;">결제</button>
+									<c:if test="${not empty member_no}">
+										<button class="button primary-btn" id="check" onclick="licence()" style="width: 250px; height: 80px;">결제</button>
+									</c:if>
 								</div>
 							</div>
 							<!-- end product count -->

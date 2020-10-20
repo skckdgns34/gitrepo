@@ -17,8 +17,13 @@
   font-size: 12px;
 }
 
-	a {
+	#a{
 	color: #002347;
+	border-bottom: 1px solid;
+	}
+	#b{
+	color: #002347;
+	border-bottom: 1px solid;
 	}
 </style>
 <script>
@@ -48,9 +53,9 @@ $(function(){
 	</section>
 	<br>
 		<ul>
-			<li><a
+			<li><a id="a"
 				href="<%=application.getContextPath()%>/memberBookMark.do">읽은 책</a>
-			<li><a
+			<li><a id="b"
 				href="<%=application.getContextPath()%>/memberBookLuvList.do">찜
 					목록</a>
 		</ul> <br>
@@ -65,12 +70,12 @@ $(function(){
 								cellspacing="0">
 								<thead>
 									<tr>
-										<td>번호</td>
-										<td>제목</td>
-										<td>작가</td>
-										<td>장르</td>
-										<td>조회수</td>
-										<td></td>
+										<th>번호</th>
+										<th>제목</th>
+										<th>작가</th>
+										<th>장르</th>
+										<th>조회수</th>
+										<th></th>
 									</tr>
 								</thead>
 								<tbody>

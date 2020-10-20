@@ -180,7 +180,7 @@ public class CreateBookDAO {
 		Mywriting resultVO = null;
 		try {
 			conn = ConnectionManager.getConnnect();
-			String sql = "select nvl(chapter,1) from mywriting where member_no=?";
+			String sql = "select nvl(chapter,1),genre from mywriting where member_no=?";
 			if(my_title != null && !my_title.equals("")) {
 				sql += " and my_title='"+my_title+"'";
 			}
@@ -191,6 +191,7 @@ public class CreateBookDAO {
 			while (rs.next()) {
 				resultVO = new Mywriting();
 				resultVO.setChapter(rs.getString(1));
+				resultVO.setGenre(rs.getString(2));
 				list.add(resultVO);
 			}
 		} catch (Exception e) {
@@ -283,5 +284,26 @@ public class CreateBookDAO {
 		} finally {
 			ConnectionManager.close(conn);
 		}
+	}
+
+	public ArrayList<String> selectAllTitle() {
+		ArrayList<String> list = new ArrayList<String>();
+		ResultSet rs = null;
+		String result = null;
+		try {
+			conn = ConnectionManager.getConnnect();
+			String sql = "select title from books";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				result = rs.getString(1);
+				list.add(result);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionManager.close(rs, pstmt, conn);
+		}
+		return list;
 	}
 }

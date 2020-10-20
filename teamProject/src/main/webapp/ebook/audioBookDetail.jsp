@@ -126,7 +126,6 @@
 					}
 				})
 	}
-
 	function btnHideNShow() {
 		if ("${checkCode}" != "") { //이용자가 티켓코드가 없을시 결재버튼 보여주기 & 있으면 읽기버튼보여주기
 			$("#check").hide();
