@@ -29,6 +29,13 @@ $(function(){
 			
 		}
 	})
+	$(".ti-heart").on("click",function(){
+		console.log$(this)
+		 /* $.post(".do", {: '${}'
+	    	},function(data){
+	            window.close();
+		}); */
+	})
 })
 	
 </script>
@@ -142,7 +149,7 @@ a{
               <ul class="card-product__imgOverlay">
                 <li><button><i class="ti-search"></i></button></li>
                 <li><button><i class="ti-shopping-cart"></i></button></li>
-                <li><button><i class="ti-heart"></i></button></li>
+                <li><button><i class="ti-heart"></i><input type="hidden" value="${book.book_no}"> </button></li>
               </ul>
             </div>
             <div class="card-body">
