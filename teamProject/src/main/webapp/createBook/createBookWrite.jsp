@@ -27,6 +27,12 @@ $(function(){
 		$("form").attr("action", "${pageContext.request.contextPath}/createBookInsert.do");
 	});
 	
+	$("#my_title").on("keydown", function(){
+		 $('#titlee').val($(this).val());
+	});
+	$("#my_title").on("change", function(){
+		 $('#titlee').val($(this).val());
+	});
 
 	$("#chapter").on("change",function(){
 		var chapter = $(this).val();
@@ -213,8 +219,9 @@ h2 {
 						</form>
 						<form action="${pageContext.request.contextPath}/eBookEpubCreate.do">
 							<button id="submit" class="button button-login w-20">등록</button>
-							<input type="text" id="nicknamee"  readonly="readonly">
-							<input type="text" id="titlee" readonly="readonly">
+							<input type="hidden" id="member_noo"  value="${sessionScope.member_no}" name="member_noo" >
+							<input type="hidden" id="nicknamee" value="${sessionScope.nickname }"name="nicknamee" >
+							<input type="hidden" id="titlee" name="titlee" >
 						</form>
 					</div>
 				</div>

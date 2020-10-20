@@ -50,7 +50,8 @@ public class eBookEpubCreateServ implements Controller {
 		
 		List<Map<String,Object>> my = null;
 		String member_no = request.getParameter("member_no");
-		String my_title = request.getParameter("my_title");
+		String my_title = request.getParameter("titlee");
+		String nickname = request.getParameter("nicknamee");
 		
 		my = EBookDAO.getInstance().selectEpubFile(member_no, my_title);
 //		System.out.println(my);
