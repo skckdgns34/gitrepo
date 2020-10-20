@@ -71,6 +71,7 @@ $(function(){
 </head>
 <body>
 
+<br>
 <h2>회원탈퇴 유의사항</h2><br>
 <h5>회원탈퇴 시 개인정보 및 DumBook&DamBook에서 만들어진 모든 데이터는 삭제됩니다.</h5><br>
 	<textarea readonly
