@@ -32,7 +32,7 @@
 				<tbody>
 					<c:forEach items="${list}" var="purchase">
 						<tr>
-							<td><a href="purchaseSelect.ad?purchase_no=${purchase.purchase_no}">${purchase.purchase_no}</a></td>
+							<td>${purchase.purchase_no}</td>
 							<td>${purchase.title}</td>
 							<td>${purchase.purchase_price}</td>
 							<td>${fn:substring(purchase.purchase_date,0,10) }</td>

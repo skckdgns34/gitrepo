@@ -92,6 +92,7 @@
 										<input class="input-md emailinput form-control" id="company"
 											name="company" value="${result.company_name }"
 											style="margin-bottom: 10px" type="text" />
+											<input id="company_code" name="company_code" hidden="hidden">
 										<button type="button" value="검색" onclick="openChild()" class="btn btn-outline btn-primary pull-left">검색</button>
 									</div>
 								</div>

@@ -8,6 +8,16 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script>
+function check(ck) {
+	var obj = document.getElementsByName("user_CheckBox");
+	for (var i = 0; i < obj.length; i++) {
+		if (obj[i] != ck) {
+			obj[i].checked = false;
+		}
+	}
+};
+</script>
 </head>
 <body id="page-top">
 
@@ -20,6 +30,7 @@
 			 <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
 				<thead>
 					<tr>
+						<th>선택</th>
 						<th>회원번호</th>
 						<th>제목</th>
 						<th>작성일</th>
@@ -29,6 +40,8 @@
 				<tbody>
 					<c:forEach items="${list}" var="mywriting">
 						<tr>
+							<td><input type="checkbox" name="user_CheckBox"
+									onclick="check(this)" value="${mywriting.member_no && mywriting.my_title}"></td>
 							<td>${mywriting.member_no}</td>
 							<td>${mywriting.my_title}</td>
 							<td>${fn:substring(mywriting.my_write_date,0,10)}</td>

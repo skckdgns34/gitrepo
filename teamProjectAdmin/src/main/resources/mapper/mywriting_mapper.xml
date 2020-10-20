@@ -4,8 +4,8 @@
 
 <mapper namespace="com.dbal.app.mywriting.mapper.MywritingDAO">
 	<select id="selectMy" parameterType="mywriting" resultType="mywriting">
-		select m.member_no, 
-				m.my_title, 
+		select distinct m.my_title,
+				m.member_no, 
 				m.my_write_date, 
 				c.code_value
 		from 
