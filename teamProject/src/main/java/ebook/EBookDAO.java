@@ -147,7 +147,7 @@ public class EBookDAO
 					+ " union all "
 					+ " select 'writer', writer from books where  writer like '%' || ? || '%' and epub_path is not null "
 					+ " union all "
-					+ " select 'company', company_name from company c, books b where  c.company_name like '%' || ? || '%' and b.epub_path is not null ";
+					+ " select DISTINCT  company_name, 'company' from company c, books b where  c.company_name like '%' || ? || '%' and b.epub_path is not null ";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, a);
 			pstmt.setString(2, a);
@@ -722,7 +722,7 @@ public class EBookDAO
 		ResultSet rs = null;
 		try {
 			conn = ConnectionManager.getConnnect();
-			String sql = "select book_no, title, book_img from books where best_book='y' and rownum<6 and epub_path is not null order by book_no desc";
+			String sql = "select book_no, title, book_img from books where best_book='Y' and rownum<6 and epub_path is not null order by book_no desc";
 			pstmt = conn.prepareStatement(sql);
 			rs=pstmt.executeQuery();
 			while(rs.next()) {

@@ -181,6 +181,7 @@ function imgClick(book_no) {
 													</a>
 													<div class="price">${bestBook.title}</div>
 												</div>
+												
 											</div>
 										</c:forEach>
 									</div>
