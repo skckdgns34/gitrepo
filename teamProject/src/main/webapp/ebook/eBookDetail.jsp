@@ -442,9 +442,8 @@ span {
 									<form
 										action="${pageContext.request.contextPath}/eBookReading.do"
 										method="post">
-										<input type="hidden" name="reading_book_no"
-											value="${book[0].book_no}" /> <input type="hidden"
-											name="reading_member_no" value="${member_no}" />
+										<input type="hidden" name="reading_book_no" value="${book[0].book_no}" />
+										<input type="hidden" name="reading_member_no" value="${member_no}" />
 										<c:if test="${not empty member_no}">
 											<button class="button primary-btn" id="read" style="width: 250px; height: 80px;">읽기</button>
 										</c:if>
