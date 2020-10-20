@@ -210,7 +210,14 @@ h2 {
 							</c:if>
 							<button id="cancel" class="button button-login w-20">취소</button>
 							<button id="save" class="button button-login w-20">저장</button>
+						</form>
+						<form action="${pageContext.request.contextPath}/eBookEpubCreate.do">
 							<button id="submit" class="button button-login w-20">등록</button>
+							<input type="text"  readonly="readonly">
+							<input type="text"  readonly="readonly">
+							<input type="text" readonly="readonly">
+							<input type="text"  readonly="readonly">
+							
 						</form>
 					</div>
 				</div>
