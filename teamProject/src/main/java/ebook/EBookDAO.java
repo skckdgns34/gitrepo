@@ -143,7 +143,7 @@ public class EBookDAO
 			SearchBook aa = null;
 			conn = ConnectionManager.getConnnect();
 
-			String sql = "select 'book', title from books where title like '%' || ? || '%' and epub_path is not null "
+			String sql = "select  title, 'book' from books where title like '%' || ? || '%' and epub_path is not null "
 					+ " union all "
 					+ " select DISTINCT writer,'writer' from books where  writer like '%' || ? || '%' and epub_path is not null "
 					+ " union all "
