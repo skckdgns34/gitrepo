@@ -136,7 +136,7 @@ function imgClick(book_no) {
 
 
 				<!-- ================ category section start ================= -->
-				<section class="section-margin--small mb-5">
+				<section class="section mb-5" style="padding-top:50px">
 					<div class="container">
 						<div class="row">
 							<div class="col-lg-3 col-md-5">

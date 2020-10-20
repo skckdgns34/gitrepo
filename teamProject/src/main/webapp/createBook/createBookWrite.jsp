@@ -151,7 +151,7 @@ h2 {
 				<div class="col-lg-12 posts-list">
 					<div class="comment-form">
 
-						<form method="POST">
+						<form method="POST"  enctype="multipart/form-data">
 							<div class="form-group form-inline">
 								<div class="form-group col-lg-8">
 									<h2 style="margin-bottom: 0px;">작성자:</h2>
@@ -159,12 +159,13 @@ h2 {
 										value="${sessionScope.nickname }" readonly>
 								</div>
 							
-								<select name="genre" id="genre">
-									<option value="">장르 선택</option>
+								<select name="genre" id="genre"  >
+									<option <c:if test="${not empty chapterList}">disabled="disabled"</c:if> value="">장르 선택</option>
 									<c:forEach items="${genreList }" var="genre">
-										<option value="${genre.code}">${genre.code_value }</option>
+										<option <c:if test="${not empty chapterList}">disabled="disabled"</c:if> value="${genre.code}">${genre.code_value }</option>
 									</c:forEach>
 								</select>
+								<script>$("#genre").val("${chapterList[0].genre}")</script>
 								<select name="chapter" id="chapter">
 									<option value="">챕터</option>
 									<c:if test="${not empty chapterList }">

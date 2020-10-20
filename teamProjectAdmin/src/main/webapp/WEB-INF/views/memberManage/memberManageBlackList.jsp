@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
 
 <!DOCTYPE html>
 <html>
@@ -103,7 +105,7 @@ td {
 								<td>${black.getMember_no()}</td>
 								<td>${black.getNickname()}</td>
 								<td>${black.getCode_value()}</td>
-								<td>${black.getLimit_date()}</td>
+								<td>${fn:substring(black.getLimit_date(),0,10)}</td>
 						</c:forEach>
 					</tbody>
 				</table>
