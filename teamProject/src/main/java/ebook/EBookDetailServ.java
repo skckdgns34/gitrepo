@@ -21,6 +21,7 @@ public class EBookDetailServ implements Controller
 	{
 		
 		String m_book = request.getParameter("m_book");//회원들 글인지
+		System.out.println(m_book);
 		String book_no =  request.getParameter("book_no"); //책넘버
 		//Member member_login = (Member)request.getSession().getAttribute("memberLogin");//멤버 로그인 정보
 		String member_id = (String)request.getSession().getAttribute("member_id"); //멤버아이디
