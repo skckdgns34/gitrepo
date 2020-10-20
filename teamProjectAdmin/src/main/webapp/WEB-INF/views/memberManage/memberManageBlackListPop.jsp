@@ -8,6 +8,14 @@
 <head>
 <meta charset="UTF-8">
 <title>블랙리스트 수정</title>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+   <script>
+  $( function() {
+    $( "#datepicker" ).datepicker( {dateFormat: 'yy-mm-dd'});
+  } );
+  </script>
 </head>
 <body style="padding-top: 70px;">
 
@@ -53,7 +61,7 @@
              
               <div class="form-label-group">
                <label for="inputlimit_date">등록 일자</label><br>
-                <input type="text" name="limit_date" value="${fn:substring(black.limit_date,0,10)}">
+                <input type="text"  id="datepicker" name="limit_date" value="${fn:substring(black.limit_date,0,10)}">
               </div>
   
               <hr>
