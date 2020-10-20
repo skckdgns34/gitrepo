@@ -25,7 +25,6 @@ public class CreateBookChapterChangeAjaxServ implements Controller{
 		m_book.setChapter(chapter);
 		
 		Mywriting m_bookDetail = CreateBookDAO.getInstance().myBookDetail(m_book);
-		System.out.println(m_bookDetail);
 		response.getWriter().print(JSONObject.fromObject(m_bookDetail)); 
 	}
 

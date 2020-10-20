@@ -112,11 +112,11 @@ text-align: end;}
 								</thead>
 									<tbody id="bookMarkTbody">
 										<c:forEach items="${markList }" var="markList">
-											<tr class="tr-hover">
+											<tr class="tr-hover" onclick="bookMarkClick(this)">
 												<td >${markList.rownum }<input type="hidden" value="${markList.bookmark_no}"></td>
 												<td class="mark_index">${markList.bookmark_index } </td> 
 												<td>${markList.bookmark_contents }</td>
-												<td><button class="delete">삭제</button></td>
+												<td><button class="delete"  onclick='delBookMark(this)'>삭제</button></td>
 											</tr>
 										</c:forEach>
 									</tbody>
@@ -262,11 +262,12 @@ text-align: end;}
 	});
 	
 	//북마크 온클릭
-	$(".tr-hover").on("click",function(){
-		var mark_index = $(this).find("td.mark_index").text();
+	function bookMarkClick(tr){
+		var mark_index = $(tr).find("td.mark_index").text();
 		var mark_inde = mark_index.split(" ");
 		audioElement.currentTime = mark_inde[0];
-	});
+	}
+
 	
 	
 	//mybook 고른거 호버주고
@@ -286,13 +287,15 @@ text-align: end;}
 	
 	
 	//북마크 삭제
-	$(".delete").on("click", function(){
-		var bookmark_no = $(this).closest('tr').find('input[type=hidden]').val();
+	function delBookMark(btn){
+		var bookmark_no = $(btn).closest('tr').find('input[type=hidden]').val();
 		console.log(bookmark_no);
 		$.post("audioBookMarkDelete.do", {bookmark_no : bookmark_no });
-		$(this).closest('tr').remove();
-		alert("삭제됨.")
-	});
+		$(btn).closest('tr').remove();
+		if(bookmark_no != null){
+			alert("삭제 되었");
+		}
+	}
 	
 	
 	 //북마크 찍는거
@@ -309,11 +312,11 @@ text-align: end;}
 			},
 			success: function(data){
 				var split_mark_index = data[0].bookmark_index.split(".");
-				var addedMark = $("<tr class='tr-hover'>" +
+				var addedMark = $("<tr class='tr-hover' onclick='bookMarkClick(this)'>" +
          		        "<td>" + data[0].bookmark_no + "<input type='hidden' value='data[0].rownum'></td>" +
          		        "<td>" + split_mark_index[0]+ "</td>" + 
          		        "<td>" + data[0].bookmark_contents + "</td>" +
-         		        "<td><button class='delete'>삭제</button></td>" +
+         		        "<td><button class='delete' onclick='delBookMark(this)'>삭제</button></td>" +
          		        "</tr>");
          	$("#bookMarkTbody").append(addedMark);
 			}
@@ -323,6 +326,7 @@ text-align: end;}
 	 $("#button4").on("click",function(){
 		 window.close();
 	 });
+	
 </script>
 
 	<script	src="<%=request.getContextPath()%>/resource/js1/bootstrap.min.js"></script>

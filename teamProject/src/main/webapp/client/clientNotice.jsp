@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="my" tagdir="/WEB-INF/tags"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -62,7 +64,10 @@
 				<tr>
 					<td>${notice.notice_no }</td>
 					<td><a href="javascript:void(window.open('clientNoticeSelect.do?notice_no=${notice.notice_no}', '공지사항 상세보기', 'width=700, height=700'))">${notice.notice_title }</a></td>
-					<td>${notice.notice_date }</td>
+					<td>
+						<fmt:parseDate value="${notice.notice_date}" pattern="yyyy-MM-dd HH:mm:ss" var="notice_date" />
+						<fmt:formatDate value="${notice_date}" pattern="yyyy/MM/dd" />
+					</td>
 				</tr>
 			</c:forEach>
   </tbody>

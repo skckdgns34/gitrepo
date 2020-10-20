@@ -22,8 +22,6 @@ public class CreateBookMainServ implements Controller
 		//장르 목록
 		String genre = request.getParameter("genre");
 		String genre2 = request.getParameter("genre2");
-		System.out.println(genre+"1");
-		System.out.println(genre2+"2");
 		ArrayList<Books> userBooks = null;
 
 		

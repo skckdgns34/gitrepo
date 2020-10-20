@@ -35,9 +35,10 @@ public class MemberBookDAO {	//내서재 등 관련
 		ArrayList<Mywriting> list = new ArrayList<Mywriting>();
 		try {
 			conn = ConnectionManager.getConnnect();
-			String sql = " SELECT MEMBER_NO, MY_TITLE, MY_WRITE_DATE, GENRE, VIEWS"
-					+ " FROM MYWRITING"
-					+ " WHERE MEMBER_NO = ?";
+			String sql = " SELECT MEMBER_NO, MY_TITLE, MY_WRITE_DATE, c.code_value, VIEWS "
+					+ " FROM MYWRITING m, common c "
+					+ " WHERE m.genre = c.code "
+					+ " and MEMBER_NO = ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, mywritingVO.getMember_no());
 			rs = pstmt.executeQuery();
@@ -46,7 +47,7 @@ public class MemberBookDAO {	//내서재 등 관련
 				resultVo.setMember_no(rs.getString("MEMBER_NO"));
 				resultVo.setMy_title(rs.getString("MY_TITLE"));
 				resultVo.setMy_write_date(rs.getString("MY_WRITE_DATE"));
-				resultVo.setGenre(rs.getString("GENRE"));
+				resultVo.setGenre(rs.getString("code_value"));
 				resultVo.setViews(rs.getString("VIEWS"));
 				list.add(resultVo);
 				System.out.println(rs.getString("MEMBER_NO"));
@@ -130,10 +131,11 @@ public class MemberBookDAO {	//내서재 등 관련
 		ArrayList<Books> list = new ArrayList<Books>();
 		try {
 			conn = ConnectionManager.getConnnect();
-			String sql = " SELECT rownum, m.member_no, b.book_no, b.title, b.writer, b.genre, b.views, l.wish"
-					+ " FROM member m, books b, mylibrary l"
+			String sql = " SELECT rownum, m.member_no, b.book_no, b.title, b.writer, c.code_value, b.views, l.wish"
+					+ " FROM member m, books b, mylibrary l, common c"
 					+ " WHERE b.book_no = l.book_no"
 					+ " AND m.member_no = l.member_no"
+					+ " AND c.code = b.genre "
 					+ " AND wish = '찜'"
 					+ " AND m.member_no = ?";
 			pstmt = conn.prepareStatement(sql);
@@ -144,9 +146,10 @@ public class MemberBookDAO {	//내서재 등 관련
 				resultVo.setBook_no(rs.getString("book_no"));
 				resultVo.setTitle(rs.getString("title"));
 				resultVo.setWriter(rs.getString("writer"));
-				resultVo.setGenre(rs.getString("genre"));
+				resultVo.setGenre(rs.getString("code_value"));
 				resultVo.setViews(rs.getString("views"));
 				list.add(resultVo);
+				resultVo.setNo(rs.getString("rownum"));
 				System.out.println(rs.getString("rownum"));
 				System.out.println(rs.getString("title"));
 			}

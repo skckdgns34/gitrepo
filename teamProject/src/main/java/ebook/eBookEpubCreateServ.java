@@ -141,7 +141,7 @@ public class eBookEpubCreateServ implements Controller {
 			 
 			
 			// Write the Book as Epub
-				epubWriter.write(book, new FileOutputStream("/mediaServer/epub/"+(String)my.get(0).get("my_title")+".epub"));
+				epubWriter.write(book, new FileOutputStream("C:\\Users\\admin\\git\\gitrepo\\teamProject\\src\\main\\webapp\\"+(String)my.get(0).get("my_title")+".epub"));
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

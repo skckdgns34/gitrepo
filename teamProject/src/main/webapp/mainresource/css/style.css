@@ -5,7 +5,7 @@
 
 body {
 	color: #777;
-	font-family: 'Hi Melody', cursive;
+	font-family: "Nunito Sans", sans-serif;
 	font-size: 15px;
 	font-weight: 400;
 	line-height: 1.667
@@ -31,7 +31,7 @@ button:focus {
 }
 
 h1, h2, h3, h4, h5, h6 {
-font-family: 'Hi Melody', cursive;	color: #222;
+font-family: "Nunito Sans", sans-serif;	color: #222;
 	line-height: 1.1
 }
 
@@ -403,7 +403,7 @@ a {
 	line-height: 40px;
 	font-size: 14px;
 	font-weight: 600;
-font-family: 'Hi Melody', cursive;	background: transparent;
+font-family: "Nunito Sans", sans-serif;	background: transparent;
 	-webkit-transition: all 0.3s ease 0s;
 	-moz-transition: all 0.3s ease 0s;
 	-o-transition: all 0.3s ease 0s;
@@ -747,13 +747,13 @@ font-family: 'Hi Melody', cursive;	background: transparent;
 
 .hero-banner__content h4 {
 	font-size: 30px;
-	font-family: 'Hi Melody', cursive;
+	font-family: "Nunito Sans", sans-serif;
 	color: #555555;
 	margin-bottom: 12px
 }
 
 .hero-banner__content h1 {
-	font-family: 'Hi Melody', cursive;
+	font-family: "Nunito Sans", sans-serif;
 	font-size: 25px;
 	text-transform: uppercase;
 	font-weight: 700;
@@ -2899,7 +2899,7 @@ font-family: 'Hi Melody', cursive;	background: transparent;
 }
 
 .sidebar-categories .head {
-font-family: 'Hi Melody', cursive;	line-height: 50px;
+font-family: "Nunito Sans", sans-serif;	line-height: 50px;
 	background: #002347;
 	padding: 0 30px;
 	font-size: 18px;
@@ -2947,7 +2947,7 @@ font-family: 'Hi Melody', cursive;	line-height: 50px;
 }
 
 .sidebar-filter .top-filter-head {
-font-family: 'Hi Melody', cursive;	line-height: 50px;
+font-family: "Nunito Sans", sans-serif;	line-height: 50px;
 	background: #002347;
 	padding: 0 30px;
 	font-size: 18px;
@@ -3241,7 +3241,7 @@ absolute
 .single-search-product-wrapper {
 	width: 260px;
 	border: 1px solid #EEEEEE;
-    padding-left: 25%
+    padding-left: 20%
 }
 
 .single-search-product img {
@@ -3255,7 +3255,7 @@ absolute
 }
 
 .single-search-product .desc .title {
-font-family: 'Hi Melody', cursive;	color: #222;
+font-family: "Nunito Sans", sans-serif;	color: #222;
 	margin-bottom: 0;
 	display: inline-block
 }
@@ -3342,7 +3342,7 @@ font-family: 'Hi Melody', cursive;	color: #222;
 
 .confirmation-card tr td:last-child {
 	color: #222;
-	padding-left: 25px
+	padding-left: 20px
 }
 
 .order_details_table {
@@ -3370,7 +3370,7 @@ font-family: 'Hi Melody', cursive;	color: #222;
 .order_details_table .table thead tr th {
 	border-bottom: 1px solid #ddd;
 	font-size: 16px;
-font-family: 'Hi Melody', cursive;	font-weight: normal;
+font-family: "Nunito Sans", sans-serif;	font-weight: normal;
 	color: #222
 }
 
@@ -3390,7 +3390,7 @@ font-family: 'Hi Melody', cursive;	font-weight: normal;
 }
 
 .order_details_table .table tbody tr td h5 {
-	font-family: 'Hi Melody', cursive;
+	font-family: "Nunito Sans", sans-serif;
 	color: #222;
 	margin-bottom: 0px;
 	font-size: 15px;
@@ -3399,7 +3399,7 @@ font-family: 'Hi Melody', cursive;	font-weight: normal;
 }
 
 .order_details_table .table tbody tr td h4 {
-	font-family: 'Hi Melody', cursive;
+	font-family: "Nunito Sans", sans-serif;
 	text-transform: uppercase;
 	margin-bottom: 0px;
 	color: #222;
@@ -3485,7 +3485,7 @@ font-family: 'Hi Melody', cursive;	font-weight: normal;
 .check_title h2 {
 	font-size: 15px;
 	font-weight: normal;
-	font-family: 'Hi Melody', cursive;
+	font-family: "Nunito Sans", sans-serif;
 	background: ffffff;
 	line-height: 40px !important;
 	padding-left: 30px;
@@ -3737,7 +3737,7 @@ font-family: 'Hi Melody', cursive;	font-weight: normal;
 }
 
 .order_box .list li a h4 {
-	font-family: 'Hi Melody', cursive;
+	font-family: "Nunito Sans", sans-serif;
 	font-size: 15px;
 	margin-top: 15px
 }
@@ -4289,7 +4289,7 @@ font-family: 'Hi Melody', cursive;	font-weight: normal;
 	border-top: 0px;
 	font-size: 16px;
 	font-weight: 500;
-font-family: 'Hi Melody', cursive;	color: #222;
+font-family: "Nunito Sans", sans-serif;	color: #222;
 	border-bottom: 0px !important
 }
 
@@ -4327,7 +4327,7 @@ font-family: 'Hi Melody', cursive;	color: #222;
 .cart_inner .table tbody tr td h5 {
 	font-size: 15px;
 	color: #222;
-	font-family: 'Hi Melody', cursive;
+	font-family: "Nunito Sans", sans-serif;
 	margin-bottom: 0px
 }
 
@@ -4677,7 +4677,7 @@ font-family: 'Hi Melody', cursive;	color: #222;
 }
 
 .s_product_text h2 {
-	font-family: 'Hi Melody', cursive;
+	font-family: "Nunito Sans", sans-serif;
 	font-size: 15px;
 	font-weight: 700;
 	color: #002347;
@@ -4905,7 +4905,7 @@ font-family: 'Hi Melody', cursive;	color: #222;
 }
 
 .product_description_area .tab-content .total_rate .box_total h6 {
-	font-family: 'Hi Melody', cursive;
+	font-family: "Nunito Sans", sans-serif;
 	margin-bottom: 0px;
 	font-size: 14px;
 	color: #555555;
@@ -5148,7 +5148,7 @@ font-family: 'Hi Melody', cursive;	color: #222;
 
 .tp_widgets .list li a {
 	color: #FFFFFF;
-	font-family: 'Hi Melody', cursive;
+	font-family: "Nunito Sans", sans-serif;
 }
 
 .tp_widgets .list li a:hover {
@@ -5167,7 +5167,7 @@ font-family: 'Hi Melody', cursive;	color: #222;
 	font-size: 20px;
 	line-height: 24px;
 	font-weight: 500;
-font-family: 'Hi Melody', cursive;	text-transform: capitalize;
+font-family: "Nunito Sans", sans-serif;	text-transform: capitalize;
 	color: #fff;
 	margin-bottom: 28px
 }

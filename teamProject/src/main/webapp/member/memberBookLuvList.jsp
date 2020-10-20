@@ -76,9 +76,9 @@ $(function(){
 								<tbody>
 
 									<c:forEach items="${list }" var="books">
-										<input type="hidden" id="book_no" value="${books.book_no }">
 										<tr>
-											<td>${rownum }</td>
+											<input type="hidden" id="book_no" value="${books.book_no }">
+											<td>${books.no }</td>
 											<td>${books.title }</td>
 											<td>${books.writer }</td>
 											<td>${books.genre }</td>
