@@ -30,7 +30,7 @@ $(function(){
 		}
 	})
 	$(".ti-heart").on("click",function(){
-		console.log$(this)
+		console.log($(this))
 		 /* $.post(".do", {: '${}'
 	    	},function(data){
 	            window.close();
