@@ -216,11 +216,8 @@ h2 {
 						</form>
 						<form action="${pageContext.request.contextPath}/eBookEpubCreate.do">
 							<button id="submit" class="button button-login w-20">등록</button>
-							<input type="text"  readonly="readonly">
-							<input type="text"  readonly="readonly">
-							<input type="text" readonly="readonly">
-							<input type="text"  readonly="readonly">
-							
+							<input type="text" id="nicknamee"  readonly="readonly">
+							<input type="text" id="titlee" readonly="readonly">
 						</form>
 					</div>
 				</div>
