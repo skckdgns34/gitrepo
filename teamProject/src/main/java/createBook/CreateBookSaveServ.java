@@ -26,12 +26,19 @@ public class CreateBookSaveServ  implements Controller {
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
+		String chapter = book.getChapter();
 		book.setMember_no(member_no);
 		book.setMy_contents(contents);
-		CreateBookDAO.getInstance().saveUserBook(book);
+		if(chapter!=null && !chapter.equals("")) {
+			CreateBookDAO.getInstance().updateUserBookDetail(book);
+		}else{
+			CreateBookDAO.getInstance().saveUserBook(book);
+		}
+		
 		ArrayList<Common> genreList=  CommonDAO.getInstance().selectAllGenre();
-		request.setAttribute("genreList", genreList);
 		ArrayList<Mywriting> chapterList = CreateBookDAO.getInstance().selectAllChapter(member_no, book.getMy_title());
+		
+		request.setAttribute("genreList", genreList);
 		request.setAttribute("chapterList", chapterList);
 		request.setAttribute("title",book.getMy_title());
 		request.setAttribute("intro",book.getMy_introduction());

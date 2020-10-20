@@ -12,8 +12,9 @@
 	$(function() {
 		$("#genre").on("change",function() {
 			var genre = $(this).val();
-			location.href = "${pageContext.request.contextPath}/createBookMain.do?genre="+ genre
-						}) //장르 select 태그 바뀔때마다 페이지 새로 띄우는거.
+			(genre);
+				location.href = "${pageContext.request.contextPath}/createBookMain.do?genre="+ genre
+			}) //장르 select 태그 바뀔때마다 페이지 새로 띄우는거.
 
 		$("img").on("click",function() {
 			var book_no = $(this).next().val()

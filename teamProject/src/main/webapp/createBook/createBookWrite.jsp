@@ -37,17 +37,17 @@ $(function(){
 			type: "POST",
 			dataType : "json",
 			data : {chapter : chapter,
-					my_title : my_title},
+					my_title : my_title,
+					chapter : chapter},
 			success: function(data){
-				console.log("1: " + data.my_contents);
-				console.log("2: " + data.my_introduction);
-				console.log("3: " + data.my_summary);
 				$("#my_introduction").val(data.my_introduction);
 				$("#my_summary").html(data.my_summary);
 				ckeditor.data.set(data.my_contents);
 				console.log(data.genre);
-				//console.log($('.list').find('li:checked').data());
-
+			 	//var option = $(".list").first().find('li[data-value='+data.genre+']')
+			 	//option.prev().attr("class","option focus");
+			 	//option.attr("class","option selected");
+				//console.log(option)
 			}
 		});
 	});
@@ -148,9 +148,11 @@ h2 {
 								</select>
 								<select name="chapter" id="chapter">
 									<option value="">챕터</option>
-									<c:forEach items="${chapterList}" var="chapter">
+									<c:if test="${not empty chapterList }">
+										<c:forEach items="${chapterList}" var="chapter">
 										<option value="${chapter.chapter}">${chapter.chapter}</option>
 									</c:forEach>
+									</c:if>
 								</select>
 								<div class="form-group col-lg-8">
 									<h2 style="margin-bottom: 0px;">제목</h2>
@@ -167,6 +169,13 @@ h2 {
 											placeholder="제목을 입력 해 주세요."
 											id="my_title" value="${title }" readonly>
 									</c:if>
+								</div>
+								<div class="form-group col-lg-8">
+									<h2 style="margin-bottom: 0px;">책 표지</h2>
+									<br>
+									<input style="width: 600px;" type="file"
+										class="form-control" name="image_uri"
+										id="image_uri">
 								</div>
 							</div>
 							<div class="form-group">

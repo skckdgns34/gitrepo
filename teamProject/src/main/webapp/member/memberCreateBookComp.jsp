@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,7 +44,7 @@ $(function(){
 					<div class="breadcrumb__text">
 						<h4>Menu</h4>
 						<div class="breadcrumb__links">
-							<a href="./index.html">내 정보</a> <span>나만의 도서 - 등록완료</span>
+							<a href="${pageContext.request.contextPath}/main.do">내 정보</a> <span>나만의 도서 - 등록완료</span>
 						</div>
 					</div>
 				</div>
@@ -83,7 +85,10 @@ $(function(){
 										<td>${bookcomp.title }</td>
 										<td>${bookcomp.genre }</td>
 										<td>${bookcomp.views }</td>
-										<td>${bookcomp.registration_date }</td>
+										<td>
+											<fmt:parseDate value="${bookcomp.registration_date}" pattern="yyyy-MM-dd HH:mm:ss" var="registration_date" />
+											<fmt:formatDate value="${registration_date}" pattern="yyyy/MM/dd" />
+										</td>
 										<td><button id="btnsend">바로가기</button></td>
 									</tr>
 								</c:forEach>
