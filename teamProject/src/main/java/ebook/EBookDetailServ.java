@@ -20,7 +20,7 @@ public class EBookDetailServ implements Controller
 	public void execute(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException
 	{
 		
-
+		String m_book = request.getParameter("m_book");//회원들 글인지
 		String book_no =  request.getParameter("book_no"); //책넘버
 		//Member member_login = (Member)request.getSession().getAttribute("memberLogin");//멤버 로그인 정보
 		String member_id = (String)request.getSession().getAttribute("member_id"); //멤버아이디
@@ -35,7 +35,7 @@ public class EBookDetailServ implements Controller
 		int count = EBookDAO.getInstance().recCount(book_no); //조회수
 		String wish = EBookDAO.getInstance().wishYn(book_no, member_no);
 
-		
+		request.setAttribute("m_book", m_book);
 		request.setAttribute("wish", wish);
 		request.setAttribute("member_nickname", member_nickname);
 		request.setAttribute("count", count);
