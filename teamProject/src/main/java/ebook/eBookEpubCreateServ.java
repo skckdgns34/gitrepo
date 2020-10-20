@@ -50,7 +50,8 @@ public class eBookEpubCreateServ implements Controller {
 		
 		List<Map<String,Object>> my = null;
 		String member_no = request.getParameter("member_no");
-		String my_title = request.getParameter("my_title");
+		String my_title = request.getParameter("titlee");
+		String nickname = request.getParameter("nicknamee");
 		
 		my = EBookDAO.getInstance().selectEpubFile(member_no, my_title);
 //		System.out.println(my);
@@ -141,7 +142,7 @@ public class eBookEpubCreateServ implements Controller {
 			 
 			
 			// Write the Book as Epub
-				epubWriter.write(book, new FileOutputStream("C:\\Users\\admin\\git\\gitrepo\\teamProject\\src\\main\\webapp\\"+(String)my.get(0).get("my_title")+".epub"));
+				epubWriter.write(book, new FileOutputStream("C:\\Users\\admin\\git\\gitrepo\\teamProject\\src\\main\\webapp\\ebookepub\\"+(String)my.get(0).get("my_title")+".epub"));
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
