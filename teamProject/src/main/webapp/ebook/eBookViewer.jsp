@@ -38,7 +38,7 @@
 			console.dir(listBook);
             document.onreadystatechange = function () {
               if (document.readyState == "complete") {
-                window.reader = ePubReader("C:\\Users\\admin\\git\\gitrepo\\teamProject\\src\\main\\webapp\\ebookepub\\${epub_path}", {   //url 경로
+                window.reader = ePubReader("ebookepub/${epub_path}", {   //url 경로
                    //restore: true,
                    bookmarks : listBook
                  });

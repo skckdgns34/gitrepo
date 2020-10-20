@@ -175,7 +175,7 @@ public class eBookEpubCreateServ implements Controller {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-
+		response.sendRedirect("createBookMain.do");
 	}
 	
 
