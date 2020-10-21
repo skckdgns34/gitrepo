@@ -18,6 +18,7 @@
         C.CODE_VALUE
 	FROM DECLARATION D, COMMON C
 WHERE D.DECLARATION_CODE = C.CODE
+AND REPORTED_MEMBER NOT IN (SELECT MEMBER_NO FROM BLACKLIST)
 ORDER BY DECLARATION_NO
 	</select>
 	
@@ -59,6 +60,12 @@ ORDER BY DECLARATION_NO
 				SYSDATE+7
 		)
 	</insert>
+	
+	<delete id="deleteReview">
+	delete review where member_no = (select member_no from blacklist where blacklist_no=#{blacklist_no})
+	</delete>
+	
+	
 
 	<!-- 삭제 -->
 	<update id="delete">

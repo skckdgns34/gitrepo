@@ -18,4 +18,5 @@ public class Report {
 	private String blacklist_reason;
 	private String limit_date;
 	private String nickname;
+	
 }
