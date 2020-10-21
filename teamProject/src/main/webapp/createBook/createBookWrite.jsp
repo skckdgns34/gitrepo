@@ -64,8 +64,8 @@ $(function(){
 					my_title : my_title,
 					chapter : chapter},
 			success: function(data){
-				$("#my_introduction").val(data.my_introduction);
-				$("#my_summary").html(data.my_summary);
+				$("#my_introduction").attr("readonly","readonly").val(data.my_introduction);
+				$("#my_summary").attr("readonly","readonly").html(data.my_summary);
 				ckeditor.data.set(data.my_contents);
 				console.log(data.genre);
 			 	//var option = $(".list").first().find('li[data-value='+data.genre+']')
@@ -163,7 +163,6 @@ h2 {
 									<br> <input type="text" class="form-control"
 										value="${sessionScope.nickname }" readonly>
 								</div>
-							
 								<select name="genre" id="genre"  >
 									<option <c:if test="${not empty chapterList}">disabled="disabled"</c:if> value="">장르 선택</option>
 									<c:forEach items="${genreList }" var="genre">
@@ -213,26 +212,26 @@ h2 {
 								<c:if test="${empty intro }">
 									<input type="text" class="form-control" id="my_introduction" name="my_introduction"
 										placeholder="소개글" onfocus="this.placeholder = ''"
-										onblur="this.placeholder = '소개글'">
+										onblur="this.placeholder = '소개글'" >
 								</c:if>
-								<c:if test="${not empty intro }">
+								<c:if test="${not empty param.intro }">
 									<input type="text" class="form-control" id="my_introduction" name="my_introduction"
 										placeholder="소개글" onfocus="this.placeholder = ''"
-										onblur="this.placeholder = '소개글'" value="${param.intro }" >
+										onblur="this.placeholder = '소개글'" value="${param.intro }" readonly="readonly">
 								</c:if>
 							</div>
 							<c:if test="${empty summary }">
 								<div class="form-group">
 									<textarea class="form-control mb-10" rows="5" id="my_summary" name="my_summary"
 										placeholder="줄거리" onfocus="this.placeholder = ''"
-										onblur="this.placeholder = '줄거리'" required=""></textarea>
+										onblur="this.placeholder = '줄거리'" required="" ></textarea>
 								</div>
 							</c:if>
-							<c:if test="${not empty summary }">
+							<c:if test="${not empty param.summary }">
 								<div class="form-group">
 									<textarea class="form-control mb-10" rows="5" id="my_summary" name="my_summary"
 										placeholder="줄거리" onfocus="this.placeholder = ''"
-										onblur="this.placeholder = '줄거리'" required="" >${param.summary }</textarea>
+										onblur="this.placeholder = '줄거리'" required="" readonly="readonly">${param.summary }</textarea>
 								</div>
 							</c:if>
 							<button id="cancel" class="button button-login w-20">취소</button>
