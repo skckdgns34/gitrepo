@@ -428,7 +428,7 @@ span {
 										<input type="hidden" name="reading_member_no" value="${member_no}" />
 										<c:if test="${not empty member_no}">
 											<c:if test="${sessionScope.blacklist != member_no}">
-											<button class="button primary-btn" id="read" style="width: 250px; height: 80px;">읽기</button>
+												<button class="button primary-btn" id="read" style="width: 250px; height: 80px;">읽기</button>
 											</c:if>
 										</c:if>
 									</form>
@@ -491,13 +491,15 @@ span {
 								<input class="form-control" name="name" type="text"
 									readonly="readonly" placeholder="${member_nickname}" required>
 							</div>
+							
 							<c:if test="${member_no == null }">
 								<div class="form-group">
 									<textarea class="form-control different-control w-100"
 										name="textarea" readonly="readonly" cols="30" rows="5"
 										placeholder="리뷰는 로그인 후 사용 가능 합니다." id=""></textarea>
 								</div>
-							</c:if>
+								</c:if>
+							
 							<c:if test="${member_no != null}">
 								<div class="form-group">
 									<textarea class="form-control different-control w-100"
@@ -505,9 +507,11 @@ span {
 										id="reviewArea"></textarea>
 								</div>
 								<div class="form-group text-center text-md-right mt-3">
+									<c:if test="${sessionScope.blacklist != member_no}">
 									<button type="submit"
 										class="button button--active button-review" id="btnreview"
 										onclick="reviewInsert()">댓글쓰기</button>
+										</c:if>
 								</div>
 							</c:if>
 						</div>
