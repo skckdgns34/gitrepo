@@ -104,8 +104,8 @@ text-align: end;}
 								<thead>
 									<tr>
 										<th>번호</th>
-										<th>마크 인덱스</th>
-										<th>마크 내용</th>
+										<th>위치</th>
+										<th>북마크 내용</th>
 										<th>삭제</th>
 										
 									</tr>
@@ -114,7 +114,7 @@ text-align: end;}
 										<c:forEach items="${markList }" var="markList">
 											<tr class="tr-hover" onclick="bookMarkClick(this)">
 												<td >${markList.rownum }<input type="hidden" value="${markList.bookmark_no}"></td>
-												<td class="mark_index">${markList.bookmark_index } </td> 
+												<td class="mark_index">${markList.bookmark_index }초</td> 
 												<td>${markList.bookmark_contents }</td>
 												<td><button class="delete"  onclick='delBookMark(this)'>삭제</button></td>
 											</tr>
@@ -133,11 +133,10 @@ text-align: end;}
 											
 											<audio controls="controls" id="audio" preload="preload">
 												<source
-													src="/mediaServer/audio/a.mp3"<%-- ${book.audio_path } --%>
+													src="/mediaServer/audio/${book.audio_path }
 													type="audio/ogg"/>
 											</audio>
 											<br><br>
-											
 											
 											<div style="padding-top: 30px">
 											<button class="button button-login w-20" id="button1" data-playing="false" role="switch" aria-checked="false">
