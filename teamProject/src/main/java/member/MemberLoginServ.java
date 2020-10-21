@@ -1,7 +1,6 @@
 package member;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -27,14 +26,9 @@ public class MemberLoginServ implements Controller
 		memberVO.setNickname(request.getParameter("nickname"));
 		memberVO.setMember_tel(request.getParameter("member_tel"));
 		memberVO.setMember_email(request.getParameter("member_email"));
+
 		
 		Member resultVO = MemberDAO.getinstance().selectOne(memberVO);
-		Blacklist member_no = new Blacklist();
-		member_no.setBlacklist_no(resultVO.getMember_no());
-
-		Blacklist blackList = BlacklistDAO.getinstance().selectM_no(member_no);
-		
-		request.getSession().setAttribute("blacklist", blackList.getMember_no());
 		
 		
 		String page = "";
@@ -52,6 +46,11 @@ public class MemberLoginServ implements Controller
 				request.getSession().setAttribute("member_email", resultVO.getMember_email());
 				MemberDAO dao = new MemberDAO();
 				dao.lastaccessdate(memberVO);
+				
+				Blacklist no = new Blacklist();
+				no.setMember_no(resultVO.getMember_no());
+				Blacklist blackList = BlacklistDAO.getinstance().selectM_no(no);
+				request.getSession().setAttribute("blacklist", blackList.getMember_no());
 				
 			} else {	//패스워드 불일치
 				request.setAttribute("errormsg", "패스워드 불일치");
