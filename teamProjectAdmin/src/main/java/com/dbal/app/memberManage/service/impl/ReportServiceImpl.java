@@ -30,6 +30,7 @@ public class ReportServiceImpl implements ReportService  {
 	public void insert(Report report) {
 		reportDAO.updateNo();
 		reportDAO.insert(report);
+		reportDAO.deleteReview(report);
 	}
 //번호 업데이트
 	
@@ -46,6 +47,11 @@ public class ReportServiceImpl implements ReportService  {
 	@Override
 	public void delete(Report report) {
 		reportDAO.delete(report);
+	}
+
+	@Override
+	public void deleteReview(Report report) {
+		
 	}
 	
 	

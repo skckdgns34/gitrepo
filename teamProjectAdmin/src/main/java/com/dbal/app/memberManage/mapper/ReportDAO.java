@@ -19,7 +19,10 @@ public interface ReportDAO {
 	public void insert(Report report);
 	
 	//삭제
-		public void delete(Report report);
+	public void delete(Report report);
+	
+	//리뷰삭제
+	public void deleteReview(Report report);
 	
 	
 

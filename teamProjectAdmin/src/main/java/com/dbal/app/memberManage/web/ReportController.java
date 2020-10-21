@@ -41,6 +41,7 @@ public class ReportController {
 	public String reportUpdateForm(Report report, Model model,HttpServletRequest request ) {
 	
 		 reportService.insert(report);
+		 reportService.deleteReview(report);
 		 
 		 return "redirect:/memberManageBlackList.ad";
 	 }
