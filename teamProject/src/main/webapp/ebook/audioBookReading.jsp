@@ -107,7 +107,6 @@ text-align: end;}
 										<th>위치</th>
 										<th>북마크 내용</th>
 										<th>삭제</th>
-										
 									</tr>
 								</thead>
 									<tbody id="bookMarkTbody">
