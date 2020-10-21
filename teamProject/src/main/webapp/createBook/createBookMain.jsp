@@ -149,7 +149,6 @@
                                     </ul>
                                 </div>
                             </div>
-                            
                             <div class="col-md-9">
                                 <div class="blog_post" id="blog_post">
 							<%-- <img src="<%=request.getContextPath()%>/resource/img/blog/main-blog/m-blog-1.jpg" alt=""> --%>
@@ -263,7 +262,6 @@
                         
                        <!--  디자인 용으로 걍 살려둡...시다! -->
                         <aside class="single_sidebar_widget author_widget">
-                            <img class="author_img rounded-circle" src="img/blog/author.png" alt="">
                             <h4>Charlie Barber</h4>
                             <p>Senior blog writer</p>
                             <div class="social_icon">

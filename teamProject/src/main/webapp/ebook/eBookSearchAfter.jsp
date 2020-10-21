@@ -75,10 +75,7 @@ thead{
 				<td>저자</td>
 				<td>출판일</td>
 				<td>출판사</td>
-				<td>소개글</td>
-				<td>줄거리</td>
 				<td>조회수</td>
-				<td>별점</td>
 				<td>장르</td>
 			</tr>
 		</thead>
@@ -97,10 +94,7 @@ thead{
 						<td><fmt:parseDate value="${book.publication_date}" pattern="yyyy-MM-dd HH:mm:ss" var="publication_date"/>
 							<fmt:formatDate value="${publication_date}"  pattern="yyyy/MM/dd"/> </td>
 						<td>${book.company_name}</td>
-						<td>${book.introduction}</td>
-						<td>${book.summary}</td>
 						<td>${book.views}</td>
-						<td>${book.score}</td>
 						<td>${book.genre}</td>
 					</tr>
 				
