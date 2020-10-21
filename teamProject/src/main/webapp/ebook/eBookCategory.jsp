@@ -26,12 +26,11 @@ $(function(){
 								success : function(data) { 				// 성공
 									searchData =[];
 									response($.map(data, function(item) {
-											searchData[item.title] = item.result; //searchData[item.title] item.title이 배열안에서 키로 쓰는거임
+											searchData[item.title] = item.result; //searchData[item.title] item.title이 배열안에서 키로 쓰는것
 											return {
 												label : item.title, //목록에 표시되는 값
 												value : item.title, //선택 시 input창에 표시되는 값	
 												idx : item.testIdx
-												
 											};
 									})); //response
 								},//success
@@ -43,11 +42,6 @@ $(function(){
 						minLength : 1,
 						autoFocus : false,
 						select : function(evt, ui) {
-							//$('#hidden').html(ui.item.value);
-							//var v = ui.item.label;
-							//var arr = v.split('/');
-							//$('#testInput').val(arr[0]);
-							//$('#hidden').val(arr[1]);
 							console.log("전체 data: " + JSON.stringify(ui));
 							console.log("db Index : " + ui.item.idx);
 							console.log("검색 데이터 : " + ui.item.value);

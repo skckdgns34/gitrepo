@@ -3661,12 +3661,6 @@ EPUBJS.reader.ControlsController = function(book) {
 		var bookmarked = reader.isBookmarked(cfi);
 		
 		var bookmark_content = $("#bookmark_text").val();
-		if(bookmark_content == "" && bookmark_content == null){
-			bookmark_content = "북마크";
-			alert("북마크 네임을 적어주지 않을 시 북마크로 저장됩니다.");
-		}
-		
-		
 		if(bookmarked === -1) { //-- Add bookmark
 			reader.addBookmark(cfi);
 			$bookmark.addClass("icon-bookmark").removeClass("icon-bookmark-empty");

@@ -30,25 +30,14 @@ public class eBookEpubCreateServ implements Controller {
 	public static List<String> getImgSrc(String str) { //HTML에서 img src추출하기
 
 		Pattern nonValidPattern = Pattern.compile("<img[^>]*src=[\"']?([^>\"']+)[\"']?[^>]*>");
-
 		List<String> result = new ArrayList<String>();
-
 		Matcher matcher = nonValidPattern.matcher(str);
-
 		while (matcher.find()) {
-
 			result.add(matcher.group(1));
-
 		}
-
 		return result;
 
 	}
-
-
-
-
-	
 
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -65,15 +54,12 @@ public class eBookEpubCreateServ implements Controller {
 		}
 		//contents는 변환 한 다음 epub_path에 담아주기.(upload)
 		
-
 		mywriting.setMember_no(member_no);
 		mywriting.setMy_contents(contents);
 		CreateBookDAO.getInstance().saveUserBook(mywriting);
 		CreateBookDAO.getInstance().updateUserBook(mywriting);
 		
-		
 		my = EBookDAO.getInstance().selectEpubFile(member_no, my_title);
-		
 		String genre = (String)my.get(0).get("genre");
 		String image_uri = (String)my.get(0).get("image_uri");
 		String my_summary = (String)my.get(0).get("my_summary");
@@ -106,47 +92,26 @@ public class eBookEpubCreateServ implements Controller {
 	
 		//epub file 제작
 		try {
-			// Create new Book
 			Book book = new Book();
-			// Set the title
+			//제목
 			book.getMetadata().addTitle((String)my.get(0).get("my_title"));
-			// Add an Author
+			//저자 
 			book.getMetadata().addAuthor(new Author("저자 : ", (String)my.get(0).get("nickname")));
-			
-			// Set cover image
-			//book.getMetadata().setCoverImage(new Resource(eBookEpubCreateServ.class.getResourceAsStream("/ebook/개미.jpg"), "cover_image"));
 			List<String> imgFile = null;
 			int a = 0;
-			int b = 0;
 			String path = request.getSession().getServletContext().getRealPath("");
-
-			
 			for(int i=0; i < my.size(); i++) {
-			// Add Chapter 1
+			// 챕터추가
 				String epubFile = (String)my.get(i).get("my_contents");
 				book.addSection("chapter "+a, new Resource(epubFile.getBytes(), "chapter"+a+".html"));
 				a++;
 				imgFile = getImgSrc(epubFile);
 				System.out.println(imgFile+"이미지파일이름");
-				for(int j=0; j<imgFile.size(); j++) { //이미지 업로드
-					
-					File file = new File(path+imgFile.get(j));
-					FileInputStream fi = new FileInputStream(file); 
-					
-					
+				for(int j=0; j<imgFile.size(); j++) { //이미지 업로드	
+					File file = new File(path+imgFile.get(j)); 
 					book.getResources().add(new Resource(Files.readAllBytes(file.toPath()), imgFile.get(j))); //경로 / 파일길이 / 파일이름
-					//book.getResources().add(new Resource(imgFile.get(j).getBytes(), "book"+b+".jsp"));
-
-					//book.getResources().add(new Resource(path, file.length(), imgFile.get(j))); //경로 / 파일길이 / 파일이름
-					//book.getResources().add(new Resource(imgFile.get(j).getBytes(), "book"+b+".jsp"));
-					//b++;
-
 				}
 			}
-			
-			
-			
-			
 			// Add css파일
 			book.getResources().add(new Resource(eBookEpubCreateServ.class.getResourceAsStream("/ebook/book.css"), "book.css"));
 			book.getResources().add(new Resource(eBookEpubCreateServ.class.getResourceAsStream("/ebook/bookk.css"), "bookk.css"));
@@ -163,13 +128,8 @@ public class eBookEpubCreateServ implements Controller {
 			 
 			// Add Chapter 3
 		//	book.addSection("Conclusion", new Resource(epubFileName+0+".html"));
-			
-			
-			
 			// Create EpubWriter
 			EpubWriter epubWriter = new EpubWriter();
-			 
-			
 			// Write the Book as Epub
 				epubWriter.write(book, new FileOutputStream("C:\\Users\\admin\\git\\gitrepo\\teamProject\\src\\main\\webapp\\ebookepub\\"+(String)my.get(0).get("my_title")+".epub"));
 			} catch (Exception e) {

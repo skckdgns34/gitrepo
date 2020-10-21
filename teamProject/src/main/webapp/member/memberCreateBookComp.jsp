@@ -57,14 +57,6 @@ $(function(){
 		</div>
 	</section>
 	<!-- Breadcrumb Section End -->
-	<br>
-	<ul>
-		<li><a id="a"
-			href="<%=application.getContextPath()%>/memberCreateBookCk.do">작성중</a>
-		<li><a id="b"
-			href="<%=application.getContextPath()%>/memberCreateBookComp.do">등록완료</a>
-	</ul>
-	<br><hr>
 	<input type="hidden" name="member_no" id="member_no"
 		value="${member_no }">
 	<section class="section-margin--small mb-5">
@@ -72,6 +64,11 @@ $(function(){
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="table-responsive">
+					<ul>
+						<li><a id="a" href="<%=application.getContextPath()%>/memberCreateBookCk.do">작성중</a>
+						<li><a id="b" href="<%=application.getContextPath()%>/memberCreateBookComp.do">등록완료</a>
+					</ul>
+					<br><hr>
 						<table class="table table-bordered" id="dataTable" width="100%"
 							cellspacing="0">
 							<thead>

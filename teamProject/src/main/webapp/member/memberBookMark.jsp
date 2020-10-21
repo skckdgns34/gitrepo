@@ -68,22 +68,17 @@ function imgClick(book_no) {
 		</div>
 	</section>
 	<!-- Breadcrumb Section End -->
-	<br>
-	<ul>
-		<li><a id="a" href="<%=application.getContextPath()%>/memberBookMark.do">읽은
-				책</a>
-		<li><a id="b"
-			href="<%=application.getContextPath()%>/memberBookLuvList.do">찜
-				목록</a>
-	</ul>
-	<br><hr>
 	<section class="section-margin--small mb-5">
 	
 	<div class="container">
       <div class="row">
        <div class="col-lg-12">
-	<div class="table-responsive">
-		
+		<div class="table-responsive">
+			<ul>
+				<li><a id="a" href="<%=application.getContextPath()%>/memberBookMark.do">읽은 책</a>
+				<li><a id="b" href="<%=application.getContextPath()%>/memberBookLuvList.do">찜 목록</a>
+			</ul>
+			<br><hr>
 			<c:forEach items="${list }" var="mylibrary">
 			<input type="hidden" id="book_no" value="${mylibrary.book_no }">
 				<div  class="col-md-6 col-lg-4" style="float: left;">
