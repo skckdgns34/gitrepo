@@ -48,7 +48,7 @@
 
 		$("img").on("click",function() {
 			var book_no = $(this).next().val()
-			location.href = "${pageContext.request.contextPath}/eBookDetail.do?book_no="+ book_no+"&m_book=y";
+			location.href = "${pageContext.request.contextPath}/eBookDetail.do?book_no="+ book_no;
 		}).css('cursor', 'pointer');
 
 		$(".blog_details").hover(function() {
@@ -57,7 +57,7 @@
 		
 		$(".blog_details").on("click",function() {
 			var book_no = $(this).parent().parent().find("input[type=hidden]").val()
-			location.href = "${pageContext.request.contextPath}/eBookDetail.do?book_no="+ book_no+"&m_book=y";
+			location.href = "${pageContext.request.contextPath}/eBookDetail.do?book_no="+ book_no;
 		}).css('cursor', 'pointer');
 		
 		$("#write").on("click",function() {
@@ -83,7 +83,7 @@
 		//
 		$(".tr").on("click",function() {
 			var book_no = $(this).find('input[type=hidden]').val();
-			location.href = "${pageContext.request.contextPath}/eBookDetail.do?book_no="+ book_no+"&m_book=y";
+			location.href = "${pageContext.request.contextPath}/eBookDetail.do?book_no="+ book_no;
 		});
 	});
 </script>

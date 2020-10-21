@@ -85,8 +85,8 @@ $(function(){
 							</thead>
 							<tbody>
 								<c:forEach items="${list }" var="bookcomp">
-	<input type="hidden" id="book_no" value="${bookcomp.book_no }">
 									<tr>
+										<input type="hidden" id="book_no" value="${bookcomp.book_no }">
 										<td>${bookcomp.title }</td>
 										<td>${bookcomp.genre }</td>
 										<td>${bookcomp.views }</td>
