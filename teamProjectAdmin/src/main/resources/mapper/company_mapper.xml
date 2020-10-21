@@ -6,6 +6,7 @@
   	<select id="selectAll" parameterType="company" resultType="company">
   		SELECT *
   		FROM company
+  		where company_code not in 0
   	</select>
   	
   	<select id="selectOne" parameterType="company" resultType="company">

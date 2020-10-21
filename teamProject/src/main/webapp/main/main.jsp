@@ -32,6 +32,7 @@ $(function(){
 	$(".ti-Heart").on("click",function(){
 		var w_book_no = $(this).parent().find('input[type=hidden]').val();
 		$.post("mainWish.do", {book_no: w_book_no});
+		alert("찜 등록완료.");
 	})
 })
 	
