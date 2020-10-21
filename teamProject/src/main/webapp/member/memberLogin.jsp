@@ -10,6 +10,7 @@
 <meta name="google-signin-client_id"
 	content="662871869650-sr2u8avlse3e6qfa7qo94h9r8r1c18st.apps.googleusercontent.com">
 <script src="https://apis.google.com/js/platform.js" async defer></script>
+
 </head>
 <body>
 
