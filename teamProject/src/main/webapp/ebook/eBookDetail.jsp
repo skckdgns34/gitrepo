@@ -159,8 +159,7 @@
 		$("#rec_update")
 				.click(
 						function() {
-							$
-									.ajax({
+							$.ajax({
 										url : "${pageContext.request.contextPath}/Ajax/eBookRecommendation.do",
 										type : "POST",
 										dataType : "JSON",
@@ -186,47 +185,30 @@
 	}
 
 	var dialog;
-	$(function() {
-
-		dialog = $("#dialog-form")
-				.dialog(
-						{
-							autoOpen : false,
-							height : 600,
-							width : 550,
-							modal : true,
-							buttons : {
-								"신고제출" : function() {
-									$
-											.ajax({
+	$(function(){
+		dialog = $("#dialog-form").dialog({
+									autoOpen : false,
+									height : 600,
+									width : 550,
+									modal : true,
+									buttons : {
+									"신고제출" : function() {
+												$.ajax({
 												url : "${pageContext.request.contextPath}/Ajax/eBookReviewDeclaration.do",
 												type : "POST",
 												data : {
-													member_no : $(
-															"#decla_member_no")
-															.val(),
-													reported_member : $(
-															"#decla_reported_member")
-															.val(),
-													review_no : $(
-															"#decla_review_no")
-															.val(),
-													book_no : $(
-															"#decla_book_no")
-															.val(),
-													declaContents : $(
-															"#declaContents")
-															.val(),
-													declaration_code : $(
-															"#declaration_code")
-															.val()
+													member_no : $("#decla_member_no").val(),
+													reported_member : $("#decla_reported_member").val(),
+													review_no : $("#decla_review_no").val(),
+													book_no : $("#decla_book_no").val(),
+													declaContents : $("#declaContents").val(),
+													declaration_code : $("#declaration_code").val()
 												},
 												success : function(result) {
 													if (result == 1) {
 														alert("신고가 완료되었습니다.");
 														dialog.dialog("close");
-														$("#declaContents")
-																.val("");
+														$("#declaContents").val("");
 													}
 												}
 											})
@@ -240,7 +222,7 @@
 						  allFields.removeClass( "ui-state-error" );
 						} */
 						});
-	})
+	});
 
 	function reDeclarationBtn() {
 		var member_no = "${member_no}";
