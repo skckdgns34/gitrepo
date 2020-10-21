@@ -143,9 +143,9 @@ public class EBookDAO
 			SearchBook aa = null;
 			conn = ConnectionManager.getConnnect();
 
-			String sql = "select  title, 'book' from books where title like '%' || ? || '%' and epub_path is not null "
+			String sql = "select  title, 'book' from books where title like '%' || ? || '%' and epub_path is not null and member_no is null "
 					+ " union all "
-					+ " select DISTINCT writer,'writer' from books where  writer like '%' || ? || '%' and epub_path is not null "
+					+ " select DISTINCT writer,'writer' from books where  writer like '%' || ? || '%' and epub_path is not null and member_no is null"
 					+ " union all "
 					+ " select DISTINCT  company_name, 'company' from company c, books b where  c.company_name like '%' || ? || '%' and b.epub_path is not null ";
 			pstmt = conn.prepareStatement(sql);
@@ -184,7 +184,7 @@ public class EBookDAO
 					+ " book_img, company_name, introduction, summary, "
 					+ " views,score ,genre " + " from books b, company c "
 					+ " where b.company_code = c.company_code "
-					+ " and b.title= ? " + " and b.epub_path is not null";
+					+ " and b.title= ? " + " and b.epub_path is not null and b.member_no is null";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, a);
 			rs = pstmt.executeQuery();
@@ -227,7 +227,7 @@ public class EBookDAO
 					+ " views,score ,genre " + " from books b, company c "
 					+ " where b.company_code = c.company_code "
 					+ " and c.company_name= ?"
-					+ "  and b.epub_path is not null ";
+					+ "  and b.epub_path is not null and member_no is null";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, a);
 			rs = pstmt.executeQuery();
@@ -269,7 +269,7 @@ public class EBookDAO
 					+ " book_img, company_name, introduction, summary, "
 					+ " views,score ,genre " + " from books b, company c "
 					+ " where b.company_code = c.company_code "
-					+ " and b.writer= ? " + " and b.epub_path is not null";
+					+ " and b.writer= ? " + " and b.epub_path is not null and b.member_no is null";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, a);
 			rs = pstmt.executeQuery();

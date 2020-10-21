@@ -19,21 +19,21 @@
 <title>SB Admin</title>
 
 <!-- Custom fonts for this template-->
-<link href="/app/resourse/vendor/fontawesome-free/css/all.min.css"
+<link href="/dambook/resourse/vendor/fontawesome-free/css/all.min.css"
 	rel="stylesheet" type="text/css">
 	
 <link href="https://fonts.googleapis.com/css2?family=Hi+Melody&display=swap" rel="stylesheet">
 	
 
 <!-- Custom styles for this template-->
-<link href="/app/resourse/css/sb-admin-2.min.css" rel="stylesheet">
+<link href="/dambook/resourse/css/sb-admin-2.min.css" rel="stylesheet">
 
 <!-- Custom styles for this page -->
 <link
-	href="/app/resourse/vendor/datatables/dataTables.bootstrap4.min.css"
+	href="/dambook/resourse/vendor/datatables/dataTables.bootstrap4.min.css"
 	rel="stylesheet">
 <!-- Bootstrap core JavaScript-->
-<script src="/app/resourse/vendor/jquery/jquery.min.js"></script>
+<script src="/dambook/resourse/vendor/jquery/jquery.min.js"></script>
 
 
 </head>
