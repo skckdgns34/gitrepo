@@ -48,10 +48,16 @@ public class MemberLoginServ implements Controller
 				dao.lastaccessdate(memberVO);
 				
 				Blacklist no = new Blacklist();
+			
 				no.setMember_no(resultVO.getMember_no());
+				System.out.println(no.getMember_no()+"확인1");
 				Blacklist blackList = BlacklistDAO.getinstance().selectM_no(no);
-				request.getSession().setAttribute("blacklist", blackList.getMember_no());
-				
+				System.out.println(blackList+"확인");
+				if(blackList!=null) {
+					request.getSession().setAttribute("blacklist", blackList.getMember_no());
+				}else {
+					request.getSession().setAttribute("blacklist", "black아니다");
+				}
 			} else {	//패스워드 불일치
 				request.setAttribute("errormsg", "패스워드 불일치");
 				page = "member/memberLogin.jsp";
