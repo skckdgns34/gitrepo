@@ -35,9 +35,12 @@ public class MemberBookDAO {	//내서재 등 관련
 		ArrayList<Mywriting> list = new ArrayList<Mywriting>();
 		try {
 			conn = ConnectionManager.getConnnect();
-			String sql = " SELECT MEMBER_NO, MY_TITLE, MY_WRITE_DATE, c.code_value "
-					+ " FROM MYWRITING m, common c "
-					+ " WHERE m.genre = c.code "
+			String sql = " SELECT MEMBER_NO, MY_TITLE, MY_WRITE_DATE, code_value "
+					+ " FROM (select m.MEMBER_NO, m.MY_TITLE, m.MY_WRITE_DATE,"
+					+ " c.code_value, ROW_NUMBER() OVER(PARTITION BY m.member_no ORDER BY m.my_title DESC)  as rn"
+					+ " from MYWRITING m, common c"
+					+ " WHERE m.genre = c.code )"
+					+ " where rn=1"
 					+ " and MEMBER_NO = ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, mywritingVO.getMember_no());
