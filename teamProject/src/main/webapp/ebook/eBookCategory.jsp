@@ -14,6 +14,7 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
+var searchData;
 $(function(){
 	$("#testInput").autocomplete({
 						source : function(request, response) {
@@ -22,14 +23,15 @@ $(function(){
 								type : "GET",
 								dataType : "json",
 								data : {data : $("#testInput").val()},	 // 검색 키워드
-								success : function(data) { // 성공
+								success : function(data) { 				// 성공
+									searchData =[];
 									response($.map(data, function(item) {
-											$('#hidden').val(item.result);
-											$('#realHidden').val(item.title);
+											searchData[item.title] = item.result; //searchData[item.title] item.title이 배열안에서 키로 쓰는거임
 											return {
 												label : item.title, //목록에 표시되는 값
 												value : item.title, //선택 시 input창에 표시되는 값	
 												idx : item.testIdx
+												
 											};
 									})); //response
 								},//success
@@ -49,6 +51,8 @@ $(function(){
 							console.log("전체 data: " + JSON.stringify(ui));
 							console.log("db Index : " + ui.item.idx);
 							console.log("검색 데이터 : " + ui.item.value);
+							$('#realHidden').val(ui.item.value);
+							$('#hidden').val(searchData[ui.item.value]);
 						},
 						focus : function(evt, ui) {
 						return false;
@@ -196,8 +200,7 @@ function imgClick(book_no) {
 
 								</div>
 								<div>
-									<form
-										action="${pageContext.request.contextPath}/eBookSearchAfter.do" method="POST">
+									<form action="${pageContext.request.contextPath}/eBookSearchAfter.do" method="POST">
 										<div class="input-group filter-bar-search" style="padding-bottom: 30px">
 											<input type="text" placeholder="Search" id="testInput">
 											<div class="input-group-append">

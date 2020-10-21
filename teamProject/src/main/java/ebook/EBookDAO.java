@@ -143,11 +143,11 @@ public class EBookDAO
 			SearchBook aa = null;
 			conn = ConnectionManager.getConnnect();
 
-			String sql = "select  title, 'book' from books where title like '%' || ? || '%' and epub_path is not null and b.member_no is null "
+			String sql = "select  title, 'book' from books where title like '%' || ? || '%' and epub_path is not null and member_no is null"
 					+ " union all "
-					+ " select DISTINCT writer,'writer' from books where  writer like '%' || ? || '%' and epub_path is not null and b.member_no is null"
+					+ " select DISTINCT writer, 'writer' from books where  writer like '%' || ? || '%' and epub_path is not null and member_no is null"
 					+ " union all "
-					+ " select DISTINCT  company_name, 'company' from company c, books b where  c.company_name like '%' || ? || '%' and b.epub_path is not null and b.member_no is null ";
+					+ " select DISTINCT company_name, 'company' from company c , books b where  c.company_name like '%' || ? || '%' and b.epub_path is not null and b.member_no is null ";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, a);
 			pstmt.setString(2, a);
@@ -157,8 +157,8 @@ public class EBookDAO
 			while (rs.next())
 			{
 				aa = new SearchBook();
-				aa.setResult(rs.getString(2));
 				aa.setTitle(rs.getString(1));
+				aa.setResult(rs.getString(2));
 
 				list.add(aa);
 			}
