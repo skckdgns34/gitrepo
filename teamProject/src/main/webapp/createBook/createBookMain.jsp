@@ -63,13 +63,17 @@
 		$("#write").on("click",function() {
 			var m_no = "${sessionScope.member_no}";
 			var black = "${sessionScope.blacklist}"
-			console.log(black)
-			if (m_no == "") {
-				alert("로그인이 필요한 기능.")
-				location.href = "${pageContext.request.contextPath}/memberLogin.do";
+			if (black != m_no) {
+				 if (m_no == "") {
+					alert("로그인이 필요한 기능.")
+					location.href = "${pageContext.request.contextPath}/memberLogin.do";
+				} else {
+					location.href = "${pageContext.request.contextPath}/createBookWrite.do";
+				} 
 			} else {
-				location.href = "${pageContext.request.contextPath}/createBookWrite.do";
+				alert("블랙회원은 사용 할 수 없는 기능입니다.")
 			}
+			
 			//location.href="${sessionScope.member_no}"
 			})
 
