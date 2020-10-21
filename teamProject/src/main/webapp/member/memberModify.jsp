@@ -110,7 +110,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12">
-						<form method="post" name="frm" id="frm" action="/app/memberModify.do">
+						<form method="post" name="frm" id="frm" action="${pageContext.request.contextPath}/memberModify.do">
 
 									<div class="form-group">
 										<label for="id">아이디 ${member_id }</label> <input type="hidden"
@@ -151,7 +151,7 @@
 						</form>
 						</div>
 						<hr>
-						<a id="a" href="/app/member/memberDelete.jsp"> 탈퇴하기</a>
+						<a id="a" href="${pageContext.request.contextPath}/member/memberDelete.jsp"> 탈퇴하기</a>
 					</div>
 					</div>
 	</section>

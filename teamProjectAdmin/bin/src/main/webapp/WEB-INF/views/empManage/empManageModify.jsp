@@ -202,7 +202,7 @@ thead{
 							<hr>
 							<div>
 								<a type="button"
-									href="/app/empManageList.ad" onclick="return alert()">되돌아가기</a>
+									href="/dambook/empManageList.ad" onclick="return alert()">되돌아가기</a>
 							</div>
 							<button class="btn btn-lg btn-primary btn-block text-uppercase"
 								type="submit">수정</button>

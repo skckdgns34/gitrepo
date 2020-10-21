@@ -212,7 +212,7 @@
 					<ul class="navbar-nav ml-auto">
 						<li class="nav-item mx-0 mx-lg-1"><a
 							class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
-							href="/app/main.do">홈페이지 이동</a></li>
+							href="/dambook/main.do">홈페이지 이동</a></li>
 
 						<c:if test="${empty sessionScope.login}">
 							<li class="nav-item mx-0 mx-lg-1"><a

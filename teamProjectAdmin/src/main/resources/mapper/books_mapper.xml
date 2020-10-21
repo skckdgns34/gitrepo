@@ -19,14 +19,14 @@
 			WHERE
 				b.genre = c.code
 			AND
-				b.company_code = p.company_code
+				nvl(b.company_code,0) = p.company_code
 	</select>
 
 	
 	<select id="bookselectCompany" parameterType="books" resultType="books">
   		SELECT company_name, company_code
   		FROM company
-  		WHERE  company_name LIKE '%'||#{company_name}||'%'
+  		WHERE  company_name LIKE '%'||#{company_name}||'%' and company_code not in 0
 	</select>
 
 	<select id="selectOne" parameterType="books" resultType="books">

@@ -28,7 +28,7 @@ body {
 <h3>아이디 찾기</h3>
 	<form>
 		<label for="id">아이디는 ${memberFind.member_id } 입니다.</label><br><br>
-		<a id="a" href="/app/memberLogin.do">로그인하러가기</a> |
+		<a id="a" href="${pageContext.request.contextPath}/memberLogin.do">로그인하러가기</a> |
 		<a id="b"href="member/memberFindPassword.jsp">비밀번호 찾기</a>
 	</form>
 	<br>
