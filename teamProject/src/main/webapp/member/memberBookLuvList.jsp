@@ -51,21 +51,19 @@ $(function(){
 			</div>
 		</div>
 	</section>
-	<br>
-		<ul>
-			<li><a id="a"
-				href="<%=application.getContextPath()%>/memberBookMark.do">읽은 책</a>
-			<li><a id="b"
-				href="<%=application.getContextPath()%>/memberBookLuvList.do">찜
-					목록</a>
-		</ul> <br>
-		<hr>
 		<section class="section-margin--small mb-5">
 
 			<div class="container">
 				<div class="row">
-					<div class="col-lg-12">
 						<div class="table-responsive">
+					<div class="col-lg-12">
+						<ul>
+							<li><a id="a"
+							href="<%=application.getContextPath()%>/memberBookMark.do">읽은 책</a>
+							<li><a id="b"
+							href="<%=application.getContextPath()%>/memberBookLuvList.do">찜 목록</a>
+						</ul> <br>
+						<hr><br>
 							<table class="table table-bordered" id="dataTable" width="100%"
 								cellspacing="0">
 								<thead>
