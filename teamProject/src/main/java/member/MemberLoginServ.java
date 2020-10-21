@@ -1,12 +1,15 @@
 package member;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import common.Controller;
+import memberManage.BlacklistDAO;
+import vo.Blacklist;
 import vo.Member;
 
 public class MemberLoginServ implements Controller
@@ -24,9 +27,14 @@ public class MemberLoginServ implements Controller
 		memberVO.setNickname(request.getParameter("nickname"));
 		memberVO.setMember_tel(request.getParameter("member_tel"));
 		memberVO.setMember_email(request.getParameter("member_email"));
-
 		
 		Member resultVO = MemberDAO.getinstance().selectOne(memberVO);
+		Blacklist member_no = new Blacklist();
+		member_no.setBlacklist_no(resultVO.getMember_no());
+
+		Blacklist blackList = BlacklistDAO.getinstance().selectM_no(member_no);
+		
+		request.getSession().setAttribute("blacklist", blackList.getMember_no());
 		
 		
 		String page = "";

@@ -88,12 +88,12 @@ $(function(){
 	</textarea><br><br>
 <h6>탈퇴 후에는 해당 아이디로 다시 가입할 수 없으며, 아이디와 데이터는 복구할 수 없습니다.</h6>
 
-	<form name=Join action="/app/memberDelete.do" onSubmit="return CheckForm(this)">
+	<form name=Join action="${pageContext.request.contextPath}/memberDelete.do" onSubmit="return CheckForm(this)">
 		<div>
 			<label for="member_id" id="member_id" name="member_id"></label>
 		</div>
 		<input name="member_pw" type="checkbox" id="member_pw"
-			class="inputCheck" onclick="window.open('/app/memberDeletePassword.do', '비밀번호 확인', 'width=300, height=200')" /> 위 내용을 확인하였으며, 탈퇴를 진행합니다. <br>
+			class="inputCheck" onclick="window.open('${pageContext.request.contextPath}/memberDeletePassword.do', '비밀번호 확인', 'width=300, height=200')" /> 위 내용을 확인하였으며, 탈퇴를 진행합니다. <br>
 		
 		<input type="hidden" name="pwcheck" id="pwcheck">
 		<input type="hidden" name="member_id" id="member_id" value="${member_id }">

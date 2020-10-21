@@ -76,13 +76,13 @@
 	
 	<!-- Page level plugins -->
 	<script
-		src="/app/resourse/vendor/chart.js/Chart.min.js"></script>
+		src="/dambook/resourse/vendor/chart.js/Chart.min.js"></script>
 	  <script
-		src="/app/resourse/vendor/chart.js/bestChart.js"></script>
+		src="/dambook/resourse/vendor/chart.js/bestChart.js"></script>
 		
-<script src="/app/resourse/vendor/chart.js/genderChart.js"></script>
-<script src="/app/resourse/vendor/chart.js/ticketChart.js"></script>
-<script src="/app/resourse/vendor/chart.js/moneyChart.js"></script>
+<script src="/dambook/resourse/vendor/chart.js/genderChart.js"></script>
+<script src="/dambook/resourse/vendor/chart.js/ticketChart.js"></script>
+<script src="/dambook/resourse/vendor/chart.js/moneyChart.js"></script>
 </body>
 
 </html>

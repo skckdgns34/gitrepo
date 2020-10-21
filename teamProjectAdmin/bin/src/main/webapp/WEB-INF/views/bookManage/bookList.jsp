@@ -52,7 +52,7 @@ $(document).on(
 					<c:forEach items="${list}" var="books">
 						<tr>
 							<td><a href="bookSelect.ad?book_no=${books.book_no}">${books.book_no}</a></td>
-							<td><img src="/app/filenameDownload.do?filename=${books.book_img }" width="70" height="100">${books.title}</td>
+							<td><img src="/dambook/filenameDownload.do?filename=${books.book_img }" width="70" height="100">${books.title}</td>
 							<td>${books.writer}</td>
 							<td>${fn:substring(books.publication_date,0,10) }</td>
 							<td>${books.company_name}</td>

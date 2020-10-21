@@ -62,7 +62,8 @@
 		
 		$("#write").on("click",function() {
 			var m_no = "${sessionScope.member_no}";
-			console.log(m_no + "a");
+			var black = "${sessionScope.blacklist}"
+			console.log(black)
 			if (m_no == "") {
 				alert("로그인이 필요한 기능.")
 				location.href = "${pageContext.request.contextPath}/memberLogin.do";

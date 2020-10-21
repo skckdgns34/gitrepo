@@ -26,7 +26,7 @@ body {
 	<%=nickname %>(<b><%=member_id %></b>)님!<br>
 	가입해주셔서 감사합니다.
 	<br><hr>
-	<a id="a" href="/app/memberLogin.do">로그인하러가기</a>
+	<a id="a" href="${pageContext.request.contextPath}/memberLogin.do">로그인하러가기</a>
 </div>
 	<br>
 </body>
