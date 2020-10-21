@@ -137,7 +137,7 @@ text-align: end;}
 													type="audio/ogg"/>
 											</audio>
 											<br><br>
-											볼륨<input type="range" id="volume" min="0" max="2" value="1" step="0.01"><br>
+											
 											
 											<div style="padding-top: 30px">
 											<button class="button button-login w-20" id="button1" data-playing="false" role="switch" aria-checked="false">
@@ -215,7 +215,7 @@ text-align: end;}
 
 	
 	
-	//$("#mark_index").on("click")
+	$("#mark_index").on("click")
 	
 	
 	resetButton.addEventListener('click',function(){
@@ -247,11 +247,6 @@ text-align: end;}
 	const gainNode = audioContext.createGain();
 	track.connect(gainNode).connect(audioContext.destination);
 	
-	const volumeControl = document.querySelector('#volume');
-
-	volumeControl.addEventListener('input', function() {
-	    gainNode.gain.value = this.value;
-	}, false);
 	
 	//북마크, mylob 고른거 호버주고
 	$(".tr-hover").hover(function(){

@@ -218,7 +218,7 @@ h2 {
 								<c:if test="${not empty intro }">
 									<input type="text" class="form-control" id="my_introduction" name="my_introduction"
 										placeholder="소개글" onfocus="this.placeholder = ''"
-										onblur="this.placeholder = '소개글'" value="${intro }">
+										onblur="this.placeholder = '소개글'" value="${param.intro }" <c:if test="${not empty param.intro }">readonly</c:if>>
 								</c:if>
 							</div>
 							<c:if test="${empty summary }">
@@ -232,7 +232,7 @@ h2 {
 								<div class="form-group">
 									<textarea class="form-control mb-10" rows="5" id="my_summary" name="my_summary"
 										placeholder="줄거리" onfocus="this.placeholder = ''"
-										onblur="this.placeholder = '줄거리'" required="">${summary }</textarea>
+										onblur="this.placeholder = '줄거리'" required="" <c:if test="${not empty param.summary }">readonly</c:if>>${param.summary }</textarea>
 								</div>
 							</c:if>
 							<button id="cancel" class="button button-login w-20">취소</button>
