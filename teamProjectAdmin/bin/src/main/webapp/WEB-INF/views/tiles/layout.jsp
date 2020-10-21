@@ -19,21 +19,21 @@
 <title>SB Admin</title>
 
 <!-- Custom fonts for this template-->
-<link href="/app/resourse/vendor/fontawesome-free/css/all.min.css"
+<link href="/dambook/resourse/vendor/fontawesome-free/css/all.min.css"
 	rel="stylesheet" type="text/css">
 <link
 	href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
 	rel="stylesheet">
 
 <!-- Custom styles for this template-->
-<link href="/app/resourse/css/sb-admin-2.min.css" rel="stylesheet">
+<link href="/dambook/resourse/css/sb-admin-2.min.css" rel="stylesheet">
 
 <!-- Custom styles for this page -->
 <link
-	href="/app/resourse/vendor/datatables/dataTables.bootstrap4.min.css"
+	href="/dambook/resourse/vendor/datatables/dataTables.bootstrap4.min.css"
 	rel="stylesheet">
 <!-- Bootstrap core JavaScript-->
-<script src="/app/resourse/vendor/jquery/jquery.min.js"></script>
+<script src="/dambook/resourse/vendor/jquery/jquery.min.js"></script>
 
 
 </head>
@@ -212,7 +212,7 @@
 					<ul class="navbar-nav ml-auto">
 						<li class="nav-item mx-0 mx-lg-1"><a
 							class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
-							href="/app/main.do">홈페이지 이동</a></li>
+							href="/dambook/main.do">홈페이지 이동</a></li>
 
 						<c:if test="${empty sessionScope.login}">
 							<li class="nav-item mx-0 mx-lg-1"><a
@@ -348,20 +348,20 @@
 
 	<!-- <script src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script> -->
 
-	<script src="/app/resourse/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="/dambook/resourse/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 	<!-- Core plugin JavaScript-->
-	<script src="/app/resourse/vendor/jquery-easing/jquery.easing.min.js"></script>
+	<script src="/dambook/resourse/vendor/jquery-easing/jquery.easing.min.js"></script>
 
 	<!-- Custom scripts for all pages-->
-	<script src="/app/resourse/js/sb-admin-2.min.js"></script>
+	<script src="/dambook/resourse/js/sb-admin-2.min.js"></script>
 	<!-- Page level plugins -->
-	<script src="/app/resourse/vendor/datatables/jquery.dataTables.min.js"></script>
+	<script src="/dambook/resourse/vendor/datatables/jquery.dataTables.min.js"></script>
 	<script
-		src="/app/resourse/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+		src="/dambook/resourse/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
 	<!-- Page level custom scripts -->
-	<script src="/app/resourse/js/demo/datatables-demo.js"></script>
+	<script src="/dambook/resourse/js/demo/datatables-demo.js"></script>
 </body>
 
 </html>

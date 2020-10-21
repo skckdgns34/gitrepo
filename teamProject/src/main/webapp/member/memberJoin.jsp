@@ -112,7 +112,7 @@
 				<div class="col-lg-6">
 					<div class="login_form_inner register_form_inner">
 						<h3>회원가입</h3>
-						<form class="row login_form" action="/app/memberJoin.do"" id="frm" >
+						<form class="row login_form" action="${pageContext.request.contextPath}/memberJoin.do"" id="frm" >
 							<div class="col-md-12 form-group">
 								<input type="text" class="form-control" id="member_id" name="member_id" placeholder="id"
 								required onfocus="this.placeholder = ''" onblur="this.placeholder = 'id'">
