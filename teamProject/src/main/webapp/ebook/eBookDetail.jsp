@@ -428,7 +428,7 @@ span {
 										<input type="hidden" name="reading_member_no" value="${member_no}" />
 										<c:if test="${not empty member_no}">
 											<c:if test="${sessionScope.blacklist != member_no}">
-											<button class="button primary-btn" id="read" style="width: 250px; height: 80px;">읽기</button>
+												<button class="button primary-btn" id="read" style="width: 250px; height: 80px;">읽기</button>
 											</c:if>
 										</c:if>
 									</form>

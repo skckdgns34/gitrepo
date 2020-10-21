@@ -76,7 +76,6 @@ thead{
 				<td>출판일</td>
 				<td>출판사</td>
 				<td>조회수</td>
-				<td>장르</td>
 			</tr>
 		</thead>
 		
@@ -95,7 +94,7 @@ thead{
 							<fmt:formatDate value="${publication_date}"  pattern="yyyy/MM/dd"/> </td>
 						<td>${book.company_name}</td>
 						<td>${book.views}</td>
-						<td>${book.genre}</td>
+						
 					</tr>
 				
 			</c:forEach>
