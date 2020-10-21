@@ -132,8 +132,7 @@ text-align: end;}
 											
 											<audio controls="controls" id="audio" preload="preload">
 												<source
-													src="/mediaServer/audio/${book.audio_path }
-													type="audio/ogg"/>
+													src="/mediaServer/audio/${book[0].audio_path}" type="audio/ogg"/>
 											</audio>
 											<br><br>
 											
