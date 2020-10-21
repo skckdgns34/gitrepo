@@ -15,6 +15,9 @@ public class MemberLoginServ implements Controller
 	public void execute(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException
 	{
+
+		
+		
 		Member memberVO = new Member();
 		memberVO.setMember_id(request.getParameter("member_id"));
 		memberVO.setMember_pw(request.getParameter("member_pw"));
@@ -47,8 +50,9 @@ public class MemberLoginServ implements Controller
 				page = "member/memberLogin.jsp";
 			}
 		}
-		
-		request.getRequestDispatcher(page).forward(request, response);
+
+			request.getRequestDispatcher(page).forward(request, response);			
+
 
 	}
 
