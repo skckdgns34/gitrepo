@@ -14,7 +14,7 @@
 <link rel="icon"
 	href="<%=request.getContextPath()%>/resource/img/favicon.png"
 	type="image/png" />
-<title>test</title>
+<title>DumBookDamBook</title>
 <!-- Bootstrap CSS -->
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resource/css1/bootstrap.css" />
