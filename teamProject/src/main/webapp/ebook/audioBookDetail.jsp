@@ -516,9 +516,11 @@ span {
 										id="reviewArea"></textarea>
 								</div>
 								<div class="form-group text-center text-md-right mt-3">
+								<c:if test="${sessionScope.blacklist != member_no}">
 									<button type="submit"
 										class="button button--active button-review" id="btnreview"
 										onclick="reviewInsert()">댓글쓰기</button>
+										</c:if>
 								</div>
 							</c:if>
 						</div>
