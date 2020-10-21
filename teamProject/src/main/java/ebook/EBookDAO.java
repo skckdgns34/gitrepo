@@ -477,7 +477,7 @@ public class EBookDAO
 		{
 			conn = ConnectionManager.getConnnect();
 			String sql = "select a.* from ( select rownum rn, b.* from (  " + 
-					"select title, book_no, book_img from books where genre =? and epub_path is not null order by book_no desc "
+					"select title, book_no, book_img from books where genre =? and epub_path is not null and member_no is null order by book_no desc "
 					+ ") b ) a where rn  between ? and ? "; 
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, gen);
@@ -511,7 +511,7 @@ public class EBookDAO
 		{
 			conn = ConnectionManager.getConnnect();
 			String sql = "select a.* from ( select rownum rn, b.* from (  " +
-						  "select title, book_no, book_img from books where epub_path is not null order by book_no desc "
+						  "select title, book_no, book_img from books where epub_path is not null and member_no is null order by book_no desc "
 						  +  ") b ) a where rn  between ? and ? ";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, first);

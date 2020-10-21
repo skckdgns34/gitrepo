@@ -80,7 +80,6 @@ function gopage(p){
 		success : function(data){ //연결성공
 			$("#row").html(data);
 		}
-
 	 })
 }
 
@@ -161,7 +160,6 @@ function imgClick(book_no) {
 								</div>
 								<div class="sidebar-filter">
 									<div class="top-filter-head"></div>
-
 								</div>
 
 								<div class="sidebar-categories">
