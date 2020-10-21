@@ -20,8 +20,23 @@
   text-overflow: ellipsis;
   border:1px solid transparent; 
  
-
 }
+
+#blog_post{
+
+    border: 1px solid #f3f2ee;
+    align-items: center;
+    padding-left: 40px;
+    padding-bottom: 30px;
+    padding-top: 30px;
+    margin-bottom: 40px;
+}
+#write{
+
+    margin-left: 90px;
+    margin-bottom: 50px;
+}
+
 </style>
 <script>
 	$(function() {
@@ -92,7 +107,7 @@
 	<!-- Breadcrumb Section End -->
 	
 	<!--================Blog Area =================-->
-    <section class="blog_area section_gap">
+    <section class="blog_area" style="padding-top:70px">
     
         <div class="container">
             <div class="row">
@@ -136,7 +151,7 @@
                             </div>
                             
                             <div class="col-md-9">
-                                <div class="blog_post">
+                                <div class="blog_post" id="blog_post">
 							<%-- <img src="<%=request.getContextPath()%>/resource/img/blog/main-blog/m-blog-1.jpg" alt=""> --%>
 								 <img src="filenameDownload.do?filename=${userBook.book_img}" style="width:368px; height:186px;">
                                    <input type="hidden" name ="h_book_no" value="${userBook.book_no}">
@@ -147,7 +162,7 @@
                                         <p><fmt:formatDate value="${publication_date}"  pattern="yyyy/MM/dd"/></p>
                                  		 <p>${userBook.code_value }</p>
                                  		 <p id="summary">${userBook.summary }</p>
-                                        <a href="${pageContext.request.contextPath}/eBookDetail.do?book_no=${userBook.book_no}" class="blog_btn">View More</a>
+                                        <a href="${pageContext.request.contextPath}/eBookDetail.do?book_no=${userBook.book_no}" class="blog_btn" style="margin-left: 130px;">View More</a>
                                     </div>
 
                                 </div>
@@ -158,7 +173,7 @@
                         
                         
                       <!-- 페이징(기능 없음... 껍데기만 있음) -->
-                        <nav class="blog-pagination justify-content-center d-flex">
+                        <nav class="blog-pagination justify-content-center d-flex" style="margin-left: 200px;">
                             <ul class="pagination">
                                 <li class="page-item">
                                     <a href="#" class="page-link" aria-label="Previous">

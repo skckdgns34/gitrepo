@@ -131,7 +131,7 @@
 	}
 
 	function btnHideNShow() {
-		var m_book = '${m_book}';
+		var m_book = ${m_book}
 		if ("${checkCode}" != "") { //이용자가 티켓코드가 없을시 결재버튼 보여주기 & 있으면 읽기버튼보여주기
 			$("#check").hide();
 			$("#read").show();
@@ -476,22 +476,23 @@ span {
 		<div class="container">
 
 			<ul class="nav nav-tabs" id="myTab" role="tablist" style="background-color: #f3f2ee;">
-				<li class="nav-item"><a class="nav-link" id="home-tab"
+				<li class="nav-item"><a class="nav-link active" id="home-tab"
 					data-toggle="tab" href="#home" role="tab" aria-controls="home"
 					aria-selected="true">줄거리</a></li>
 
-				<li class="nav-item"><a class="nav-link active" id="review-tab"
+				<li class="nav-item"><a class="nav-link " id="review-tab"
 					data-toggle="tab" href="#review" role="tab" aria-controls="review"
 					aria-selected="false">리뷰</a></li>
 			</ul>
 
 			<div class="tab-content" id="myTabContent">
-				<div class="tab-pane fade" id="home" role="tabpanel"
+				<div class="tab-pane fade show active" id="home" role="tabpanel"
 					aria-labelledby="home-tab">
 					<p>${book[0].summary}</p>
 				</div>
 
-				<div class="tab-pane fade show active" id="review" role="tabpanel"
+
+				<div class="tab-pane fade" id="review" role="tabpanel"
 					aria-labelledby="review-tab">
 					<div class="row">
 						<div class="col-lg-12">

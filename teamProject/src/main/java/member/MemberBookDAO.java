@@ -35,9 +35,12 @@ public class MemberBookDAO {	//내서재 등 관련
 		ArrayList<Mywriting> list = new ArrayList<Mywriting>();
 		try {
 			conn = ConnectionManager.getConnnect();
-			String sql = " SELECT MEMBER_NO, MY_TITLE, MY_WRITE_DATE, c.code_value, VIEWS "
-					+ " FROM MYWRITING m, common c "
-					+ " WHERE m.genre = c.code "
+			String sql = " SELECT MEMBER_NO, MY_TITLE, MY_WRITE_DATE, code_value "
+					+ " FROM (select m.MEMBER_NO, m.MY_TITLE, m.MY_WRITE_DATE,"
+					+ " c.code_value, ROW_NUMBER() OVER(PARTITION BY m.member_no ORDER BY m.my_title DESC)  as rn"
+					+ " from MYWRITING m, common c"
+					+ " WHERE m.genre = c.code )"
+					+ " where rn=1"
 					+ " and MEMBER_NO = ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, mywritingVO.getMember_no());
@@ -48,7 +51,6 @@ public class MemberBookDAO {	//내서재 등 관련
 				resultVo.setMy_title(rs.getString("MY_TITLE"));
 				resultVo.setMy_write_date(rs.getString("MY_WRITE_DATE"));
 				resultVo.setGenre(rs.getString("code_value"));
-				resultVo.setViews(rs.getString("VIEWS"));
 				list.add(resultVo);
 				System.out.println(rs.getString("MEMBER_NO"));
 				System.out.println(rs.getString("MY_TITLE"));
@@ -68,9 +70,10 @@ public class MemberBookDAO {	//내서재 등 관련
 		ArrayList<Books> list = new ArrayList<Books>();
 		try {
 			conn = ConnectionManager.getConnnect();
-			String sql = " SELECT book_no, member_no, title, writer, genre, views, registration_date"
-					+ " FROM books"
-					+ " WHERE MEMBER_NO = ?";
+			String sql = " SELECT  b.book_no, b.member_no, b.title, b.writer, b.views, b.registration_date, c.code_value"
+					+ " FROM books b, common c"
+					+ " WHERE c.code = b.genre"
+					+ " AND MEMBER_NO = ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, booksVO.getMember_no());
 			rs = pstmt.executeQuery();
@@ -80,9 +83,9 @@ public class MemberBookDAO {	//내서재 등 관련
 				resultVo.setMember_no(rs.getString("MEMBER_NO"));
 				resultVo.setTitle(rs.getString("TITLE"));
 				resultVo.setWriter(rs.getString("writer"));
-				resultVo.setGenre(rs.getString("GENRE"));
 				resultVo.setViews(rs.getString("VIEWS"));
 				resultVo.setRegistration_date(rs.getString("registration_date"));
+				resultVo.setGenre(rs.getString("code_value"));
 				list.add(resultVo);
 			}
 		} catch (Exception e) {

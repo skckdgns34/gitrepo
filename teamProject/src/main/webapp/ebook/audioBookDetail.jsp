@@ -344,7 +344,7 @@ span {
 					<div class="breadcrumb__text">
 						<h4>Menu</h4>
 						<div class="breadcrumb__links">
-							<a href="./index2.jsp">Home</a> <span>오디오북</span>
+							<a href="${pageContext.request.contextPath}/main.do">Home</a> <span>오디오북</span>
 						</div>
 					</div>
 				</div>
@@ -387,7 +387,7 @@ span {
 									<!-- 장르명 -->
 									<!-- 카테고리 명이 나왔으면 좋겠는데 ㅠㅠㅠ 수정해주기-->
 									<li><a class="justify-content-between d-flex" href="#">
-											<p>Category</p> <span class="or">${book[0].genre}</span>
+											<p>장르</p> <span class="or">${book[0].genre}</span>
 									</a></li>
 
 									<!-- 등록일 -->
@@ -401,16 +401,25 @@ span {
 									<li><a class="justify-content-between d-flex" href="#">
 											<p>조회수</p> <span class="or">${book[0].views}</span>
 									</a></li>
+
+									<!-- 베스트 셀러 여부 -->
+									<li>
+										<a class="justify-content-between d-flex" href="#">
+											<c:if test="${book[0].best_book == 'Y'}">
+												<p style="color : red;">베스트 셀러</p> <span class="or"></span>
+											</c:if>
+											<c:if test="${book[0].best_book == 'N'}">
+												
+											</c:if>
+										</a>
+									</li>
+									
 									<!-- 소개글 -->
 									<li><a href="#">
 											<p>소개글</p> <span class="or"
 											style="max-width: 400px; text-align: end;">${book[0].introduction}</span>
 									</a></li>
-
-									<!-- 베스트 셀러 여부 -->
-									<li><a class="justify-content-between d-flex" href="#">
-											<p>베스트 셀러 여부</p> <span class="or">${book[0].best_book}</span>
-									</a></li>
+								
 								</ul>
 							</aside>
 
@@ -464,22 +473,22 @@ span {
 		<div class="container">
 
 			<ul class="nav nav-tabs" id="myTab" role="tablist" style="background-color: #f3f2ee;">
-				<li class="nav-item"><a class="nav-link" id="home-tab"
+				<li class="nav-item"><a class="nav-link active" id="home-tab"
 					data-toggle="tab" href="#home" role="tab" aria-controls="home"
 					aria-selected="true">줄거리</a></li>
 
-				<li class="nav-item"><a class="nav-link active" id="review-tab"
+				<li class="nav-item"><a class="nav-link " id="review-tab"
 					data-toggle="tab" href="#review" role="tab" aria-controls="review"
 					aria-selected="false">리뷰</a></li>
 			</ul>
 
 			<div class="tab-content" id="myTabContent">
-				<div class="tab-pane fade" id="home" role="tabpanel"
+				<div class="tab-pane fade show active" id="home" role="tabpanel"
 					aria-labelledby="home-tab">
 					<p>${book[0].summary}</p>
 				</div>
 
-				<div class="tab-pane fade show active" id="review" role="tabpanel"
+				<div class="tab-pane fade" id="review" role="tabpanel"
 					aria-labelledby="review-tab">
 					<div class="row">
 						<div class="col-lg-12">

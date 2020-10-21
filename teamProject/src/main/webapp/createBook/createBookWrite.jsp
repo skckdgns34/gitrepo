@@ -36,8 +36,13 @@ $(function(){
 	});
 	
 	$("#submit").on("click",function(){
-		alert("등록됐슴다.")
-		$("form").attr("action", "${pageContext.request.contextPath}/eBookEpubCreate.do");
+		var result = confirm("등록하실텨? 하면 못고쳐");
+		if(result){
+			alert("등록됐슴다.");
+			$("form").attr("action", "${pageContext.request.contextPath}/eBookEpubCreate.do");
+		}else{
+			alert("취소했수다");
+		}
 	});
 	
 /* 	$("#my_title").on("keydown", function(){
@@ -159,10 +164,10 @@ h2 {
 										value="${sessionScope.nickname }" readonly>
 								</div>
 							
-								<select name="genre" id="genre" <c:if test="${not empty chapterList}">readonly</c:if> >
-									<option value="">장르 선택</option>
+								<select name="genre" id="genre"  >
+									<option <c:if test="${not empty chapterList}">disabled="disabled"</c:if> value="">장르 선택</option>
 									<c:forEach items="${genreList }" var="genre">
-										<option value="${genre.code}">${genre.code_value }</option>
+										<option <c:if test="${not empty chapterList}">disabled="disabled"</c:if> value="${genre.code}">${genre.code_value }</option>
 									</c:forEach>
 								</select>
 								<script>$("#genre").val("${chapterList[0].genre}")</script>
