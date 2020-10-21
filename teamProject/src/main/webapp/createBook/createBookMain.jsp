@@ -65,13 +65,18 @@
 			var black = "${sessionScope.blacklist}"
 			if (black != m_no) {
 				 if (m_no == "") {
-					alert("로그인이 필요한 기능.")
+					alert("로그인이 필요한 기능.");
 					location.href = "${pageContext.request.contextPath}/memberLogin.do";
 				} else {
 					location.href = "${pageContext.request.contextPath}/createBookWrite.do";
 				} 
 			} else {
-				alert("블랙회원은 사용 할 수 없는 기능입니다.")
+				 if (m_no == "") {
+						alert("로그인이 필요한 기능.");
+						location.href = "${pageContext.request.contextPath}/memberLogin.do";
+					} else {
+					alert("블랙회원은 사용 할 수 없는 기능입니다.");
+				}
 			}
 			
 			//location.href="${sessionScope.member_no}"

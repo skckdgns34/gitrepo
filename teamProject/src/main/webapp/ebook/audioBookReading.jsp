@@ -156,7 +156,7 @@ text-align: end;}
 		                       <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
 							<thead>
 								<tr>
-									<th>mylib_no</th>
+									<th>번호</th>
 									<th>책 제목</th>
 									<th>찜 여부</th>
 									<th>저자</th>

@@ -3,6 +3,7 @@ package createBook;
 import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -21,7 +22,8 @@ import vo.Mywriting;
 public class CreateBookSaveServ  implements Controller {
 
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		request.setCharacterEncoding("utf-8");
+
 		String contents = request.getParameter("editor1");
 		String member_no =(String)request.getSession().getAttribute("member_no");
 		Mywriting  book = new Mywriting();
@@ -53,7 +55,8 @@ public class CreateBookSaveServ  implements Controller {
 		}else{
 			CreateBookDAO.getInstance().saveUserBook(book);
 		}
-		response.sendRedirect("createBook.do?title="+book.getMy_title());
+		System.out.println(book.getMy_title());
+		response.sendRedirect("createBook.do?title="+URLEncoder.encode(book.getMy_title(),"UTF-8"));
 	}
 	private String getFilename(Part part) throws UnsupportedEncodingException {
 		for (String cd : part.getHeader("Content-Disposition").split(";")) {

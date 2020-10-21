@@ -19,8 +19,10 @@ public class CreateBookServ implements Controller
 	public void execute(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException
 	{
+	
 		String member_no = (String)request.getSession().getAttribute("member_no");
 		String my_title = request.getParameter("title");
+		System.out.println(my_title);
 		ArrayList<Common> genreList=  CommonDAO.getInstance().selectAllGenre();
 		request.setAttribute("genreList", genreList);
 		ArrayList<Mywriting> chapterList = CreateBookDAO.getInstance().selectAllChapter(member_no, my_title);

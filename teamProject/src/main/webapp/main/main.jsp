@@ -21,6 +21,7 @@ $(function(){
 		if (confirm("해당 책 상세페이지로 이동하시겠습니까?")) {
 			var book_no = $(this).next().val()
 			var epubyn = $(".epubyn").val()
+			console.log(epubyn);
 			if(epubyn != null && epubyn != ("")){
 				location.href = "${pageContext.request.contextPath}/eBookDetail.do?book_no="+book_no;	
 			}else{

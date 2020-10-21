@@ -36,12 +36,12 @@ $(function(){
 	});
 	
 	$("#submit").on("click",function(){
-		var result = confirm("등록하실텨? 하면 못고쳐");
+		var result = confirm("등록 이후에는 수정이 불가능합니다. 등록하시겠습니까?");
 		if(result){
 			alert("등록됐슴다.");
 			$("form").attr("action", "${pageContext.request.contextPath}/eBookEpubCreate.do");
 		}else{
-			alert("취소했수다");
+			alert("취소했슴다");
 		}
 	});
 	
@@ -186,7 +186,7 @@ h2 {
 										<input style="width: 600px;" type="text"
 											class="form-control" name="my_title"
 											placeholder="제목을 입력 해 주세요."
-											id="my_title">
+											id="my_title" value="">
 										<button class="button button-login w-20" name="titleck">중복확인</button>
 									</c:if>
 									<c:if test="${not empty title }">
@@ -218,7 +218,7 @@ h2 {
 								<c:if test="${not empty intro }">
 									<input type="text" class="form-control" id="my_introduction" name="my_introduction"
 										placeholder="소개글" onfocus="this.placeholder = ''"
-										onblur="this.placeholder = '소개글'" value="${param.intro }" <c:if test="${not empty param.intro }">readonly</c:if>>
+										onblur="this.placeholder = '소개글'" value="${param.intro }" >
 								</c:if>
 							</div>
 							<c:if test="${empty summary }">
@@ -232,7 +232,7 @@ h2 {
 								<div class="form-group">
 									<textarea class="form-control mb-10" rows="5" id="my_summary" name="my_summary"
 										placeholder="줄거리" onfocus="this.placeholder = ''"
-										onblur="this.placeholder = '줄거리'" required="" <c:if test="${not empty param.summary }">readonly</c:if>>${param.summary }</textarea>
+										onblur="this.placeholder = '줄거리'" required="" >${param.summary }</textarea>
 								</div>
 							</c:if>
 							<button id="cancel" class="button button-login w-20">취소</button>
