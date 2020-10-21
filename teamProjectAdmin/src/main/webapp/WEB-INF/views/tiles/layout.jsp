@@ -348,20 +348,20 @@
 
 	<!-- <script src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script> -->
 
-	<script src="/app/resourse/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="/dambook/resourse/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 	<!-- Core plugin JavaScript-->
-	<script src="/app/resourse/vendor/jquery-easing/jquery.easing.min.js"></script>
+	<script src="/dambook/resourse/vendor/jquery-easing/jquery.easing.min.js"></script>
 
 	<!-- Custom scripts for all pages-->
-	<script src="/app/resourse/js/sb-admin-2.min.js"></script>
+	<script src="/dambook/resourse/js/sb-admin-2.min.js"></script>
 	<!-- Page level plugins -->
-	<script src="/app/resourse/vendor/datatables/jquery.dataTables.min.js"></script>
+	<script src="/dambook/resourse/vendor/datatables/jquery.dataTables.min.js"></script>
 	<script
-		src="/app/resourse/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+		src="/dambook/resourse/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
 	<!-- Page level custom scripts -->
-	<script src="/app/resourse/js/demo/datatables-demo.js"></script>
+	<script src="/dambook/resourse/js/demo/datatables-demo.js"></script>
 </body>
 
 </html>
