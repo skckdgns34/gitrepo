@@ -199,7 +199,7 @@ function imgClick(book_no) {
 								</div>
 								<div>
 									<form
-										action="${pageContext.request.contextPath}/eBookSearchAfter.do">
+										action="${pageContext.request.contextPath}/eBookSearchAfter.do" method="POST">
 										<div class="input-group filter-bar-search" style="padding-bottom: 30px">
 											<input type="text" placeholder="Search" id="testInput">
 											<div class="input-group-append">
