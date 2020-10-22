@@ -103,7 +103,7 @@ text-align: end;}
                              <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
 								<thead>
 									<tr>
-										<th>번호</th>
+										<th hidden="hidden">번호</th>
 										<th>위치</th>
 										<th>북마크 내용</th>
 										<th>삭제</th>
@@ -112,8 +112,8 @@ text-align: end;}
 									<tbody id="bookMarkTbody">
 										<c:forEach items="${markList }" var="markList">
 											<tr class="tr-hover" onclick="bookMarkClick(this)">
-												<td >${markList.rownum }<input type="hidden" value="${markList.bookmark_no}"></td>
-												<td class="mark_index">${markList.bookmark_index }초</td> 
+												<td hidden="hidden">${markList.rownum }<input type="hidden" value="${markList.bookmark_no}"></td>
+												<td class="mark_index">${markList.bookmark_index } 초</td> 
 												<td>${markList.bookmark_contents }</td>
 												<td><button class="delete"  onclick='delBookMark(this)'>삭제</button></td>
 											</tr>
@@ -257,6 +257,7 @@ text-align: end;}
 	function bookMarkClick(tr){
 		var mark_index = $(tr).find("td.mark_index").text();
 		var mark_inde = mark_index.split(" ");
+		console.log(mark_inde);
 		audioElement.currentTime = mark_inde[0];
 	}
 
@@ -305,8 +306,8 @@ text-align: end;}
 			success: function(data){
 				var split_mark_index = data[0].bookmark_index.split(".");
 				var addedMark = $("<tr class='tr-hover' onclick='bookMarkClick(this)'>" +
-         		        "<td>" + data[0].bookmark_no + "<input type='hidden' value='data[0].rownum'></td>" +
-         		        "<td>" + split_mark_index[0]+ "</td>" + 
+         		        "<td hidden='hidden'>" + data[0].bookmark_no + "<input type='hidden' value='data[0].rownum'></td>" +
+         		        "<td>" + split_mark_index[0]+ " 초</td>" + 
          		        "<td>" + data[0].bookmark_contents + "</td>" +
          		        "<td><button class='delete' onclick='delBookMark(this)'>삭제</button></td>" +
          		        "</tr>");
