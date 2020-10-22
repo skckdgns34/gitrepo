@@ -81,7 +81,7 @@
 						
 						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/audioBookCategory.do">오디오북</a>
 						</li>
-						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/createBookMain.do">나만의 도서</a>
+						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/createBookMain.do">나도 작가다</a>
 						</li>
 						
 						
