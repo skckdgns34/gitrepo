@@ -32,7 +32,7 @@ public class TicketDAO {
 			conn = ConnectionManager.getConnnect();
 			String sql = "select ticket_code, ticket_date, price, ticket_name , "
 					+ " nvl((select 1 from pay where ticket_code=ticket.ticket_code and member_no = ?),0) ticketyn "
-					+ " from ticket";
+					+ " from ticket ";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, no);
 			rs = pstmt.executeQuery();
@@ -44,7 +44,6 @@ public class TicketDAO {
 				ticketVO.setTicket_name(rs.getString(4));
 				ticketVO.setTicketyn(rs.getString(5));
 
-			
 				list.add(ticketVO);
 			}
 		} catch (Exception e) {

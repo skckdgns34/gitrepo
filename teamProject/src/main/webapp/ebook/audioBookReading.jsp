@@ -207,10 +207,6 @@ text-align: end;}
 	audioElement.currentTime = ${book_index}
 	
 	 var book_no = '${book[0].book_no}';
-	 //데이터테이블 쓸꺼
-	
-
-	
 	
 	$("#mark_index").on("click")
 	
@@ -243,6 +239,8 @@ text-align: end;}
 	}, false);
 	const gainNode = audioContext.createGain();
 	track.connect(gainNode).connect(audioContext.destination);
+	
+	
 	
 	
 	//북마크, mylob 고른거 호버주고
