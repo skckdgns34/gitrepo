@@ -131,7 +131,8 @@ public class eBookEpubCreateServ implements Controller {
 			// Create EpubWriter
 			EpubWriter epubWriter = new EpubWriter();
 			// Write the Book as Epub
-				epubWriter.write(book, new FileOutputStream("C:\\Users\\admin\\git\\gitrepo\\teamProject\\src\\main\\webapp\\ebookepub\\"+(String)my.get(0).get("my_title")+".epub"));
+			String pathEpub = request.getSession().getServletContext().getRealPath("/ebookepub");
+				epubWriter.write(book, new FileOutputStream(pathEpub+"/"+(String)my.get(0).get("my_title")+".epub"));
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
