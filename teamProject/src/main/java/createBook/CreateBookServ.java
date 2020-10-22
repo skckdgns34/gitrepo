@@ -22,10 +22,13 @@ public class CreateBookServ implements Controller
 	
 		String member_no = (String)request.getSession().getAttribute("member_no");
 		String my_title = request.getParameter("title");
+		String intro= request.getParameter("intro");
+		String summary = request.getParameter("summary");
 		System.out.println(my_title);
 		ArrayList<Common> genreList=  CommonDAO.getInstance().selectAllGenre();
 		request.setAttribute("genreList", genreList);
 		ArrayList<Mywriting> chapterList = CreateBookDAO.getInstance().selectAllChapter(member_no, my_title);
+		
 		request.setAttribute("title", my_title);
 		request.setAttribute("chapterList", chapterList);
 		request.getRequestDispatcher("/createBook/createBookWrite.jsp").forward(request, response);

@@ -30,7 +30,8 @@ public class MainDAO {
 				String sql = "select  a.book_no, a.title, a.book_img, a.writer, a.epub_path,"
 						+ " lower(a.best_book), a.genre, b.code_value " + 
 						" from books a, common b" + 
-						" where a.genre = b.code";
+						" where a.genre = b.code" +
+						" and member_no is null";
 				pstmt = conn.prepareStatement(sql);
 				rs = pstmt.executeQuery();
 

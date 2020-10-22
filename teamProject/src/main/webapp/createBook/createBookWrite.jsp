@@ -64,8 +64,8 @@ $(function(){
 					my_title : my_title,
 					chapter : chapter},
 			success: function(data){
-				$("#my_introduction").attr("readonly","readonly").val(data.my_introduction);
-				$("#my_summary").attr("readonly","readonly").html(data.my_summary);
+				 $("#my_introduction").attr("readonly","readonly").val(data.my_introduction);
+				$("#my_summary").attr("readonly","readonly").html(data.my_summary); 
 				ckeditor.data.set(data.my_contents);
 				console.log(data.genre);
 			 	//var option = $(".list").first().find('li[data-value='+data.genre+']')
@@ -209,31 +209,18 @@ h2 {
 							</div>
 
 							<div class="form-group">
-								<c:if test="${empty intro }">
 									<input type="text" class="form-control" id="my_introduction" name="my_introduction"
 										placeholder="소개글" onfocus="this.placeholder = ''"
-										onblur="this.placeholder = '소개글'" >
-								</c:if>
-								<c:if test="${not empty param.intro }">
-									<input type="text" class="form-control" id="my_introduction" name="my_introduction"
-										placeholder="소개글" onfocus="this.placeholder = ''"
-										onblur="this.placeholder = '소개글'" value="${param.intro }" readonly="readonly">
-								</c:if>
+										onblur="this.placeholder = '소개글'" value="${param.intro }" >
 							</div>
-							<c:if test="${empty summary }">
+							
+							
 								<div class="form-group">
 									<textarea class="form-control mb-10" rows="5" id="my_summary" name="my_summary"
 										placeholder="줄거리" onfocus="this.placeholder = ''"
-										onblur="this.placeholder = '줄거리'" required="" ></textarea>
+										onblur="this.placeholder = '줄거리'" required="" >${param.summary }</textarea>
 								</div>
-							</c:if>
-							<c:if test="${not empty param.summary }">
-								<div class="form-group">
-									<textarea class="form-control mb-10" rows="5" id="my_summary" name="my_summary"
-										placeholder="줄거리" onfocus="this.placeholder = ''"
-										onblur="this.placeholder = '줄거리'" required="" readonly="readonly">${param.summary }</textarea>
-								</div>
-							</c:if>
+							
 							<button id="cancel" class="button button-login w-20">취소</button>
 							<button id="save" class="button button-login w-20">저장</button>
 							<button id="submit" class="button button-login w-20">등록</button>
