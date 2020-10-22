@@ -56,7 +56,9 @@ public class CreateBookSaveServ  implements Controller {
 			CreateBookDAO.getInstance().saveUserBook(book);
 		}
 		System.out.println(book.getMy_title());
-		response.sendRedirect("createBook.do?title="+URLEncoder.encode(book.getMy_title(),"UTF-8"));
+		response.sendRedirect("createBook.do?title="+URLEncoder.encode(book.getMy_title(),"UTF-8")
+							+"&intro="+URLEncoder.encode(book.getMy_introduction(),"UTF-8")
+							+"&summary="+URLEncoder.encode(book.getMy_summary(),"UTF-8"));
 	}
 	private String getFilename(Part part) throws UnsupportedEncodingException {
 		for (String cd : part.getHeader("Content-Disposition").split(";")) {
